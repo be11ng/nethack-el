@@ -20,6 +20,10 @@ The variable `nethack-program' is the name of the executable to run."
   (if (and (processp nethack-process)
 	   (eq (process-status nethack-process) 'run))
       (message "Nethack process already running...")
+
+    (setq nethack-waiting-for-key-p nil) ;move these to nethack-mode
+    (setq nethack-key-queue nil)
+
     (setq nethack-process (nethack-start-program))))
 
 
@@ -107,7 +111,7 @@ the `nethack-process-buffer' for debugging."
 
 (defun nethack-parse-command (command)
   "Parse and COMMAND and do it."
-  (message (concat "Parsing: " command))
+  ;;(message (concat "Parsing: " command))
   (eval (car (read-from-string command))))
 
 
@@ -158,10 +162,13 @@ eventual delivery to the running nethack process."
 
 (defvar nethack-map-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map "h" 'nethack-handle-key)
-    (define-key map "j" 'nethack-handle-key)
-    (define-key map "k" 'nethack-handle-key)
-    (define-key map "l" 'nethack-handle-key)
+    (mapcar (lambda (x) 
+	      (define-key map (char-to-string x) 'nethack-handle-key))
+	    "1234567890-=!@#$%^&*()_+qwertyuiop[]QWERTYUIOP{}asdfghjkl;'ASDFGHJKL:\"zxcvbnm,./ZXCVBNM<>?`~|\\")
+;;     (define-key map "h" 'nethack-handle-key)
+;;     (define-key map "j" 'nethack-handle-key)
+;;     (define-key map "k" 'nethack-handle-key)
+;;     (define-key map "l" 'nethack-handle-key)
     map)
   "Keymap for nethack-map mode")
 
