@@ -21,7 +21,7 @@ DISTDIR=nethack_el-$(shell date +%Y%m%d)
 dist:
 	mkdir ./$(DISTDIR)
 	cp $(DISTFILES) ./$(DISTDIR)
-	(cd /tmp; tar -cf /dev/stdout ./$(DISTDIR) | gzip > ./$(DISTDIR).tar.gz)
+	tar -cf /dev/stdout ./$(DISTDIR) | gzip > ./$(DISTDIR).tar.gz
 	rm -rf ./$(DISTDIR)
 
 # apply the generated patch from inside the nethack dir like this: 

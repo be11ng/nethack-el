@@ -1,5 +1,7 @@
 2002-09-12  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* mkpatch: Don't include win/lisp/TODO file in patch.
+
 	* nethack-api.el (nethack-api-menu-putstr): Rename from
 	`nethack-api-putstr'.
 	
