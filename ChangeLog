@@ -1,3 +1,11 @@
+2002-09-26  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nh-sentinel): Don't pop to process buffer on signal.
+
+	* nethack-api.el (nhapi-create-message-window): Erase the buffer.
+	(nhapi-block): Clear the message highlight after input.
+	(nhapi-raw-print): Pop to the raw-print-buffer.
+
 2002-09-20  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el (nethack-el-version): Add function.

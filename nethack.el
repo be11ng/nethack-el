@@ -118,7 +118,6 @@ attribute, the new value and the old value."
   "Customizations for faces used by Enethack."
   :group 'nethack)
 
-
 (defface nethack-status-good-face
   `((((type tty)
       (class color))
@@ -408,7 +407,9 @@ PROC is the process object and MSG is the exit message."
     (nh-log (buffer-substring (point-min) (point)))
     (eval-region (point-min) (point-max))
     (insert "Nethack " msg)
-    (pop-to-buffer (current-buffer)))
+;;    (if (not (string-equal msg "Nethack finished"))
+;;	(pop-to-buffer (current-buffer)))
+    )
   (delete-process proc))
 
 (defvar nh-log-process-text t)
