@@ -1,5 +1,22 @@
 2002-09-20  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack-api.el (nh-status-string): Add function.
+	(nh-status-n, nh-status-w, nh-status-s, nh-status-d, nh-status-c) 
+	(nh-status-i, nh-status-W, nh-status-C, nh-status-A, nh-status-L) 
+	(nh-status-l, nh-status-g, nh-status-h, nh-status-p, nh-status-a) 
+	(nh-status-e, nh-status-t, nh-status-f): Add functions.
+
+	* nethack.el (nethack-status-attribute-change-functions): Rename
+	from `nethack-status-attribute-change-hook'.
+
+	* nethack-api.el (nh-print-status): Rewrite.
+
+	* nethack.el (nethack-status-format): Remove variable.
+	(nethack-status-in-modeline): Remove variable.
+	(nethack-status-buffer-format): Add variable.
+	(nethack-status-mode-line-format): Add variable.
+	(nethack-status-header-line-format): Add variable.
+
 	* nethack-keys.el: Remove require.
 
 	* nethack-glyphs.el (nh-empty-tile): Rename from

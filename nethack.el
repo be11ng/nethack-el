@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.69 2002/09/20 04:15:48 rcyeske Exp $
+;; Version: $Id: nethack.el,v 1.70 2002/09/21 01:48:30 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -30,7 +30,6 @@
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
-(require 'nethack-vars)
 
 (defgroup nethack nil
   "Emacs lisp frontend to the lisp window port of Nethack 3.4.0."
@@ -61,22 +60,25 @@
   :type '(integer)
   :group 'nethack)
 
-(defcustom nethack-status-format
-  "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"
-  "The nethack status format string."
+(defcustom nethack-status-buffer-format 
+  "n w s d c i W C A\nL l g h p a e t f"
+  "Format string for the status in `nh-status-buffer'."
   :type '(string)
   :group 'nethack)
 
-;; FIXME: I think this is broken (ryeske@vcn.bc.ca 20020919)
-(defcustom nethack-status-in-modeline nil
-  "If non-nil, display the status in the modeline of the buffer
-containing the map.
-
-Since the modeline can only display 1 line, you must make sure there
-are no newlines in `nethack-status-format'."
-  :type '(boolean)
+(defcustom nethack-status-mode-line-format
+  "s d c i W C g h p a e t"
+  "Format string for the status on the mode-line."
+  :type '(string)
   :group 'nethack)
 
+(defcustom nethack-status-header-line-format
+  "n w <L,l> A   f"
+  "Format string for the status on the header-line."
+  :type '(string)
+  :group 'nethack)
+
+;;; Insert variables that control how the status gets displayed here.
 
 (defcustom nethack-use-tiles nil
   "If non-nil, use XPMs to draw tiles."

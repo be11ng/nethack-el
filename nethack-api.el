@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.79 2002/09/20 04:15:48 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.80 2002/09/21 01:48:30 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -73,6 +73,8 @@
   (with-current-buffer nh-map-buffer
    (goto-char (gamegrid-cell-offset (- x 1) y))))
 
+
+;;; Status/Attribute code:b
 (defun nh-propertize-attribute (attribute &optional how)
   (let* ((new-value (car attribute))
 	 (old-value (cadr attribute))
@@ -180,58 +182,88 @@
 	  (run-hook-with-args 'nethack-status-attribute-change-functions
 			      (car i) new-value old-value))))))
 
-;; %n%w%s%d%c%i%W%C%A\n%L%l%$%h%p%a%e%t%f
-;;name what strength dexterity constitution intelligence wisdom charisma alignment
-;;where level gold hitpoints power armorclass experience time flags
-(defun nh-print-status ()
-  ;; header line
-;;  (with-current-buffer nh-map-buffer
-;;    (setq header-line-format (nh-status-string nethack-header-line-status-format)))
-;;  (with-current-buffer nh-map-buffer
-;;    (setq mode-line-format (nh-status-string nethack-mode-line-status-format)))
+(defun nh-status-string (format)
+  (mapconcat
+   (lambda (ch)
+     (let ((fn (intern-soft (concat "nh-status-" (char-to-string ch)))))
+       (if fn (funcall fn) (char-to-string ch))))
+   format nil))
 
-  ;; print the values in the buffer
+(defun nh-print-status ()
+;; create a customizable variable to control this:
+;;   header line/mode line printing
+;;   (with-current-buffer nh-map-buffer
+;;     (setq header-line-format 
+;; 	  (nh-status-string nethack-status-header-line-format))
+;;     (setq mode-line-format
+;; 	  (nh-status-string nethack-status-mode-line-format)))
+
+  ;; print the values in the status buffer
   (with-current-buffer nh-status-buffer
     (erase-buffer)
-    (insert (format "%s the %s St:%s Dx:%s Co:%s In:%s Wi:%s Ch:%s %s\n" 
-		    (nh-propertize-attribute nh-status-attribute-name)
-		    (if (car nh-status-attribute-monster)
-			(nh-propertize-attribute nh-status-attribute-monster)
-		      (nh-propertize-attribute nh-status-attribute-rank))
-		    (nh-propertize-attribute nh-status-attribute-St)
-		    (nh-propertize-attribute nh-status-attribute-Dx)
-		    (nh-propertize-attribute nh-status-attribute-Co)
-		    (nh-propertize-attribute nh-status-attribute-In)
-		    (nh-propertize-attribute nh-status-attribute-Wi)
-		    (nh-propertize-attribute nh-status-attribute-Ch)
-		    (nh-propertize-attribute nh-status-attribute-Align)))
-    (insert (format "%s Dlvl:%s $:%s HP:%s(%s) Pw:%s(%s) AC:%s Xp:%s/%s T:%s %s"
-		    (nh-propertize-attribute nh-status-attribute-Dungeon)
-		    (nh-propertize-attribute nh-status-attribute-Dlvl)
-		    (nh-propertize-attribute nh-status-attribute-$)
-		    (nh-propertize-attribute nh-status-attribute-HP)
-		    (nh-propertize-attribute nh-status-attribute-HPmax)
-		    (nh-propertize-attribute nh-status-attribute-PW)
-		    (nh-propertize-attribute nh-status-attribute-PWmax)
-		    (nh-propertize-attribute nh-status-attribute-AC 'lower-is-better)
-		    (nh-propertize-attribute nh-status-attribute-Level)
-		    (nh-propertize-attribute nh-status-attribute-XP)
-		    ;; don't propertize time
-		    (car nh-status-attribute-T)
-		    ;; handle all these flags together to get the spacing right
-		    (mapconcat 
-		     (lambda (x) (if (not (string-equal x "")) (concat x " ")))
-		     (list
-		      (nh-propertize-attribute nh-status-attribute-confusion)
-		      (nh-propertize-attribute nh-status-attribute-hunger)
-		      (nh-propertize-attribute nh-status-attribute-sick)
-		      (nh-propertize-attribute nh-status-attribute-blind)
-		      (nh-propertize-attribute nh-status-attribute-stunned)
-		      (nh-propertize-attribute nh-status-attribute-hallucination)
-		      (nh-propertize-attribute nh-status-attribute-slimed)
-		      (nh-propertize-attribute nh-status-attribute-encumbrance))
-		     "")))))
-    
+    (insert (nh-status-string nethack-status-buffer-format))))
+
+(defun nh-status-n ()
+  (nh-propertize-attribute nh-status-attribute-name))
+(defun nh-status-w ()
+  (concat "the "
+	  (nh-propertize-attribute 
+	   (if (car nh-status-attribute-monster)
+	       nh-status-attribute-monster
+	     nh-status-attribute-rank))))
+(defun nh-status-s ()
+  (concat "St:" (nh-propertize-attribute nh-status-attribute-St)))
+(defun nh-status-d ()
+  (concat "Dx:" (nh-propertize-attribute nh-status-attribute-Dx)))
+(defun nh-status-c ()
+  (concat "Co:" (nh-propertize-attribute nh-status-attribute-Co)))
+(defun nh-status-i ()
+  (concat "In:" (nh-propertize-attribute nh-status-attribute-In)))
+(defun nh-status-W ()
+  (concat "Wi:" (nh-propertize-attribute nh-status-attribute-Wi)))
+(defun nh-status-C ()
+  (concat "Ch:" (nh-propertize-attribute nh-status-attribute-Ch)))
+(defun nh-status-A ()
+  (nh-propertize-attribute nh-status-attribute-Align))
+(defun nh-status-L ()
+  (nh-propertize-attribute nh-status-attribute-Dungeon))
+(defun nh-status-l ()
+  (concat "Dlvl:" (nh-propertize-attribute nh-status-attribute-Dlvl)))
+(defun nh-status-g ()
+  (concat "$:" (nh-propertize-attribute nh-status-attribute-$)))
+(defun nh-status-h ()
+  (format "HP:%s(%s)"
+	  (nh-propertize-attribute nh-status-attribute-HP)
+	  (nh-propertize-attribute nh-status-attribute-HPmax)))
+(defun nh-status-p ()
+  (format "Pw:%s(%s)"
+	  (nh-propertize-attribute nh-status-attribute-PW)
+	  (nh-propertize-attribute nh-status-attribute-PWmax)))
+(defun nh-status-a ()
+  (concat "AC:"
+	  (nh-propertize-attribute nh-status-attribute-AC 'lower-is-better)))
+(defun nh-status-e ()
+  (format "Xp:%s/%s"
+	  (nh-propertize-attribute nh-status-attribute-Level)
+	  (nh-propertize-attribute nh-status-attribute-XP)))
+(defun nh-status-t ()
+  (format "T:%d" (car nh-status-attribute-T)))
+(defun nh-status-f ()
+  (mapconcat 
+   (lambda (x) (if (not (string-equal x "")) (concat x " ")))
+   (list
+    (nh-propertize-attribute nh-status-attribute-confusion)
+    (nh-propertize-attribute nh-status-attribute-hunger)
+    (nh-propertize-attribute nh-status-attribute-sick)
+    (nh-propertize-attribute nh-status-attribute-blind)
+    (nh-propertize-attribute nh-status-attribute-stunned)
+    (nh-propertize-attribute nh-status-attribute-hallucination)
+    (nh-propertize-attribute nh-status-attribute-slimed)
+    (nh-propertize-attribute nh-status-attribute-encumbrance))
+   ""))
+
+
+;;; Menu code:
 (defun nhapi-menu-putstr (menuid attr str)
   "On buffer associated with MENUID, insert with ATTR the STR."
   (with-current-buffer (nh-menu-buffer menuid)
