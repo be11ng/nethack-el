@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.76 2003/06/03 09:05:02 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.77 2003/06/03 21:37:25 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -98,6 +98,11 @@
 
 (defcustom nethack-before-print-message-hook nil
   "Hook run before a message is printed."
+  :type '(hook)
+  :group 'nethack)
+
+(defcustom nethack-end-hook nil
+  "Hook run when nethack has ended."
   :type '(hook)
   :group 'nethack)
 
@@ -381,6 +386,9 @@ attribute, the new value and the old value."
 ;;; Process
 (defvar nh-proc nil)
 (defvar nh-proc-buffer-name "*nh-output*")
+(defvar nh-proc-kill-buffer-on-quit nil
+  "When the process ends kill the process buffer if this is t.")
+(defvar nh-log-buffer "*nh-log*")
 
 (defun nethack ()
   "Start a game of Nethack.
@@ -423,12 +431,14 @@ PROC is the process object and MSG is the exit message."
 ;;    (if (not (string-equal msg "Nethack finished"))
 ;;	(pop-to-buffer (current-buffer)))
     )
-  (delete-process proc))
+  (delete-process proc)
+  (if nh-proc-kill-buffer-on-quit
+      (kill-buffer (get-buffer nh-proc-buffer-name))))
 
 (defvar nh-log-process-text t)
 (defun nh-log (string)
   (if nh-log-process-text
-      (with-current-buffer (get-buffer-create "*nh-log*")
+      (with-current-buffer (get-buffer-create nh-log-buffer)
 	(goto-char (point-max))
 	(insert string))))
 
@@ -493,6 +503,20 @@ delete the contents, perhaps logging the text."
   (make-variable-buffer-local 'other-window-scroll-buffer)
   (setq other-window-scroll-buffer nh-message-buffer)
   (run-hooks 'nethack-map-mode-hook))
+
+(defun nethack-kill-buffers ()
+  "kill all nethack associated buffers except the nethack process
+buffer."
+  (when (buffer-live-p nh-map-buffer)
+    (kill-buffer nh-map-buffer))
+  (when (buffer-live-p nh-status-buffer)
+    (kill-buffer nh-status-buffer))
+  (when (buffer-live-p nh-message-buffer)
+    (kill-buffer nh-message-buffer))
+  (mapcar (lambda (x) (when (buffer-live-p (cdr x))
+			(kill-buffer (cdr x)))) nh-menu-buffer-table)
+  (kill-buffer (get-buffer nh-log-buffer)))
+  
 
 
 (run-hooks 'nethack-load-hook)
