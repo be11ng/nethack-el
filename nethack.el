@@ -519,4 +519,11 @@ Return the modified alist."
 
 (provide 'nethack)
 
+
+;;; VERSION:
+(defun nethack-el-version ()
+  (interactive)
+  (message (format "nethack-el %s" nethack-el-version)))
+(defconst nethack-el-version "20020920")
+
 ;;; nethack.el ends here

@@ -1,5 +1,10 @@
 2002-09-20  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack.el (nethack-el-version): Add function.
+	(nethack-el-version): Add variable.
+
+	* nethack-cmd.el (version): Show nethack-el version.
+
 	* nethack-example.el (nethack-x-timestamp-message): Rename from
 	`nethack-timestamp-message'.
 	(nethack-x-gdb): Rename from `nh-gdb'.
