@@ -1,15 +1,23 @@
 #!/bin/sh
 
-# assume the sources are up one level
-cd ..
-
+# the nethack source tarball
+src=nethack-340.tgz
 # should be a clean version of the Nethack sources
 ref=${1:-nethack-3.4.0}
-# your cvs working directory, with your changes
+# your working directory, with your changes
 work=${2:-nethack}
 
-[ -d $ref ] || { echo $ref/ is missing >&2; exit 1; }
-[ -d $work ] || { echo $work/ is missing >&2; exit 1; }
+echo $0: cd .. >&2
+cd ..
+
+[ -e $src ]  || { echo $0: $src is missing >&2; exit 1; } 
+[ -d $work ] || { echo $0: $work/ is missing >&2; exit 1; }
+[ -e $ref ] && { echo $0: $ref/ is in the way >&2; exit 1; }
+
+echo $0: untarring $src >&2
+tar -xzf $src
+
+echo $0: generating patch >&2
 
 # the patch is distributed under a modified BSD license
 cat <<EOF
@@ -41,6 +49,7 @@ include/winlisp.h
 src/windows.c
 sys/unix/Makefile.src
 util/makedefs.c
+win/tty/termcap.c
 win/lisp/ChangeLog
 win/lisp/winlisp.c
 EOF
@@ -51,5 +60,5 @@ EOF
   diff -u $s $work/$n
 done
 
-# diff returns error code when there are changes
-true
+echo $0: removing $ref/ >&2
+rm -r $ref
