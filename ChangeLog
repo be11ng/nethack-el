@@ -1,3 +1,21 @@
+2001-10-19  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-cmd.el (nethack-command-previous-message): New function.
+	(nethack-command-redraw-screen): Likewise.
+
+	* nethack-api.el (nethack-api-raw-print): Display the raw print
+	buffer as the only window.
+	(nethack-api-raw-print-bold): Use nethack-atr-bold-face.
+	(nethack-atr-none-face, nethack-atr-uline-face)
+	(nethack-atr-bold-face, nethack-atr-blink-face)
+	(nethack-atr-inverse-face): New faces.
+	(nethack-api-putstr): Use whatever attribute is specified.
+	(nethack-attr-face): New function.
+	(nethack-api-clear-nhwindow): Remove debugging `.'.
+	(nethack-api-display-nhwindow): Handle blocking map displays.
+	(nethack-api-add-menu): Use whatever attribute is specified.
+	(nethack-api-outrip): Output a trailing newline.
+
 2001-10-19  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack-parse-status-lines): regexp truncated.

@@ -112,7 +112,13 @@
 ;; (defun-nethack-command create-monster "Create a monster (available in debug mode only)" ???) ;^G
 ;; (defun-nethack-command identify-all-items "Identify all items (available in debug mode only)" ???) ;^I
 ;; (defun-nethack-command previous-message "Toggle through previously displayed game messages" ???) ;^P
+(defun nethack-command-previous-message (&optional count)
+  (interactive)
+  (nethack-api-doprev-message))
 ;; (defun-nethack-command redraw-screen "Redraw screen" ???) ;^R
+(defun nethack-command-redraw-screen (&optional count)
+  (interactive)
+  (nethack-setup-window-configuration))
 ;; (defun-nethack-command teleport-around-level "Teleport around level" ???) ;^T
 ;; (defun-nethack-command suspend-game "Suspend game (only if defined)" ???) ;^Z
 ;; (defun-nethack-command cancel "Cancel command" ???) ;^[
