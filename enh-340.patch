@@ -18,7 +18,7 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --- nethack-3.4.0/include/config.h	2002-03-20 15:42:43.000000000 -0800
-+++ nethack/include/config.h	2002-07-18 12:56:46.000000000 -0700
++++ nethack/include/config.h	2002-09-12 23:10:07.000000000 -0700
 @@ -42,17 +42,18 @@
   * Define all of those you want supported in your binary.
   * Some combinations make no sense.  See the installation document.
@@ -53,22 +53,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  # define DEFAULT_WINDOW_SYS "tty"
  #endif
-@@ -163,11 +170,11 @@
- 
- #ifdef UNIX
- /* path and file name extension for compression program */
--#define COMPRESS "/usr/bin/compress"	/* Lempel-Ziv compression */
--#define COMPRESS_EXTENSION ".Z"		/* compress's extension */
-+/* #define COMPRESS "/usr/bin/compress" */	/* Lempel-Ziv compression */
-+/* #define COMPRESS_EXTENSION ".Z"		 *//* compress's extension */
- /* An example of one alternative you might want to use: */
--/* #define COMPRESS "/usr/local/bin/gzip" */	/* FSF gzip compression */
--/* #define COMPRESS_EXTENSION ".gz" */		/* normal gzip extension */
-+#define COMPRESS "/usr/local/bin/gzip"	/* FSF gzip compression */
-+#define COMPRESS_EXTENSION ".gz"		/* normal gzip extension */
- #endif
- 
- #ifndef COMPRESS
 --- /dev/null	2002-09-07 13:22:20.000000000 -0700
 +++ nethack/include/winlisp.h	2002-01-10 19:54:20.000000000 -0800
 @@ -0,0 +1,70 @@
@@ -229,10 +213,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
 --- /dev/null	2002-09-07 13:22:20.000000000 -0700
-+++ nethack/win/lisp/ChangeLog	2002-09-12 21:04:01.000000000 -0700
-@@ -0,0 +1,275 @@
++++ nethack/win/lisp/ChangeLog	2002-09-12 23:30:30.000000000 -0700
+@@ -0,0 +1,284 @@
 +2002-09-12  Ryan Yeske  <rcyeske@vcn.bc.ca>
 +
++	* winlisp.c (lisp_display_nhwindow): Add call to
++	`nethack-api-end'.
++
++	* ../../include/config.h: Default to LISP_GRAPHICS.
++
++	* ../../sys/unix/Makefile.src (WINSRC,WINOBJ,WINLIB): Set to
++	WINLISP* values.
++	(depend): Add winlisp.o dependancies.
++	
 +	* winlisp.c (lisp_curs): Don't send winid.  Add error check.
 +	(lisp_putstr): Call `nethack-api-message' or
 +	`nethack-api-menu-putstr' when appropriate.
@@ -507,7 +500,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
 --- /dev/null	2002-09-07 13:22:20.000000000 -0700
-+++ nethack/win/lisp/winlisp.c	2002-09-12 21:03:46.000000000 -0700
++++ nethack/win/lisp/winlisp.c	2002-09-12 23:29:52.000000000 -0700
 @@ -0,0 +1,1820 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
@@ -2018,7 +2011,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	{
 +	  /* blocking on the message window happens only at the end of
 +	     the game */
-+	  lisp_cmd ("INSERTYOURENDOFGAMEHACKHEREYESRIGHTHERE",);
++	  lisp_cmd ("end",);
 +	}
 +      else
 +	{
