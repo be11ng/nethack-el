@@ -1,24 +1,48 @@
--*- outline -*-
+nethack-el installation instructions (roughly)
 
-This needs more detail, obviously.
+* Installing the nethack binary with the lisp window port
 
-* download nethack-340.tgz from nethack.org or some mirror.
+Please note that these instructions are in addition to the
+installation instructions that come with the Nethack sources.  Please
+read the instructions specific to your system.  These instructions are
+known to work on a unix system.
 
-* apply the patch
-patch -p 1 < PATH/TO/enh-340.patch
+** Download nethack-340.tgz from ftp.nethack.org or your closest mirror.
 
-* configure it and build it
-Read the Install file in the nethack tree.
+*** Untar the package and apply the enh-340.patch (found in nethack-el-VERSION.tar.gz)
+with the command "patch -p 1 < enh-340.patch"
 
-Select LISP everywhere that is appropriate.
+*** Follow the instructions in nethack/sys/*/Install.* 
+This may be as simple as running "sys/unix/setup.sh" to copy the
+Makefiles.
 
-* byte-compile and install the emacs lisp code
-make, and copy the .elc files somewhere into the load-path
+*** Modify the appropriate files to enable the lisp window port:
 
-* start emacs
+in `include/config.h' make sure LISP_GRAPHICS is defined
 
-* (require 'nethack)
-or do some autoload magic
+in src/Makefile make sure 
+   WINSRC = $(WINLISPSRC)
+   WINOBJ = $(WINLISPOBJ)
+   WINLIB = $(WINLISPLIB)
 
-* M-x nethack RET
-and 'hack away.
+*** make sure dependencies are up to date
+cd src
+make depend
+
+*** compile (from the toplevel)
+make
+make install
+
+* Installing the emacs lisp sources
+** byte compile (not strictly necessary)
+nethack-el$ make
+
+** ensure that the *.elc files can be found in your load-path in your load-path
+TODO: should we have a make install target?  What IS the Right Way to
+install elisp code?
+
+** add to your .emacs:
+(autoload 'nethack "nethack" "Play Nethack." t)
+(setq nethack-program "/PATH/TO/nethack")
+
+** M-x nethack RET
