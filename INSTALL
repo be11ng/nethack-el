@@ -7,28 +7,17 @@ installation instructions that come with the Nethack sources.  Please
 read the instructions specific to your system.  These instructions are
 known to work on a unix system.
 
-** Download nethack-341.tgz from ftp.nethack.org or your closest mirror.
+** Download nethack-342.tgz from ftp.nethack.org or your closest mirror.
 
-*** Untar the package and apply the enh-341.patch (found in nethack-el-VERSION.tar.gz)
-with the command "patch -p 1 < enh-341.patch"
+*** Untar the package and apply the enh-343.patch (found in nethack-el-VERSION.tar.gz)
+with the command "patch -p 1 < enh-343.patch"
 
 *** Follow the instructions in nethack/sys/*/Install.* 
 This may be as simple as running "sys/unix/setup.sh" to copy the
 Makefiles.
 
-*** Modify the following files to enable the lisp window port:
-
-in `include/config.h' uncomment:
-#define LISP_GRAPHICS
-
-in src/Makefile make sure 
-   WINSRC = $(WINLISPSRC)
-   WINOBJ = $(WINLISPOBJ)
-   WINLIB = $(WINLISPLIB)
-
-*** make sure dependencies are up to date
-cd src
-make depend
+The patch automatically configures the nethack source to build the lisp
+windowing system.
 
 *** compile (from the toplevel)
 make
@@ -54,6 +43,6 @@ install elisp code?
 * Notes
 
 ** SlashEM
-I have created a patch for SlashEM Alpha Version 0.0.7E0. The patch is
-called ese-007e0.patch. To play SlashEM inside emacs, do the same as
+I have created a patch for SlashEM Version 0.0.7E3. The patch is
+called ese-007e3.patch. To play SlashEM inside emacs, do the same as
 above, but use the SlashEM patch and SlashEM source.
