@@ -34,6 +34,9 @@
 (defvar nh-network-password nil
   "The password to use")
 
+(defvar nh-network-game nil
+  "The game to play")
+
 (defun nh-network-filter (proc str)
   (with-current-buffer (process-buffer proc)
     (insert str))
@@ -42,7 +45,7 @@
 	 (process-send-string proc (format "login %s %s\n" nh-network-user nh-network-password)))
 	((string-equal str (format "Welcome back %s.\n" nh-network-user))
 	 (message "Starting nethack...")
-	 (process-send-string proc "play\n")
+	 (process-send-string proc (format "play %s\n" nh-network-game))
 	 (with-current-buffer  (process-buffer proc)
 	   (erase-buffer))
 	 (nethack-start proc))
@@ -54,8 +57,8 @@
 	 (process-send-string proc (format "new %s %s\n" nh-network-user nh-network-password)))))
 
 ;;;###autoload
-(defun nethack-connect-to-server (server port user passwd)
-  (interactive "sServer: \nsPort: \nsUser: \nsPasswd: ")
+(defun nethack-connect-to-server (server port user passwd game)
+  (interactive "sServer: \nsPort: \nsUser: \nsPasswd: \nsGame: ")
   (if (nethack-is-running)
 	(message "Nethack process already running...")
     (if (get-buffer nh-proc-buffer-name)
@@ -63,6 +66,7 @@
     (let ((proc (open-network-stream "nh" nh-proc-buffer-name server port)))
       (setq nh-network-user user)
       (setq nh-network-password passwd)
+      (setq nh-network-game game)
       (set-process-filter proc 'nh-network-filter))))
   
 (provide 'nethack-nhlaunch)
