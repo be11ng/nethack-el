@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.75 2002/09/13 04:05:37 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.76 2002/09/13 04:35:52 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -812,6 +812,9 @@ the menu is dismissed."
   ""
   (with-current-buffer (nethack-buffer window)
     (insert (concat who " -- " message) "\n")))
+
+(defun nethack-api-end ()
+  (message "Goodbye."))
 
 (provide 'nethack-api)
 
