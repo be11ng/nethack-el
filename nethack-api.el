@@ -183,39 +183,146 @@ are no newlines in `nethack-status-string'."
   :group 'nethack)
 
 
+(defun nethack-api-print-status-numeric (new old fmt &optional positive-is-bad-p)
+  "Print the numeric attribute. POSITIVE-IS-BAD-P is T if a positive
+increment is bad."
+  (let ((attr (number-to-string (cadr new)))
+	(inc-face (if positive-is-bad-p 'nethack-red-face 'nethack-green-face))
+	(dec-face (if positive-is-bad-p 'nethack-green-face 'nethack-red-face)))
+    (cond ((or (null (cadr old))
+	       (null (elt old 2)))
+	   (insert (format fmt attr))
+	   (append new '(0)))
+
+	  ((> (cadr old)
+	      (cadr new))
+	   (insert (format fmt (propertize attr 'face dec-face)))
+	   (append new (list nethack-status-highlight-delay dec-face)))
+
+	  ((< (cadr old)
+	      (cadr new))
+	   (insert (format fmt (propertize attr 'face inc-face)))
+	   (append new (list nethack-status-highlight-delay inc-face)))
+
+	  (t (if (= 0 (elt old 2))
+		 (progn
+		   (insert (format fmt (number-to-string (cadr new))))
+		   old)
+	       (insert (format fmt (propertize attr 'face (elt old 3))))
+	       (append new (list (1- (elt old 2)) (elt old 3))))))))
+
+(defun nethack-api-print-status-string (new old fmt &optional change-is-bad-p)
+  "Print the status attribute. CHANGE-IS-BAD-P is t if an attribute
+change is bad. Returns a list containing relevant info about the
+attribute, its highlight delay and what color it should be
+highlighted."
+  (let ((attr (cadr new))
+	(change-face (if change-is-bad-p 'nethack-red-face 'nethack-green-face)))
+    (cond ((or (null (cadr old))
+	       (null (elt old 2)))
+	   (insert (format fmt attr))
+	   (append new '(0)))
+
+	  ((not (string-equal (cadr old)
+			      (cadr new)))
+	   (insert (format fmt (propertize attr 'face change-face)))
+	   (append new (list nethack-status-highlight-delay change-face)))
+
+	  (t (if (= 0 (elt old 2))
+		 (progn
+		   (insert (format fmt attr))
+		   old)
+	       (insert (format fmt (propertize attr 'face (elt old 3))))
+	       (append new (list (1- (elt old 2)) (elt old 3))))))))
+
 ;; FIXME: this is a temporary kludge which will disappear when we have
 ;; real cooked status information coming from the process.
 (defun nethack-api-update-status (status)
   (with-current-buffer nethack-status-buffer
     (erase-buffer)
-    (insert (format "%s the %s  St:%d Dx:%d Co:%d In:%d Wi:%d Ch:%d  %s\n"
-		    (cadr (assoc "name" status))
-		    (cadr (assoc "rank" status))
-		    (cadr (assoc "St" status))
-		    (cadr (assoc "Dx" status))
-		    (cadr (assoc "Co" status))
-		    (cadr (assoc "In" status))
-		    (cadr (assoc "Wi" status))
-		    (cadr (assoc "Ch" status))
-		    (cadr (assoc "Align" status))))
-    (insert (format "%s Dlvl:%d $:%d HP:%d(%d) Pw:%d(%d) AC:%d Xp:%d/%d T:%d "
-		    (cadr (assoc "Dungeon" status))
-		    (cadr (assoc "Dlvl" status))
-		    (cadr (assoc "$" status))
-		    (cadr (assoc "HP" status))
-		    (cadr (assoc "HPmax" status))
-		    (cadr (assoc "PW" status))
-		    (cadr (assoc "PWmax" status))
-		    (cadr (assoc "AC" status))
-		    (cadr (assoc "Level" status))
-		    (cadr (assoc "XP" status))
-		    (cadr (assoc "T" status))))
+    (insert (format "%s the " (cadr (assoc "name" status))))
+    ;; Recreate nethack-status-alist and simultaneously print each attribute
+    (setq nethack-status-alist
+	  (list (nethack-api-print-status-string (assoc "rank" status) 
+						 (assoc "rank" nethack-status-alist)
+						 "%s  ")
+		(nethack-api-print-status-numeric (assoc "St" status)
+						  (assoc "St" nethack-status-alist)
+						  "St:%s ")
+		(nethack-api-print-status-numeric (assoc "Dx" status)
+						  (assoc "Dx" nethack-status-alist)
+						  "Dx:%s ")
+		(nethack-api-print-status-numeric (assoc "Co" status)
+						  (assoc "Co" nethack-status-alist)
+						  "Co:%s ")
+		(nethack-api-print-status-numeric (assoc "In" status)
+						  (assoc "In" nethack-status-alist)
+						  "In:%s ")
+		(nethack-api-print-status-numeric (assoc "Wi" status)
+						  (assoc "Wi" nethack-status-alist)
+						  "Wi:%s ")
+		(nethack-api-print-status-numeric (assoc "Ch" status)
+						  (assoc "Ch" nethack-status-alist)
+						  "Ch:%s ")
+		(nethack-api-print-status-string (assoc "Align" status)
+						 (assoc "Align" nethack-status-alist)
+						 " %s\n" t)
 
-    (loop for flag in (cadr (assoc "Flags" status))
-	  do
-	  (insert flag))
-    (insert "\n")))
+		(nethack-api-print-status-string (assoc "Dungeon" status)
+						 (assoc "Dungeon" nethack-status-alist)
+						 "%s ")
+		(nethack-api-print-status-numeric (assoc "Dlvl" status)
+						 (assoc "Dlvl" nethack-status-alist)
+						 "Dlvl:%s ")
+		(nethack-api-print-status-numeric (assoc "$" status)
+						  (assoc "$" nethack-status-alist)
+						  "$:%s ")
+		(nethack-api-print-status-numeric (assoc "HP" status)
+						  (assoc "HP" nethack-status-alist)
+						  "HP:%s")
+		(nethack-api-print-status-numeric (assoc "HPmax" status)
+						  (assoc "HPmax" nethack-status-alist)
+						  "(%s) ")
+		(nethack-api-print-status-numeric (assoc "PW" status)
+						  (assoc "PW" nethack-status-alist)
+						  "Pw:%s")
+		(nethack-api-print-status-numeric (assoc "PWmax" status)
+						  (assoc "PWmax" nethack-status-alist)
+						  "(%s) ")
+		(nethack-api-print-status-numeric (assoc "AC" status)
+						  (assoc "AC" nethack-status-alist)
+						  "AC:%s " t)
+		(nethack-api-print-status-numeric (assoc "Level" status)
+						  (assoc "Level" nethack-status-alist)
+						  "Xp:%s")
+		(nethack-api-print-status-numeric (assoc "XP" status)
+						  (assoc "XP" nethack-status-alist)
+						  "/%s ")
+		(nethack-api-print-status-numeric (assoc "T" status)
+						  (assoc "T" nethack-status-alist)
+						  "T:%s " t)
 
+	;; Process flags. If a flag was not there before, it should be
+	      ;; marked in red as all flag updates are for bad things.
+		(list "Flags"
+		      (loop for flag in (cadr (assoc "Flags" status))
+			    for old-flag = nil
+			    do (setq old-flag 
+				     (assoc flag (cadr (assoc "Flags" nethack-status-alist))))
+
+			    ;; Determine whether the flag should be highlighted
+			    if (null old-flag)
+			    do (insert (propertize flag 'face 'nethack-red-face))
+			    and
+			    do (setq old-flag (list flag nethack-status-highlight-delay))
+			    else if (> (cadr old-flag) 0)
+			    do (insert (propertize flag 'face 'nethack-red-face))
+			    and
+			    do (setq old-flag (list flag (1- (cadr flag))))
+			    else
+			    do (insert flag)
+			    collect old-flag
+			    finally (insert "\n")))))))
 
 ;; putstr(window, attr, str) -- Print str on the window with the
 ;; given attribute.  Only printable ASCII characters (040-0126) must be

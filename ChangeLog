@@ -3,6 +3,9 @@
 	* nethack-api.el (nethack-api-update-status): take 1 argument
 	which is an alist of status properties. Print each status
 	property.
+	(nethack-api-print-status-numeric): new function
+	(nethack-api-print-status-string): new function
+	(nethack-api-update-status): highlight status attributes that change.
 
 	* nethack.el (nh-sentinel): evaluate any remaining lisp code when
 	the lisp process gets a sentinel event.
