@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.89 2004/11/11 20:56:19 sabetts Exp $
+;; Version: $Id: nethack-api.el,v 1.90 2004/11/11 22:41:34 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -610,10 +610,10 @@ was actually toggled."
 	(let ((inhibit-read-only t))
 	  (goto-char (point-min))
 	  (while (re-search-forward nh-menu-item-regexp nil t)
-	    (let ((value (match-string 1)))
+	    (let ((value (match-string 2)))
 	      (if (string-equal value "-")
-		  (replace-match "+" nil nil nil 1)
-		(replace-match "-" nil nil nil 1))))))))
+		  (replace-match "+" nil nil nil 2)
+		(replace-match "-" nil nil nil 2))))))))
 
 (defun nh-menu-goto-next ()
   "Move to the next selectable menu item."
