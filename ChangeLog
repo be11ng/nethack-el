@@ -1,3 +1,35 @@
+2001-10-22  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nethack-colors): New vector.
+	(nethack-colors-alist): Remove.
+
+	* nethack-api.el (nethack-api-print-glyph): Use nethack-colors
+	vector.
+
+	* nethack.el (nethack-format-status): Use nethack-red-face for
+	changed attributes.
+
+	* nethack-api.el (nethack-return): New function.
+	(nethack-retval): New function.
+	(nethack-api-raw-print, nethack-api-raw-print, nethack-api-curs)
+	(nethack-api-putstr, nethack-api-get-command)
+	(nethack-api-print-glyph, nethack-api-player-selection)
+	(nethack-api-display-file, nethack-api-doprev-message)
+	(nethack-api-init-nhwindows, nethack-api-exit-nhwindows)
+	(nethack-api-clear-nhwindow, nethack-api-display-nhwindow)
+	(nethack-api-destroy-nhwindow, nethack-api-start-menu)
+	(nethack-api-add-menu, nethack-api-end-menu)
+	(nethack-api-select-menu, nethack-api-outrip): Remove 'void.
+	(nethack-api-yn-function, nethack-api-ask-direction)
+	(nethack-api-getlin, nethack-api-choose-role)
+	(nethack-api-choose-race, nethack-api-choose-gender)
+	(nethack-api-choose-alignment, nethack-api-create-nhwindow)
+	(nethack-api-delay-output): Use nethack-return to create a return
+	value.
+
+	* nethack.el (nethack-process-filter): Use nethack-retval to
+	unpack return values.  Don't check for unimplemented.
+
 2001-10-22  Ryan  <rcyeske@vcn.bc.ca>
 
 	* nethack-keys.el (nethack-accelerator-chars): Moved from

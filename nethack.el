@@ -9,9 +9,18 @@
 (require 'nethack-cmd)
 (require 'nethack-keys)
 
-(defvar nethack-load-hook nil
-    "Run after loading nethack.
-You can customize key bindings or load extensions with this.")
+(defgroup nethack nil
+  "Emacs lisp frontend to the lisp window port of Nethack 3.3.x."
+  :group 'games)
+
+(defgroup nethack-faces nil
+  "Customizations for faces used by Enethack."
+  :group 'nethack)
+
+(defcustom nethack-load-hook nil
+    "Hook run after loading nethack."
+    :type '(hook)
+    :group 'nethack)
 
 ;; FIXME: dirty hack:
 (defvar nethack-status-line-number 0
@@ -21,14 +30,19 @@ You can customize key bindings or load extensions with this.")
 (defvar nethack-status-lines '("" . "")
   "The 2 lines of the status window")
 
-(defvar nethack-status-highlight-delay 5
-  "The number of turns to keep a changed status field highlighted")
+(defcustom nethack-status-highlight-delay 5
+  "The number of turns to keep a changed status field highlighted"
+  :type '(integer)
+  :group 'nethack)
 
 (defvar nethack-status-alist nil
   "An alist of the players status")
 
-(defvar nethack-status-string "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"
-  "The nethack status format string")
+(defcustom nethack-status-string
+  "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"
+  "The nethack status format string"
+  :type '(string)
+  :group 'nethack)
 
 
 (defface nethack-red-face
@@ -37,7 +51,8 @@ You can customize key bindings or load extensions with this.")
     (((class color))
      (:foreground "red"))
     (t (:foreground "gray")))
-  "nethack red")
+  "nethack red"
+  :group 'nethack-faces-faces)
 
 (defface nethack-green-face
   `((((type tty) (class color))
@@ -47,7 +62,8 @@ You can customize key bindings or load extensions with this.")
     (((class color) (background light))
      (:foreground "lime green"))
     (t (:foreground "gray")))
-  "nethack green")
+  "nethack green"
+  :group 'nethack-faces)
 
 (defface nethack-brown-face
   `((((type tty) (class color))
@@ -55,7 +71,8 @@ You can customize key bindings or load extensions with this.")
     (((class color))
      (:foreground "brown"))
     (t (:foreground "gray")))
-  "nethack brown")
+  "nethack brown"
+  :group 'nethack-faces)
 
 (defface nethack-blue-face
   `((((type tty) (class color))
@@ -63,7 +80,8 @@ You can customize key bindings or load extensions with this.")
     (((class color))
      (:foreground "blue"))
     (t (:foreground "gray")))
-  "nethack blue")
+  "nethack blue"
+  :group 'nethack-faces)
 
 (defface nethack-magenta-face
   `((((type tty) (class color))
@@ -71,7 +89,8 @@ You can customize key bindings or load extensions with this.")
     (((class color))
      (:foreground "magenta"))
     (t (:foreground "gray")))
-  "nethack magenta")
+  "nethack magenta"
+  :group 'nethack-faces)
 
 (defface nethack-cyan-face
   `((((type tty) (class color))
@@ -81,7 +100,8 @@ You can customize key bindings or load extensions with this.")
     (((class color) (background light))
      (:foreground "cyan4"))
     (t (:foreground "gray")))
-  "nethack cyan")
+  "nethack cyan"
+  :group 'nethack-faces)
 
 (defface nethack-gray-face
   `((((type tty) (class color))
@@ -91,7 +111,8 @@ You can customize key bindings or load extensions with this.")
     (((class color) (background light))
      (:foreground "gray20"))
     (t (:foreground "gray")))
-  "nethack gray")
+  "nethack gray"
+  :group 'nethack-faces)
 
 (defface nethack-dark-gray-face
   `((((type tty) (class color))
@@ -99,7 +120,8 @@ You can customize key bindings or load extensions with this.")
     (((class color))
      (:foreground "gray50"))
     (t (:foreground "gray")))
-  "nethack dark gray")
+  "nethack dark gray"
+  :group 'nethack-faces)
 
 (defface nethack-orange-face
   `((((type tty) (class color))
@@ -107,7 +129,8 @@ You can customize key bindings or load extensions with this.")
     (((class color))
      (:foreground "orange"))
     (t (:foreground "gray")))
-  "nethack light orange")
+  "nethack light orange"
+  :group 'nethack-faces)
 
 (defface nethack-bright-green-face
   `((((type tty) (class color))
@@ -117,7 +140,8 @@ You can customize key bindings or load extensions with this.")
     (((class color) (background light))
      (:foreground "dark green"))
     (t (:foreground "gray")))
-  "nethack bright green")
+  "nethack bright green"
+  :group 'nethack-faces)
 
 (defface nethack-yellow-face
   `((((type tty) (class color))
@@ -127,7 +151,8 @@ You can customize key bindings or load extensions with this.")
     (((class color) (background light))
      (:foreground "yellow3"))
     (t (:foreground "gray")))
-  "nethack yellow")
+  "nethack yellow"
+  :group 'nethack-faces)
 
 (defface nethack-bright-blue-face
   `((((type tty) (class color))
@@ -137,7 +162,8 @@ You can customize key bindings or load extensions with this.")
     (((class color) (background light))
      (:foreground "dodger blue"))
     (t (:foreground "gray")))
-  "nethack bright blue")
+  "nethack bright blue"
+  :group 'nethack-faces)
 
 (defface nethack-bright-magenta-face
   `((((type tty) (class color))
@@ -145,7 +171,8 @@ You can customize key bindings or load extensions with this.")
     (((class color))
      (:foreground "magenta"))
     (t (:foreground "gray")))
-  "nethack bright magenta")
+  "nethack bright magenta"
+  :group 'nethack-faces)
 
 (defface nethack-bright-cyan-face
   `((((type tty) (class color))
@@ -155,7 +182,8 @@ You can customize key bindings or load extensions with this.")
     (((class color) (background light))
      (:foreground "cyan3"))
     (t (:foreground "gray")))
-  "nethack bright cyan")
+  "nethack bright cyan"
+  :group 'nethack-faces)
 
 (defface nethack-white-face
   `((((type tty) (class color))
@@ -165,26 +193,19 @@ You can customize key bindings or load extensions with this.")
     (((class color) (background light))
      (:foreground "black"))
     (t (:foreground "gray")))
-  "nethack white")
+  "nethack white"
+  :group 'nethack-faces)
 
-(defconst nethack-color-alist 
-  '((0 . nethack-black-face)
-    (1 . nethack-red-face)
-    (2 . nethack-green-face)
-    (3 . nethack-brown-face)
-    (4 . nethack-blue-face)
-    (5 . nethack-magenta-face)
-    (6 . nethack-cyan-face)
-    (7 . nethack-gray-face)
-    (8 . nethack-dark-gray-face)
-    (9 . nethack-orange-face)
-    (10 . nethack-bright-green-face)
-    (11 . nethack-yellow-face)
-    (12 . nethack-bright-blue-face)
-    (13 . nethack-bright-magenta-face)
-    (14 . nethack-bright-cyan-face)
-    (15 . nethack-white-face))
-  "An alist of nethack's color number and the corresponding face.")
+(defconst nethack-colors
+  [nethack-black-face 		nethack-red-face
+   nethack-green-face 		nethack-brown-face
+   nethack-blue-face 		nethack-magenta-face
+   nethack-cyan-face 		nethack-gray-face
+   nethack-dark-gray-face 	nethack-orange-face
+   nethack-bright-green-face 	nethack-yellow-face
+   nethack-bright-blue-face 	nethack-bright-magenta-face
+   nethack-bright-cyan-face 	nethack-white-face]
+  "Vector indexed by Nethack's color number.")
 
 
 (defun nethack ()
@@ -220,11 +241,15 @@ The variable `nethack-program' is the name of the executable to run."
 ;;; Process code to communicate with the Nethack executable
 (defvar nethack-process nil)
 
-(defvar nethack-program "nethack"
-  "* Program to run to start a game of Nethack.")
+(defcustom nethack-program "nethack"
+  "Program to run to start a game of Nethack."
+  :type '(string)
+  :group 'nethack)
 
-(defvar nethack-program-args nil
-  "* Arguments to pass to `nethack-program'.")
+(defcustom nethack-program-args nil
+  "Arguments to pass to `nethack-program'."
+  :type '(repeat string)
+  :group 'nethack)
 
 (defvar nethack-process-buffer-name "*nethack-process*"
   "Name of the buffer used to communicate with `nethack-program'.")
@@ -275,12 +300,8 @@ char to the STRING."
 	  (while t
 	    (setq oldpos (marker-position (process-mark proc)))
 	    (let* ((form (read (process-mark proc)))
-		   (retval (save-excursion (eval form))))
-	      (cond ((eq retval 'void))
-		    ((eq retval 'unimplemented)
-		     (ding)
-		     (message "nethack: unimplemented: `%s'" form))
-		    (t (nethack-process-send retval)))))
+		   (retval (save-excursion (nethack-retval (eval form)))))
+	      (if retval (nethack-process-send retval))))
 	(end-of-file
 	 (set-marker (process-mark proc) oldpos))))))
 
@@ -324,10 +345,15 @@ times the command should be executed."
 		 (list (concat cmd " " (int-to-string n)))))))
 
 
-(defvar nethack-map-mode-hook nil
-  "Functions to be called after setting up the Nethack map.")
-(defvar nethack-menu-mode-hook nil
-  "Functions to be called after setting up a Nethack menu.")
+(defcustom nethack-map-mode-hook nil
+  "Functions to be called after setting up the Nethack map."
+  :type '(hook)
+  :group 'nethack)
+
+(defcustom nethack-menu-mode-hook nil
+  "Functions to be called after setting up a Nethack menu."
+  :type '(hook)
+  :group 'nethack)
 
 (defun nethack-map-mode ()
   "Major mode for the main Nethack map window.
@@ -461,35 +487,16 @@ times the command should be executed."
 				(start 0))
 			    (when (string-match (cdr (assoc (elt l 0) match-phrase)) str)
 			      (setq str (replace-match (if (> (elt l 2) 0)
-							   (propertize (elt l 1) 'face 'cursor)
+							   (propertize (elt l 1) 
+								       'face 'nethack-red-face)
 							 (elt l 1))
 						       t t str))))))
 	      nethack-status-alist)
       str))
 
-;;; Functions to restore nethack window configurations
+(run-hooks 'nethack-load-hook)		; for your customizations
 
-;; (defun nethack-restore-windows ()
-;;   "Restore a standard nethack window configuration."
-;;   (interactive)
-;;   (let ((new-win))
-;;     (delete-other-windows)
-;;     (set-window-buffer (selected-window) 
-;; 		       (cdr (assoc 'nhw-map
-;; 				   nethack-buffer-name-alist)))
-;;     (setq new-win (split-window nil 4))
-;;     (set-window-buffer (selected-window) 
-;; 		       (cdr (assoc 'nhw-message
-;; 				   nethack-buffer-name-alist)))
-;;     (select-window new-win)
-;;     (let ((window-min-height 3))
-;;       (setq new-win (split-window nil (- (window-height) 3))))
-;;     (set-window-buffer new-win
-;; 		       (cdr (assoc 'nhw-status
-;; 				   nethack-buffer-name-alist)))))
 
 (provide 'nethack)
-
-(run-hooks 'nethack-load-hook)		; for your customizations
 
 ;;; nethack.el ends here

@@ -106,6 +106,16 @@
 ;; maybe other 'msg' uses.  E.g.  updating status for micros (i.e,
 ;; 'saving').
 
+(defun nethack-return (form)
+  "Construct a return value for the process filter."
+  (cons 'nethack-retval form))
+
+(defun nethack-retval (retval)
+  "Used by the process filter to unpack a return value."
+  (if (and (consp retval)
+	   (eq (car retval) 'nethack-retval))
+      (cdr retval)))
+
 (defvar nethack-raw-print-buffer-name "*nhw raw-print*"
   "Buffer name for Nethack raw-print messages.")
 
@@ -114,16 +124,14 @@
     (let ((buffer (get-buffer-create nethack-raw-print-buffer-name)))
       (switch-to-buffer buffer)
       (insert str "\n")
-      (delete-other-windows)))
-  'void)
+      (delete-other-windows))))
 
 ;; raw_print_bold(str) -- Like raw_print(), but prints in
 ;; bold/standout (if possible).
 
 (defun nethack-api-raw-print-bold (str)
   (nethack-api-raw-print 
-   (propertize str 'face (nethack-attr-face 'atr-bold)))
-  'void)
+   (propertize str 'face (nethack-attr-face 'atr-bold))))
 
 
 ;; curs(window, x, y) -- Next output to window will start at (x,y),
@@ -144,9 +152,7 @@
     (cond ((eq nethack-buffer-type 'nhw-map)
 	   (goto-char (gamegrid-cell-offset (- x 1) y)))
 	  ((eq nethack-buffer-type 'nhw-status)
-	   (setq nethack-status-line-number y))))
-  'void)
-
+	   (setq nethack-status-line-number y)))))
 
 ;; putstr(window, attr, str) -- Print str on the window with the
 ;; given attribute.  Only printable ASCII characters (040-0126) must be
@@ -164,7 +170,8 @@
 ;; is this the way to make a "default" face?
 (defface nethack-atr-none-face
   `((t))    				
-  "Nethack default face.")
+  "Nethack default face."
+  :group 'nethack-faces)
 
 (defface nethack-atr-uline-face
   `((t (:underline t)))
@@ -172,15 +179,27 @@
 
 (defface nethack-atr-bold-face
   `((t (:bold t)))
-  "Nethack bold face.")
+  "Nethack bold face."
+  :group 'nethack-faces)
 
 (defface nethack-atr-blink-face
   `((t (:inverse-video t)))
-  "Nethack blink face.")
+  "Nethack blink face."
+  :group 'nethack-faces)
 
 (defface nethack-atr-inverse-face
   `((t (:inverse-video t)))
-  "Nethack inverse face.")
+  "Nethack inverse face."
+  :group 'nethack-faces)
+
+(defcustom nethack-status-in-modeline nil
+  "If non-nil, display the status in the modeline of the buffer
+containing the map.
+
+Since the modeline can only display 1 line, you must make sure there
+are no newlines in `nethack-status-string'."
+  :type '(boolean)
+  :group 'nethack)
 
 (defun nethack-api-putstr (winid attr str)
   ""
@@ -190,10 +209,15 @@
 	   (if (= nethack-status-line-number 0)
 	       (setcar nethack-status-lines str)
 	     (setcdr nethack-status-lines str)
-	   (set-buffer (nethack-buffer winid))
-	   (erase-buffer)
-	   (nethack-parse-status-lines (car nethack-status-lines) (cdr nethack-status-lines))
-	   (insert (nethack-format-status nethack-status-string))))
+	     (nethack-parse-status-lines (car nethack-status-lines) (cdr nethack-status-lines))
+	     (let ((status-string (nethack-format-status nethack-status-string)))
+	       (if nethack-status-in-modeline
+		   (progn
+		     (set-buffer nethack-map-buffer)
+		     (setq mode-line-format status-string))
+		 (set-buffer nethack-status-buffer)
+		 (erase-buffer)
+		 (insert status-string)))))
 	  ((eq nethack-buffer-type 'nhw-message)
 	   (goto-char (point-max))
 	   (insert "\n" (propertize str 'face 'bold))
@@ -208,8 +232,7 @@
 	  (t
 	   (goto-char (point-max))
 	   (insert (propertize str 'face (nethack-attr-face attr))
-		   "\n"))))
-  'void)
+		   "\n")))))
 
 (defun nethack-attr-face (attr)
   "Return the face corresponding with ATTR."
@@ -220,8 +243,7 @@
 
 (defun nethack-api-get-event ()
   ""
-
-  'void)
+  )
 
 
 ;; int nhgetch() -- Returns a single character input from the
@@ -234,8 +256,7 @@
   (if (null nethack-command-queue)
       (setq nethack-waiting-for-command-flag t)
     (nethack-process-send-string (car nethack-command-queue))
-    (setq nethack-command-queue (cdr nethack-command-queue)))
-  'void)				   
+    (setq nethack-command-queue (cdr nethack-command-queue))))
 
 ;; int nh_poskey(int *x, int *y, int *mod) -- Returns a single
 ;; character input from the user or a a positioning event (perhaps from a
@@ -260,7 +281,7 @@
 ;; whatever the window- port wants (symbol, font, color, attributes,
 ;; ...there's a 1-1 map between glyphs and distinct things on the map).
 
-(defun nethack-api-print-glyph (winid x y type offset face glyph ch)
+(defun nethack-api-print-glyph (winid x y type offset color glyph ch)
   ""
   (save-excursion
     (set-buffer (nethack-buffer winid))
@@ -270,9 +291,7 @@
       (put-text-property (gamegrid-cell-offset x y)
 			 (1+ (gamegrid-cell-offset x y))
 			 'face
-			 (cdr (assoc face nethack-color-alist)))))
-  'void)
-
+			 (aref nethack-colors color)))))
 
 ;; char yn_function(const char *ques, const char *choices, char
 ;; default) -- Print a prompt made up of ques, choices and default.  Read
@@ -310,9 +329,10 @@
 	  (message (concat ques " "))
 	  (setq key (read-char))))
 
-    (if (= 13 key)
-	default
-      key)))
+    (nethack-return
+     (if (= 13 key)
+	 default
+       key))))
 
 (defun nethack-api-ask-direction ()
   "Prompt the user for a direction"
@@ -326,14 +346,15 @@
 	(se (where-is-internal 'nethack-command-southeast nethack-mode-map))
 	(sw (where-is-internal 'nethack-command-southwest nethack-mode-map))
 	(ch (read-key-sequence-vector "In what direction? ")))
-    (cond ((member ch n) 'n)
-	  ((member ch s) 's)
-	  ((member ch e) 'e)
-	  ((member ch w) 'w)
-	  ((member ch ne) 'ne)
-	  ((member ch nw) 'nw)
-	  ((member ch se) 'se)
-	  ((member ch sw) 'sw))))
+    (nethack-return
+     (cond ((member ch n) 'n)
+	   ((member ch s) 's)
+	   ((member ch e) 'e)
+	   ((member ch w) 'w)
+	   ((member ch ne) 'ne)
+	   ((member ch nw) 'nw)
+	   ((member ch se) 'se)
+	   ((member ch sw) 'sw)))))
 
 ;; getlin const char *ques, char *input) -- Prints ques as a prompt
 ;; and reads a single line of text, up to a newline.  The string entered
@@ -344,7 +365,8 @@
 
 (defun nethack-api-getlin (ques)
   "" 
-  (read-from-minibuffer (concat ques " ")))
+  (nethack-return
+   (read-from-minibuffer (concat ques " "))))
 
 
 ;; int get_ext_cmd(void) -- Get an extended command in a window-port
@@ -360,7 +382,7 @@
   " Does nothing right now, perhaps simply indicates that the
 nethack-api-choose-X calls are to follow for actual
 role/race/gender/align selection."  
-  'void)
+  )
 
 (defun nethack-choose-attribute (prompt alist abort)
   "Prompts user for an element from the cars of ALIST and returns the
@@ -373,16 +395,20 @@ corresponding cdr."
     (cdar alist)))
   
 (defun nethack-api-choose-role (role-alist)
-  (nethack-choose-attribute "Choose role: " role-alist -1))
+  (nethack-return
+   (nethack-choose-attribute "Choose role: " role-alist -1)))
 
 (defun nethack-api-choose-race (race-alist)
-  (nethack-choose-attribute "Choose race: " race-alist -1))
+  (nethack-return
+   (nethack-choose-attribute "Choose race: " race-alist -1)))
 
 (defun nethack-api-choose-gender (gender-alist)
-  (nethack-choose-attribute "Choose gender: " gender-alist -1))
+  (nethack-return
+   (nethack-choose-attribute "Choose gender: " gender-alist -1)))
 
 (defun nethack-api-choose-alignment (alignment-alist)
-  (nethack-choose-attribute "Choose alignment: " alignment-alist -1))
+  (nethack-return
+   (nethack-choose-attribute "Choose alignment: " alignment-alist -1)))
 
 ;;  display_file(str, boolean complain) -- Display the file named str.
 ;; Complain about missing files iff complain is TRUE.
@@ -391,8 +417,7 @@ corresponding cdr."
   (let ((file (concat nethack-directory str)))
     (if (file-exists-p file)
 	(view-file file)
-      (if complain (message "Cannot find file %s" file))))
-  'void)
+      (if complain (message "Cannot find file %s" file)))))
 
 ;; update_inventory() -- Indicate to the window port that the
 ;; inventory has been changed.  -- Merely calls display_inventory() for
@@ -400,9 +425,7 @@ corresponding cdr."
 
 (defun nethack-api-update-inventory ()
   " FIXME: should set a flag or something, later"
-
-  'void)
-
+  )
 
 ;; doprev_message() -- Display previous messages.  Used by the ^P
 ;; command.  -- On the tty-port this scrolls WIN_MESSAGE back one line.
@@ -415,9 +438,7 @@ corresponding cdr."
 		      (select-window w)
 		      (set-buffer (window-buffer))
 		      (if (eq nethack-buffer-type 'nhw-message)
-			  (scroll-down))))))
-  'void)
-
+			  (scroll-down)))))))
 
 ;; update_positionbar(char *features) -- Optional, POSITIONBAR must be
 ;; defined. Provide some additional information for use in a horizontal
@@ -429,8 +450,7 @@ corresponding cdr."
 
 (defun nethack-api-update-positionbar (features)
   ""
-
-  'unimplemented)
+  )
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -448,15 +468,16 @@ corresponding cdr."
 ;; at least all but WIN_INFO? -dean
 
 (defvar nethack-directory nil
-  "Location of the actual nethack executable along with the help
-files.")
+  "Location of the nethack directory.
+
+This is set when the process starts by `nethack-api-init-nhwindows'.
+Do not edit the value of this variable.  Instead, change the value of
+`nethack-program'.")
 
 (defun nethack-api-init-nhwindows (executable &rest args)
   " This is the first function sent by the nethack process.  Does
 all of the appropriate setup."
-  (setq nethack-directory (file-name-directory executable))
-  'void)
-
+  (setq nethack-directory (file-name-directory executable)))
 
 ;; exit_nhwindows(str) -- Exits the window system.  This should
 ;; dismiss all windows, except the 'window' used for raw_print().  str is
@@ -468,8 +489,7 @@ all of the appropriate setup."
   (mapc (lambda (b) (kill-buffer (cdr b))) nethack-buffer-table)
   (setq nethack-buffer-table nil)
 
-  (nethack-api-raw-print str)
-  'void)
+  (nethack-api-raw-print str))
 
 ;; window = create_nhwindow(type) -- Create a window of type 'type'.
 
@@ -503,7 +523,7 @@ type specific initalizations, and return a digit id."
 	    ((eq type 'nhw-message)
 	     (setq nethack-message-buffer (current-buffer)))))
     (push (cons winid buf) nethack-buffer-table)
-    winid))
+    (nethack-return winid)))
 
 ;; clear_nhwindow(window) -- Clear the given window, when
 ;; appropriate.
@@ -521,9 +541,7 @@ type specific initalizations, and return a digit id."
 	   (set-text-properties (point-min) (point-max) nil))
 	  (t
 	   (let ((inhibit-read-only t))
-	     (erase-buffer)))))
-  'void)
-
+	     (erase-buffer))))))
 
 ;; display_nhwindow(window, boolean blocking) -- Display the window on
 ;; the screen.  If there is data pending for output in that window, it
@@ -562,13 +580,17 @@ type specific initalizations, and return a digit id."
       ;; the status window, in which case set up all of the windows
       ;; for display for the first time.
       (if (eq nethack-buffer-type 'nhw-status)
-	(nethack-setup-window-configuration))))
-  'void)
+	(nethack-setup-window-configuration)))))
 
-(defvar nethack-status-window-height 4
-  "Default height of the status window.")
-(defvar nethack-message-window-height 10
-  "Default height of the message window.")
+(defcustom nethack-status-window-height 4
+  "Height of the status window."
+  :type '(integer)
+  :group 'nethack)
+
+(defcustom nethack-message-window-height 10
+  "Height of the message window."
+  :type '(integer)
+  :group 'nethack)
 
 (defun nethack-setup-window-configuration ()
   "Layout the nethack windows according to the values
@@ -587,9 +609,7 @@ type specific initalizations, and return a digit id."
   (let ((buffer (nethack-buffer winid)))
     (delete-windows-on buffer nil)
     (kill-buffer buffer)
-    (setq nethack-buffer-table (assq-delete-all winid nethack-buffer-table))
-  'void))
-
+    (setq nethack-buffer-table (assq-delete-all winid nethack-buffer-table))))
 
 ;; start_menu(window) -- Start using window as a menu.  You must call
 ;; start_menu() before add_menu().  After calling start_menu() you may
@@ -686,11 +706,10 @@ displayed."
   (save-excursion
     (set-buffer (nethack-buffer winid))
     (erase-buffer)
-    (setq nethack-menu (ewoc-create 'nethack-menu-item-print))
-    (setq nethack-unassigned-accelerator-index 0))
     ;; we don't turn on nethack-menu-mode yet, since we do not yet
     ;; know "how" this menu is going to work.
-  'void)
+    (setq nethack-menu (ewoc-create 'nethack-menu-item-print))
+    (setq nethack-unassigned-accelerator-index 0)))
 
 ;; add_menu(windid window, int glyph, const anything identifier, char
 ;; accelerator, char groupacc, int attr, char *str, boolean preselected)
@@ -742,9 +761,7 @@ buffer."
 			     (propertize str 
 					 'face 
 					 (nethack-attr-face attr))
-			     identifier)))
-  'void)
-
+			     identifier))))
 
 ;; end_menu(window, prompt) -- Stop adding entries to the menu and
 ;; flushes the window to the screen (brings to front?).  Prompt is a
@@ -766,9 +783,7 @@ buffer."
     (let ((node (ewoc-goto-node nethack-menu
 				(ewoc-nth nethack-menu 0))))
       (while (and node (zerop (aref (ewoc-data node) 0)))
-	(setq node (ewoc-goto-next nethack-menu 1)))))
-  'void)
-
+	(setq node (ewoc-goto-next nethack-menu 1))))))
 
 ;; int select_menu(windid window, int how, menu_item **selected) --
 ;; Return the number of items selected; 0 if none were chosen, -1 when
@@ -821,9 +836,7 @@ the menu is dismissed."
 	  (nethack-protect-windows
 	   (pop-to-buffer (nethack-buffer winid) nil t))
 	  (nethack-menu-mode how))
-      (error "No such winid: %d" winid)))
-  'void)
-
+      (error "No such winid: %d" winid))))
 
 ;; char message_menu(char let, int how, const char *mesg) --
 ;; tty-specific hack to allow single line context-sensitive help to
@@ -839,7 +852,6 @@ the menu is dismissed."
 
 (defun nethack-api-message-menu (let- how mesg)
   ""
-
   'unimplemented)
 
 
@@ -850,29 +862,26 @@ the menu is dismissed."
 ;; make_sound(???) -- To be determined later.  THIS IS CURRENTLY
 ;; UN-IMPLEMENTED.
 
-(defun nethack-api-make-sound ()
-  ""
-
-  'unimplemented)
+;;(defun nethack-api-make-sound ()
+;;  ""
+;;  'unimplemented)
 
 
 ;; nhbell() -- Beep at user.  [This will exist at least until sounds
 ;; are redone, since sounds aren't attributable to windows anyway.]
 
 (defun nethack-api-bell ()
-  ""
-  (ding)
-  'void)
+  "Beep at user."
+  (ding))
 
 
 ;; mark_synch() -- Don't go beyond this point in I/O on any channel
 ;; until all channels are caught up to here.  Can be an empty call for
 ;; the moment
 
-(defun nethack-api-mark-synch ()
-  "" 
-
-  'unimplemented)
+;;(defun nethack-api-mark-synch ()
+;;  "" 
+;;  'unimplemented)
 
 
 ;; wait_synch() -- Wait until all pending output is complete
@@ -881,8 +890,7 @@ the menu is dismissed."
 
 (defun nethack-api-wait-synch ()
   "Does nothing."
-  'void)
-
+  )
 
 ;; delay_output() -- Causes a visible delay of 50ms in the output.
 ;; Conceptually, this is similar to wait_synch() followed by a nap(50ms),
@@ -891,14 +899,12 @@ the menu is dismissed."
 (defun nethack-api-delay-output ()
   "Sleep for 50ms."
   (sleep-for 0 50)
-  'dummy)
+  (nethack-return 'dummy))
 
 
 ;; askname() -- Ask the user for a player name.
-
 (defun nethack-api-askname ()
   ""
-
   'unimplemented)
 
 
@@ -908,15 +914,12 @@ the menu is dismissed."
 
 (defun nethack-api-cliparound (x y)
   " FIXME: huh? not sure what to do here..."
-
-  'void)
-
+  )
 
 ;; number_pad(state) -- Initialize the number pad to the given state.
 
 (defun nethack-api-number-pad (state)
   ""
-
   'unimplemented)
 
 
@@ -924,7 +927,6 @@ the menu is dismissed."
 
 (defun nethack-api-suspend-nhwindows (str)
   ""  
-
   'unimplemented)
 
 
@@ -932,7 +934,6 @@ the menu is dismissed."
 
 (defun nethack-api-resume-nhwindows ()
   ""
-
   'unimplemented)
 
 
@@ -943,7 +944,6 @@ the menu is dismissed."
 
 (defun nethack-api-start-screen ()
   ""
-
   'unimplemented)
 
 
@@ -952,7 +952,6 @@ the menu is dismissed."
 
 (defun nethack-api-end-screen ()
   ""
-
   'unimplemented)
 
 
@@ -964,8 +963,7 @@ the menu is dismissed."
   ""
   (save-excursion
     (set-buffer (nethack-buffer window))
-    (insert (concat who " -- " message) "\n")
-    'void))
+    (insert (concat who " -- " message) "\n")))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
