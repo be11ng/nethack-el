@@ -152,7 +152,7 @@ diff -r -P -C 2 nethack-3.4.1/src/windows.c nethack/src/windows.c
       { 0, 0 }		/* must be last */
 diff -r -P -C 2 nethack-3.4.1/sys/unix/Makefile.src nethack/sys/unix/Makefile.src
 *** nethack-3.4.1/sys/unix/Makefile.src	Sun Feb 23 06:43:39 2003
---- nethack/sys/unix/Makefile.src	Sun Mar  9 12:31:59 2003
+--- nethack/sys/unix/Makefile.src	Sun Mar  9 14:51:57 2003
 ***************
 *** 202,210 ****
   #	../win/BeOS/NHMenuWindow.cpp ../win/BeOS/NHMapWindow.cpp tile.c
@@ -209,6 +209,16 @@ diff -r -P -C 2 nethack-3.4.1/sys/unix/Makefile.src nethack/sys/unix/Makefile.sr
 ! WINCSRC = $(WINTTYSRC) $(WINX11SRC) $(WINGNOMESRC) $(WINGEMSRC) $(WINLISPSRC)
   # all windowing-system-dependent .cpp (for dependencies and such)
   WINCXXSRC = $(WINQTSRC) $(WINBESRC)
+***************
+*** 674,677 ****
+--- 681,687 ----
+  	$(CC) $(CFLAGS) -c ../win/gem/gr_rect.c
+  tile.o: tile.c $(HACK_H)
++ winlisp.o: ../win/lisp/winlisp.c $(HACK_H) ../include/winlisp.h \
++ 		../include/func_tab.h ../include/dlb.h ../include/patchlevel.h
++ 	$(CC) $(CFLAGS) -c ../win/lisp/winlisp.c
+  qt_win.o: ../win/Qt/qt_win.cpp $(HACK_H) ../include/func_tab.h \
+  		../include/dlb.h ../include/patchlevel.h ../include/tile2x11.h \
 diff -r -P -C 2 nethack-3.4.1/win/lisp/ChangeLog nethack/win/lisp/ChangeLog
 *** nethack-3.4.1/win/lisp/ChangeLog	Wed Dec 31 16:00:00 1969
 --- nethack/win/lisp/ChangeLog	Sun Mar  9 12:57:12 2003
