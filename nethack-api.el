@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.17 2000/10/03 05:35:33 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.18 2001/05/06 10:44:08 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -379,7 +379,7 @@ all of the appropriate setup."
 (defun nethack-api-exit-nhwindows (str)
   "" 
   (message str)
-  nil)
+  'void)
 
 ;; window = create_nhwindow(type) -- Create a window of type 'type'.
 
