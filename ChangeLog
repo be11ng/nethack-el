@@ -1,3 +1,8 @@
+2001-10-23  shawn  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nethack-parse-status-lines): flags are highlighted
+	as red always (always bad).
+
 2001-10-23  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-cmd.el (defun-nethack-command): Allow arbitrary code to

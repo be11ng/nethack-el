@@ -451,9 +451,9 @@ times the command should be executed."
 							 (match-string 0 line-2)
 							 (if (not (string-equal (match-string 0 line-2)
 										(elt old-status 1)))
-							     nethack-status-highlight-delay
-							   (if (> old-highlight-delay 0)
-							       (1- old-highlight-delay)
+							     (- nethack-status-highlight-delay)
+							   (if (< old-highlight-delay 0)
+							       (1+ old-highlight-delay)
 							     0))))
 			    (add-to-list 'status (list (car pair) "" 0))))))
 	    '((hungry . "Satiated\\|Hungry\\|Weak\\|Fainting\\|Fainted\\|Starved")
