@@ -1,3 +1,10 @@
+2001-07-14  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-cmd.el: Remove default key from docstring.
+
+	* nethack-api.el (nethack-api-putstr): Force maximum output on
+	status windows.
+
 2001-07-13  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-cmd.el (defun-nethack-command): New macro.  Redefine all
