@@ -1,5 +1,5 @@
-;;; nethack.el -- run Nethack as an inferior process in Emacs
-;;; Author: Ryan Yeske (rcyeske@sfu.ca)
+;;; nethack.el --- run Nethack as an inferior process in Emacs
+;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
 
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
@@ -8,7 +8,7 @@
 (require 'gamegrid)
 (require 'nethack-api)
 (require 'nethack-apix)
-;;(require 'nethack-cmd)
+(require 'nethack-cmd)
 ;;(require 'nethack-keys)
 
 
@@ -52,11 +52,9 @@ The variable `nethack-program' is the name of the executable to run."
 (defvar nethack-process-buffer-name "*nethack-process*"
   "Name of the buffer used to communicate with `nethack-program'.")
 
+
 (defvar nethack-process-name "nethack")
 
-(defvar nethack-end-of-command-string "\n"
-  "String used to terminate a command sent to a running Nethack
-process.")
 
 (defun nethack-start-program ()
   "Start `nethack-program' with `nethack-program-args' as an
@@ -67,12 +65,6 @@ asynchronous subprocess.  Returns a process object."
     (set-process-filter proc 'nethack-process-filter)
     proc))
 
-
-(defun nethack-send-command (command)
-  "Send a COMMAND to `nethack-process'."
-  (nethack-process-send-string 
-   (concat "(" command ")" nethack-end-of-command-string)))
-				       
 
 (defun nethack-process-send-string (string)
   "Send a STRING to the running `nethack-process'.  Appends a newline
@@ -142,18 +134,23 @@ the `nethack-process-buffer' for debugging."
     (3 . nhw-menu)
     (4 . nhw-text)))
 
+
 (defun nethack-get-buffer (window)
   "Returns the buffer that corresponds to the Nethack WINDOW."
   (cdr (assq (cdr (assq window nethack-buffer-id-alist))
 	     nethack-buffer-name-alist)))
 
+
 ;;; Main Map Buffer code
 (defvar nethack-command-queue nil
-  "List of strings to be sent to the running `nethack-process' in
-response to the next call to `nethack-api-get-command'.")
+  "List of strings held the car of which will be sent to the running
+`nethack-process' in response to the next call to
+`nethack-api-get-command'.")
+
 
 (defvar nethack-waiting-for-command-flag nil
   "True if the nethack process is waiting for a command.")
+
 
 (defun nethack-handle-command (cmd)
   "If the nethack process is waiting for a command, send CMD to the
@@ -168,16 +165,10 @@ eventual delivery to the running nethack process."
 	  (append nethack-command-queue
 		  (list key)))))
 
-(defvar nethack-map-mode-map
-  (let ((map (make-sparse-keymap)))
-    (mapcar (lambda (x) 
-	      (define-key map (char-to-string x) 'nethack-handle-key))
-	    "1234567890-=!@#$%^&*()_+qwertyuiop[]QWERTYUIOP{}asdfghjkl;'ASDFGHJKL:\"zxcvbnm,./ZXCVBNM<>?`~|\\")
-    map)
-  "Keymap for nethack-map mode")
 
 (defvar nethack-map-mode-hook nil
   "Functions to run after setting up the nethack-map mode.")
+
 
 (defun nethack-map-mode ()
   "Major mode for the main Nethack map window."
@@ -190,6 +181,7 @@ eventual delivery to the running nethack process."
 
 (defvar nethack-map-width 79 "Max width of the map")
 (defvar nethack-map-height 22 "Max height of the map")
+
 
 (defun nethack-create-buffer (type)
   "Create a buffer for a Nethack window of TYPE."
@@ -216,14 +208,14 @@ eventual delivery to the running nethack process."
 ;;; Functions to manipulate, update and display the status window
 
 (defun nethack-set-status-line (str)
-  "Set the current status line (stored in nethack-status-line-number)
-to str."
+  "Set the current status line (stored in
+`nethack-status-line-number') to str."
   (if (= nethack-status-line-number 0)
       (setcar nethack-status-lines str)
     (setcdr nethack-status-lines str)))
 
 (defun nethack-print-status-lines ()
-  "Updates the nhw-status window"
+  "Updates the *nhw-status* buffer."
   (save-excursion
     (set-buffer (cdr (assq 'nhw-status nethack-buffer-name-alist)))
     (erase-buffer)

@@ -6,6 +6,7 @@
 	(nethack-waiting-for-command-flag): renamed from
 	nethack-waiting-for-key-p.
 	(nethack-command-queue): renamed from nethack-key-queue.
+	(nethack-map-mode-map): removed.
 
 	* nethack-cmd.el: Revived file.  Added a provide line to end.
 	Renamed all calls to nethack-send-command to
