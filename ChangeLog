@@ -1,3 +1,8 @@
+2002-09-15  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-keys.el (nethack-map-mode-map, nethack-menu-mode-map):
+	Add supress-keymap.  From Istvan Marko <mi@imarko.dhs.org>.
+
 2002-09-12  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-api.el: Removed the remains of the window.doc comments.

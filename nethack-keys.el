@@ -49,6 +49,7 @@
 ;;  *		 ~    invert	 @
 (defvar nethack-menu-mode-map
   (let ((map (make-sparse-keymap)))
+    (suppress-keymap map)
     ;; add all of the accelerator characters
     (mapc (lambda (char)
 	    (define-key map (vector char) 'nethack-menu-toggle-item))
@@ -69,6 +70,7 @@
 ;; cmd.c is where the command-key mappings are done in the nh src
 (defvar nethack-map-mode-map
   (let ((map (make-sparse-keymap)))
+    (suppress-keymap map)
     (define-key map "^" 'nethack-command-identify-trap)	;^
     ;;^[ Cancel command
     (define-key map "\e[" 'nethack-command-cancel)
