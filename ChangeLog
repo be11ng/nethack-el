@@ -1,3 +1,7 @@
+2001-07-02  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el: add provide line.
+
 2001-07-01  shawn  <sabetts@diggin.lamenet.tmp>
 
 	* nethack.el (nethack-process-filter): remove let variables
