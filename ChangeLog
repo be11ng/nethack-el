@@ -1,3 +1,9 @@
+2003-04-09  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-api.el (nhapi-clear-map): Make sure gamegrid doesn't try
+	to use glyphs.  Make sure the cursor is visible in the map window.
+	From Istvan Marko.
+	
 2003-04-09  Shawn Betts  <sabetts@sfu.ca>
 
 	* nethack.el (nethack-el-version): version update

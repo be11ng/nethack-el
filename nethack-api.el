@@ -511,7 +511,9 @@ The TYPE argument is legacy and serves no real purpose."
 	      (dotimes (j nh-map-width)
 		(insert-image nh-empty-tile))
 	      (insert (propertize "\n" 'face 'nethack-map-tile-face))))
-	(gamegrid-init (make-vector 256 nil))
+	(setq gamegrid-use-glyphs nil)	; dont try to use gamegrid glyphs
+	(let (cursor-type)		; protect from gamegrid-init clobbering
+	  (gamegrid-init (make-vector 256 nil)))
 	(gamegrid-init-buffer nh-map-width
 			      nh-map-height
 			      ? )))))
