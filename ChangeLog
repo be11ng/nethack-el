@@ -2,6 +2,12 @@
 
 	* nethack.el (nethack-parse-status-lines): regexp truncated.
 	(nethack-parse-status-lines): alter regexp to handle strengths > 18
+	(nethack-status-highlight-delay): new variable
+	(nethack-parse-status-lines): the data changed field in the status
+	alist is now a number that counts down from
+	nethack-status-highlight-delay.
+	(nethack-format-status): Only highlight the data if the 3rd
+	element in the data list is > 0.
 
 	* nethack-api.el (nethack-api-putstr): only print the status when
 	both status lines have been received.

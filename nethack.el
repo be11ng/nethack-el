@@ -21,6 +21,9 @@ You can customize key bindings or load extensions with this.")
 (defvar nethack-status-lines '("" . "")
   "The 2 lines of the status window")
 
+(defvar nethack-status-highlight-delay 5
+  "The number of turns to keep a changed status field highlighted")
+
 (defvar nethack-status-alist nil
   "An alist of the players status")
 
@@ -351,34 +354,67 @@ times the command should be executed."
 	(status)
 	(count))
 
+    ;; Parse the first line
     (string-match regexp-line-1 line-1)
     (setq count (length symbols-1))
     (while (> count 0)
+      (let* ((old-status (assoc (elt symbols-1 (1- count)) nethack-status-alist))
+	     (old-highlight-delay (if (elt old-status 2)
+				      (elt old-status 2)
+				    0))
+	     (data-changed (not (string-equal (match-string count line-1)
+					      (elt old-status 1)))))
       (add-to-list 'status (list (elt symbols-1 (1- count))
 				 (if (match-string count line-1)
 				     (match-string count line-1)
 				   "")
-				 (not (string-equal (match-string count line-1)
-						    (elt (assoc (elt symbols-1 (1- count)) nethack-status-alist) 1)))))
-      (setq count (1- count)))
+				 (if data-changed
+				     nethack-status-highlight-delay
+				   (if (> old-highlight-delay 0)
+				       (1- old-highlight-delay)
+				     0))))
+      (setq count (1- count))))
 
+    ;; Parse the second line
     (string-match regexp-line-2 line-2)
     (setq count (length symbols-2))
     (while (> count 0)
+      (let* ((old-status (assoc (elt symbols-2 (1- count)) nethack-status-alist))
+	     (old-highlight-delay (if (elt old-status 2)
+				      (elt old-status 2)
+				    0))
+	     (data-changed (not (string-equal (match-string count line-2)
+					      (elt old-status 1)))))
       (add-to-list 'status (list (elt symbols-2 (1- count))
-				(match-string count line-2) 
-				(not (string-equal (match-string count line-2) 
-						   (elt (assoc (elt symbols-2 (1- count)) nethack-status-alist) 1)))))
-      (setq count (1- count)))
+				 (if (match-string count line-2)
+				     (match-string count line-2)
+				   "")
+				 (if data-changed
+				     nethack-status-highlight-delay
+				   (if (> old-highlight-delay 0)
+				       (1- old-highlight-delay)
+				     0))))
+      (setq count (1- count))))
+
+
 
     ;; Fill in the flags
     (mapcar (function (lambda (pair)
-			(if (string-match (cdr pair) line-2)
-			    (add-to-list 'status (list (car pair)
-						       (match-string 0 line-2)
-						       (not (string-equal (match-string 0 line-2)
-									  (elt (assoc (car pair) nethack-status-alist) 1)))))
-			  (add-to-list 'status (list (car pair) "" nil)))))
+			(let* ((old-status (assoc (elt symbols-2 (1- count)) nethack-status-alist))
+			       (old-highlight-delay (if (elt old-status 2)
+							(elt old-status 2)
+						      0))
+			       (data-changed (not (string-equal (match-string 0 line-2)
+								(elt old-status 1)))))
+			  (if (string-match (cdr pair) line-2)
+			      (add-to-list 'status (list (car pair)
+							 (match-string 0 line-2)
+							 (if data-changed
+							     nethack-status-highlight-delay
+							   (if (> old-highlight-delay 0)
+							       (1- old-highlight-delay)
+							     0))))
+			    (add-to-list 'status (list (car pair) "" 0))))))
 	    '((hungry . "Satiated\\|Hungry\\|Weak\\|Fainting\\|Fainted\\|Starved")
 	      (confused . "Conf")
 	      (sick . "Sick")
@@ -423,7 +459,7 @@ times the command should be executed."
 			  (let ((case-fold-search nil)
 				(start 0))
 			    (when (string-match (cdr (assoc (elt l 0) match-phrase)) str)
-			      (setq str (replace-match (if (elt l 2)
+			      (setq str (replace-match (if (> (elt l 2) 0)
 							   (propertize (elt l 1) 'face 'cursor)
 							 (elt l 1))
 						       t t str))))))
