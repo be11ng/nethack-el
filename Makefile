@@ -3,7 +3,7 @@ EMACS = emacs
 
 .PHONY: clean patch dist
 
-all: nethack.elc nethack-api.elc nethack-cmd.elc nethack-glyphs.elc nethack-keys.elc
+all: nethack.elc nethack-api.elc nethack-cmd.elc nethack-tiles.elc nethack-keys.elc
 
 %.elc: %.el
 	$(EMACS) -batch --eval "(add-to-list 'load-path \".\")" \
@@ -30,7 +30,7 @@ NH_VER_NODOTS=$(shell echo $(NH_VER) | sed s/\\.//g)
 PATCHFILE=enh-$(NH_VER_NODOTS).patch
 DISTFILES=AUTHORS BUGS COPYING ChangeLog INSTALL Makefile README TODO		\
 	$(PATCHFILE) ese-007e3.patch mkpatch nethack-api.el nethack-cmd.el nethack-example.el	\
-	nethack-glyphs.el nethack-keys-dvorak.el nethack-keys.el		\
+	nethack-tiles.el nethack-keys-dvorak.el nethack-keys.el		\
 	nethack.el nethack-compat.el
 DISTDIR=nethack_el-$(NETHACK_EL_VER)
 
