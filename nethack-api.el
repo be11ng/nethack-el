@@ -672,6 +672,15 @@ actually toggled."
 		 (eq nethack-menu-how 'pick-one))
 	    (nethack-menu-submit)))))
 
+(defun nethack-menu-toggle-all-items ()
+  "Toggle all menu items, only for pick-any menus."
+  (interactive)
+  (if (eq nethack-menu-how 'pick-any)
+      (ewoc-map (lambda (i)
+		  (aset i 1 (not (aref i 1)))
+		  t)			; redisplay this entry
+		nethack-menu)))
+
 (defun nethack-menu-goto-next ()
   "Move to the next selectable menu item."
   (interactive)
@@ -784,9 +793,10 @@ buffer."
 
     ;; position the point on the first selectable menu item
     (let ((node (ewoc-goto-node nethack-menu
-				(ewoc-nth nethack-menu 0))))
-      (while (and node (zerop (aref (ewoc-data node) 0)))
-	(setq node (ewoc-goto-next nethack-menu 1))))))
+ 				(ewoc-nth nethack-menu 0))))
+;;;       (while (and node (zerop (aref (ewoc-data node) 0)))
+;;; 	(setq node (ewoc-goto-next nethack-menu 1))))))
+      )))
 
 ;; int select_menu(windid window, int how, menu_item **selected) --
 ;; Return the number of items selected; 0 if none were chosen, -1 when
