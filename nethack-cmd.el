@@ -204,14 +204,13 @@
   (nethack-api-doprev-message))
 
 (defun-nethack-command redraw-screen	; ^R
-  "Restores the default window configuration by calling
-`nethack-restore-window-configuration'.
+  "Restores the default window configuration.
 
 With a prefix arg, also redraws the map glyphs."
   ;; only send process a redraw if there is a prefix arg
   (and (> count 1) "redraw")
   ;; but always restore the window configuration
-  (nethack-restore-window-configuration))
+  (nethack-api-restore-window-configuration))
 
 (defun-nethack-command teleport-around-level ; ^T
   "Teleport around level" 
