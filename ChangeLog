@@ -1,3 +1,29 @@
+2001-10-16  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el: Don't require nethack-menu.
+	(nethack-start-program): Removed reference to obsolete variable.
+	(nethack-process-send-string): Format log output nicely.
+	(nethack-process-send): New function.
+	(nethack-process-filter): Clobbering the point in the
+	process-buffer no longer breaks processing.
+	(nethack-log-string): Log messages right into the process buffer.
+	(nethack-handle-command): Use `nconc' instead of `append'.
+
+	* nethack-menu.el: Removed from repository.
+
+	* nethack-api.el (nethack-api-display-file): Make an attempt at
+	displaying file.
+	(nethack-menu): New variable.
+	(nethack-menu-item-print): New function.
+	(nethack-menu-how): New variable.
+	(nethack-menu-toggle-item): New function.
+	(nethack-api-start-menu): Rewrite, no longer use widgets, but ewoc
+	instead.
+	(nethack-api-add-menu): Likewise.
+	(nethack-api-end-menu): Likewise.
+	(nethack-api-select-menu): Likewise.
+	(ewoc): Require 'ewoc for menus.
+
 2001-07-22  shawn  <sabetts@diggin.lamenet.tmp>
 
 	* nethack-menu.el (nethack-menu-fill-accelerators): new function

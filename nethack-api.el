@@ -1,12 +1,14 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.28 2001/07/17 02:21:27 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.29 2001/07/23 03:19:46 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
 
 ;;; Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Sat Mar 18 11:24:02 2000
+
+(require 'ewoc)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Introduction
@@ -105,7 +107,7 @@
 
 (defun nethack-api-raw-print (str)
   "FIXME: I'm not sure where to print the string."
-  'void)
+  'unimplemented)
 
 
 ;; raw_print_bold(str) -- Like raw_print(), but prints in
@@ -113,7 +115,7 @@
 
 (defun nethack-api-raw-print-bold (str)
   "FIXME: I'm not sure where to print the string."
-  'void)
+  'unimplemented)
 
 
 ;; curs(window, x, y) -- Next output to window will start at (x,y),
@@ -207,7 +209,6 @@
 
 (defun nethack-api-poskey (x y mod)
   ""
-
   'unimplemented)
 
 
@@ -330,10 +331,10 @@ role/race/gender/align selection."
 ;; Complain about missing files iff complain is TRUE.
 
 (defun nethack-api-display-file (str complain)
-  " FIXME: what to do, this will break network play slightly"
-  
+  (if (file-exists-p str)
+      (view-file str)
+    (if complain (message "Cannot find file %s." str)))
   'void)
-
 
 ;; update_inventory() -- Indicate to the window port that the
 ;; inventory has been changed.  -- Merely calls display_inventory() for
@@ -453,16 +454,11 @@ way?"
 	  'nhw-menu)
       (progn
 	(setq nethack-menu-keymap (make-sparse-keymap))
-	(define-key nethack-menu-keymap [(control c) (control c)]
-	  (lambda ()
-	    (interactive)
-	    (nethack-restore-windows)))
-
+	(define-key nethack-menu-keymap [(control c) (control c)] 'nethack-menu-submit)
 	(split-window nil nil t)
 	(set-window-buffer (selected-window) (nethack-get-buffer window))
-	(use-local-map nethack-menu-keymap)))
-  'void)
-
+	(use-local-map nethack-menu-keymap))
+  'void))
 
 ;; destroy_nhwindow(window) -- Destroy will dismiss the window if the
 ;; window has not already been dismissed.
@@ -479,13 +475,51 @@ it, we can just bury them or something."
 ;; not putstr() to the window.  Only windows of type NHW_MENU may be used
 ;; for menus.
 
+
+
+;;; menus
+
+(defvar nethack-menu nil)
+
+(defun nethack-menu-item-print (item)
+  (let ((acc (elt item 0))
+	(val (elt item 1))
+	(str (elt item 2))
+	(id  (elt item 3)))
+    (insert (if (equal id -1)
+		""
+	      (concat (char-to-string acc) 
+		      (if val " + " " - ")))
+	    str)))
+  
+(defvar nethack-menu-how nil)
+
+(defun nethack-menu-toggle-item ()
+  "Toggle the menu item that is associated with the key event that
+triggered this function being called."
+  (interactive)
+  (ewoc-map (lambda (i) 
+	      (when (equal (elt i 0) last-command-event)
+		(aset i 1 (not (elt i 1)))
+		t)) ;; force redisplay
+	    nethack-menu)
+  (if (eq nethack-menu-how 'pick-one)
+      (nethack-menu-submit)))
+
+(defun nethack-menu-submit ()
+  "Submit the selected menu options to the nethack process."
+  (interactive)
+  (let ((selected (ewoc-collect nethack-menu (lambda (x) (aref x 1)))))
+    (nethack-process-send
+     (mapcar (lambda (x) (list (aref x 3) -1)) selected)))
+  (nethack-restore-windows))
+
 (defun nethack-api-start-menu (window)
   ""
-;  (set-buffer (nethack-get-buffer window))
-;  (kill-all-local-variables)
-;  (erase-buffer)
-  (setq nethack-menu-widgets nil
-	nethack-menu-options nil)
+  (set-buffer (get-buffer-create (nethack-get-buffer window)))
+  (erase-buffer)
+  (setq nethack-menu (ewoc-create 'nethack-menu-item-print "" ""))
+  (setq nethack-menu-keymap (make-sparse-keymap))
   'void)
 
 
@@ -515,7 +549,8 @@ it, we can just bury them or something."
 
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
   ""
-  (nethack-menu-add-item identifier accelerator str)
+  (ewoc-enter-last nethack-menu (vector accelerator preselected str identifier))
+  (define-key nethack-menu-keymap (vector accelerator) 'nethack-menu-toggle-item)
   'void)
 
 
@@ -527,7 +562,10 @@ it, we can just bury them or something."
 
 (defun nethack-api-end-menu (window prompt)
   ""
-;  (display-buffer (nethack-get-buffer window))
+  (set-buffer (nethack-get-buffer window))
+  (ewoc-set-hf nethack-menu prompt "")	; FIXME: might this clobber an existing footer?
+  (ewoc-refresh nethack-menu)
+  (ewoc-goto-node nethack-menu (ewoc-nth nethack-menu 0))
   'void)
 
 
@@ -553,7 +591,11 @@ it, we can just bury them or something."
 
 (defun nethack-api-select-menu (window how)
   ""
-  (nethack-menu-draw (nethack-get-buffer window) how)
+  (split-window nil nil t)
+  (set-window-buffer (selected-window) (nethack-get-buffer window))
+  (define-key nethack-menu-keymap [(control c) (control c)] 'nethack-menu-submit)
+  (use-local-map nethack-menu-keymap)
+  (setq nethack-menu-how how)
   'void)
 
 
