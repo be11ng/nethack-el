@@ -1,3 +1,9 @@
+2005-02-27    <katia_dilkina@verizon.net>
+
+	* mkpatch: get $src $ref and $work as arguments.
+
+	* Makefile: add rules for building slashem patches
+
 2004-11-22  Shawn Betts  <katia_dilkina@verizon.net>
 
 	* nethack-nhlaunch.el (nethack-network-server): new defvar
