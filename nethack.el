@@ -9,7 +9,7 @@
 (require 'nethack-api)
 (require 'nethack-apix)
 (require 'nethack-cmd)
-;;(require 'nethack-keys)
+(require 'nethack-keys)
 
 
 (defvar nethack-status-line-number 0
@@ -173,7 +173,7 @@ eventual delivery to the running nethack process."
 (defun nethack-map-mode ()
   "Major mode for the main Nethack map window."
   (kill-all-local-variables)
-  (use-local-map nethack-map-mode-map)
+  (use-local-map nethack-mode-map)
   (setq mode-name "NETHACK MAP")
   (setq major-mode 'nethack-map-mode)
   (run-hooks nethack-map-mode-hook))
