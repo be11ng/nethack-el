@@ -18,7 +18,7 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --- nethack-3.4.1/include/config.h	2003-02-23 06:43:19.000000000 -0800
-+++ nethack/include/config.h	2003-03-09 13:49:04.000000000 -0800
++++ nethack/include/config.h	2003-06-03 02:15:39.000000000 -0700
 @@ -42,17 +42,18 @@
   * Define all of those you want supported in your binary.
   * Some combinations make no sense.  See the installation document.
@@ -53,7 +53,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  # define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	1969-12-31 16:00:00.000000000 -0800
+--- /dev/null	2003-05-01 12:00:27.000000000 -0700
 +++ nethack/include/winlisp.h	2002-01-10 19:54:20.000000000 -0800
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
@@ -150,7 +150,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  };
  
 --- nethack-3.4.1/sys/unix/Makefile.src	2003-02-23 06:43:39.000000000 -0800
-+++ nethack/sys/unix/Makefile.src	2003-03-10 22:52:02.000000000 -0800
++++ nethack/sys/unix/Makefile.src	2003-05-14 01:50:18.000000000 -0700
 @@ -203,9 +203,14 @@
  #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
  
@@ -211,7 +211,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
 --- nethack-3.4.1/win/tty/termcap.c	2003-02-23 06:43:46.000000000 -0800
-+++ nethack/win/tty/termcap.c	2003-03-09 13:49:04.000000000 -0800
++++ nethack/win/tty/termcap.c	2003-03-09 13:50:46.000000000 -0800
 @@ -1161,6 +1161,11 @@
  	if (windowprocs.name != NULL &&
  	    !strcmpi(windowprocs.name, "Gem")) return TRUE;
@@ -224,9 +224,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef QT_GRAPHICS
  	/* XXX has_color() should be added to windowprocs */
  	if (windowprocs.name != NULL &&
---- /dev/null	1969-12-31 16:00:00.000000000 -0800
-+++ nethack/win/lisp/ChangeLog	2002-09-19 21:15:20.000000000 -0700
-@@ -0,0 +1,293 @@
+--- /dev/null	2003-05-01 12:00:27.000000000 -0700
++++ nethack/win/lisp/ChangeLog	2003-06-03 02:04:26.000000000 -0700
+@@ -0,0 +1,304 @@
++2003-06-03  Shawn Betts  <sabetts@sfu.ca>
++
++	* winlisp.c (lisp_print_glyph): Pass special to the print-glyph
++	lisp function as a symbol. delete the MG_PET bit in special if
++	iflags.hilite_pet is not set.
++	(special_glyph_to_string): new function
++
++2003-05-14  Shawn Betts  <sabetts@sfu.ca>
++
++	* winlisp.c (lisp_string): Also escape the backslash character.
++
 +2002-09-19  Ryan Yeske  <rcyeske@vcn.bc.ca>
 +
 +	* winlisp.c (lisp_cmd): nethack-api-* renamed to nhapi-*.
@@ -520,9 +531,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	1969-12-31 16:00:00.000000000 -0800
-+++ nethack/win/lisp/winlisp.c	2002-09-19 21:15:20.000000000 -0700
-@@ -0,0 +1,1820 @@
+--- /dev/null	2003-05-01 12:00:27.000000000 -0700
++++ nethack/win/lisp/winlisp.c	2003-06-03 01:59:25.000000000 -0700
+@@ -0,0 +1,1875 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +
@@ -847,19 +858,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +    }						\
 +  while (0)
 +#define lisp_int(i) printf("%d ",i)
-+#define lisp_string(s)				\
-+  do 						\
-+     {						\
-+       int nhi;					\
-+       printf ("\"");				\
-+       if (s)					\
-+	 for (nhi=0;nhi<strlen(s);nhi++) 	\
-+	   {					\
-+	     if (s[nhi] == 34) putchar('\\');	\
-+	     putchar(s[nhi]);			\
-+	   }					\
-+       printf("\" ");				\
-+     } 						\
++#define lisp_string(s)					\
++  do							\
++     {							\
++       int nhi;						\
++       printf ("\"");					\
++       if (s)						\
++	 for (nhi=0;nhi<strlen(s);nhi++)		\
++	   {						\
++	     if (s[nhi] == 34 				\
++		 || s[nhi] == 92) putchar('\\');	\
++	     putchar(s[nhi]);				\
++	   }						\
++       printf("\" ");					\
++     }							\
 +  while (0)
 +
 +static const char*
@@ -884,6 +896,31 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +      exit (EXIT_FAILURE);
 +      break;
 +    }
++}
++
++static const char*
++special_glyph_to_string(special)
++     unsigned special;
++{
++  switch (special)
++    {
++    case MG_CORPSE:
++      return "corpse";
++    case MG_INVIS:
++      return "invis";
++    case MG_DETECT:
++      return "detect";
++    case MG_PET:
++      return "pet";
++    case MG_RIDDEN:
++      return "ridden";
++    }
++  
++  /* If it's a combination, just return special. */
++  if (special)
++    return "special";
++  else
++    return "none";
 +}
 +
 +static const char*
@@ -2294,14 +2331,43 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +    /* map glyph to character and color */
 +    mapglyph(glyph, &ch, &color, &special, x, y);
 +
++    /* If the user doesn't want to highlight the pet, then we erase
++       the PET bit from special. In the lisp code the special argument
++       will be 'pet if the glyph is a pet and will be printed in the
++       color of the pet highlight face. But we don't want this if the
++       user hasn't turned on hilite_pet. */
++    if (!iflags.hilite_pet)
++      {
++	special &= ~MG_PET;
++      }
++
 +    if (window == WIN_MAP)
-+      lisp_cmd ("print-glyph",
-+		lisp_int (x);
-+		lisp_int (y);
-+		lisp_int (color);
-+		lisp_int (glyph);
-+		lisp_int (glyph2tile[glyph]);
-+		lisp_int (ch););
++      {
++	/* The last parameter, special, is optional. It is only
++	   present when the tile is special in some way. FIXME: This
++	   duplicate code is a bit gross. */
++	if (special)
++	  {
++	    lisp_cmd ("print-glyph",
++		      lisp_int (x);
++		      lisp_int (y);
++		      lisp_int (color);
++		      lisp_int (glyph);
++		      lisp_int (glyph2tile[glyph]);
++		      lisp_int (ch);
++		      lisp_literal (special_glyph_to_string (special)););
++	  }
++	else
++	  {
++	    lisp_cmd ("print-glyph",
++		      lisp_int (x);
++		      lisp_int (y);
++		      lisp_int (color);
++		      lisp_int (glyph);
++		      lisp_int (glyph2tile[glyph]);
++		      lisp_int (ch););
++	  }
++      }
 +    else
 +      lisp_cmd ("error",
 +		lisp_string ("lisp_print_glyph bad window");
