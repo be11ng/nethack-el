@@ -1,3 +1,14 @@
+2004-11-22  Shawn Betts  <katia_dilkina@verizon.net>
+
+	* nhlaunch.c (read_cmd): new command, list
+	(struct game_t): new struct
+	(games): new global
+	(NETHACK_PROGRAM): remove
+	(find_program): new function
+	(list_programs): likewise
+	(read_cmd): play takes an argument and uses find_program to
+	determine which program to execlp.
+
 2004-11-19  Shawn Betts  <katia_dilkina@verizon.net>
 
 	* nethack-nhlaunch.el (nethack-connect-to-server): make autoload
