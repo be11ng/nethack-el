@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.51 2001/12/20 13:08:52 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.52 2001/12/21 02:57:50 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -318,9 +318,10 @@ highlighted."
 			    else if (> (cadr old-flag) 0)
 			    do (insert (propertize flag 'face 'nethack-red-face))
 			    and
-			    do (setq old-flag (list flag (1- (cadr flag))))
+			    do (setq old-flag (list flag (1- (cadr old-flag))))
 			    else
 			    do (insert flag)
+			    do (insert " ")
 			    collect old-flag
 			    finally (insert "\n")))))))
 
@@ -695,7 +696,7 @@ table."
 	       (dotimes (i nethack-map-height)
 		 (dotimes (j nethack-map-width)
 		   (insert-image nethack-empty-glyph))
-		 (insert "\n")))))
+		 (insert (propertize "\n" 'face 'nethack-map-glyph-face))))))
 	  (t
 	   (let ((inhibit-read-only t))
 	     (erase-buffer))))))
