@@ -191,7 +191,6 @@ read_cmd()
 	    program = find_program(game);
 	  else
 	    program = find_program("");
-	  printf("Playing '%s'\n", program);
 	  /* Fork and run the game. */
 	  pid = fork();
 	  if (pid == 0)
