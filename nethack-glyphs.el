@@ -24,6 +24,8 @@
 
 ;; Should this be an auto generated file?
 
+;; The order is monsters.txt, objects.txt, other.txt.
+
 ;;; Code:
 
 (defconst nethack-empty-glyph 
@@ -65,11 +67,11 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\"
-};" nil t :mode 'heuristic))
+};" nil t))
 
 (defconst nethack-glyph-vector
   (vector
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -106,9 +108,9 @@ static char *xpm[] = {
 \"MMJBJAJAJAAMMMMM\",
 \"MMMMMAJAMJAMMMMM\",
 \"MMMMMMJAMJAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -145,9 +147,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -184,9 +186,9 @@ static char *xpm[] = {
 \"JJJBJAJAJAAMMMMM\",
 \"JAAJJAJAMJAMMMMM\",
 \"MMJJAAJAMJAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -223,9 +225,9 @@ static char *xpm[] = {
 \"MMDGDADADAAMMMMM\",
 \"MMMMMADAMDAMMMMM\",
 \"MMMMMMDAMDAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -262,9 +264,9 @@ static char *xpm[] = {
 \"MMMABAKDDKMMMMMM\",
 \"MMMMMMAAMAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -301,9 +303,9 @@ static char *xpm[] = {
 \"MMJJMMJJMJMHHAHM\",
 \"MMJAAAJAAJMMHHMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -340,9 +342,9 @@ static char *xpm[] = {
 \"MMMIMDDAMMMMDAMM\",
 \"MMMMMMMMMIAMMMMM\",
 \"MMIAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -379,9 +381,9 @@ static char *xpm[] = {
 \"BBBPBBBBBBPPPPAM\",
 \"MMBBBBBBBBBBPAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -418,9 +420,9 @@ static char *xpm[] = {
 \"MMMMMCCCCDDAAAAM\",
 \"MMMMMMMCCDAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -457,9 +459,9 @@ static char *xpm[] = {
 \"MMMMMMMFMMFFAMMM\",
 \"MMMMMMMAFFAAMMMM\",
 \"MMMMMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -496,9 +498,9 @@ static char *xpm[] = {
 \"MMMMFAMMMMFFAMMM\",
 \"MMMMFAMMFFFAMMMM\",
 \"MMMMMFFFFAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -535,9 +537,9 @@ static char *xpm[] = {
 \"MMMMJAMMMMJJAMMM\",
 \"MMMMKAMMKKKAMMMM\",
 \"MMMMMJKKKAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -574,9 +576,9 @@ static char *xpm[] = {
 \"MMMMOJOLKALKAAMM\",
 \"MMMOOAOAAAOAAMMM\",
 \"MMMMMOOMMOOAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -613,9 +615,9 @@ static char *xpm[] = {
 \"MMMAACCCCMACCMMM\",
 \"MMMMACAACMMAAMMM\",
 \"MMMACMACAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -652,9 +654,9 @@ static char *xpm[] = {
 \"MMMAKKAKAMAKKMMM\",
 \"MMMMMAKKMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -691,9 +693,9 @@ static char *xpm[] = {
 \"MMMMLJLLKALKAAMM\",
 \"MMLLLALAAAOAAMMM\",
 \"MMMLMLLMMOOAMMMM\",
-\"MMMMMMLMMMMMMMMM\"
+\"MMMMMMLMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -730,9 +732,9 @@ static char *xpm[] = {
 \"MMMMKJKJJAJJAAMM\",
 \"MMMKKAKAAAKAAMMM\",
 \"MMMMMKKMMMKAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -769,9 +771,9 @@ static char *xpm[] = {
 \"MMMMKAKJAAAAKJAM\",
 \"MMMKKAKAAAAAKAAM\",
 \"MMMMMKKAAMMMKAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -808,9 +810,9 @@ static char *xpm[] = {
 \"MMMMKAKJAAAAKJAM\",
 \"MMMKKAKAAAAAKAAM\",
 \"MMMMMKKAAMMMKAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -847,9 +849,9 @@ static char *xpm[] = {
 \"MMMMCCACAAAMMCCA\",
 \"MMMMMACCAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -886,9 +888,9 @@ static char *xpm[] = {
 \"MMMMPAPMAAAAPMAM\",
 \"MMMPPAPAAAAAPAAM\",
 \"MMMMMPPAAMMPPAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -925,9 +927,9 @@ static char *xpm[] = {
 \"MMMMLALMAAAAPMAM\",
 \"MMLLLALAAAAAPPAM\",
 \"MMMLMLLAAMMPPMMM\",
-\"MMMMMLLMMMMMMMMM\"
+\"MMMMMLLMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -964,9 +966,9 @@ static char *xpm[] = {
 \"MMMPAAPMAAAAPMAM\",
 \"MPPPAAPAAAAAPAAM\",
 \"MMMMPPPAAMPPPAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1003,9 +1005,9 @@ static char *xpm[] = {
 \"MMMMNNNBBANBAAMM\",
 \"MMMNBANAAANAAMMM\",
 \"MMMMMNBMMNBAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1042,9 +1044,9 @@ static char *xpm[] = {
 \"MMMMNANBAAAANBAM\",
 \"MMMNNANAAAAANAAM\",
 \"MMMMMNNAAMMNNAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1081,9 +1083,9 @@ static char *xpm[] = {
 \"MDMMCCCCCACCAAMM\",
 \"MMMCCACAAACAAMMM\",
 \"MMMMMCCMMMCAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1120,9 +1122,9 @@ static char *xpm[] = {
 \"MMMCAACMAAAACMAM\",
 \"MCCCAACAAAAACAAM\",
 \"MMMMCCCAAMCCCAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1159,9 +1161,9 @@ static char *xpm[] = {
 \"JJAAAAJJAAAAJJAM\",
 \"JAAAAAJAAAAAJAAM\",
 \"MMMMMJJAAMMMJAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1198,9 +1200,9 @@ static char *xpm[] = {
 \"MMMMMPFGGFPMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1237,9 +1239,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAAM\",
 \"MMMMMMMAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1276,9 +1278,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAAM\",
 \"MMMMMMMAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1315,9 +1317,9 @@ static char *xpm[] = {
 \"MMMMDADDDCDADMMM\",
 \"MMMMMDADDDADMMMM\",
 \"MMMMMMJJJJJMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1354,9 +1356,9 @@ static char *xpm[] = {
 \"MMMPANANAPAPAPMM\",
 \"MMMMPPAIAPAPPMMM\",
 \"MMMMMMPPPPPMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1393,9 +1395,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAAM\",
 \"MMMMMMMAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1432,9 +1434,9 @@ static char *xpm[] = {
 \"MMMMIACCLLCCCAAM\",
 \"MMMMMCACCJCCJAMM\",
 \"MMMMMMCCAMMCAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1471,9 +1473,9 @@ static char *xpm[] = {
 \"MMMAACCLCLCCCAAM\",
 \"MMMCCACCJJCCJAMM\",
 \"MMMMMCCAMMMCAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1510,9 +1512,9 @@ static char *xpm[] = {
 \"MMMMCACAAAAACJAM\",
 \"MMMCKACAAAAACAAM\",
 \"MMMMMCCAAMMMCAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1549,9 +1551,9 @@ static char *xpm[] = {
 \"MMMMCACAAAACCAMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1588,9 +1590,9 @@ static char *xpm[] = {
 \"MMMMMAAMMMMAAAMM\",
 \"MMAAAAMMAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1627,9 +1629,9 @@ static char *xpm[] = {
 \"MMMMCACCJJJCCJAM\",
 \"MMMCKALAAAAACAAM\",
 \"MMMMMCCAAMMMCAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1666,9 +1668,9 @@ static char *xpm[] = {
 \"MMMMAACAAAAAAJAM\",
 \"MMMCKACAAAAACAAM\",
 \"MMMMMCCAAMMCCAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1705,9 +1707,9 @@ static char *xpm[] = {
 \"MGFMGFAGAAFAAAAM\",
 \"MMMMFFAGFAAMAAMM\",
 \"MMMGFAMFGAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1744,9 +1746,9 @@ static char *xpm[] = {
 \"MMMMMPMMMMAAAAMM\",
 \"MMMMMPMAPMAAMMMM\",
 \"MMMMPFAMFPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1783,9 +1785,9 @@ static char *xpm[] = {
 \"MMMMMPMMMMAAAAMM\",
 \"MMMMMPMAPMAAMMMM\",
 \"MMMMPFAMFPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1822,9 +1824,9 @@ static char *xpm[] = {
 \"MMMLMLKJLALAAMMM\",
 \"MMMMMLLALLAMAMMM\",
 \"MMMMLLLMLLLMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1861,9 +1863,9 @@ static char *xpm[] = {
 \"MMMMEBAEEAAMMMMM\",
 \"MMMMBEAEBMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1900,9 +1902,9 @@ static char *xpm[] = {
 \"MMMCMMKJAKJAAMMM\",
 \"MMMMMCCAAKJAMMMM\",
 \"MMMMMMMMCCAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1939,9 +1941,9 @@ static char *xpm[] = {
 \"MMMMEBAEEAAMMMMM\",
 \"MMMMBEAEBMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -1978,9 +1980,9 @@ static char *xpm[] = {
 \"MMMMEBAEEAAMMMMM\",
 \"MMMMBEAEBMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2017,9 +2019,9 @@ static char *xpm[] = {
 \"MMMIIIBBFFACAAAM\",
 \"MMMMMMBBFCAAAAMM\",
 \"MMMMMMCFFCAAMMMM\",
-\"MMMMIICMIIAMMMMM\"
+\"MMMMIICMIIAMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2056,9 +2058,9 @@ static char *xpm[] = {
 \"MMMIIIBBEEEEAAAM\",
 \"MMMMEEBEEEEAAAMM\",
 \"MMMEEECEEEAAMMMM\",
-\"MMMMIICMIIAMMMMM\"
+\"MMMMIICMIIAMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2095,9 +2097,9 @@ static char *xpm[] = {
 \"MMPMMMMPMPMPMPMM\",
 \"MMMMMMMMPMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2134,9 +2136,9 @@ static char *xpm[] = {
 \"MMMMMMBAPAAAAMMM\",
 \"MMMMMLLALCAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2173,9 +2175,9 @@ static char *xpm[] = {
 \"MMMMMMGAFAAAAMMM\",
 \"MMMMMCDADDAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2212,9 +2214,9 @@ static char *xpm[] = {
 \"MMPMPMMPPPPMPPMM\",
 \"MMMMMMMMPMPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2251,9 +2253,9 @@ static char *xpm[] = {
 \"MMMMMMGAFAAAAMMM\",
 \"MMMMMCDADDAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2290,9 +2292,9 @@ static char *xpm[] = {
 \"MMMMMMPPPPAAAAMM\",
 \"MMMMMMPPPPAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2329,9 +2331,9 @@ static char *xpm[] = {
 \"MMMMBBBBBEEEAAAM\",
 \"MMMMMMBBBEEAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2368,9 +2370,9 @@ static char *xpm[] = {
 \"MMMMBCCCBEEDAAAM\",
 \"MMMMMMCCBEEAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2407,9 +2409,9 @@ static char *xpm[] = {
 \"MMMMCCCCCDDDAAAM\",
 \"MMMMMMCCCDDAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2446,9 +2448,9 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2485,9 +2487,9 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2524,9 +2526,9 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2563,9 +2565,9 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2602,9 +2604,9 @@ static char *xpm[] = {
 \"MMMMGFAGKJAKAMMM\",
 \"MMMGFAAMGFAKMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2641,9 +2643,9 @@ static char *xpm[] = {
 \"MMMMMMNAOAAMAMMM\",
 \"MMMMMNNMOOAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2680,9 +2682,9 @@ static char *xpm[] = {
 \"MMMMMNOMNOAAMAMM\",
 \"MMMMNNOMNOOAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2719,9 +2721,9 @@ static char *xpm[] = {
 \"MMMMONOMNNOAAMMA\",
 \"MMMMNNOMNNOAAMMA\",
 \"MMMNNNOMNNOOAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2758,9 +2760,9 @@ static char *xpm[] = {
 \"MMMJMKKKKJAAMMMM\",
 \"MMMMJKKKKKJAMMMM\",
 \"MMMMKJKJKJKJMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2797,9 +2799,9 @@ static char *xpm[] = {
 \"MMMPMBBBBPAAMMMM\",
 \"MMMMPBBBBBPAMMMM\",
 \"MMMMBPBPBPBPMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2836,9 +2838,9 @@ static char *xpm[] = {
 \"MMMLMOOOOLAAMMMM\",
 \"MMMMLOOOOOLAMMMM\",
 \"MMMMOLOLOLOLMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2875,9 +2877,9 @@ static char *xpm[] = {
 \"MMMMIKAIJAMMMMMM\",
 \"MMMIKAAMIKMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2914,9 +2916,9 @@ static char *xpm[] = {
 \"MMMMIKAIJAMMMMMM\",
 \"MMMIKAAMIKMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2953,9 +2955,9 @@ static char *xpm[] = {
 \"MMMBJACPAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -2992,9 +2994,9 @@ static char *xpm[] = {
 \"MMMGGAGFAAAAMMMM\",
 \"MMKJJAKJJAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3031,9 +3033,9 @@ static char *xpm[] = {
 \"MMMBIAIPAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3070,9 +3072,9 @@ static char *xpm[] = {
 \"MMMBIAKMAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3109,9 +3111,9 @@ static char *xpm[] = {
 \"MMMBCACPAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3148,9 +3150,9 @@ static char *xpm[] = {
 \"MMMBDAIPAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3187,9 +3189,9 @@ static char *xpm[] = {
 \"MMMMMJMMMMMMMMMM\",
 \"MMMMMJMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3226,9 +3228,9 @@ static char *xpm[] = {
 \"MMMMMBMMMMMMMMMM\",
 \"MMMMMPMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3265,9 +3267,9 @@ static char *xpm[] = {
 \"MMMMMNMMMMMMMMMM\",
 \"MMMMMPMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3304,9 +3306,9 @@ static char *xpm[] = {
 \"MMAAKAMKAMMMMMMM\",
 \"MMAMMAMKMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3343,9 +3345,9 @@ static char *xpm[] = {
 \"OOPPOOAAPPAMMMMM\",
 \"MPPPAPAMPPMMMMMM\",
 \"PPPAMMMMMMMMMMMM\",
-\"MAAMMMMMMMMMMMMM\"
+\"MAAMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3382,9 +3384,9 @@ static char *xpm[] = {
 \"MPAPAAPAPAMMMMMM\",
 \"MPAPAMPAPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3421,9 +3423,9 @@ static char *xpm[] = {
 \"MMEEEEEAABBAMMMM\",
 \"MMMMMBBAMBBMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3460,9 +3462,9 @@ static char *xpm[] = {
 \"PPPPMAAPPAAMMMMM\",
 \"MPPMPPAPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3499,9 +3501,9 @@ static char *xpm[] = {
 \"PPPPMAAPPAAMMMMM\",
 \"MPPMPPAPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3538,9 +3540,9 @@ static char *xpm[] = {
 \"MMPPAAAPPPPAPPAM\",
 \"MMPMMMAPPAAAPPAM\",
 \"MMMMMMMPPAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3577,9 +3579,9 @@ static char *xpm[] = {
 \"MPJJAAKKAJAJKAMM\",
 \"MMAAMKKAMMJKAMMM\",
 \"MMMMMMMMMJJAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3616,9 +3618,9 @@ static char *xpm[] = {
 \"MPJJAAKKAJJAJKAM\",
 \"MMAAMKKAAMMJKAMM\",
 \"MMMMMMMMMMJJAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3655,9 +3657,9 @@ static char *xpm[] = {
 \"MPJOOAKKAJJAJKAM\",
 \"MMAOOOKAAMMJKAMM\",
 \"MOOOOOOOOMJJAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3694,9 +3696,9 @@ static char *xpm[] = {
 \"MPJJAAKKAJJAJKAM\",
 \"MMAAMKKAAMMJKAMM\",
 \"MMMMMMMMMMJJAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3733,9 +3735,9 @@ static char *xpm[] = {
 \"ANMNAAAAAAAAAAAM\",
 \"AMMMAAAAMMMAAAMM\",
 \"ANMNAAMAAMMMAAMM\",
-\"MAAAAMMMMMMMMMMM\"
+\"MAAAAMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3772,9 +3774,9 @@ static char *xpm[] = {
 \"MMMMMMKLLJAAAAAM\",
 \"MMMMMMKJJJAAAAMM\",
 \"MMMMMJJAAJJAAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3811,9 +3813,9 @@ static char *xpm[] = {
 \"MMDMPAPAPAAPPAMM\",
 \"MMMMDMPAAPAMAPAM\",
 \"MMMMMPAAMAPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3850,9 +3852,9 @@ static char *xpm[] = {
 \"MMMPPGPAAPMMMMMM\",
 \"MMBMPAAMMMMMMMMM\",
 \"MMMBMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3889,9 +3891,9 @@ static char *xpm[] = {
 \"MMDMJAJAJAAJJAMM\",
 \"MMMMDMJAAJAMAJAM\",
 \"MMMMMJAAMAJAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3928,9 +3930,9 @@ static char *xpm[] = {
 \"MMDMJAJAJAAJJAMM\",
 \"MMMMDMJAAJAMJAAM\",
 \"MMMMMMMJAAJAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -3967,9 +3969,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4006,9 +4008,9 @@ static char *xpm[] = {
 \"MMMMAODODODOAMMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMAAGFAAGFAAAMM\",
-\"MAAAAAAAAAAAAAAA\"
+\"MAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4045,9 +4047,9 @@ static char *xpm[] = {
 \"MMMLAOAAOAOAMMMM\",
 \"MMMMMOAALAOMMMMM\",
 \"MMMMMLAMMMLMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4084,9 +4086,9 @@ static char *xpm[] = {
 \"MMMLAMAAMAMAMMMM\",
 \"MMMMMMAALAMMMMMM\",
 \"MMMMMLAMMMLMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4123,9 +4125,9 @@ static char *xpm[] = {
 \"MMMLPAPPAPAPMMMM\",
 \"MMMMMAPPLPAMMMMM\",
 \"MMMMMLPMMMLMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4162,9 +4164,9 @@ static char *xpm[] = {
 \"MMMJAJAAJAJAMMMM\",
 \"MMMLMJAALAJMMMMM\",
 \"MMMMMLAMMMLMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4201,9 +4203,9 @@ static char *xpm[] = {
 \"MMJAAJAAAJAJAAMM\",
 \"MMLAMJAAMLMJAMMM\",
 \"MMMMMLAMMMMLMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4240,9 +4242,9 @@ static char *xpm[] = {
 \"MMKJAKJAKJAKJAMM\",
 \"MMLCMKJALCMKJMMM\",
 \"MMMMMLCMMMMLCMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4279,9 +4281,9 @@ static char *xpm[] = {
 \"MMPMPMMMMPPMMMMM\",
 \"MMMMMMMPMMMMPMMM\",
 \"MMPMMPMPMMPMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4318,9 +4320,9 @@ static char *xpm[] = {
 \"MMKMMJJJJKMMKMMM\",
 \"MMMKJJJKKMMKMMMM\",
 \"MMMMKKKKMMKMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4357,9 +4359,9 @@ static char *xpm[] = {
 \"MMNMMOOOONMMNMMM\",
 \"MMMNOOONNMMNMMMM\",
 \"MMMMNNNNMMNMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4396,9 +4398,9 @@ static char *xpm[] = {
 \"MMEMMAAAAEMMEMMM\",
 \"MMMEAAAEEMMEMMMM\",
 \"MMMMEEEEMMEMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4435,9 +4437,9 @@ static char *xpm[] = {
 \"MMPMMBBBBPMMPMMM\",
 \"MMMPBBBPPMMPMMMM\",
 \"MMMMPPPPMMPMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4474,9 +4476,9 @@ static char *xpm[] = {
 \"MMDMMCCCCDMMDMMM\",
 \"MMMDCCCDDMMDMMMM\",
 \"MMMMDDDDMMDMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4513,9 +4515,9 @@ static char *xpm[] = {
 \"MMMMMMMMCLLMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4552,9 +4554,9 @@ static char *xpm[] = {
 \"MMMMMMMMIIIMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4591,9 +4593,9 @@ static char *xpm[] = {
 \"MMMMMMCLLLLMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4630,9 +4632,9 @@ static char *xpm[] = {
 \"MMMMMMDIIIIMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4656,22 +4658,22 @@ static char *xpm[] = {
 /* pixels */
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMGGMMMM\",
-\"MMMMMMMMMGOGGMMM\",
-\"MMMMMMMMMGGGGMMM\",
-\"MMMMMGGMMGGGMMMM\",
-\"MMMGGMMGGMMMAAAM\",
-\"MMMMMGOGGGMAAAAM\",
-\"MMMMGOGGMMGAAAAM\",
-\"NNNGOGGMGAAAAAMM\",
-\"NANGGGGMAGAAMMMM\",
-\"NNNGGNNNAAAMAMMM\",
-\"MMGGGNANAAMAMAMM\",
-\"MGGGANNNAAMMAMMM\",
-\"MMGMMAAAAAAMMMMM\",
-\"MMMMMMAAMAMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMDMMMMNHCNMMDMM\",
+\"MDMDMMNHDNCNDEDM\",
+\"DMDMDMNNHCNDMDED\",
+\"MDMMMDMNNHDNDMMM\",
+\"MDDDMMENNGMDMDEM\",
+\"MMDDDDEEEEGDMMDE\",
+\"DMMMMMDEHEEMDMMM\",
+\"MDMMMMMMMHMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4708,9 +4710,9 @@ static char *xpm[] = {
 \"MMGGGNANAAMAAAMM\",
 \"MGGGANNNAAMAMAMM\",
 \"MMGMMAAAAAAMMMMM\",
-\"MMMMMMAAMAAMMMMM\"
+\"MMMMMMAAMAAMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4747,9 +4749,9 @@ static char *xpm[] = {
 \"MMMMMMHAMMMMMMMM\",
 \"MMMMMMNAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4786,9 +4788,9 @@ static char *xpm[] = {
 \"MMMMMMAAMMMMMMMM\",
 \"MMMMMMAAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4825,9 +4827,9 @@ static char *xpm[] = {
 \"MMMKJJAAAAKJAAAM\",
 \"MMJKJJJAAJJJJMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4864,9 +4866,9 @@ static char *xpm[] = {
 \"MMMMMJJAAMMMJAMM\",
 \"MMMMMMJJJJJJAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4903,9 +4905,9 @@ static char *xpm[] = {
 \"MMBFMMLJJLAAABAM\",
 \"MMMBFMLLALAABAMM\",
 \"MMBFMLLAALLAFBMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4942,9 +4944,9 @@ static char *xpm[] = {
 \"MMMMMBNNNPAAMAMM\",
 \"MMMMMBNNNNPAMMMM\",
 \"MMMMBNNNNNNPMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -4981,9 +4983,9 @@ static char *xpm[] = {
 \"MMMLMKALAKMMMMMM\",
 \"MMMMMLAMMLMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5020,9 +5022,9 @@ static char *xpm[] = {
 \"MMMMMAAAAAJJJMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5059,9 +5061,9 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5098,9 +5100,9 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5137,9 +5139,9 @@ static char *xpm[] = {
 \"MMMMMMMMPMPMPMMM\",
 \"MMMMMMMMMMMPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5176,9 +5178,9 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5215,9 +5217,9 @@ static char *xpm[] = {
 \"MMCAKAAJAKAMMMMM\",
 \"MMMMKAAKAKMMMMMM\",
 \"MMMMCAMMMCMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5254,9 +5256,9 @@ static char *xpm[] = {
 \"MKAAKAAJAKAMMMMM\",
 \"MMCMKAAKAKMMMMMM\",
 \"MMMMCAMMMCMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5293,9 +5295,9 @@ static char *xpm[] = {
 \"MMCAKAAJAKAMMMMM\",
 \"MMMMKAAKAKMMMMMM\",
 \"MMMMCAMMMCMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5332,9 +5334,9 @@ static char *xpm[] = {
 \"MMBPPBPPOBPAPPAM\",
 \"MMBPABPMABPAPPAM\",
 \"MMMMMBPAAMMPPAAM\",
-\"MMMMMMMMMMMPAAMM\"
+\"MMMMMMMMMMMPAAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5371,9 +5373,9 @@ static char *xpm[] = {
 \"MMPBBPBBNPBABBAM\",
 \"MMPBAPBMAPBABBAM\",
 \"MMMMMPBAAMMBBAAM\",
-\"MMMMMMMMMMMBAAMM\"
+\"MMMMMMMMMMMBAAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5410,9 +5412,9 @@ static char *xpm[] = {
 \"BFBPPBPPOBPAPPFB\",
 \"BMBPABPMABPAPPFB\",
 \"BMMMMBPAAMMPPAAB\",
-\"MBMMMMMMMMMPAABM\"
+\"MBMMMMMMMMMPAABM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5449,9 +5451,9 @@ static char *xpm[] = {
 \"MMIDDIDDHIDADDAM\",
 \"MMIDAIDMAIDADDAM\",
 \"MMMMMIDAAMMDDAAM\",
-\"MMMMMMMMMMMDAAMM\"
+\"MMMMMMMMMMMDAAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5488,9 +5490,9 @@ static char *xpm[] = {
 \"MMNOONOOONOAOOAM\",
 \"MMNOANOMANOAOOAM\",
 \"MMMMMNOAAMMOOAAM\",
-\"MMMMMMMMMMMOAAMM\"
+\"MMMMMMMMMMMOAAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5527,9 +5529,9 @@ static char *xpm[] = {
 \"MMLCCLCCOLCACCAM\",
 \"MMLCALCMALCACCAM\",
 \"MMMMMLCAAMMCCAAM\",
-\"MMMMMMMMMMMCAAMM\"
+\"MMMMMMMMMMMCAAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5566,9 +5568,9 @@ static char *xpm[] = {
 \"MMAAAAAAAAAPAAPM\",
 \"MMAAPAAMPAAPAAPM\",
 \"MMMMMAAPMMMAAPPM\",
-\"MMMMMMMMMMMAPPMM\"
+\"MMMMMMMMMMMAPPMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5605,9 +5607,9 @@ static char *xpm[] = {
 \"MMBEEBEEOBEAEEAM\",
 \"MMBEABEMABEAEEAM\",
 \"MMMMMBEAAMMEEAAM\",
-\"MMMMMMMMMMMEAAMM\"
+\"MMMMMMMMMMMEAAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5644,9 +5646,9 @@ static char *xpm[] = {
 \"MMGFFGFFOGFAFFAM\",
 \"MMGFAGFMAGFAFFAM\",
 \"MMMMMGFAAMMFFAAM\",
-\"MMMMMMMMMMMFAAMM\"
+\"MMMMMMMMMMMFAAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5683,9 +5685,9 @@ static char *xpm[] = {
 \"MMNHHNHHONHAHHAM\",
 \"MMNHANHMANHAHHAM\",
 \"MMMMMNHAAMMHHAAM\",
-\"MMMMMMMMMMMHAAMM\"
+\"MMMMMMMMMMMHAAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5722,9 +5724,9 @@ static char *xpm[] = {
 \"BPMOBPPOOPPMPMAM\",
 \"BPAABPMAAPPAPPAM\",
 \"MMMMBPAAMMMPPMAM\",
-\"MMMMMMMMPPPPMAMM\"
+\"MMMMMMMMPPPPMAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5761,9 +5763,9 @@ static char *xpm[] = {
 \"PBMNPBBNNBBMBMAM\",
 \"PBAAPBMAABBABBAM\",
 \"MMMMPBAAMMMBBMAM\",
-\"MMMMMMMMBBBBMAMM\"
+\"MMMMMMMMBBBBMAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5800,9 +5802,9 @@ static char *xpm[] = {
 \"BPMOBPPOOPPMPMFB\",
 \"BPAABPMAAPPAPPFB\",
 \"MMMMBPAAMMMPPMAB\",
-\"MMMMMMMMPPPPMABM\"
+\"MMMMMMMMPPPPMABM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5839,9 +5841,9 @@ static char *xpm[] = {
 \"IDMHIDDHHDDJDJAM\",
 \"IDAAIDMAADDADDAM\",
 \"MMMMIDAAJJJDDJAM\",
-\"MMMMMMMMDDDDJAMM\"
+\"MMMMMMMMDDDDJAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5878,9 +5880,9 @@ static char *xpm[] = {
 \"NOMONOOOOOOMOJAM\",
 \"NOAANOMAAOOAOOAM\",
 \"MMMMNOAAMMMOOJAM\",
-\"MMMMMMMMOOOOJAMM\"
+\"MMMMMMMMOOOOJAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5917,9 +5919,9 @@ static char *xpm[] = {
 \"LCMOLCCOOCCKCJAM\",
 \"LCAALCMAACCACCAM\",
 \"MMMMLCAAMKKCCJAM\",
-\"MMMMMMMMCCCCJAMM\"
+\"MMMMMMMMCCCCJAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5956,9 +5958,9 @@ static char *xpm[] = {
 \"AAMAAAAAAAAMAAPM\",
 \"AAPPAAMPPAAPAAPM\",
 \"MMMMAAPPMMMAAAPM\",
-\"MMMMMMMMAAAAAMMM\"
+\"MMMMMMMMAAAAAMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -5995,9 +5997,9 @@ static char *xpm[] = {
 \"BEMOBEEOOEEMEJAM\",
 \"BEAABEMAAEEAEEAM\",
 \"MMMMBEAAMMMEEJAM\",
-\"MMMPMMMMEEEEJAMM\"
+\"MMMPMMMMEEEEJAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6034,9 +6036,9 @@ static char *xpm[] = {
 \"GFMOGFFOOFFMFJAM\",
 \"GFAAGFMAAFFAFFAM\",
 \"MMMMGFAAMMMFFJAM\",
-\"MMMMMMMMFFFFJAMM\"
+\"MMMMMMMMFFFFJAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6073,9 +6075,9 @@ static char *xpm[] = {
 \"NHMONHHOOHHJHJAM\",
 \"NHAANHMAAHHAHHAM\",
 \"MMMMNHAAJJJHHJAM\",
-\"MMMMMMMMHHHHJAMM\"
+\"MMMMMMMMHHHHJAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6112,9 +6114,9 @@ static char *xpm[] = {
 \"MMMMMMPMMPMMMMMM\",
 \"MMMMMMPMMPMMMMMM\",
 \"MMMMMPPMMPPMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6151,9 +6153,9 @@ static char *xpm[] = {
 \"MMMMPMAPAAAAAAAM\",
 \"MMPMPMAPPAAAAAAM\",
 \"MMMPPMAPPPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6190,9 +6192,9 @@ static char *xpm[] = {
 \"MMMMDCADAAAAAAAM\",
 \"MHMLDCADDAAAAAAM\",
 \"MMLDDCADDDAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6229,9 +6231,9 @@ static char *xpm[] = {
 \"MMMMKJAKAAAAAAAM\",
 \"MFMCKJAKKAAAAAAM\",
 \"MMCKKJAKKKAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6268,9 +6270,9 @@ static char *xpm[] = {
 \"MMMMBEABAAAAAAAM\",
 \"MEMPBEABBAAAAAAM\",
 \"MMPBBEABBBAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6307,9 +6309,9 @@ static char *xpm[] = {
 \"MMMFFFAAFFFFFAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6346,9 +6348,9 @@ static char *xpm[] = {
 \"MMMJJJAAJJJJJAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6385,9 +6387,9 @@ static char *xpm[] = {
 \"MMMHHHAAHHHHHAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6424,9 +6426,9 @@ static char *xpm[] = {
 \"MMMFFFAAFFFFFAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6463,9 +6465,9 @@ static char *xpm[] = {
 \"MMMDDDAADDDDDAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6502,9 +6504,9 @@ static char *xpm[] = {
 \"MMMMAGGGFFAAAAAA\",
 \"MMMAGGGGGGFAAAAM\",
 \"MMMAAAAAAAAAAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6541,9 +6543,9 @@ static char *xpm[] = {
 \"MMMIIIAAIIIIIAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6580,9 +6582,9 @@ static char *xpm[] = {
 \"MMMMFGAFFAAMMMMM\",
 \"MMMMGFAFGMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6619,9 +6621,9 @@ static char *xpm[] = {
 \"MMMMFGAFFAAMMMMM\",
 \"MMMMGFAFGMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6658,9 +6660,9 @@ static char *xpm[] = {
 \"MMMFFGFFFFAMMMMM\",
 \"MMMGFFFFGFAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6697,9 +6699,9 @@ static char *xpm[] = {
 \"MMMMFGAFFAAMMMMM\",
 \"MMMMGFAFGMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6736,9 +6738,9 @@ static char *xpm[] = {
 \"MCLCMJJJJJKKCLAA\",
 \"MMLLMCLJACLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMCLLLKAA\"
+\"MMMLLLLJMCLLLKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6775,9 +6777,9 @@ static char *xpm[] = {
 \"MCLCPPPAJJKKCLAA\",
 \"MMLLPPALACLJLLAA\",
 \"MMMMMALJACLJAAAA\",
-\"MMMLLLLJMCLLLKAA\"
+\"MMMLLLLJMCLLLKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6814,9 +6816,9 @@ static char *xpm[] = {
 \"MMLCMJJJJJKKCLAA\",
 \"MMLLMCLJACLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMLLLLKAA\"
+\"MMMLLLLJMLLLLKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6853,9 +6855,9 @@ static char *xpm[] = {
 \"JJLJDHHJJJKKCLAA\",
 \"MMLLJJJJACLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMLLLLKAA\"
+\"MMMLLLLJMLLLLKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6892,9 +6894,9 @@ static char *xpm[] = {
 \"MMLCMJJJJJKKCLAA\",
 \"MMLLMCJJAJLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMCLLLKAA\"
+\"MMMLLLLJMCLLLKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6931,9 +6933,9 @@ static char *xpm[] = {
 \"MMLCMJJJJJKHAAAA\",
 \"MMLLMCLJACHAAAAA\",
 \"MMMMMCLJACCJAAAA\",
-\"MMMLLLLJMLLLLKAA\"
+\"MMMLLLLJMLLLLKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -6970,9 +6972,9 @@ static char *xpm[] = {
 \"MBPBMIIFFIIABPAA\",
 \"MMPPMBPAABPAPPAA\",
 \"MMMMMBPAABPAAAAA\",
-\"MMMPPPPAMBPPPFAA\"
+\"MMMPPPPAMBPPPFAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7009,9 +7011,9 @@ static char *xpm[] = {
 \"MCLCMJJJJJKKCLAA\",
 \"MMLLMCLJACLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMCLLLKAA\"
+\"MMMLLLLJMCLLLKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7048,9 +7050,9 @@ static char *xpm[] = {
 \"MLLMJJJJJJJLLAAA\",
 \"MLLMJJJJJJJLLAAA\",
 \"MMMMCLCACLCAAAAA\",
-\"MMLLLLLMLLLLLAAM\"
+\"MMLLLLLMLLLLLAAM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7087,9 +7089,9 @@ static char *xpm[] = {
 \"MMMMIDDAIDDDDAMM\",
 \"MMMMIDAAIDAAMMMM\",
 \"MMMIDAAMMIDMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7126,9 +7128,9 @@ static char *xpm[] = {
 \"MMMMFGGAFGGGGAMM\",
 \"MMMMFGAAFGAAMMMM\",
 \"MMMFGAAMMFGMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7165,9 +7167,9 @@ static char *xpm[] = {
 \"MAMAAAAAAPAAAMMM\",
 \"AAAAAMPAAAAAMMMM\",
 \"MMAAMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7204,9 +7206,9 @@ static char *xpm[] = {
 \"MAMAAAAAAPAAAMMM\",
 \"AAAAAMPAAAAAMMMM\",
 \"MMAAMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7243,9 +7245,9 @@ static char *xpm[] = {
 \"MAMAAAAAAPAAAMMM\",
 \"AAAAAMPAAAAAMMMM\",
 \"MMAAMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7282,9 +7284,9 @@ static char *xpm[] = {
 \"MAMAAAAAAPAAAMMM\",
 \"AAAAAMPAAAAAMMMM\",
 \"MMAAMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7321,9 +7323,9 @@ static char *xpm[] = {
 \"MMMMMOPAPMAMMMMM\",
 \"MMMOOOAMOAMMMMMM\",
 \"MMMMMMOOOMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7360,9 +7362,9 @@ static char *xpm[] = {
 \"MMMMMLLALMAMMMMM\",
 \"MMMLLLAMLAMMMMMM\",
 \"MMMMMMLLLMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7399,9 +7401,9 @@ static char *xpm[] = {
 \"MMMMMOPAPMAMMMMM\",
 \"MMMOOOAMOAMMMMMM\",
 \"MMMMMMOOOMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7438,9 +7440,9 @@ static char *xpm[] = {
 \"MMAMMOPAPMAMMMMM\",
 \"MMAOOOAMOAMMMMMM\",
 \"MMMMMMOOOMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7477,9 +7479,9 @@ static char *xpm[] = {
 \"MMMMNANAAAAMMMMM\",
 \"MMMOOANOAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7516,9 +7518,9 @@ static char *xpm[] = {
 \"MMMMNOANDAAMMMMM\",
 \"MMMMNOAOOMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7555,9 +7557,9 @@ static char *xpm[] = {
 \"MMMCCAOOAAAAMMMM\",
 \"MMOOOAOOOAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7594,9 +7596,9 @@ static char *xpm[] = {
 \"MMMMNOANDAAMMMMM\",
 \"MMMMNOAOOMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7633,9 +7635,9 @@ static char *xpm[] = {
 \"MMMMMMOOAOAAMAMM\",
 \"MMMMMOOAMOOAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7672,9 +7674,9 @@ static char *xpm[] = {
 \"MNMOOMOLAAAAAAAM\",
 \"MMMOOAOOAAAMMMMM\",
 \"MMNNNMNNNAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7711,9 +7713,9 @@ static char *xpm[] = {
 \"MOOOMONOONOOOOAA\",
 \"MMOOMNNOANOLOOAA\",
 \"MMMMMNOOANOOAAAA\",
-\"MMMOOOOOMOOOOKAA\"
+\"MMMOOOOOMOOOOKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7750,9 +7752,9 @@ static char *xpm[] = {
 \"MOOOMONOONOOOOAA\",
 \"MMOOMNNOANOLOOAA\",
 \"MMMMMNOOANOOAAAA\",
-\"MMMOOOOOMOOOOKAA\"
+\"MMMOOOOOMOOOOKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7789,9 +7791,9 @@ static char *xpm[] = {
 \"MMMIDDAAAAADAMMM\",
 \"MMMIDDDAAADDAMMM\",
 \"MMMMIIDDDDDAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7828,9 +7830,9 @@ static char *xpm[] = {
 \"MMMAAAPAMMPAAMMM\",
 \"MMMAAAAPPPAAAMMM\",
 \"MMMMAAAAAAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7867,9 +7869,9 @@ static char *xpm[] = {
 \"MMMNHHAAAAAHAMMM\",
 \"MMMNHHHAAAHHAMMM\",
 \"MMMMNNHHHHHAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7906,9 +7908,9 @@ static char *xpm[] = {
 \"MMMGFFAAAAAFAMMM\",
 \"MMMGFFFAAAFFAMMM\",
 \"MMMMGGFFFFFAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7945,9 +7947,9 @@ static char *xpm[] = {
 \"MMMIDDDDDDAAMDDA\",
 \"MMMMDDDDDAMMDDAM\",
 \"MMMMMDDAAMMDDAMM\",
-\"MMMMMMMMMMDAMMMM\"
+\"MMMMMMMMMMDAMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -7984,9 +7986,9 @@ static char *xpm[] = {
 \"MMMAAAAAAAPPMAAP\",
 \"MMMMAAAAAPMMAAPM\",
 \"MMMMMAAPPMMAAPMM\",
-\"MMMMMMMMMMAPMMMM\"
+\"MMMMMMMMMMAPMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8023,9 +8025,9 @@ static char *xpm[] = {
 \"MMMNHHHHHHAAMHHA\",
 \"MMMMHHHHHAMMHHAM\",
 \"MMMMMHHAAMMHHAMM\",
-\"MMMMMMMMMMHAMMMM\"
+\"MMMMMMMMMMHAMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8062,9 +8064,9 @@ static char *xpm[] = {
 \"MMMGFFFFFFAAMFFA\",
 \"MMMMFFFFFAMMFFAM\",
 \"MMMMMFFAAMMFFAMM\",
-\"MMMMMMMMMMFAMMMM\"
+\"MMMMMMMMMMFAMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8101,9 +8103,9 @@ static char *xpm[] = {
 \"MLCMHHHBHHACLAAA\",
 \"MLLMJJJJJJALLAAA\",
 \"MMMMCJJJCLAAAAAA\",
-\"MMLLLLLMLLLLLAAM\"
+\"MMLLLLLMLLLLLAAM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8140,9 +8142,9 @@ static char *xpm[] = {
 \"MLCMHHHBHHACLAAA\",
 \"MLLMJJJJJJALLAAA\",
 \"MMMMCJJJCLAAAAAA\",
-\"MMLLLLLMLLLLLAAM\"
+\"MMLLLLLMLLLLLAAM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8179,9 +8181,9 @@ static char *xpm[] = {
 \"MLCMHHHBHHACLAAA\",
 \"MLLMJJJJJJALLAAA\",
 \"MMMMCJJJCLAAAAAA\",
-\"MMLLLLLMLLLLLAAM\"
+\"MMLLLLLMLLLLLAAM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8218,9 +8220,9 @@ static char *xpm[] = {
 \"MMMPBBBAAAKPPJMM\",
 \"MMMMMMMMACPPAKMM\",
 \"MMMMMMMMMKCCCJMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8257,9 +8259,9 @@ static char *xpm[] = {
 \"MMMMJJJJJJAAAMMM\",
 \"MMMMMAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8296,9 +8298,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMAAAAAAMAM\",
 \"MMMMMMMMAAAAAAAA\",
-\"MMMMMMMMMMAAAAMM\"
+\"MMMMMMMMMMAAAAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8335,9 +8337,9 @@ static char *xpm[] = {
 \"MNGGGGGFGFGMMMMM\",
 \"NGGGGFGGFGMGMMGF\",
 \"NGGFGGFMMGFMMMMM\",
-\"MMGGFMMGGFMMGMMM\"
+\"MMGGFMMGGFMMGMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8374,9 +8376,9 @@ static char *xpm[] = {
 \"MMMMMNBEBENAMAMM\",
 \"MMMMMNBEBENNMMMM\",
 \"MMMMNAAEBAANNMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8413,9 +8415,9 @@ static char *xpm[] = {
 \"MMMMAEEEEEEEAAAM\",
 \"MMMMMEEEEEAAMMAM\",
 \"MMMMMMAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8452,9 +8454,9 @@ static char *xpm[] = {
 \"MMMMAPPPPPPPAAAM\",
 \"MMMMMPPPPPAAMMAM\",
 \"MMMMMMAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8491,9 +8493,9 @@ static char *xpm[] = {
 \"MMMMKAAKKAAPMMMM\",
 \"MMMMMKAAAAPMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8530,9 +8532,9 @@ static char *xpm[] = {
 \"MMMMKJJJJJJAMMMM\",
 \"MMMMMKJJJJAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8569,9 +8571,9 @@ static char *xpm[] = {
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMAAAAAAAMMMMM\",
 \"MMMMMAAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8608,9 +8610,9 @@ static char *xpm[] = {
 \"MMMMMAAMMAAAMMMM\",
 \"MMMMMAAAAAAMMMMM\",
 \"MMMMMMAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8647,9 +8649,9 @@ static char *xpm[] = {
 \"MMMJJJJJJJJJAAMM\",
 \"MMMMJJJJJJJAAMMM\",
 \"MMMMMJJJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8686,9 +8688,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMAAAAMM\",
 \"MMMMAAAMMMMMMAAM\",
 \"MMMMMAAAAAAAAAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8725,9 +8727,9 @@ static char *xpm[] = {
 \"MMMGFAGPMAAMAAMM\",
 \"MMKJJAKJAAMAAMMM\",
 \"MMKJAMMKAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8764,9 +8766,9 @@ static char *xpm[] = {
 \"MMMBEABPMAAMAAMM\",
 \"MMKJJAKJAAMAAMMM\",
 \"MMKJAMMKAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8803,9 +8805,9 @@ static char *xpm[] = {
 \"MMMAFAGFMAAMAAMM\",
 \"MMKJJAKJAAMAAMMM\",
 \"MMKJAMMKAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8842,9 +8844,9 @@ static char *xpm[] = {
 \"MMMBEABPMAAMAAMM\",
 \"MMKJJAKJAAMAAMMM\",
 \"MMKJAMMKAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8881,9 +8883,9 @@ static char *xpm[] = {
 \"MMMPPAPPMPPMPPMM\",
 \"MMAAAAAAAPMPPMMM\",
 \"MMAAAMAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8920,9 +8922,9 @@ static char *xpm[] = {
 \"MMMAAPAAPPPPMMMM\",
 \"MMAAAPAAAPPMMMMM\",
 \"MAAAPMMAAPMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8959,9 +8961,9 @@ static char *xpm[] = {
 \"MMMMMAAPAAPPMMMM\",
 \"MMMMAAPMMAPMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -8998,9 +9000,9 @@ static char *xpm[] = {
 \"MNAAAAAAAAAPPPMM\",
 \"MNMMMAAAPAAPPMMM\",
 \"MNMMAAPPMMAPMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9037,9 +9039,9 @@ static char *xpm[] = {
 \"MMMMMAAPAAPPMMMM\",
 \"MMMMAAPMMAPMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9076,9 +9078,9 @@ static char *xpm[] = {
 \"MANAAAAAAAAPPPPM\",
 \"MMNMMAAAPAAPPPMM\",
 \"MMNMAAPPMMAPMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9115,9 +9117,9 @@ static char *xpm[] = {
 \"MJMMMPPPPPPPAAMM\",
 \"MJMMLLPPPPPPAMMM\",
 \"MJMMMMMLLAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9154,9 +9156,9 @@ static char *xpm[] = {
 \"MMMMMMPPPPAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9193,9 +9195,9 @@ static char *xpm[] = {
 \"MMMAAPPOAAAPPAMM\",
 \"MMMMMPPAPPPPAMMM\",
 \"MMMMMMPPPPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9232,9 +9234,9 @@ static char *xpm[] = {
 \"MMMBOBBPPBPAAMMM\",
 \"MMMBOMBPMPPAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9271,9 +9273,9 @@ static char *xpm[] = {
 \"MMMMMMKJJJAAAAMM\",
 \"MMMMMMJAAJAAAMMM\",
 \"MMMMMJJAMJJAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9310,9 +9312,9 @@ static char *xpm[] = {
 \"MMMMMCLJACLJAAAA\",
 \"MMMLLLLJACLLLKAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9349,9 +9351,9 @@ static char *xpm[] = {
 \"MMMJJPAKJPJJAAAM\",
 \"MMMJAAJAJAAJAAMM\",
 \"MMMPJPJAJPJPAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9388,9 +9390,9 @@ static char *xpm[] = {
 \"MMMMNNANPAAKKJAM\",
 \"MMMBNNANNPAACKAM\",
 \"MMBNNAMMNNAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9427,9 +9429,9 @@ static char *xpm[] = {
 \"MMMDDALJACLJAAAA\",
 \"MMDDALLJACLLLKAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9466,9 +9468,9 @@ static char *xpm[] = {
 \"MMMCKJAKKJAAAAAM\",
 \"MKCKJJACKJKJAAMM\",
 \"MCJJJKACKJJKAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9505,9 +9507,9 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9544,9 +9546,9 @@ static char *xpm[] = {
 \"MMMMFGAFFAAMMMMM\",
 \"MMMMGFAFGMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9583,9 +9585,9 @@ static char *xpm[] = {
 \"MMMBJAAEPAAAMMMM\",
 \"MMBPPAAAPPMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9622,9 +9624,9 @@ static char *xpm[] = {
 \"MMMMEBAEEAAMMMMM\",
 \"MMMMBEAEBMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9661,9 +9663,9 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMKDAMFKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9700,9 +9702,9 @@ static char *xpm[] = {
 \"MMMMMPFABPAAMMMM\",
 \"MMMMMBFABFAMMMMM\",
 \"MMMMGGAGGAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9739,9 +9741,9 @@ static char *xpm[] = {
 \"MFFFMIIFFIIAGFAA\",
 \"MMFFMGFAAGFAFFAA\",
 \"MMMMMGFAAGFAAAAA\",
-\"MMMFFFFAMGFFFFAA\"
+\"MMMFFFFAMGFFFFAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9778,9 +9780,9 @@ static char *xpm[] = {
 \"FFAMMJJJJJKAGFAA\",
 \"MMMMMGFAGFFAFFAA\",
 \"MMMMGFFAGFFAAAAA\",
-\"MMMGFFAAGFFFAAAA\"
+\"MMMGFFAAGFFFAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9817,9 +9819,9 @@ static char *xpm[] = {
 \"MMMMMPPAPPAAMMMM\",
 \"MMMMMPPAPPAMMMMM\",
 \"MMMMOOAOOAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9856,9 +9858,9 @@ static char *xpm[] = {
 \"MMMMMOMAOMAMMMMM\",
 \"MMMOOOAMOAMMMMMM\",
 \"MMMMMMOOOMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9895,9 +9897,9 @@ static char *xpm[] = {
 \"MMMMMHJAACALHAAA\",
 \"MMMMCJLAAJHALHAM\",
 \"MMMMHALAMAHAALMM\",
-\"MMMMMMMMMMLMMMMM\"
+\"MMMMMMMMMMLMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9934,9 +9936,9 @@ static char *xpm[] = {
 \"MMMMMNOAAOAAAAAM\",
 \"MMMMMNOAMMNOAAMM\",
 \"MMMMOOAMMMOOAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -9973,9 +9975,9 @@ static char *xpm[] = {
 \"MMMMOOMMAMMOMAMM\",
 \"MMMOMMAAMMMOMAMM\",
 \"MMMOMAMMMMOAAMMM\",
-\"MMMMOAMMMMMMMMMM\"
+\"MMMMOAMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10012,9 +10014,9 @@ static char *xpm[] = {
 \"MMHMANCMAHNCMAAA\",
 \"MMMMHJCMAHJCMAAM\",
 \"HMMMHNCMAHNCMAMH\",
-\"MMHMMMMMMMMMMMMM\"
+\"MMHMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10051,9 +10053,9 @@ static char *xpm[] = {
 \"MMKKJJJAKKJJJAAM\",
 \"MMKKKJJAKKKJJAMM\",
 \"MMMKJJAMMKJJAMMM\",
-\"MMMMKAMMMMKAMMMM\"
+\"MMMMKAMMMMKAMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10090,9 +10092,9 @@ static char *xpm[] = {
 \"MMKJACKJAKCKJAAA\",
 \"MMMMKCKJAKCKJAAM\",
 \"MMMMKCKJAKCKJAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10129,9 +10131,9 @@ static char *xpm[] = {
 \"MMMMLLALLAALLAAA\",
 \"MMCLLLAAAADLLAMM\",
 \"MMLLDDDMMDDDDDMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10168,9 +10170,9 @@ static char *xpm[] = {
 \"MMCKKKKKKKKKAAAA\",
 \"MMCKKKAACKKKAAMM\",
 \"MMCKKKAMCKKKAAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10207,9 +10209,9 @@ static char *xpm[] = {
 \"MMBPPPAPPPAAAAAM\",
 \"MMPPPPAPPPPAAAMM\",
 \"MMMPPAAMPPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10246,9 +10248,9 @@ static char *xpm[] = {
 \"MMMMBNABNABPAAAM\",
 \"MMMBNPAMMMBNAAAM\",
 \"MMBNPAMMMMNPAAMM\",
-\"MMMBAMMMMMBPAMMM\"
+\"MMMBAMMMMMBPAMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10285,9 +10287,9 @@ static char *xpm[] = {
 \"MMPMABPMAPBPMAAA\",
 \"MMMMPJPMAPJPMAAM\",
 \"MMMMPBPMAPBPMAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10324,9 +10326,9 @@ static char *xpm[] = {
 \"MMMMMMJJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10363,9 +10365,9 @@ static char *xpm[] = {
 \"MMMMMMJJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10402,9 +10404,9 @@ static char *xpm[] = {
 \"MMMMMMJJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10441,9 +10443,9 @@ static char *xpm[] = {
 \"MMMMMJJAJAAMAMMM\",
 \"MMMMKLAMLKAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10480,9 +10482,9 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10519,9 +10521,9 @@ static char *xpm[] = {
 \"MMMMMMPPAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10558,9 +10560,9 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10597,9 +10599,9 @@ static char *xpm[] = {
 \"MMMMMMPMAMAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10636,9 +10638,9 @@ static char *xpm[] = {
 \"MMMMMMHFAFAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10675,9 +10677,9 @@ static char *xpm[] = {
 \"MMMMMIIFAFDAAAMM\",
 \"MMMIIKLAILKDIMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10714,9 +10716,9 @@ static char *xpm[] = {
 \"MMCDMMLJJLAAACAM\",
 \"MMMCDMLLALAACAMM\",
 \"MMCDMLLAALLADCMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10753,9 +10755,9 @@ static char *xpm[] = {
 \"MMMMMMNNAOAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10792,9 +10794,9 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMJJAMJJAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10831,9 +10833,9 @@ static char *xpm[] = {
 \"MMLCMBPPPPPPCLAA\",
 \"MMLLMBPPABPPLLAA\",
 \"MMMMMBPPABPPAAAA\",
-\"MMMMBPPPMBPPPAAA\"
+\"MMMMBPPPMBPPPAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10870,9 +10872,9 @@ static char *xpm[] = {
 \"MMMMMMNAANAAAMMM\",
 \"MMMMMMPAAPAAMMMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10909,9 +10911,9 @@ static char *xpm[] = {
 \"MMLLCLBLLELLCLAA\",
 \"MMMCLLLLLLLCLAAM\",
 \"MMMMLELLLLELAAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10948,9 +10950,9 @@ static char *xpm[] = {
 \"MJMMKCJCCCJAAAAM\",
 \"MJMACCJCCCJAAAMM\",
 \"MJACCCJJCCCAAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -10987,9 +10989,9 @@ static char *xpm[] = {
 \"MMHMMKCJCCCJAAAA\",
 \"MMHMACCJCCCJAAAM\",
 \"MMHACCCJJCCCAAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11026,9 +11028,9 @@ static char *xpm[] = {
 \"MMMMMMFAFMAAMMMM\",
 \"MMMMMFFAFFAMMMMM\",
 \"MMMMMJJMJJMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11065,9 +11067,9 @@ static char *xpm[] = {
 \"MMMMMMFAFMAAMMMM\",
 \"MMMMMFFAFFAMMMMM\",
 \"MMMMMAAMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11104,9 +11106,9 @@ static char *xpm[] = {
 \"MMMMMMFAFMAAMMMM\",
 \"MMMMMFFAFFAMMMMM\",
 \"MMMMMAAMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11143,9 +11145,9 @@ static char *xpm[] = {
 \"MMMMMMFAFMJJJAMM\",
 \"MMMMMFFAFFJJJAMM\",
 \"MMMMMAAMAAAAAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11182,9 +11184,9 @@ static char *xpm[] = {
 \"MMMMMMPAPMAAMMMM\",
 \"MMMMMPPAPPAMMMMM\",
 \"MMMMJJJMJJJMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11221,9 +11223,9 @@ static char *xpm[] = {
 \"MMMMMJPAPMAAMMMM\",
 \"MMMMMPPAPPAMMMMM\",
 \"MMMMJJJMJJJMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11260,9 +11262,9 @@ static char *xpm[] = {
 \"MMMIKAAKIIAAAMMM\",
 \"MMMIIKKIIIAAMMMM\",
 \"MMIIKIKIKIAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11299,9 +11301,9 @@ static char *xpm[] = {
 \"MMMEEEEEEEEAAAAA\",
 \"MMEEEEEEEEEAAAAA\",
 \"MEEEEEEEEEEEAAAM\",
-\"EEEEEEEEEEEEEEAM\"
+\"EEEEEEEEEEEEEEAM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11338,9 +11340,9 @@ static char *xpm[] = {
 \"AMMLIIKHIIILAAAA\",
 \"MMGIIIKJIIIIGAAM\",
 \"MGIIIKJJKKIIIGGM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11377,9 +11379,9 @@ static char *xpm[] = {
 \"MMMJJJJJJJJAAAAA\",
 \"MMJJJJJJJJJAAAAA\",
 \"MJJJJJJJJJJJAAAM\",
-\"JJJJJJJJJJJJJJAM\"
+\"JJJJJJJJJJJJJJAM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11416,9 +11418,9 @@ static char *xpm[] = {
 \"MOOOPOPPOPPPMPPM\",
 \"MPPMPPOPPPMMMPMM\",
 \"MOMMMPMMMMPMMMMM\",
-\"MMMMMMMMPMMMMMMM\"
+\"MMMMMMMMPMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11455,9 +11457,9 @@ static char *xpm[] = {
 \"MMAAAAAAAAAAAAAA\",
 \"MAAAAAAAAAAAAAMM\",
 \"AAAAMAAAAJAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11494,9 +11496,9 @@ static char *xpm[] = {
 \"MMMAAEEEAAAAAMMM\",
 \"MMMMEEAEEAAMMMMM\",
 \"MMMMEEAEEAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11533,9 +11535,9 @@ static char *xpm[] = {
 \"MMMMCDDDKAAAAAMM\",
 \"MMMCDDADDKAAMMMM\",
 \"MMCDDAAMDDKMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11572,9 +11574,9 @@ static char *xpm[] = {
 \"HMHMMDDAADDAAMMM\",
 \"MMHMMDDAAMDAAMMM\",
 \"MMMMDDAAMMDDAAMM\",
-\"MMMDDJAMMMDDDAMM\"
+\"MMMDDJAMMMDDDAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11611,9 +11613,9 @@ static char *xpm[] = {
 \"MMMMJDJJADKAAMMM\",
 \"MMMMDDKAADDKAMMM\",
 \"MMMDDKAAMMDDAAMM\",
-\"MMDDKAAMMMDDDAMM\"
+\"MMDDKAAMMMDDDAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11650,9 +11652,9 @@ static char *xpm[] = {
 \"MMMBBBBBBBAAAMMM\",
 \"MMMBBBBBBBAAMMMM\",
 \"MMBBEBEBEBAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11689,9 +11691,9 @@ static char *xpm[] = {
 \"MMMMCDDDKAAAAAMM\",
 \"MKMCDDADDKAAKMMM\",
 \"MCCDDAAMDDKKMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11728,9 +11730,9 @@ static char *xpm[] = {
 \"MMFGFFFFFFAFFFFA\",
 \"MMFGFFFFFFFFFFAM\",
 \"MMFGFFFFFFFFFAMM\",
-\"MMMMGFFFFFFAAMMM\"
+\"MMMMGFFFFFFAAMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11767,9 +11769,9 @@ static char *xpm[] = {
 \"MMMMMMDAADAAAAMM\",
 \"MMMMMMDAADAAMAMM\",
 \"MMMMMDDAMDDAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11806,9 +11808,9 @@ static char *xpm[] = {
 \"MMLAFLLLAAGFMFAA\",
 \"MMMMMLMLAGFFFFAA\",
 \"MMMMMMMMMMMFFFAM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11845,9 +11847,9 @@ static char *xpm[] = {
 \"MMMMNOOOLAAAAAMM\",
 \"MMMNOOAOOLAAMMMM\",
 \"MMNOOAAMOOLMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11884,9 +11886,9 @@ static char *xpm[] = {
 \"MMMMBNNNPAAAAAMM\",
 \"MMMBNNANNPAAMMMM\",
 \"MMBNNAAMNNPMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11923,9 +11925,9 @@ static char *xpm[] = {
 \"MMMMMMLLAAKDAMMM\",
 \"MMMMMMMMMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -11962,9 +11964,9 @@ static char *xpm[] = {
 \"MMMMMCDDDKAAAAMM\",
 \"MMMMCDDADDKAMMMM\",
 \"MMMCDDAAMDDKMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12001,9 +12003,9 @@ static char *xpm[] = {
 \"JJMMCCDDDKKAAJJA\",
 \"JMMCDDDADDDKAAJA\",
 \"MMCDDDAAMDDDKMAA\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12040,9 +12042,9 @@ static char *xpm[] = {
 \"CKFCCFCCKKFKJJAM\",
 \"CCKKCFCKFFKKKKAM\",
 \"MCCCCCCCCCCCKAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12079,9 +12081,9 @@ static char *xpm[] = {
 \"MMMMBPMPPAAMMMAM\",
 \"MMMBPMAAPPAMMAMM\",
 \"MMMBPAAMPPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12118,9 +12120,9 @@ static char *xpm[] = {
 \"MMMPMPPPPPPPMPMA\",
 \"MMMBPPPAPPPPAAPA\",
 \"MMMOOPPAOOPPAGAM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12157,9 +12159,9 @@ static char *xpm[] = {
 \"MMMMGGGGFFAAFFAA\",
 \"MMMMGFFFFFAAFGFA\",
 \"MMMMFGGGFFFFFFFA\",
-\"MMMMMFFFFFFFFFAM\"
+\"MMMMMFFFFFFFFFAM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12196,9 +12198,9 @@ static char *xpm[] = {
 \"MMMMMMCKAJAJJAMM\",
 \"MMMMMMCKAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12235,9 +12237,9 @@ static char *xpm[] = {
 \"MMMMMMCKKKJAAAMM\",
 \"MMMMMMCKAKJAMAMM\",
 \"MMMMMFFAMMFFMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12274,9 +12276,9 @@ static char *xpm[] = {
 \"MMMMMMCKAJAJJAMM\",
 \"MMMMMMCKAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12313,9 +12315,9 @@ static char *xpm[] = {
 \"MGFAGFAAFFAFFAMM\",
 \"MMGAGJAAJFAFAAMM\",
 \"MMGAGFAFFFAFAMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12352,9 +12354,9 @@ static char *xpm[] = {
 \"MCMMJAAAAAJJJAAA\",
 \"MCMJAAAAAAAJJAAM\",
 \"MCJJAAAAAAAAJJAM\",
-\"ACJAAAAAAAAAAAJM\"
+\"ACJAAAAAAAAAAAJM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12391,9 +12393,9 @@ static char *xpm[] = {
 \"MMMJJBFJJJJJJAAM\",
 \"MMMJAABFBJJJJAAM\",
 \"MMJJFBFAFFAJJJAM\",
-\"MJJAAFAFAAAAAAJM\"
+\"MJJAAFAFAAAAAAJM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12430,9 +12432,9 @@ static char *xpm[] = {
 \"KMMMMMJAJJAAMMMM\",
 \"KMMMMMJAAJAAMMMM\",
 \"KMMMJJAAAJJAAMMM\",
-\"KMMJJAAAAAJJJAMM\"
+\"KMMJJAAAAAJJJAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12469,9 +12471,9 @@ static char *xpm[] = {
 \"MMMMBBEEENNNNNMM\",
 \"MMMBEEEAANNNNNAM\",
 \"MMCDDDAAAMDDDKMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12508,9 +12510,9 @@ static char *xpm[] = {
 \"MMMMMMMFEDAAAMMM\",
 \"MMMMMMMIMGEAMAMM\",
 \"MMMMMMMMMIFEDMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12547,9 +12549,9 @@ static char *xpm[] = {
 \"MCDMMDDJDDAADCAM\",
 \"MMCDMDDADDADCAMM\",
 \"MCDMDDAADDDADCMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12586,9 +12588,9 @@ static char *xpm[] = {
 \"MMPEEPEMMPEMPMMM\",
 \"MMPMEPMEEPMMPMMM\",
 \"MMPEEMPMEMMEMMMM\",
-\"MPMMEMPMMEMMMMMM\"
+\"MPMMEMPMMEMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12625,9 +12627,9 @@ static char *xpm[] = {
 \"MMEMMMPPPPPAAMEM\",
 \"MMMMMEMMPPAEMMMM\",
 \"MMMMMEMMPMMMMMMM\",
-\"MMMMEMMEMMMEMMMM\"
+\"MMMMEMMEMMMEMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12664,9 +12666,9 @@ static char *xpm[] = {
 \"PPPPPPPMMEEMMMMM\",
 \"NDPPAPEPPPMEMMEE\",
 \"PDNPPEEMMEEMMMMM\",
-\"MPPPEMMEEEMMEMMM\"
+\"MPPPEMMEEEMMEMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12703,9 +12705,9 @@ static char *xpm[] = {
 \"MMMEMAAEEAAAEEMM\",
 \"MMEMMAAAAAAEMEMM\",
 \"MMMEEMAAAAEMEMMM\",
-\"MMEMMMEEMEMMMEMM\"
+\"MMEMMMEEMEMMMEMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12742,9 +12744,9 @@ static char *xpm[] = {
 \"MMMEMAAEEDDMEEMM\",
 \"MMEMMAAADDDEMEMM\",
 \"MMMEEMAAADEMEMMM\",
-\"MMEMMMEEMEMMMEMM\"
+\"MMEMMMEEMEMMMEMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12781,9 +12783,9 @@ static char *xpm[] = {
 \"MEGFFAGFFEEMMMMM\",
 \"EEGFFEEEEEMEMMEE\",
 \"EEEEEEEMMEEMMMMM\",
-\"MMEEEMMEEEMMEMMM\"
+\"MMEEEMMEEEMMEMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12820,9 +12822,9 @@ static char *xpm[] = {
 \"MMMLLAAALLAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12859,9 +12861,9 @@ static char *xpm[] = {
 \"MMMOODAOPAMMMMMM\",
 \"MMFMAAMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12898,9 +12900,9 @@ static char *xpm[] = {
 \"MPPFFAFPPAAMMMMM\",
 \"DMAAAAAAPPAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12937,9 +12939,9 @@ static char *xpm[] = {
 \"MMGGDFAFGGAMMMMM\",
 \"MMMDMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -12976,9 +12978,9 @@ static char *xpm[] = {
 \"MJFAAAAFAAMMMMMM\",
 \"MDMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13015,9 +13017,9 @@ static char *xpm[] = {
 \"MDGFFAFGGAAMMMMM\",
 \"DMAAAAAAGGAMMMMM\",
 \"MDDMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13054,9 +13056,9 @@ static char *xpm[] = {
 \"GGDDFAFGGGAMMMMM\",
 \"GDDFAAAAGGAMMMMM\",
 \"MDFMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13093,9 +13095,9 @@ static char *xpm[] = {
 \"CCCCCCDCCAAMMMMM\",
 \"MDAADAAACCAMMMMM\",
 \"MMACCAMMMMMMMMMM\",
-\"MMMAAAMMMMMMMMMM\"
+\"MMMAAAMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13132,9 +13134,9 @@ static char *xpm[] = {
 \"LLAMMMMMMMMLLAMM\",
 \"LILAMMMMMMLLAMMM\",
 \"MLLLIIIILLLAMMMM\",
-\"MMMLLLLLAAAMMMMM\"
+\"MMMLLLLLAAAMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13171,9 +13173,9 @@ static char *xpm[] = {
 \"MMMMMMCJJKAAAAMM\",
 \"MMMMMKCJAJJAMAMM\",
 \"MMMMMCJJMJKJMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13210,9 +13212,9 @@ static char *xpm[] = {
 \"MMMMMMLJJLAAAAMM\",
 \"MMMMMMLLALAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13249,9 +13251,9 @@ static char *xpm[] = {
 \"MMMMMMLAMLAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13288,9 +13290,9 @@ static char *xpm[] = {
 \"MMMMMMLAMLAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13327,9 +13329,9 @@ static char *xpm[] = {
 \"MMMMMNOOOPAAMAMM\",
 \"MMMMNOOOOOPAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13366,9 +13368,9 @@ static char *xpm[] = {
 \"MMMMMMBPAPAAMAMM\",
 \"MMMMMPPAMPPAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13405,9 +13407,9 @@ static char *xpm[] = {
 \"MMMMMCDCCCDDAMAM\",
 \"MMMMCCCCCCCDDMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13444,9 +13446,9 @@ static char *xpm[] = {
 \"MMMMMDDIIDDAMAMM\",
 \"MMMMDIIIIIDDMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13483,9 +13485,9 @@ static char *xpm[] = {
 \"MMMMMDDIIDDAMAMM\",
 \"MMMMDIIIIIDDMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13522,9 +13524,9 @@ static char *xpm[] = {
 \"MMMMMMMBPAPAAMAM\",
 \"MMMMMMPPAMPPAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13561,9 +13563,9 @@ static char *xpm[] = {
 \"MMMMLAJJHJALAAMM\",
 \"MMMMMMKKJKAAAAMM\",
 \"MMMMMKKAMKKAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13600,9 +13602,9 @@ static char *xpm[] = {
 \"MMMMMMIDDDAAAAMM\",
 \"MMMMMMIDADAAMAMM\",
 \"MMMMMIIAMIIAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13639,9 +13641,9 @@ static char *xpm[] = {
 \"MMMMMMJJJKAAAAMM\",
 \"MMMMMMLLALAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13678,9 +13680,9 @@ static char *xpm[] = {
 \"MMMMMMKJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13717,9 +13719,9 @@ static char *xpm[] = {
 \"MMMMMBPPPEAAMAMM\",
 \"MMMMMBPPPPEAMMMM\",
 \"MMMMBPPPPPPEMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13756,9 +13758,9 @@ static char *xpm[] = {
 \"MMMMMICKAJIAAAMM\",
 \"MMMMMMCKAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13795,9 +13797,9 @@ static char *xpm[] = {
 \"MMMMMMCKAJAAAAMM\",
 \"MMMMMMCKAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13834,9 +13836,9 @@ static char *xpm[] = {
 \"MMMMMMCKKJAAAAMM\",
 \"MMMMMMLAMLAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13873,9 +13875,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13912,9 +13914,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13951,9 +13953,9 @@ static char *xpm[] = {
 \"MMMLCCCCDABAAAMM\",
 \"MMLLCCCCDAAMAAMM\",
 \"MLCCCCCCCDAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -13990,9 +13992,9 @@ static char *xpm[] = {
 \"MMMMMBPAPPAAMAMM\",
 \"MMMMMBPAPPAAMAMM\",
 \"MMMMPPAAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14029,9 +14031,9 @@ static char *xpm[] = {
 \"MMJMMCCCCCCCAAAA\",
 \"MMJMACCCCCCCAAAM\",
 \"MMJACCCCCCCCAAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14068,9 +14070,9 @@ static char *xpm[] = {
 \"MMHMMKCJCCDJAAAA\",
 \"MMHMACCJCCDJAAAM\",
 \"MMHACCCJJCCCAAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14107,9 +14109,9 @@ static char *xpm[] = {
 \"MMMMMMBPMPAAAAAM\",
 \"MMMMMMBPMPAAAAMM\",
 \"MMMMMMBPAPAAMAMM\",
-\"MMMMMPPAMPPAMMMM\"
+\"MMMMMPPAMPPAMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14146,9 +14148,9 @@ static char *xpm[] = {
 \"MMMMJKKKJAAAAAMM\",
 \"MMMMKJAJKAAAAMMM\",
 \"MMMJJAMMJJAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14185,9 +14187,9 @@ static char *xpm[] = {
 \"MMMIIDDDDAAAAAAM\",
 \"MMMIIAAIDAAAMMAM\",
 \"MMIIIAMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14224,9 +14226,9 @@ static char *xpm[] = {
 \"MMMMMMJJJKAAAAMM\",
 \"MMMMMMJJAKAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14263,9 +14265,9 @@ static char *xpm[] = {
 \"MMMMMMKJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14287,24 +14289,24 @@ static char *xpm[] = {
 \"O c #DADAB6\",
 \"P c #6C91B6\",
 /* pixels */
-\"MMMMMMMMMBPMMMMM\",
-\"MMMMMMBBBPEMMMMM\",
-\"MMMMMBPPPEAMMMMM\",
-\"MMMMMBAAAEAMMMMM\",
-\"MMMHMPAAAEAMMMMM\",
-\"MMMHBPLLLEAMMMMM\",
-\"MHHHHHPLLEMMMMMM\",
-\"MCMLMCBAAEAMAAAM\",
-\"PCPHPCPBBEEAAAAM\",
-\"CHCHCHCPPEEEAAMM\",
-\"MMMHMEEPPEALAAMM\",
-\"MMHHHEPPPEAAAAMM\",
-\"MMMMMBPPPEAAMAMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMGGGMMMMMMM\",
+\"MMMMMGFFFGMMMMMM\",
+\"MMMMGFEFEGMMMMMM\",
+\"MMMMGFFFFEGMMMMM\",
+\"MNMGPEFFFEEMMMMM\",
+\"MIMMBBEAAEAMAAMM\",
+\"MIMBBPPBBEEAAAAM\",
+\"MIGBPPPPPEEEAAMM\",
+\"MIMPPMEPEAAGAAMM\",
+\"MIMMMBPPPAAAAAMM\",
+\"MNMMMBPPPEAAMAMM\",
 \"MMMMBPPPPPEAMMMM\",
 \"MMMBPPPPPPPEMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14341,9 +14343,9 @@ static char *xpm[] = {
 \"MMMMCCDDDDKKAAMM\",
 \"MMMCDDDAADDDKAAM\",
 \"MMCDDDAAAMDDDKMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14380,9 +14382,9 @@ static char *xpm[] = {
 \"MMMMMMBPAMAMMAMM\",
 \"MMMMMMBPAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14419,9 +14421,9 @@ static char *xpm[] = {
 \"HBMOIEFOODDMCJAM\",
 \"HBAAGEMAADDACCAM\",
 \"MMMMGFAAMMMCCJAM\",
-\"MMMMMMMMFFFFJAMM\"
+\"MMMMMMMMFFFFJAMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14458,9 +14460,9 @@ static char *xpm[] = {
 \"MMMMIJKJJAMMMMMM\",
 \"MMMIKAAMIKMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14497,9 +14499,9 @@ static char *xpm[] = {
 \"MLCMGGGHGGACLAAA\",
 \"MLLMJJJJJJALLAAA\",
 \"MMMMCJJJCLAAAAAA\",
-\"MMLLLLLMLLLLLAAM\"
+\"MMLLLLLMLLLLLAAM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14536,9 +14538,9 @@ static char *xpm[] = {
 \"MMMMCCDDDDKKAAMM\",
 \"MMMCDDDAADDDKAAM\",
 \"MMCDDDAAAMDDDKMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14575,9 +14577,9 @@ static char *xpm[] = {
 \"MMMMKJJJJJJKAAAM\",
 \"MMMKJJJJJJJJKAAM\",
 \"MMMKJJJJJJJJJAMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14614,9 +14616,9 @@ static char *xpm[] = {
 \"MMMMCCDDDDKKAAMM\",
 \"MMMCDDDAADDDKAAM\",
 \"MMCDDDAAAMDDDKMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14653,9 +14655,9 @@ static char *xpm[] = {
 \"MJJGGAJACAAJJAAA\",
 \"DMJJAAJAACAMJAAM\",
 \"MMMDMMMJAAJAMJJM\",
-\"MMMMMMMMJAMJAMMM\"
+\"MMMMMMMMJAMJAMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14692,9 +14694,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAPPPMM\",
 \"MMMMMMAAAAAPMPMM\",
 \"MMMMMAAAMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14731,9 +14733,9 @@ static char *xpm[] = {
 \"MMMMMMIIIIAAAAMM\",
 \"MMMMMMIIAIAAMAMM\",
 \"MMMMMIIAMIIAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14770,9 +14772,9 @@ static char *xpm[] = {
 \"JJLJDHHPBPPPCLAA\",
 \"MMLLJBPPABPPLLAA\",
 \"MMMMMBPPABPPAAAA\",
-\"MMMLLLLJMBLLLKAA\"
+\"MMMLLLLJMBLLLKAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14809,9 +14811,9 @@ static char *xpm[] = {
 \"MMMAAAAAAAAAAMMM\",
 \"MMAAAAAAAAAAAAMM\",
 \"AAAAAAAAAAAAAAAA\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14848,9 +14850,9 @@ static char *xpm[] = {
 \"MMMMLACJKJALAAAM\",
 \"MMMMMKCJAJJAMAMM\",
 \"MMMMMCJJMJKJMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14887,9 +14889,9 @@ static char *xpm[] = {
 \"MMMMMMLJJLAAAAMM\",
 \"MMMMMMLLALAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14926,9 +14928,9 @@ static char *xpm[] = {
 \"MMMMMMLAMLAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -14965,9 +14967,9 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMMGFAFAAMMMM\",
 \"MMMMMMGFAFAAMMMM\",
-\"MMMMMKLAMLKAMMMM\"
+\"MMMMMKLAMLKAMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15004,9 +15006,9 @@ static char *xpm[] = {
 \"MMMMMLCCCDAAMAMM\",
 \"MMMMLCCCCCDAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15043,9 +15045,9 @@ static char *xpm[] = {
 \"MMMMMMLLALAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15082,9 +15084,9 @@ static char *xpm[] = {
 \"MMMDDDDCDDDDAAMM\",
 \"MMMMAACCCDAAAAMM\",
 \"MMMMCDCCCDDAMAMM\",
-\"MMMCCCCCCCDDMMMM\"
+\"MMMCCCCCCCDDMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15121,9 +15123,9 @@ static char *xpm[] = {
 \"MMMMMMLCCDAAAAMM\",
 \"MMMMMLDCCDDAMAMM\",
 \"MMMMLCCCCCDDMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15160,9 +15162,9 @@ static char *xpm[] = {
 \"MMMJMMBPMPAAAAMM\",
 \"MMMJMMBPAPAAMAMM\",
 \"MMMMJPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15199,9 +15201,9 @@ static char *xpm[] = {
 \"MMMMMMKKJKAAAAMM\",
 \"MMMMMMKAAKAAAAMM\",
 \"MMMMMKKAMKKAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15238,9 +15240,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAPPPMM\",
 \"MMMMMMAAAAAPMPMM\",
 \"MMMMMAAAMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15277,9 +15279,9 @@ static char *xpm[] = {
 \"MMMMMMPMMMAAAAMM\",
 \"MMMMMMPMAMAAMAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15316,9 +15318,9 @@ static char *xpm[] = {
 \"MMMMMMJJJKAAAAMM\",
 \"MMMMMMJJAKAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15355,9 +15357,9 @@ static char *xpm[] = {
 \"MMMMMMKJAJAAMAMM\",
 \"MMMMMMKJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15394,9 +15396,9 @@ static char *xpm[] = {
 \"MMMMMBPPPEAAMAMM\",
 \"MMMMMBPPPPEAMMMM\",
 \"MMMMBPPPPPPEMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15433,9 +15435,9 @@ static char *xpm[] = {
 \"MMMMMMNNMMMMMMMM\",
 \"MMMMMMNNAMMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
+\"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15472,9 +15474,9 @@ static char *xpm[] = {
 \"CJKKKCJKKKCJJJAA\",
 \"CJCCCCJCCCCJJAAM\",
 \"CKKKKKKKKKKJAAMM\",
-\"MAAAAAAAAAAAAMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MAAAAAAAAAAAAMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15511,9 +15513,9 @@ static char *xpm[] = {
 \"MONNAMMMMMMMMMMM\",
 \"MNNOAMMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15550,9 +15552,9 @@ static char *xpm[] = {
 \"MONNAMMMMMMMMMMM\",
 \"MNNOAMMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15589,9 +15591,9 @@ static char *xpm[] = {
 \"MONAAMMMMMMMMMMM\",
 \"MNNOAMMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15628,9 +15630,9 @@ static char *xpm[] = {
 \"MOPPAMMMMMMMMMMM\",
 \"MNNOAMMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15667,9 +15669,9 @@ static char *xpm[] = {
 \"OCJAMMMMMMMMMMMM\",
 \"ONAMMMMMMMMMMMMM\",
 \"NNPAMMMMMMMMMMMM\",
-\"MAAMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MAAMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15706,9 +15708,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMAJJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15745,9 +15747,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15784,9 +15786,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15823,9 +15825,9 @@ static char *xpm[] = {
 \"MMMMJHDJAMMMMMMM\",
 \"MMMMMKJAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15862,9 +15864,9 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MMJAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15901,9 +15903,9 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MMJAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15940,9 +15942,9 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MMJAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -15979,9 +15981,9 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMJJAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16018,9 +16020,9 @@ static char *xpm[] = {
 \"MMMPAMMMMMMMMMMM\",
 \"MMOAMMMMMMMMMMMM\",
 \"MOAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16057,9 +16059,9 @@ static char *xpm[] = {
 \"MMMIAMMMMMMMMMMM\",
 \"MMOAMMMMMMMMMMMM\",
 \"MOAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16096,9 +16098,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMJPKAMM\",
 \"MMMMMMMMMMMJPKAM\",
 \"MMMMMMMMMMMMJAMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16135,9 +16137,9 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16174,9 +16176,9 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16213,9 +16215,9 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16252,9 +16254,9 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16291,9 +16293,9 @@ static char *xpm[] = {
 \"MMMKJAMMMMMMMMMM\",
 \"MMMMAMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16330,9 +16332,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16369,9 +16371,9 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16408,9 +16410,9 @@ static char *xpm[] = {
 \"MMMKJAOPMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16447,9 +16449,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16486,9 +16488,9 @@ static char *xpm[] = {
 \"MMMKJAMMMMMMMMMM\",
 \"MMMMAMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16525,9 +16527,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMCAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16564,9 +16566,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMCAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16603,9 +16605,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMAAJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16642,9 +16644,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMAFGMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16681,9 +16683,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMABJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16720,9 +16722,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16759,9 +16761,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAJKJMMM\",
 \"MMMMMMMMMMAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16798,9 +16800,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16837,9 +16839,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMAAJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16876,9 +16878,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMAAJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16915,9 +16917,9 @@ static char *xpm[] = {
 \"MMKJAOPMMMMMMMMM\",
 \"MNDAAMMMMMMMMMMM\",
 \"MAAAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16954,9 +16956,9 @@ static char *xpm[] = {
 \"MMKJAAMMMMMMMMMM\",
 \"MNDAAMMMMMMMMMMM\",
 \"MAAAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -16993,9 +16995,9 @@ static char *xpm[] = {
 \"MMMJKJAAMMMMMMMM\",
 \"MMJJAAMMMMMMMMMM\",
 \"MMAAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17032,9 +17034,9 @@ static char *xpm[] = {
 \"MMMJKJAAMMMMMMMM\",
 \"MMJJAAMMMMMMMMMM\",
 \"MMAAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17071,9 +17073,9 @@ static char *xpm[] = {
 \"MMNNPOPMMMMMMMMM\",
 \"MNNPPMMMMMMMMMMM\",
 \"MPPPMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17110,9 +17112,9 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"JJAAMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"JJAAMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17149,9 +17151,9 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"JJAAMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"JJAAMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17188,9 +17190,9 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"JJAAMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"JJAAMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17227,9 +17229,9 @@ static char *xpm[] = {
 \"MKJAAMMMMMMMMMMM\",
 \"KJAAMMMMMMMMMMMM\",
 \"JAAMMMMMMMMMMMMM\",
-\"AAMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"AAMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17266,9 +17268,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMOONOAM\",
 \"MMMMMMMMMMOOONOA\",
 \"MMMMMMMMMMOAMONO\",
-\"MMMMMMMMMMMMMMON\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMON\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17305,9 +17307,9 @@ static char *xpm[] = {
 \"MMKJAAMMMMMMMMMM\",
 \"MKJAAMMMMMMMMMMM\",
 \"JJAAMMMMMMMMMMMM\",
-\"JAAMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"JAAMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17344,9 +17346,9 @@ static char *xpm[] = {
 \"MKJAAMMMMMMMMMMM\",
 \"JJAAMMMMMMMMMMMM\",
 \"JAAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17383,9 +17385,9 @@ static char *xpm[] = {
 \"MKJAAMMMMMMMMMMM\",
 \"KJAAMMMMMMMMMMMM\",
 \"JAAMMMMMMMMMMMMM\",
-\"AAMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"AAMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17422,9 +17424,9 @@ static char *xpm[] = {
 \"MKJAMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17461,9 +17463,9 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MKJAMMMMMMMMMMMM\",
 \"KJAMMMMMMMMMMMMM\",
-\"MAMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MAMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17500,9 +17502,9 @@ static char *xpm[] = {
 \"MKJAAMMMMMMMMMMM\",
 \"KJAAMMMMMMMMMMMM\",
 \"JAAMMMMMMMMMMMMM\",
-\"AAMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"AAMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17539,9 +17541,9 @@ static char *xpm[] = {
 \"MMONOAAMMMMMMMMM\",
 \"MPNOAAMMMMMMMMMM\",
 \"PNPAAMMMMMMMMMMM\",
-\"OPAAMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"OPAAMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17578,9 +17580,9 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"JJAAMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"JJAAMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17617,9 +17619,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMCAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17656,9 +17658,9 @@ static char *xpm[] = {
 \"MMMKJAMMMMMMMMMM\",
 \"MMKJAMMMMMMMMMMM\",
 \"MMMAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17695,9 +17697,9 @@ static char *xpm[] = {
 \"MMMMKAMMMMMMMMMM\",
 \"MMMMMKAMMMMMMMMM\",
 \"MMMMMMKAMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17734,9 +17736,9 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MKJAMMMMMMMMMMMM\",
 \"MJAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17773,9 +17775,9 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MKJAMMMMMMMMMMMM\",
 \"MJAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17812,9 +17814,9 @@ static char *xpm[] = {
 \"MMMMMMMGAMMMMMMM\",
 \"MMMGGGFAMMMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17851,9 +17853,9 @@ static char *xpm[] = {
 \"MMMJJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"MMAMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMAMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17890,9 +17892,9 @@ static char *xpm[] = {
 \"MMMMKAAMMMMMMMMM\",
 \"MMMMMAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17929,9 +17931,9 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MJKAMMMMMMMMMMMM\",
 \"MMJAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -17968,9 +17970,9 @@ static char *xpm[] = {
 \"MMMAPKMMMKAMMMMM\",
 \"MMMMMAKKKAMMMMMM\",
 \"MMMMMMAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18007,9 +18009,9 @@ static char *xpm[] = {
 \"MMMMMPKMMAAMMMMM\",
 \"MMMMMKPAAAMMMMMM\",
 \"MMMMMKAAMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18046,9 +18048,9 @@ static char *xpm[] = {
 \"MMMMMPKJMMAAMMMM\",
 \"MMMMMPKMMAAMMMMM\",
 \"MMMMMKPAAAMMMMMM\",
-\"MMMMMKAAMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMKAAMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18085,9 +18087,9 @@ static char *xpm[] = {
 \"MMMMMPKMAAAMMMMM\",
 \"MMMMKKPAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18124,9 +18126,9 @@ static char *xpm[] = {
 \"MMMMMPLOMMAAMMMM\",
 \"MMMMMPLMMAAMMMMM\",
 \"MMMMMLPAAAMMMMMM\",
-\"MMMMMLAAMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMLAAMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18163,9 +18165,9 @@ static char *xpm[] = {
 \"MMMJAAMMMAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18202,9 +18204,9 @@ static char *xpm[] = {
 \"MMMMMMMCJJAAMMAM\",
 \"MMMMMMMOAOAMMMMM\",
 \"MMMMMMMMOAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18241,9 +18243,9 @@ static char *xpm[] = {
 \"MMMJAMAMJAMMMMMM\",
 \"MMMMJAMJAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18280,9 +18282,9 @@ static char *xpm[] = {
 \"MMMJAMAMJAMMMMMM\",
 \"MMMMJAMJAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18319,9 +18321,9 @@ static char *xpm[] = {
 \"MMMJAMAMJAMMMMMM\",
 \"MMMMJAMJAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18358,9 +18360,9 @@ static char *xpm[] = {
 \"MMMMKAMMKAMMMMMM\",
 \"MMMMMMMKAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18397,9 +18399,9 @@ static char *xpm[] = {
 \"MMMEBBBBPEAEAMMM\",
 \"MMMEEMMAMAEEMMMM\",
 \"MMMMEEEEEEEMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18436,9 +18438,9 @@ static char *xpm[] = {
 \"MMMEBBBBPEAEAMMM\",
 \"MMMEEMMAMAEEMMMM\",
 \"MMMMEEEEEEEMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18475,9 +18477,9 @@ static char *xpm[] = {
 \"MMMMMBBPPPAAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18514,9 +18516,9 @@ static char *xpm[] = {
 \"MMMMMMMAAMMAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18553,9 +18555,9 @@ static char *xpm[] = {
 \"MMMMMMMAAMMAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18592,9 +18594,9 @@ static char *xpm[] = {
 \"MMMMMMMAAMMAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18631,9 +18633,9 @@ static char *xpm[] = {
 \"MMMMMMPPAAAAMMMM\",
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18670,9 +18672,9 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18709,9 +18711,9 @@ static char *xpm[] = {
 \"MNNNBAMNBAAOOOOA\",
 \"MMNBAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18748,9 +18750,9 @@ static char *xpm[] = {
 \"MBBBOAMBBAAOOOCA\",
 \"MMBOAAMMMMMMKCAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18787,9 +18789,9 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18826,9 +18828,9 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18865,9 +18867,9 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18904,9 +18906,9 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18943,9 +18945,9 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -18982,9 +18984,9 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19021,9 +19023,9 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19060,9 +19062,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19099,9 +19101,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19138,9 +19140,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19177,9 +19179,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19216,9 +19218,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19255,9 +19257,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19294,9 +19296,9 @@ static char *xpm[] = {
 \"MMMMMMMMPPMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19333,9 +19335,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19372,9 +19374,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19411,9 +19413,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19450,9 +19452,9 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19489,9 +19491,9 @@ static char *xpm[] = {
 \"MNNNBAMNBAABBBBA\",
 \"MMNBAAMMMMMMBBAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19528,9 +19530,9 @@ static char *xpm[] = {
 \"MLLLCAMLCAACCCCA\",
 \"MMLCAAMMMMMMCCAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19567,9 +19569,9 @@ static char *xpm[] = {
 \"MNPJOAMNOAAOJPOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19606,9 +19608,9 @@ static char *xpm[] = {
 \"MNPMOAMNOAAOMPOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19645,9 +19647,9 @@ static char *xpm[] = {
 \"MNPNOAMNOAAOOMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19684,9 +19686,9 @@ static char *xpm[] = {
 \"MNPNOAMOOAAOOMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19723,9 +19725,9 @@ static char *xpm[] = {
 \"MNPNOAMNOAAOOMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19762,9 +19764,9 @@ static char *xpm[] = {
 \"MKKKJAMKJAAJJJJA\",
 \"MMKJAAMMMMMMJJAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19801,9 +19803,9 @@ static char *xpm[] = {
 \"MNPPOAMNOAAOMMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19840,9 +19842,9 @@ static char *xpm[] = {
 \"MNKKJAMNOAAOKKKA\",
 \"MMKJAAMMMMMMKKAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19879,9 +19881,9 @@ static char *xpm[] = {
 \"MNPBOAMNOAAOPMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19918,9 +19920,9 @@ static char *xpm[] = {
 \"MKPBJAMKJAAJPMJA\",
 \"MMKJAAMMMMMMJJAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19957,9 +19959,9 @@ static char *xpm[] = {
 \"MKKKJAMNOAAJJJJA\",
 \"MMKJAAMMMMMMJJAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -19996,9 +19998,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20035,9 +20037,9 @@ static char *xpm[] = {
 \"MMMMHHHCHHHAMMMM\",
 \"MMMMMAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20074,9 +20076,9 @@ static char *xpm[] = {
 \"MMMMNNNNNNNAMMMM\",
 \"MMMMMAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20113,9 +20115,9 @@ static char *xpm[] = {
 \"MMAMNNOOAOAAOAAM\",
 \"MMMOODOOAAOOOAMM\",
 \"MMNMAANMNAMOOMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20152,9 +20154,9 @@ static char *xpm[] = {
 \"MMMOGAFFFFGFAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20191,9 +20193,9 @@ static char *xpm[] = {
 \"MMMCCAJJJJCKAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20230,9 +20232,9 @@ static char *xpm[] = {
 \"MMMBBAMMMMBPAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20269,9 +20271,9 @@ static char *xpm[] = {
 \"MMMJJAAAAAJAAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20308,9 +20310,9 @@ static char *xpm[] = {
 \"MMMCCCCCCCAKAMMM\",
 \"MMMCCCCCCCAKAMMM\",
 \"MMMACCCCCCAAAMMM\",
-\"MMMMAAAAAAAAMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMAAAAAAAAMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20347,9 +20349,48 @@ static char *xpm[] = {
 \"MMMMNNNNNNNAAMMM\",
 \"MMMMNNNNNNNAAMMM\",
 \"MMMMMNNNNNAAMMMM\",
-\"MMMMMMAAAAAMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMAAAAAMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMKJJMJJKMMMMM\",
+\"MMMMMKJJJKAAMMMM\",
+\"MMMMMMKJKAAMMMMM\",
+\"MMMMMKKAKJAMMMMM\",
+\"MMMMKKKAKJJAMMMM\",
+\"MMMKKKAAKJJJAMMM\",
+\"MMKKKKAAKJJJJAMM\",
+\"MMKKKAAJJKJJJAMM\",
+\"MMKKKAAJJKJJJAMM\",
+\"MMMKKAJJJJKJAMMM\",
+\"MMMMAAAAAAAAMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20386,9 +20427,9 @@ static char *xpm[] = {
 \"MMOOOAMMAPOPAMMM\",
 \"MMMAAMMMMAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20425,9 +20466,9 @@ static char *xpm[] = {
 \"MNNNNNNNNNNAOOAM\",
 \"MNNNNNNNNNNAOOAM\",
 \"MMAANNNNNNAOOAAM\",
-\"MMMMAAAAAAAAAAMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMAAAAAAAAAAMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20464,9 +20505,9 @@ static char *xpm[] = {
 \"MMAAAAAAAAAAAPMM\",
 \"MMAAAAAAAAAAAPMM\",
 \"MMAAAAAAAAAAAPMM\",
-\"MMMPPPPPPPPPPPMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMPPPPPPPPPPPMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20503,9 +20544,9 @@ static char *xpm[] = {
 \"MMMPPPBPBPPPAAMM\",
 \"MMMMPBPPPBPAAMMM\",
 \"MMMMMPPPPPAAMMMM\",
-\"MMMMMMMPPAAMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMPPAAMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20542,9 +20583,9 @@ static char *xpm[] = {
 \"MMMMMMCAAMMMMMMM\",
 \"MMMMMMMAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20581,9 +20622,9 @@ static char *xpm[] = {
 \"MMMMMMNNAAMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20620,9 +20661,9 @@ static char *xpm[] = {
 \"MMMMMMKPMJAAMMMM\",
 \"MMMMMMMKJAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20659,9 +20700,9 @@ static char *xpm[] = {
 \"MMMMMMMKJAAMMMMM\",
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20698,9 +20739,9 @@ static char *xpm[] = {
 \"MMMMMMNPPOAAMMMM\",
 \"MMMMMMMNOAAMMMMM\",
 \"MMMMMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20737,9 +20778,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20776,9 +20817,9 @@ static char *xpm[] = {
 \"MMMMMMMNOAAMMMMM\",
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20815,9 +20856,9 @@ static char *xpm[] = {
 \"MMMMMAAAJJJJJAAM\",
 \"MMMMMMMMAJJJAAMM\",
 \"MMMMMMMMMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20854,9 +20895,9 @@ static char *xpm[] = {
 \"MMMMMAAAJJKKKAAM\",
 \"MMMMMMMMAJJKAAMM\",
 \"MMMMMMMMMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20893,9 +20934,9 @@ static char *xpm[] = {
 \"MMMMMAAAJJJJJAAM\",
 \"MMMMMMMMAJJJAAMM\",
 \"MMMMMMMMMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20932,9 +20973,9 @@ static char *xpm[] = {
 \"MMMMMAAAOOOOOAAM\",
 \"MMMMMMMMAOOOAAMM\",
 \"MMMMMMMMMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -20971,9 +21012,9 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21010,9 +21051,9 @@ static char *xpm[] = {
 \"MMMPMMMMMMMMMAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21049,9 +21090,9 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21088,9 +21129,9 @@ static char *xpm[] = {
 \"MMJMMMMMMMMMMAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21127,9 +21168,9 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21166,9 +21207,9 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21205,9 +21246,9 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21244,9 +21285,9 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21283,9 +21324,9 @@ static char *xpm[] = {
 \"MMMAAAAAAAAAAPMM\",
 \"MMMPPPPPPPPPPPMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21322,9 +21363,9 @@ static char *xpm[] = {
 \"MOOOOOOOOOOOOOAM\",
 \"MMLALALALALALAAM\",
 \"MMMAMAMAMAMAMAMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21361,9 +21402,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21400,9 +21441,9 @@ static char *xpm[] = {
 \"MMMMMPBPPPAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21439,9 +21480,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21478,9 +21519,9 @@ static char *xpm[] = {
 \"MMMMMCCCCCAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21517,9 +21558,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21556,9 +21597,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21595,9 +21636,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21634,9 +21675,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21673,9 +21714,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21712,9 +21753,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21751,9 +21792,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21790,9 +21831,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21829,9 +21870,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21868,9 +21909,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21907,9 +21948,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21946,9 +21987,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -21985,9 +22026,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22024,9 +22065,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22063,9 +22104,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22102,9 +22143,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22141,9 +22182,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22180,9 +22221,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22219,9 +22260,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22258,9 +22299,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22297,9 +22338,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22336,9 +22377,9 @@ static char *xpm[] = {
 \"MMMMMPPPAAAMMMMM\",
 \"MMMMMMAAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22375,9 +22416,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22414,9 +22455,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22453,9 +22494,9 @@ static char *xpm[] = {
 \"MMMMMMMKKKAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22492,9 +22533,9 @@ static char *xpm[] = {
 \"MMMMMMAKKKAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22531,9 +22572,9 @@ static char *xpm[] = {
 \"MMMMMMAKKKKAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22570,9 +22611,9 @@ static char *xpm[] = {
 \"MMMMMCKKKKKKAMMM\",
 \"MMMMMMMAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22609,9 +22650,9 @@ static char *xpm[] = {
 \"MMMMMCCCKKKKAMMM\",
 \"MMMMCCKJJJJKKAMM\",
 \"MMMMKJJJJJJJJAMM\",
-\"MMMMMMMAAAAAAAMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMAAAAAAAMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22648,9 +22689,9 @@ static char *xpm[] = {
 \"MMMMMMCKKKKAMMMM\",
 \"MMMMMMCKKKKAMMMM\",
 \"MMMMMMMAAAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22687,9 +22728,9 @@ static char *xpm[] = {
 \"MMMMMJJKKCLCAMMM\",
 \"MMMMMMJJCLCAAMMM\",
 \"MMMMMMMKCCAAMMMM\",
-\"MMMMMMMMAAAMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMAAAMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22726,9 +22767,9 @@ static char *xpm[] = {
 \"MMMMMMKKKKKAAMMM\",
 \"MMMMMMMKKKAAMMMM\",
 \"MMMMMMMMAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22765,9 +22806,9 @@ static char *xpm[] = {
 \"MMMMMCKKKKKKAMMM\",
 \"MMMMMMKKKKKAAMMM\",
 \"MMMMMMMKKKAAMMMM\",
-\"MMMMMMMMAAAMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMAAAMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22804,9 +22845,9 @@ static char *xpm[] = {
 \"MMMMMMABPPAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22843,9 +22884,9 @@ static char *xpm[] = {
 \"MMMMMMABPPAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22882,9 +22923,9 @@ static char *xpm[] = {
 \"CJKKKCJKKKCJJJAA\",
 \"CJCCCCJCCCCJJAAM\",
 \"CKKKKKKKKKKJAAMM\",
-\"MAAAAAAAAAAAAMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MAAAAAAAAAAAAMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22921,9 +22962,9 @@ static char *xpm[] = {
 \"CJKKKCJKKKCJJJAA\",
 \"CJCCCCJCCCCJJAAM\",
 \"CKKKKKKKKKKJAAMM\",
-\"MAAAAAAAAAAAAMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MAAAAAAAAAAAAMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22960,9 +23001,9 @@ static char *xpm[] = {
 \"NNBBBBBBBBBPPPAA\",
 \"NBBBBBBBBBBPPAAM\",
 \"NBBBBBBBBBBPAAMM\",
-\"MAAAAAAAAAAAAMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MAAAAAAAAAAAAMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -22999,9 +23040,9 @@ static char *xpm[] = {
 \"MMMCKKKKJJJJAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23038,9 +23079,9 @@ static char *xpm[] = {
 \"MMMCKKKKJJJJAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23077,9 +23118,9 @@ static char *xpm[] = {
 \"MMMCKKKKJJJJAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23116,9 +23157,9 @@ static char *xpm[] = {
 \"MMMCKKKKJJJJAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23155,9 +23196,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23194,9 +23235,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23233,9 +23274,9 @@ static char *xpm[] = {
 \"MMMAAAAAAAAAAAAM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23272,9 +23313,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMOPAMM\",
 \"MMMMMMMMMMMMAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23311,9 +23352,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMOPAMM\",
 \"MMMMMMMMMMMMAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23350,9 +23391,9 @@ static char *xpm[] = {
 \"MMMMMLHHHLAMMMMM\",
 \"MMMMLHHHHHLMMMMM\",
 \"MMMMMAAAAAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23389,9 +23430,9 @@ static char *xpm[] = {
 \"MMMMMMLHHHLAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23428,9 +23469,9 @@ static char *xpm[] = {
 \"MMMMMMLHHHLAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23467,9 +23508,9 @@ static char *xpm[] = {
 \"MMAAAAPPPAAAAAPM\",
 \"MMAAAAAAAAAAAAPM\",
 \"MMMPPPPPPPPPPPPM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23506,9 +23547,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMBBBAM\",
 \"MMMMMMMMMMMMBBAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23545,9 +23586,9 @@ static char *xpm[] = {
 \"MMMMKKKKJJAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23584,9 +23625,9 @@ static char *xpm[] = {
 \"MMMBPAAMBPAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23623,9 +23664,9 @@ static char *xpm[] = {
 \"MMMMMOAMMMMMOAMM\",
 \"MMMMMMOOAMMOAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23662,9 +23703,9 @@ static char *xpm[] = {
 \"MPPPPPPPAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23701,9 +23742,9 @@ static char *xpm[] = {
 \"MMMMMMPPPAMMMMMM\",
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23740,9 +23781,9 @@ static char *xpm[] = {
 \"MMPPAAAPPKAAMMMM\",
 \"MMMPPPPPAAAMMMMM\",
 \"MMMMMAAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23779,9 +23820,9 @@ static char *xpm[] = {
 \"MMMMMMJAMJJAMMMM\",
 \"MMMMMMMJJJAMMMMM\",
 \"MMMMMMMMAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23818,9 +23859,9 @@ static char *xpm[] = {
 \"MMMMMBPPPMAMMMMM\",
 \"MMMMMABPMAMMMMMM\",
 \"MMMMMMAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23857,9 +23898,9 @@ static char *xpm[] = {
 \"MMMMMMMKJAMMMMMM\",
 \"MMMMMMMKJAMMMMMM\",
 \"MMMMMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23896,9 +23937,9 @@ static char *xpm[] = {
 \"MMMMBBPPPMMAAMMM\",
 \"MMMMMBPPPMAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23935,9 +23976,9 @@ static char *xpm[] = {
 \"MMMJKKKKJJJJAMMM\",
 \"MMMMJJKKJJJAAMMM\",
 \"MMMMMJJJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -23974,9 +24015,9 @@ static char *xpm[] = {
 \"MMMMNNAAMMMMMMMM\",
 \"MMMMMAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24013,9 +24054,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24052,9 +24093,9 @@ static char *xpm[] = {
 \"MMMMMMPPPAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24091,9 +24132,9 @@ static char *xpm[] = {
 \"MMMAAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24130,9 +24171,9 @@ static char *xpm[] = {
 \"MMMAAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24169,9 +24210,9 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MJJAMMMMMMMMMMMM\",
 \"MMAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24208,9 +24249,9 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MJJAMMMMMMMMMMMM\",
 \"MMAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24247,9 +24288,9 @@ static char *xpm[] = {
 \"MMMMNNPAAAMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24286,9 +24327,9 @@ static char *xpm[] = {
 \"MMMMNNPAAAMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24325,9 +24366,9 @@ static char *xpm[] = {
 \"MMMMNNPAAAMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24364,9 +24405,9 @@ static char *xpm[] = {
 \"MMMMNNPAAAMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24403,9 +24444,9 @@ static char *xpm[] = {
 \"MMMMMKKKKKKMAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24442,9 +24483,9 @@ static char *xpm[] = {
 \"MMMMMKKKKKKMAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24481,9 +24522,9 @@ static char *xpm[] = {
 \"MMMMMAAKKAAAMMMM\",
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24520,9 +24561,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24559,9 +24600,9 @@ static char *xpm[] = {
 \"MMMMMJJJJJJAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24598,9 +24639,9 @@ static char *xpm[] = {
 \"MMMMMJJJJJJAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24637,9 +24678,9 @@ static char *xpm[] = {
 \"MKJAMMMMMMMMMMMM\",
 \"MMAMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24676,9 +24717,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMOAMMMM\",
 \"MOAMMMMMMMOAMMMM\",
 \"MMOOAMMOOOAMMMMM\",
-\"MMMMOOOAAMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMOOOAAMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24715,9 +24756,9 @@ static char *xpm[] = {
 \"MMMMMMMMHDDAMMMM\",
 \"MMMMMMMMMAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24754,9 +24795,9 @@ static char *xpm[] = {
 \"MMMMMOHHHHAMMAMM\",
 \"MMMMMMHHHAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24779,23 +24820,23 @@ static char *xpm[] = {
 \"P c #6C91B6\",
 /* pixels */
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMCAMMMMMMM\",
-\"MMMMMMCACAMMMMMM\",
-\"MMMMMMMCAMMMMMMM\",
-\"MMMMMMOHCAMMMMMM\",
-\"MMMMMOHHHCAMMMMM\",
-\"MMMMMOHHHCAMMMMM\",
-\"MMMMMOHHHCAAMMMM\",
-\"MMMMHOHHHCHAMMMM\",
-\"MMMHOOHHHCOCAMMM\",
-\"MMMHHOOOOOHCAMMM\",
-\"MMMMHHHHHHCAAMMM\",
-\"MMMMMAACCAAAMMMM\",
+\"MMMMMMMOAMMMMMMM\",
+\"MMMMMMOAOAMMMMMM\",
+\"MMMMMMMOAMMMMMMM\",
+\"MMMMMMNOPAMMMMMM\",
+\"MMMMMNOOOPAMMMMM\",
+\"MMMMMNOOOPAMMMMM\",
+\"MMMMMNOOOPAAMMMM\",
+\"MMMMONOOOPOAMMMM\",
+\"MMMONNOOOPNPAMMM\",
+\"MMMOONNNNNOPAMMM\",
+\"MMMMOOOOOOPAAMMM\",
+\"MMMMMAAPPAAAMMMM\",
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24832,9 +24873,9 @@ static char *xpm[] = {
 \"MMMMMODOODAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24871,9 +24912,9 @@ static char *xpm[] = {
 \"MMMLNAAMDMNPAMMM\",
 \"MMMMAAMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24910,9 +24951,9 @@ static char *xpm[] = {
 \"MMMMPOOOPAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24949,9 +24990,9 @@ static char *xpm[] = {
 \"MMMMMJJAJAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -24988,9 +25029,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25027,9 +25068,9 @@ static char *xpm[] = {
 \"DKKKKAJJAJDAJJAM\",
 \"KKKKKKKKKJJJAJAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25066,9 +25107,9 @@ static char *xpm[] = {
 \"MMMMOAAAMMOAAMMM\",
 \"MMMMMOOOOOAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25105,9 +25146,9 @@ static char *xpm[] = {
 \"MMMMMFFAMMMMMMMM\",
 \"MMMMMFFFAMMMMMMM\",
 \"MMMMMFFFFAMMMMMM\",
-\"MMMMMMFFFFAMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMFFFFAMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25144,9 +25185,9 @@ static char *xpm[] = {
 \"MMMMOAMMMMMMMMMM\",
 \"MMMOAMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25183,9 +25224,9 @@ static char *xpm[] = {
 \"MMMMMKAAKAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25222,9 +25263,9 @@ static char *xpm[] = {
 \"MMMMMMAKKJAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25261,9 +25302,9 @@ static char *xpm[] = {
 \"MMMMFFFMMAAMMMMM\",
 \"MMMMMAAAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25300,9 +25341,9 @@ static char *xpm[] = {
 \"MMMFKAGGGFAAMMMM\",
 \"MMMMMFFFAAAMMMMM\",
 \"MMMMMMAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25339,9 +25380,9 @@ static char *xpm[] = {
 \"MMJHOOOOHHJAAMMM\",
 \"MMMMHHHHJAAAMMMM\",
 \"MMMMMAAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25378,9 +25419,9 @@ static char *xpm[] = {
 \"MMCDAAMMMMMMMMMM\",
 \"MMCAAMMMMMMMMMMM\",
 \"MMMAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25417,9 +25458,9 @@ static char *xpm[] = {
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25456,9 +25497,9 @@ static char *xpm[] = {
 \"MMMMMMMMAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25495,9 +25536,9 @@ static char *xpm[] = {
 \"MMMMCCCKJAAAMMMM\",
 \"MMMMMAAAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25534,9 +25575,9 @@ static char *xpm[] = {
 \"MMMMHOOHHAAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25573,9 +25614,9 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25612,9 +25653,9 @@ static char *xpm[] = {
 \"MMIIIAAMMMMMMMMM\",
 \"MMMIAAMMMMMMMMMM\",
 \"MMMMAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25651,9 +25692,9 @@ static char *xpm[] = {
 \"MMMMLLLLAAMMMMMM\",
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25690,9 +25731,9 @@ static char *xpm[] = {
 \"MMMMOOOOOOOAAMMM\",
 \"MMMMMAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25729,9 +25770,9 @@ static char *xpm[] = {
 \"MMMMMMMAOOAMMMMM\",
 \"MMMMMMMMMAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25768,9 +25809,9 @@ static char *xpm[] = {
 \"MMMMKLOLLOKAAMMM\",
 \"MMMMKKKKKKKAMMMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25807,9 +25848,9 @@ static char *xpm[] = {
 \"MMMAKOLOOOLLKJAA\",
 \"MMMMKLOLLLLOKAAM\",
 \"MMMMKKKKKKKKKAMM\",
-\"MMMMMAAAAAAAAMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMAAAAAAAAMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25846,9 +25887,9 @@ static char *xpm[] = {
 \"MMMAKOLELELLKJAM\",
 \"MMMMKLLLLLLOKAAM\",
 \"MMMMKKKKKKKKKAMM\",
-\"MMMMMAAAAAAAAMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMAAAAAAAAMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25885,9 +25926,9 @@ static char *xpm[] = {
 \"MMMAKOLEEELLKJAM\",
 \"MMMMKLOLLLLOKAAM\",
 \"MMMMKKKKKKKKKAMM\",
-\"MMMMMAAAAAAAAMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMAAAAAAAAMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25924,9 +25965,9 @@ static char *xpm[] = {
 \"MMMMMBPPMAMMMMMM\",
 \"MMMMMMAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -25963,9 +26004,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26002,9 +26043,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26041,9 +26082,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26080,9 +26121,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26119,9 +26160,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26158,9 +26199,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26197,9 +26238,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26236,9 +26277,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26275,9 +26316,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26314,9 +26355,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26353,9 +26394,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26392,9 +26433,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26431,9 +26472,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26470,9 +26511,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26509,9 +26550,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26548,9 +26589,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26587,9 +26628,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26626,9 +26667,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26665,9 +26706,9 @@ static char *xpm[] = {
 \"MMMMAAAAPMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26704,9 +26745,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26743,9 +26784,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26782,9 +26823,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26821,9 +26862,9 @@ static char *xpm[] = {
 \"MMMMAAAAPMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26860,9 +26901,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26899,9 +26940,9 @@ static char *xpm[] = {
 \"MMMMAAAAPMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26938,9 +26979,9 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -26977,9 +27018,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27016,9 +27057,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27055,9 +27096,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27094,9 +27135,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27133,9 +27174,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27172,9 +27213,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27211,9 +27252,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27250,9 +27291,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27289,9 +27330,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27328,9 +27369,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27367,9 +27408,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27406,9 +27447,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27445,9 +27486,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27484,9 +27525,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27523,9 +27564,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27562,9 +27603,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27601,9 +27642,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27640,9 +27681,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27679,9 +27720,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27718,9 +27759,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27757,9 +27798,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27796,9 +27837,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27835,9 +27876,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27874,9 +27915,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27913,9 +27954,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27952,9 +27993,9 @@ static char *xpm[] = {
 \"MOOOOOOOOOOOOAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -27991,9 +28032,9 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28030,9 +28071,9 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28069,9 +28110,9 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28108,9 +28149,9 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJOOOOOJAMMMM\",
 \"MMMMMMOOJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28147,9 +28188,9 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28186,9 +28227,9 @@ static char *xpm[] = {
 \"MMJJLLOKKCOAAMMM\",
 \"MMMMJJJOLLJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28225,9 +28266,9 @@ static char *xpm[] = {
 \"MMJJOLOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28264,9 +28305,9 @@ static char *xpm[] = {
 \"MMPPOOOPPEOAAMMM\",
 \"MMMMPPPOOOPAMMMM\",
 \"MMMMMMMPPPAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28303,9 +28344,9 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28342,9 +28383,9 @@ static char *xpm[] = {
 \"MMPNOOONNNOAAMMM\",
 \"MMMMPNNOOONAMMMM\",
 \"MMMMMMMPNNAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28381,9 +28422,9 @@ static char *xpm[] = {
 \"MMIIOOOIICOAAMMM\",
 \"MMMMIIIOOOIAMMMM\",
 \"MMMMMMMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28420,9 +28461,9 @@ static char *xpm[] = {
 \"MMDDOOODDCOAAMMM\",
 \"MMMMDDDOOODAMMMM\",
 \"MMMMMMMDDDAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28459,9 +28500,9 @@ static char *xpm[] = {
 \"MMCCOOOCCLOAAMMM\",
 \"MMMMCCCOOOCAMMMM\",
 \"MMMMMMMCCCAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28498,9 +28539,9 @@ static char *xpm[] = {
 \"MMHHOOOHHLOAAMMM\",
 \"MMMMHHHOOOHAMMMM\",
 \"MMMMMMMHHHAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28537,9 +28578,9 @@ static char *xpm[] = {
 \"MMEEOOOIIBOAAMMM\",
 \"MMMMEEEOOOEAMMMM\",
 \"MMMMMMMEEEAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28576,9 +28617,9 @@ static char *xpm[] = {
 \"MMGGOOOGGHOAAMMM\",
 \"MMMMGGGOOOGAMMMM\",
 \"MMMMMMMGGGAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28615,9 +28656,9 @@ static char *xpm[] = {
 \"MMFFOOOFFGOAAMMM\",
 \"MMMMFFFOOOFAMMMM\",
 \"MMMMMMMFFFAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28654,9 +28695,9 @@ static char *xpm[] = {
 \"MMBBOOOBBBOAAMMM\",
 \"MMMMFBBOOOBAMMMM\",
 \"MMMMMMMFBBAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28693,9 +28734,9 @@ static char *xpm[] = {
 \"MMBBOOOBBBOAAMMM\",
 \"MMMMBBBOOOBAMMMM\",
 \"MMMMMMMBBBAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28732,9 +28773,9 @@ static char *xpm[] = {
 \"MMBBOOOBBBOAAMMM\",
 \"MMMMBBBOOOBAMMMM\",
 \"MMMMMMMBBBAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28771,9 +28812,9 @@ static char *xpm[] = {
 \"MMEEOOOEEBOAAMMM\",
 \"MMMMEEEOOOEAMMMM\",
 \"MMMMMMMEEEAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28810,9 +28851,9 @@ static char *xpm[] = {
 \"MMEEOOOEEBOAAMMM\",
 \"MMMMEEEOOOEAMMMM\",
 \"MMMMMMMEEEAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28849,9 +28890,9 @@ static char *xpm[] = {
 \"MMIIOOOIICOAAMMM\",
 \"MMMMIIIOOOIAMMMM\",
 \"MMMMMMMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28888,9 +28929,9 @@ static char *xpm[] = {
 \"MMIIOOOEDCOAAMMM\",
 \"MMMMIIIOOOIAMMMM\",
 \"MMMMMMMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28927,9 +28968,9 @@ static char *xpm[] = {
 \"MMIIOOOIBCOAAMMM\",
 \"MMMMIIIOOOIAMMMM\",
 \"MMMMMMMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -28966,9 +29007,9 @@ static char *xpm[] = {
 \"MMKKOOOKCCOAAMMM\",
 \"MMMMKKKOOOKAMMMM\",
 \"MMMMMMMKKKAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29005,9 +29046,9 @@ static char *xpm[] = {
 \"MMEDOOODDCOAAMMM\",
 \"MMMMEFDOOOFAMMMM\",
 \"MMMMMMMEFDAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29044,9 +29085,9 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29083,9 +29124,9 @@ static char *xpm[] = {
 \"MMJJOOOJJKOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29122,9 +29163,9 @@ static char *xpm[] = {
 \"MMPPOOOPPBOAAMMM\",
 \"MMMMPPPOOOPAMMMM\",
 \"MMMMMMMPPPAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29161,9 +29202,9 @@ static char *xpm[] = {
 \"MMJKOOKKKKOAAMMM\",
 \"MMMMJKLOOOKAMMMM\",
 \"MMMMMMJJKKAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29200,9 +29241,9 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MKAKAMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29239,9 +29280,9 @@ static char *xpm[] = {
 \"MMCCOOOCCCOAAMMM\",
 \"MMMMCCCOOOCAMMMM\",
 \"MMMMMMMCCCAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29278,9 +29319,9 @@ static char *xpm[] = {
 \"MMCJOOOCKCOAAMMM\",
 \"MMMMJCJOOOJAMMMM\",
 \"MMMMMMMJCJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29317,9 +29358,9 @@ static char *xpm[] = {
 \"MMPPOOOPPBOAAMMM\",
 \"MMMMPPPOOOPAMMMM\",
 \"MMMMMMMPPPAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29356,9 +29397,9 @@ static char *xpm[] = {
 \"MMHHOOOHHNOAAMMM\",
 \"MMMMHHHOOOHAMMMM\",
 \"MMMMMMMHHHAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29395,9 +29436,9 @@ static char *xpm[] = {
 \"MMPPOONPPBOAAMMM\",
 \"MMMNMPPOOOPAMMMM\",
 \"MMMMMMMPPPANMMMM\",
-\"MMMMMMMNMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMNMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29434,9 +29475,9 @@ static char *xpm[] = {
 \"MMPPOOOPPBOAAMMM\",
 \"MMMMPPPOOOPAMMMM\",
 \"MMMMMMMPPPAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29473,9 +29514,9 @@ static char *xpm[] = {
 \"MMJJPPPKKJPAAMMM\",
 \"MMMMJJJPPPJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29512,9 +29553,9 @@ static char *xpm[] = {
 \"MMJJOOCKKKOAAMMM\",
 \"MMMMJJJOCOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29551,9 +29592,9 @@ static char *xpm[] = {
 \"MMJJLLLOOOLAAMMM\",
 \"MMMMJJJLLLJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29590,9 +29631,9 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29629,9 +29670,9 @@ static char *xpm[] = {
 \"MMAAOOOAAAOMMMMM\",
 \"MMMMAAAOOOAMMMMM\",
 \"MMMMMMMAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29668,9 +29709,9 @@ static char *xpm[] = {
 \"MMMBAFMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29707,9 +29748,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29746,9 +29787,9 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29785,9 +29826,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29824,9 +29865,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29863,9 +29904,9 @@ static char *xpm[] = {
 \"MMMNAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29902,9 +29943,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29941,9 +29982,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -29980,9 +30021,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30019,9 +30060,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30058,9 +30099,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30097,9 +30138,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30136,9 +30177,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30175,9 +30216,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30214,9 +30255,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30253,9 +30294,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30292,9 +30333,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30331,9 +30372,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30370,9 +30411,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30409,9 +30450,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30448,9 +30489,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30487,9 +30528,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30526,9 +30567,9 @@ static char *xpm[] = {
 \"MMNOAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30565,9 +30606,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30604,9 +30645,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30643,9 +30684,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30682,9 +30723,9 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30721,9 +30762,9 @@ static char *xpm[] = {
 \"MMMMAAAALAHAMHAM\",
 \"MMMMMMHAMMMMMMMM\",
 \"MMMMMMMMMHAMMMMM\",
-\"MMMMMMMMMMMHAMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMHAMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30760,9 +30801,9 @@ static char *xpm[] = {
 \"MMMMMMOOOAAAMMMM\",
 \"MMMMMMMOAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30799,9 +30840,9 @@ static char *xpm[] = {
 \"MMMMMMOOOAAAMMMM\",
 \"MMMMMMMOAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30838,9 +30879,9 @@ static char *xpm[] = {
 \"MMMMMMDDDAAAMMMM\",
 \"MMMMMMMDAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30877,9 +30918,9 @@ static char *xpm[] = {
 \"MMMMMMCCCAAAMMMM\",
 \"MMMMMMMCAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30916,9 +30957,9 @@ static char *xpm[] = {
 \"MMMMMMBBBAAAMMMM\",
 \"MMMMMMMBAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30955,9 +30996,9 @@ static char *xpm[] = {
 \"MMMMMMAAAPPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -30994,9 +31035,9 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31033,9 +31074,9 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31072,9 +31113,9 @@ static char *xpm[] = {
 \"MMMMMMHHHAAAMMMM\",
 \"MMMMMMMHAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31111,9 +31152,9 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31150,9 +31191,9 @@ static char *xpm[] = {
 \"MMMMMMKKKAAAMMMM\",
 \"MMMMMMMKAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31189,9 +31230,9 @@ static char *xpm[] = {
 \"MMMMMMKKKAAAMMMM\",
 \"MMMMMMMKAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31228,9 +31269,9 @@ static char *xpm[] = {
 \"MMMMMMAAAPPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31267,9 +31308,9 @@ static char *xpm[] = {
 \"MMMMMMOOOAAAMMMM\",
 \"MMMMMMMOAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31306,9 +31347,9 @@ static char *xpm[] = {
 \"MMMMMMHHHAAAMMMM\",
 \"MMMMMMMHAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31345,9 +31386,9 @@ static char *xpm[] = {
 \"MMMMMMDDDAAAMMMM\",
 \"MMMMMMMDAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31384,9 +31425,9 @@ static char *xpm[] = {
 \"MMMMMMIIIAAAMMMM\",
 \"MMMMMMMIAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31423,9 +31464,9 @@ static char *xpm[] = {
 \"MMMMMMDDDAAAMMMM\",
 \"MMMMMMMDAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31462,9 +31503,9 @@ static char *xpm[] = {
 \"MMMMMMIIIAAAMMMM\",
 \"MMMMMMMIAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31501,9 +31542,9 @@ static char *xpm[] = {
 \"MMMMMMAAAPPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31540,9 +31581,9 @@ static char *xpm[] = {
 \"MMMMMMCCCAAAMMMM\",
 \"MMMMMMMCAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31579,9 +31620,9 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31618,9 +31659,9 @@ static char *xpm[] = {
 \"MMMMMMOOOAAAMMMM\",
 \"MMMMMMMOAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31657,9 +31698,9 @@ static char *xpm[] = {
 \"MMMMMMBBBAAAMMMM\",
 \"MMMMMMMBAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31696,9 +31737,9 @@ static char *xpm[] = {
 \"MMMMMMDDDAAAMMMM\",
 \"MMMMMMMDAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31735,9 +31776,9 @@ static char *xpm[] = {
 \"MMMMMMKKKAAAMMMM\",
 \"MMMMMMMKAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31774,9 +31815,9 @@ static char *xpm[] = {
 \"MMMMMMCCCAAAMMMM\",
 \"MMMMMMMCAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31813,9 +31854,9 @@ static char *xpm[] = {
 \"MMMMMMHHHAAAMMMM\",
 \"MMMMMMMHAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31852,9 +31893,9 @@ static char *xpm[] = {
 \"MMMMMMAAAPPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31891,9 +31932,9 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31930,9 +31971,9 @@ static char *xpm[] = {
 \"MMMMMMIIIAAAMMMM\",
 \"MMMMMMMIAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -31969,9 +32010,9 @@ static char *xpm[] = {
 \"MMMPPPPPPPPPAAAM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32008,9 +32049,9 @@ static char *xpm[] = {
 \"MMMPPPPPPPPPAAAM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32047,9 +32088,48 @@ static char *xpm[] = {
 \"MMMPPPPPPPPPAAAM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMPPPPPMMMMMM\",
+\"MMMMPNPPPPPMMMMM\",
+\"MMMPNPPPPPPPAMMM\",
+\"MMPPPPPPPPPPPAAM\",
+\"MMPPPPPPPPPPPAAA\",
+\"MMMPPPPPPPPPAAAM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32086,9 +32166,9 @@ static char *xpm[] = {
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32125,9 +32205,9 @@ static char *xpm[] = {
 \"MMMMJJJJJJJJAAMM\",
 \"MMMMMMJJJJAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32164,9 +32244,9 @@ static char *xpm[] = {
 \"MMMJKKKKJJJJJAMM\",
 \"MMMMJJKKKJJJAAMM\",
 \"MMMMMJJJJJJAAMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32203,9 +32283,9 @@ static char *xpm[] = {
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32242,9 +32322,9 @@ static char *xpm[] = {
 \"MMMMMMMMMPAPPMPM\",
 \"MMMMMMMMMMPMAPAP\",
 \"MMMMMMMMMMMPPMPA\",
-\"MMMMMMMMMMMMAAMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMAAMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32281,9 +32361,9 @@ static char *xpm[] = {
 \"MMMMMHHHHMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32320,9 +32400,9 @@ static char *xpm[] = {
 \"MMMMMHHHHMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\"
-};" 'xpm t)
-   (create-image "/* XPM */
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32361,7 +32441,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32400,7 +32480,7 @@ static char *xpm[] = {
 \"AMMMAMMPPPPMMMMA\",
 \"AOPPAMMPPPPMOPMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32439,7 +32519,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32478,7 +32558,7 @@ static char *xpm[] = {
 \"AMMMAMMPPPPMMMMA\",
 \"AOPPAMMPPPPMOPMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32517,7 +32597,7 @@ static char *xpm[] = {
 \"AMMMAMMPPPPMMMMA\",
 \"AOPPAMMPPPPMOPMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32556,7 +32636,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32595,7 +32675,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32634,7 +32714,7 @@ static char *xpm[] = {
 \"AMMMAMMPPPPMMMMA\",
 \"AOPPAMMPPPPMOPMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32673,7 +32753,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32712,7 +32792,7 @@ static char *xpm[] = {
 \"AMMMAMMPPPPMMMMA\",
 \"AOPPAMMPPPPMOPMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32751,7 +32831,7 @@ static char *xpm[] = {
 \"AMMMAMMPPPPMMMMA\",
 \"AOPPAMMPPPPMOPMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32790,7 +32870,7 @@ static char *xpm[] = {
 \"AMMMAMMPPPPMMMMA\",
 \"AOPPAMMPPPPMOPMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32829,7 +32909,7 @@ static char *xpm[] = {
 \"AAMMMMMMMMMMMMAA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32868,7 +32948,7 @@ static char *xpm[] = {
 \"AMMMMMMMMMMMMMMA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32907,7 +32987,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32946,7 +33026,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -32985,7 +33065,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33024,7 +33104,7 @@ static char *xpm[] = {
 \"MBPMBPMBPMPPMPPM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33063,7 +33143,7 @@ static char *xpm[] = {
 \"MMMJJJJMJMJJJAMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33102,7 +33182,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33141,7 +33221,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33180,7 +33260,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33219,7 +33299,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAMA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33258,7 +33338,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAMA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33297,7 +33377,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAMA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33336,7 +33416,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAMA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33375,7 +33455,7 @@ static char *xpm[] = {
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33414,7 +33494,7 @@ static char *xpm[] = {
 \"FFFFFFFFFFFFFFFM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33453,7 +33533,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33492,7 +33572,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33531,7 +33611,7 @@ static char *xpm[] = {
 \"MMMMAAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33570,7 +33650,7 @@ static char *xpm[] = {
 \"MEMMEEMMMEMMEEEM\",
 \"EEMMMMEEEMMMMMEE\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33609,7 +33689,7 @@ static char *xpm[] = {
 \"NNNNNNNNNNNNNNNN\",
 \"NNNNNNNNNNNNNNNN\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33648,7 +33728,7 @@ static char *xpm[] = {
 \"DDDDKKDDDDCDDDDD\",
 \"DDDDDDDDDDDKDDDD\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33687,7 +33767,7 @@ static char *xpm[] = {
 \"EEJJJJJJJJJJJAAA\",
 \"EJKKKKKKKKKKKJAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33726,7 +33806,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAEAAAEAAAEAAAE\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33765,7 +33845,7 @@ static char *xpm[] = {
 \"MMMAAAMAAAMAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33804,7 +33884,7 @@ static char *xpm[] = {
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33843,7 +33923,7 @@ static char *xpm[] = {
 \"BBBBBBBBBBBBBBBB\",
 \"BBBBBBBBBBBBBBBB\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33882,7 +33962,7 @@ static char *xpm[] = {
 \"BBBBBBOOOOBBBBBB\",
 \"BBBBBBBBBBBBBBBB\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33921,7 +34001,7 @@ static char *xpm[] = {
 \"EEEEEEEEEEEEEEEE\",
 \"EEEEEEEEEEEEEEEE\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33960,7 +34040,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -33999,7 +34079,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34038,7 +34118,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34077,7 +34157,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34116,7 +34196,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34155,7 +34235,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34194,7 +34274,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34233,7 +34313,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34272,7 +34352,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34311,7 +34391,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34350,7 +34430,7 @@ static char *xpm[] = {
 \"AMPPPPPPPPPPPPPA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34389,7 +34469,7 @@ static char *xpm[] = {
 \"AMPPPPPPPPPPPPPA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34428,7 +34508,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34467,7 +34547,7 @@ static char *xpm[] = {
 \"AMPPPPPPPPPPPPPA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34506,7 +34586,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34545,7 +34625,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34584,7 +34664,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34623,7 +34703,7 @@ static char *xpm[] = {
 \"MOAMMMMMMMMMMMMM\",
 \"OAMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34662,7 +34742,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34701,7 +34781,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34740,7 +34820,7 @@ static char *xpm[] = {
 \"MMMMMAAAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34779,7 +34859,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34818,7 +34898,7 @@ static char *xpm[] = {
 \"MMMMMMMMMNNMMMMM\",
 \"MMMMMMMMNNMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34857,7 +34937,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34896,7 +34976,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMNMMM\",
 \"MMMMMMMMMMMMNNNN\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34935,7 +35015,7 @@ static char *xpm[] = {
 \"MMMMNMMMMMMMMMMM\",
 \"NNNNNMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -34974,7 +35054,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35013,7 +35093,7 @@ static char *xpm[] = {
 \"MMMMMNNNNNNMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35052,7 +35132,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35091,7 +35171,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35130,7 +35210,7 @@ static char *xpm[] = {
 \"MMMMMIMMMMIMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35169,7 +35249,7 @@ static char *xpm[] = {
 \"MCCCCCCCCCCCCCCM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35208,7 +35288,7 @@ static char *xpm[] = {
 \"MMMMMMMHHMMMMMMM\",
 \"MMMMMMMHHMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35247,7 +35327,7 @@ static char *xpm[] = {
 \"MMMMMNNNNNMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35286,7 +35366,7 @@ static char *xpm[] = {
 \"AAAADDDDDDMMMMMM\",
 \"AAAADDDDDDMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35325,7 +35405,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35364,7 +35444,7 @@ static char *xpm[] = {
 \"MMMMDDDDDDDDDDDD\",
 \"MMMMDDDDDDDDDDDA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35403,7 +35483,7 @@ static char *xpm[] = {
 \"DDDDDDDMMMMMMMMM\",
 \"DDCCDDDMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35442,7 +35522,7 @@ static char *xpm[] = {
 \"MMMMMMDDDDDDDDAA\",
 \"MMMMMMMDDDDDDDAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35481,7 +35561,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAADDDD\",
 \"AAAAAAAAAAAAAADD\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35520,7 +35600,7 @@ static char *xpm[] = {
 \"DDDDDDDDDDDDDDDD\",
 \"DDDDDDDDDDDDDDAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35559,7 +35639,1762 @@ static char *xpm[] = {
 \"DDAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMAAA\",
+\"MMMMMMAMMMAAAAAA\",
+\"MMMMMMMMMAAAAAAA\",
+\"MMMMMMMMMAAAAAAM\",
+\"MMMMMMMMAAAAMMMA\",
+\"MMMAAAMAAAAMMMAA\",
+\"MAMMMAAAAAAMAAAA\",
+\"MMMMMAAAAAAMAAAA\",
+\"MMMMAAAAAAAMAAAA\",
+\"MMMMMMMMAAMMAAMM\",
+\"MMMMAAAAAAAAAAMM\",
+\"MMMAAAAMMAAAMMMM\",
+\"MMAAAAMMAAAAMMMM\",
+\"MMAAAMMAAAAAMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"AMMMMMMMMAAAAAAM\",
+\"AAAAAAMAAAAAAAAM\",
+\"AAAAAAMMMMMAAAAA\",
+\"MMMAAAMAAAAAAAAA\",
+\"AAAAAAMAAAAAAAAA\",
+\"AAAAAAMAAAAAAAAM\",
+\"AAMMMMMMMMMMMAMM\",
+\"MMAAAMAMMMMMAAAA\",
+\"MAMAMAMMMAMMMAAA\",
+\"MPPAMMMAAMMMMMAA\",
+\"MAMMMMMAMMMMAAAA\",
+\"MMMMMAMMAMMMPAAA\",
+\"MMMMMMMMAMAMAPAA\",
+\"MPAMMMAPAAAAAAAA\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMAMMMAMMM\",
+\"AAAAAMMMMMMMMMMM\",
+\"AAAAAAMMMAMMAMMM\",
+\"AAAAAAAMMMMMMMMM\",
+\"MMMMMMAAAAMMMMMM\",
+\"AAAAAMMAAAAMMMMM\",
+\"MMAAAAAAAAAAMMMM\",
+\"AAMAAMMMMAAAMMMM\",
+\"AAMAAAAAMAAAMMMM\",
+\"AAPAAMAAAAAAMAMM\",
+\"AAAMMMMMAAAAMMMM\",
+\"AAMAMMAMAAAAMMMM\",
+\"AMAAMMAMAAAAAMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMAAAMAMAAAMMMMM\",
+\"MMAAAMAAAAAMAPMM\",
+\"MMMAAMAAMMMMMMMA\",
+\"MMMAAAAAAMMMMPPM\",
+\"MMAAAMAAMMAMMPAP\",
+\"MAAAMMMAMMMMPMAP\",
+\"MAAAMAAAMAMMPMMP\",
+\"MAAAMAAAMMMAAAAP\",
+\"MAAAMAAAMMMMPAAA\",
+\"MAAAMMAAMMMMPPAA\",
+\"MMAAAMMAAMMMPAAP\",
+\"MMMAAAMMMAPMPPPP\",
+\"MMMMAAAMMMPMMPMA\",
+\"MMMMMAAMMMMMAAAM\",
+\"MMAMAMMMAAPMMMPA\",
+\"MMMMAMMMMMMMMMPA\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"APAAAMMPPAPAAAAA\",
+\"MAPAMMAMAAAPAAAM\",
+\"AAPMPAAMMAAAAAAM\",
+\"PAPPPAAAMMAAPAMM\",
+\"AAAPPAAAAPAAPMMA\",
+\"AAPPMPPPAAAAAMMA\",
+\"AAPAAAAAAAAAAAMM\",
+\"APPAAAAAAAAAAAMM\",
+\"AAAAAAAAAAAAPAAA\",
+\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAMAA\",
+\"AAAAAAAAAAAMHHMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMAAAMAMAMAAAAMM\",
+\"MMAAAAAMAMAAAAMM\",
+\"MMAAAAAMAMAAAAMM\",
+\"PMAAAAAMMMAAAAMM\",
+\"PMAAPAPAAMAAAAMM\",
+\"PMMMPMMAMMAAAMMM\",
+\"MMMAPMMAAAAAAMMM\",
+\"MPAAPAAAAAAAAMMM\",
+\"AAPMMMPAAAAAMMMM\",
+\"MMAAMPPAAMAMMMAM\",
+\"AMMMPPMMMMMMMMMM\",
+\"MAAAAPPAAMMMAMMM\",
+\"MMAAMPPMAAAMMMMM\",
+\"AMMMMMMAAAAAMMMM\",
+\"AAAMMMAAAAAAAMMM\",
+\"MMMMPPAAAAAAAAMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMAMMMMMMMAMMP\",
+\"MMMMAMMMMMMMAAMM\",
+\"MAMMAAMMMPMMAMAM\",
+\"MMMAAAMAMMPMMAAP\",
+\"MMMAAAAMMAAPMMAM\",
+\"MMMAAAAMMMMPMMMA\",
+\"MMMAAAAMMAMMAMMA\",
+\"MMMAAAAAMAAAMMMM\",
+\"MMMAAAAAMMAAMMMM\",
+\"MMMMAAAAAAAAAMMM\",
+\"MMMMMAAAAAAAAAAA\",
+\"MMMAMMAAAAAAAAAA\",
+\"MMMMMMMMAAMAAAAA\",
+\"MMMAMMMMMMMMAAAA\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"PPPAAAAAPAAAMAMM\",
+\"AAPPAAPPPPAMAMMM\",
+\"PPPPPPPPPPAMMAPP\",
+\"MPPAAMAAMAPAAMMM\",
+\"MMAAAAMAMMAAAPAA\",
+\"APPAPAPMAMAMPAAM\",
+\"AMMPPAAAMMMMMMMP\",
+\"AAMMMMMMMAMMMMMM\",
+\"PAPAMAAAAAAAAAAP\",
+\"AAMAPAAAAMMMMMMA\",
+\"AAAMAMPPMMMAAAAA\",
+\"AAAAAAMAMMAAAAAA\",
+\"AAAAAAAAAAAAAAAA\",
+\"AAAAMMMMMMMMMMAA\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMPMMAAAAAAAMM\",
+\"MMAMMAMAAMAMAAMM\",
+\"PPMMAMMAAMAMAAMM\",
+\"MMMAAAMAAMAMAAMM\",
+\"MAAAAAMAAAMMAAMM\",
+\"MMPAAMMAAAMAAAMM\",
+\"MAAAMMAAAMMAAAMM\",
+\"MAMAAMAAAAAAAAMM\",
+\"AAMAAAAAAMAAAAMM\",
+\"MMMAAAAAAAAAAAMM\",
+\"MAAAAAAAAMAAAMMM\",
+\"AAAAAAAAMMMMMMMM\",
+\"AAAAAAMMMMAMMMMM\",
+\"AAAMMMAMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMFFF\",
+\"MMMMMMFMMMFFFFFF\",
+\"MMMMMMMMMFFFFFFF\",
+\"MMMMMMMMMFFFFFFM\",
+\"MMMMMMMMFFFFMMMF\",
+\"MMMFFFMFFFFMMMFF\",
+\"MFMMMFFFFFFMFFFF\",
+\"MMMMMFFFFFFMFFFF\",
+\"MMMMFFFFFFFMFFFF\",
+\"MMMMMMMMFFMMFFMM\",
+\"MMMMFFFFFFFFFFMM\",
+\"MMMFFFFMMFFFMMMM\",
+\"MMFFFFMMFFFFMMMM\",
+\"MMFFFMMFFFFFMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"FMMMMMMMMFFFFFFM\",
+\"FFFFFFMFFFFFFFFM\",
+\"FFFFFFMMMMMFFFFF\",
+\"MMMFFFMFFFFFFFFF\",
+\"FFFFFFMFFFFFFFFF\",
+\"FFFFFFMFFFFFFFFM\",
+\"FFMMMMMMMMMMMFMM\",
+\"MMFFFMFMMMMMFFFF\",
+\"MHMFMFMMMFMMMFFF\",
+\"MGGFMMMFFMMMMMFF\",
+\"MHMMMMMFMMMMFFFF\",
+\"MMMMMFMMFMMMGFFF\",
+\"MMMMMMMMFMFMFGFF\",
+\"MGHMMMHGHHFFFFFF\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMFMMMFMMM\",
+\"FFFFFMMMMMMMMMMM\",
+\"FFFFFFMMMFMMFMMM\",
+\"FFFFFFFMMMMMMMMM\",
+\"MMMMMMFFFFMMMMMM\",
+\"FFFFFMMFFFFMMMMM\",
+\"MMFFFFFFFFFFMMMM\",
+\"FFMFFMMMMFFFMMMM\",
+\"FFMFFFFFMFFFMMMM\",
+\"FFGFFMFFFFFFMFMM\",
+\"FFFMMMMMFFFFMMMM\",
+\"FFMFMMFMFFFFMMMM\",
+\"FMFFMMFMFFFFFMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMFFFMFMFFFMMMMM\",
+\"MMFFFMFFFFFMFGMM\",
+\"MMMFFMFFMMMMMMMF\",
+\"MMMFFFFFFMMMMGGM\",
+\"MMFFFMFFMMFMMGFG\",
+\"MFFFMMMFMMMMGMFG\",
+\"MFFFMFFFMHMMGMMG\",
+\"MFFFMFFFMMMFFFFG\",
+\"MFFFMFFFMMMMGFHH\",
+\"MFFFMMFFMMMMGGHH\",
+\"MMFFFMMFFMMMGHHG\",
+\"MMMFFFMMMFGMGGGG\",
+\"MMMMFFFMMMGMMGMH\",
+\"MMMMMFFMMMMMHHFM\",
+\"MMFMFMMMFHGMMMGH\",
+\"MMMMFMMMMMMMMMGH\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"FGHFFMMGGFGHFFFF\",
+\"MHGHMMFMFFHGFHFM\",
+\"HFGMGHFMMHHHFFHM\",
+\"GFGGGHHHMMHHGFMM\",
+\"HHHGGHHHHGHHGMMF\",
+\"HHGGMGGGHHHHFMMF\",
+\"HHGHHHHHHHHHHFMM\",
+\"HGGHHHHHHHHHHHMM\",
+\"HHHHHHNNNNHHGHNH\",
+\"GHHHHHHHNHHHHHNH\",
+\"GHHGHGNNNNHHHHGF\",
+\"GGNHNHNNNNHHHGGF\",
+\"HHHHNHNNNHHHGGGG\",
+\"HGGNGHNNNHHHGGGF\",
+\"HHHHNHNHNMGGGMGF\",
+\"GGGGNHHHGGGMHHMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMFFFMFMFMFFFFMM\",
+\"MMFFFFFMFMFFFFMM\",
+\"MMFFFFFMFMFFFFMM\",
+\"GMFFFFFMMMFFFFMM\",
+\"GMFFGFGFFMFFFFMM\",
+\"GMMMGMGFMMFFFMMM\",
+\"MMMFGMMFFFFFFMMM\",
+\"MGFFFFFFFFFFFMMM\",
+\"FFGMMMGFFFFFMMMM\",
+\"MMFFMGGFFMFMMMFM\",
+\"FMMMGGMMMMMMMMMM\",
+\"MFFFFGGFFMMMFMMM\",
+\"MMHFMGGMFFFMMMMM\",
+\"HMMMMMMFFFFFMMMM\",
+\"HFHMMMFFFFFFFMMM\",
+\"MMMMGGFFFFFFFFMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMFMMMMMMMHMMG\",
+\"MMMMFMMMMMMMFHMM\",
+\"MFMMFFMMMGMMFMHM\",
+\"MMMFFFMFMMGMMFFG\",
+\"MMMFFFFMMFFGMMFM\",
+\"MMMFFFFMMMMGMMMF\",
+\"MMMFFFFMMFMMHMMF\",
+\"MMMFFFFFMFFFMMMM\",
+\"MMMFFFFFMMFFMMMM\",
+\"MMMMFFFFFFFFFMMM\",
+\"MMMMMFFFHFFFFFFF\",
+\"MMMFMMFFFFFFFFFF\",
+\"MMMMMMMMFFMFFFFF\",
+\"MMMFMMMMMMMMFFFF\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"GGGHHHHHGHHHMHMM\",
+\"HHGGHHGGGGHMFMMM\",
+\"GGGGGGGGGGFMMFGG\",
+\"MGGHFMFFMHGFFMMM\",
+\"MMHHHHMFMMFFHGHF\",
+\"HGGFGFGMHMHMGFFM\",
+\"FMMGGFFHMMMMMMMG\",
+\"HFMMMMMMMFMMMMMM\",
+\"GHGFMFFFFFFFFFFG\",
+\"HFMHGHFFFMMMMMMF\",
+\"FFFMFMGGMMMFFFFF\",
+\"FFFFFFMFMMFFFFFF\",
+\"FFFFFFFFFFFFFFFF\",
+\"FFFFMMMMMMMMMMFF\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMGMMFFFFFFFMM\",
+\"MMFMMFMFFMFMFFMM\",
+\"GGMMFMMFFMFMFFMM\",
+\"MMMFFFMFFMFMFFMM\",
+\"MFFFFFMFFFMMFFMM\",
+\"MMGFFMMFFFMFFFMM\",
+\"MFFFMMFFFMMFFFMM\",
+\"MFMFFMFFFFFFFFMM\",
+\"FFMFFFFFFMFFFFMM\",
+\"MMMFFFFFFFFFFFMM\",
+\"MFFFFFFFFMFFFMMM\",
+\"FFFFFFFFMMMMMMMM\",
+\"FFFFFFMMMMFMMMMM\",
+\"FFFMMMFMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMJJJ\",
+\"MMMMMMJMMMJJJJJJ\",
+\"MMMMMMMMMJJJJJJJ\",
+\"MMMMMMMMMJJJJJJK\",
+\"MMMMMMMMJJJJKKKJ\",
+\"MMMJJJMJJJJKKKJJ\",
+\"MJMMMJJJJJJKJJJJ\",
+\"MMMMMJJJJJJKJJJJ\",
+\"MMMMJJJJJJJKJJJJ\",
+\"MMMMMMMKJJKKJJKK\",
+\"MMMMJJJJJJJJJJKK\",
+\"MMMJJJJKKJJJKKKK\",
+\"MMJJJJKKJJJJKKKK\",
+\"MMJJJKKJJJJJKKKK\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"JMMMMMMMMJJJJJJM\",
+\"JJJJJJKJJJJJJJJM\",
+\"JJJJJJKKKKKJJJJJ\",
+\"KKKJJJKJJJJJJJJJ\",
+\"JJJJJJKJJJJJJJJJ\",
+\"JJJJJJKJJJJJJJJK\",
+\"JJKKKKKKKKKKKJKK\",
+\"KKJJJKJKKKKKJJJJ\",
+\"KLKJKJKKKJKKKJJJ\",
+\"KCCJKKKJJKKKKKJJ\",
+\"KLKKKKKJKKKKJJJJ\",
+\"KKKKKJKKJKKKCJJJ\",
+\"KKKKKKKKJKJKJCJJ\",
+\"KCLKKKLCLLJJJJJJ\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMJMMMJMMM\",
+\"JJJJJMMMMMMMMMMM\",
+\"JJJJJJMMMJMMJMMM\",
+\"JJJJJJJMMMMMMMMM\",
+\"KKKKKKJJJJMMMMMM\",
+\"JJJJJKKJJJJMMMMM\",
+\"KKJJJJJJJJJJMMMM\",
+\"JJKJJKKKKJJJMMMM\",
+\"JJKJJJJJKJJJMMMM\",
+\"JJCJJKJJJJJJMJMM\",
+\"JJJKKKKKJJJJMMMM\",
+\"JJKJKKJKJJJJMMMM\",
+\"JKJJKKJKJJJJJMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMJJJKJKJJJKKKKK\",
+\"MMJJJKJJJJJKJCKK\",
+\"MMMJJKJJKKKKKKKJ\",
+\"MMMJJJJJJKKKKCCK\",
+\"MMJJJKJJKKJKKCJC\",
+\"MJJJKKKJKKKKCKJC\",
+\"MJJJKJJJKLKKCKKC\",
+\"MJJJKJJJKKKJJJJC\",
+\"MJJJKJJJKKKKCJLL\",
+\"MJJJKKJJKKKKCCLL\",
+\"MMJJJKKJJKKKCLLC\",
+\"MMMJJJKKKJCKCCCC\",
+\"MMMMJJJKKKCKKCKL\",
+\"MMMMMJJKKKKKLLJK\",
+\"MMJMJKKKJLCKKKCL\",
+\"MMMMJKKKKKKKKKCL\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"JCLJJKKCCJCLJJJJ\",
+\"KLCLKKJKJJLCJLJK\",
+\"LJCKCLJKKLLLJJLK\",
+\"CJCCCLLLKKLLCJKK\",
+\"LLLCCLLLLCLLCKKJ\",
+\"LLCCKCCCLLLLJKKJ\",
+\"LLCLLLLLLLLLLJKK\",
+\"LCCLLLLLLLLLLLKK\",
+\"LLLLLLCCCCLLCLCL\",
+\"CLLLLLLLCLLLLLCL\",
+\"CLLCLCCCCCLLLLCJ\",
+\"CCCLCLCCCCLLLCCJ\",
+\"LLLLCLCCCLLLCCCC\",
+\"LCCCCLCCCLLLCCCJ\",
+\"LLLLCLCLCKCCCKCJ\",
+\"CCCCCLLLCCCKLLKK\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"KKJJJKJKJKJJJJMM\",
+\"KKJJJJJKJKJJJJMM\",
+\"KKJJJJJKJKJJJJMM\",
+\"CKJJJJJKKKJJJJMM\",
+\"CKJJCJCJJKJJJJMM\",
+\"CKKKCKKJKKJJJMMM\",
+\"KKKJCKKJJJJJJMMM\",
+\"KCJJCJJJJJJJJMMM\",
+\"JJCKKKCJJJJJMMMM\",
+\"KKJJKCCJJKJMMMJM\",
+\"JKKKCCKKKKMMMMMM\",
+\"KJJJJCCJJKMMJMMM\",
+\"KKLJKCCKJJJMMMMM\",
+\"LKKKKKKJJJJJMMMM\",
+\"LJLKKKJJJJJJJMMM\",
+\"KKKKCCJJJJJJJJMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMJKKKKKKKLKKC\",
+\"MMMMJKKKKKKKJLKK\",
+\"MJMMJJKKKCKKJKLK\",
+\"MMMJJJKJKKCKKJJC\",
+\"MMMJJJJKKJJCKKJK\",
+\"MMMJJJJKKKKCKKKJ\",
+\"MMMJJJJKKJKKLKKJ\",
+\"MMMJJJJJKJJJKKKK\",
+\"MMMJJJJJKKJJKKKK\",
+\"MMMMJJJJJJJJJKKK\",
+\"MMMMMJJJLJJJJJJJ\",
+\"MMMJMMJJJJJJJJJJ\",
+\"MMMMMMMMJJMJJJJJ\",
+\"MMMJMMMMMMMMJJJJ\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"CCCLLLLLCLLLKLKK\",
+\"LLCCLLCCCCLKJKKK\",
+\"CCCCCCCCCCJKKJCC\",
+\"KCCLJKJJKLCJJKKK\",
+\"KKLLLLKJKKJJLCLJ\",
+\"LCCJCJCKLKLKCJJK\",
+\"JKKCCJJLKKKKKKKC\",
+\"LJKKKKKKKJKKKKKK\",
+\"CLCJKJJJJJJJJJJC\",
+\"LJKLCLJJJKKKKKKJ\",
+\"JJJKJKCCKKKJJJJJ\",
+\"JJJJJJKJKKJJJJJJ\",
+\"JJJJJJJJJJJJJJJJ\",
+\"JJJJMMMMMMMMMMJJ\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"KKKKCKKJJJJJJJMM\",
+\"KKJKKJKJJKJKJJMM\",
+\"CCKKJKKJJKJKJJMM\",
+\"KKKJJJKJJKJKJJMM\",
+\"KJJJJJKJJJKKJJMM\",
+\"KKCJJKKJJJKJJJMM\",
+\"KJJJKKJJJKKJJJMM\",
+\"KJKJJKJJJJJJJJMM\",
+\"JJKJJJJJJKJJJJMM\",
+\"KKKJJJJJJJJJJJMM\",
+\"KJJJJJJJJMJJJMMM\",
+\"JJJJJJJJMMMMMMMM\",
+\"JJJJJJMMMMJMMMMM\",
+\"JJJMMMJMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMEEE\",
+\"MMMMMMEMMMEEEEEE\",
+\"MMMMMMMMMEEEEEEE\",
+\"MMMMMMMMMEEEEEEP\",
+\"MMMMMMMMEEEEPPPE\",
+\"MMMEEEMEEEEPPPEE\",
+\"MEMMMEEEEEEPEEEE\",
+\"MMMMMEEEEEEPEEEE\",
+\"MMMMEEEEEEEPEEEE\",
+\"MMMMMMMPEEPPEEPP\",
+\"MMMMEEEEEEEEEEPP\",
+\"MMMEEEEPPEEEPPPP\",
+\"MMEEEEPPEEEEPPPP\",
+\"MMEEEPPEEEEEPPPP\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"EMMMMMMMMEEEEEEM\",
+\"EEEEEEPEEEEEEEEM\",
+\"EEEEEEPPPPPEEEEE\",
+\"PPPEEEPEEEEEEEEE\",
+\"EEEEEEPEEEEEEEEE\",
+\"EEEEEEPEEEEEEEEP\",
+\"EEPPPPPPPPPPPEPP\",
+\"PPEEEPEPPPPPEEEE\",
+\"PNPEPEPPPEPPPEEE\",
+\"PBBEPPPEEPPPPPEE\",
+\"PNPPPPPEPPPPEEEE\",
+\"PPPPPEPPEPPPBEEE\",
+\"PPPPPPPPEPEPEBEE\",
+\"PBNPPPNBEEEEEEEE\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMEMMMEMMM\",
+\"EEEEEMMMMMMMMMMM\",
+\"EEEEEEMMMEMMEMMM\",
+\"EEEEEEEMMMMMMMMM\",
+\"PPPPPPEEEEMMMMMM\",
+\"EEEEEPPEEEEMMMMM\",
+\"PPEEEEEEEEEEMMMM\",
+\"EEPEEPPPPEEEMMMM\",
+\"EEPEEEEEPEEEMMMM\",
+\"EEBEEPEEEEEEMEMM\",
+\"EEEPPPPPEEEEMMMM\",
+\"EEPEPPEPEEEEMMMM\",
+\"EPEEPPEPEEEEEMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMEEEPEPEEEPPPPP\",
+\"MMEEEPEEEEEPEBPP\",
+\"MMMEEPEEPPPPPPPE\",
+\"MMMEEEEEEPPPPBBP\",
+\"MMEEEPEEPPEPPBEB\",
+\"MEEEPPPEPPPPBPEB\",
+\"MEEEPEEEPNPPBPPB\",
+\"MEEEPEEEPPPEEEEB\",
+\"MEEEPEEEPPPPBEEE\",
+\"MEEEPPEEPPPPBBEE\",
+\"MMEEEPPEEPPPBEEB\",
+\"MMMEEEPPPEBPBBBB\",
+\"MMMMEEEPPPBPPBPN\",
+\"MMMMMEEPPPPPNNEP\",
+\"MMEMEPPPENBPPPBE\",
+\"MMMMEPPPPPPPPPBE\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"EBNEEPPBBEBNEEEE\",
+\"PNBNPPEPEEEBENEP\",
+\"NEBPBEEPPEEEEENP\",
+\"BEBBBEEEPPEEBEPP\",
+\"EEEBBEEEEBEEBPPE\",
+\"EEBBPBBBEEEEEPPE\",
+\"EEBEEEEEEEEEEEPP\",
+\"EBBEEEEEEEEEEEPP\",
+\"EEEEEEEEEEEEBEEE\",
+\"BEEEEEEEEEEEEEEE\",
+\"BEEBEBEEEEEEEEBE\",
+\"BBEEEEEEEEEEEBBE\",
+\"EEEEEEEEEEEEBBBB\",
+\"EBBEBEEEEEEEBBBE\",
+\"EEEEEEEEEPBBBPBE\",
+\"BBBBEEEEBBBPNNPP\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"PPEEEPEPEPEEEEMM\",
+\"PPEEEEEPEPEEEEMM\",
+\"PPEEEEEPEPEEEEMM\",
+\"BPEEEEEPPPEEEEMM\",
+\"BPEEBEBEEPEEEEMM\",
+\"BPPPBPPEPPEEEMMM\",
+\"PPPEBPPEEEEEEMMM\",
+\"PBEEBEEEEEEEEMMM\",
+\"EEBPPPBEEEEEMMMM\",
+\"PPEEPBBEEPEMMMEM\",
+\"EPPPBBPPPPMMMMMM\",
+\"PEEEEBBEEPMMEMMM\",
+\"PPNEPBBPEEEMMMMM\",
+\"NPPPPPPEEEEEMMMM\",
+\"NENPPPEEEEEEEMMM\",
+\"PPPPBBEEEEEEEEMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMEPPPPPPPNPPB\",
+\"MMMMEPPPPPPPENPP\",
+\"MEMMEEPPPBPPEPNP\",
+\"MMMEEEPEPPBPPEEB\",
+\"MMMEEEEPPEEBPPEP\",
+\"MMMEEEEPPPPBPPPE\",
+\"MMMEEEEPPEPPNPPE\",
+\"MMMEEEEEPEEEPPPP\",
+\"MMMEEEEEPPEEPPPP\",
+\"MMMMEEEEEEEEEPPP\",
+\"MMMMMEEENEEEEEEE\",
+\"MMMEMMEEEEEEEEEE\",
+\"MMMMMMMMEEMEEEEE\",
+\"MMMEMMMMMMMMEEEE\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"BBBEEEEEBEEEPEPP\",
+\"EEBBEEBBBBEPEPPP\",
+\"BBBBBBBBBBEPPEBB\",
+\"PBBEEPEEPNBEEPPP\",
+\"PPEEEEPEPPEENBNE\",
+\"NBBEBEBPNPNPBEEP\",
+\"EPPBBEENPPPPPPPB\",
+\"NEPPPPPPPEPPPPPP\",
+\"BNBEPEEEEEEEEEEB\",
+\"NEPNBNEEEPPPPPPE\",
+\"EEEPEPBBPPPEEEEE\",
+\"EEEEEEPEPPEEEEEE\",
+\"EEEEEEEEEEEEEEEE\",
+\"EEEEMMMMMMMMMMEE\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"PPPPBPPEEEEEEEMM\",
+\"PPEPPEPEEPEPEEMM\",
+\"BBPPEPPEEPEPEEMM\",
+\"PPPEEEPEEPEPEEMM\",
+\"PEEEEEPEEEPPEEMM\",
+\"PPBEEPPEEEPEEEMM\",
+\"PEEEPPEEEPPEEEMM\",
+\"PEPEEPEEEEEEEEMM\",
+\"EEPEEEEEEPEEEEMM\",
+\"PPPEEEEEEEEEEEMM\",
+\"PEEEEEEEEMEEEMMM\",
+\"EEEEEEEEMMMMMMMM\",
+\"EEEEEEMMMMEMMMMM\",
+\"EEEMMMEMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMEEE\",
+\"MMMMMMEMMMEEEEEE\",
+\"MMMMMMMMMEEEEEEE\",
+\"MMMMMMMMMEEEEEEC\",
+\"MMMMMMMMEEEEIIIE\",
+\"MMMEEEMEEEEIIIEE\",
+\"MEMMMEEEEEEIEEEE\",
+\"MMMMMEEEEEEIEEEE\",
+\"MMMMEEEEEEEIEEEE\",
+\"MMMMMMMIEEIIEEII\",
+\"MMMMEEEEEEEEEEII\",
+\"MMMEEEEIIEEEIIII\",
+\"MMEEEEIIEEEEIIII\",
+\"MMEEEIIEEEEEIIII\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"EMMMMMMMMEEEEEEM\",
+\"EEEEEEIEEEEEEEEM\",
+\"EEEEEEIIIIIEEEEE\",
+\"IIIEEEIEEEEEEEEE\",
+\"EEEEEEIEEEEEEEEE\",
+\"EEEEEEIEEEEEEEEI\",
+\"EEIIIIIIIIIIIEII\",
+\"IIEEEIEIIIIIEEEE\",
+\"IHIEIEIIIEIIIEEE\",
+\"ILLEIIIEEIIIIIEE\",
+\"IHIIIIIEIIIIEEEE\",
+\"IIIIIEIIEIIILEEE\",
+\"IIIIIIIIEIEIELEE\",
+\"ILHIIIHLHHEEEEEE\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMEMMMEMMM\",
+\"EEEEEMMMMMMMMMMM\",
+\"EEEEEEMMMEMMEMMM\",
+\"EEEEEEEMMMMMMMMM\",
+\"IIIIIIEEEEMMMMMM\",
+\"EEEEEIIEEEEMMMMM\",
+\"IIEEEEEEEEEEMMMM\",
+\"EEIEEIIIIEEEMMMM\",
+\"EEIEEEEEIEEEMMMM\",
+\"EELEEIEEEEEEMEMM\",
+\"EEEIIIIIEEEEMMMM\",
+\"EEIEIIEIEEEEMMMM\",
+\"EIEEIIEIEEEEEMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMEEEIEIEEEIIIII\",
+\"MMEEEIEEEEEIEIII\",
+\"MMMEEIEEIIIIIIIE\",
+\"MMMEEEEEEIIIIIII\",
+\"MMEEEIEEIIEIIIEI\",
+\"MEEEIIIEIIIIIIEI\",
+\"MEEEIEEEINIIIIII\",
+\"MEEEIEEEIIIEEEEI\",
+\"MEEEIEEEIIIIIENN\",
+\"MEEEIIEEIIIIIINN\",
+\"MMEEEIIEEIIIINNI\",
+\"MMMEEEIIIEIIIIII\",
+\"MMMMEEEIIIIIIIIN\",
+\"MMMMMEEIIIIINNEI\",
+\"MMEMEIIIENIIIIIN\",
+\"MMMMEIIIIIIIIIIN\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"EINEEIIIIEINEEEE\",
+\"ININIIEIEENIENEI\",
+\"NEIIINEIINNNEENI\",
+\"IEIIINNNIINNIEII\",
+\"NNNIINNNNINNIIIE\",
+\"NNIIIIIINNNNEIIE\",
+\"NNINNNNNNNNNNEII\",
+\"NIINNNNNNNNNNNII\",
+\"NNNNNNNNNNNNINNN\",
+\"INNNNNNNNNNNNNNN\",
+\"INNININNNNNNNNIE\",
+\"IINNNNNNNNNNNIIE\",
+\"NNNNNNNNNNNNIIII\",
+\"NIININNNNNNNIIIE\",
+\"NNNNNNNNNIIIIIIE\",
+\"IIIINNNNIIIINNII\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"IIEEEIEIEIEEEEMM\",
+\"IIEEEEEIEIEEEEMM\",
+\"IIEEEEEIEIEEEEMM\",
+\"IIEEEEEIIIEEEEMM\",
+\"IIEEIEIEEIEEEEMM\",
+\"IIIIIIIEIIEEEMMM\",
+\"IIIEIIIEEEEEEMMM\",
+\"IIEEIEEEEEEEEMMM\",
+\"EEIIIIIEEEEEMMMM\",
+\"IIEEIIIEEIEMMMEM\",
+\"EIIIIIIIIIMMMMMM\",
+\"IEEEEIIEEIMMEMMM\",
+\"IINEIIIIEEEMMMMM\",
+\"NIIIIIIEEEEEMMMM\",
+\"NENIIIEEEEEEEMMM\",
+\"IIIIIIEEEEEEEEMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMEIIIIIIIHIII\",
+\"MMMMEIIIIIIIEHII\",
+\"MEMMEEIIIIIIEIHI\",
+\"MMMEEEIEIIIIIEEI\",
+\"MMMEEEEIIEEIIIEI\",
+\"MMMEEEEIIIIIIIIE\",
+\"MMMEEEEIIEIIHIIE\",
+\"MMMEEEEEIEEEIIII\",
+\"MMMEEEEEIIEEIIII\",
+\"MMMMEEEEEEEEEIII\",
+\"MMMMMEEEHEEEEEEE\",
+\"MMMEMMEEEEEEEEEE\",
+\"MMMMMMMMEEMEEEEE\",
+\"MMMEMMMMMMMMEEEE\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"IIINNNNNINNNINII\",
+\"NNIINNIIIINIEIII\",
+\"IIIIIIIIIIEIIEII\",
+\"IIINEIEEINIEEIII\",
+\"IINNNNIEIIEENINE\",
+\"NIIEIEIININIIEEI\",
+\"EIIIIEENIIIIIIII\",
+\"NEIIIIIIIEIIIIII\",
+\"INIEIEEEEEEEEEEI\",
+\"NEININEEEIIIIIIE\",
+\"EEEIEIIIIIIEEEEE\",
+\"EEEEEEIEIIEEEEEE\",
+\"EEEEEEEEEEEEEEEE\",
+\"EEEEMMMMMMMMMMEE\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"IIIIIIIEEEEEEEMM\",
+\"IIEIIEIEEIEIEEMM\",
+\"IIIIEIIEEIEIEEMM\",
+\"IIIEEEIEEIEIEEMM\",
+\"IEEEEEIEEEIIEEMM\",
+\"IIIEEIIEEEIEEEMM\",
+\"IEEEIIEEEIIEEEMM\",
+\"IEIEEIEEEEEEEEMM\",
+\"EEIEEEEEEIEEEEMM\",
+\"IIIEEEEEEEEEEEMM\",
+\"IEEEEEEEEMEEEMMM\",
+\"EEEEEEEEMMMMMMMM\",
+\"EEEEEEMMMMEMMMMM\",
+\"EEEMMMEMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35598,7 +37433,7 @@ static char *xpm[] = {
 \"MMDDDDCCDDDDCCCC\",
 \"MMDDDCCDDDDDCCCC\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35637,7 +37472,7 @@ static char *xpm[] = {
 \"CCCCCCCCDCDCDLDD\",
 \"CLHCCCHLHHDDDDDD\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35676,7 +37511,7 @@ static char *xpm[] = {
 \"DDCDCCDCDDDDMMMM\",
 \"DCDDCCDCDDDDDMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35715,7 +37550,7 @@ static char *xpm[] = {
 \"MMDMDCCCDHLCCCLH\",
 \"MMMMDCCCCCCCCCLH\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35754,7 +37589,7 @@ static char *xpm[] = {
 \"HHHHNHNHNCLLLCLD\",
 \"LLLLNHHHLLLCHHCC\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35793,7 +37628,7 @@ static char *xpm[] = {
 \"HDHCCCDDDDDDDMMM\",
 \"CCCCLLDDDDDDDDMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35832,7 +37667,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35871,7 +37706,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35910,7 +37745,358 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMEEE\",
+\"MMMMMNEMMMEEEEEE\",
+\"MMNMMMNMMENBEEEE\",
+\"MNMNMNMMMEEEEEEP\",
+\"MMMMNMMMEEEEPPPE\",
+\"MMMNENMNEEEPPPEE\",
+\"MENMMENEEEEPNBEE\",
+\"MMMNMEEEEEEPEEEE\",
+\"MMMMEENBEEEPEEEE\",
+\"MMMMMMMPEEPPEEPP\",
+\"MMMMEEEEEEEEEEPP\",
+\"MMMEEEEPPEEEPPPP\",
+\"MMEEEEPPNBEEPPPP\",
+\"MMEEEPPEEEEEPPPP\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"EMMMMMMMMEEEEEEM\",
+\"ENBEENPEEEENBEEM\",
+\"EEEEEENPNPNEEEEE\",
+\"PPBEEEPENEEEEEEE\",
+\"EEEEEENNNNNEEEEE\",
+\"EEEEEEPENEEENBEP\",
+\"EEPPPPNPNPNPPPPP\",
+\"PPEEENEPPPPNEEEE\",
+\"PNPEPEPPPEPPPEEE\",
+\"PBBEPPPEEPPNBPEE\",
+\"PNPPPPPEPPPPEEEE\",
+\"PPPPPEPPEPPPBEEE\",
+\"PPPPPPPPEPEPEBEE\",
+\"PBNPPPNBNNEEEEEE\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMEMMMEMMM\",
+\"EEEEEMMMMMMMMMMM\",
+\"EEEEEEMMMEMMNMMM\",
+\"EEEEEEENMMNNMMMM\",
+\"PPPPPPENENMMMMMM\",
+\"EEEEEPPENENMNMMM\",
+\"PPEEEEEEEEENMNMM\",
+\"EEPEEPPPPNNEMNMM\",
+\"EEPEEEEENEEEMMMM\",
+\"EEBEEPEEEEEEMEMM\",
+\"EEEPPPPPEEEEMMMM\",
+\"EEPEPPEPEEEEMMMM\",
+\"EPEEPPEPEEEEEMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMEEEPEPEEEPPPPP\",
+\"MMEEEPEEEEEPEBPP\",
+\"MMMEEPEEPPPPPPPE\",
+\"MMMENENEEPPPPBBP\",
+\"MMEEENEEPPEPPBEB\",
+\"MEEENENEPPPPBPEB\",
+\"MEEEPEEEPNPPBPPB\",
+\"MEEEPEEEPPPEEEEB\",
+\"MEEEPEEEPPPPBENN\",
+\"MEEEPPEEPPPPBBNN\",
+\"MMEEEPNEEPPPBNNB\",
+\"MMMEENNNPEBPBBBB\",
+\"MMMMEENPPPBPPBPN\",
+\"MMMMMEEPPPPPNNEP\",
+\"MMEMEPPPENBPPPBN\",
+\"MMMMEPPPPPPPPPBN\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"EBNEEPPBBEBNEEEE\",
+\"PNBNPPEPEENBENEP\",
+\"NEBPBNEPPNNNEENP\",
+\"BEBBBNNNPPNNBEPP\",
+\"NNNBBNNNNBNNBPPE\",
+\"NNBBPBBBNNNNEPPE\",
+\"NNBNNNNNNNNNNEPP\",
+\"NBBNNNNNNNNNNNPP\",
+\"NNNNNNNNNNNNBNNN\",
+\"BNNNNNNNNNNNNNNN\",
+\"BNNBNBNNNNNNNNBE\",
+\"BBNNNNNNNNNNNBBE\",
+\"NNNNNNNNNNNNBBBB\",
+\"NBBNBNNNNNNNBBBE\",
+\"NNNNNNNNNPBBBPBE\",
+\"BBBBNNNNBBBPNNPP\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"PPEEEPEPEPEEEEMM\",
+\"PPEEEEEPEPEEEEMM\",
+\"PPEEEEEPEPEEEEMM\",
+\"BPEEEEEPPPEEEEMM\",
+\"BPEEBEBEEPEEEEMM\",
+\"BPPPBPPEPPEEEMMM\",
+\"PPPEBPPENEEENMMM\",
+\"PBEEBEEEENENEMMM\",
+\"EEBPPPBNNNNNNNMM\",
+\"PPEEPBBEENENMMEM\",
+\"EPPPBBPPNPMMNMMM\",
+\"PEEEEBBEEPMMEMMM\",
+\"PPNEPBBPEEEMMMMM\",
+\"NPPPPPPEEEEEMMMM\",
+\"NENPPPEEEEEEEMMM\",
+\"PPPPBBEEEEEEEEMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"MMMMEPPPPPPPNPPB\",
+\"MMMMEPPPPPPPENPP\",
+\"MEMMEEPPPBPPEPNP\",
+\"MMMEEEPEPPBPPEEB\",
+\"MMMEENEPPEEBPPEP\",
+\"MMMNEEENPPPBPPPE\",
+\"MMNENPNPNEPPNPPE\",
+\"MMMNNENNPEEEPPPP\",
+\"MNMPEEEPPNEEPPPP\",
+\"MMMNNENNEEEEEPPP\",
+\"MMNMNPNENEEEEEEE\",
+\"MMMNMMENEEEEEEEE\",
+\"MMMMMNMMEEMEEEEE\",
+\"MMMEMMMMMMMMEEEE\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"BBBNNNNNBNNNPNPP\",
+\"NNBBNNBBBBNPEPPP\",
+\"BBBBBBBBBBEPPEBB\",
+\"PBBNEPEEPNBEEPPP\",
+\"PPNNNNPEPPEENBNE\",
+\"NBBEBEBPNPNPBEEP\",
+\"EPPBBEENPPPPPPPB\",
+\"NEPPPPPPPEPPPPPP\",
+\"BNBEPEEEEEEEEEEB\",
+\"NEPNBNEEEPNENPPE\",
+\"EEEPEPBBPPPNEEEE\",
+\"EEEEEEPEPNNNNNEE\",
+\"EEEEEEEEEEENEEEE\",
+\"EEEEMMMMMMNMNMEE\",
+\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"PPPPBPPEEEEEEEMM\",
+\"PPEPPEPEEPEPEEMM\",
+\"BBPPEPPEEPEPNENM\",
+\"PPPEEEPEEPEPENMM\",
+\"PEEEEEPEEEPPNENM\",
+\"PPBEEPNENEPEEEMM\",
+\"PEEEPPENEPPEEEMM\",
+\"PEPEENNNNNEEEEMM\",
+\"EEPEEEENEPEEEEMM\",
+\"PPPEEENENEEEEEMM\",
+\"PEEEEEEEEMEEEMMM\",
+\"EEEEEEEEMMMMMMMM\",
+\"EEEEEEMMMMENMMMM\",
+\"EEEMMMEMMMNMNMMM\",
+\"MMMMMMMMMMMNMMMM\",
+\"MMMMMMMMMMMMMMMM\",
+};" nil t)
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35949,7 +38135,7 @@ static char *xpm[] = {
 \"MMMMMMIIIIMMMMMM\",
 \"MMMMMMMIIMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -35988,7 +38174,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36027,7 +38213,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMIIII\",
 \"MMMMMMMMMMMMMIII\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36066,7 +38252,7 @@ static char *xpm[] = {
 \"IIIIMMMMMMMMMMMM\",
 \"IIIMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36105,7 +38291,7 @@ static char *xpm[] = {
 \"MMMMMMCCCCMMMMMM\",
 \"MMMMMMMCCMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36144,7 +38330,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36183,7 +38369,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMCCCC\",
 \"MMMMMMMMMMMMMCCC\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36222,7 +38408,7 @@ static char *xpm[] = {
 \"CCCCMMMMMMMMMMMM\",
 \"CCCMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36261,7 +38447,7 @@ static char *xpm[] = {
 \"MMMMMMNNNNMMMMMM\",
 \"MMMMMMMNNMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36300,7 +38486,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36339,7 +38525,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMNNNN\",
 \"MMMMMMMMMMMMMNNN\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36378,7 +38564,7 @@ static char *xpm[] = {
 \"NNNNMMMMMMMMMMMM\",
 \"NNNMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36417,7 +38603,7 @@ static char *xpm[] = {
 \"MMMMMMBBBBMMMMMM\",
 \"MMMMMMMBBMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36456,7 +38642,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36495,7 +38681,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMBBBB\",
 \"MMMMMMMMMMMMMBBB\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36534,7 +38720,7 @@ static char *xpm[] = {
 \"BBBBMMMMMMMMMMMM\",
 \"BBBMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36573,7 +38759,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36612,7 +38798,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36651,7 +38837,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMAAAA\",
 \"MMMMMMMMMMMMMAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36690,7 +38876,7 @@ static char *xpm[] = {
 \"AAAAMMMMMMMMMMMM\",
 \"AAAMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36729,7 +38915,7 @@ static char *xpm[] = {
 \"MMMMMMNNNNMMMMMM\",
 \"MMMMMMMNNMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36768,7 +38954,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36807,7 +38993,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMNNNN\",
 \"MMMMMMMMMMMMMNNN\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36846,7 +39032,7 @@ static char *xpm[] = {
 \"NNNNMMMMMMMMMMMM\",
 \"NNNMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36885,7 +39071,7 @@ static char *xpm[] = {
 \"MMMMMMFFFFMMMMMM\",
 \"MMMMMMMFFMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36924,7 +39110,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -36963,7 +39149,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMFFFF\",
 \"MMMMMMMMMMMMMFFF\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37002,7 +39188,7 @@ static char *xpm[] = {
 \"FFFFMMMMMMMMMMMM\",
 \"FFFMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37041,7 +39227,7 @@ static char *xpm[] = {
 \"MMMMMMGGGGMMMMMM\",
 \"MMMMMMMGGMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37080,7 +39266,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37119,7 +39305,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMGGGG\",
 \"MMMMMMMMMMMMMGGG\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37158,7 +39344,7 @@ static char *xpm[] = {
 \"GGGGMMMMMMMMMMMM\",
 \"GGGMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37197,7 +39383,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37236,7 +39422,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37275,7 +39461,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37314,7 +39500,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37353,7 +39539,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37392,7 +39578,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37414,24 +39600,24 @@ static char *xpm[] = {
 \"O c #DADAB6\",
 \"P c #6C91B6\",
 /* pixels */
-\"ANNLAJKKKKKJNNLA\",
-\"ALLLAJKJKKJJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJJKKKKJLLLA\",
-\"AJAAAJJKKKKJJAJA\",
-\"AJJJAJJKKKKJJJJA\",
-\"ALKKAJJKKJKJLKJA\",
-\"ANNLAJKKKKKJNNLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJJKJKJJLLLA\",
-\"AJAAAJJKKKKJJAJA\",
-\"AJJJAJJKKKKJJJJA\",
-\"ALKKAJJKKKKJLKJA\",
+\"AJJKKKACJAAJJJAA\",
+\"AJKKKACLJJAJJJJA\",
+\"AJKKACLCKJJAJJJA\",
+\"AAKACLCKJJJJAAAA\",
+\"AAACLLKKJJJJJJAA\",
+\"AACLLKKKAAJJJJJA\",
+\"ACKKKKKACJAJJJJA\",
+\"AKKKKKACLJJAJJJA\",
+\"AAKKKACLKJJJAJAA\",
+\"AAKKACLKKJJJJJAA\",
+\"AACCCKKAAJJJJJJA\",
+\"ACCKKKACJAJJJJJA\",
+\"ACKKKACLJJAJJJJA\",
+\"AAKKACLCKJJAJJAA\",
+\"AAJACKCKKJJJAJAA\",
+\"AAJCKKJAAAJJJJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37453,24 +39639,24 @@ static char *xpm[] = {
 \"O c #DADAB6\",
 \"P c #6C91B6\",
 /* pixels */
-\"AAANLLAAAAANLLAA\",
-\"LLLNLLAJLLLNLLAJ\",
-\"KLLJJJAJKLLJJJAJ\",
+\"AJAAAAAAJJAAAJAA\",
+\"JJJAAAJJJJJAAAAJ\",
+\"JJJACJAJJJACCJAJ\",
+\"AAACLJJAJACCLJJA\",
+\"AACLCKJJACCLCKJJ\",
+\"ACKCKKJJJCKCKKJA\",
+\"CJKKKKJJCKCKJJAC\",
+\"KJJKCJJCKKKJJJCK\",
+\"KJKKKJJKJKJJJJKK\",
+\"JJJKCJKKJKJJJCKJ\",
+\"JJJJJJKJKKJJJKKJ\",
+\"JJJJJKJJJJJJJJJJ\",
 \"JJJJJJJJJJJJJJJJ\",
-\"KKJJJKKKKKJJJKKK\",
-\"KKNLLKKKKKNLLKKK\",
-\"LLNLLAJLLLNLLAJL\",
-\"LLJJJAJKLLJJJAJK\",
 \"JJJJJJJJJJJJJJJJ\",
-\"KKJLKKKKJLKKKJLK\",
-\"KKJKKKKKJKKKKJKK\",
-\"JJJJJJJJJJJJJJJJ\",
-\"JLKKKKJLKKKKJLKK\",
-\"JKKKKKJKKKKKJKKK\",
 \"JJJJJJJJJJJJJJJJ\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37492,24 +39678,24 @@ static char *xpm[] = {
 \"O c #DADAB6\",
 \"P c #6C91B6\",
 /* pixels */
-\"AAANNNNLLLLLLAAA\",
-\"NNNNAAJJKKKKLJJJ\",
-\"LLLNAJJKKKCCLJJJ\",
-\"LLLLLLLLLLLLLJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLKKKKKKKKKKKKJJ\",
-\"LKKKKKKKKKKKKKKJ\",
-\"JJJJJJJJJJJJJJJJ\",
-\"AKKJJJJJJJJJKKKJ\",
-\"ALLLAAAAAAAALLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"AJAAAJJKKKKJJAJA\",
-\"AJJJAJJKKKKJJJJA\",
-\"ALKKAJJKKKKJLKJA\",
+\"AAAAAAKCCKKJAAAA\",
+\"AAAAKKCLCJKJJAAA\",
+\"AAKKKCLCKJJJKKAA\",
+\"AKKKCLCKJJJJJJKA\",
+\"AKKCLLKKJJJJJJJA\",
+\"AKCLLKKKAAJJJJJJ\",
+\"ACKKKKKACJAJJJJJ\",
+\"AKKKKKACLJJAAJJJ\",
+\"AAKKKCLLKJJJAJAJ\",
+\"AAKKCCCKKJJJAJAA\",
+\"AACCKKKAAJJJJJJA\",
+\"ACCKKKACJAJJJJJA\",
+\"ACKKKACLJJAJJJJA\",
+\"AAKKACLCKJJAJJAA\",
+\"AAJACKCKKJJJAJAA\",
+\"AAJCKKJAAAJJJJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37531,24 +39717,24 @@ static char *xpm[] = {
 \"O c #DADAB6\",
 \"P c #6C91B6\",
 /* pixels */
-\"AAANNNNLLLLLLAAA\",
-\"NNNNAAJJKKKKLJJJ\",
-\"LLLNAJJKKKCCLJJJ\",
-\"LLLLLLLLLLLLLJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLKKKKKKKKKKKKJJ\",
-\"LKKKKKKKKKKKKKKJ\",
-\"JJJJJJJJJJJJJJJJ\",
-\"AKKJJJJJJJJJKKKJ\",
-\"ALLLAAAAAAAALLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"AJAAAJJKKKKJJAJA\",
-\"AJJJAJJKKKKJJJJA\",
-\"ALKKAJJKKKKJLKJA\",
+\"AAAAAAKCCKKJAAAA\",
+\"AAAAKKCLCJKJJAAA\",
+\"AAKKKCLCKJJJKKAA\",
+\"AKKCCLCKJJJJJJKA\",
+\"KKCCLLKKJJJJJJJA\",
+\"KKCLKKKKAAJJJJJA\",
+\"KCLKKKKACJAJJJJA\",
+\"CKKKKKACLJJAAJJA\",
+\"KAKKKCLLKJJJAJAA\",
+\"AKKKCCCKKJJJAJAA\",
+\"AACCKKKAAJJJJJJA\",
+\"ACCKKKACJAJJJJJA\",
+\"ACKKKACLJJAJJJJA\",
+\"AKKKACLCKJJAJJAA\",
+\"AAJACKCKKJJJAJAA\",
+\"AAJCKKJAAAJJJJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37570,24 +39756,141 @@ static char *xpm[] = {
 \"O c #DADAB6\",
 \"P c #6C91B6\",
 /* pixels */
-\"AAANNNNLLLLLLAAA\",
-\"NNNNAAJJKKKKLJJJ\",
-\"LLLNAJJKKKCCLJJJ\",
-\"LLLLLLLLLLLLLJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLKKKKKKKKKKKKJJ\",
-\"LKKKKKKKKKKKKKKJ\",
+\"AKKKAAKKKKAAJJJA\",
+\"AKKAAKCCCJJJAAJA\",
+\"AKKAALLJJJACCJAA\",
+\"AKAACLJJJACCLJJA\",
+\"AAACCKJJACLLCKJJ\",
+\"AAACLKJJJCKCKKJA\",
+\"AACLKKJJCKCKJJAC\",
+\"AAKKCJJCKKKJJJCK\",
+\"ACKKKJJKJKJJJJKK\",
+\"ACKKCJKKJKJJJCKJ\",
+\"AKKKJJKJKKJJJKKJ\",
+\"ACKJJKJJJJJJJJJJ\",
+\"AKJJJJJJJJJJJJJJ\",
+\"AKJJJJJJJJJJJJJJ\",
+\"AJJJJJJJJJJJJJJJ\",
+\"AAAAAAAAAAAAAAAA\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"AKKAAAKKAAAAJJJA\",
+\"AKAAKKLCKAAAAAJA\",
+\"AAKKCLCJJACCAJJA\",
+\"AKKCLJJJACCCLAJA\",
+\"AKCKKKJACCCLCAAA\",
+\"ACKKKKJACCKCKKAA\",
+\"CJKKKKACCKCKJJAA\",
+\"KJJKCJJCKKKJJJAA\",
+\"KJKKKJJKJKJJJJJA\",
+\"JJJKCJKKJKJJJJJA\",
+\"JJJJJJKJKKJJJJJA\",
+\"JJJJJKJJJJJJJJJA\",
+\"JJJJJJJJJJJJJJJA\",
+\"JJJJJJJJJJJJJJJA\",
+\"JJJJJJJJJJJJJJJA\",
+\"AAAAAAAAAAAAAAAA\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"AAAAAAKCCKKJAAAA\",
+\"AAAAKCCLCJKJJAAA\",
+\"AAKKCCLCKJJJKKAA\",
+\"AKKKCLCKJJJJJJKA\",
+\"KKKCLKKKJJJJJJJA\",
+\"KKCLKKKKAAJJJJJJ\",
+\"KCKLKKKACJAJJJJJ\",
+\"CKKKKKACLJJAAJJJ\",
+\"KAKKKCLLKJJJAJAJ\",
+\"AKKKCCCKKJJJAJAA\",
+\"AACCKKKAAJJJJJJA\",
+\"ACCKKKACJAJJJJJA\",
+\"ACKKKACLJJAJJJJA\",
+\"AKKKACLCKJJAJJAA\",
+\"AAJACKCKKJJJAJAA\",
+\"AAJCKKJAAAJJJJJA\",
+};" nil t)
+(create-image "/* XPM */
+static char *xpm[] = {
+/* width height ncolors chars_per_pixel */
+\"16 16 16 1\",
+/* colors */
+\"A c #000000\",
+\"B c #00B6FF\",
+\"C c #FF6C00\",
+\"D c #FF0000\",
+\"E c #0000FF\",
+\"F c #009100\",
+\"G c #6CFF00\",
+\"H c #FFFF00\",
+\"I c #FF00FF\",
+\"J c #914700\",
+\"K c #CC7900\",
+\"L c #FFB691\",
+\"M c #476C6C\",
+\"N c #FFFFFF\",
+\"O c #DADAB6\",
+\"P c #6C91B6\",
+/* pixels */
+\"AKKAAAKKKKAAJJJA\",
+\"AKAAKKLCCJJJAAJA\",
+\"AAKKCLCJJJACCJAA\",
+\"AKKCLJJJJACCLJJA\",
+\"AKCLCKJJACCLCKJJ\",
+\"ACKCKKJJJCKCKKJA\",
+\"CJKKKKJJCKCKJJAC\",
+\"KJJKCJJCKKKJJJCK\",
+\"KJKKKJJKJKJJJJKK\",
+\"JJJKCJKKJKJJJCKJ\",
+\"JJJJJJKJKKJJJKKJ\",
+\"JJJJJKJJJJJJJJJJ\",
 \"JJJJJJJJJJJJJJJJ\",
-\"KKJLKKKKJLKKKJLK\",
-\"KKJKKKKKJKKKKJKK\",
 \"JJJJJJJJJJJJJJJJ\",
-\"JLKKKKJLKKKKJLKK\",
-\"JKKKKKJKKKKKJKKK\",
 \"JJJJJJJJJJJJJJJJ\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37609,24 +39912,24 @@ static char *xpm[] = {
 \"O c #DADAB6\",
 \"P c #6C91B6\",
 /* pixels */
-\"AAANNNNLLLLLLAAA\",
-\"NNNNAAJJKKKKLJJJ\",
-\"LLLNAJJKKKCCLJJJ\",
-\"LLLLLLLLLLLLLJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLKKKKKKKKKKKKJJ\",
-\"LKKKKKKKKKKKKKKJ\",
-\"JJJJJJJJJJJJJJJJ\",
-\"KKJLKKKKJLKKKJLK\",
-\"KKJKKKKKJKKKKJKK\",
-\"JJJJJJJJJJJJJJJJ\",
-\"JLKKKKJLKKKKJLKK\",
-\"JKKKKKJKKKKKJKKK\",
-\"JJJJJJJJJJJJJJJJ\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAKCCKKJAAAA\",
+\"AAAAKCCLCJKJJAAA\",
+\"AAKKKCLCKJJJKKAA\",
+\"AKKKCLCKJJJJJJKA\",
+\"KKCCLLKKJJJJJJJA\",
+\"KKCLLKKKAAJJJJJJ\",
+\"KCLLKKKACJAJJJJJ\",
+\"CKLKKKACLJJAAJJJ\",
+\"KAKKKCLLKJJJAJAJ\",
+\"AKKKCCCKKJJJAJAA\",
+\"AACCKKKAAJJJJJJA\",
+\"ACCKKKACJAJJJJJA\",
+\"ACKKKACLJJAJJJJA\",
+\"AKKKACLCKJJAJJAA\",
+\"AAJACKCKKJJJAJAA\",
+\"AAJCKKJAAAJJJJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37648,24 +39951,24 @@ static char *xpm[] = {
 \"O c #DADAB6\",
 \"P c #6C91B6\",
 /* pixels */
-\"AAANNNNLLLLLLAAA\",
-\"NNNNAAJJKKKKLJJJ\",
-\"LLLNAJJKKKCCLJJJ\",
-\"LLLLLLLLLLLLLJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLKKKKKKKKKKKKJJ\",
-\"LKKKKKKKKKKKKKKJ\",
-\"JJJJJJJJJJJJJJJJ\",
-\"AKKJJJJJJJJJKKKJ\",
-\"ALLLAAAAAAAALLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"AJAAAJJKKKKJJAJA\",
-\"AJJJAJJKKKKJJJJA\",
-\"ALKKAJJKKKKJLKJA\",
+\"AKKAACKCCKKJAJJA\",
+\"AKACKKKLLJKJJAJA\",
+\"AAKKKCCCKJJJKKAA\",
+\"AKKKCCLKJJJJJJKA\",
+\"AKKCLLKKJJJJJJJA\",
+\"AKCLLKKKAAJJJJJJ\",
+\"ACLKKKKACJAJJJJJ\",
+\"AKKKKKACLJJAAJJJ\",
+\"AAKKKCLLKJJJAJAJ\",
+\"AAKKCCCKKJJJAJAA\",
+\"AACCKKKAAJJJJJJA\",
+\"ACCKKKACJAJJJJJA\",
+\"ACKKKACLJJAJJJJA\",
+\"AAKKACLCKJJAJJAA\",
+\"AAJACKCKKJJJAJAA\",
+\"AAJCKKJAAAJJJJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37687,141 +39990,24 @@ static char *xpm[] = {
 \"O c #DADAB6\",
 \"P c #6C91B6\",
 /* pixels */
-\"AAANNNNLLLLLLAAA\",
-\"NNNNAAJJKKKKLJJJ\",
-\"LLLNAJJKKKCCLJJJ\",
-\"LLLLLLLLLLLLLJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLKKKKKKKKKKKKJJ\",
-\"LKKKKKKKKKKKKKKJ\",
-\"JJJJJJJJJJJJJJJJ\",
-\"KKJLKKKKJLKKKJLK\",
-\"KKJKKKKKJKKKKJKK\",
-\"JJJJJJJJJJJJJJJJ\",
-\"JLKKKKJLKKKKJLKK\",
-\"JKKKKKJKKKKKJKKK\",
-\"JJJJJJJJJJJJJJJJ\",
-\"AAAAAAAAAAAAAAAA\",
+\"AKKAACKCCKKJAJJA\",
+\"AKACKKCLCJKJJAJA\",
+\"AAKKCCLCKJJJKKAA\",
+\"AKKCLLCKJJJJJJKA\",
+\"KKCCLLKKJJJJJJJA\",
+\"KCKLLKKKAAJJJJJA\",
+\"CCKKKKKACJAJJJJA\",
+\"CKKKKKACLJJAAJJA\",
+\"KAKKKCLLKJJJAJAA\",
+\"AKKKCCCKKJJJAJAA\",
+\"AACCKKKAAJJJJJJA\",
+\"ACCKKKACJAJJJJJA\",
+\"ACKKKACLJJAJJJJA\",
+\"AKKKACLCKJJAJJAA\",
+\"AAJACKCKKJJJAJAA\",
+\"AAJCKKJAAAJJJJJA\",
 };" nil t)
-   (create-image "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNLLLLLLAAA\",
-\"NNNNAAJJKKKKLJJJ\",
-\"LLLNAJJKKKCCLJJJ\",
-\"LLLLLLLLLLLLLJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLKKKKKKKKKKKKJJ\",
-\"LKKKKKKKKKKKKKKJ\",
-\"JJJJJJJJJJJJJJJJ\",
-\"AKKJJJJJJJJJKKKJ\",
-\"ALLLAAAAAAAALLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"AJAAAJJKKKKJJAJA\",
-\"AJJJAJJKKKKJJJJA\",
-\"ALKKAJJKKKKJLKJA\",
-};" nil t)
-   (create-image "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNLLLLLLAAA\",
-\"NNNNAAJJKKKKLJJJ\",
-\"LLLNAJJKKKCCLJJJ\",
-\"LLLLLLLLLLLLLJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLKKKKKKKKKKKKJJ\",
-\"LKKKKKKKKKKKKKKJ\",
-\"JJJJJJJJJJJJJJJJ\",
-\"AKKJJJJJJJJJKKKJ\",
-\"ALLLAAAAAAAALLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"AJAAAJJKKKKJJAJA\",
-\"AJJJAJJKKKKJJJJA\",
-\"ALKKAJJKKKKJLKJA\",
-};" nil t)
-   (create-image "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNLLLLLLAAA\",
-\"NNNNAAJJKKKKLJJJ\",
-\"LLLNAJJKKKCCLJJJ\",
-\"LLLLLLLLLLLLLJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLLKKKKKKKKKKJJJ\",
-\"LLKKKKKKKKKKKKJJ\",
-\"LKKKKKKKKKKKKKKJ\",
-\"JJJJJJJJJJJJJJJJ\",
-\"AKKJJJJJJJJJKKKJ\",
-\"ALLLAAAAAAAALLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"ALLLAJKKKKKJLLLA\",
-\"AJAAAJJKKKKJJAJA\",
-\"AJJJAJJKKKKJJJJA\",
-\"ALKKAJJKKKKJLKJA\",
-};" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37860,7 +40046,7 @@ static char *xpm[] = {
 \"AJJJAJJMMMMJJJJA\",
 \"ADMMAJJMMMMJDMJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37899,7 +40085,7 @@ static char *xpm[] = {
 \"JJJJJJJJJJJJJJJJ\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37938,7 +40124,7 @@ static char *xpm[] = {
 \"AJJJAJJMMMMJJJJA\",
 \"ADMMAJJMMMMJDMJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -37977,7 +40163,7 @@ static char *xpm[] = {
 \"AJJJAJJMMMMJJJJA\",
 \"ADMMAJJMMMMJDMJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38016,7 +40202,7 @@ static char *xpm[] = {
 \"JJJJJJJJJJJJJJJJ\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38055,7 +40241,7 @@ static char *xpm[] = {
 \"JJJJJJJJJJJJJJJJ\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38094,7 +40280,7 @@ static char *xpm[] = {
 \"AJJJAJJMMMMJJJJA\",
 \"ADMMAJJMMMMJDMJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38133,7 +40319,7 @@ static char *xpm[] = {
 \"JJJJJJJJJJJJJJJJ\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38172,7 +40358,7 @@ static char *xpm[] = {
 \"AJJJAJJMMMMJJJJA\",
 \"ADMMAJJMMMMJDMJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38211,7 +40397,7 @@ static char *xpm[] = {
 \"AJJJAJJMMMMJJJJA\",
 \"ADMMAJJMMMMJDMJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38250,7 +40436,7 @@ static char *xpm[] = {
 \"AJJJAJJMMMMJJJJA\",
 \"ADMMAJJMMMMJDMJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38289,7 +40475,7 @@ static char *xpm[] = {
 \"AAJAAACKKJAAAJAA\",
 \"ACJJAAAAAAAACJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38328,7 +40514,7 @@ static char *xpm[] = {
 \"KJJACJJAKJJACJJA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38367,7 +40553,7 @@ static char *xpm[] = {
 \"AAJAAACKKJAAAJAA\",
 \"ACJJAAAAAAAACJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38406,7 +40592,7 @@ static char *xpm[] = {
 \"AAJAAACKKJAAAJAA\",
 \"ACJJAAAAAAAACJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38445,7 +40631,7 @@ static char *xpm[] = {
 \"KJJACJJAKJJACJJA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38484,7 +40670,7 @@ static char *xpm[] = {
 \"KJJACJJAKJJACJJA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38523,7 +40709,7 @@ static char *xpm[] = {
 \"AAJAAACKKJAAAJAA\",
 \"ACJJAAAAAAAACJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38562,7 +40748,7 @@ static char *xpm[] = {
 \"KJJACJJAKJJACJJA\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38601,7 +40787,7 @@ static char *xpm[] = {
 \"AAJAAACKKJAAAJAA\",
 \"ACJJAAAAAAAACJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38640,7 +40826,7 @@ static char *xpm[] = {
 \"AAJAAACKKJAAAJAA\",
 \"ACJJAAAAAAAACJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38679,7 +40865,7 @@ static char *xpm[] = {
 \"AAJAAACKKJAAAJAA\",
 \"ACJJAAAAAAAACJJA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38718,7 +40904,7 @@ static char *xpm[] = {
 \"AMMMAMMEEEEMMMMA\",
 \"ABEEAMMEEEEMBEMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38757,7 +40943,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38796,7 +40982,7 @@ static char *xpm[] = {
 \"AMMMAMMEEEEMMMMA\",
 \"ABEEAMMEEEEMBEMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38835,7 +41021,7 @@ static char *xpm[] = {
 \"AMMMAMMEEEEMMMMA\",
 \"ABEEAMMEEEEMBEMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38874,7 +41060,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38913,7 +41099,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38952,7 +41138,7 @@ static char *xpm[] = {
 \"AMMMAMMEEEEMMMMA\",
 \"ABEEAMMEEEEMBEMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -38991,7 +41177,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"AAAAAAAAAAAAAAAA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -39030,7 +41216,7 @@ static char *xpm[] = {
 \"AMMMAMMEEEEMMMMA\",
 \"ABEEAMMEEEEMBEMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -39069,7 +41255,7 @@ static char *xpm[] = {
 \"AMMMAMMEEEEMMMMA\",
 \"ABEEAMMEEEEMBEMA\",
 };" nil t)
-   (create-image "/* XPM */
+(create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
 \"16 16 16 1\",
@@ -39107,320 +41293,7 @@ static char *xpm[] = {
 \"AMAAAMMEEEEMMAMA\",
 \"AMMMAMMEEEEMMMMA\",
 \"ABEEAMMEEEEMBEMA\",
-};" nil t)
-   (create-image  "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNBBBBBBAAA\",
-\"NNNNAAMMEEEEBMMM\",
-\"BBBNAMMEEENNBMMM\",
-\"BBBBBBBBBBBBBMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBEEEEEEEEEEEEMM\",
-\"BEEEEEEEEEEEEEEM\",
-\"MMMMMMMMMMMMMMMM\",
-\"AEEMMMMMMMMMEEEM\",
-\"ABBBAAAAAAAABBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"AMAAAMMEEEEMMAMA\",
-\"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\"
-};" 'xpm t)
-   (create-image  "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNBBBBBBAAA\",
-\"NNNNAAMMEEEEBMMM\",
-\"BBBNAMMEEENNBMMM\",
-\"BBBBBBBBBBBBBMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBEEEEEEEEEEEEMM\",
-\"BEEEEEEEEEEEEEEM\",
-\"MMMMMMMMMMMMMMMM\",
-\"EEMBEEEEMBEEEMBE\",
-\"EEMEEEEEMEEEEMEE\",
-\"MMMMMMMMMMMMMMMM\",
-\"MBEEEEMBEEEEMBEE\",
-\"MEEEEEMEEEEEMEEE\",
-\"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\"
-};" 'xpm t)
-   (create-image  "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNBBBBBBAAA\",
-\"NNNNAAMMEEEEBMMM\",
-\"BBBNAMMEEENNBMMM\",
-\"BBBBBBBBBBBBBMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBEEEEEEEEEEEEMM\",
-\"BEEEEEEEEEEEEEEM\",
-\"MMMMMMMMMMMMMMMM\",
-\"EEMBEEEEMBEEEMBE\",
-\"EEMEEEEEMEEEEMEE\",
-\"MMMMMMMMMMMMMMMM\",
-\"MBEEEEMBEEEEMBEE\",
-\"MEEEEEMEEEEEMEEE\",
-\"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\"
-};" 'xpm t)
-   (create-image  "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNBBBBBBAAA\",
-\"NNNNAAMMEEEEBMMM\",
-\"BBBNAMMEEENNBMMM\",
-\"BBBBBBBBBBBBBMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBEEEEEEEEEEEEMM\",
-\"BEEEEEEEEEEEEEEM\",
-\"MMMMMMMMMMMMMMMM\",
-\"AEEMMMMMMMMMEEEM\",
-\"ABBBAAAAAAAABBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"AMAAAMMEEEEMMAMA\",
-\"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\"
-};" 'xpm t)
-   (create-image  "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNBBBBBBAAA\",
-\"NNNNAAMMEEEEBMMM\",
-\"BBBNAMMEEENNBMMM\",
-\"BBBBBBBBBBBBBMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBEEEEEEEEEEEEMM\",
-\"BEEEEEEEEEEEEEEM\",
-\"MMMMMMMMMMMMMMMM\",
-\"EEMBEEEEMBEEEMBE\",
-\"EEMEEEEEMEEEEMEE\",
-\"MMMMMMMMMMMMMMMM\",
-\"MBEEEEMBEEEEMBEE\",
-\"MEEEEEMEEEEEMEEE\",
-\"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\"
-};" 'xpm t)
-   (create-image  "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNBBBBBBAAA\",
-\"NNNNAAMMEEEEBMMM\",
-\"BBBNAMMEEENNBMMM\",
-\"BBBBBBBBBBBBBMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBEEEEEEEEEEEEMM\",
-\"BEEEEEEEEEEEEEEM\",
-\"MMMMMMMMMMMMMMMM\",
-\"AEEMMMMMMMMMEEEM\",
-\"ABBBAAAAAAAABBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"AMAAAMMEEEEMMAMA\",
-\"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\"
-};" 'xpm t)
-   (create-image  "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNBBBBBBAAA\",
-\"NNNNAAMMEEEEBMMM\",
-\"BBBNAMMEEENNBMMM\",
-\"BBBBBBBBBBBBBMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBEEEEEEEEEEEEMM\",
-\"BEEEEEEEEEEEEEEM\",
-\"MMMMMMMMMMMMMMMM\",
-\"AEEMMMMMMMMMEEEM\",
-\"ABBBAAAAAAAABBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"AMAAAMMEEEEMMAMA\",
-\"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\"
-};" 'xpm t)
-   (create-image  "/* XPM */
-static char *xpm[] = {
-/* width height ncolors chars_per_pixel */
-\"16 16 16 1\",
-/* colors */
-\"A c #000000\",
-\"B c #00B6FF\",
-\"C c #FF6C00\",
-\"D c #FF0000\",
-\"E c #0000FF\",
-\"F c #009100\",
-\"G c #6CFF00\",
-\"H c #FFFF00\",
-\"I c #FF00FF\",
-\"J c #914700\",
-\"K c #CC7900\",
-\"L c #FFB691\",
-\"M c #476C6C\",
-\"N c #FFFFFF\",
-\"O c #DADAB6\",
-\"P c #6C91B6\",
-/* pixels */
-\"AAANNNNBBBBBBAAA\",
-\"NNNNAAMMEEEEBMMM\",
-\"BBBNAMMEEENNBMMM\",
-\"BBBBBBBBBBBBBMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBBEEEEEEEEEEMMM\",
-\"BBEEEEEEEEEEEEMM\",
-\"BEEEEEEEEEEEEEEM\",
-\"MMMMMMMMMMMMMMMM\",
-\"AEEMMMMMMMMMEEEM\",
-\"ABBBAAAAAAAABBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"ABBBAMEEEEEMBBBA\",
-\"AMAAAMMEEEEMMAMA\",
-\"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\"
-};" 'xpm t)
-   ))
+};" nil t)))
 
 (provide 'nethack-glyphs)
 ;;; nethack-glyphs.el ends here
