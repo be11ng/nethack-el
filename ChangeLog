@@ -1,0 +1,41 @@
+2000-08-20  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-api.el: massive reformatting of comments and overall
+	file structure.
+
+2000-03-23  Ryan Yeske  <rcyeske@sfu.ca>
+
+	* nethack.el (nethack-program,nethack-program-args): added `*' to
+	docstrings to enable interactive setting of vars
+
+	* nethack-keys.el: test added to prevent creating new keymap
+
+	* nethack-api.el (nethack-api-putstr): added missing close paren
+
+2000-03-20  Ryan Yeske  <rcyeske@sfu.ca>
+
+	* nethack.el (nethack-parse-command): added evaluation
+
+2000-03-18  Ryan Yeske  <rcyeske@sfu.ca>
+
+	* nethack-keys.el: renamed some functions, not used yet so no
+	details given
+
+	* nethack-cmd.el: renamed some functions, not used yet so no
+	details given
+
+	* nethack.el (nethack-program): new variable
+	(nethack-program-args): new variable
+	(nethack): new function
+	(nethack-start-program): new function
+	(nethack-process-buffer-name): new variable
+	(nethack-process): new variable
+	(nethack-process-send-string): new function
+	(nethack-end-of-command-string): new variable
+	(nethack-process-filter): new function
+	(nethack-log-string): new function
+	(nethack-quit): new function
+	(nethack-send-command): new function
+
+	* nethack-api.el: updated file description in header comments
+
