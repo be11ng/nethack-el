@@ -1,3 +1,14 @@
+2001-12-19  shawn  <sabetts@vcn.bc.ca>
+
+	* nethack.el: require nethack-glyphs
+	(nethack-use-glyphs): new variable
+
+	* nethack-api.el (nethack-api-print-glyph): add argument `tile'
+	(nethack-api-print-glyph): draw graphical tiles, when graphics are
+	enabled.
+	(nethack-api-clear-nhwindow): fill the map with empty graphical
+	tiles, when graphics are enabled.
+
 2001-12-04  Ryan Yeske  <rcyeske@sfu.ca>
 
 	* nethack-api.el (nethack-cook-status): Rename from

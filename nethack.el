@@ -9,6 +9,7 @@
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
+(require 'nethack-glyphs)
 
 ;;; Code:
 (defgroup nethack nil
@@ -182,6 +183,9 @@
     (t (:foreground "gray")))
   "nethack white"
   :group 'nethack-faces)
+
+(defvar nethack-use-glyphs (display-images-p)
+  "If set to T, nethack will use XPMs to draw glyphs.")
 
 (defconst nethack-colors
   [nethack-black-face 		nethack-red-face

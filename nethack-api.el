@@ -282,17 +282,23 @@ are no newlines in `nethack-status-string'."
 ;; whatever the window- port wants (symbol, font, color, attributes,
 ;; ...there's a 1-1 map between glyphs and distinct things on the map).
 
-(defun nethack-api-print-glyph (winid x y type offset color glyph ch)
+(defun nethack-api-print-glyph (winid x y type offset color glyph tile ch)
   ""
 ;;  (with-current-buffer (nethack-buffer winid)
   (set-buffer (nethack-buffer winid))
   (setq x (- x 1)) 				; FIXME: put this hack in C
   (let ((inhibit-read-only t))
-    (gamegrid-set-cell x y ch)
-    (put-text-property (gamegrid-cell-offset x y)
-		       (1+ (gamegrid-cell-offset x y))
-		       'face
-		       (aref nethack-colors color))))
+    (if nethack-use-glyphs
+	(save-excursion 
+	  (let ((buffer-read-only nil))
+	    (goto-char (gamegrid-cell-offset x y))
+	    (delete-char 1)
+	    (insert-image (elt nethack-glyph-vector tile))))
+      (gamegrid-set-cell x y ch)
+      (put-text-property (gamegrid-cell-offset x y)
+			 (1+ (gamegrid-cell-offset x y))
+			 'face
+			 (aref nethack-colors color)))))
 
 ;; char yn_function(const char *ques, const char *choices, char
 ;; default) -- Print a prompt made up of ques, choices and default.  Read
@@ -557,7 +563,15 @@ table."
 	   (gamegrid-init (make-vector 256 nil))
 	   (gamegrid-init-buffer nethack-map-width
 				 nethack-map-height
-				 ? ))
+				 ? )
+	  ;; A hack to initialize the grid with empty glyphs
+	   (when nethack-use-glyphs
+	     (let ((inhibit-read-only t))
+	       (erase-buffer)
+	       (dotimes (i nethack-map-height)
+		 (dotimes (j nethack-map-width)
+		   (insert-image nethack-empty-glyph))
+		 (insert "\n")))))
 	  (t
 	   (let ((inhibit-read-only t))
 	     (erase-buffer))))))
