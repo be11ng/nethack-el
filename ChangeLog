@@ -1,3 +1,8 @@
+2002-05-11  Shawn Betts  <sabetts@vcn.bc.ca>
+
+	* nethack-glyphs.el (nethack-glyph-vector): update with new glyphs.
+	(nethack-empty-glyph): remove :mode heuristic.
+
 2002-04-23  Shawn  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack): reset status variables
