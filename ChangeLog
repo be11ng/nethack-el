@@ -1,3 +1,17 @@
+2001-07-06  shawn  <sabetts@diggin.lamenet.tmp>
+
+	* nethack.el (nethack-handle-command): Add arg to specify how many
+	times to execute the command.
+
+	* nethack-menu.el (nethack-menu-get-choices): use -1 for the
+	quantity of the item chosen.
+
+	* nethack-cmd.el (nethack-command-search): Add prefix arg.
+	(nethack-command-rest-one-move): likewise
+
+	* nethack-api.el (nethack-api-ask-direction): s is a list of
+	commands to move south.
+
 2001-07-05  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el (nethack-yellow): Use "yellow3" for light

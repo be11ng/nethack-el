@@ -275,7 +275,7 @@
 	(e (where-is-internal 'nethack-command-east nethack-mode-map))
 	(w (where-is-internal 'nethack-command-west nethack-mode-map))
 	(n (where-is-internal 'nethack-command-north nethack-mode-map))
-	(s (where-is-internal 'nethack-command-north nethack-mode-map))
+	(s (where-is-internal 'nethack-command-south nethack-mode-map))
 	(ne (where-is-internal 'nethack-command-northeast nethack-mode-map))
 	(nw (where-is-internal 'nethack-command-northwest nethack-mode-map))
 	(se (where-is-internal 'nethack-command-southeast nethack-mode-map))
