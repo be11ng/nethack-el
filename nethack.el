@@ -228,7 +228,6 @@ The variable `nethack-program' is the name of the executable to run."
     (save-excursion
       ;; Reset intermediate variables.
       (setq nethack-status-alist nil)
-      (setq nethack-menu nil)
       ;;; Start the process.
       (if (get-buffer "*nh*")
 	  (kill-buffer "*nh*"))

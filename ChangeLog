@@ -1,3 +1,17 @@
+2002-01-21  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-api.el (nethack-menu): Remove variable.
+	(nethack-menu-toggle-item, nethack-menu-toggle-all-items)
+	(nethack-menu-goto-next, nethack-menu-goto-prev)
+	(nethack-menu-submit, nethack-menu-cancel)
+	(nethack-api-start-menu, nethack-api-add-menu)
+	(nethack-api-end-menu): Rewrite to remove ewoc dependancy.
+
+	* nethack.el (nethack): Don't setq nethack-menu.
+
+	* nethack-api.el (ewoc): Remove require.
+	(nethack-menu-item-print): Remove function.
+
 2002-01-20  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-keys.el: Add bindings for remaining functions.
