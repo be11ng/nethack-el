@@ -19,17 +19,20 @@ clean:
 # ../nethack-$(NH_VER).tgz must exist
 #
 
+# nethack-el version
+NETHACK_EL_VER=0.9.0
+
 # nethack source version
 NH_VER=3.4.1
 
 NH_VER_NODOTS=$(shell echo $(NH_VER) | sed s/\\.//g)
 
-PATCHFILE=enh-$(NH_VER_NODOTS).patch
+PATCHFILE=enh-$(NH_VER_NODOTS).patch ese-007e0.patch
 DISTFILES=AUTHORS BUGS COPYING ChangeLog INSTALL Makefile README TODO		\
-	$(PATCHFILE) mkpatch nethack-api.el nethack-cmd.el nethack-example.el	\
+	$(PATCHFILES) mkpatch nethack-api.el nethack-cmd.el nethack-example.el	\
 	nethack-glyphs.el nethack-keys-dvorak.el nethack-keys.el		\
 	nethack.el
-DISTDIR=nethack_el-$(shell date +%Y%m%d)-$(NH_VER_NODOTS)
+DISTDIR=nethack_el-$(NETHACK_EL_VER)
 
 PATCH_OK=.patch-ok
 $(PATCH_OK): test-patch ;

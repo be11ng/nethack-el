@@ -1,5 +1,9 @@
 2003-06-03  Shawn Betts  <sabetts@sfu.ca>
 
+	* Makefile (PATCHFILE): add ese-007e0.patch
+	(NETHACK_EL_VER): new variable
+	(DISTDIR): use NETHACK_EL_VER in directory
+
 	* nethack.el (nethack-pet-face): new face.
 
 	* nethack-api.el (nhapi-print-glyph): new optional argument,
