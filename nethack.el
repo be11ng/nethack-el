@@ -407,3 +407,5 @@ eventual delivery to the running nethack process."
     (set-window-buffer new-win
 		       (cdr (assoc 'nhw-status
 				   nethack-buffer-name-alist)))))
+
+(provide 'nethack)
