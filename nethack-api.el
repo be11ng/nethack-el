@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.9 2000/09/10 05:49:22 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.10 2000/09/10 07:48:03 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -261,10 +261,9 @@
 ;; flush_screen(1) before doing anything.  -- This uses the top line in
 ;; the tty window-port, other ports might use a popup.
 
-(defun nethack-api-getlin (ques input)
+(defun nethack-api-getlin (ques)
   "" 
-
-  'unimplemented)
+  (read-from-minibuffer (concat ques " ")))
 
 
 ;; int get_ext_cmd(void) -- Get an extended command in a window-port
