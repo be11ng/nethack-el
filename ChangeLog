@@ -1,3 +1,7 @@
+2002-02-14  Shawn Betts  <sabetts@vcn.bc.ca>
+
+	* nethack-glyphs.el (nethack-glyph-vector): Add warning glyphs.
+
 2002-02-01  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 
 	* COPYING: Add file.
