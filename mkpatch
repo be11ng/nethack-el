@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # the nethack source tarball
-src=nethack-$NH_VER_NODOTS.tgz
+src=$1
 # should be a clean version of the Nethack sources
-ref=${1:-nethack-$NH_VER}
+ref=$2
 # your working directory, with your changes
-work=${2:-nethack}
+work=$3
 
 echo $0: cd .. >&2
 cd ..

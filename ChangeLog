@@ -1,3 +1,20 @@
+2004-11-16  Shawn Betts  <katia_dilkina@verizon.net>
+
+	* mkpatch: src, ref, and work are pulled from args 1, 2, and 3.
+
+	* Makefile: Add rules for building slashem patches
+
+	* nethack.el (nethack): call nethack-start with the process as an
+	arg.
+	(nethack-connect-to-server): remove
+	(nethack-is-running): new function
+	(nethack-start): new function
+	(nethack-create-process): remove function
+
+	* nethack-keys.el (nh-map-mode-map): add keybinding for travel command
+
+	* nethack-cmd.el (travel): new nethack command
+
 2004-11-14  Shawn Betts  <katia_dilkina@verizon.net>
 
 	* nethack.el (nethack): call nethack-create-process

@@ -77,6 +77,7 @@
 (defvar nh-map-mode-map
   (let ((map (make-sparse-keymap)))
     (suppress-keymap map)
+    (define-key map "_" 'nethack-command-travel)	;_
     (define-key map "^" 'nethack-command-identify-trap)	;^
 
     ;;^[ Cancel command
