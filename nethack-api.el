@@ -185,9 +185,9 @@ are no newlines in `nethack-status-string'."
 
 ;; FIXME: this is a temporary kludge which will disappear when we have
 ;; real cooked status information coming from the process.
-(defvar nh-use-cooked-status nil)
+(defvar nethack-cooked-status nil)
 (defun nethack-api-update-status (l1 l2)
-  (if nh-use-cooked-status
+  (if nethack-use-cooked-status
       (progn
 	(nethack-parse-status-lines l1 l2)
 	(let ((status-string (nethack-format-status nethack-status-format)))
