@@ -25,8 +25,7 @@
 ;; 
 
 ;;; Code:
-
-(provide 'nethack-cmd)
+(require 'nethack-api)
 
 ;;; cmd.c is the cheat sheet for this file
 

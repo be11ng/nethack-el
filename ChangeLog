@@ -1,5 +1,13 @@
 2002-09-20  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack-keys.el: Remove require.
+
+	* nethack-glyphs.el (nh-empty-tile): Rename from
+	nethack-empty-tile.
+	(nh-tile-vector): Rename from nethack-glyph-vector.
+
+	* nethack-cmd.el: Add provide line.
+
 	* nethack-api.el: Move all customizable variables and face
 	definitions to nethack.el.
 

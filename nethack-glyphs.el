@@ -30,7 +30,7 @@
 
 ;;; Code:
 
-(defconst nethack-empty-tile
+(defconst nh-empty-tile
   (create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
@@ -71,7 +71,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\"
 };" nil t))
 
-(defconst nethack-glyph-vector
+(defconst nh-tile-vector
   (vector
 (create-image "/* XPM */
 static char *xpm[] = {
