@@ -152,14 +152,17 @@
 
 (defun nethack-api-putstr (window attr str)
   ""
-
-  (save-excursion
-    (set-buffer (nethack-get-buffer window))
-    (if (eq window (car (rassq 'nhw-status nethack-buffer-id-alist)))
-	(progn
-	  (nethack-set-status-line str)
-	  (nethack-print-status-lines))
+  (set-buffer (nethack-get-buffer window))
+  (if (eq window (car (rassq 'nhw-status nethack-buffer-id-alist)))
+      (progn
+	(nethack-set-status-line str)
+	(nethack-print-status-lines))
+    (let ((l (get-buffer-window-list (nethack-get-buffer window))))
+      (mapcar (lambda (w) 
+		(set-window-point w (point-max))) l)
+      (goto-char (point-max))
       (insert str "\n")))
+
   'void-fixme)
 
 
@@ -395,12 +398,14 @@ and send the digit to nethack."
   (save-excursion
     (set-buffer (nethack-get-buffer window))
     (let ((buffer-read-only nil))
-      (erase-buffer)
+      (if (not (eq window (car (rassq 'nhw-message nethack-buffer-id-alist))))
+	  (erase-buffer))
       (if (eq window (car (rassq 'nhw-map nethack-buffer-id-alist)))
 	  (gamegrid-init-buffer nethack-map-width 
 				nethack-map-height
 				? ))))
-  'void)
+	     
+    'void)
 
 
 ;; display_nhwindow(window, boolean blocking) -- Display the window on
@@ -646,7 +651,7 @@ it, we can just bury them or something."
 ;; traditional code use genl_outrip for the value and check the #if in
 ;; rip.c.
 
-(defun nethack-api-outrip (winid who int message)
+(defun nethack-api-outrip (window who int message)
   ""
 
   (save-excursion
