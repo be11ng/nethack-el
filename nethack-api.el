@@ -479,6 +479,7 @@ way?"
       (nethack-protect-windows
        (display-buffer (nethack-buffer winid)))
     ;; if its blocking, then set it up like a choiceless menu
+    (nethack-menu-reset-keymap)
     (nethack-api-select-menu winid 'pick-none))
   'void)
 
