@@ -42,7 +42,6 @@ src/windows.c
 sys/unix/Makefile.src
 util/makedefs.c
 win/lisp/ChangeLog
-win/lisp/TODO
 win/lisp/winlisp.c
 EOF
 `; do
