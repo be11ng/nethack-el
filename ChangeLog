@@ -1,5 +1,8 @@
 2000-08-20  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack-api.el: changed all retvals to 'unimplemented for
+	functions that have not been flushed out.
+
 	* nethack.el (nethack-draw-glyph): removed.  handle in nethack-api
 	with (nethack-api-print-glyph)
 	(nethack-process-send-string): now sends a newline.
