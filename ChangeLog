@@ -1,3 +1,24 @@
+2001-07-09  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nethack-process-filter): rewrite to insert string
+	into process buffer and read and evaluate forms directly out of
+	the buffer
+	(nethack-process-output): remove
+	(nethack-process-command-list): remove
+	(nethack-parse-command): remove
+	(nethack-log-string): comment out body
+	(nethack-start-program): make sure process buffer exists and erase
+	old contents.
+
+	* nethack-menu.el (nethack-menu-buffer): remove
+	(nethack-menu-add-item): add accelerator argument
+	(nethack-menu-draw): use accelerator argument
+	(nethack-menu-get-choices): replace `cond' with `if'
+
+	* nethack-api.el (nethack-api-add-menu): call
+	nethack-menu-add-item with accelerator argument.
+	(nethack-api-bell): call ding.
+
 2001-07-06  shawn  <sabetts@diggin.lamenet.tmp>
 
 	* nethack.el (nethack-handle-command): Add arg to specify how many

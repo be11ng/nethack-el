@@ -495,7 +495,7 @@ it, we can just bury them or something."
 
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
   ""
-  (nethack-menu-add-item identifier str)
+  (nethack-menu-add-item identifier accelerator str)
   'void)
 
 
@@ -573,8 +573,8 @@ it, we can just bury them or something."
 
 (defun nethack-api-bell ()
   ""
-
-  'unimplemented)
+  (ding)
+  'void)
 
 
 ;; mark_synch() -- Don't go beyond this point in I/O on any channel
