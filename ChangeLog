@@ -1,3 +1,14 @@
+2001-07-19  shawn  <sabetts@diggin.lamenet.tmp>
+
+	* nethack-apix.el (nethack-api-choose-attribute): new arg ABORT.
+	(nethack-api-choose-attribute): trap the quit signal and return
+	ABORT in this case.
+	(nethack-api-choose-role): properly return the associated number
+	when there is only 1 choice.
+	(nethack-api-choose-race): likewise
+	(nethack-api-choose-gender): likewise
+	(nethack-api-choose-alignment): likewise
+
 2001-07-18  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-menu.el (nethack-menu-keymap): rename from

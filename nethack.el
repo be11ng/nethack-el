@@ -329,7 +329,9 @@ times the command should be executed."
 
 
 (defun nethack-map-mode ()
-  "Major mode for the main Nethack map window."
+  "Major mode for the main Nethack map window.
+
+\\{nethack-mode-map}"
   (kill-all-local-variables)
   (use-local-map nethack-mode-map)
   (setq mode-name "NETHACK MAP")
