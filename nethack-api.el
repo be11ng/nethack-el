@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.26 2001/07/10 21:33:13 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.27 2001/07/14 22:15:03 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -161,12 +161,12 @@
 	   (let ((l (get-buffer-window-list (nethack-get-buffer window))))
 	     (goto-char (point-max))
 	     (insert "\n" str)
-	     (mapcar (lambda (w)
-		       (save-selected-window
+	     (save-selected-window
+	       (mapcar (lambda (w)
 			 (select-window w)
 			 (set-window-point w (point-max))
-			 (recenter -1)))
-		     l)))))
+			 (recenter -1))
+		     l))))))
   'void)
 
 
@@ -350,8 +350,14 @@ role/race/gender/align selection."
 
 (defun nethack-api-doprev-message ()
   ""
-
-  'unimplemented)
+;;   (save-selected-window
+;;     (mapcar (lambda (w)
+;; 	      (select-window w)
+;; 	      (scroll-down))
+;; 	    (get-buffer-window-list 
+;; 	     (cdr (assoc 'nhw-message
+;; 			 nethack-buffer-name-alist)))))
+  'void)
 
 
 ;; update_positionbar(char *features) -- Optional, POSITIONBAR must be
@@ -609,8 +615,8 @@ it, we can just bury them or something."
   ;; stream and if there is any pending data on the stream
   ;; `nethack-process-filter' is called again which totally garbles
   ;; everything since it hasn't finished the first batch of commands
-  ;(sleep-for 0 50)
-  'void)
+  (sleep-for 0 50)
+  'dummy)
 
 
 ;; askname() -- Ask the user for a player name.

@@ -1,3 +1,11 @@
+2001-07-16  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el: tweak faces for light background.
+
+	* nethack-api.el (nethack-api-putstr): save-selected-window only
+	once.
+	(nethack-api-delay-output): return a dummy value to the process.
+
 2001-07-14  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-cmd.el: Remove default key from docstring.
