@@ -1,5 +1,12 @@
 2000-08-20  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack.el (nethack-draw-glyph): removed.  handle in nethack-api
+	with (nethack-api-print-glyph)
+	(nethack-process-send-string): now sends a newline.
+	(nethack-create-map-buffer): removed.
+	(nethack-create-status-buffer): removed.
+	(nethack-create-map-buffer): removed.
+
 	* nethack-api.el: massive reformatting of comments and overall
 	file structure.
 
