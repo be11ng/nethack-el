@@ -141,27 +141,30 @@
   (interactive)
   (nethack-handle-command "gosouth"))
 
-;; (defun nethack-command-south-until-ontop ()
-;;   "J       Go south until you are on top of something"
-;;   )
+(defun nethack-command-south-until-ontop ()
+  "J       Go south until you are on top of something"
+  (interactive)
+  (nethack-handle-command "gosouthontop"))
 
-;; (defun nethack-command-south-until-near ()
-;;   "^J      Go south until you are near something"
-
-;;   )
+(defun nethack-command-south-until-near ()
+  "^J      Go south until you are near something"
+  (interactive)
+  (nethack-handle-command "gosouthnear"))
 
 (defun nethack-command-north ()
    "k       Go north 1 space (or if number_pad is on, kick something)"
    (interactive)
    (nethack-handle-command "gonorth"))
 
-;; (defun nethack-command-north-until-ontop ()
-;;   "K       Go north until you are on top of something"
-;;   )
+(defun nethack-command-north-until-ontop ()
+  "K       Go north until you are on top of something"
+  (interactive)
+  (nethack-handle-command "gonorthontop"))
 
-;; (defun nethack-command-north-until-near ()
-;;   "^K      Go north until you are near something"
-;;   )
+(defun nethack-command-north-until-near ()
+  "^K      Go north until you are near something"
+  (interactive)
+  (nethack-handle-command "gonorthnear"))
 
 (defun nethack-command-east ()
    "l       Go east 1 space (or if number_pad is on, loot a box on the floor)"
@@ -169,13 +172,15 @@
    (nethack-handle-command "goeast"))
 
 
-;; (defun nethack-command-east-until-ontop ()
-;;   "L       Go east until you are on top of something"
-;;   )
+(defun nethack-command-east-until-ontop ()
+  "L       Go east until you are on top of something"
+  (interactive)
+  (nethack-handle-command "goeastontop"))
 
-;; (defun nethack-command-east-until-near ()
-;;   "^L      Go east until you are near something"
-;;   )
+(defun nethack-command-east-until-near ()
+  "^L      Go east until you are near something"
+  (interactive)
+  (nethack-handle-command "goeastnear"))
 
 ;; (defun nethack-command-move-no-pickup-or-fight ()
 ;;   "m       Followed by direction, move without picking anything up or fighting"
@@ -185,17 +190,20 @@
 ;;   "M       Followed by direction, move a distance without picking anything up"
 ;;   )
 
-;; (defun nethack-command-southeast ()
-;;   "n       Go southeast 1 space"
-;;   )
+(defun nethack-command-southeast ()
+  "n       Go southeast 1 space"
+  (interactive)
+  (nethack-handle-command "gosoutheast"))
 
-;; (defun nethack-command-southeast-until-ontop ()
-;;   "N       Go southeast until you are on something (if number_pad, name an object)"
-;;   )
+(defun nethack-command-southeast-until-ontop ()
+  "N       Go southeast until you are on something (if number_pad, name an object)"
+  (interactive)
+  (nethack-handle-command "gosoutheastontop"))
 
-;; (defun nethack-command-southeast-until-near ()
-;;   "^N      Go southeast until you are near something"
-;;   )
+(defun nethack-command-southeast-until-near ()
+  "^N      Go southeast until you are near something"
+  (interactive)
+  (nethack-handle-command "gosoutheastnear"))
 
 (defun nethack-command-open ()
   "o       Open a door"
@@ -257,17 +265,20 @@
   (interactive)
   (nethack-handle-command "takeoff"))
 
-;; (defun nethack-command-northeast-one-space ()
-;;   "u       Go northeast 1 space (or if number_pad is on, untrap something)"
-;;   )
+(defun nethack-command-northeast ()
+  "u       Go northeast 1 space (or if number_pad is on, untrap something)"
+  (interactive)
+  (nethack-handle-command "gonortheast"))
 
-;; (defun nethack-command-northeast-until-ontop ()
-;;   "U       Go northeast until you are on top of something"
-;;   )
+(defun nethack-command-northeast-until-ontop ()
+  "U       Go northeast until you are on top of something"
+  (interactive)
+  (nethack-handle-command "gonortheastontop"))
 
-;; (defun nethack-command-northeast-until-near ()
-;;   "^U      Go northeast until you are near something"
-;;   )
+(defun nethack-command-northeast-until-near ()
+  "^U      Go northeast until you are near something"
+  (interactive)
+  (nethack-handle-command "gonortheastnear"))
 
 (defun nethack-command-version ()
   "v       Show version"
@@ -299,17 +310,20 @@
   (interactive)
   (nethack-handle-command "enter_explore_mode"))
 
-;; (defun nethack-command-northwest-one-space ()
-;;   "y       Go northwest 1 space"
-;;   )
+(defun nethack-command-northwest ()
+  "y       Go northwest 1 space"
+  (interactive)
+  (nethack-handle-command "gonorthwest"))
 
-;; (defun nethack-command-northwest-until-ontop ()
-;;   "Y       Go northwest until you are on top of something"
-;;   )
+(defun nethack-command-northwest-until-ontop ()
+  "Y       Go northwest until you are on top of something"
+  (interactive)
+  (nethack-handle-command "gonorthwestontop"))
 
-;; (defun nethack-command-northwest-until-near ()
-;;   "^Y      Go northwest until you are near something"
-;;   )
+(defun nethack-command-northwest-until-near ()
+  "^Y      Go northwest until you are near something"
+  (interactive)
+  (nethack-handle-command "gonorthwestnear"))
 
 (defun nethack-command-zap-wand ()
   "z       Zap a wand"
@@ -440,6 +454,117 @@
 ;;   "^W      Wish (available in debug mode only)"
 ;;   )
 
+
+;; Extended commands
+(defun nethack-command-adjust ()
+"adjust inventory letters."
+  (interactive)
+  (nethack-handle-command "adjust"))
+
+(defun nethack-command-chat ()
+  "talk to someone."
+  (interactive)
+  (nethack-handle-command "chat"))
+
+(defun nethack-command-conduct ()
+  "list which challenges you have adhered to."
+  (interactive)
+  (nethack-handle-command "conduct"))
+
+(defun nethack-command-dip ()
+  "dip an object into something."
+  (interactive)
+  (nethack-handle-command "dip"))
+
+(defun nethack-command-enhance ()
+  "advance or check weapons skills."
+  (interactive)
+  (nethack-handle-command "enhance"))
+
+(defun nethack-command-force ()
+  "force a lock."
+  (interactive)
+  (nethack-handle-command "force"))
+
+(defun nethack-command-invoke ()
+  "invoke an object's powers."
+  (interactive)
+  (nethack-handle-command "invoke"))
+
+(defun nethack-command-jump ()
+  "jump to a location."
+  (interactive)
+  (nethack-handle-command "jump"))
+
+(defun nethack-command-loot ()
+  "loot a box on the floor."
+  (interactive)
+  (nethack-handle-command "loot"))
+
+(defun nethack-command-monster ()
+  "use a monster's special ability."
+  (interactive)
+  (nethack-handle-command "monster"))
+
+(defun nethack-command-name ()
+  "name an item or type of object."
+  (interactive)
+  (nethack-handle-command "name"))
+
+(defun nethack-command-offer ()
+  "offer a sacrifice to the gods."
+  (interactive)
+  (nethack-handle-command "offer"))
+
+(defun nethack-command-pray ()
+  "pray to the gods for help."
+  (interactive)
+  (nethack-handle-command "pray"))
+
+(defun nethack-command-quit ()
+  "exit without saving current game."
+  (interactive)
+  (nethack-handle-command "quit"))
+
+(defun nethack-command-ride ()
+  "ride (or stop riding) a monster."
+  (interactive)
+  (nethack-handle-command "ride"))
+
+(defun nethack-command-rub ()
+  "rub a lamp."
+  (interactive)
+  (nethack-handle-command "rub"))
+
+(defun nethack-command-sit ()
+  "sit down."
+  (interactive)
+  (nethack-handle-command "sit"))
+
+(defun nethack-command-turn ()
+  "turn undead."
+  (interactive)
+  (nethack-handle-command "turn"))
+
+(defun nethack-command-twoweapon ()
+  "toggle two-weapon combat."
+  (interactive)
+  (nethack-handle-command "twoweapon"))
+
+(defun nethack-command-untrap ()
+  "untrap something."
+  (interactive)
+  (nethack-handle-command "untrap"))
+
+(defun nethack-command-version ()
+  "list compile time options for this version of NetHack."
+  (interactive)
+  (nethack-handle-command "version"))
+
+(defun nethack-command-wipe ()
+  "wipe off your face."
+  (interactive)
+  (nethack-handle-command "wipe"))
 
 
 (provide 'nethack-cmd)

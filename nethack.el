@@ -19,6 +19,11 @@ nethack-api-putstr")
 (defvar nethack-status-lines '("" . "")
   "The 2 lines of the status window")
 
+
+
+(defvar nethack-yn-keymap (make-sparse-keymap)
+  "The basic keymap used by nethack-api-yn-function")
+
 
 (defun nethack ()
   "Start a game of Nethack.
