@@ -6,6 +6,19 @@
 ?T ?U ?V ?W ?X ?Y ?Z]
   "Vector of accelerator characters.")
 
+;; from src/options.c:
+;;  * Standard letters (for now) are:
+;;  *
+;;  *		<  back 1 page
+;;  *		>  forward 1 page
+;;  *		^  first page
+;;  *		|  last page
+;;  *		:  search
+;;  *
+;;  *		page		all
+;;  *		 ,    select	 .
+;;  *		 \    deselect	 -
+;;  *		 ~    invert	 @
 (defvar nethack-menu-mode-map
   (let ((map (make-sparse-keymap)))
     ;; add all of the accelerator characters
@@ -26,7 +39,7 @@
   "Keymap used in Nethack menus.")
   
 ;; cmd.c is where the command-key mappings are done in the nh src
-(defvar nethack-map-mode-map 
+(defvar nethack-map-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map "^" 'nethack-command-identify-trap)	;^
     ;;^[ Cancel command
@@ -84,7 +97,7 @@
     ;;H       Go west until you are on top of something
     (define-key map "H" 'nethack-command-west-until-ontop)
     ;;^H      Go west until you are near something (NOTE: what to do with this key?)
-    ;;(define-key map "\C-h" 'nethack-command-west-until-near)
+    (define-key map "\M-\C-h" 'nethack-command-west-until-near)
     ;;i       Show your inventory
     (define-key map "i" 'nethack-command-inventory)
     ;;I       Inventory specific item types
@@ -186,7 +199,7 @@
     ;;.       Rest one move while doing nothing
     (define-key map "." 'nethack-command-rest-one-move)
     ;;        Rest one move while doing nothing (if rest_on_space option is on)
-    (define-key map " " 'nethack-command-rest-one-move)
+    ;;(define-key map " " 'nethack-command-rest-one-move)
     ;; :       Look at what is on the floor
     (define-key map ":" 'nethack-command-look-here)
     ;; ;       Show what type of thing a map symbol on the level corresponds to

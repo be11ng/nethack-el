@@ -8,6 +8,10 @@
 ;;; Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Sat Mar 18 11:24:02 2000
 
+
+;;; Commentary:
+;; 
+
 (require 'ewoc)
 (require 'gamegrid)
 
@@ -98,10 +102,7 @@
 ;; A.  Low-level routines:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun nethack-return (form)
-  "Return FORM to the running Nethack process."
-  (nethack-process-send form))
-
+;;; Code:
 (defvar nethack-raw-print-buffer-name "*nhw raw-print*"
   "Buffer name for Nethack raw-print messages.")
 
@@ -114,7 +115,7 @@
 ;; 'saving').
 
 (defun nethack-api-raw-print (str)
-  (save-excursion
+  (save-current-buffer
     (let ((buffer (get-buffer-create nethack-raw-print-buffer-name)))
       (switch-to-buffer buffer)
       (insert str "\n")
@@ -124,7 +125,7 @@
 ;; bold/standout (if possible).
 
 (defun nethack-api-raw-print-bold (str)
-  (nethack-api-raw-print 
+  (nethack-api-raw-print
    (propertize str 'face (nethack-attr-face 'atr-bold))))
 
 
@@ -141,8 +142,7 @@
 
 (defun nethack-api-curs (winid x y)
   ""
-  (save-excursion
-    (set-buffer (nethack-buffer winid))
+  (with-current-buffer (nethack-buffer winid)
     (cond ((eq nethack-buffer-type 'nhw-map)
 	   (goto-char (gamegrid-cell-offset (- x 1) y)))
 	  ((eq nethack-buffer-type 'nhw-status)
@@ -150,7 +150,7 @@
 
 ;; is this the way to make a "default" face?
 (defface nethack-atr-none-face
-  `((t))    				
+  `((t ()))
   "Nethack default face."
   :group 'nethack-faces)
 
@@ -182,6 +182,24 @@ are no newlines in `nethack-status-string'."
   :type '(boolean)
   :group 'nethack)
 
+
+;; FIXME: this is a temporary kludge which will disappear when we have
+;; real cooked status information coming from the process.
+(defvar nh-use-cooked-status nil)
+(defun nethack-api-update-status (l1 l2)
+  (if nh-use-cooked-status
+      (progn
+	(nethack-parse-status-lines l1 l2)
+	(let ((status-string (nethack-format-status nethack-status-format)))
+	  (with-current-buffer nethack-status-buffer
+	    (erase-buffer)
+	    (insert status-string))))
+    (with-current-buffer nethack-status-buffer
+      (erase-buffer)
+      (insert l1)
+      (newline)
+      (insert l2))))
+
 ;; putstr(window, attr, str) -- Print str on the window with the
 ;; given attribute.  Only printable ASCII characters (040-0126) must be
 ;; supported.  Multiple putstr()s are output on separate lines.
@@ -197,22 +215,8 @@ are no newlines in `nethack-status-string'."
 
 (defun nethack-api-putstr (winid attr str)
   ""
-  (save-excursion
-    (set-buffer (nethack-buffer winid))
-    (cond ((eq nethack-buffer-type 'nhw-status)
-	   (if (= nethack-status-line-number 0)
-	       (setcar nethack-status-lines str)
-	     (setcdr nethack-status-lines str)
-	     (nethack-parse-status-lines (car nethack-status-lines) (cdr nethack-status-lines))
-	     (let ((status-string (nethack-format-status nethack-status-string)))
-	       (if nethack-status-in-modeline
-		   (progn
-		     (set-buffer nethack-map-buffer)
-		     (setq mode-line-format status-string))
-		 (set-buffer nethack-status-buffer)
-		 (erase-buffer)
-		 (insert status-string)))))
-	  ((eq nethack-buffer-type 'nhw-message)
+  (with-current-buffer (nethack-buffer winid)
+    (cond ((eq nethack-buffer-type 'nhw-message)
 	   (goto-char (point-max))
 	   (insert "\n" (propertize str 'face 'bold))
 	   ;; scroll to show maximum output on all windows displaying buffer
@@ -247,10 +251,13 @@ are no newlines in `nethack-status-string'."
 
 (defun nethack-api-get-command ()
   ""
-  (if (null nethack-command-queue)
-      (setq nethack-waiting-for-command-flag t)
-    (nethack-process-send-string (car nethack-command-queue))
-    (setq nethack-command-queue (cdr nethack-command-queue))))
+;;   (nethack-parse-status-lines (car nethack-status-lines)
+;; 			      (cdr nethack-status-lines))
+;;   (let ((status-string (nethack-format-status nethack-status-format)))
+;;     (with-current-buffer nethack-status-buffer
+;;       (erase-buffer)
+;;       (insert status-string))))
+)
 
 ;; int nh_poskey(int *x, int *y, int *mod) -- Returns a single
 ;; character input from the user or a a positioning event (perhaps from a
@@ -277,15 +284,15 @@ are no newlines in `nethack-status-string'."
 
 (defun nethack-api-print-glyph (winid x y type offset color glyph ch)
   ""
-  (save-excursion
-    (set-buffer (nethack-buffer winid))
-    (setq x (- x 1)) 				; FIXME: hack
-    (let ((inhibit-read-only t))
-      (gamegrid-set-cell x y ch)
-      (put-text-property (gamegrid-cell-offset x y)
-			 (1+ (gamegrid-cell-offset x y))
-			 'face
-			 (aref nethack-colors color)))))
+;;  (with-current-buffer (nethack-buffer winid)
+  (set-buffer (nethack-buffer winid))
+  (setq x (- x 1)) 				; FIXME: put this hack in C
+  (let ((inhibit-read-only t))
+    (gamegrid-set-cell x y ch)
+    (put-text-property (gamegrid-cell-offset x y)
+		       (1+ (gamegrid-cell-offset x y))
+		       'face
+		       (aref nethack-colors color))))
 
 ;; char yn_function(const char *ques, const char *choices, char
 ;; default) -- Print a prompt made up of ques, choices and default.  Read
@@ -303,9 +310,9 @@ are no newlines in `nethack-status-string'."
 ;; popup.
 
 (defun nethack-api-yn-function (ques choices default)
-  ""  
+  ""
   (let ((cursor-in-echo-area t)
-	all-choices 
+	all-choices
 	key)
 
     (if (= default 0)
@@ -313,8 +320,8 @@ are no newlines in `nethack-status-string'."
       (setq all-choices (string-to-list (concat (char-to-string default)
 						choices))))
     ;; Add some special keys of our own to the choices
-    (add-to-list 'all-choices 13)
-    
+    (push 13 all-choices)
+
     (message (concat ques " "))
     (setq key (read-char))
 
@@ -323,39 +330,30 @@ are no newlines in `nethack-status-string'."
 	  (message (concat ques " "))
 	  (setq key (read-char))))
 
-    (nethack-return
-     (if (= 13 key)
-	 default
-       key))))
+    (nh-send (if (= 13 key)
+		 default
+	       key))))
 
 (defun nethack-api-ask-direction (prompt)
   "Prompt the user for a direction"
-  (let ((cursor-in-echo-area t)
-	(e (where-is-internal 'nethack-command-east nethack-map-mode-map))
-	(w (where-is-internal 'nethack-command-west nethack-map-mode-map))
-	(n (where-is-internal 'nethack-command-north nethack-map-mode-map))
-	(s (where-is-internal 'nethack-command-south nethack-map-mode-map))
-	(ne (where-is-internal 'nethack-command-northeast nethack-map-mode-map))
-	(nw (where-is-internal 'nethack-command-northwest nethack-map-mode-map))
-	(se (where-is-internal 'nethack-command-southeast nethack-map-mode-map))
-	(sw (where-is-internal 'nethack-command-southwest nethack-map-mode-map))
-	(up (where-is-internal 'nethack-command-up nethack-map-mode-map))
-	(down (where-is-internal 'nethack-command-down nethack-map-mode-map))
-	(self (where-is-internal 'nethack-command-rest-one-move nethack-map-mode-map))
-	(ch (read-key-sequence-vector prompt)))
-    (nethack-return
-     (cond ((member ch n) 'n)
-	   ((member ch s) 's)
-	   ((member ch e) 'e)
-	   ((member ch w) 'w)
-	   ((member ch ne) 'ne)
-	   ((member ch nw) 'nw)
-	   ((member ch se) 'se)
-	   ((member ch sw) 'sw)
-	   ((member ch up) 'up)
-	   ((member ch down) 'down)
-	   ((member ch self) 'self)
-	   (t 'default)))))
+  (let* ((cursor-in-echo-area t)
+	 (cmd (lookup-key nethack-map-mode-map
+			  (vector (read-char-exclusive
+				   (concat prompt " "))))))
+    (nh-send
+     (cond ((eq cmd 'nethack-command-north) "n")
+	   ((eq cmd 'nethack-command-south) "s")
+	   ((eq cmd 'nethack-command-west) "w")
+	   ((eq cmd 'nethack-command-east) "e")
+	   ((eq cmd 'nethack-command-northwest) "nw")
+	   ((eq cmd 'nethack-command-northeast) "ne")
+	   ((eq cmd 'nethack-command-southwest) "se")
+	   ((eq cmd 'nethack-command-southeast) "sw")
+	   ((eq cmd 'nethack-command-up) "up")
+	   ((eq cmd 'nethack-command-down) "down")
+	   ((eq cmd 'nethack-command-rest-one-move) "self")
+	   ((eq cmd 'nethack-command-search) "self")
+	   (t "nowhere")))))
 
 ;; getlin const char *ques, char *input) -- Prints ques as a prompt
 ;; and reads a single line of text, up to a newline.  The string entered
@@ -365,9 +363,8 @@ are no newlines in `nethack-status-string'."
 ;; the tty window-port, other ports might use a popup.
 
 (defun nethack-api-getlin (ques)
-  "" 
-  (nethack-process-send-string
-   (read-from-minibuffer (concat ques " "))))
+  ""
+  (nh-send (read-from-minibuffer (concat ques " "))))
 
 
 ;; int get_ext_cmd(void) -- Get an extended command in a window-port
@@ -380,36 +377,32 @@ are no newlines in `nethack-status-string'."
 ;; fill in pl_character[0].
 
 (defun nethack-api-player-selection ()
-  " Does nothing right now, perhaps simply indicates that the
+  "Does nothing right now, perhaps simply indicates that the
 nethack-api-choose-X calls are to follow for actual
-role/race/gender/align selection."  
-  )
+role/race/gender/align selection.")
 
 (defun nethack-choose-attribute (prompt alist abort)
   "Prompts user for an element from the cars of ALIST and returns the
 corresponding cdr."
-  (if (> (length alist) 1)
-      (let ((completion-ignore-case t))
-	(condition-case nil
-	    (cdr (assoc (completing-read prompt alist nil t) alist))
-	  (quit abort)))
-    (cdar alist)))
-  
+  (nh-send
+   (if (> (length alist) 1)
+       (let ((completion-ignore-case t))
+	 (condition-case nil
+	     (cdr (assoc (completing-read prompt alist nil t) alist))
+	   (quit abort)))
+     (cdar alist))))
+
 (defun nethack-api-choose-role (role-alist)
-  (nethack-return
-   (nethack-choose-attribute "Choose role: " role-alist -1)))
+  (nethack-choose-attribute "Choose role: " role-alist -1))
 
 (defun nethack-api-choose-race (race-alist)
-  (nethack-return
-   (nethack-choose-attribute "Choose race: " race-alist -1)))
+  (nethack-choose-attribute "Choose race: " race-alist -1))
 
 (defun nethack-api-choose-gender (gender-alist)
-  (nethack-return
-   (nethack-choose-attribute "Choose gender: " gender-alist -1)))
+  (nethack-choose-attribute "Choose gender: " gender-alist -1))
 
 (defun nethack-api-choose-alignment (alignment-alist)
-  (nethack-return
-   (nethack-choose-attribute "Choose alignment: " alignment-alist -1)))
+  (nethack-choose-attribute "Choose alignment: " alignment-alist -1))
 
 ;;  display_file(str, boolean complain) -- Display the file named str.
 ;; Complain about missing files iff complain is TRUE.
@@ -434,7 +427,9 @@ corresponding cdr."
 (defun nethack-api-doprev-message ()
   ""
   (save-selected-window
-    (save-excursion
+    (save-current-buffer		; is this redundant since we
+					; already save the selected
+					; window? -rcy
       (walk-windows (lambda (w)
 		      (select-window w)
 		      (set-buffer (window-buffer))
@@ -476,27 +471,35 @@ Do not edit the value of this variable.  Instead, change the value of
 `nethack-program'.")
 
 (defun nethack-api-init-nhwindows (executable &rest args)
-  " This is the first function sent by the nethack process.  Does
+  "This is the first function sent by the nethack process.  Does
 all of the appropriate setup."
-  (setq nethack-directory (file-name-directory executable)))
+  (setq nethack-directory (file-name-directory executable))
+  ;; clean up old buffers
+  (mapc (lambda (b) (kill-buffer (cdr b))) nethack-buffer-table)
+  (setq nethack-buffer-table nil)
+  (if (get-buffer nethack-raw-print-buffer-name)
+      (kill-buffer nethack-raw-print-buffer-name)))
 
 ;; exit_nhwindows(str) -- Exits the window system.  This should
 ;; dismiss all windows, except the 'window' used for raw_print().  str is
 ;; printed if possible.
 
 (defun nethack-api-exit-nhwindows (str)
-  "" 
+  ""
   ;; clean up buffers
   (mapc (lambda (b) (kill-buffer (cdr b))) nethack-buffer-table)
   (setq nethack-buffer-table nil)
-
-  (nethack-api-raw-print str))
+  ;; print the message in STR to the raw print buffer
+  (nethack-api-raw-print str)
+  ;; the process waits for this final acknowledgment
+  (nh-send 'dummy))
 
 ;; window = create_nhwindow(type) -- Create a window of type 'type'.
 
 (defvar nethack-buffer-table nil
   "An alist of (DIGIT-ID . BUFFER) pairs")
- 
+
+;; obsolete?
 (defvar nethack-buffer-type nil
   "Buffer local variable indicating the type of buffer this is.")
 
@@ -504,42 +507,57 @@ all of the appropriate setup."
 (defvar nethack-status-buffer nil)
 (defvar nethack-message-buffer nil)
 
-(defun nethack-api-create-nhwindow (type)
-  "Create a new window of TYPE and add it to the buffer table, preform
-type specific initalizations, and return a digit id."
-  (let* ((winid (+ 1 (apply 'max -1 (mapcar 'car nethack-buffer-table))))
-	 (name (format "*%s* %d" (symbol-name type) winid))
+;; these just call the old `nethack-api-create-nh-window', but only
+;; during the transition period
+(defun nethack-api-create-message-window (id)
+  (nethack-api-create-nhwindow 'nhw-message id))
+(defun nethack-api-create-status-window (id)
+  (nethack-api-create-nhwindow 'nhw-status id))
+(defun nethack-api-create-map-window (id)
+  (nethack-api-create-nhwindow 'nhw-map id)
+  (nethack-restore-window-configuration))
+(defun nethack-api-create-inventory-window (id)
+  (nethack-api-create-nhwindow 'nhw-menu id))
+(defun nethack-api-create-menu-window (id)
+  (nethack-api-create-nhwindow 'nhw-menu id))
+(defun nethack-api-create-text-window (id)
+  (nethack-api-create-nhwindow 'nhw-text id))
+
+(defun nethack-api-create-nhwindow (type winid)
+  "Create a new window of TYPE and WINID and add it to the buffer
+table."
+  (let* ((name (format "*%s* %d" (symbol-name type) winid))
 	 (buf (get-buffer-create name)))
-    (save-excursion
-      (set-buffer buf)
+    (with-current-buffer buf
       (setq buffer-read-only nil)
       (erase-buffer)
       (kill-all-local-variables)
       (setq nethack-buffer-type type)
       (cond ((eq type 'nhw-map)
 	     (setq nethack-map-buffer (current-buffer))
+	     ;; set up the gamegrid and the keymap
 	     (nethack-map-mode))
 	    ((eq type 'nhw-status)
 	     (setq nethack-status-buffer (current-buffer)))
 	    ((eq type 'nhw-message)
 	     (setq nethack-message-buffer (current-buffer)))))
-    (push (cons winid buf) nethack-buffer-table)
-    (nethack-return winid)))
+    (push (cons winid buf) nethack-buffer-table)))
+
 
 ;; clear_nhwindow(window) -- Clear the given window, when
 ;; appropriate.
 
 (defun nethack-api-clear-nhwindow (winid)
   ""
-  (save-excursion
-    (set-buffer (nethack-buffer winid))
-    (cond ((eq nethack-buffer-type 'nhw-map)
+  (with-current-buffer (nethack-buffer winid)
+    (cond ((eq nethack-buffer-type 'nhw-message)
+	   ;; FIXME: not the whole buffer!
+	   (set-text-properties (point-min) (point-max) nil))
+	  ((eq nethack-buffer-type 'nhw-map)
 	   (gamegrid-init (make-vector 256 nil))
 	   (gamegrid-init-buffer nethack-map-width
 				 nethack-map-height
 				 ? ))
-	  ((eq nethack-buffer-type 'nhw-message)
-	   (set-text-properties (point-min) (point-max) nil))
 	  (t
 	   (let ((inhibit-read-only t))
 	     (erase-buffer))))))
@@ -553,35 +571,42 @@ type specific initalizations, and return a digit id."
 ;; will do a --more--, if necessary, in the tty window-port.
 
 (defun nethack-api-display-nhwindow (winid blocking)
-  (save-excursion
-    (set-buffer (nethack-buffer winid))
+  (with-current-buffer (nethack-buffer winid)
     (if blocking
-	(cond ((or (eq nethack-buffer-type 'nhw-menu)
-		   (eq nethack-buffer-type 'nhw-text))
-	       (setq nethack-menu nil)
-	       (setq nethack-window-configuration (current-window-configuration))
-	       (let ((maybe-window
-		      (display-message-or-buffer (nethack-buffer winid))))
-		 (if (not (windowp maybe-window))
-		     (let ((cursor-in-echo-area t))
-		       (read-char-exclusive)
-		       (nethack-process-send nil))
-		   (select-window maybe-window)
-		   (nethack-menu-mode 'pick-none))))
-	      ;; At the end of the game, the message buffer is shown
-	      ;; one last time...we should do something better here,
-	      ;; but the problem is we have no way of indicating to
-	      ;; the user that we are waiting for a key to move on.
-	      ((eq nethack-buffer-type 'nhw-message)
-	       (nethack-process-send nil))
-	      ((eq nethack-buffer-type 'nhw-map)
-	       (read-char-exclusive)
-	       (nethack-process-send nil)))
+	(cond
+	 ;; Both menu's and text can be filled with arbitrary message
+	 ;; text.  Try to show the message in the minibuffer,
+	 ;; otherwise setup a "choiceless" menu.
+	 ((or (eq nethack-buffer-type 'nhw-menu)
+	      (eq nethack-buffer-type 'nhw-text))
+	  (setq nethack-window-configuration (current-window-configuration))
+	  (let ((maybe-window
+		 (display-message-or-buffer (nethack-buffer winid))))
+	    (if (not (windowp maybe-window))
+		(let ((cursor-in-echo-area t))
+		  (read-char-exclusive)
+		  (nh-send 'dummy))
+	      (setq nethack-menu nil)
+	      (select-window maybe-window)
+	      (nethack-menu-mode 'pick-none))))
+	 ;; This is called on the map when there is something that
+	 ;; needs to be temporarily unhidden, for example all of the
+	 ;; monsters.
+	 ((eq nethack-buffer-type 'nhw-map)
+	  (read-char-exclusive)
+	  (nh-send 'dummy))
+	 ;; At the end of the game, the message buffer is shown one
+	 ;; last time, not sure why.  We should do something better
+	 ;; here, but the problem is we have no way of indicating to
+	 ;; the user that we are waiting for a key to move on.
+	 ((eq nethack-buffer-type 'nhw-message)
+	  (nh-send 'dummy)))
       ;; Do nothing for nonblocking, except use if we are displaying
-      ;; the status window, in which case set up all of the windows
-      ;; for display for the first time.
+      ;; the status window (which is only done once).  In that case
+      ;; set up all of the windows for display for the first time.
       (if (eq nethack-buffer-type 'nhw-status)
-	(nethack-setup-window-configuration)))))
+	  (nethack-restore-window-configuration)))))
+
 
 (defcustom nethack-status-window-height 4
   "Height of the status window."
@@ -593,24 +618,26 @@ type specific initalizations, and return a digit id."
   :type '(integer)
   :group 'nethack)
 
-(defun nethack-setup-window-configuration ()
+(defun nethack-restore-window-configuration ()
   "Layout the nethack windows according to the values
 `nethack-status-window-height' and `nethack-message-window-height'."
   (delete-other-windows)
-  (switch-to-buffer nethack-status-buffer)
-  (split-window-vertically (- nethack-status-window-height))
   (switch-to-buffer nethack-message-buffer)
-  (split-window-vertically nethack-message-window-height)
+  (split-window-vertically (- nethack-message-window-height))
+  (switch-to-buffer nethack-status-buffer)
+  (split-window-vertically nethack-status-window-height)
   (switch-to-buffer-other-window nethack-map-buffer))
 
 ;; destroy_nhwindow(window) -- Destroy will dismiss the window if the
 ;; window has not already been dismissed.
 
 (defun nethack-api-destroy-nhwindow (winid)
-  (let ((buffer (nethack-buffer winid)))
-    (delete-windows-on buffer nil)
-    (kill-buffer buffer)
-    (setq nethack-buffer-table (assq-delete-all winid nethack-buffer-table))))
+  (save-current-buffer
+    (let ((buffer (nethack-buffer winid)))
+      (delete-windows-on buffer nil)
+      (kill-buffer buffer)
+      (setq nethack-buffer-table
+	    (assq-delete-all winid nethack-buffer-table)))))
 
 
 ;;; menus
@@ -635,10 +662,10 @@ type specific initalizations, and return a digit id."
 	(id  (aref item 3)))
     (insert (if (equal id -1)
 		""
-	      (concat (char-to-string acc) 
+	      (concat (char-to-string acc)
 		      (if val " + " " - ")))
 	    str)))
-  
+
 (defvar nethack-menu-how nil
   "One of pick-one, pick-none, pick-any.")
 
@@ -696,16 +723,15 @@ displayed."
   (if nethack-menu
       (let ((selected (ewoc-collect nethack-menu (lambda (x) (aref x 1)))))
 	(setq nethack-menu nil)
-	(nethack-process-send
-	 (mapcar (lambda (x) (list (aref x 3) -1)) selected)))
-    (nethack-process-send nil))
+	(nh-send (mapcar (lambda (x) (list (aref x 3) -1)) selected)))
+    (nh-send nil))
   (set-window-configuration nethack-window-configuration))
 
 (defun nethack-menu-cancel ()
   "Dismiss a menu with out making any choices."
   (interactive)
   (setq nethack-menu nil)
-  (nethack-menu-submit))  
+  (nethack-menu-submit))
 
 ;; start_menu(window) -- Start using window as a menu.  You must call
 ;; start_menu() before add_menu().  After calling start_menu() you may
@@ -713,8 +739,7 @@ displayed."
 ;; for menus.
 (defun nethack-api-start-menu (winid)
   ""
-  (save-excursion
-    (set-buffer (nethack-buffer winid))
+  (with-current-buffer (nethack-buffer winid)
     (erase-buffer)
     ;; we don't turn on nethack-menu-mode yet, since we do not yet
     ;; know "how" this menu is going to work.
@@ -765,11 +790,11 @@ buffer."
 		      (zerop accelerator))
 		 (nethack-specify-accelerator)
 	       accelerator)))
-    (ewoc-enter-last nethack-menu 
+    (ewoc-enter-last nethack-menu
 		     (vector acc
 			     preselected
-			     (propertize str 
-					 'face 
+			     (propertize str
+					 'face
 					 (nethack-attr-face attr))
 			     identifier))))
 
@@ -781,9 +806,8 @@ buffer."
 
 (defun nethack-api-end-menu (window prompt)
   ""
-  (save-excursion
-    (set-buffer (nethack-buffer window))
-    (ewoc-set-hf nethack-menu 
+  (with-current-buffer (nethack-buffer window)
+    (ewoc-set-hf nethack-menu
 		 prompt
 		 ;; preserve footer:
 		 (cdr (ewoc-get-hf nethack-menu)))
@@ -872,7 +896,7 @@ the menu is dismissed."
 ;; the moment
 
 ;;(defun nethack-api-mark-synch ()
-;;  "" 
+;;  ""
 ;;  'unimplemented)
 
 
@@ -890,8 +914,12 @@ the menu is dismissed."
 
 (defun nethack-api-delay-output ()
   "Sleep for 50ms."
-  (sleep-for 0 50)
-  (nethack-return 'dummy))
+  ;; This is the only way I can get the desired effect of a redisplay
+  ;; with a short pause.  Unfortunatly, if a keypress occurs during an
+  ;; "animation" we stop getting redisplays.
+  (sit-for 0 50)
+  ;; Tell process to continue
+  (nh-send 'dummy))
 
 
 ;; askname() -- Ask the user for a player name.
@@ -918,7 +946,7 @@ the menu is dismissed."
 ;; suspend_nhwindows(str) -- Prepare the window to be suspended.
 
 (defun nethack-api-suspend-nhwindows (str)
-  ""  
+  ""
   'unimplemented)
 
 
@@ -951,10 +979,9 @@ the menu is dismissed."
 ;; traditional code use genl_outrip for the value and check the #if in
 ;; rip.c.
 
-(defun nethack-api-outrip (window who int message)
+(defun nethack-api-outrip (window who gold message)
   ""
-  (save-excursion
-    (set-buffer (nethack-buffer window))
+  (with-current-buffer (nethack-buffer window)
     (insert (concat who " -- " message) "\n")))
 
 
@@ -1181,7 +1208,6 @@ the menu is dismissed."
 ;; printing any message, because raw_print() cannot function without
 ;; first setting the window-port.
 
-
 (provide 'nethack-api)
-
-;;; EOF
+
+;;; nethack-api.el ends here
