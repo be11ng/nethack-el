@@ -1,5 +1,7 @@
 2004-11-22  Shawn Betts  <katia_dilkina@verizon.net>
 
+	* nhlaunch.c (games): make nethack the first entry.
+
 	* nethack-nhlaunch.el (nh-network-game): new defvar
 	(nh-network-filter): send the game to play
 	(nethack-connect-to-server): take another arg, game.
