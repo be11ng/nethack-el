@@ -12,7 +12,6 @@
 ;;; Commentary:
 ;; 
 
-(require 'cl)
 (require 'ewoc)
 (require 'gamegrid)
 
@@ -305,27 +304,25 @@ highlighted."
 
 		;; Process flags. If a flag was not there before, it should be
 		;; marked in red as all flag updates are for bad things.
-		;; FIXME: this code introduces a CL dependency. 
-		(list "Flags"
-		      (loop for flag in (cadr (assoc "Flags" status))
-			    for old-flag = nil
-			    do (setq old-flag 
-				     (assoc flag (cadr (assoc "Flags" nethack-status-alist))))
-
-			    ;; Determine whether the flag should be highlighted
-			    if (null old-flag)
-			    do (insert (propertize flag 'face 'nethack-red-face))
-			    and
-			    do (setq old-flag (list flag nethack-status-highlight-delay))
-			    else if (> (cadr old-flag) 0)
-			    do (insert (propertize flag 'face 'nethack-red-face))
-			    and
-			    do (setq old-flag (list flag (1- (cadr old-flag))))
-			    else
-			    do (insert flag)
-			    do (insert " ")
-			    collect old-flag
-			    finally (insert "\n")))))))
+		;; FIXME: Not quite functioning but it doesn't need CL anymore.
+		(mapcar (lambda (flag)
+			  (let ((old-flag (assoc flag (cadr (assoc "Flags" nethack-status-alist)))))
+			    (cond ((null old-flag)
+				   ;; new flag, so highlight it and set the timer
+				   (insert (concat (propertize flag 'face 'nethack-red-face) " "))
+				   (list flag nethack-status-highlight-delay))
+				  ((> (cadr old-flag) 0)
+				   ;; existing flag. Highlight the flag if it hasn't timed-out yet.
+				   (insert (concat (propertize flag 'face 'nethack-red-face) " "))
+				   (list flag (1- (cadr old-flag))))
+				  (t 
+				   ;; The flag is old and its highlight has timed out. 
+				   ;; Just print the flag.
+				   (insert (concat flag " "))
+				   old-flag))))
+			(cadr (assoc "Flags" status)))))
+	  ;; Add a trailing newline to the status buffer
+	  (insert "\n")))
 
 ;; putstr(window, attr, str) -- Print str on the window with the
 ;; given attribute.  Only printable ASCII characters (040-0126) must be
