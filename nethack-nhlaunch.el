@@ -26,6 +26,8 @@
 
 ;;; Code:
 
+(require 'nethack)
+
 (defvar nh-network-user nil
   "The user to login as")
 
