@@ -28,45 +28,59 @@
 
 (require 'nethack)
 
-(defvar nh-network-user nil
+(defvar nethack-network-server "sputnik.emmett.ca"
   "The user to login as")
 
-(defvar nh-network-password nil
+(defvar nethack-network-port 23
+  "The user to login as")
+
+(defvar nethack-network-user (user-login-name)
+  "The user to login as")
+
+(defvar nethack-network-password nil
   "The password to use")
 
-(defvar nh-network-game nil
+(defvar nethack-network-game "nethack"
   "The game to play")
 
+(defvar nh-network-password nil)
+(defvar nh-network-game nil)
+
 (defun nh-network-filter (proc str)
-  (with-current-buffer (process-buffer proc)
-    (insert str))
   (cond ((or (string-equal str "Welcome to the nethack-el server.\n")
-	     (string-equal str (format "User %s added successfully.\n" nh-network-user)))
-	 (process-send-string proc (format "login %s %s\n" nh-network-user nh-network-password)))
-	((string-equal str (format "Welcome back %s.\n" nh-network-user))
+	     (string-equal str (format "User %s added successfully.\n" nethack-network-user)))
+	 (process-send-string proc (format "login %s %s\n" nethack-network-user nh-network-password)))
+	((string-equal str (format "Welcome back %s.\n" nethack-network-user))
 	 (message "Starting nethack...")
 	 (process-send-string proc (format "play %s\n" nh-network-game))
-	 (with-current-buffer  (process-buffer proc)
-	   (erase-buffer))
 	 (nethack-start proc))
-	((or (string-equal str (format "Failed to login %s.\n" nh-network-user))
+	((or (string-equal str (format "Failed to login %s.\n" nethack-network-user))
 	     (string-equal str "Error parsing name and password.\n"))
 	 (delete-process proc)
 	 (message str))
-	((string-equal str (format "Unknown user %s.\n" nh-network-user))
-	 (process-send-string proc (format "new %s %s\n" nh-network-user nh-network-password)))))
+	((string-equal str (format "Unknown user %s.\n" nethack-network-user))
+	 (process-send-string proc (format "new %s %s\n" nethack-network-user nh-network-password)))))
 
 ;;;###autoload
-(defun nethack-connect-to-server (server port user passwd game)
-  (interactive "sServer: \nsPort: \nsUser: \nsPasswd: \nsGame: ")
+(defun nethack-connect-to-server (&optional prefix)
+  "Connect to the nethack server specified by `nethack-network-server'
+`nethack-network-port' `nethack-network-user' `nethack-network-passwd'
+and `nethack-network-game'. When called with a universal arg, it
+prompts for the game."
+  (interactive "P")
   (if (nethack-is-running)
-	(message "Nethack process already running...")
+      (message "Nethack process already running...")
     (if (get-buffer nh-proc-buffer-name)
 	(kill-buffer nh-proc-buffer-name))
-    (let ((proc (open-network-stream "nh" nh-proc-buffer-name server port)))
-      (setq nh-network-user user)
-      (setq nh-network-password passwd)
-      (setq nh-network-game game)
+    (setq nh-network-password (or nethack-network-password
+				  (read-from-minibuffer "Password: ")))
+    (setq nh-network-game (if prefix
+			      (read-from-minibuffer "Game: ")
+			    nethack-network-game))
+    (message nh-network-game)
+    (let ((proc (open-network-stream "nh" nh-proc-buffer-name
+				     nethack-network-server
+				     nethack-network-port)))
       (set-process-filter proc 'nh-network-filter))))
   
 (provide 'nethack-nhlaunch)
