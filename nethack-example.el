@@ -28,21 +28,36 @@
 
 ;;; Code:
 
-(defun nethack-timestamp-message ()
+;;;;;;;;;;;;;;;;;;;
+(defun nethack-x-timestamp-message ()
   "Add a time-stamp to every message.
 
 Add the following to your ~/.emacs
 
-  (add-hook 'nethack-message-pre-print-hook 
-	    'nethack-timestamp-message)"
+  (add-hook 'nethack-before-print-message-hook 
+	    'nethack-x-timestamp-message)"
   (insert (format "(%d) " (elt nh-status-attribute-T 0))))
-
-(defun nethack-gdb ()
+;;;;;;;;;;;;;;;;;;;
+(defun nethack-x-gdb ()
   "Debug running nethack process with gdb."
   (interactive)
   (gdb (format "gdb %s/nethack %d"
 	       nh-directory
 	       (process-id nh-proc))))
 
+;;;;;;;;;;;;;;
+(defun nethack-x-warn-low-hp (attr new old)
+  "Print a message in `nh-message-buffer' when hitpoints get low.
+
+Add the following to your ~/.emacs
+
+(add-hook 'nethack-status-attribute-change-functions
+	  'nethack-x-warn-low-hp)"
+  (if (and (string-equal attr "HP")
+	   (< new old)
+	   (< (/ new (float (car nh-status-attribute-HPmax))) 0.20))
+      (nhapi-message 'atr-blink "Hitpoints below 20%")))
+
+;;;;;;;;;;;;;;
 (provide 'nethack-example)
 ;;; nethack-example.el ends here

@@ -1,5 +1,10 @@
 2002-09-20  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack-example.el (nethack-x-timestamp-message): Rename from
+	`nethack-timestamp-message'.
+	(nethack-x-gdb): Rename from `nh-gdb'.
+	(nethack-x-warn-low-hp): Add function.
+
 	* nethack-api.el (nh-status-string): Add function.
 	(nh-status-n, nh-status-w, nh-status-s, nh-status-d, nh-status-c) 
 	(nh-status-i, nh-status-W, nh-status-C, nh-status-A, nh-status-L) 
