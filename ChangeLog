@@ -1,14 +1,14 @@
-2004-11-14  Shawn Betts  <katia_dilkina@verizon.net>
+2004-11-14  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* Makefile (DISTFILES): change nethack-glyphs.el to nethack-tiles.el
 	(all): likewise
 
-2004-11-12  Shawn Betts  <katia_dilkina@verizon.net>
+2004-11-12  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack-api.el (nh-menu-toggle-all-items): fix which regexp
 	match gets replaced with '-' or '+'
 
-2004-11-11  Shawn Betts  <katia_dilkina@verizon.net>
+2004-11-11  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack-keys.el (nh-accelerator-chars): add ?# to the vector
 	(nh-accelerator-chars-regexp): new defvar
