@@ -1,5 +1,7 @@
 2002-04-10  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* Makefile (dist): Add rule.
+
 	* mkpatch: Add file.
 
 	* Makefile (patch): Call external mkpatch sh-script to generate
