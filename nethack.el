@@ -228,6 +228,7 @@ The variable `nethack-program' is the name of the executable to run."
       (setq nethack-status-alist nil)
       (setq nethack-menu nil)
       ;; Start the process.
+      (kill-buffer "*nh*") ;;; ???
       (pop-to-buffer "*nh*")
       (erase-buffer)
       (apply 'make-comint "nh" nethack-program nil nethack-program-args)
@@ -239,10 +240,12 @@ The variable `nethack-program' is the name of the executable to run."
 
 
 ;;;; Process code to communicate with the Nethack executable
+(defvar nh-prompt-regexp
+  "^\\(command\\|menu\\|dummy\\|direction\\|number\\|string\\)> *")
+
 (define-derived-mode nh-comint-mode comint-mode "Nethack Process"
   (make-local-variable 'comint-prompt-regexp)
-  (setq comint-prompt-regexp
-	"^\\(command\\|menu\\|dummy\\|direction\\|number\\|string\\)> *"))
+  (setq comint-prompt-regexp nh-prompt-regexp))
 
 (defcustom nethack-program "nethack"
   "Program to run to start a game of Nethack."

@@ -1,7 +1,11 @@
+2002-01-13  Ryan C Yeske  <rcyeske@sfu.ca>
+
+	* nethack.el (nh-prompt-regexp): New variable.
+	(nh-comint-mode): Use above variable.
+
 2002-01-10  Ryan C Yeske  <rcyeske@sfu.ca>
 
-	* nethack.el (nethack-map-glyph-face): Put in nethack-faces-faces
-	group.
+	* nethack.el (nethack-map-glyph-face): Put in nethack-faces group.
 	(nethack-use-glyphs): Default to nil.
 	(nethack-toggle-glyphs): New function.
 
