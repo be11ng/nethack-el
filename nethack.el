@@ -399,7 +399,8 @@ times the command should be executed."
 		       (cdr (assoc 'nhw-message
 				   nethack-buffer-name-alist)))
     (select-window new-win)
-    (setq new-win (split-window nil (- (window-height) 4)))
+    (let ((window-min-height 3))
+      (setq new-win (split-window nil (- (window-height) 3))))
     (set-window-buffer new-win
 		       (cdr (assoc 'nhw-status
 				   nethack-buffer-name-alist)))))

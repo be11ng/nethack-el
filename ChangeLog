@@ -1,3 +1,11 @@
+2001-07-21  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nethack-restore-windows): split so that the status
+	window is just big enough to show contents.
+
+	* nethack-menu.el (nethack-menu-create-item): fix bug that
+	prevented non-menu text from showing up.
+
 2001-07-19  shawn  <sabetts@diggin.lamenet.tmp>
 
 	* nethack-apix.el (nethack-api-choose-attribute): new arg ABORT.
