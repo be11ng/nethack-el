@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.72 2002/02/01 10:34:21 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.73 2002/04/24 01:39:52 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -154,13 +154,10 @@
 ;; NHW_MENU and NHW_TEXT windows do not currently support curs in the tty
 ;; window-port.
 
-(defun nethack-api-curs (winid x y)
-  ""
-  (with-current-buffer (nethack-buffer winid)
-    (cond ((eq nethack-buffer-type 'nhw-map)
-	   (goto-char (gamegrid-cell-offset (- x 1) y)))
-	  ((eq nethack-buffer-type 'nhw-status)
-	   (setq nethack-status-line-number y)))))
+(defun nethack-api-curs (x y)
+  "Set the cursor in `nethack-map-buffer' to X, Y."
+  (with-current-buffer nethack-map-buffer
+   (goto-char (gamegrid-cell-offset (- x 1) y))))
 
 ;; is this the way to make a "default" face?
 (defface nethack-atr-none-face
@@ -237,7 +234,7 @@ are no newlines in `nethack-status-string'."
 (defvar nethack-status-attribute-slimed (list nil nil 0))
 (defvar nethack-status-attribute-encumbrance (list nil nil 0))
 
-(defun nethack-reset-status ()
+(defun nethack-reset-status-variables ()
   (setq nethack-status-attribute-name (list nil nil 0)
 	nethack-status-attribute-monster (list nil nil 0)
 	nethack-status-attribute-rank (list nil nil 0)
@@ -417,31 +414,34 @@ are no newlines in `nethack-status-string'."
 ;; the first and then the second.  In the tty port, pline() achieves this
 ;; by calling more() or displaying both on the same line.
 
-(defun nethack-api-putstr (winid attr str)
-  "Print STR on WINID with ATTR."
-  (with-current-buffer (nethack-buffer winid)
+(defun nethack-api-putstr (menuid attr str)
+  "On buffer associated with MENUID, insert with ATTR the STR."
+  (with-current-buffer (nethack-buffer menuid)
     (let ((inhibit-read-only t))
-      (cond ((eq nethack-buffer-type 'nhw-message)
-	     (goto-char (point-max))
-	     (run-hooks 'nethack-message-pre-print-hook)
-	     (insert str "\n")
-	     ;; cover new text with highlight overlay
-	     (let ((start (overlay-start nethack-message-highlight-overlay)))
-	       (move-overlay nethack-message-highlight-overlay
-			     start (point-max)))
-	     ;; scroll to show maximum output on all windows displaying buffer
-	     (let ((l (get-buffer-window-list (nethack-buffer winid))))
-	       (save-selected-window
-		 (mapc (lambda (w)
-			 (select-window w)
-			 (set-window-point w (- (point-max) 1))
-			 (recenter -1))
-		       l))))
-	    (t (goto-char (point-max))
+      (cond (t (goto-char (point-max))
 	       (insert (nethack-propertize str 
 					   'face 
 					   (nethack-attr-face attr))
 		       "\n"))))))
+
+(defun nethack-api-message (attr str)
+  "Insert STR to nethack-message-buffer using ATTR face. FIXME: really do ATTR"
+  (with-current-buffer nethack-message-buffer
+    (goto-char (point-max))
+    (run-hooks 'nethack-message-pre-print-hook)
+    (insert str "\n")
+    ;; cover new text with highlight overlay
+    (let ((start (overlay-start nethack-message-highlight-overlay)))
+      (move-overlay nethack-message-highlight-overlay
+		    start (point-max)))
+    ;; scroll to show maximum output on all windows displaying buffer
+    (let ((l (get-buffer-window-list (current-buffer))))
+      (save-selected-window
+	(mapc (lambda (w)
+		(select-window w)
+		(set-window-point w (- (point-max) 1))
+		(recenter -1))
+	      l)))))    
 
 (defun nethack-attr-face (attr)
   "Return the face corresponding with ATTR."
@@ -450,9 +450,9 @@ are no newlines in `nethack-status-string'."
 ;; get_nh_event() -- Does window event processing (e.g. exposure
 ;; events).  A noop for the tty and X window-ports.
 
-(defun nethack-api-get-event ()
-  ""
-  )
+;; (defun nethack-api-get-event ()
+;;   ""
+;;   )
 
 
 ;; int nhgetch() -- Returns a single character input from the
@@ -460,15 +460,8 @@ are no newlines in `nethack-status-string'."
 ;; will be the routine the OS provides to read a character.  Returned
 ;; character _must_ be non-zero.
 
-(defun nethack-api-get-command ()
-  ""
-;;   (nethack-parse-status-lines (car nethack-status-lines)
-;; 			      (cdr nethack-status-lines))
-;;   (let ((status-string (nethack-format-status nethack-status-format)))
-;;     (with-current-buffer nethack-status-buffer
-;;       (erase-buffer)
-;;       (insert status-string))))
-)
+;; (defun nethack-api-get-command ()
+;;   "")
 
 ;; int nh_poskey(int *x, int *y, int *mod) -- Returns a single
 ;; character input from the user or a a positioning event (perhaps from a
@@ -479,9 +472,9 @@ are no newlines in `nethack-status-string'."
 ;; supports.  If no mouse is supported, this routine always returns a
 ;; non-zero character.
 
-(defun nethack-api-poskey (x y mod)
-  ""
-  'unimplemented)
+;; (defun nethack-api-poskey (x y mod)
+;;   ""
+;;   'unimplemented)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -493,11 +486,10 @@ are no newlines in `nethack-status-string'."
 ;; whatever the window- port wants (symbol, font, color, attributes,
 ;; ...there's a 1-1 map between glyphs and distinct things on the map).
 
-(defun nethack-api-print-glyph (winid x y color glyph tile ch)
-  ""
-;;  (with-current-buffer (nethack-buffer winid)
-  (set-buffer (nethack-buffer winid))
-  (setq x (- x 1)) 				; FIXME: put this hack in C
+(defun nethack-api-print-glyph (x y color glyph tile ch)
+  "Insert glyph into `nethack-map-buffer'."
+  (set-buffer nethack-map-buffer)
+  (setq x (- x 1))			; FIXME: put this hack in C
   (let ((inhibit-read-only t))
     (if nethack-use-glyphs
 	(save-excursion 
@@ -621,9 +613,12 @@ corresponding cdr."
 ;; inventory has been changed.  -- Merely calls display_inventory() for
 ;; window-ports that leave the window up, otherwise empty.
 
+(defvar nethack-inventory-need-update nil
+  "If non-nil, at the next command prompt, update the menu.")
+
 (defun nethack-api-update-inventory ()
-  " FIXME: should set a flag or something, later"
-  )
+;; FIXME: properly(?) implement perm-inven
+  (setq nethack-inventory-need-update t))
 
 ;; doprev_message() -- Display previous messages.  Used by the ^P
 ;; command.  -- On the tty-port this scrolls WIN_MESSAGE back one line.
@@ -637,7 +632,7 @@ corresponding cdr."
       (walk-windows (lambda (w)
 		      (select-window w)
 		      (set-buffer (window-buffer))
-		      (if (eq nethack-buffer-type 'nhw-message)
+		      (if (eq (current-buffer) nethack-message-buffer)
 			  (scroll-down)))))))
 
 ;; update_positionbar(char *features) -- Optional, POSITIONBAR must be
@@ -699,8 +694,8 @@ all of the appropriate setup."
   "An alist of (DIGIT-ID . BUFFER) pairs")
 
 ;; obsolete?
-(defvar nethack-buffer-type nil
-  "Buffer local variable indicating the type of buffer this is.")
+;;(defvar nethack-buffer-type nil
+;;  "Buffer local variable indicating the type of buffer this is.")
 
 (defvar nethack-map-buffer nil)
 (defvar nethack-status-buffer nil)
@@ -717,84 +712,76 @@ all of the appropriate setup."
   "The face used to highlight new text in the message window."
   :group 'nethack-faces)
 
-(defun nethack-api-create-message-window (id)
-  "Create the message window."
-  (with-current-buffer (nethack-api-create-nhwindow 'nhw-message id)
-    (setq nethack-message-buffer (current-buffer))
+(defun nethack-api-create-message-window ()
+  "Create the message buffer."
+  (with-current-buffer (get-buffer-create "*nethack message*")
     (setq nethack-message-highlight-overlay
 	  (make-overlay (point-max) (point-max)))
     (overlay-put nethack-message-highlight-overlay 
-		 'face 'nethack-message-highlight-face)))
+		 'face 'nethack-message-highlight-face)
+    (setq nethack-message-buffer (current-buffer))))
 
-(defun nethack-api-create-status-window (id)
-  "Create the status window."
-  (with-current-buffer (nethack-api-create-nhwindow 'nhw-status id)
+(defun nethack-api-create-status-window ()
+  "Create the status buffer."
+  (with-current-buffer (get-buffer-create "*nethack status*")
     (setq nethack-status-buffer (current-buffer))))
 
-(defun nethack-api-create-map-window (id)
-  "Create the map window."
-  (with-current-buffer (nethack-api-create-nhwindow 'nhw-map id)
-    (setq nethack-map-buffer (current-buffer))
-    ;; set up the gamegrid and the keymap
+(defun nethack-api-create-map-window ()
+  "Created the map buffer."
+  (with-current-buffer (get-buffer-create "*nethack map*")
     (nethack-map-mode)
-    ;; arrange the initial window configuration
-    (nethack-restore-window-configuration)))
+    (setq nethack-map-buffer (current-buffer))))
 
-(defun nethack-api-create-inventory-window (id)
+(defun nethack-api-create-inventory-window (menuid)
   "Create the inventory window."
-  (nethack-api-create-menu-window id))
+  (nethack-api-create-menu-window menuid))
 
-(defun nethack-api-create-menu-window (id)
+(defun nethack-api-create-menu-window (menuid)
   "Create a menu window."
-  (with-current-buffer (nethack-api-create-nhwindow 'nhw-menu id)
+  (with-current-buffer (nethack-api-create-menu 'menu menuid)
     (setq buffer-read-only t)))
 
-(defun nethack-api-create-text-window (id)
+(defun nethack-api-create-text-window (menuid)
   "Create a text window."
-  (nethack-api-create-nhwindow 'nhw-text id))
+  ;; text windows are treated as "pick-none" menu windows
+  (nethack-api-create-menu 'text menuid))
 
-(defun nethack-api-create-nhwindow (type winid)
-  "Create a new window of TYPE and WINID and add it to the buffer table.
+(defun nethack-api-create-menu (type menuid)
+  "Return a newly created buffer and add it to the menu table.  
 
-Return the buffer."
-  (let* ((name (format "*%s* %d" (symbol-name type) winid))
+The TYPE argument is legacy and serves no real purpose."
+  (let* ((name (format "*%s* %d" (symbol-name type) menuid))
 	 (buf (get-buffer-create name)))
     (with-current-buffer buf
       (setq buffer-read-only nil)
       (erase-buffer)
-      (kill-all-local-variables)
-      (setq nethack-buffer-type type))
-    (push (cons winid buf) nethack-buffer-table)
+      (kill-all-local-variables))
+    (push (cons menuid buf) nethack-buffer-table)
     buf))
 
+(defun nethack-api-clear-message ()
+  "Move overlay off the last message in `nethack-message-buffer'."
+  (with-current-buffer nethack-message-buffer
+    (move-overlay nethack-message-highlight-overlay
+		  (point-max) (point-max))))
 
-;; clear_nhwindow(window) -- Clear the given window, when
-;; appropriate.
-
-(defun nethack-api-clear-nhwindow (winid)
-  ""
-  (with-current-buffer (nethack-buffer winid)
-    (cond ((eq nethack-buffer-type 'nhw-message)
-	   ;; move overlay off the last messages
-	   (move-overlay nethack-message-highlight-overlay
-			 (point-max) (point-max)))
-	  ((eq nethack-buffer-type 'nhw-map)
-	   (let ((inhibit-read-only t))
-	     (erase-buffer)
-	     (if nethack-use-glyphs
-		 (progn ;; FIXME: test to see if emacs is capable of glyphs
-		   (require 'nethack-glyphs)
-		   ;; initialize the map with empty glyphs
-		   (dotimes (i nethack-map-height)
-		     (dotimes (j nethack-map-width)
-		       (insert-image nethack-empty-glyph))
-		     (insert (propertize "\n" 'face 'nethack-map-glyph-face))))
-	       (gamegrid-init (make-vector 256 nil))
-	       (gamegrid-init-buffer nethack-map-width
-				     nethack-map-height
-				     ? ))))
-	  (t (let ((inhibit-read-only t))
-	       (erase-buffer))))))
+(defun nethack-api-clear-map ()
+  "Clear the map."
+  (with-current-buffer nethack-map-buffer
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      (if nethack-use-glyphs
+	  (progn ;; FIXME: test to see if emacs is capable of glyphs
+	    (require 'nethack-glyphs)
+	    ;; initialize the map with empty glyphs
+	    (dotimes (i nethack-map-height)
+	      (dotimes (j nethack-map-width)
+		(insert-image nethack-empty-glyph))
+	      (insert (propertize "\n" 'face 'nethack-map-glyph-face))))
+	(gamegrid-init (make-vector 256 nil))
+	(gamegrid-init-buffer nethack-map-width
+			      nethack-map-height
+			      ? )))))
 
 ;; display_nhwindow(window, boolean blocking) -- Display the window on
 ;; the screen.  If there is data pending for output in that window, it
@@ -804,44 +791,22 @@ Return the buffer."
 ;; in the tty window-port.  -- Calling display_nhwindow(WIN_MESSAGE,???)
 ;; will do a --more--, if necessary, in the tty window-port.
 
-(defun nethack-api-display-nhwindow (winid blocking)
-  (with-current-buffer (nethack-buffer winid)
-    (if blocking
-	(cond
-	 ;; Both menu's and text can be filled with arbitrary message
-	 ;; text.  Try to show the message in the message window,
-	 ;; otherwise setup a "choiceless" menu.
-	 ((or (eq nethack-buffer-type 'nhw-menu)
-	      (eq nethack-buffer-type 'nhw-text))
-	  (let ((message-window (get-buffer-window nethack-message-buffer))
-		(message-size (count-lines (point-min) (point-max)))
-		(message-winid (car (rassoc nethack-message-buffer
-					    nethack-buffer-table))))
-	    (if (or (not message-window)
-		    (>= message-size (window-height message-window)))
-		(nethack-api-select-menu winid 'pick-none)
-	      (nethack-api-putstr message-winid 'atr-none
-				  (buffer-substring (point-min)
-						    (- (point-max) 1)))
-	      (nh-send 'dummy))))
-	 ;; This is called on the map when there is something that
-	 ;; needs to be temporarily unhidden, for example all of the
-	 ;; monsters.
-	 ((eq nethack-buffer-type 'nhw-map)
-	  (nethack-read-char)
-	  (nh-send 'dummy))
-	 ;; At the end of the game, the message buffer is shown one
-	 ;; last time, not sure why.  We should do something better
-	 ;; here, but the problem is we have no way of indicating to
-	 ;; the user that we are waiting for a key to move on.
-	 ((eq nethack-buffer-type 'nhw-message)
-	  (nh-send 'dummy)))
-      ;; Do nothing for nonblocking, except use if we are displaying
-      ;; the status window (which is only done once).  In that case
-      ;; set up all of the windows for display for the first time.
-      (if (eq nethack-buffer-type 'nhw-status)
-	  (nethack-restore-window-configuration)))))
+(defun nethack-api-display-menu (menuid)
+  (with-current-buffer (nethack-buffer menuid)
+    (let ((window (get-buffer-window nethack-message-buffer))
+	  (size (count-lines (point-min) (point-max))))
+      (if (or (not window)
+	      (>= size (window-height window)))
+	  (nethack-api-select-menu menuid 'pick-none)
+	(nethack-api-message 'atr-none 
+			     (buffer-substring (point-min)
+					       (- (point-max) 1)))
+	(nh-send 'dummy)))))
 
+(defun nethack-api-block ()
+  ;;(nethack-read-char "nethack: -- more --")
+  (read-from-minibuffer "--more--")
+  (nh-send 'dummy))
 
 (defcustom nethack-status-window-height 4
   "Height of the status window."
@@ -853,28 +818,30 @@ Return the buffer."
   :type '(integer)
   :group 'nethack)
 
-(defun nethack-restore-window-configuration ()
+(defun nethack-api-restore-window-configuration ()
   "Layout the nethack windows according to the values
 `nethack-status-window-height' and `nethack-message-window-height'."
-  (delete-other-windows)
-  (switch-to-buffer nethack-message-buffer)
-  (split-window-vertically (- nethack-message-window-height))
-  (switch-to-buffer nethack-status-buffer)
-  (split-window-vertically nethack-status-window-height)
-  (switch-to-buffer-other-window nethack-map-buffer)
-  (if nethack-active-menu-buffer
-      (pop-to-buffer nethack-active-menu-buffer)))
+  (let ((window-min-height (min nethack-status-window-height
+				nethack-message-window-height)))
+    (delete-other-windows)
+    (switch-to-buffer nethack-status-buffer)
+    (split-window-vertically (- nethack-status-window-height))
+    (switch-to-buffer nethack-message-buffer)
+    (split-window-vertically nethack-message-window-height)
+    (switch-to-buffer-other-window nethack-map-buffer)
+    (if (buffer-live-p nethack-active-menu-buffer)
+	(pop-to-buffer nethack-active-menu-buffer))))
 
 ;; destroy_nhwindow(window) -- Destroy will dismiss the window if the
 ;; window has not already been dismissed.
 
-(defun nethack-api-destroy-nhwindow (winid)
+(defun nethack-api-destroy-menu (menuid)
   (save-current-buffer
-    (let ((buffer (nethack-buffer winid)))
+    (let ((buffer (nethack-buffer menuid)))
       (delete-windows-on buffer nil)
       (kill-buffer buffer)
       (setq nethack-buffer-table
-	    (nethack-assq-delete-all winid nethack-buffer-table)))))
+	    (nethack-assq-delete-all menuid nethack-buffer-table)))))
 
 ;;; menus
 
@@ -900,8 +867,8 @@ triggered this function call, if it is a valid option.
 
 Does nothing if this is a pick-none menu.
 
-Automatically submits menu if this is a pick-one menu if an option was
-actually toggled."
+Automatically submits menu if this is a pick-one menu and an option
+was actually toggled."
   (interactive "P")
   (if (not (eq nethack-menu-how 'pick-none))
       (let ((case-fold-search nil)
@@ -979,7 +946,8 @@ displayed."
 	(if (/= value 0)
 	    (setq menu-data (cons (list (nethack-char-to-int accelerator) value) menu-data)))))
     (nh-send menu-data)
-    (set-window-configuration nethack-window-configuration)
+    (and (window-configuration-p nethack-window-configuration)
+	 (set-window-configuration nethack-window-configuration))
     (setq nethack-active-menu-buffer nil)
     (message "%S" menu-data)))
 	
@@ -997,9 +965,9 @@ displayed."
 ;; start_menu() before add_menu().  After calling start_menu() you may
 ;; not putstr() to the window.  Only windows of type NHW_MENU may be used
 ;; for menus.
-(defun nethack-api-start-menu (winid)
+(defun nethack-api-start-menu (menuid)
   ""
-  (with-current-buffer (nethack-buffer winid)
+  (with-current-buffer (nethack-buffer menuid)
     (let ((inhibit-read-only t))
       (erase-buffer)
       ;; we don't turn on nethack-menu-mode yet, since we do not yet
@@ -1043,10 +1011,10 @@ specified by `nethack-unassigned-accelerator-index'."
 ;; symbols.  -- If you want this choice to be preselected when the menu
 ;; is displayed, set preselected to TRUE.
 
-(defun nethack-api-add-menu (window glyph tile accelerator groupacc attr str preselected)
+(defun nethack-api-add-menu (menuid glyph tile accelerator groupacc attr str preselected)
   "Create a menu item out of arguments and draw it in the menu
 buffer."
-  (with-current-buffer (nethack-buffer window)
+  (with-current-buffer (nethack-buffer menuid)
     (goto-char (point-max))
     (let ((inhibit-read-only t)
 	  (start (point)))
@@ -1097,13 +1065,13 @@ buffer."
 
 (defvar nethack-active-menu-buffer nil)
 
-(defun nethack-api-select-menu (winid how)
-  "Display the menu given by WINID and put the buffer in
+(defun nethack-api-select-menu (menuid how)
+  "Display the menu given by MENUID and put the buffer in
 `nethack-menu-mode'.
 
 Saves the current window configuration so that it can be restored when
 the menu is dismissed."
-  (let ((buffer (nethack-buffer winid)))
+  (let ((buffer (nethack-buffer menuid)))
     (if buffer
 	(progn
 	  (setq nethack-window-configuration (current-window-configuration))
@@ -1111,9 +1079,9 @@ the menu is dismissed."
 	  ;; menu, if possible.
 	  (let ((message-window (get-buffer-window nethack-message-buffer)))
 	    (if (not message-window)
-		(pop-to-buffer (nethack-buffer winid) nil t)
+		(pop-to-buffer (nethack-buffer menuid) nil t)
 	      (select-window message-window)
-	      (switch-to-buffer (nethack-buffer winid) t)))
+	      (switch-to-buffer (nethack-buffer menuid) t)))
 	  ;; make window larger, if necessary
 	  (let ((bh (nethack-window-buffer-height (selected-window)))
 		(wh (- (window-height) 1)))
@@ -1123,7 +1091,7 @@ the menu is dismissed."
 	  (goto-char (point-min))
 	  (message "Displaying menu")
 	  (setq nethack-active-menu-buffer buffer))
-      (error "No such winid: %d" winid))))
+      (error "No such menuid: %d" menuid))))
 
 ;; char message_menu(char let, int how, const char *mesg) --
 ;; tty-specific hack to allow single line context-sensitive help to

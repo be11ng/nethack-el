@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.66 2002/02/01 10:34:23 rcyeske Exp $
+;; Version: $Id: nethack.el,v 1.67 2002/04/24 01:39:52 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -254,11 +254,10 @@ The variable `nethack-program' is the name of the executable to run."
   (if (and (processp nh-proc)
 	   (eq (process-status nh-proc) 'run))
       (progn
-	(nethack-restore-window-configuration)
-	(message "Nethack process already running..."))
+	(message "Nethack process already running...")
+	(nethack-api-restore-window-configuration))
     (save-excursion
-      ;; Reset intermediate variables.
-      (nethack-reset-status)
+      (nethack-reset-status-variables)
       ;;; Start the process.
       (if (get-buffer nh-proc-buffer-name)
 	  (kill-buffer nh-proc-buffer-name))
@@ -377,6 +376,9 @@ delete the contents, perhaps logging the text."
   (set-syntax-table nethack-map-mode-syntax-table)
   (setq mode-name "NETHACK MAP")
   (setq major-mode 'nethack-map-mode)
+  ;; make scroll-other-window work on the message buffer
+  (make-variable-buffer-local 'other-window-scroll-buffer)
+  (setq other-window-scroll-buffer nethack-message-buffer)
   (run-hooks 'nethack-map-mode-hook))
 
 (defvar nethack-map-width 79 "Max width of the map.")
