@@ -1,6 +1,6 @@
 2003-09-14  Shawn Betts  <sabetts@vcn.bc.ca>
 
-	* Makefile (DISTFILES): added nethack-compat.el
+	* Makefile (DISTFILES): added nethack-compat.el and ese-007e3.patch
 
 2003-09-13  Shawn Betts  <sabetts@vcn.bc.ca>
 
