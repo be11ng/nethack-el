@@ -9,7 +9,7 @@
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
-(require 'nethack-glyphs)
+;;(require 'nethack-glyphs)
 
 ;;; Code:
 (defgroup nethack nil
@@ -213,15 +213,15 @@ newlines being in a font with height > 16."
   "Vector indexed by Nethack's color number.")
 
 
-(defvar nh-comint-proc nil)
+(defvar nh-proc nil)
 
 (defun nethack ()
   "Start a game of Nethack.
 
 The variable `nethack-program' is the name of the executable to run."
   (interactive)
-  (if (and (processp nh-comint-proc)
-	   (eq (process-status nh-comint-proc) 'run))
+  (if (and (processp nh-proc)
+	   (eq (process-status nh-proc) 'run))
       (progn
 	(nethack-restore-window-configuration)
 	(message "Nethack process already running..."))
@@ -229,16 +229,17 @@ The variable `nethack-program' is the name of the executable to run."
       ;; Reset intermediate variables.
       (setq nethack-status-alist nil)
       ;;; Start the process.
-      (if (get-buffer "*nh*")
-	  (kill-buffer "*nh*"))
+      ;;(if (get-buffer "*nh*")
+      ;;(kill-buffer "*nh*"))
       ;; pop to buffer so if there is an error right away the user can
       ;; see what the output from the process was
-      (pop-to-buffer "*nh*")
-      (apply 'make-comint "nh" nethack-program nil nethack-program-args)
-      (nh-comint-mode)
-      (setq nh-comint-proc (get-buffer-process (current-buffer)))
-      (set-process-filter nh-comint-proc 'nh-filter)
-      (set-process-sentinel nh-comint-proc 'nh-sentinel)
+      ;;(pop-to-buffer "*nh*")
+      (setq nh-proc
+	    (apply 'start-process "nh" nil nethack-program nethack-program-args))
+;;      (nh-comint-mode)
+;;      (setq nh-comint-proc (get-buffer-process (current-buffer)))
+      (set-process-filter nh-proc 'nh-filter)
+      (set-process-sentinel nh-proc 'nh-sentinel)
       (make-variable-buffer-local 'nethack-buffer-type)))) ; FIXME: obsolete?
 
 
@@ -246,9 +247,9 @@ The variable `nethack-program' is the name of the executable to run."
 (defvar nh-prompt-regexp
   "^\\(command\\|menu\\|dummy\\|direction\\|number\\|string\\)> *")
 
-(define-derived-mode nh-comint-mode comint-mode "Nethack Process"
-  (make-local-variable 'comint-prompt-regexp)
-  (setq comint-prompt-regexp nh-prompt-regexp))
+; (define-derived-mode nh-comint-mode comint-mode "Nethack Process"
+;   (make-local-variable 'comint-prompt-regexp)
+;   (setq comint-prompt-regexp nh-prompt-regexp))
 
 (defcustom nethack-program "nethack"
   "Program to run to start a game of Nethack."
@@ -276,44 +277,44 @@ PROC is the process object and MSG is the exit message."
 Evaluate the buffer contents between the last prompt and the current
 position if we are looking at a prompt."
   ;; insert output into process buffer
-  (comint-output-filter proc string)
-  ;; if we have made it to a prompt, evaluate the block of output
-  (if (buffer-name (process-buffer proc))
-      (with-current-buffer (set-buffer (process-buffer proc))
-	(goto-char (process-mark proc))
-	(forward-line 0)
-	(if (looking-at comint-prompt-regexp)
-	    (let ((prompt (match-string 1)))
-	      (eval-region comint-last-input-end (point))
-	      ;(delete-region (point-min) (point))
-	      (cond ((or (equal prompt "command")
-			 (equal prompt "menu"))
-		     (sit-for 0)
-		     (setq nh-at-prompt t)))))
-	(goto-char (point-max)))))
+  (with-current-buffer (get-buffer-create " *nethack-output*")
+    (goto-char (point-max))
+    (insert string)
+    (forward-line 0)
+    (if (looking-at nh-prompt-regexp)
+	(let ((prompt (match-string 1)))
+	  (eval-region (point-min) (point))
+	  (erase-buffer)
+	  (cond ((or (equal prompt "command")
+		     (equal prompt "menu"))
+		 (sit-for 0)
+		 (setq nh-at-prompt t)))))))
 
 (defvar nh-at-prompt nil)
 (defun nh-send (form)
-  (if (buffer-name (process-buffer nh-comint-proc))
-      (save-excursion
-	(set-buffer (process-buffer nh-comint-proc))
-	(save-restriction
-	  (widen)
-	  (goto-char (point-max))
-	  (insert (cond
-		   ((null form) "()")	; the process doesn't handle `nil'
-		   ((stringp form) form)
-		   (t (prin1-to-string form))))
-	  (comint-send-input)))
-    (error "No nethack process")))
+;;  (if (buffer-name (process-buffer nh-proc))
+;;      (save-excursion
+;;	(set-buffer (process-buffer nh-proc))
+;;	(save-restriction
+;;	  (widen)
+;;	  (goto-char (point-max))
+	  (process-send-string 
+	   nh-proc 
+	   (concat (cond 
+		    ((null form) "()")	; the process doesn't handle `nil'
+		    ((stringp form) form)
+		    (t (prin1-to-string form)))
+		   "\n")))
+;;	  (comint-send-input))
+;;    (error "No nethack process")))
   
 (defun nh-send-and-wait (form)
   (nh-send form)
   ;; wait until we get back to a "command" prompt before returning
   (setq nh-at-prompt nil)
-  (while (and (eq (process-status nh-comint-proc) 'run)
+  (while (and (eq (process-status nh-proc) 'run)
 	      (not nh-at-prompt))
-    (accept-process-output nh-comint-proc)))
+    (accept-process-output nh-proc)))
 
 ;;; Buffer code (aka windows in Nethack)
 
@@ -525,7 +526,25 @@ position if we are looking at a prompt."
       str))
 
 
-(run-hooks 'nethack-load-hook)		; for your customizations
+;;; utility/compatibility functions
+(defun nethack-propertize (string &rest properties)
+  "Add text PROPERTIES to STRING and return the new string."
+  (add-text-properties 0 (length string) properties string)
+  string)
+
+(defun nethack-assq-delete-all (key alist)
+  "Delete from ALIST all elements whose car is KEY.
+Return the modified alist."
+  ;; this is defined in emacs21 as `assq-delete-all'.
+  (let ((tail alist))
+    (while tail
+      (if (eq (car (car tail)) key)
+	  (setq alist (delq (car tail) alist)))
+      (setq tail (cdr tail)))
+    alist))
+
+
+(run-hooks 'nethack-load-hook)
 
 (provide 'nethack)
 

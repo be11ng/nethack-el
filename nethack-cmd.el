@@ -55,8 +55,8 @@
 (defun-nethack-command west-until-ontop "Go west until you are on top of something" "gowestontop") ;H
 (defun-nethack-command west-until-near "Go west until you are near something" "gowestnear") ;^H
 (defun-nethack-command southwest "Go southwest 1 space" "gosouthwest") ;b
-(defun-nethack-command southwest-until-ontop "Go southwest until you are on top of something" "xxx") ;B
-(defun-nethack-command southwest-until-near "Go southwest until you are near something" "xxx") ;^B
+(defun-nethack-command southwest-until-ontop "Go southwest until you are on top of something" "gosouthwestontop") ;B
+(defun-nethack-command southwest-until-near "Go southwest until you are near something" "gosouthwestnear") ;^B
 (defun-nethack-command south "Go south 1 space (or if number_pad is on, jump to another location)" "gosouth") ;j
 (defun-nethack-command south-until-ontop "Go south until you are on top of something" "gosouthontop") ;J
 (defun-nethack-command south-until-near "Go south until you are near something" "gosouthnear") ;^J

@@ -125,8 +125,7 @@
 
 (defun nethack-api-raw-print-bold (str)
   (nethack-api-raw-print
-   (propertize str 'face (nethack-attr-face 'atr-bold))))
-
+   (nethack-propertize str (list 'face (nethack-attr-face 'atr-bold)))))
 
 ;; curs(window, x, y) -- Next output to window will start at (x,y),
 ;; also moves displayable cursor to (x,y).  For backward compatibility, 1
@@ -229,12 +228,23 @@ are no newlines in `nethack-status-string'."
 		 (mapcar (lambda (flag)
 			   (let ((old-flag (assoc flag (cadr (assoc "Flags" nethack-status-alist)))))
 			     (cond ((null old-flag)
-				    ;; new flag, so highlight it and set the timer
-				    (insert (concat (propertize flag 'face 'nethack-red-face) " "))
+				    ;; new flag, so highlight it and
+				    ;; set the timer
+				    (insert (concat
+					     (nethack-propertize flag
+								 'face
+								 'nethack-red-face) 
+					     " "))
 				    (list flag nethack-status-highlight-delay))
 				   ((> (cadr old-flag) 0)
-				    ;; existing flag. Highlight the flag if it hasn't timed-out yet.
-				    (insert (concat (propertize flag 'face 'nethack-red-face) " "))
+				    ;; existing flag. Highlight the
+				    ;; flag if it hasn't timed-out
+				    ;; yet.
+				    (insert (concat
+					     (nethack-propertize flag
+								'face
+								'nethack-red-face)
+						    " "))
 				    (list flag (1- (cadr old-flag))))
 				   (t 
 				    ;; The flag is old and its highlight has timed out. 
@@ -279,7 +289,9 @@ are no newlines in `nethack-status-string'."
 		       l))))
 	    (t
 	     (goto-char (point-max))
-	     (insert (propertize str 'face (nethack-attr-face attr))
+	     (insert (nethack-propertize str 
+					 'face 
+					 (nethack-attr-face attr))
 		     "\n"))))))
 
 (defun nethack-attr-face (attr)
@@ -712,8 +724,7 @@ Return the buffer."
       (delete-windows-on buffer nil)
       (kill-buffer buffer)
       (setq nethack-buffer-table
-	    (assq-delete-all winid nethack-buffer-table)))))
-
+	    (nethack-assq-delete-all winid nethack-buffer-table)))))
 
 ;;; menus
 
@@ -804,7 +815,7 @@ displayed."
     (while (re-search-forward "^\\([a-zA-Z*]\\) \\([-+]\\|[0-9]+\\) .+$" nil t)
       (let ((accelerator (match-string 1))
 	    (value (match-string 2))
-	    (identifier (get-text-property (point) 'nethack-id)))
+	    (identifier (get-text-property (match-beginning 0) 'nethack-id)))
 	(cond ((string-equal value "+")
 	       (setq value -1))
 	      ((string-equal value "-")
@@ -838,7 +849,6 @@ displayed."
       ;; we don't turn on nethack-menu-mode yet, since we do not yet
       ;; know "how" this menu is going to work.
       (setq nethack-unassigned-accelerator-index 0))))
-      
 
 (defvar nethack-unassigned-accelerator-index 0
   "Index into `nethack-accelerator-chars' indicating the next
@@ -877,7 +887,7 @@ specified by `nethack-unassigned-accelerator-index'."
 ;; symbols.  -- If you want this choice to be preselected when the menu
 ;; is displayed, set preselected to TRUE.
 
-(defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
+(defun nethack-api-add-menu (window glyph tile identifier accelerator groupacc attr str preselected)
   "Create a menu item out of arguments and draw it in the menu
 buffer."
   (with-current-buffer (nethack-buffer window)
@@ -885,17 +895,17 @@ buffer."
     (let ((inhibit-read-only t)
 	  (start (point)))
       (if (= identifier -1)
-	  (insert str)			;FIXME: propertize
-	(insert (format "%c %c %s [%d]" 
+	  (insert str)
+	(insert (format "%c %c %s"
 			(if (eq accelerator 0)
 			    (nethack-specify-accelerator)
 			  accelerator)
 			(if preselected ?+ ?-)
-			str
-			identifier))
-	;; store the identifier as a text property
-	(add-text-properties start (point) (list 'nethack-id identifier)))
-      (newline))))
+			str)))
+      ;; store the identifier as a text property
+      (add-text-properties start (point) (list 'nethack-id identifier
+					       'face (nethack-attr-face attr)))
+      (insert-char ?\n 1 nil))))
 
 ;; end_menu(window, prompt) -- Stop adding entries to the menu and
 ;; flushes the window to the screen (brings to front?).  Prompt is a
