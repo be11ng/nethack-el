@@ -12,6 +12,7 @@
 ;;; Commentary:
 ;; 
 
+(require 'cl)
 (require 'ewoc)
 (require 'gamegrid)
 
@@ -837,8 +838,9 @@ actually toggled."
   (interactive)
   (if (eq nethack-menu-how 'pick-any)
       (ewoc-map (lambda (i)
-		  (aset i 1 (not (aref i 1)))
-		  t)			; redisplay this entry
+		  (unless (= (aref i 3) -1)
+		    (aset i 1 (not (aref i 1)))
+		    t))			; redisplay this entry
 		nethack-menu)))
 
 (defun nethack-menu-goto-next ()
