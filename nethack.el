@@ -227,10 +227,12 @@ The variable `nethack-program' is the name of the executable to run."
       ;; Reset intermediate variables.
       (setq nethack-status-alist nil)
       (setq nethack-menu nil)
-      ;; Start the process.
-      (kill-buffer "*nh*") ;;; ???
+      ;;; Start the process.
+      (if (get-buffer "*nh*")
+	  (kill-buffer "*nh*"))
+      ;; pop to buffer so if there is an error right away the user can
+      ;; see what the output from the process was
       (pop-to-buffer "*nh*")
-      (erase-buffer)
       (apply 'make-comint "nh" nethack-program nil nethack-program-args)
       (nh-comint-mode)
       (setq nh-comint-proc (get-buffer-process (current-buffer)))

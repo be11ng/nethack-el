@@ -1,3 +1,17 @@
+2002-01-14  Ryan C Yeske  <rcyeske@sfu.ca>
+
+	* nethack-api.el (nethack-api-putstr): Use overlay for highlight.
+	Insert newline after text, not before.
+	(nethack-api-create-nhwindow): Move code from cond into appropriate
+	nethack-api-create-*-window functions.
+	(nethack-api-create-menu-window): Make buffer read-only.
+	(nethack-api-start-menu): Inhibit read-only.
+	(nethack-api-create-message-window): Create highlight overlay.
+	(nethack-api-clear-nhwindow): Don't create gamegrid if using glyphs.
+	(nethack-api-putstr): Inhibit readonly.
+
+	* nethack.el (nethack): Check for buffer before killing it.
+
 2002-01-13  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack-glyphs.el (nethack-glyph-vector): fix the giant ant image.
