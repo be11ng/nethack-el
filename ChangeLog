@@ -1,3 +1,7 @@
+2002-01-13  shawn  <sabetts@vcn.bc.ca>
+
+	* nethack-glyphs.el (nethack-glyph-vector): fix the giant ant image.
+
 2002-01-13  Ryan C Yeske  <rcyeske@sfu.ca>
 
 	* nethack.el (nh-prompt-regexp): New variable.
