@@ -416,7 +416,7 @@ all of the appropriate setup."
 
 (defun nethack-api-exit-nhwindows (str)
   "" 
-  (nethack-api-raw-print "foo")
+  (nethack-api-raw-print str)
   'void)
 
 ;; window = create_nhwindow(type) -- Create a window of type 'type'.
