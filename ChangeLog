@@ -1,3 +1,15 @@
+2002-02-01  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el: Update copyright.
+
+	* nethack-keys.el: Update copyright.
+
+	* nethack-keys-dvorak.el: Update copyright.
+
+	* nethack-glyphs.el: Update copyright.
+
+	* nethack-api.el: Update copyright.
+
 2002-02-01  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack-message-pre-print-hook): new hook.
