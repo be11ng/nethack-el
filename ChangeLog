@@ -1,3 +1,8 @@
+2003-08-29  Shawn Betts  <sabetts@vcn.bc.ca>
+
+	* nethack-api.el (nhapi-ask-direction): use
+	read-key-sequence-vector instead of nh-read-char.
+
 2003-06-03  Shawn Betts  <sabetts@sfu.ca>
 
 	* nethack.el (nethack-el-version): bump version to 0.9.0

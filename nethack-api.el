@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.85 2003/04/10 06:21:42 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.86 2003/06/03 09:05:02 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -356,8 +356,7 @@ FIXME: doesnt actually use ATTR!"
   "Prompt the user for a direction"
   (let* ((cursor-in-echo-area t)
 	 (cmd (lookup-key nh-map-mode-map
-			  (vector (nh-read-char
-				   (concat prompt " "))))))
+			  (read-key-sequence-vector (concat prompt " ")))))
     (nh-send
      (cond ((eq cmd 'nethack-command-north) "n")
 	   ((eq cmd 'nethack-command-south) "s")
