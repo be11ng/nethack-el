@@ -35,13 +35,13 @@ Add the following to your ~/.emacs
 
   (add-hook 'nethack-message-pre-print-hook 
 	    'nethack-timestamp-message)"
-  (insert (format "(%d) " (elt nethack-status-attribute-T 0))))
+  (insert (format "(%d) " (elt nh-status-attribute-T 0))))
 
-(defun nh-gdb ()
+(defun nethack-gdb ()
   "Debug running nethack process with gdb."
   (interactive)
   (gdb (format "gdb %s/nethack %d"
-	       nethack-directory
+	       nh-directory
 	       (process-id nh-proc))))
 
 (provide 'nethack-example)

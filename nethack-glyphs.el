@@ -26,9 +26,11 @@
 
 ;; The order is monsters.txt, objects.txt, other.txt.
 
+;; FIXME: this file should be renamed to `nethack-tiles.el'
+
 ;;; Code:
 
-(defconst nethack-empty-glyph 
+(defconst nethack-empty-tile
   (create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
