@@ -19,11 +19,6 @@ nethack-api-putstr")
 (defvar nethack-status-lines '("" . "")
   "The 2 lines of the status window")
 
-
-
-(defvar nethack-yn-keymap (make-sparse-keymap)
-  "The basic keymap used by nethack-api-yn-function")
-
 
 (defun nethack ()
   "Start a game of Nethack.
@@ -48,6 +43,11 @@ The variable `nethack-program' is the name of the executable to run."
 ;;; Process code to communicate with the Nethack executable
 (defvar nethack-process nil)
 
+(defvar nethack-process-output nil
+  "output from the process which has yet to be evaluated because it is
+not a complete command yet. This is used to accumulate output from
+nethack until at least 1 full command has been read.")
+
 (defvar nethack-program "nethack"
   "* Program to run to start a game of Nethack.")
 
@@ -67,6 +67,7 @@ asynchronous subprocess.  Returns a process object."
   (let ((proc (apply 'start-process nethack-process-name
 		     nethack-process-buffer-name
 		     nethack-program nethack-program-args)))
+    (setq nethack-process-output "")
     (set-process-filter proc 'nethack-process-filter)
     proc))
 
@@ -79,38 +80,41 @@ char to the STRING."
 	     (eq (process-status nethack-process) 'run))
 	(progn
 	  ;; log the command in the process buffer
-	  (nethack-log-string (concat "SEND: " string-to-send))
+	  (nethack-log-string (concat "SEND: " string))
 
 	  ;; send it...
 	  (process-send-string nethack-process string-to-send))
       (error "Nethack process not running"))))
 
 
-(defun nethack-process-filter (proc command)
+(defun nethack-process-filter (proc output)
   "Handle command output from `nethack-process' and copy the text to
 the `nethack-process-buffer' for debugging."
-
-  ;; log received command in the process-buffer
-  (nethack-log-string (concat "RECV: " command))
-	      
-  ;; handle command
-  (let ((retval (nethack-parse-command command)))
-    (cond ((eq retval 'unimplemented)
-	   (error "nethack: unimplemented function"))
-	  ((eq retval 'no-retval)
-	   nil)
-	   ;;(message "nethack: no-retval: waiting for a key"))
-	  (t 
-	   (nethack-process-send-string (prin1-to-string retval))))))
+  (nethack-log-string (concat "RECV: " output))
+  (setq nethack-process-output (concat nethack-process-output output))
+  (let ((commands (split-string nethack-process-output "\n")))
+    (nethack-process-command-list commands)))
 
 
+(defun nethack-process-command-list (l)
+  "Process a list of commands. The last command may not be complete."
+  (cond ((null (cdr l))
+	 (if (eq ?\) (elt (car l) (- (length (car l)) 1)))
+	     (progn
+	       (nethack-parse-command (car l))
+	       (setq nethack-process-output ""))
+	       (setq nethack-process-output (car l))))
+	(t (nethack-parse-command (car l))
+	   (nethack-process-command-list (cdr l)))))
+
+	       
 (defun nethack-log-string (string)
   "Write STRING into `nethack-process-buffer'."
   (with-current-buffer (process-buffer nethack-process)
     (let ((moving (= (point) (process-mark nethack-process))))
       (save-excursion		       
 	(goto-char (process-mark nethack-process))
-	(insert string)
+	(insert string "\n")
 	(set-marker (process-mark nethack-process) (point)))
       (if moving (goto-char (process-mark nethack-process)))))())
 
@@ -118,7 +122,21 @@ the `nethack-process-buffer' for debugging."
 (defun nethack-parse-command (command)
   "Parse and COMMAND and do it."
   ;;(message (concat "Parsing: " command))
-  (eval (car (read-from-string command))))
+  ;; log received command in the process-buffer
+  (nethack-log-string (concat "PARSE: " command))
+	      
+  ;; handle command
+  (let ((retval (eval (car (read-from-string command)))))
+    (cond ((eq retval 'unimplemented)
+	   (error "nethack: unimplemented function"))
+	  ((eq retval 'no-retval)
+	   nil)
+	  ((eq retval 'void)
+	   nil)
+	  ((eq retval 'void-fixme)
+	   nil)
+	  (t 
+	   (nethack-process-send-string (prin1-to-string retval))))))
 
 
 ;;; Buffer code (aka windows in Nethack)
