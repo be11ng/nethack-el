@@ -1,3 +1,15 @@
+2002-09-16  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* Makefile (test-patch): Add rule.
+	(dist): Depend on a tested patch.
+
+	* mkpatch: Add win/tty/termcap.c to list of files to include in
+	patch.  Create patch from clean tarball.
+
+	* nethack-example.el (nethack-timestamp-message): Put loose code
+	from this file into this function.
+	(nh-gdb): New function.
+
 2002-09-15  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-keys.el (nethack-map-mode-map, nethack-menu-mode-map):
