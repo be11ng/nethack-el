@@ -99,7 +99,10 @@
 (defun-nethack-command save-game "Save the game" "save") ;S
 (defun-nethack-command throw "Throw something" "throw") ;t
 (defun-nethack-command remove-single-armor "Take off one piece of armor" "takeoff") ;T
-(defun-nethack-command version "Show version" "simpleversion") ;v
+(defun-nethack-command version ;v
+  "Show version"
+  "simpleversion"
+  (nhapi-message nil (nethack-el-version)))
 (defun-nethack-command version-and-history "Show long version and game history" "history") ;V
 
 (defun-nethack-command wield "Wield (put in use) a weapon" "wield") ;w
