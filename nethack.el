@@ -185,7 +185,9 @@
   :group 'nethack-faces)
 
 (defface nethack-map-glyph-face 
-  `((t (:font "6x10")))
+  `((((type tty)) 
+     nil
+    (t (:font "6x10"))))
   "Nethack map face for keeping glyphs from separating due to the
 newlines being in a font with height > 16."
   :group 'nethack-faces)
