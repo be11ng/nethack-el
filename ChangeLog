@@ -1,6 +1,15 @@
 2004-11-11  Shawn Betts  <katia_dilkina@verizon.net>
 
+	* nethack-keys.el (nh-accelerator-chars): add ?# to the vector
+	(nh-accelerator-chars-regexp): new defvar
+	(nh-menu-item-regexp): likewise
+
 	* nethack-api.el (nhapi-yn-function): Add ESC and C-g as abort keys.
+	(nh-menu-toggle-all-items): use nh-menu-item-regexp
+	(nh-menu-goto-next): likewise
+	(nh-menu-goto-prev): likewise
+	(nh-menu-submit): likewise
+	(nh-menu-cancel): likewise
 
 2004-07-24  Shawn Betts  <sabetts@burnt.emmett.ca>
 
