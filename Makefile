@@ -26,6 +26,6 @@ dist:
 	rm -r /tmp/$(DISTDIR)
 
 # apply the generated patch from inside the nethack dir like this: 
-# src/nethack-3.3.1$ patch -p 1 < PATH/TO/enh-331.patch
+# src/nethack-3.4.0$ patch -p 1 < PATH/TO/enh-340.patch
 patch:
-	sh ./mkpatch > enh-331.patch
+	sh ./mkpatch > enh-340.patch
