@@ -36,7 +36,7 @@
     (define-key map "\C-a" 'nethack-command-redo-previous)
 
     ;;^C      Quit the game  (NOTE: dont want to override C-c prefix)
-    (define-key map "\C-c\C-c" 'nethack-command-quit-game)
+    (define-key map "\C-c\C-c" 'nethack-command-quit)
 
     ;;^D      Kick something (usually a door, chest, or box)
     (define-key map "\C-d" 'nethack-command-kick)

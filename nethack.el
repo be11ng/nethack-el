@@ -299,9 +299,8 @@ char to the STRING."
       (condition-case ()
 	  (while t
 	    (setq oldpos (marker-position (process-mark proc)))
-	    (let* ((form (read (process-mark proc)))
-		   (retval (save-excursion (nethack-retval (eval form)))))
-	      (if retval (nethack-process-send retval))))
+	    (let ((form (read (process-mark proc))))
+	      (save-excursion (eval form))))
 	(end-of-file
 	 (set-marker (process-mark proc) oldpos))))))
 
