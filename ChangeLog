@@ -1,3 +1,20 @@
+2001-10-19  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nethack): If the process is already running,
+	display all of the game windows.
+
+	* nethack-api.el (nethack-api-exit-nhwindows): Clean up buffers.
+	(nethack-map-buffer): New variable.
+	(nethack-status-buffer): Likewise.
+	(nethack-message-buffer): Likewise.
+	(nethack-api-create-nhwindow): Record the "standard" buffers into
+	the above variables.
+	(nethack-api-display-nhwindow): Setup the windows for first time
+	use.
+	(nethack-status-window-height): New variable.
+	(nethack-message-window-height): Likewise.
+	(nethack-setup-window-configuration): New function.
+
 2001-10-18  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-apix.el: Remove file, move functions into

@@ -185,7 +185,9 @@ The variable `nethack-program' is the name of the executable to run."
   (interactive)
   (if (and (processp nethack-process)
 	   (eq (process-status nethack-process) 'run))
-      (message "Nethack process already running...")
+      (progn
+	(nethack-setup-window-configuration)
+	(message "Nethack process already running..."))
 
     (make-variable-buffer-local 'nethack-buffer-type)
 
@@ -198,7 +200,6 @@ The variable `nethack-program' is the name of the executable to run."
     (setq nethack-waiting-for-command-flag nil) ;move these to nethack-mode
     (setq nethack-command-queue nil)
 
-    (delete-other-windows)
     (setq nethack-process (nethack-start-program))))
 
 

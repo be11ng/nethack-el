@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.34 2001/10/17 14:44:47 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.35 2001/10/19 06:13:19 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -40,7 +40,7 @@
 ;;; FIXME: what are the values for these
 ;; (defconst nethack-api-wmessage nil)	;NHW_MESSAGE (top line)
 ;; (defconst nethack-api-wstatus nil)	;NHW_STATUS	(bottom lines)
-;; (defconst nethack-api-wmap nil)		;NHW_MAP(main dungeon)
+;; (defconst nethack-api-wmap nil)	;NHW_MAP(main dungeon)
 ;; (defconst nethack-api-wmenu nil)	;NHW_MENU (inventory or other
 ;; 					;"corner" windows)
 ;; (defconst nethack-api-wtext nil)	;NHW_TEXT (help/text, full
@@ -440,6 +440,10 @@ all of the appropriate setup."
 
 (defun nethack-api-exit-nhwindows (str)
   "" 
+  ;; clean up buffers
+  (mapc (lambda (b) (kill-buffer (cdr b))) nethack-buffer-table)
+  (setq nethack-buffer-table nil)
+
   (nethack-api-raw-print str)
   'void)
 
@@ -449,7 +453,11 @@ all of the appropriate setup."
   "An alist of (DIGIT-ID . BUFFER) pairs")
  
 (defvar nethack-buffer-type nil
-  "The type of buffer.")
+  "Buffer local variable indicating the type of buffer this is.")
+
+(defvar nethack-map-buffer nil)
+(defvar nethack-status-buffer nil)
+(defvar nethack-message-buffer nil)
 
 (defun nethack-api-create-nhwindow (type)
   "Create a new window of TYPE and add it to the buffer table, preform
@@ -463,8 +471,13 @@ type specific initalizations, and return a digit id."
       (erase-buffer)
       (kill-all-local-variables)
       (setq nethack-buffer-type type)
-      (if (eq type 'nhw-map)
-	  (nethack-map-mode)))
+      (cond ((eq type 'nhw-map)
+	     (setq nethack-map-buffer (current-buffer))
+	     (nethack-map-mode))
+	    ((eq type 'nhw-status)
+	     (setq nethack-status-buffer (current-buffer)))
+	    ((eq type 'nhw-message)
+	     (setq nethack-message-buffer (current-buffer)))))
     (push (cons winid buf) nethack-buffer-table)
     winid))
 
@@ -497,8 +510,6 @@ type specific initalizations, and return a digit id."
 ;; will do a --more--, if necessary, in the tty window-port.
 
 (defun nethack-api-display-nhwindow (winid blocking)
-  "not sure what this should do.  makes buffer visible in some
-way?"
   (save-excursion
     (set-buffer (nethack-buffer winid))
     (if blocking
@@ -522,9 +533,27 @@ way?"
 	      ((eq nethack-buffer-type 'nhw-message)
 	       (nethack-process-send nil))
 	      (t (message "displaying %d with blocking %s" winid blocking)))
-      ;; do nothing for nonblocking
-      ))
+      ;; Do nothing for nonblocking, except use if we are displaying
+      ;; the status window, in which case set up all of the windows
+      ;; for display for the first time.
+      (if (eq nethack-buffer-type 'nhw-status)
+	(nethack-setup-window-configuration))))
   'void)
+
+(defvar nethack-status-window-height 4
+  "Default height of the status window.")
+(defvar nethack-message-window-height 10
+  "Default height of the message window.")
+
+(defun nethack-setup-window-configuration ()
+  "Layout the nethack windows according to the values
+`nethack-status-window-height' and `nethack-message-window-height'."
+  (delete-other-windows)
+  (switch-to-buffer nethack-status-buffer)
+  (split-window-vertically (- nethack-status-window-height))
+  (switch-to-buffer nethack-message-buffer)
+  (split-window-vertically nethack-message-window-height)
+  (switch-to-buffer-other-window nethack-map-buffer))
 
 ;; destroy_nhwindow(window) -- Destroy will dismiss the window if the
 ;; window has not already been dismissed.
@@ -738,9 +767,7 @@ menus."
 	(progn
 	  (setq nethack-window-configuration (current-window-configuration))
 	  (nethack-protect-windows
-	   (pop-to-buffer (nethack-buffer winid) nil t)
-;;	   (goto-char (point-min)))
-	   )
+	   (pop-to-buffer (nethack-buffer winid) nil t))
 	  (setq nethack-menu-how how)
 	  (use-local-map nethack-menu-keymap))
       (error "No such winid: %d" winid)))
