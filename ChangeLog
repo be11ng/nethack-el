@@ -1,5 +1,10 @@
 2001-06-21  Shawn Betts  <sabetts@van.gobasis.com>
 
+	* nethack-menu.el (nethack-menu-create-item): insert a space after
+	the checkbox widget.
+
+	* nethack-api.el (nethack-api-exit-nhwindows): returns 'void.
+
 	* nethack-menu.el (nethack-menu-add-item): add the item to the end
 	of the list.
 	(nethack-menu-create-item): only buttonize items with positive

@@ -379,7 +379,7 @@ all of the appropriate setup."
 (defun nethack-api-exit-nhwindows (str)
   "" 
   (message str)
-  nil)
+  'void)
 
 ;; window = create_nhwindow(type) -- Create a window of type 'type'.
 
