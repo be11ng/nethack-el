@@ -1,5 +1,8 @@
 2002-09-12  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack-api.el: Removed the remains of the window.doc comments.
+	They were misleadingly out of date.
+
 	* mkpatch: Don't include win/lisp/TODO file in patch.
 
 	* nethack-api.el (nethack-api-menu-putstr): Rename from
