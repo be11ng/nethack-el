@@ -20,10 +20,10 @@ clean:
 #
 
 # nethack-el version
-NETHACK_EL_VER=0.9.2
+NETHACK_EL_VER=0.9.3
 
 # nethack source version
-NH_VER=3.4.2
+NH_VER=3.4.3
 
 NH_VER_NODOTS=$(shell echo $(NH_VER) | sed s/\\.//g)
 
