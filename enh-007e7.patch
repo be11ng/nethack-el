@@ -17,31 +17,34 @@ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR B
 INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
---- nethack-3.4.3/include/config.h	2003-12-07 18:39:13.000000000 -0500
-+++ nethack/include/config.h	2005-02-27 21:11:58.000000000 -0500
-@@ -42,17 +42,18 @@
+--- slashem-0.0.7E7/include/config.h	2005-02-19 05:13:50.000000000 -0500
++++ slashem/include/config.h	2005-02-27 21:34:38.000000000 -0500
+@@ -50,7 +50,7 @@
   * Define all of those you want supported in your binary.
   * Some combinations make no sense.  See the installation document.
   */
--#define TTY_GRAPHICS	/* good old tty based graphics */
+-#define TTY_GRAPHICS		/* good old tty based graphics */
 +/* #define TTY_GRAPHICS */	/* good old tty based graphics */
  /* #define X11_GRAPHICS */	/* X11 interface */
- /* #define QT_GRAPHICS */	/* Qt interface */
- /* #define GNOME_GRAPHICS */	/* Gnome interface */
+ /* #define QT_GRAPHICS */	/* Qt Interface */
+ /* #define KDE */		/* KDE Interface */
+@@ -60,12 +60,13 @@
  /* #define MSWIN_GRAPHICS */	/* Windows NT, CE, Graphics */
-+#define LISP_GRAPHICS	/* lisp interface */
+ /* #define GL_GRAPHICS */	/* OpenGL graphics */
+ /* #define SDL_GRAPHICS */	/* Software SDL graphics */
++#define LISP_GRAPHICS		/* lisp interface */
  
  /*
   * Define the default window system.  This should be one that is compiled
   * into your system (see defines above).  Known window systems are:
   *
-- *	tty, X11, mac, amii, BeOS, Qt, Gem, Gnome
-+ *	tty, X11, mac, amii, BeOS, Qt, Gem, Gnome, lisp
+- *	tty, X11, mac, amii, BeOS, Qt, Gem, Gnome, gtk, proxy, GL, SDL
++ *	tty, X11, mac, amii, BeOS, Qt, Gem, Gnome, gtk, proxy, GL, SDL, lisp
   */
  
  /* MAC also means MAC windows */
-@@ -113,6 +114,12 @@
- # define HACKDIR "\\nethack"
+@@ -169,6 +170,12 @@
+ # endif
  #endif
  
 +#ifdef LISP_GRAPHICS
@@ -53,8 +56,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  # define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	2005-02-27 18:01:13.000000000 -0500
-+++ nethack/include/winlisp.h	2002-01-10 22:54:20.000000000 -0500
+--- /dev/null	2005-02-27 21:24:26.000000000 -0500
++++ slashem/include/winlisp.h	2002-01-10 22:54:20.000000000 -0500
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
 +#define WINLISP_H
@@ -126,9 +129,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +E void FDECL(lisp_outrip, (winid,int));
 +
 +#endif /* WINLISP_H */
---- nethack-3.4.3/src/windows.c	2003-12-07 18:39:13.000000000 -0500
-+++ nethack/src/windows.c	2002-04-23 20:44:58.000000000 -0400
-@@ -40,6 +40,10 @@
+--- slashem-0.0.7E7/src/windows.c	2005-02-19 05:13:51.000000000 -0500
++++ slashem/src/windows.c	2005-02-27 21:36:08.000000000 -0500
+@@ -60,6 +60,10 @@
  #ifdef MSWIN_GRAPHICS
  extern struct window_procs mswin_procs;
  #endif
@@ -139,7 +142,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  
  STATIC_DCL void FDECL(def_raw_print, (const char *s));
  
-@@ -81,6 +85,9 @@
+@@ -113,6 +117,9 @@
  #ifdef MSWIN_GRAPHICS
      { &mswin_procs, 0 },
  #endif
@@ -149,69 +152,69 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      { 0, 0 }		/* must be last */
  };
  
---- nethack-3.4.3/sys/unix/Makefile.src	2003-12-07 18:39:13.000000000 -0500
-+++ nethack/sys/unix/Makefile.src	2005-02-27 21:00:19.000000000 -0500
-@@ -213,9 +213,14 @@
- #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
- 
- #
+--- slashem-0.0.7E7/sys/unix/Makefile.src	2005-02-19 05:13:52.000000000 -0500
++++ slashem/sys/unix/Makefile.src	2005-02-27 21:38:37.000000000 -0500
+@@ -289,10 +289,14 @@
+     gl_rendu.o gl_role.o gl_softw.o gl_stat.o \
+     gl_text.o gl_tile.o gl_unit.o gl_win.o nhwin.a
+ SDLGL_CFLAGS = `sdl-config --cflags`
++#
 +# Files for the lisp port
 +WINLISPSRC = ../win/lisp/winlisp.c tile.c
 +WINLISPOBJ = winlisp.o tile.o
-+
-+#
- #
+ 
+ # Use these declarations if you only want to support the TTY windowing system
 -WINSRC = $(WINTTYSRC)
 -WINOBJ = $(WINTTYOBJ)
 +WINSRC = $(WINLISPSRC)
 +WINOBJ = $(WINLISPOBJ)
- 
- # on some systems the termcap library is in -ltermcap or -lcurses
- # on 386 Xenix, the -ltermlib tputs() seems not to work; use -lcurses instead
-@@ -254,8 +259,11 @@
+ # Use these declarations if you want to support the X11 windowing system
+ # WINSRC = $(WINTTYSRC) $(WINX11SRC)
+ # WINOBJ = $(WINTTYOBJ) $(WINX11OBJ)
+@@ -370,9 +374,12 @@
  #
- # libraries for BeOS 
- WINBELIB = -lbe
+ # libraries for proxy
+ WINPROXYLIB = -lpthread
 +#
 +# libraries for lisp port
 +WINLISPLIB =
  
+ # Use this declaration if you only want to support the TTY windowing system
 -WINLIB = $(WINTTYLIB)
 +WINLIB = $(WINLISPLIB)
- 
- # any other strange libraries your system needs (for Sysunix only -- the more
- # specialized targets should already be right)
-@@ -338,7 +346,7 @@
- GENCSRC = monstr.c vis_tab.c	#tile.c
- 
+ # Use this declaration if you want to support the X11 windowing system
+ # WINLIB = $(WINTTYLIB) $(WINX11LIB)
+ # Use this declaration if you want to support the Qt windowing system
+@@ -475,7 +482,7 @@
  # all windowing-system-dependent .c (for dependencies and such)
--WINCSRC = $(WINTTYSRC) $(WINX11SRC) $(WINGNOMESRC) $(WINGEMSRC)
-+WINCSRC = $(WINTTYSRC) $(WINX11SRC) $(WINGNOMESRC) $(WINGEMSRC) $(WINLISPSRC)
+ WINCSRC = $(WINTTYSRC) $(WINX11SRC) $(WINGTKSRC) $(WINGNOMESRC) $(WINGEMSRC) \
+ 	$(WINPROXYSRC) $(PROXYUTLSRC) $(PROXYCLNTSRC) $(PROXYCOMSRC) \
+-	$(PROXYSHRSRC) $(WINGLSRC) tile.c
++	$(PROXYSHRSRC) $(WINGLSRC) $(WINLISPSRC) tile.c
  # all windowing-system-dependent .cpp (for dependencies and such)
  WINCXXSRC = $(WINQTSRC) $(WINBESRC)
  
-@@ -683,6 +691,9 @@
+@@ -888,6 +895,9 @@
  	$(CC) $(CFLAGS) -c ../win/gem/load_img.c
  gr_rect.o: ../win/gem/gr_rect.c ../include/gr_rect.h
  	$(CC) $(CFLAGS) -c ../win/gem/gr_rect.c
 +winlisp.o: ../win/lisp/winlisp.c $(HACK_H) ../include/winlisp.h \
 +		../include/func_tab.h ../include/dlb.h ../include/patchlevel.h
 +	$(CC) $(CFLAGS) -c ../win/lisp/winlisp.c
- tile.o: tile.c $(HACK_H)
- qt_win.o: ../win/Qt/qt_win.cpp $(HACK_H) ../include/func_tab.h \
- 		../include/dlb.h ../include/patchlevel.h ../include/tile2x11.h \
-@@ -803,7 +814,8 @@
- weapon.o: weapon.c $(HACK_H)
+ winproxy.o: ../win/proxy/winproxy.c $(HACK_H) ../include/patchlevel.h \
+ 		../include/date.h ../include/nhxdr.h ../include/proxycom.h \
+ 		../include/winproxy.h #../include/win32api.h
+@@ -1114,7 +1124,7 @@
  were.o: were.c $(HACK_H)
  wield.o: wield.c $(HACK_H)
--windows.o: windows.c $(HACK_H) ../include/wingem.h ../include/winGnome.h
-+windows.o: windows.c $(HACK_H) ../include/wingem.h ../include/winGnome.h \
-+	../include/winlisp.h
+ windows.o: windows.c $(HACK_H) ../include/wingem.h ../include/winGnome.h \
+-		../include/winGL.h ../include/winproxy.h
++		../include/winGL.h ../include/winproxy.h ../include/winlisp.h
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h ../include/epri.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- nethack-3.4.3/win/tty/termcap.c	2003-12-07 18:39:14.000000000 -0500
-+++ nethack/win/tty/termcap.c	2005-02-27 21:00:20.000000000 -0500
+--- slashem-0.0.7E7/win/tty/termcap.c	2005-02-19 05:13:56.000000000 -0500
++++ slashem/win/tty/termcap.c	2005-02-27 21:39:17.000000000 -0500
 @@ -1164,6 +1164,11 @@
  	if (windowprocs.name != NULL &&
  	    !strcmpi(windowprocs.name, "Gem")) return TRUE;
@@ -224,8 +227,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef QT_GRAPHICS
  	/* XXX has_color() should be added to windowprocs */
  	if (windowprocs.name != NULL &&
---- /dev/null	2005-02-27 18:01:13.000000000 -0500
-+++ nethack/win/lisp/ChangeLog	2005-02-27 21:04:31.000000000 -0500
+--- /dev/null	2005-02-27 21:24:26.000000000 -0500
++++ slashem/win/lisp/ChangeLog	2005-02-27 21:04:31.000000000 -0500
 @@ -0,0 +1,326 @@
 +2005-02-27    <katia_dilkina@verizon.net>
 +
@@ -553,8 +556,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2005-02-27 18:01:13.000000000 -0500
-+++ nethack/win/lisp/winlisp.c	2005-02-27 21:04:38.000000000 -0500
+--- /dev/null	2005-02-27 21:24:26.000000000 -0500
++++ slashem/win/lisp/winlisp.c	2005-02-27 21:04:38.000000000 -0500
 @@ -0,0 +1,1937 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */

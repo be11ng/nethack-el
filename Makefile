@@ -24,10 +24,9 @@ NETHACK_EL_VER=0.9.4
 
 # nethack source version
 NH_VER=3.4.3
-SLASHEM_VER=0.0.7E6F3
-
-NH_VER_NODOTS=$(shell echo $(NH_VER) | sed s/\\.//g)
-SLASHEM_VER_NODOTS=$(shell echo $(SLASHEM_VER) | sed s/\\.//g | tr "[A-Z]" "[a-z]")
+NH_VER_NODOTS=343
+SLASHEM_VER=0.0.7E7
+SLASHEM_VER_NODOTS=007e7
 
 PATCHFILE=enh-$(NH_VER_NODOTS).patch
 SLASHEM_PATCHFILE=enh-$(SLASHEM_VER_NODOTS).patch
@@ -60,7 +59,7 @@ dist: clean all $(PATCH_OK) $(SLASHEM_PATCH_OK)
 patch:
 	@echo
 	@echo Creating $(PATCHFILE)
-	sh ./mkpatch nethack-$NH_VER_NODOTS.tgz nethack-$NH_VER nethack > $(PATCHFILE)
+	sh ./mkpatch nethack-$(NH_VER_NODOTS).tgz nethack-$(NH_VER) nethack > $(PATCHFILE)
 	rm -f $(PATCH_OK)
 
 slashem-patch:

@@ -7,7 +7,7 @@ installation instructions that come with the Nethack sources.  Please
 read the instructions specific to your system.  These instructions are
 known to work on a unix system.
 
-** Download nethack-342.tgz from ftp.nethack.org or your closest mirror.
+** Download nethack-343.tgz from ftp.nethack.org or your closest mirror.
 
 *** Untar the package and apply the enh-343.patch (found in nethack-el-VERSION.tar.gz)
 with the command "patch -p 1 < enh-343.patch"
@@ -47,10 +47,18 @@ to play nethack-el over the internet:
 
 ** on the server
 
-You will need the program, netcat
-(http://netcat.sourceforge.net/). Run the following command:
+Edit the Config values USER_FILE, CHROOT_DIR, SHED_UID, and SHED_GID
+in nhlaunch.c. Compile nhlaunch.c (instructions are at the top of the
+file).
 
-netcat -l -p 10070 -e /path/to/nethack
+USER_FILE is the file that will store the users and passwords
+
+CHROOT_DIR is the root directory that contains a fakeroot installation
+of nethack and any libraries required.
+
+SHED_UID is the UID that nhlaunch will change to when loaded.
+
+SHED_GID is the GID that nhlaunch with change to when loaded.
 
 ** on the client (in emacs)
 
@@ -62,6 +70,6 @@ server using their own Emacs.
 * Notes
 
 ** SlashEM
-I have created a patch for SlashEM Version 0.0.7E3. The patch is
-called ese-007e3.patch. To play SlashEM inside emacs, do the same as
+I have created a patch for SlashEM Version 0.0.7E7. The patch is
+called enh-007e7.patch. To play SlashEM inside emacs, do the same as
 above, but use the SlashEM patch and SlashEM source.
