@@ -1,9 +1,10 @@
 2002-01-01    <sabetts@watchman.phalanx.tmp>
 
-	* nethack-api.el : require cl
-	(nethack-menu-toggle-all-items): only toggle
+	* nethack-api.el (nethack-menu-toggle-all-items): only toggle
 	items that have identifiers.
-	 
+	(nethack-api-update-status): remove CL dependancy for flag
+	processing.
+
 2001-12-20  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack-map-glyph-face): new face.
