@@ -1,3 +1,8 @@
+2002-01-22  shawn  <sabetts@vcn.bc.ca>
+
+	* nethack-api.el (nethack-menu-submit): return list pairs
+	containing the accelerator and the value.
+
 2002-01-22  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-cmd.el (southwest-until-ontop, southwest-until-near):
