@@ -1,7 +1,7 @@
 ;;; nethack.el --- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-
+;;; $Id$
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 
@@ -22,29 +22,6 @@
     :type '(hook)
     :group 'nethack)
 
-;; FIXME: dirty hack:
-(defvar nethack-status-line-number 0
-  "The line that will be updated in the status window next time
-`nethack-api-putstr' is called.")
-
-(defvar nethack-status-lines '("" . "")
-  "The 2 lines of the status window")
-
-(defcustom nethack-status-highlight-delay 5
-  "The number of turns to keep a changed status field highlighted"
-  :type '(integer)
-  :group 'nethack)
-
-(defvar nethack-status-alist nil
-  "An alist of the players status")
-
-(defcustom nethack-status-string
-  "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"
-  "The nethack status format string"
-  :type '(string)
-  :group 'nethack)
-
-
 (defface nethack-red-face
   `((((type tty) (class color))
      (:foreground "red"))
@@ -372,6 +349,29 @@ times the command should be executed."
 (defvar nethack-map-width 79 "Max width of the map")
 (defvar nethack-map-height 22 "Max height of the map")
 
+;;; status line handling
+;; FIXME: dirty hack:
+(defvar nethack-status-line-number 0
+  "The line that will be updated in the status window next time
+`nethack-api-putstr' is called.")
+
+(defvar nethack-status-lines '("" . "")
+  "The 2 lines of the status window")
+
+(defcustom nethack-status-highlight-delay 5
+  "The number of turns to keep a changed status field highlighted"
+  :type '(integer)
+  :group 'nethack)
+
+(defvar nethack-status-alist nil
+  "An alist of the players status")
+
+(defcustom nethack-status-string
+  "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"
+  "The nethack status format string"
+  :type '(string)
+  :group 'nethack)
+
 (defun nethack-parse-status-lines (line-1 line-2)
   (let ((regexp-line-1 "\\(\\(?:\\w+\\s-\\)*\\w+\\)+\\s-+St:\\([0-9]+\\(?:\\/[0-9]+\\)?\\)\\s-+Dx:\\([0-9]+\\)\\s-+Co:\\([0-9]+\\)\\s-+In:\\([0-9]+\\)\\s-+Wi:\\([0-9]+\\)\\s-+Ch:\\([0-9]+\\)\\s-+\\(\\w+\\)")
 	(regexp-line-2 "Dlvl:\\([0-9]+\\)\\s-+\\$:\\([0-9]+\\)\\s-+HP:\\([0-9]+\\)\\s(\\([0-9]+\\)\\s)\\s-+Pw:\\([0-9]+\\)\\s(\\([0-9]+\\)\\s)\\s-+AC:\\(-?[0-9]+\\)\\s-+Xp:\\([0-9]+\\)\\/\\([0-9]+\\)\\s-+T:\\([0-9]+\\)")
@@ -511,9 +511,9 @@ times the command should be executed."
 	      nethack-status-alist)
       str))
 
+
 (run-hooks 'nethack-load-hook)		; for your customizations
 
-
 (provide 'nethack)
 
 ;;; nethack.el ends here
