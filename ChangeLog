@@ -1,6 +1,7 @@
 2001-10-19  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack-parse-status-lines): regexp truncated.
+	(nethack-parse-status-lines): alter regexp to handle strengths > 18
 
 	* nethack-api.el (nethack-api-putstr): only print the status when
 	both status lines have been received.
