@@ -20,7 +20,7 @@ clean:
 #
 
 # nethack-el version
-NETHACK_EL_VER=0.9.3
+NETHACK_EL_VER=0.9.4
 
 # nethack source version
 NH_VER=3.4.3

@@ -275,5 +275,11 @@ With a prefix arg, also redraws the map glyphs."
   "Show the tools currently in use"
   "showtool")
 
+
+;;; Lisp specific commands
+(defun-nethack-command options  ;(
+  "get all the nethack options."
+  "options")
+ 
 (provide 'nethack-cmd)
 ;;; nethack-cmd.el ends here

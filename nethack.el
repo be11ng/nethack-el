@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.78 2003/09/15 12:07:07 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.79 2003/09/18 19:09:04 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -399,8 +399,16 @@ attribute, the new value and the old value."
 
 The variable `nethack-program' is the name of the executable to run."
   (interactive)
+  (nethack-create-process 'process))
+
+(defun nethack-connect-to-server (server port)
+  "Start a game of Nethack by connecting to the nethack server, SERVER."
+  (interactive "sServer: \nnPort: ")
+  (nethack-create-process 'tcp server port))
+
+(defun nethack-create-process (how &optional server port)  
   (if (and (processp nh-proc)
-	   (eq (process-status nh-proc) 'run))
+	   (member (process-status nh-proc) '(open run)))
       (progn
 	(message "Nethack process already running...")
 	(nhapi-restore-window-configuration))
@@ -410,10 +418,13 @@ The variable `nethack-program' is the name of the executable to run."
       (if (get-buffer nh-proc-buffer-name)
 	  (kill-buffer nh-proc-buffer-name))
       (setq nh-proc
-	    (apply 'start-process "nh" nh-proc-buffer-name
-		   nethack-program nethack-program-args))
+	    (if (eql how 'tcp)
+		(open-network-stream "nh" nh-proc-buffer-name server port)
+	      (apply 'start-process "nh" nh-proc-buffer-name
+		     nethack-program nethack-program-args)))
       (set-process-filter nh-proc 'nh-filter)
       (set-process-sentinel nh-proc 'nh-sentinel))))
+
 
 (defun nethack-toggle-tiles ()
   "Toggle the use of tiles on the map."
@@ -481,7 +492,7 @@ delete the contents, perhaps logging the text."
   (nh-send form)
   ;; wait until we get back to a "command" prompt before returning
   (setq nh-at-prompt nil)
-  (while (and (eq (process-status nh-proc) 'run)
+  (while (and (member (process-status nh-proc) '(open run))
 	      (not nh-at-prompt))
     (accept-process-output nh-proc)))
 

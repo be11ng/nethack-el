@@ -1,3 +1,31 @@
+2004-11-14  Shawn Betts  <katia_dilkina@verizon.net>
+
+	* nethack.el (nethack): call nethack-create-process
+	(nethack-connect-to-server): new function
+	(nethack-create-process): new function
+	(nh-send-and-wait): check if nh-proc's status is 'open or 'run
+
+	* nethack-cmd.el (options): new command
+
+	* nethack-api.el (nh-options-cbreak): new defvar
+	(nh-options-dec-graphics): likewise
+	(nh-options-echo): likewise
+	(nh-options-ibm-graphics): likewise
+	(nh-options-msg-history): likewise
+	(nh-options-num-pad): likewise
+	(nh-options-news): likewise
+	(nh-options-window-inited): likewise
+	(nh-options-vision-inited): likewise
+	(nh-options-menu-tab-sep): likewise
+	(nh-options-menu-requested): likewise
+	(nh-options-num-pad-mode): likewise
+	(nh-options-purge-monsters): likewise
+	(nh-options-bouldersym): likewise
+	(nh-options-travelcc): likewise
+	(nh-options-sanity-check): likewise
+	(nh-options-mon-polycontrol): likewise
+	(nhapi-options): new function
+
 2004-11-14  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* Makefile (DISTFILES): change nethack-glyphs.el to nethack-tiles.el

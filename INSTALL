@@ -40,6 +40,25 @@ install elisp code?
 
 ** M-x nethack RET
 
+* Playing nethack over a network
+Because nethack-el communicates with nethack over a text stream, that
+stream can be either a subprocess or a TCP stream. Follow these steps
+to play nethack-el over the internet:
+
+** on the server
+
+You will need the program, netcat
+(http://netcat.sourceforge.net/). Run the following command:
+
+netcat -l -p 10070 -e /path/to/nethack
+
+** on the client (in emacs)
+
+M-x nethack-connect-to-server RET
+
+Type the server and the port. Enjoy! Now everyone can play on the same
+server using their own Emacs.
+
 * Notes
 
 ** SlashEM
