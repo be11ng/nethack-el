@@ -1,4 +1,4 @@
-nethack-el installation instructions (roughly)
+nethack-el installation instructions (roughly) -*- outline -*-
 
 * Installing the nethack binary with the lisp window port
 
@@ -16,9 +16,10 @@ with the command "patch -p 1 < enh-340.patch"
 This may be as simple as running "sys/unix/setup.sh" to copy the
 Makefiles.
 
-*** Modify the appropriate files to enable the lisp window port:
+*** Modify the following files to enable the lisp window port:
 
-in `include/config.h' make sure LISP_GRAPHICS is defined
+in `include/config.h' uncomment:
+#define LISP_GRAPHICS
 
 in src/Makefile make sure 
    WINSRC = $(WINLISPSRC)
@@ -35,7 +36,7 @@ make install
 
 * Installing the emacs lisp sources
 ** byte compile (not strictly necessary)
-nethack-el$ make
+make all
 
 ** ensure that the *.elc files can be found in your load-path in your load-path
 TODO: should we have a make install target?  What IS the Right Way to
