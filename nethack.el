@@ -398,7 +398,9 @@ times the command should be executed."
 				     (* (if (eq (elt symbols-2 (1- count)) 'armor-class)
 					    -1 1)
 					(if (< (string-to-int (match-string count line-1))
-					       (string-to-int (elt old-status 1)))
+					       (if (null (elt old-status 1))
+						   0
+						 (string-to-int (elt old-status 1))))
 					 (- nethack-status-highlight-delay)
 					 nethack-status-highlight-delay))
 				   (cond ((> old-highlight-delay 0)
@@ -426,7 +428,9 @@ times the command should be executed."
 				       (* (if (eq (elt symbols-2 (1- count)) 'armor-class)
 					      -1 1)
 					  (if (< (string-to-int (match-string count line-2)) 
-						 (string-to-int (elt old-status 1)))
+						 (if (null (elt old-status 1))
+						     0
+						   (string-to-int (elt old-status 1))))
 					  (- nethack-status-highlight-delay)
 					  nethack-status-highlight-delay))
 				     (cond ((> old-highlight-delay 0)

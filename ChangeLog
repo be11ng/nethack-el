@@ -5,6 +5,8 @@
 	(nethack-parse-status-lines, nethack-format-status): if the status
 	change is negative change the value to a red face, green if
 	positive.
+	(nethack-parse-status-lines): handles the case when
+	nethack-status-alist is nil.
 
 2001-10-22  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
