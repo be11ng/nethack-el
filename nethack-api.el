@@ -132,7 +132,10 @@
 (defun nethack-api-curs (window x y)
   ""
   (set-buffer (nethack-get-buffer window))
-  (goto-char (gamegrid-cell-offset x y))
+  (if (eq window (car (rassq 'nhw-status nethack-buffer-id-alist)))
+      (progn
+	(setq nethack-status-line-number y))
+    (goto-char (gamegrid-cell-offset x y)))
   'void-fixme)
 
 
@@ -154,7 +157,11 @@
 
   (save-excursion
     (set-buffer (nethack-get-buffer window))
-    (insert str))
+    (if (eq window (car (rassq 'nhw-status nethack-buffer-id-alist)))
+	(progn
+	  (nethack-set-status-line str)
+	  (nethack-print-status-lines))
+      (insert str "\n")))
   'void-fixme)
 
 
@@ -353,8 +360,8 @@ all of the appropriate setup."
 
 (defun nethack-api-exit-nhwindows (str)
   "" 
-  'unimplemented)
-
+  (message str)
+  nil)
 
 ;; window = create_nhwindow(type) -- Create a window of type 'type'.
 
@@ -370,10 +377,14 @@ and send the digit to nethack."
 
 (defun nethack-api-clear-nhwindow (window)
   ""
-  (if (not (eq window (car (rassq 'nhw-map nethack-buffer-id-alist))))
-      (save-excursion
-	(set-buffer (nethack-get-buffer window))
-	(erase-buffer)))
+  (save-excursion
+    (set-buffer (nethack-get-buffer window))
+    (let ((buffer-read-only nil))
+      (erase-buffer)
+      (if (eq window (car (rassq 'nhw-map nethack-buffer-id-alist)))
+	  (gamegrid-init-buffer nethack-map-width 
+				nethack-map-height
+				? ))))
   'void)
 
 
