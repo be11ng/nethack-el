@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.18 2001/05/06 10:44:08 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.19 2001/06/22 00:02:19 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -251,30 +251,44 @@
 (defun nethack-api-yn-function (ques choices default)
   ""  
   (let ((cursor-in-echo-area t)
-	all-choices
-	key def)
+	(all-choices)
+	(key))
 
     (if (= default 0)
 	(setq all-choices (string-to-list choices))
-      (setq all-choices (string-to-list (concat (char-to-string default) choices))))
+      (setq all-choices (string-to-list (concat (char-to-string default)
+						choices))))
+
+    ;; Add some special keys of our own to the choices
+    (add-to-list 'all-choices 13)
     
-    (message ques)
+    (message (concat ques " "))
     (setq key (read-char))
-    (setq def (intern (char-to-string key)))
-    (if (= default 0)
-	def
-      (progn
+
+    (if (> (length choices) 0)
 	(while (not (member key all-choices))
-	      (message ques)
-	      (setq key (read-char))
-	      (setq def (intern (char-to-string key))))
-	def))))
+	  (message (concat ques " "))
+	  (setq key (read-char))))
 
-;;  (message ques)
-;;  (nethack-api-getch))
-;;  (intern (char-to-string (read-char ques))))
+    (if (= 13 key)
+	default
+      key)))
 
-
+(defun nethack-api-ask-direction ()
+  "Prompt the user for a direction"
+  (let ((cursor-in-echo-area t)
+	(ch))
+    (message "In what direction? ")
+    (setq ch (read-char-exclusive))
+    (cond ((= ch ?k) 'n)
+	  ((= ch ?j) 's)
+	  ((= ch ?l) 'e)
+	  ((= ch ?h) 'w)
+	  ((= ch ?u) 'ne)
+	  ((= ch ?y) 'nw)
+	  ((= ch ?n) 'se)
+	  ((= ch ?b) 'sw))))
+  
 ;; getlin(const char *ques, char *input) -- Prints ques as a prompt
 ;; and reads a single line of text, up to a newline.  The string entered
 ;; is returned without the newline.  ESC is used to cancel, in which case
@@ -419,6 +433,11 @@ and send the digit to nethack."
 (defun nethack-api-display-nhwindow (window blocking)
   " not sure what this should do.  makes buffer visible in some
 way?"
+;;   (let ((buffer (nethack-get-buffer window))
+;; 	(new-win))
+;;     (setq new-win (split-window nil nil t))
+;;     (set-window-buffer new-win buffer)
+;;     (select-window new-win))
   (display-buffer (nethack-get-buffer window))
   'void)
 
