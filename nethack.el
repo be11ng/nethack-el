@@ -6,7 +6,7 @@
 
 
 (require 'gamegrid)
-;;(require 'nethack-api)
+(require 'nethack-api)
 ;;(require 'nethack-cmd)
 ;;(require 'nethack-keys)
 
@@ -45,7 +45,6 @@ The variable `nethack-program' is the name of the executable to run."
   "String used to terminate a command sent to a running Nethack
 process.")
 
-
 (defun nethack-start-program ()
   "Start `nethack-program' with `nethack-program-args' as an
 asynchronous subprocess.  Returns a process object."
@@ -63,16 +62,18 @@ asynchronous subprocess.  Returns a process object."
 				       
 
 (defun nethack-process-send-string (string)
-  "Send a STRING to the running `nethack-process'."
-  (if (and (processp nethack-process)
-	   (eq (process-status nethack-process) 'run))
-      (progn
-	;; log the command in the process buffer
-	(nethack-log-string (concat "SEND: " string))
+  "Send a STRING to the running `nethack-process'.  Appends a newline
+char to the STRING."
+  (let ((string-to-send (concat string "\n")))
+    (if (and (processp nethack-process)
+	     (eq (process-status nethack-process) 'run))
+	(progn
+	  ;; log the command in the process buffer
+	  (nethack-log-string (concat "SEND: " string-to-send))
 
-	;; send it...
-	(process-send-string nethack-process string))
-    (error "Nethack process not running")))
+	  ;; send it...
+	  (process-send-string nethack-process string-to-send))
+      (error "Nethack process not running"))))
 
 
 (defun nethack-process-filter (proc command)
@@ -104,39 +105,36 @@ the `nethack-process-buffer' for debugging."
 
 
 ;;; Buffer code (aka windows in Nethack)
-(defvar nethack-map-buffer-name "*nethack-map*")
-(defvar nethack-message-buffer-name "*nethack-message*")
-(defvar nethack-status-buffer-name "*nethack-status*")
-(defvar nethack-menu-buffer-name "*nethack-menu*")
-(defvar nethack-text-buffer-name "*nethack-text*")
+(defvar nethack-buffer-alist
+  '((nhw-message . "*nhw-message*")
+    (nhw-status  . "*nhw-status*")
+    (nhw-map     . "*nhw-map*")
+    (nhw-menu    . "*nhw-menu*")
+    (nhw-text    . "*nhw-text*"))
+  "Buffer names for each window type.")
+
+;; digit ids to send back to nethack to refer to windows
+(defvar nethack-buffer-id-alist
+  '((0 . nhw-message)
+    (1 . nhw-status)
+    (2 . nhw-map)
+    (3 . nhw-menu)
+    (4 . nhw-text)))
 
 ;;; Main Map Buffer code
 (defvar nethack-map-width 80 "Max width of the map")
 (defvar nethack-map-height 22 "Max height of the map")
 
-
-(defun nethack-create-map-buffer ()
-   "Create the map buffer"
-   (set-buffer (get-buffer-create nethack-map-buffer-name))
-   (gamegrid-init (make-vector 256 nil))
-   (gamegrid-init-buffer nethack-map-width 
-			 nethack-map-height
-			 ?.))
-
-
-(defun nethack-draw-glyph (x y glyph)
-  "Draw GLYPH at X, Y"
-  (set-buffer (get-buffer-create nethack-map-buffer-name))
-  (gamegrid-set-cell x y glyph))
-
-
-;;; Status Buffer code -- bottom lines in tty nethack
-(defun nethack-create-status-buffer ()
-  "Create the status buffer"
-  (set-buffer (get-buffer-create nethack-status-buffer-name)))
-
-
-;;; Message buffer code -- topline stuff in tty nethack
-(defun nethack-create-message-buffer ()
-  "Create the message buffer"
-  (set-buffer (get-buffer-create nethack-message-buffer-name)))
+(defun nethack-create-buffer (type)
+  "Create a buffer for a Nethack window of TYPE."
+  (let ((buffer-name (cdr (assq type nethack-buffer-name-alist))))
+    (get-buffer-create buffer-name)
+    (save-excursion
+      (set-buffer buffer-name)
+      (erase-buffer)
+      (if (eq type 'nhw-map)
+	  (progn
+	    (gamegrid-init (make-vector 256 nil))
+	    (gamegrid-init-buffer nethack-map-width 
+				  nethack-map-height
+				  ?.))))))
