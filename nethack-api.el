@@ -610,10 +610,10 @@ was actually toggled."
 	(let ((inhibit-read-only t))
 	  (goto-char (point-min))
 	  (while (re-search-forward nh-menu-item-regexp nil t)
-	    (let ((value (match-string 1)))
+	    (let ((value (match-string 2)))
 	      (if (string-equal value "-")
-		  (replace-match "+" nil nil nil 1)
-		(replace-match "-" nil nil nil 1))))))))
+		  (replace-match "+" nil nil nil 2)
+		(replace-match "-" nil nil nil 2))))))))
 
 (defun nh-menu-goto-next ()
   "Move to the next selectable menu item."
