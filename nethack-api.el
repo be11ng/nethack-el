@@ -71,10 +71,10 @@
 ;; code:
 
 ;;; FIXME: what are the values for these
-(defconst nethack-api-win-message nil)	;	WIN_MESSAGE (top line)
-(defconst nethack-api-win-status nil)	;	WIN_STATUS (bottom lines)
-(defconst nethack-api-win-map nil)	;	WIN_MAP (main dungeon)
-(defconst nethack-api-win-inven nil)	;	WIN_INVEN (inventory)
+;; (defconst nethack-api-win-message nil);	WIN_MESSAGE (top line)
+;; (defconst nethack-api-win-status nil) ;	WIN_STATUS (bottom lines)
+;; (defconst nethack-api-win-map nil)	;	WIN_MAP (main dungeon)
+;; (defconst nethack-api-win-inven nil)	;	WIN_INVEN (inventory)
 
 ;; Other windows are created and destroyed as needed.
 
@@ -106,7 +106,7 @@ maybe other 'msg' uses.  E.g.  updating status for micros (i.e,
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-raw-print-bold (str)
@@ -115,7 +115,7 @@ bold/standout (if possible).
 
 -----"  
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-curs (window x y)
@@ -131,8 +131,10 @@ NHW_MENU and NHW_TEXT windows do not currently support curs in the tty
 window-port.
 
 -----"
-
-  t)
+  (save-excursion
+    (set-buffer (nethack-get-buffer window))
+    (goto-char (+ x (* y nethack-map-width))))
+  'void-fixme)
 
 
 (defun nethack-api-putstr (window attr str)
@@ -151,7 +153,10 @@ by calling more() or displaying both on the same line.
 
 -----"
 
-  t)
+  (save-excursion
+    (set-buffer (nethack-get-buffer window))
+    (insert str))
+  'void-fixme)
 
 
 (defun nethack-api-get-event ()
@@ -160,7 +165,7 @@ events).  A noop for the tty and X window-ports.
 
 -----"
 
-  t)
+  'void)
 
 
 (defun nethack-api-getch ()
@@ -171,7 +176,7 @@ character _must_ be non-zero.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-poskey (x y mod)
@@ -186,7 +191,7 @@ non-zero character.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -201,7 +206,10 @@ whatever the window- port wants (symbol, font, color, attributes,
 
 -----"
 
-  t)
+  (save-excursion
+    (set-buffer (nethack-get-buffer window))
+    (gamegrid-set-cell x y ?x))
+  'void-fixme)
 
 
 (defun nethack-api-yn-function (ques choices defaults)
@@ -222,7 +230,7 @@ popup.
 
 -----"  
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-getlin (ques input)
@@ -235,7 +243,7 @@ the tty window-port, other ports might use a popup.
 
 -----" 
 
- t)
+  'unimplemented)
 
 
 (defun nethack-api-get-ext-cmd ()
@@ -245,7 +253,7 @@ selection, -1 otherwise.
 
 -----" 
   
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-player-selection ()
@@ -254,18 +262,19 @@ selection.  If player_selection() offers a Quit option, it is its
 responsibility to clean up and terminate the process.  You need to
 fill in pl_character[0].
 
------"  
-  
-  t)
+----- Does nothing right now, perhaps simply indicates that the
+nethack-apix-choose-X calls are to follow for actual
+role/race/gender/align selection."
+  'void)
 
 
 (defun nethack-api-display-file (str complain)
   " display_file(str, boolean complain) -- Display the file named str.
 Complain about missing files iff complain is TRUE.
 
------"
+----- FIXME: what to do, this will break network play slightly"
   
-  t)
+  'void-fixme)
 
 
 (defun nethack-api-update-inventory ()
@@ -273,9 +282,9 @@ Complain about missing files iff complain is TRUE.
 inventory has been changed.  -- Merely calls display_inventory() for
 window-ports that leave the window up, otherwise empty.
 
------"
+----- FIXME: should set a flag or something, later"
 
-  t)
+  'void)
 
 
 (defun nethack-api-doprev-message ()
@@ -284,7 +293,7 @@ command.  -- On the tty-port this scrolls WIN_MESSAGE back one line.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-update-positionbar (features)
@@ -298,7 +307,7 @@ player location. A zero char marks the end of the list.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -321,7 +330,7 @@ all of the appropriate setup."
 
   ;; TODO: the winlisp port should send a list here, i am only getting
   ;; the argv[0] (the executable name) and the arg count
-  t)
+  'void)
 
 
 (defun nethack-api-exit-nhwindows (str)
@@ -330,7 +339,7 @@ dismiss all windows, except the 'window' used for raw_print().  str is
 printed if possible.
 
 -----" 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-create-nhwindow (type)
@@ -338,17 +347,20 @@ printed if possible.
 
 ----- Associate a digit ID with the buffer (`nethack-buffer-alist')
 and send the digit to nethack."
-  (nethack-process-send-string
-   (number-to-string (car (rassq type nethack-buffer-id-alist)))))
+  (nethack-create-buffer type)
+  (car (rassq type nethack-buffer-id-alist)))
 
 
-(defun nethack-api-clear-nhwindows (window)
+(defun nethack-api-clear-nhwindow (window)
   "clear_nhwindow(window) -- Clear the given window, when
 appropriate.
 
 -----"
-  
-  t)
+  (if (not (eq window (car (rassq 'nhw-map nethack-buffer-id-alist))))
+      (save-excursion
+	(set-buffer (nethack-get-buffer window))
+	(erase-buffer)))
+  'void)
 
 
 (defun nethack-api-display-nhwindow (window blocking)
@@ -360,9 +372,12 @@ acknowledged by the user where appropriate.  -- All calls are blocking
 in the tty window-port.  -- Calling display_nhwindow(WIN_MESSAGE,???)
 will do a --more--, if necessary, in the tty window-port.
 
------"
-
-  t)
+----- not sure what this should do.  makes buffer visible in some
+way?"
+  (display-buffer (cdr (assq (cdr (assq window
+					nethack-buffer-id-alist))
+			     nethack-buffer-name-alist)))
+  'void)
 
 
 (defun nethack-api-destroy-nhwindow (window)
@@ -371,7 +386,7 @@ window has not already been dismissed.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-start-menu (window)
@@ -382,7 +397,7 @@ for menus.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
@@ -412,7 +427,7 @@ is displayed, set preselected to TRUE.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-end-menu (window prompt)
@@ -424,7 +439,7 @@ it ever did).  That should be select_menu's job.  -dean
 
 -----"
 
- t)
+  'unimplemented)
 
 
 (defun nethack-api-select-menu (window how selected)
@@ -450,7 +465,7 @@ create_nhwindow() time.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-message-menu (let- how mesg)
@@ -468,7 +483,7 @@ so can substitute genl_message_menu (windows.c) instead.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -481,7 +496,7 @@ UN-IMPLEMENTED.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-bell ()
@@ -490,7 +505,7 @@ are redone, since sounds aren't attributable to windows anyway.]
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-mark-synch ()
@@ -500,7 +515,7 @@ the moment
 
 -----" 
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-wait-synch ()
@@ -510,7 +525,7 @@ etc. so that the display is OK when return from wait_synch().
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-delay-output ()
@@ -520,7 +535,7 @@ but allows asynchronous operation.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-askname ()
@@ -528,7 +543,7 @@ but allows asynchronous operation.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-cliparound (x y)
@@ -536,9 +551,9 @@ but allows asynchronous operation.
 on the screen if the playing area is larger than the screen.  -- This
 function is only defined if CLIPPING is defined.
 
------"
+----- FIXME: huh? not sure what to do here..."
 
-  t)
+  'void-fixme)
 
 
 (defun nethack-api-number-pad (state)
@@ -546,7 +561,7 @@ function is only defined if CLIPPING is defined.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-suspend-nhwindows (str)
@@ -554,7 +569,7 @@ function is only defined if CLIPPING is defined.
 
 -----"  
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-resume-nhwindows ()
@@ -562,7 +577,7 @@ function is only defined if CLIPPING is defined.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-start-screen ()
@@ -573,7 +588,7 @@ does not need this function just declare an empty function.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-end-screen ()
@@ -582,7 +597,7 @@ for completeness.  The complement of start_screen().
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 (defun nethack-api-outrip (winid int)
@@ -592,7 +607,7 @@ rip.c.
 
 -----"
 
-  t)
+  'unimplemented)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

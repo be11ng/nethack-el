@@ -7,6 +7,7 @@
 
 (require 'gamegrid)
 (require 'nethack-api)
+(require 'nethack-apix)
 ;;(require 'nethack-cmd)
 ;;(require 'nethack-keys)
 
@@ -84,7 +85,10 @@ the `nethack-process-buffer' for debugging."
   (nethack-log-string (concat "RECV: " command))
 	      
   ;; handle command
-  (nethack-parse-command command))
+  (let ((retval (nethack-parse-command command)))
+    (if (eq retval 'unimplemented)
+	(error "nethack: unimplemented function")
+      (nethack-process-send-string (prin1-to-string retval)))))
 
 
 (defun nethack-log-string (string)
@@ -105,7 +109,7 @@ the `nethack-process-buffer' for debugging."
 
 
 ;;; Buffer code (aka windows in Nethack)
-(defvar nethack-buffer-alist
+(defvar nethack-buffer-name-alist
   '((nhw-message . "*nhw-message*")
     (nhw-status  . "*nhw-status*")
     (nhw-map     . "*nhw-map*")
@@ -113,7 +117,8 @@ the `nethack-process-buffer' for debugging."
     (nhw-text    . "*nhw-text*"))
   "Buffer names for each window type.")
 
-;; digit ids to send back to nethack to refer to windows
+;; digit ids to send back and forth to nethack process to refer to
+;; windows
 (defvar nethack-buffer-id-alist
   '((0 . nhw-message)
     (1 . nhw-status)
@@ -121,8 +126,13 @@ the `nethack-process-buffer' for debugging."
     (3 . nhw-menu)
     (4 . nhw-text)))
 
+(defun nethack-get-buffer (window)
+  "Returns the buffer that corresponds to the Nethack WINDOW."
+  (cdr (assq (cdr (assq window nethack-buffer-id-alist))
+	     nethack-buffer-name-alist)))
+
 ;;; Main Map Buffer code
-(defvar nethack-map-width 80 "Max width of the map")
+(defvar nethack-map-width 79 "Max width of the map")
 (defvar nethack-map-height 22 "Max height of the map")
 
 (defun nethack-create-buffer (type)
@@ -131,10 +141,11 @@ the `nethack-process-buffer' for debugging."
     (get-buffer-create buffer-name)
     (save-excursion
       (set-buffer buffer-name)
+      (setq buffer-read-only nil)
       (erase-buffer)
       (if (eq type 'nhw-map)
 	  (progn
 	    (gamegrid-init (make-vector 256 nil))
 	    (gamegrid-init-buffer nethack-map-width 
 				  nethack-map-height
-				  ?.))))))
+				  ? ))))))
