@@ -8,6 +8,7 @@
 	(list_programs): likewise
 	(read_cmd): play takes an argument and uses find_program to
 	determine which program to execlp.
+	(read_cmd): remove debugging output
 
 2004-11-19  Shawn Betts  <katia_dilkina@verizon.net>
 
