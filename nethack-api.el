@@ -131,9 +131,8 @@
 
 (defun nethack-api-curs (window x y)
   ""
-  (save-excursion
-    (set-buffer (nethack-get-buffer window))
-    (goto-char (gamegrid-cell-offset x y)))
+  (set-buffer (nethack-get-buffer window))
+  (goto-char (gamegrid-cell-offset x y))
   'void-fixme)
 
 
@@ -212,9 +211,18 @@
 (defun nethack-api-print-glyph (window x y type offset glyph)
   ""
 
-  (save-excursion
-    (set-buffer (nethack-get-buffer window))
-    (gamegrid-set-cell x y ?x))
+  (set-buffer (nethack-get-buffer window))
+  (let ((ch))
+    (cond ((eq type 'monster) (setq ch ?@))
+	  ((eq type 'pet) (setq ch ?d))
+	  ((eq type 'invisible) (setq ch ?I))
+	  ((eq type 'detect) (setq ch ?D))
+	  ((eq type 'corpse) (setq ch ?%))
+	  ((eq type 'ridden) (setq ch ?R))
+	  ((eq type 'object) (setq ch ??))
+	  ((eq type 'cmap) (setq ch ?.))
+	  ((eq type 'zap-beam) (setq ch ??)))
+    (gamegrid-set-cell x y ch))
   'void-fixme)
 
 
