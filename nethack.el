@@ -29,7 +29,7 @@
 (defface nethack-black-face
   `((t (:foreground "blue")))
   "nethack black face"
-  :group 'nethack-faces-faces)
+  :group 'nethack-faces)
 
 (defface nethack-red-face
   `((((type tty) (class color))
@@ -38,7 +38,7 @@
      (:foreground "red"))
     (t (:foreground "gray")))
   "nethack red"
-  :group 'nethack-faces-faces)
+  :group 'nethack-faces)
 
 (defface nethack-green-face
   `((((type tty) (class color))
@@ -186,12 +186,18 @@
 
 (defface nethack-map-glyph-face 
   `((t (:font "6x10")))
-  "nethack map face for keeping glyphs from 'seperating' due to the
+  "Nethack map face for keeping glyphs from separating due to the
 newlines being in a font with height > 16."
-  :group 'nethack-faces-faces)
+  :group 'nethack-faces)
 
-(defvar nethack-use-glyphs (display-images-p)
-  "If set to T, nethack will use XPMs to draw glyphs.")
+(defvar nethack-use-glyphs nil
+  "If non-nil, use XPMs to draw glyphs.")
+
+(defun nethack-toggle-glyphs ()
+  "Toggle the use of glyphs on the map."
+  (interactive)
+  (setq nethack-use-glyphs (not nethack-use-glyphs))
+  (nethack-command-redraw-screen 2))
 
 (defconst nethack-colors
   [nethack-black-face 		nethack-red-face

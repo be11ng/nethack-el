@@ -714,7 +714,7 @@ table."
     (if blocking
 	(cond
 	 ;; Both menu's and text can be filled with arbitrary message
-	 ;; text.  Try to show the message in the minibuffer,
+	 ;; text.  Try to show the message in the echo area,
 	 ;; otherwise setup a "choiceless" menu.
 	 ((or (eq nethack-buffer-type 'nhw-menu)
 	      (eq nethack-buffer-type 'nhw-text))
@@ -723,7 +723,7 @@ table."
 		 (display-message-or-buffer (nethack-buffer winid))))
 	    (if (not (windowp maybe-window))
 		(let ((cursor-in-echo-area t))
-		  (read-char-exclusive)
+		  ;(read-char-exclusive)
 		  (nh-send 'dummy))
 	      (setq nethack-menu nil)
 	      (select-window maybe-window)
@@ -764,6 +764,7 @@ table."
   (switch-to-buffer nethack-message-buffer)
   (split-window-vertically (- nethack-message-window-height))
   (switch-to-buffer nethack-status-buffer)
+  (set-window-dedicated-p (selected-window) t)
   (split-window-vertically nethack-status-window-height)
   (switch-to-buffer-other-window nethack-map-buffer))
 
@@ -802,7 +803,9 @@ table."
     (insert (if (equal id -1)
 		""
 	      (concat (char-to-string acc)
-		      (if val " + " " - ")))
+		      (cond ((= val 0) " - ")
+			    ((= val -1) " + ")
+			    (t (format " %d " val)))))
 	    str)))
 
 (defvar nethack-menu-how nil
@@ -810,7 +813,7 @@ table."
 
 (defvar nethack-window-configuration nil)
 
-(defun nethack-menu-toggle-item ()
+(defun nethack-menu-toggle-item (&optional count)
   "Toggle the menu item that is associated with the key event that
 triggered this function call, if it is a valid option.
 
@@ -818,19 +821,25 @@ Does nothing if this is a pick-none menu.
 
 Automatically submits menu if this is a pick-one menu if an option was
 actually toggled."
-  (interactive) ;; FIXME: read prefix arg
+  (interactive "P")
+  (setq count
+	(if (null count)
+	    -1
+	  (prefix-numeric-value count)))
   (if (not (eq nethack-menu-how 'pick-none))
       (let ((changed nil))
 	(ewoc-map (lambda (i)
 		    (when (equal (aref i 0) last-command-event)
-		      (aset i 1 (not (aref i 1)))
-		      (setq changed t))) ; a non-nil the return value
-					 ; of lambda forces an ewoc
-					 ; redisplay of this entry
+		      (aset i 1 (if (or (= (aref i 1) 0)
+					(> count -1))
+				    count
+				  0))
+		      (setq changed t))) ; non-nil retval forces
+					 ; ewoc entry redisplay
 		  nethack-menu)
-	(if (and changed
-		 (eq nethack-menu-how 'pick-one))
-	    (nethack-menu-submit)))))
+	(and changed
+	     (eq nethack-menu-how 'pick-one)
+	     (nethack-menu-submit)))))
 
 (defun nethack-menu-toggle-all-items ()
   "Toggle all menu items, only for pick-any menus."
@@ -838,7 +847,9 @@ actually toggled."
   (if (eq nethack-menu-how 'pick-any)
       (ewoc-map (lambda (i)
 		  (unless (= (aref i 3) -1)
-		    (aset i 1 (not (aref i 1)))
+		    (aset i 1 (if (= (aref i 1) 0)
+				  -1
+				0))
 		    t))			; redisplay this entry
 		nethack-menu)))
 
@@ -861,9 +872,9 @@ Restores the window configuration what it was before the menu was
 displayed."
   (interactive)
   (if nethack-menu
-      (let ((selected (ewoc-collect nethack-menu (lambda (x) (aref x 1)))))
+      (let ((selected (ewoc-collect nethack-menu (lambda (x) (not (= 0 (aref x 1)))))))
 	(setq nethack-menu nil)
-	(nh-send (mapcar (lambda (x) (list (aref x 3) -1)) selected)))
+	(nh-send (mapcar (lambda (x) (list (aref x 3) (aref x 1))) selected)))
     (nh-send nil))
   (set-window-configuration nethack-window-configuration))
 
@@ -932,7 +943,7 @@ buffer."
 	       accelerator)))
     (ewoc-enter-last nethack-menu
 		     (vector acc
-			     preselected
+			     (if preselected -1 0)
 			     (propertize str
 					 'face
 					 (nethack-attr-face attr))

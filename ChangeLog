@@ -1,3 +1,24 @@
+2002-01-10  Ryan C Yeske  <rcyeske@sfu.ca>
+
+	* nethack.el (nethack-map-glyph-face): Put in nethack-faces-faces
+	group.
+	(nethack-use-glyphs): Default to nil.
+	(nethack-toggle-glyphs): New function.
+
+	* nethack-api.el (nethack-api-display-nhwindow): Don't wait for a
+	key on echo area messages.
+	(nethack-menu-item-print, nethack-menu-toggle-item)
+	(nethack-menu-toggle-item, nethack-menu-toggle-all-items)
+	(nethack-menu-submit, nethack-api-add-menu): Handle prefix arg on
+	menu selection.  From sabetts.
+
+	* nethack-cmd.el (redraw-screen): Restore window configuration
+	always, only redraw glyphs with a prefix arg.
+	(defun-nethack-command): Expand cmdstr in test.
+
+	* nethack-api.el (nethack-restore-window-configuration): Make the
+	status window dedicated.
+
 2002-01-01  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack): set nethack-status-alist to nil when

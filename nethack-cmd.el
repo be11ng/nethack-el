@@ -32,13 +32,14 @@
 
 (defmacro defun-nethack-command (fun docstr cmdstr &rest body)
   "Define an interactive nethack command."
+  ;; Note: cmdstr is evaluated twice!
   `(defun ,(intern (concat "nethack-command-" (symbol-name fun))) (&optional count)
      ,docstr
      (interactive "p")
      (unwind-protect
-	 ,(if cmdstr
-	      `(nh-send-and-wait
-		(concat ,cmdstr " " (if count (number-to-string count) "1"))))
+	 (if ,cmdstr
+	     (nh-send-and-wait
+	      (concat ,cmdstr " " (if count (number-to-string count) "1"))))
        ,@body)))
 
 (defun-nethack-command north		;k
@@ -195,13 +196,18 @@
 (defun-nethack-command wipe "wipe off your face." "wipe")
 
 (defun-nethack-command previous-message	; ^P
-  "Toggle through previously displayed game messages"
+  "Scroll through previously displayed game messages"
   nil ;;"doprev" FIXME: is not implemented in C
   (nethack-api-doprev-message))
 
 (defun-nethack-command redraw-screen	; ^R
-  "Redraw screen"
-  "redraw"
+  "Restores the default window configuration by calling
+`nethack-restore-window-configuration'.
+
+With a prefix arg, also redraws the map glyphs."
+  ;; only send process a redraw if there is a prefix arg
+  (and (> count 1) "redraw")
+  ;; but always restore the window configuration
   (nethack-restore-window-configuration))
 
 ;;; FIXME: defun these:
