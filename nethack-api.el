@@ -705,7 +705,8 @@ buffer."
 			(if preselected ?+ ?-)
 			str)))
       (put-text-property start (point) 'face (nh-attr-face attr))
-      (insert-char ?\n 1 nil))))
+      (insert-char ?\n 1 nil)
+      (run-hooks 'nethack-add-menu-hook))))
 
 ;; FIXME: xemacs propertize bug here
 (defun nhapi-end-menu (window prompt)

@@ -124,6 +124,11 @@ attribute, the new value and the old value."
     :type '(hook)
     :group 'nethack)
 
+(defcustom nethack-add-menu-hook nil
+  "Hook run after a menu option has been added."
+  :type '(hook)
+  :group 'nethack)
+
 
 (defgroup nethack-faces nil
   "Customizations for faces used by Enethack."
