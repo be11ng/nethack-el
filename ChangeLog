@@ -1,3 +1,23 @@
+2001-10-22  Ryan  <rcyeske@vcn.bc.ca>
+
+	* nethack-keys.el (nethack-accelerator-chars): Moved from
+	nethack-api.el.
+	(nethack-menu-mode-map): New variable.  Setup the entire static
+	keymap.
+
+	* nethack-api.el (nethack-api-display-nhwindow): Call
+	nethack-menu-mode to set up the buffer.
+	(nethack-api-select-menu): Likewise.
+	(nethack-menu-item-print): Use aref, not elt.
+	(nethack-menu-mode): New function.
+	(nethack-menu-toggle-item): Don't toggle pick-none menus.
+	(nethack-menu-goto-next): New function.
+	(nethack-menu-goto-prev): New function.
+	(nethack-api-end-menu): Position the point on the first selectable
+	menu item.
+
+	* nethack.el (nethack-menu-mode-hook): New hook.
+
 2001-10-19  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-cmd.el (nethack-command-previous-message): New function.

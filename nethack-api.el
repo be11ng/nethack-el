@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.39 2001/10/19 11:22:12 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.40 2001/10/19 23:53:01 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -548,8 +548,7 @@ type specific initalizations, and return a digit id."
 			(nethack-process-send nil))
 		    (setq nethack-window-configuration (current-window-configuration))
 		    (select-window maybe-window)
-		    (nethack-menu-reset-keymap)
-		    (use-local-map nethack-menu-keymap)))))		      
+		    (nethack-menu-mode 'pick-none)))))
 	      ;; At the end of the game, the message buffer is shown
 	      ;; one last time...we should do something better here,
 	      ;; but the problem is we have no way of indicating to
@@ -601,40 +600,72 @@ type specific initalizations, and return a digit id."
 
 ;;; menus
 
+(defun nethack-menu-mode (how)
+  "Major mode for Nethack menus.
+
+\\{nethack-menu-mode-map}"
+  (setq mode-name (concat "NETHACK MENU "
+			  (symbol-name how)))
+  (setq major-mode 'nethack-menu-mode)
+  (use-local-map nethack-menu-mode-map)
+  (setq nethack-menu-how how)
+  (run-hooks 'nethack-menu-mode-hook))
+
 (defvar nethack-menu nil)
 
 (defun nethack-menu-item-print (item)
-(let ((acc (elt item 0))
-      (val (elt item 1))
-      (str (elt item 2))
-      (id  (elt item 3)))
-  (insert (if (equal id -1)
-	      ""
-	    (concat (char-to-string acc) 
-		    (if val " + " " - ")))
-	  str)))
+  (let ((acc (aref item 0))
+	(val (aref item 1))
+	(str (aref item 2))
+	(id  (aref item 3)))
+    (insert (if (equal id -1)
+		""
+	      (concat (char-to-string acc) 
+		      (if val " + " " - ")))
+	    str)))
   
 (defvar nethack-menu-how nil
   "One of pick-one, pick-none, pick-any.")
 
+(defvar nethack-window-configuration nil)
+
 (defun nethack-menu-toggle-item ()
   "Toggle the menu item that is associated with the key event that
-triggered this function being called."
-  (interactive)
-  (ewoc-map (lambda (i) 
-	      (when (equal (elt i 0) last-command-event)
-		(aset i 1 (not (elt i 1)))
-		t)) ;; force redisplay
-	    nethack-menu)
-  (if (eq nethack-menu-how 'pick-one)
-      (nethack-menu-submit)))
+triggered this function call, if it is a valid option.
 
-(defvar nethack-window-configuration nil
-  "Window configuration for the default state (no menus or other
-popups).")
+Does nothing if this is a pick-none menu.
+
+Automatically submits menu if this is a pick-one menu if an option was
+actually toggled."
+  (interactive) ;; FIXME: read prefix arg
+  (if (not (eq nethack-menu-how 'pick-none))
+      (let ((changed nil))
+	(ewoc-map (lambda (i)
+		    (when (equal (aref i 0) last-command-event)
+		      (aset i 1 (not (aref i 1)))
+		      (setq changed t))) ; a non-nil the return value
+					 ; of lambda forces an ewoc
+					 ; redisplay of this entry
+		  nethack-menu)
+	(if (and changed
+		 (eq nethack-menu-how 'pick-one))
+	    (nethack-menu-submit)))))
+
+(defun nethack-menu-goto-next ()
+  "Move to the next selectable menu item."
+  (interactive)
+  (ewoc-goto-next nethack-menu 1))	     	     
+
+(defun nethack-menu-goto-prev ()
+  "Move to the previous selectable menu item."
+  (interactive)
+  (ewoc-goto-prev nethack-menu 1))
 
 (defun nethack-menu-submit ()
-  "Submit the selected menu options to the nethack process."
+  "Submit the selected menu options to the nethack process.
+
+Restores the window configuration what it was before the menu was
+displayed."
   (interactive)
   (if nethack-menu
       (let ((selected (ewoc-collect nethack-menu (lambda (x) (aref x 1)))))
@@ -650,25 +681,16 @@ popups).")
   (setq nethack-menu nil)
   (nethack-menu-submit))  
 
-(defvar nethack-menu-keymap nil
-  "Keymap for use in Nethack menus.")
-
-(defun nethack-menu-reset-keymap ()
-  (setq nethack-menu-keymap (make-sparse-keymap))
-  (define-key nethack-menu-keymap (kbd "C-c C-c") 'nethack-menu-submit)
-  (define-key nethack-menu-keymap (kbd "RET") 'nethack-menu-submit)
-  (define-key nethack-menu-keymap (kbd "C-g") 'nethack-menu-cancel))
-
 (defun nethack-api-start-menu (winid)
   ""
   (save-excursion
-    (set-buffer (get-buffer-create (nethack-buffer winid)))
+    (set-buffer (nethack-buffer winid))
     (erase-buffer)
-    (setq nethack-menu (ewoc-create 'nethack-menu-item-print "" ""))
-    (nethack-menu-reset-keymap)
+    (setq nethack-menu (ewoc-create 'nethack-menu-item-print))
     (setq nethack-unassigned-accelerator-index 0))
+    ;; we don't turn on nethack-menu-mode yet, since we do not yet
+    ;; know "how" this menu is going to work.
   'void)
-
 
 ;; add_menu(windid window, int glyph, const anything identifier, char
 ;; accelerator, char groupacc, int attr, char *str, boolean preselected)
@@ -694,39 +716,33 @@ popups).")
 ;; symbols.  -- If you want this choice to be preselected when the menu
 ;; is displayed, set preselected to TRUE.
 
-(defvar nethack-unassigned-accelerators 
-  [?a ?b ?c ?d ?e ?f ?g ?h ?i ?j ?k ?l ?m ?n ?o ?p ?q ?r ?s ?t ?u ?v
-?w ?x ?y ?z ?A ?B ?C ?D ?E ?F ?G ?H ?I ?J ?K ?L ?M ?N ?O ?P ?Q ?R ?S
-?T ?U ?V ?W ?X ?Y ?Z]
-  "Vector of accelerators that are used in menus that don't specify
-accelerators.")
-
 (defvar nethack-unassigned-accelerator-index 0
-  "Index into `nethack-unassigned-accelerators' indicating the next
+  "Index into `nethack-accelerator-chars' indicating the next
 accelerator that will be used in unassigned menus.")
 
 (defun nethack-specify-accelerator ()
-  "Return the next accelerator from `nethack-unassigned-accelerators'
+  "Return the next accelerator from `nethack-accelerator-chars'
 specified by `nethack-unassigned-accelerator-index'."
   (prog1
-      (aref nethack-unassigned-accelerators 
+      (aref nethack-accelerator-chars
 	    nethack-unassigned-accelerator-index)
     (setq nethack-unassigned-accelerator-index
 	  (+ 1 nethack-unassigned-accelerator-index))))
 
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
-  ""
+  "Create a menu item out of arguments and draw it in the menu
+buffer."
   (let ((acc (if (and (not (= -1 identifier))
 		      (zerop accelerator))
 		 (nethack-specify-accelerator)
 	       accelerator)))
-    (ewoc-enter-last nethack-menu (vector
-				   acc
-				   preselected
-				   (propertize str 'face (nethack-attr-face attr))
-				   identifier))
-    (if (not (= -1 identifier))
-	(define-key nethack-menu-keymap (vector acc) 'nethack-menu-toggle-item)))
+    (ewoc-enter-last nethack-menu 
+		     (vector acc
+			     preselected
+			     (propertize str 
+					 'face 
+					 (nethack-attr-face attr))
+			     identifier)))
   'void)
 
 
@@ -740,9 +756,17 @@ specified by `nethack-unassigned-accelerator-index'."
   ""
   (save-excursion
     (set-buffer (nethack-buffer window))
-    (ewoc-set-hf nethack-menu prompt "") ; might this clobber an existing footer?
+    (ewoc-set-hf nethack-menu 
+		 prompt
+		 ;; preserve footer:
+		 (cdr (ewoc-get-hf nethack-menu)))
     (ewoc-refresh nethack-menu)
-    (ewoc-goto-node nethack-menu (ewoc-nth nethack-menu 0)))
+
+    ;; position the point on the first selectable menu item
+    (let ((node (ewoc-goto-node nethack-menu
+				(ewoc-nth nethack-menu 0))))
+      (while (and node (zerop (aref (ewoc-data node) 0)))
+	(setq node (ewoc-goto-next nethack-menu 1)))))
   'void)
 
 
@@ -768,7 +792,7 @@ specified by `nethack-unassigned-accelerator-index'."
 
 (defmacro nethack-protect-windows (&rest body)
   "Protect the status and message windows from obstruction by popup
-menus." 
+menus by making them dedicated windows." 
   `(progn
      (walk-windows (lambda (w)
 		     (set-buffer (window-buffer w))
@@ -785,15 +809,18 @@ menus."
 			   (set-window-dedicated-p w nil)))))))
 
 (defun nethack-api-select-menu (winid how)
-  ""
+  "Display the menu given by WINID and put the buffer in
+`nethack-menu-mode'.
+
+Saves the current window configuration so that it can be restored when
+the menu is dismissed."
   (let ((buffer (nethack-buffer winid)))
     (if buffer
 	(progn
 	  (setq nethack-window-configuration (current-window-configuration))
 	  (nethack-protect-windows
 	   (pop-to-buffer (nethack-buffer winid) nil t))
-	  (setq nethack-menu-how how)
-	  (use-local-map nethack-menu-keymap))
+	  (nethack-menu-mode how))
       (error "No such winid: %d" winid)))
   'void)
 
@@ -863,10 +890,6 @@ menus."
 
 (defun nethack-api-delay-output ()
   "Sleep for 50ms."
-  ;; FIXME: sleep-for lets emacs process the nethack process input
-  ;; stream and if there is any pending data on the stream
-  ;; `nethack-process-filter' is called again which totally garbles
-  ;; everything since it hasn't finished the first batch of commands
   (sleep-for 0 50)
   'dummy)
 

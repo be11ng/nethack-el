@@ -325,18 +325,19 @@ times the command should be executed."
 
 
 (defvar nethack-map-mode-hook nil
-  "Functions to run after setting up the nethack-map mode.")
-
+  "Functions to be called after setting up the Nethack map.")
+(defvar nethack-menu-mode-hook nil
+  "Functions to be called after setting up a Nethack menu.")
 
 (defun nethack-map-mode ()
   "Major mode for the main Nethack map window.
 
-\\{nethack-mode-map}"
-  (use-local-map nethack-mode-map)
+\\{nethack-map-mode-map}"
+  (use-local-map nethack-map-mode-map)
   (setq mode-name "NETHACK MAP")
   (setq major-mode 'nethack-map-mode)
 
-  ;; turn off show-paren-mode in this buffer
+  ;; make sure show-paren-mode is off in this buffer
   (make-local-variable 'show-paren-mode)
   (show-paren-mode -1)
 
