@@ -1,5 +1,9 @@
 2004-11-22  Shawn Betts  <katia_dilkina@verizon.net>
 
+	* nethack-nhlaunch.el (nh-network-game): new defvar
+	(nh-network-filter): send the game to play
+	(nethack-connect-to-server): take another arg, game.
+
 	* nhlaunch.c (read_cmd): new command, list
 	(struct game_t): new struct
 	(games): new global
