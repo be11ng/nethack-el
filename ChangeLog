@@ -1,5 +1,8 @@
 2001-10-23  shawn  <sabetts@vcn.bc.ca>
 
+	* nethack-api.el (nethack-api-getlin): send the string read from
+	the minibuffer, not the object which is a a string.
+
 	* nethack.el (nethack-parse-status-lines): the highlight delay is
 	negative if the change in status is bad and positive when good.
 	(nethack-parse-status-lines, nethack-format-status): if the status
