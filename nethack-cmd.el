@@ -46,7 +46,7 @@
 (defun nethack-command-remove-all-armor ()
   "A       Remove all armor"
   (interactive)
-  (nethack-handle-command "ddoremarm"))
+  (nethack-handle-command "remarm"))
 
 ;; (defun nethack-command-cancel ()
 ;;   "^[      Cancel command"
