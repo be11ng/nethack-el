@@ -1,3 +1,31 @@
+2002-01-23  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nh-proc-buffer-name): Add variable.
+	(nh-log-process): Likewise.
+	(nh-sentinel): Don't erase the process buffer here.
+	(nh-log): Add function.
+	(nh-filter): Log evaluated text.
+	(nh-send): Log commands and erase text from process buffer.
+	(nethack-window-buffer-height, nethack-char-to-int)
+	(nethack-read-char): Add functions.
+
+	* nethack-api.el (nethack-api-raw-print-bold): Fix typo.
+	(nethack-api-putstr): Reformat.
+	(nethack-api-yn-function): Use nethack-read-char.
+	(nethack-api-display-nhwindow): Likewise.
+	(nethack-message-highlight-face): Change definition.
+	(nethack-api-clear-nhwindow): Move (require 'nethack-glyphs) to
+	here.
+	(nethack-menu-toggle-item): Remove replace-match code.
+	(nethack-menu-submit): Call nethack-char-to-int on accelerator.
+	(nethack-api-add-menu): Propertize strings going into menu.
+	(nethack-api-select-menu): Use nethack-window-buffer-height.
+
+2002-01-22  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-api.el (nethack-api-clear-nhwindow): Move the
+	nethack-glyphs require from nethack.el to here.
+
 2002-01-22  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack-api.el (nethack-menu-submit): return list pairs

@@ -1,7 +1,7 @@
 ;;; nethack.el -- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id: nethack.el,v 1.60 2002/01/22 11:14:42 rcyeske Exp $
+;;; $Id: nethack.el,v 1.61 2002/01/22 12:00:37 rcyeske Exp $
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 ;;; Commentary:
@@ -9,7 +9,6 @@
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
-;;(require 'nethack-glyphs)
 
 ;;; Code:
 (defgroup nethack nil
@@ -214,6 +213,8 @@ newlines being in a font with height > 16."
 
 
 (defvar nh-proc nil)
+(defvar nh-proc-buffer-name "*nethack-output*")
+(defvar nh-log-process t)
 
 (defun nethack ()
   "Start a game of Nethack.
@@ -229,15 +230,11 @@ The variable `nethack-program' is the name of the executable to run."
       ;; Reset intermediate variables.
       (setq nethack-status-alist nil)
       ;;; Start the process.
-      (if (get-buffer "*nethack-output*")
-	  (kill-buffer "*nethack-output*"))
-      ;; pop to buffer so if there is an error right away the user can
-      ;; see what the output from the process was
-      ;;(pop-to-buffer "*nh*")
+      (if (get-buffer nh-proc-buffer-name)
+	  (kill-buffer nh-proc-buffer-name))
       (setq nh-proc
-	    (apply 'start-process "nh" nil nethack-program nethack-program-args))
-;;      (nh-comint-mode)
-;;      (setq nh-comint-proc (get-buffer-process (current-buffer)))
+	    (apply 'start-process "nh" nh-proc-buffer-name
+		   nethack-program nethack-program-args))
       (set-process-filter nh-proc 'nh-filter)
       (set-process-sentinel nh-proc 'nh-sentinel)
       (make-variable-buffer-local 'nethack-buffer-type)))) ; FIXME: obsolete?
@@ -264,25 +261,31 @@ The variable `nethack-program' is the name of the executable to run."
 (defun nh-sentinel (proc msg)
   "Nethack background process sentinel.
 PROC is the process object and MSG is the exit message."
-  (with-current-buffer (get-buffer-create "*nethack-output*")
+  (with-current-buffer (process-buffer proc)
     (eval-region (point-min) (point-max))
     (insert "Nethack " msg)
     (pop-to-buffer (current-buffer)))
   (delete-process proc))
+
+(defun nh-log (string)
+  (with-current-buffer (get-buffer-create "*nh-log*")
+    (goto-char (point-max))
+    (insert string)))
 
 (defun nh-filter (proc string)
   "Insert contents of STRING into the buffer associated with PROC.
 Evaluate the buffer contents between the last prompt and the current
 position if we are looking at a prompt."
   ;; insert output into process buffer
-  (with-current-buffer (get-buffer-create "*nethack-output*")
+  (with-current-buffer (process-buffer proc)
     (goto-char (point-max))
     (insert string)
     (forward-line 0)
     (if (looking-at nh-prompt-regexp)
 	(let ((prompt (match-string 1)))
 	  (eval-region (point-min) (point))
-	  (erase-buffer)
+	  (if nh-log-process
+	      (nh-log (buffer-substring (point-min) (point))))
 	  (cond ((or (equal prompt "command")
 		     (equal prompt "menu"))
 		 (sit-for 0)
@@ -290,21 +293,14 @@ position if we are looking at a prompt."
 
 (defvar nh-at-prompt nil)
 (defun nh-send (form)
-;;  (if (buffer-name (process-buffer nh-proc))
-;;      (save-excursion
-;;	(set-buffer (process-buffer nh-proc))
-;;	(save-restriction
-;;	  (widen)
-;;	  (goto-char (point-max))
-	  (process-send-string 
-	   nh-proc 
-	   (concat (cond 
-		    ((null form) "()")	; the process doesn't handle `nil'
-		    ((stringp form) form)
-		    (t (prin1-to-string form)))
-		   "\n")))
-;;	  (comint-send-input))
-;;    (error "No nethack process")))
+  (let ((command (cond 
+		  ((null form) "()") ; the process doesn't handle `nil'
+		  ((stringp form) form)
+		  (t (prin1-to-string form)))))
+    (with-current-buffer (process-buffer nh-proc) (erase-buffer))
+    (process-send-string nh-proc (concat command "\n"))
+    (if nh-log-process
+	(nh-log (format ";;; %s\n" command)))))
   
 (defun nh-send-and-wait (form)
   (nh-send form)
@@ -354,12 +350,6 @@ position if we are looking at a prompt."
   (set-syntax-table nethack-map-mode-syntax-table)
   (setq mode-name "NETHACK MAP")
   (setq major-mode 'nethack-map-mode)
-
-  ;; make sure show-paren-mode is off in this buffer
-  ;; FIXME: do this with syntax tables or something
-;;  (make-local-variable 'show-paren-mode)
-;;  (show-paren-mode -1)
-
   (run-hooks 'nethack-map-mode-hook))
 
 (defvar nethack-map-width 79 "Max width of the map.")
@@ -541,6 +531,23 @@ Return the modified alist."
       (setq tail (cdr tail)))
     alist))
 
+(defun nethack-window-buffer-height (window)
+  "Return the height (in screen lines) of the buffer that WINDOW is displaying."
+  (save-excursion
+    (set-buffer (window-buffer window))
+    (count-lines (point-min) (point-max))))
+
+(defun nethack-char-to-int (char)
+  ;; XEmacs chars are not ints
+  (if (fboundp 'char-to-int)
+      (char-to-int char)
+    char))
+
+(defun nethack-read-char (&optional prompt)
+  (message prompt)
+  (let ((char (read-char-exclusive)))
+    (message "")
+    (nethack-char-to-int char)))
 
 (run-hooks 'nethack-load-hook)
 
