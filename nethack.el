@@ -21,6 +21,12 @@ You can customize key bindings or load extensions with this.")
 (defvar nethack-status-lines '("" . "")
   "The 2 lines of the status window")
 
+(defvar nethack-status-alist nil
+  "An alist of the players status")
+
+(defvar nethack-status-string "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"
+  "The nethack status format string")
+
 
 (defface nethack-red-face
   `((((type tty) (class color))
@@ -337,6 +343,93 @@ times the command should be executed."
 (defvar nethack-map-width 79 "Max width of the map")
 (defvar nethack-map-height 22 "Max height of the map")
 
+(defun nethack-parse-status-lines (line-1 line-2)
+  (let ((regexp-line-1 "\\(\\(?:\\w+\\s-\\)*\\w+\\)+\\s-+St:\\([0-9]+\\)\\s-+Dx:\\([0-9]+\\)\\s-+Co:\\([0-9]+\\)\\s-+In:\\([0-9]+\\)\\s-+Wi:\\([0-9]+\\)\\s-+Ch:\\([0-9]+\\)\\s-+\\(\\w+\\)\\s-*\\(\\(?:Satiated\\)\\|\\(?:Hungry\\)\\|\\(?:Weak\\)\\|\\(?:Fainting\\)\\|\\(?:Fainted\\)\\|\\(?:Starved\\)\\)?\\s-?\\(Conf\\)?\\s-?\\(\\(?:FoodPois\\)\\|\\(Ill\\)\\)?\\s-?\\(Blind\\)?\\s-?\\(Stun\\)?\\s-?\\(Hallu\\)?\\s-?\\(Slime\\)?\\s-?\\(\\(?:Burdened\\)\\|\\(?:Stressed\\)\\|\\(?:Strained\\)\\|\\(?:Overtaxed\\)\\(?:Overloaded\\)\\)?")
+	(regexp-line-2 "Dlvl:\\([0-9]+\\)\\s-+\\$:\\([0-9]+\\)\\s-+HP:\\([0-9]+\\)\\s(\\([0-9]+\\)\\s)\\s-+Pw:\\([0-9]+\\)\\s(\\([0-9]+\\)\\s)\\s-+AC:\\(-?[0-9]+\\)\\s-+Xp:\\([0-9]+\\)\\/\\([0-9]+\\)\\s-+T:\\([0-9]+\\)")
+	(symbols-1 '(name strength dexterity constution intelligence wisdom charisma alignment))
+	(symbols-2 '(dungeon-level zorkmids hitpoints max-hitpoints power max-power armor-class experience experience-level-up time))
+	(status)
+	(count))
+
+    (string-match regexp-line-1 line-1)
+    (setq count (length symbols-1))
+    (while (> count 0)
+      (add-to-list 'status (list (elt symbols-1 (1- count))
+				 (if (match-string count line-1)
+				     (match-string count line-1)
+				   "")
+				 (not (string-equal (match-string count line-1)
+						    (elt (assoc (elt symbols-1 (1- count)) nethack-status-alist) 1)))))
+      (setq count (1- count)))
+
+    (string-match regexp-line-2 line-2)
+    (setq count (length symbols-2))
+    (while (> count 0)
+      (add-to-list 'status (list (elt symbols-2 (1- count))
+				(match-string count line-2) 
+				(not (string-equal (match-string count line-2) 
+						   (elt (assoc (elt symbols-2 (1- count)) nethack-status-alist) 1)))))
+      (setq count (1- count)))
+
+    ;; Fill in the flags
+    (mapcar (function (lambda (pair)
+			(if (string-match (cdr pair) line-2)
+			    (add-to-list 'status (list (car pair)
+						       (match-string 0 line-2)
+						       (not (string-equal (match-string 0 line-2)
+									  (elt (assoc (car pair) nethack-status-alist) 1)))))
+			  (add-to-list 'status (list (car pair) "" nil)))))
+	    '((hungry . "Satiated\\|Hungry\\|Weak\\|Fainting\\|Fainted\\|Starved")
+	      (confused . "Conf")
+	      (sick . "Sick")
+	      (blind . "Blind")
+	      (stunned . "Stun")
+	      (hallucinating . "Hallu")
+	      (slimed . "Slime")
+	      (encumbrance . "Burdened\\|Stressed\\|Strained\\|Overtaxed\\|Overloaded")))
+
+    (setq nethack-status-alist status)))
+
+(defun nethack-format-status (fmt)
+  "Return a string containing the player status. fmt is the format string."
+    (let ((str fmt)
+	  (match-phrase '((name . "%n")
+			  (strength . "%s")
+			  (dexterity . "%d")
+			  (constution . "%c")
+			  (intelligence . "%i")
+			  (wisdom . "%w")
+			  (charisma . "%c")
+			  (alignment . "%a")
+			  (hungry . "%u")
+			  (confused . "%C")
+			  (sick . "%S")
+			  (blind . "%b")
+			  (stunned . "%T")
+			  (hallucinating . "%A")
+			  (slimed . "%L")
+			  (encumbrance . "%N")
+			  (dungeon-level . "%D")
+			  (zorkmids . "%z")
+			  (hitpoints . "%h")
+			  (max-hitpoints . "%H")
+			  (power . "%p")
+			  (max-power . "%P")
+			  (armor-class . "%m")
+			  (experience . "%e")
+			  (experience-level-up . "%E")
+			  (time . "%t"))))
+      (mapcar (function (lambda (l)
+			  (let ((case-fold-search nil)
+				(start 0))
+			    (when (string-match (cdr (assoc (elt l 0) match-phrase)) str)
+			      (setq str (replace-match (if (elt l 2)
+							   (propertize (elt l 1) 'face 'cursor)
+							 (elt l 1))
+						       t t str))))))
+	      nethack-status-alist)
+      str))
+
 ;;; Functions to restore nethack window configurations
 
 ;; (defun nethack-restore-windows ()

@@ -1,3 +1,14 @@
+2001-10-19  shawn  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nethack-status-alist): new defvar
+	(nethack-status-string): likewise
+	(nethack-parse-status-lines): new function
+	(nethack-format-status): likewise
+
+	* nethack-api.el (nethack-api-putstr): parse the status lines and
+	print the status according to the format string
+	nethack-status-string.
+
 2001-10-19  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el (nethack-red-face): Add -face, and to all other color
