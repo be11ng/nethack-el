@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.78 2002/09/17 04:29:23 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.79 2002/09/20 04:15:48 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -25,7 +25,7 @@
 ;;; Commentary:
 ;;
 ;; This file is the lisp side of the Nethack/C <--> Emacs/Lisp
-;; interface.
+;; interface.  This is where all the work gets done.
 ;;
 ;; Originally a translation of nethack-3.3.0/doc/window.doc
 ;; from the nethack src package.
@@ -34,7 +34,26 @@
 
 (require 'gamegrid)
 (require 'overlay)			; needed for XEmacs
+(require 'nethack-keys)
+(eval-when-compile
+  (require 'nethack-glyphs))
 
+;;; Buffer handling
+(defvar nh-map-buffer nil)
+(defvar nh-status-buffer nil)
+(defvar nh-message-buffer nil)
+(defvar nh-menu-buffer-table nil
+  "An alist of (DIGIT-ID . BUFFER) pairs")
+(defun nh-menu-buffer (menuid)
+  "Return the buffer that corresponds to the MENUID."
+  (let ((buffer (cdr (assq menuid nh-menu-buffer-table))))
+    (if (buffer-live-p buffer)
+	buffer
+      'nobuffer)))
+
+(defvar nh-message-highlight-overlay nil
+  "Overlay used to highlight new text in the message window.")
+
 (defvar nh-raw-print-buffer-name "*nhw raw-print*"
   "Buffer name for Nethack raw-print messages.")
 
@@ -54,50 +73,29 @@
   (with-current-buffer nh-map-buffer
    (goto-char (gamegrid-cell-offset (- x 1) y))))
 
-;; is this the way to make a "default" face?
-(defface nethack-atr-none-face
-  `((t ()))
-  "Nethack default face."
-  :group 'nethack-faces)
+(defun nh-propertize-attribute (attribute &optional how)
+  (let* ((new-value (car attribute))
+	 (old-value (cadr attribute))
+	 (age (car (cddr attribute)))
+	 (string (format "%s" (or new-value "")))
+	 (face (if (<= age nethack-status-highlight-delay)
+		   (cond ((numberp new-value)
+			  (cond ((eq how nil)
+				 (if (> new-value old-value)
+				     'nethack-status-good-face
+				   'nethack-status-bad-face))
+				((eq how 'lower-is-better)
+				 (if (> new-value old-value)
+				     'nethack-status-bad-face
+				   'nethack-status-good-face))))
+			 ((null new-value) 
+			  nil)
+			 (t 'nethack-status-neutral-face)))))
+    (if face
+	(nh-propertize string 'face face)
+      string)))
 
-(defface nethack-atr-uline-face
-  `((t (:underline t)))
-  "Nethack underline face.")
-
-(defface nethack-atr-bold-face
-  `((t (:bold t)))
-  "Nethack bold face."
-  :group 'nethack-faces)
-
-(defface nethack-atr-blink-face
-  `((t (:inverse-video t)))
-  "Nethack blink face."
-  :group 'nethack-faces)
-
-(defface nethack-atr-inverse-face
-  `((t (:inverse-video t)))
-  "Nethack inverse face."
-  :group 'nethack-faces)
-
-;; FIXME: I think this is broken (ryeske@vcn.bc.ca 20020919)
-(defcustom nethack-status-in-modeline nil
-  "If non-nil, display the status in the modeline of the buffer
-containing the map.
-
-Since the modeline can only display 1 line, you must make sure there
-are no newlines in `nethack-status-format'."
-  :type '(boolean)
-  :group 'nethack)
-
-;;; attr value old-value age
-;; (defun nethack-print-status-string (alist attr fmt)
-;;   (let ((new-value (cadr (assoc attr alist))))
-;;     (if new-value
-;; 	(progn
-;; 	  (if (numberp new-value)
-;; 	      (setq new-value (number-to-string new-value)))
-;; 	  (insert (format fmt new-value))))))
-
+;; value oldvalue age
 (defvar nh-status-attribute-name (list nil nil 0))
 (defvar nh-status-attribute-monster (list nil nil 0))
 (defvar nh-status-attribute-rank (list nil nil 0))
@@ -163,77 +161,6 @@ are no newlines in `nethack-status-format'."
 	nh-status-attribute-slimed (list nil nil 0)
 	nh-status-attribute-encumbrance (list nil nil 0)))
 
-(defface nethack-status-good-face
-  `((((type tty)
-      (class color))
-     (:background "green" :foreground "black"))
-    (((class color)
-      (background light))
-     (:background "darkseagreen2"))
-    (((class color)
-      (background dark))
-     (:background "green4")))
-  "Face for highlighting good changes in the status buffer."
-  :group 'nethack-faces)
-
-(defface nethack-status-bad-face
-  `((((type tty)
-      (class color))
-     (:background "red"))
-    (((class color)
-      (background light))
-     (:background "pink"))
-    (((class color)
-      (background dark))
-     (:background "red"))
-    (t 
-     (:inverse-video t)))
-  "Face for highlighting bad changes in the status buffer."
-  :group 'nethack-faces)
-
-(defface nethack-status-neutral-face
-  `((((type tty)
-      (class color))
-     (:foreground "white" :background "blue"))
-    (((type tty)
-      (class mono))
-     (:inverse-video t))
-    (((class color)
-      (background dark))
-     (:background "blue3"))
-    (((class color)
-      (background light))
-     (:background "lightgoldenrod2"))
-    (t
-     (:background "gray")))
-  "Face for highlighting neutral changes in the status buffer."
-  :group 'nethack-faces)
-
-(defun nh-propertize-attribute (attribute &optional how)
-  (let* ((new-value (car attribute))
-	 (old-value (cadr attribute))
-	 (age (caddr attribute))
-	 (string (format "%s" (or new-value "")))
-	 (face (if (<= age nethack-status-highlight-delay)
-		   (cond ((numberp new-value)
-			  (cond ((eq how nil)
-				 (if (> new-value old-value)
-				     'nethack-status-good-face
-				   'nethack-status-bad-face))
-				((eq how 'lower-is-better)
-				 (if (> new-value old-value)
-				     'nethack-status-bad-face
-				   'nethack-status-good-face))))
-			 ((null new-value) 
-			  nil)
-			 (t 'nethack-status-neutral-face)))))
-    (if face
-	(nh-propertize string 'face face)
-      string)))
-
-(defvar nh-status-attribute-change-hook nil
-  "")
-
 (defun nhapi-update-status (status)
   ;; store the values
   (dolist (i status)
@@ -241,7 +168,7 @@ are no newlines in `nethack-status-format'."
 				     (car i))))
 	   (old-value (car (symbol-value variable)))
 	   (new-value (cadr i))
-	   (age (caddr (symbol-value variable))))
+	   (age (car (cddr (symbol-value variable)))))
       (if (equal new-value old-value)
 	  (set variable (list new-value 
 			      (cadr (symbol-value variable))
@@ -249,13 +176,21 @@ are no newlines in `nethack-status-format'."
 	(set variable (list new-value
 			    old-value
 			    0))
-	(run-hook-with-args 'nh-status-attribute-change-hook
-			    (car i)
-			    new-value
-			    old-value)))))
+	(when (not (string-equal (car i) "T"))
+	  (run-hook-with-args 'nethack-status-attribute-change-functions
+			      (car i) new-value old-value))))))
 
+;; %n%w%s%d%c%i%W%C%A\n%L%l%$%h%p%a%e%t%f
+;;name what strength dexterity constitution intelligence wisdom charisma alignment
+;;where level gold hitpoints power armorclass experience time flags
 (defun nh-print-status ()
-  ;; print the values
+  ;; header line
+;;  (with-current-buffer nh-map-buffer
+;;    (setq header-line-format (nh-status-string nethack-header-line-status-format)))
+;;  (with-current-buffer nh-map-buffer
+;;    (setq mode-line-format (nh-status-string nethack-mode-line-status-format)))
+
+  ;; print the values in the buffer
   (with-current-buffer nh-status-buffer
     (erase-buffer)
     (insert (format "%s the %s St:%s Dx:%s Co:%s In:%s Wi:%s Ch:%s %s\n" 
@@ -308,11 +243,11 @@ are no newlines in `nethack-status-format'."
 		       "\n"))))))
 
 (defun nhapi-message (attr str)
-  "Insert STR to `nh-message-buffer' using ATTR face. FIXME: really do
-ATTR"
+  "Insert STR to `nh-message-buffer' using ATTR face. 
+FIXME: doesnt actually use ATTR!"
   (with-current-buffer nh-message-buffer
     (goto-char (point-max))
-    (run-hooks 'nethack-message-pre-print-hook)
+    (run-hooks 'nethack-before-print-message-hook)
     (insert str "\n")
     ;; cover new text with highlight overlay
     (let ((start (overlay-start nh-message-highlight-overlay)))
@@ -330,6 +265,17 @@ ATTR"
 (defun nh-attr-face (attr)
   "Return the face corresponding with ATTR."
   (intern-soft (concat "nethack-" (symbol-name attr) "-face")))
+
+(defconst nh-colors
+  [nethack-black-face 		nethack-red-face
+   nethack-green-face 		nethack-brown-face
+   nethack-blue-face 		nethack-magenta-face
+   nethack-cyan-face 		nethack-gray-face
+   nethack-dark-gray-face 	nethack-orange-face
+   nethack-bright-green-face 	nethack-yellow-face
+   nethack-bright-blue-face 	nethack-bright-magenta-face
+   nethack-bright-cyan-face 	nethack-white-face]
+  "Vector indexed by Nethack's color number.")
 
 (defun nhapi-print-glyph (x y color glyph tile ch)
   "Insert glyph into `nh-map-buffer'."
@@ -414,6 +360,13 @@ corresponding cdr."
 	   (quit abort)))
      (cdar alist))))
 
+(defvar nh-directory nil
+  "Location of the nethack directory.
+
+This is set when the process starts by `nhapi-init-nhwindows'.
+Do not edit the value of this variable.  Instead, change the value of
+`nethack-program'.")
+
 (defun nhapi-display-file (str complain)
   (let ((file (concat nh-directory str)))
     (if (file-exists-p file)
@@ -443,13 +396,6 @@ corresponding cdr."
   ""
   )
 
-(defvar nh-directory nil
-  "Location of the nethack directory.
-
-This is set when the process starts by `nhapi-init-nhwindows'.
-Do not edit the value of this variable.  Instead, change the value of
-`nethack-program'.")
-
 (defun nhapi-init-nhwindows (executable &rest args)
   "This is the first function sent by the nethack process.  Does
 all of the appropriate setup."
@@ -464,21 +410,6 @@ all of the appropriate setup."
   ""
   ;; print the message in STR to the raw print buffer
   (nhapi-raw-print str))
-
-(defvar nh-menu-buffer-table nil
-  "An alist of (DIGIT-ID . BUFFER) pairs")
-
-(defvar nh-map-buffer nil)
-(defvar nh-status-buffer nil)
-(defvar nh-message-buffer nil)
-
-(defvar nh-message-highlight-overlay nil
-  "Overlay used to highlight new text in the message window.")
-
-(defface nethack-message-highlight-face
-  '((t (:foreground "black" :background "green")))
-  "The face used to highlight new text in the message window."
-  :group 'nethack-faces)
 
 (defun nhapi-create-message-window ()
   "Create the message buffer."
@@ -534,6 +465,8 @@ The TYPE argument is legacy and serves no real purpose."
     (move-overlay nh-message-highlight-overlay
 		  (point-max) (point-max))))
 
+(defconst nh-map-width 79 "Max width of the map.")
+(defconst nh-map-height 22 "Max height of the map.")
 (defun nhapi-clear-map ()
   "Clear the map."
   (with-current-buffer nh-map-buffer
@@ -551,6 +484,14 @@ The TYPE argument is legacy and serves no real purpose."
 	(gamegrid-init-buffer nh-map-width
 			      nh-map-height
 			      ? )))))
+(defun nhapi-block ()
+  ;;(nh-read-char "nethack: -- more --")
+  (read-from-minibuffer "--more--")
+  (nh-send 'dummy))
+
+(defvar nh-active-menu-buffer nil)
+(defvar nh-menu-how nil
+  "One of pick-one, pick-none, pick-any.")
 
 (defun nhapi-display-menu (menuid)
   (with-current-buffer (nh-menu-buffer menuid)
@@ -564,35 +505,6 @@ The TYPE argument is legacy and serves no real purpose."
 					       (- (point-max) 1)))
 	(nh-send 'dummy)))))
 
-(defun nhapi-block ()
-  ;;(nh-read-char "nethack: -- more --")
-  (read-from-minibuffer "--more--")
-  (nh-send 'dummy))
-
-(defcustom nethack-status-window-height 4
-  "Height of the status window."
-  :type '(integer)
-  :group 'nethack)
-
-(defcustom nethack-message-window-height 10
-  "Height of the message window."
-  :type '(integer)
-  :group 'nethack)
-
-(defun nhapi-restore-window-configuration ()
-  "Layout the nethack windows according to the values
-`nethack-status-window-height' and `nethack-message-window-height'."
-  (let ((window-min-height (min nethack-status-window-height
-				nethack-message-window-height)))
-    (delete-other-windows)
-    (switch-to-buffer nh-status-buffer)
-    (split-window-vertically (- nethack-status-window-height))
-    (switch-to-buffer nh-message-buffer)
-    (split-window-vertically nethack-message-window-height)
-    (switch-to-buffer-other-window nh-map-buffer)
-    (if (buffer-live-p nh-active-menu-buffer)
-	(pop-to-buffer nh-active-menu-buffer))))
-
 (defun nhapi-destroy-menu (menuid)
   (save-current-buffer
     (let ((buffer (nh-menu-buffer menuid)))
@@ -600,7 +512,7 @@ The TYPE argument is legacy and serves no real purpose."
       (kill-buffer buffer)
       (setq nh-menu-buffer-table
 	    (nh-assq-delete-all menuid nh-menu-buffer-table)))))
-
+
 (defun nh-menu-mode (how)
   "Major mode for Nethack menus.
 
@@ -611,11 +523,6 @@ The TYPE argument is legacy and serves no real purpose."
   (use-local-map nh-menu-mode-map)
   (setq nh-menu-how how)
   (run-hooks 'nethack-menu-mode-hook))
-
-(defvar nh-menu-how nil
-  "One of pick-one, pick-none, pick-any.")
-
-(defvar nh-window-configuration nil)
 
 (defun nh-menu-toggle-item (&optional count)
   "Toggle the menu item that is associated with the key event that
@@ -683,6 +590,7 @@ was actually toggled."
 		   (line-beginning-position)
 		 old-point))))
 
+(defvar nh-window-configuration nil)
 (defun nh-menu-submit ()
   "Submit the selected menu options to the nethack process.
 
@@ -717,6 +625,10 @@ displayed."
       (replace-match "-" nil nil nil 1)))
   (nh-menu-submit))
 
+(defvar nh-unassigned-accelerator-index 0
+  "Index into `nh-accelerator-chars' indicating the next
+accelerator that will be used in unassigned menus.")
+
 (defun nhapi-start-menu (menuid)
   ""
   (with-current-buffer (nh-menu-buffer menuid)
@@ -725,10 +637,6 @@ displayed."
       ;; we don't turn on `nh-menu-mode' yet, since we do not yet know
       ;; "how" this menu is going to work.
       (setq nh-unassigned-accelerator-index 0))))
-
-(defvar nh-unassigned-accelerator-index 0
-  "Index into `nh-accelerator-chars' indicating the next
-accelerator that will be used in unassigned menus.")
 
 (defun nh-specify-accelerator ()
   "Return the next accelerator from `nh-accelerator-chars' specified
@@ -766,8 +674,6 @@ buffer."
       (insert prompt)
       (newline))))
 
-(defvar nh-active-menu-buffer nil)
-
 (defun nhapi-select-menu (menuid how)
   "Display the menu given by MENUID and put the buffer in
 `nh-menu-mode'.
@@ -795,6 +701,20 @@ the menu is dismissed."
 	  (message "Displaying menu")
 	  (setq nh-active-menu-buffer buffer))
       (error "No such menuid: %d" menuid))))
+
+(defun nhapi-restore-window-configuration ()
+  "Layout the nethack windows according to the values
+`nethack-status-window-height' and `nethack-message-window-height'."
+  (let ((window-min-height (min nethack-status-window-height
+				nethack-message-window-height)))
+    (delete-other-windows)
+    (switch-to-buffer nh-status-buffer)
+    (split-window-vertically (- nethack-status-window-height))
+    (switch-to-buffer nh-message-buffer)
+    (split-window-vertically nethack-message-window-height)
+    (switch-to-buffer-other-window nh-map-buffer)
+    (if (buffer-live-p nh-active-menu-buffer)
+	(pop-to-buffer nh-active-menu-buffer))))
 
 (defun nhapi-bell ()
   "Beep at user."

@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.68 2002/09/13 03:49:33 rcyeske Exp $
+;; Version: $Id: nethack.el,v 1.69 2002/09/20 04:15:48 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -30,14 +30,80 @@
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
-;; (require 'nethack-vars)
+(require 'nethack-vars)
 
 (defgroup nethack nil
-  "Emacs lisp frontend to the lisp window port of Nethack 3.3.x."
+  "Emacs lisp frontend to the lisp window port of Nethack 3.4.0."
   :group 'games)
 
-(defgroup nethack-faces nil
-  "Customizations for faces used by Enethack."
+(defcustom nethack-program "nethack"
+  "Program to run to start a game of Nethack."
+  :type '(string)
+  :group 'nethack)
+
+(defcustom nethack-program-args nil
+  "Arguments to pass to `nethack-program'."
+  :type '(repeat string)
+  :group 'nethack)
+
+(defcustom nethack-status-window-height 4
+  "Height of the status window."
+  :type '(integer)
+  :group 'nethack)
+
+(defcustom nethack-message-window-height 10
+  "Height of the message window."
+  :type '(integer)
+  :group 'nethack)
+
+(defcustom nethack-status-highlight-delay 5
+  "The number of turns to keep a changed status field highlighted."
+  :type '(integer)
+  :group 'nethack)
+
+(defcustom nethack-status-format
+  "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"
+  "The nethack status format string."
+  :type '(string)
+  :group 'nethack)
+
+;; FIXME: I think this is broken (ryeske@vcn.bc.ca 20020919)
+(defcustom nethack-status-in-modeline nil
+  "If non-nil, display the status in the modeline of the buffer
+containing the map.
+
+Since the modeline can only display 1 line, you must make sure there
+are no newlines in `nethack-status-format'."
+  :type '(boolean)
+  :group 'nethack)
+
+
+(defcustom nethack-use-tiles nil
+  "If non-nil, use XPMs to draw tiles."
+  :type '(boolean)
+  :group 'nethack)
+
+(defcustom nethack-map-mode-hook nil
+  "Functions to be called after setting up the Nethack map."
+  :type '(hook)
+  :group 'nethack)
+
+(defcustom nethack-menu-mode-hook nil
+  "Functions to be called after setting up a Nethack menu."
+  :type '(hook)
+  :group 'nethack)
+
+(defcustom nethack-before-print-message-hook nil
+  "Hook run before a message is printed."
+  :type '(hook)
+  :group 'nethack)
+
+(defcustom nethack-status-attribute-change-functions nil
+  "List of functions to call after a status attribute change.
+
+Three arguments are passed to each function: the name of the
+attribute, the new value and the old value."
+  :type '(hook)
   :group 'nethack)
 
 (defcustom nethack-load-hook nil
@@ -45,10 +111,86 @@
     :type '(hook)
     :group 'nethack)
 
-(defcustom nethack-message-pre-print-hook nil
-  "Hook run before a message is printed."
-  :type '(hook)
+
+(defgroup nethack-faces nil
+  "Customizations for faces used by Enethack."
   :group 'nethack)
+
+
+(defface nethack-status-good-face
+  `((((type tty)
+      (class color))
+     (:background "green" :foreground "black"))
+    (((class color)
+      (background light))
+     (:background "darkseagreen2"))
+    (((class color)
+      (background dark))
+     (:background "green4")))
+  "Face for highlighting good changes in the status buffer."
+  :group 'nethack-faces)
+
+(defface nethack-status-bad-face
+  `((((type tty)
+      (class color))
+     (:background "red"))
+    (((class color)
+      (background light))
+     (:background "pink"))
+    (((class color)
+      (background dark))
+     (:background "red"))
+    (t 
+     (:inverse-video t)))
+  "Face for highlighting bad changes in the status buffer."
+  :group 'nethack-faces)
+
+(defface nethack-status-neutral-face
+  `((((type tty)
+      (class color))
+     (:foreground "white" :background "blue"))
+    (((type tty)
+      (class mono))
+     (:inverse-video t))
+    (((class color)
+      (background dark))
+     (:background "blue3"))
+    (((class color)
+      (background light))
+     (:background "lightgoldenrod2"))
+    (t
+     (:background "gray")))
+  "Face for highlighting neutral changes in the status buffer."
+  :group 'nethack-faces)
+
+(defface nethack-message-highlight-face
+  '((t (:foreground "black" :background "green")))
+  "The face used to highlight new text in the message window."
+  :group 'nethack-faces)
+
+(defface nethack-atr-none-face
+  `((t ()))
+  "Nethack default face."
+  :group 'nethack-faces)
+
+(defface nethack-atr-uline-face
+  `((t (:underline t)))
+  "Nethack underline face.")
+
+(defface nethack-atr-bold-face
+  `((t (:bold t)))
+  "Nethack bold face."
+  :group 'nethack-faces)
+
+(defface nethack-atr-blink-face
+  `((t (:inverse-video t)))
+  "Nethack blink face."
+  :group 'nethack-faces)
+
+(defface nethack-atr-inverse-face
+  `((t (:inverse-video t)))
+  "Nethack inverse face."
+  :group 'nethack-faces)
 
 (defface nethack-black-face
   `((t (:foreground "dark blue")))
@@ -221,31 +363,10 @@
   "Map face with height less than the tile size (16 pixels)."
   :group 'nethack-faces)
 
-;;; FIXME: custom this
-(defvar nethack-use-tiles nil
-  "If non-nil, use XPMs to draw tiles.")
-
-(defun nethack-toggle-tiles ()
-  "Toggle the use of tiles on the map."
-  (interactive)
-  (setq nethack-use-tiles (not nethack-use-tiles))
-  (nethack-command-redraw-screen 2))
-
-(defconst nh-colors
-  [nethack-black-face 		nethack-red-face
-   nethack-green-face 		nethack-brown-face
-   nethack-blue-face 		nethack-magenta-face
-   nethack-cyan-face 		nethack-gray-face
-   nethack-dark-gray-face 	nethack-orange-face
-   nethack-bright-green-face 	nethack-yellow-face
-   nethack-bright-blue-face 	nethack-bright-magenta-face
-   nethack-bright-cyan-face 	nethack-white-face]
-  "Vector indexed by Nethack's color number.")
-
 
+;;; Process
 (defvar nh-proc nil)
 (defvar nh-proc-buffer-name "*nh-output*")
-(defvar nh-log-process-text t)
 
 (defun nethack ()
   "Start a game of Nethack.
@@ -268,20 +389,15 @@ The variable `nethack-program' is the name of the executable to run."
       (set-process-filter nh-proc 'nh-filter)
       (set-process-sentinel nh-proc 'nh-sentinel))))
 
-
+(defun nethack-toggle-tiles ()
+  "Toggle the use of tiles on the map."
+  (interactive)
+  (setq nethack-use-tiles (not nethack-use-tiles))
+  (nethack-command-redraw-screen 2))
+
 ;;;; Process code to communicate with the Nethack executable
 (defconst nh-prompt-regexp
   "^\\(command\\|menu\\|dummy\\|direction\\|number\\|string\\)> *")
-
-(defcustom nethack-program "nethack"
-  "Program to run to start a game of Nethack."
-  :type '(string)
-  :group 'nethack)
-
-(defcustom nethack-program-args nil
-  "Arguments to pass to `nethack-program'."
-  :type '(repeat string)
-  :group 'nethack)
 
 (defun nh-sentinel (proc msg)
   "Nethack background process sentinel.
@@ -293,12 +409,14 @@ PROC is the process object and MSG is the exit message."
     (pop-to-buffer (current-buffer)))
   (delete-process proc))
 
+(defvar nh-log-process-text t)
 (defun nh-log (string)
   (if nh-log-process-text
       (with-current-buffer (get-buffer-create "*nh-log*")
 	(goto-char (point-max))
 	(insert string))))
 
+(defvar nh-at-prompt nil)
 (defun nh-filter (proc string)
   "Insert contents of STRING into the buffer associated with PROC.
 Evaluate the buffer contents if we are looking at a prompt and then
@@ -318,7 +436,6 @@ delete the contents, perhaps logging the text."
 		 (sit-for 0)
 		 (setq nh-at-prompt t)))))))
 
-(defvar nh-at-prompt nil)
 (defun nh-send (form)
   (let ((command (cond 
 		  ((null form) "()") ; the process doesn't handle `nil'
@@ -337,25 +454,6 @@ delete the contents, perhaps logging the text."
     (accept-process-output nh-proc)))
 
 ;;; Buffer code (aka windows in Nethack)
-
-(defun nh-menu-buffer (menuid)
-  "Return the buffer that corresponds to the MENUID."
-  (let ((buffer (cdr (assq menuid nh-menu-buffer-table))))
-    (if (buffer-live-p buffer)
-	buffer
-      'nobuffer)))
-
-;;; Main Map Buffer code
-(defcustom nethack-map-mode-hook nil
-  "Functions to be called after setting up the Nethack map."
-  :type '(hook)
-  :group 'nethack)
-
-(defcustom nethack-menu-mode-hook nil
-  "Functions to be called after setting up a Nethack menu."
-  :type '(hook)
-  :group 'nethack)
-
 (defvar nh-map-mode-syntax-table
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?\( "w   " table)
@@ -379,23 +477,6 @@ delete the contents, perhaps logging the text."
   (make-variable-buffer-local 'other-window-scroll-buffer)
   (setq other-window-scroll-buffer nh-message-buffer)
   (run-hooks 'nethack-map-mode-hook))
-
-(defconst nh-map-width 79 "Max width of the map.")
-(defconst nh-map-height 22 "Max height of the map.")
-
-
-;;; status line handling
-
-(defcustom nethack-status-highlight-delay 5
-  "The number of turns to keep a changed status field highlighted."
-  :type '(integer)
-  :group 'nethack)
-
-(defcustom nethack-status-format
-  "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"
-  "The nethack status format string."
-  :type '(string)
-  :group 'nethack)
 
 
 ;;; utility/compatibility functions
@@ -421,18 +502,16 @@ Return the modified alist."
     (set-buffer (window-buffer window))
     (count-lines (point-min) (point-max))))
 
-(defun nh-char-to-int (char)
-  ;; XEmacs chars are not ints
-  (if (fboundp 'char-to-int)
-      (char-to-int char)
-    char))
+;; XEmacs chars are not ints
+(defalias 'nh-char-to-int (if (fboundp 'char-to-int)
+			      'char-to-int
+			    'identity))
 
 (defun nh-read-char (&optional prompt)
   (message prompt)
   (let ((char (read-char-exclusive)))
     (message "")
     (nh-char-to-int char)))
-
 
 (run-hooks 'nethack-load-hook)
 
