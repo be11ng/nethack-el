@@ -356,8 +356,7 @@ FIXME: doesnt actually use ATTR!"
   "Prompt the user for a direction"
   (let* ((cursor-in-echo-area t)
 	 (cmd (lookup-key nh-map-mode-map
-			  (vector (nh-read-char
-				   (concat prompt " "))))))
+			  (read-key-sequence-vector (concat prompt " ")))))
     (nh-send
      (cond ((eq cmd 'nethack-command-north) "n")
 	   ((eq cmd 'nethack-command-south) "s")
