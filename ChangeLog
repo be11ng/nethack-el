@@ -1,6 +1,7 @@
 2004-11-19  Shawn Betts  <katia_dilkina@verizon.net>
 
 	* nethack-nhlaunch.el (nethack-connect-to-server): make autoload
+	require nethack.
 
 	* nethack.el (nethack): make autoload
 
