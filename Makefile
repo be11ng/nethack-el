@@ -27,9 +27,9 @@ NH_VER=3.4.1
 
 NH_VER_NODOTS=$(shell echo $(NH_VER) | sed s/\\.//g)
 
-PATCHFILE=enh-$(NH_VER_NODOTS).patch ese-007e0.patch
+PATCHFILE=enh-$(NH_VER_NODOTS).patch
 DISTFILES=AUTHORS BUGS COPYING ChangeLog INSTALL Makefile README TODO		\
-	$(PATCHFILES) mkpatch nethack-api.el nethack-cmd.el nethack-example.el	\
+	$(PATCHFILES) ese-007e0.patch mkpatch nethack-api.el nethack-cmd.el nethack-example.el	\
 	nethack-glyphs.el nethack-keys-dvorak.el nethack-keys.el		\
 	nethack.el
 DISTDIR=nethack_el-$(NETHACK_EL_VER)
