@@ -35,18 +35,18 @@
 (defun nethack-command-identify-trap ()
   "^       Show the type of a trap"
   (interactive)
-  (nethack-handle-command "doidtrap"))
+  (nethack-handle-command "idtrap"))
 
 
 (defun nethack-command-apply ()
   "a       Apply (use) a tool"
   (interactive)
-  (nethack-handle-command "doapply"))
+  (nethack-handle-command "apply"))
 
 (defun nethack-command-remove-all-armor ()
   "A       Remove all armor"
   (interactive)
-  (nethack-handle-command "doddoremarm"))
+  (nethack-handle-command "ddoremarm"))
 
 ;; (defun nethack-command-cancel ()
 ;;   "^[      Cancel command"
@@ -67,7 +67,7 @@
 (defun nethack-command-close-door ()
   "c       Close a door"
   (interactive)
-  (nethack-handle-command "doclose"))
+  (nethack-handle-command "close"))
 
 ;; (defun nethack-command-call-monster ()
 ;;   "C       Call (name) a particular monster"
@@ -77,27 +77,27 @@
 (defun nethack-command-drop ()
   "d       Drop an item"
   (interactive)
-  (nethack-handle-command dodrop))
+  (nethack-handle-command "drop"))
 
 (defun nethack-command-drop-specific-item ()
   "D       Drop specific item types"
   (interactive)
-  (nethack-handle-command "doddrop"))
+  (nethack-handle-command "ddrop"))
 
 (defun nethack-command-eat ()
   "e       Eat something"
   (interactive)
-  (nethack-handle-command "doeat"))
+  (nethack-handle-command "eat"))
 
 (defun nethack-command-engrave ()
   "E       Engrave writing on the floor"
   (interactive)
-  (nethack-handle-command "doengrave"))
+  (nethack-handle-command "engrave"))
 
 (defun nethack-command-fire ()
   "f       Fire ammunition from quiver"
   (interactive)
-  (nethack-handle-command "dofire"))
+  (nethack-handle-command "fire"))
 
 ;; (defun nethack-command-force-fight ()
 ;;   "F       Followed by direction, fight a monster (even if you don't sense it)"
@@ -129,12 +129,12 @@
 (defun nethack-command-inventory ()
   "i       Show your inventory"
   (interactive)
-  (nethack-handle-command "doinv"))
+  (nethack-handle-command "inv"))
 
 (defun nethack-command-type-inventory ()
   "I       Inventory specific item types"
   (interactive)
-  (nethack-handle-command "dotypeinv"))
+  (nethack-handle-command "typeinv"))
 
 (defun nethack-command-south ()
   "j       Go south 1 space (or if number_pad is on, jump to another location)"
@@ -200,62 +200,62 @@
 (defun nethack-command-open ()
   "o       Open a door"
   (interactive)
-  (nethack-handle-command "doopen"))
+  (nethack-handle-command "open"))
 
 (defun nethack-command-settings ()
   "O       Show option settings, possibly change them"
   (interactive)
-  (nethack-handle-command "doset"))
+  (nethack-handle-command "set"))
 
 (defun nethack-command-pay ()
   "p       Pay your shopping bill"
   (interactive)
-  (nethack-handle-command "dopay"))
+  (nethack-handle-command "pay"))
 
 (defun nethack-command-put-on ()
   "P       Put on an accessory (ring, amulet, etc)"
   (interactive)
-  (nethack-handle-command "doputon"))
+  (nethack-handle-command "puton"))
 
 (defun nethack-command-quaff ()
   "q       Quaff (drink) something"
   (interactive)
-  (nethack-handle-command "dodrink"))
+  (nethack-handle-command "drink"))
 
 (defun nethack-command-select-ammo-for-quiver ()
   "Q       Select ammunition for quiver"
   (interactive)
-  (nethack-handle-command "dowieldquiver"))
+  (nethack-handle-command "wieldquiver"))
 
 (defun nethack-command-read ()
   "r       Read a scroll or spellbook"
   (interactive)
-  (nethack-handle-command "doread"))
+  (nethack-handle-command "read"))
 
 (defun nethack-command-remove-accessory ()
   "R       Remove an accessory (ring, amulet, etc)"
   (interactive)
-  (nethack-handle-command "doremring"))
+  (nethack-handle-command "remring"))
 
 (defun nethack-command-search ()
   "s       Search for traps and secret doors"
   (interactive)
-  (nethack-handle-command "dosearch"))
+  (nethack-handle-command "search"))
 
 (defun nethack-command-save-game ()
   "S       Save the game"
   (interactive)
-  (nethack-handle-command "dosave"))
+  (nethack-handle-command "save"))
 
 (defun nethack-command-throw ()
   "t       Throw something"
   (interactive)
-  (nethack-handle-command "dothrow"))
+  (nethack-handle-command "throw"))
 
 (defun nethack-command-remove-single-armor ()
   "T       Take off one piece of armor"
   (interactive)
-  (nethack-handle-command "dotakeoff"))
+  (nethack-handle-command "takeoff"))
 
 ;; (defun nethack-command-northeast-one-space ()
 ;;   "u       Go northeast 1 space (or if number_pad is on, untrap something)"
@@ -272,27 +272,27 @@
 (defun nethack-command-version ()
   "v       Show version"
   (interactive)
-  (nethack-handle-command "doversion"))
+  (nethack-handle-command "version"))
 
 (defun nethack-command-version-and-history ()
   "V       Show long version and game history"
   (interactive)
-  (nethack-handle-command "dohistory"))
+  (nethack-handle-command "history"))
 
 (defun nethack-command-wield ()
   "w       Wield (put in use) a weapon"
   (interactive)
-  (nethack-handle-command "dowield"))
+  (nethack-handle-command "wield"))
 
 (defun nethack-command-wear-armor ()
   "W       Wear a piece of armor"
   (interactive)
-  (nethack-handle-command "dowear"))
+  (nethack-handle-command "wear"))
 
 (defun nethack-command-swap-weapons ()
   "x       Swap wielded and secondary weapons"
   (interactive)
-  (nethack-handle-command "doswapweapon"))
+  (nethack-handle-command "swapweapon"))
 
 (defun nethack-command-explore-mode ()
   "X       Enter explore (discovery) mode (only if defined)"
@@ -314,77 +314,77 @@
 (defun nethack-command-zap-wand ()
   "z       Zap a wand"
   (interactive)
-  (nethack-handle-command "dozap"))
+  (nethack-handle-command "zap"))
 
 (defun nethack-command-cast-spell ()
   "Z       Zap (cast) a spell"
   (interactive)
-  (nethack-handle-command "docast"))
+  (nethack-handle-command "cast"))
 
 (defun nethack-command-up ()
   "<       Go up a staircase"
   (interactive)
-  (nethack-handle-command "doup"))
+  (nethack-handle-command "up"))
 
 (defun nethack-command-down ()
   ">       Go down a staircase"
   (interactive)
-  (nethack-handle-command "dodown"))
+  (nethack-handle-command "down"))
 
 (defun nethack-command-what-is-symbol ()
   "/       Show what type of thing a symbol corresponds to"
   (interactive)
-  (nethack-handle-command "dowhatis"))
+  (nethack-handle-command "whatis"))
 
 (defun nethack-command-help ()
   "?       Give a help message"
   (interactive)
-  (nethack-handle-command "dohelp"))
+  (nethack-handle-command "help"))
 
 (defun nethack-command-command-help ()
   "&       Tell what a command does"
   (interactive)
-  (nethack-handle-command "dowhatdoes"))
+  (nethack-handle-command "whatdoes"))
 
 (defun nethack-command-shell-escape ()
   "!       Do a shell escape (only if defined)"
   (interactive)
-  (nethack-handle-command "dosh"))
+  (nethack-handle-command "sh"))
 
 (defun nethack-command-show-discoveries ()
   "\       Show what object types have been discovered"
   (interactive)
-  (nethack-handle-command "dodiscovered"))
+  (nethack-handle-command "discovered"))
 
 (defun nethack-command-rest-one-move ()
   ".       Rest one move while doing nothing"
   (interactive)
-  (nethack-handle-command "donull"))
+  (nethack-handle-command "null"))
 
 (defun nethack-command-rest-one-move ()
   "<space>     Rest one move while doing nothing (if rest_on_space option is on)"
   (interactive)
-  (nethack-handle-command "donull"))
+  (nethack-handle-command "null"))
 
 (defun nethack-command-look-here ()
   ":       Look at what is on the floor"
   (interactive)
-  (nethack-handle-command "dolook"))
+  (nethack-handle-command "look"))
 
 (defun nethack-command-what-is-map-piece ()
   "; Show what type of thing a map symbol on the level corresponds to"
   (interactive)
-  (nethack-handle-command "doquickwhatis"))
+  (nethack-handle-command "quickwhatis"))
 
 (defun nethack-command-pick-up ()
   ",       Pick up things at the current location"
   (interactive)
-  (nethack-handle-command "dopickup"))
+  (nethack-handle-command "pickup"))
 
 (defun nethack-command-toggle-pickup ()
   "@       Toggle the pickup option on/off"
   (interactive)
-  (nethack-handle-command "dotogglepickup"))
+  (nethack-handle-command "togglepickup"))
 
 ;; (defun nethack-command-show-wielded-weapon ()
 ;;   ")       Show the weapon currently wielded"
@@ -409,7 +409,7 @@
 (defun nethack-command-show-all-equipment-in-use ()
   "*       Show all equipment in use (combination of the ),[,=,\",( commands)"
   (interactive)
-  (nethack-handle-command "doprinuse"))
+  (nethack-handle-command "prinuse"))
 
 ;; (defun nethack-command-count-gold ()
 ;;   "$       Count your gold"
@@ -418,12 +418,6 @@
 ;; (defun nethack-command-list-known-spells ()
 ;;   "+       List known spells"
 ;;   )
-
-(defun nethack-command-extended-comm ()
-  "#       Perform an extended command"
-  (interactive)
-  (nethack-handle-command "doextcmd"))
-
 
 ;;; wizard (debug) mode only commands:
 ;; (defun nethack-command-wizard-search ()

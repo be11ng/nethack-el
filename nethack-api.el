@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.12 2000/09/10 09:43:45 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.13 2000/09/20 02:37:20 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -245,9 +245,25 @@
 ;; This uses the top line in the tty window-port, other ports might use a
 ;; popup.
 
-(defun nethack-api-yn-function (ques choices defaults)
+(defun nethack-api-yn-function (ques choices default)
   ""  
-  'unimplemented)
+  (let ((cursor-in-echo-area t)
+	all-choices
+	key)
+
+    (if (= default 0)
+	(string-to-list choices)
+      (string-to-list (concat (char-to-string default) choices)))
+
+    (message ques)
+    (setq key (read-char))
+    (if (= default 0)
+	key
+      (progn
+	(while (not (member key all-choices))
+	      (message ques)
+	      (setq key (read-char)))
+	key))))
 
 ;;  (message ques)
 ;;  (nethack-api-getch))
