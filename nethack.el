@@ -214,7 +214,7 @@ newlines being in a font with height > 16."
 
 (defvar nh-proc nil)
 (defvar nh-proc-buffer-name "*nethack-output*")
-(defvar nh-log-process t)
+(defvar nh-log-process-text t)
 
 (defun nethack ()
   "Start a game of Nethack.
@@ -241,12 +241,8 @@ The variable `nethack-program' is the name of the executable to run."
 
 
 ;;;; Process code to communicate with the Nethack executable
-(defvar nh-prompt-regexp
+(defconst nh-prompt-regexp
   "^\\(command\\|menu\\|dummy\\|direction\\|number\\|string\\)> *")
-
-; (define-derived-mode nh-comint-mode comint-mode "Nethack Process"
-;   (make-local-variable 'comint-prompt-regexp)
-;   (setq comint-prompt-regexp nh-prompt-regexp))
 
 (defcustom nethack-program "nethack"
   "Program to run to start a game of Nethack."
@@ -262,20 +258,22 @@ The variable `nethack-program' is the name of the executable to run."
   "Nethack background process sentinel.
 PROC is the process object and MSG is the exit message."
   (with-current-buffer (process-buffer proc)
+    (nh-log (buffer-substring (point-min) (point)))
     (eval-region (point-min) (point-max))
     (insert "Nethack " msg)
     (pop-to-buffer (current-buffer)))
   (delete-process proc))
 
 (defun nh-log (string)
-  (with-current-buffer (get-buffer-create "*nh-log*")
-    (goto-char (point-max))
-    (insert string)))
+  (if nh-log-process-text
+      (with-current-buffer (get-buffer-create "*nh-log*")
+	(goto-char (point-max))
+	(insert string))))
 
 (defun nh-filter (proc string)
   "Insert contents of STRING into the buffer associated with PROC.
-Evaluate the buffer contents between the last prompt and the current
-position if we are looking at a prompt."
+Evaluate the buffer contents if we are looking at a prompt and then
+delete the contents, perhaps logging the text."
   ;; insert output into process buffer
   (with-current-buffer (process-buffer proc)
     (goto-char (point-max))
@@ -283,9 +281,9 @@ position if we are looking at a prompt."
     (forward-line 0)
     (if (looking-at nh-prompt-regexp)
 	(let ((prompt (match-string 1)))
+	  (nh-log (buffer-substring (point-min) (point)))
 	  (eval-region (point-min) (point))
-	  (if nh-log-process
-	      (nh-log (buffer-substring (point-min) (point))))
+	  (nethack-print-status)
 	  (cond ((or (equal prompt "command")
 		     (equal prompt "menu"))
 		 (sit-for 0)
@@ -299,8 +297,7 @@ position if we are looking at a prompt."
 		  (t (prin1-to-string form)))))
     (with-current-buffer (process-buffer nh-proc) (erase-buffer))
     (process-send-string nh-proc (concat command "\n"))
-    (if nh-log-process
-	(nh-log (format ";;; %s\n" command)))))
+    (nh-log (format ";;; %s\n" command))))
   
 (defun nh-send-and-wait (form)
   (nh-send form)
@@ -371,147 +368,6 @@ position if we are looking at a prompt."
   "The nethack status format string."
   :type '(string)
   :group 'nethack)
-
-(defun nethack-parse-status-lines (line-1 line-2)
-  (let ((regexp-line-1 "\\(\\(?:\\w+\\s-\\)*\\w+\\)+\\s-+St:\\([0-9]+\\(?:\\/[0-9]+\\)?\\)\\s-+Dx:\\([0-9]+\\)\\s-+Co:\\([0-9]+\\)\\s-+In:\\([0-9]+\\)\\s-+Wi:\\([0-9]+\\)\\s-+Ch:\\([0-9]+\\)\\s-+\\(\\w+\\)")
-	(regexp-line-2 "Dlvl:\\([0-9]+\\)\\s-+\\$:\\([0-9]+\\)\\s-+HP:\\([0-9]+\\)\\s(\\([0-9]+\\)\\s)\\s-+Pw:\\([0-9]+\\)\\s(\\([0-9]+\\)\\s)\\s-+AC:\\(-?[0-9]+\\)\\s-+Xp:\\([0-9]+\\)\\/\\([0-9]+\\)\\s-+T:\\([0-9]+\\)")
-	(symbols-1 '(name strength dexterity constution intelligence wisdom charisma alignment))
-	(symbols-2 '(dungeon-level zorkmids hitpoints max-hitpoints power max-power armor-class experience experience-level-up time))
-	(status)
-	(count))
-
-    ;; Parse the first line
-    (string-match regexp-line-1 line-1)
-    (setq count (length symbols-1))
-    (while (> count 0)
-      (let* ((old-status (assoc (elt symbols-1 (1- count)) nethack-status-alist))
-	     (old-highlight-delay (if (elt old-status 2)
-				      (elt old-status 2)
-				    0))
-	     (data-changed (not (string-equal (match-string count line-1)
-					      (elt old-status 1)))))
-      (push (list (elt symbols-1 (1- count))
-		  (if (match-string count line-1)
-		      (match-string count line-1)
-		    "")
-		  (if data-changed
-		      (* (if (eq (elt symbols-2 (1- count)) 'armor-class)
-			     -1 1)
-			 (if (< (string-to-int (match-string count line-1))
-				(if (null (elt old-status 1))
-				    0
-				  (string-to-int (elt old-status 1))))
-			     (- nethack-status-highlight-delay)
-			   nethack-status-highlight-delay))
-		    (cond ((> old-highlight-delay 0)
-			   (1- old-highlight-delay))
-			  ((< old-highlight-delay 0)
-			   (1+ old-highlight-delay))
-			  (t 0))))
-	    status)
-      (setq count (1- count))))
-
-    ;; Parse the second line
-    (string-match regexp-line-2 line-2)
-    (setq count (length symbols-2))
-    (while (> count 0)
-      (let* ((old-status (assoc (elt symbols-2 (1- count)) nethack-status-alist))
-	     (old-highlight-delay (if (elt old-status 2)
-				      (elt old-status 2)
-				    0))
-	     (data-changed (not (string-equal (match-string count line-2)
-					      (elt old-status 1)))))
-	(push (list (elt symbols-2 (1- count))
-		    (if (match-string count line-2)
-			(match-string count line-2)
-		      "")
-		    (if data-changed
-			(* (if (eq (elt symbols-2 (1- count)) 'armor-class)
-			       -1 1)
-			   (if (< (string-to-int (match-string count line-2))
-				  (if (null (elt old-status 1))
-				      0
-				    (string-to-int (elt old-status 1))))
-			       (- nethack-status-highlight-delay)
-			     nethack-status-highlight-delay))
-		      (cond ((> old-highlight-delay 0)
-			     (1- old-highlight-delay))
-			    ((< old-highlight-delay 0)
-			     (1+ old-highlight-delay))
-			    (t 0))))
-	      status)
-	(setq count (1- count))))
-
-    ;; Fill in the flags
-    (mapcar (function (lambda (pair)
-			(let* ((old-status (assoc (car pair) nethack-status-alist))
-			       (old-highlight-delay (if (elt old-status 2)
-							(elt old-status 2)
-						      0)))
-			  (if (string-match (cdr pair) line-2)
-			      (add-to-list 'status (list (car pair)
-							 (match-string 0 line-2)
-							 (if (not (string-equal (match-string 0 line-2)
-										(elt old-status 1)))
-							     (- nethack-status-highlight-delay)
-							   (if (< old-highlight-delay 0)
-							       (1+ old-highlight-delay)
-							     0))))
-			    (add-to-list 'status (list (car pair) "" 0))))))
-	    '((hungry . "Satiated\\|Hungry\\|Weak\\|Fainting\\|Fainted\\|Starved")
-	      (confused . "Conf")
-	      (sick . "Sick")
-	      (blind . "Blind")
-	      (stunned . "Stun")
-	      (hallucinating . "Hallu")
-	      (slimed . "Slime")
-	      (encumbrance . "Burdened\\|Stressed\\|Strained\\|Overtaxed\\|Overloaded")))
-
-    (setq nethack-status-alist status)))
-
-(defun nethack-format-status (fmt)
-  "Return a string containing the player status.  FMT is the format string."
-    (let ((str fmt)
-	  (match-phrase '((name . "%n")
-			  (strength . "%s")
-			  (dexterity . "%d")
-			  (constution . "%c")
-			  (intelligence . "%i")
-			  (wisdom . "%w")
-			  (charisma . "%c")
-			  (alignment . "%a")
-			  (hungry . "%u")
-			  (confused . "%C")
-			  (sick . "%S")
-			  (blind . "%b")
-			  (stunned . "%T")
-			  (hallucinating . "%A")
-			  (slimed . "%L")
-			  (encumbrance . "%N")
-			  (dungeon-level . "%D")
-			  (zorkmids . "%z")
-			  (hitpoints . "%h")
-			  (max-hitpoints . "%H")
-			  (power . "%p")
-			  (max-power . "%P")
-			  (armor-class . "%m")
-			  (experience . "%e")
-			  (experience-level-up . "%E")
-			  (time . "%t"))))
-      (mapcar (function (lambda (l)
-			  (let ((case-fold-search nil)
-				(start 0))
-			    (when (string-match (cdr (assoc (elt l 0) match-phrase)) str)
-			      (setq str (replace-match (cond ((> (elt l 2) 0)
-							      (propertize (elt l 1)
-									  'face 'nethack-green-face))
-							     ((< (elt l 2) 0)
-							      (propertize (elt l 1)
-									  'face 'nethack-red-face))
-							     (t (elt l 1)))
-						       t t str))))))
-	      nethack-status-alist)
-      str))
 
 
 ;;; utility/compatibility functions

@@ -180,6 +180,7 @@ are no newlines in `nethack-status-string'."
   :type '(boolean)
   :group 'nethack)
 
+;;; attr value old-value age
 (defun nethack-print-status-string (alist attr fmt)
   (let ((new-value (cadr (assoc attr alist))))
     (if new-value
@@ -188,73 +189,154 @@ are no newlines in `nethack-status-string'."
 	      (setq new-value (number-to-string new-value)))
 	  (insert (format fmt new-value))))))
 
-;; FIXME: this is a temporary kludge which will disappear when we have
-;; real cooked status information coming from the process.
+(defvar nethack-status-attribute-name (list nil nil 0))
+(defvar nethack-status-attribute-monster (list nil nil 0))
+(defvar nethack-status-attribute-rank (list nil nil 0))
+(defvar nethack-status-attribute-St (list 0 0 0))
+(defvar nethack-status-attribute-Dx (list 0 0 0))
+(defvar nethack-status-attribute-Co (list 0 0 0))
+(defvar nethack-status-attribute-In (list 0 0 0))
+(defvar nethack-status-attribute-Wi (list 0 0 0))
+(defvar nethack-status-attribute-Ch (list 0 0 0))
+(defvar nethack-status-attribute-Align (list nil nil 0))
+(defvar nethack-status-attribute-Dungeon (list nil nil 0))
+(defvar nethack-status-attribute-Dlvl (list 0 0 0))
+(defvar nethack-status-attribute-$ (list 0 0 0))
+(defvar nethack-status-attribute-HP (list 0 0 0))
+(defvar nethack-status-attribute-HPmax (list 0 0 0))
+(defvar nethack-status-attribute-PW (list 0 0 0))
+(defvar nethack-status-attribute-PWmax (list 0 0 0))
+(defvar nethack-status-attribute-AC (list 0 0 0))
+(defvar nethack-status-attribute-Level (list 0 0 0))
+(defvar nethack-status-attribute-XP (list 0 0 0))
+(defvar nethack-status-attribute-HD (list 0 0 0))
+(defvar nethack-status-attribute-T (list 0 0 0))
+(defvar nethack-status-attribute-confusion (list nil nil 0))
+(defvar nethack-status-attribute-hunger (list nil nil 0))
+(defvar nethack-status-attribute-sick (list nil nil 0))
+(defvar nethack-status-attribute-blind (list nil nil 0))
+(defvar nethack-status-attribute-stunned (list nil nil 0))
+(defvar nethack-status-attribute-hallucination (list nil nil 0))
+(defvar nethack-status-attribute-slimed (list nil nil 0))
+(defvar nethack-status-attribute-encumbrance (list nil nil 0))
+
+(defface nethack-status-good-face
+  `((((type tty) (class color))
+     (:background "green"))
+    (((class color) (background dark))
+     (:background "green"))
+    (((class color) (background light))
+     (:background "lime green")))
+  "Face for highlighting good changes in the status buffer."
+  :group 'nethack-faces)
+
+(defface nethack-status-bad-face
+  `((((type tty) (class color))
+     (:background "red"))
+    (((class color))
+     (:background "red")))
+  "Face for highlighting bad changes in the status buffer."
+  :group 'nethack-faces)
+
+(defface nethack-status-neutral-face
+  `((((type tty) (class color))
+     (:background "yellow" :bold t))
+    (((class color) (background dark))
+     (:background "yellow"))
+    (((class color) (background light))
+     (:background "yellow3"))
+    (t (:background "gray")))
+  "Face for highlighting neutral changes in the status buffer."
+  :group 'nethack-faces)
+
+(defun nethack-propertize-attribute (attribute &optional how)
+  (let* ((new-value (car attribute))
+	 (old-value (cadr attribute))
+	 (age (caddr attribute))
+	 (string (format "%s" (or new-value "")))
+	 (face (if (<= age nethack-status-highlight-delay)
+		   (cond ((numberp new-value)
+			  (cond ((eq how nil)
+				 (if (> new-value old-value)
+				     'nethack-status-good-face
+				   'nethack-status-bad-face))
+				((eq how 'lower-is-better)
+				 (if (> new-value old-value)
+				     'nethack-status-bad-face
+				   'nethack-status-good-face))))
+			 ((null new-value) 
+			  nil)
+			 (t 'nethack-status-neutral-face)))))
+    (if face
+	(nethack-propertize string 'face face)
+      string)))
+
+(defvar nethack-status-attribute-change-hook nil
+  "")
+
 (defun nethack-api-update-status (status)
+  ;; store the values
+  (dolist (i status)
+    (let* ((variable (intern (concat "nethack-status-attribute-"
+				     (car i))))
+	   (old-value (car (symbol-value variable)))
+	   (new-value (cadr i))
+	   (age (caddr (symbol-value variable))))
+      (if (equal new-value old-value)
+	  (set variable (list new-value 
+			      (cadr (symbol-value variable))
+			      (+ 1 age)))
+	(set variable (list new-value
+			    old-value
+			    0))
+	(run-hook-with-args 'nethack-status-attribute-change-hook
+			    (car i)
+			    new-value
+			    old-value)))))
+
+(defun nethack-print-status ()
+  ;; print the values
   (with-current-buffer nethack-status-buffer
     (erase-buffer)
-    (insert (format "%s the " (cadr (assoc "name" status))))
-    ;; Recreate nethack-status-alist and simultaneously print each attribute
-    (setq nethack-status-alist
-	  (list
-	   (if (assoc "rank" status)
-	       (nethack-print-status-string status "rank" "%s  ")
-	     (nethack-print-status-string status "monster" "%s  "))
-	   (nethack-print-status-string status "St" "St:%s ")
-	   (nethack-print-status-string status "Dx" "Dx:%s ")
-	   (nethack-print-status-string status "Co" "Co:%s ")
-	   (nethack-print-status-string status "In" "In:%s ")
-	   (nethack-print-status-string status "Wi" "Wi:%s ")
-	   (nethack-print-status-string status "Ch" "Ch:%s ")
-	   (nethack-print-status-string status "Align" " %s\n")
-	   (nethack-print-status-string status "Dungeon" "%s ")
-	   (nethack-print-status-string status "Dlvl" "Dlvl:%s ")
-	   (nethack-print-status-string status "$" "$:%s ")
-	   (nethack-print-status-string status "HP" "HP:%s")
-	   (nethack-print-status-string status "HPmax" "(%s) ")
-	   (nethack-print-status-string status "PW" "Pw:%s")
-	   (nethack-print-status-string status "PWmax" "(%s) ")
-	   (nethack-print-status-string status "AC" "AC:%s ")
-	   (if (assoc "HD" status)
-	       (nethack-print-status-string status "HD" "HD:%s ")
-	     (nethack-print-status-string status "Level" "Xp:%s")
-	     (nethack-print-status-string status "XP" "/%s "))
-	   (nethack-print-status-string status "T" "T:%s ")
-
-	   ;; Process flags. If a flag was not there before, it should be
-	   ;; marked in red as all flag updates are for bad things.
-	   ;; FIXME: Not quite functioning but it doesn't need CL anymore.
-	   (list "Flags"
-		 (mapcar (lambda (flag)
-			   (let ((old-flag (assoc flag (cadr (assoc "Flags" nethack-status-alist)))))
-			     (cond ((null old-flag)
-				    ;; new flag, so highlight it and
-				    ;; set the timer
-				    (insert (concat
-					     (nethack-propertize flag
-								 'face
-								 'nethack-red-face) 
-					     " "))
-				    (list flag nethack-status-highlight-delay))
-				   ((> (cadr old-flag) 0)
-				    ;; existing flag. Highlight the
-				    ;; flag if it hasn't timed-out
-				    ;; yet.
-				    (insert (concat
-					     (nethack-propertize flag
-								'face
-								'nethack-red-face)
-						    " "))
-				    (list flag (1- (cadr old-flag))))
-				   (t 
-				    ;; The flag is old and its highlight has timed out. 
-				    ;; Just print the flag.
-				    (insert (concat flag " "))
-				    old-flag))))
-			 (cadr (assoc "Flags" status))))))
-    ;; Add a trailing newline to the status buffer
-    (insert "\n")))
-
+    (insert (format "%s the %s St:%s Dx:%s Co:%s In:%s Wi:%s Ch:%s %s\n" 
+		    (nethack-propertize-attribute nethack-status-attribute-name)
+		    (if (car nethack-status-attribute-monster)
+			(nethack-propertize-attribute nethack-status-attribute-monster)
+		      (nethack-propertize-attribute nethack-status-attribute-rank))
+		    (nethack-propertize-attribute nethack-status-attribute-St)
+		    (nethack-propertize-attribute nethack-status-attribute-Dx)
+		    (nethack-propertize-attribute nethack-status-attribute-Co)
+		    (nethack-propertize-attribute nethack-status-attribute-In)
+		    (nethack-propertize-attribute nethack-status-attribute-Wi)
+		    (nethack-propertize-attribute nethack-status-attribute-Ch)
+		    (nethack-propertize-attribute nethack-status-attribute-Align)))
+    (insert (format "%s Dlvl:%s $:%s HP:%s(%s) Pw:%s(%s) AC:%s Xp:%s/%s T:%s %s"
+		    (nethack-propertize-attribute nethack-status-attribute-Dungeon)
+		    (nethack-propertize-attribute nethack-status-attribute-Dlvl)
+		    (nethack-propertize-attribute nethack-status-attribute-$)
+		    (nethack-propertize-attribute nethack-status-attribute-HP)
+		    (nethack-propertize-attribute nethack-status-attribute-HPmax)
+		    (nethack-propertize-attribute nethack-status-attribute-PW)
+		    (nethack-propertize-attribute nethack-status-attribute-PWmax)
+		    (nethack-propertize-attribute nethack-status-attribute-AC 'lower-is-better)
+		    (nethack-propertize-attribute nethack-status-attribute-Level)
+		    (nethack-propertize-attribute nethack-status-attribute-XP)
+		    ;; don't propertize time
+		    (car nethack-status-attribute-T)
+		    ;; handle all these flags together to get the spacing right
+		    (mapconcat 
+		     (lambda (x) (if (not (string-equal x "")) (concat x " ")))
+		     (list
+		      (nethack-propertize-attribute nethack-status-attribute-confusion)
+		      (nethack-propertize-attribute nethack-status-attribute-hunger)
+		      (nethack-propertize-attribute nethack-status-attribute-sick)
+		      (nethack-propertize-attribute nethack-status-attribute-blind)
+		      (nethack-propertize-attribute nethack-status-attribute-stunned)
+		      (nethack-propertize-attribute nethack-status-attribute-hallucination)
+		      (nethack-propertize-attribute nethack-status-attribute-slimed)
+		      (nethack-propertize-attribute nethack-status-attribute-encumbrance))
+		     "")))))
+    
 ;; putstr(window, attr, str) -- Print str on the window with the
 ;; given attribute.  Only printable ASCII characters (040-0126) must be
 ;; supported.  Multiple putstr()s are output on separate lines.
@@ -711,7 +793,9 @@ Return the buffer."
   (split-window-vertically (- nethack-message-window-height))
   (switch-to-buffer nethack-status-buffer)
   (split-window-vertically nethack-status-window-height)
-  (switch-to-buffer-other-window nethack-map-buffer))
+  (switch-to-buffer-other-window nethack-map-buffer)
+  (if nethack-active-menu-buffer
+      (pop-to-buffer nethack-active-menu-buffer)))
 
 ;; destroy_nhwindow(window) -- Destroy will dismiss the window if the
 ;; window has not already been dismissed.
@@ -764,16 +848,18 @@ actually toggled."
 		  (inhibit-read-only t))
 	      (delete-region start end)
 	      (goto-char start)
-	      (if (and count (> count 1))
-		  (insert (number-to-string count))
+	      (if (and count)
+		  (insert (number-to-string (if (consp count)
+						(car count)
+					      count)))
 		(if (string-equal value "-")
 		    (insert "+")
-		  (insert "-"))))
-	  (if (eq nethack-menu-how 'pick-one)
-	      (nethack-menu-submit)
-	    (beginning-of-line)))
-	(message "No such menu option: %c" last-command-char)
-	(goto-char old-point))))
+		  (insert "-")))
+	      (beginning-of-line)
+	      (if (eq nethack-menu-how 'pick-one)
+		  (nethack-menu-submit)))
+	  (message "No such menu option: %c" last-command-char)
+	  (goto-char old-point)))))
 	  
 (defun nethack-menu-toggle-all-items ()
   "Toggle all menu items, only for pick-any menus."
@@ -826,6 +912,7 @@ displayed."
 	    (setq menu-data (cons (list (nethack-char-to-int accelerator) value) menu-data)))))
     (nh-send menu-data)
     (set-window-configuration nethack-window-configuration)
+    (setq nethack-active-menu-buffer nil)
     (message "%S" menu-data)))
 	
 (defun nethack-menu-cancel ()
@@ -940,6 +1027,8 @@ buffer."
 ;; of knowing whether select_menu() will be called for the window at
 ;; create_nhwindow() time.
 
+(defvar nethack-active-menu-buffer nil)
+
 (defun nethack-api-select-menu (winid how)
   "Display the menu given by WINID and put the buffer in
 `nethack-menu-mode'.
@@ -964,7 +1053,8 @@ the menu is dismissed."
 		(enlarge-window (- bh wh))))
 	  (nethack-menu-mode how)
 	  (goto-char (point-min))
-	  (message "Displaying menu"))
+	  (message "Displaying menu")
+	  (setq nethack-active-menu-buffer buffer))
       (error "No such winid: %d" winid))))
 
 ;; char message_menu(char let, int how, const char *mesg) --
