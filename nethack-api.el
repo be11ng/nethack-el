@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.35 2001/10/19 06:13:19 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.36 2001/10/19 08:09:59 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -928,33 +928,33 @@ menus."
 ;; The following global variables are defined in decl.c and must be used by
 ;; the window interface to the rest of NetHack.
 
-(defvar nethack-api-toplines ""
-  "char toplines[BUFSZ] Contains the last message printed to the
-WIN_MESSAGE window, used by Norep().")
+;;(defvar nethack-api-toplines ""
+;;  "char toplines[BUFSZ] Contains the last message printed to the
+;;WIN_MESSAGE window, used by Norep().")
 
 ;; winid WIN_MESSAGE, WIN_MAP, WIN_STATUS, WIN_INVEN
 ;;			The four standard windows.
-(defvar nethack-api-win-message nil)
-(defvar nethack-api-win-map nil)
-(defvar nethack-api-win-status nil)
-(defvar nethack-api-win-inven nil)
+;; (defvar nethack-api-win-message nil)
+;; (defvar nethack-api-win-map nil)
+;; (defvar nethack-api-win-status nil)
+;; (defvar nethack-api-win-inven nil)
 
 ;; char *AE, *AS; Checked in options.c to see if we should switch to
 ;; DEC_GRAPHICS.  It is #ifdefed VMS and UNIX.
-(defvar nethack-api-ae nil)
-(defvar nethack-api-as nil)
+;; (defvar nethack-api-ae nil)
+;; (defvar nethack-api-as nil)
 
 ;; int LI, CO; Set in sys/unix/ioctl.c.
-(defvar nethack-api-li nil)
-(defvar nethack-api-co nil)
+;; (defvar nethack-api-li nil)
+;; (defvar nethack-api-co nil)
 
 ;; The following appears to be Unix specific.  Other ports using the
 ;; tty window-port should also declare this variable in one of your
 ;; sys/*.c files.
 
-(defvar nethack-api-ospeed nil
-  " short ospeed; Set and declared in sys/unix/unixtty.c (don't know
-about other sys files).")
+;; (defvar nethack-api-ospeed nil
+;;   " short ospeed; Set and declared in sys/unix/unixtty.c (don't know
+;; about other sys files).")
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
