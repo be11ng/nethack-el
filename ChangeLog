@@ -1,5 +1,9 @@
 2001-10-23  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack-cmd.el (defun-nethack-command): Allow arbitrary code to
+	go into function definitions.
+	(shell): Run a shell.
+
 	* nethack-keys.el (nethack-menu-mode-map): Add
 	(nethack-menu-mode-map): Add bindings for
 	`nethack-menu-toggle-all-items'.
