@@ -5,9 +5,7 @@
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 
-(require 'gamegrid)
 (require 'nethack-api)
-(require 'nethack-apix)
 (require 'nethack-cmd)
 (require 'nethack-keys)
 
@@ -258,23 +256,22 @@ char to the STRING."
 
 (defun nethack-process-filter (proc string)
   (with-current-buffer (process-buffer proc)
-    (save-excursion ;; might be unneccesary
-      (goto-char (point-max))
-      (insert string)
+    (goto-char (point-max))
+    (insert string)
 
-      (let (old-mark)
-	(condition-case ()
-	    (while t
-	      (setq oldpos (marker-position (process-mark proc)))
-	      (let* ((form (read (process-mark proc)))
-		     (retval (save-excursion (eval form))))
-		(cond ((eq retval 'void))
-		      ((eq retval 'unimplemented)
-		       (ding)
-		       (message "nethack: unimplemented: `%s'" form))
-		      (t (nethack-process-send retval)))))
-	  (end-of-file
-	   (set-marker (process-mark proc) oldpos)))))))
+    (let (old-mark)
+      (condition-case ()
+	  (while t
+	    (setq oldpos (marker-position (process-mark proc)))
+	    (let* ((form (read (process-mark proc)))
+		   (retval (save-excursion (eval form))))
+	      (cond ((eq retval 'void))
+		    ((eq retval 'unimplemented)
+		     (ding)
+		     (message "nethack: unimplemented: `%s'" form))
+		    (t (nethack-process-send retval)))))
+	(end-of-file
+	 (set-marker (process-mark proc) oldpos))))))
 
 (defun nethack-log-string (str)
   "Write STR into `nethack-process-buffer'."
@@ -327,19 +324,16 @@ times the command should be executed."
   (use-local-map nethack-mode-map)
   (setq mode-name "NETHACK MAP")
   (setq major-mode 'nethack-map-mode)
+
+  ;; turn off show-paren-mode in this buffer
+  (make-local-variable 'show-paren-mode)
+  (show-paren-mode -1)
+
   (run-hooks 'nethack-map-mode-hook))
  
 
 (defvar nethack-map-width 79 "Max width of the map")
 (defvar nethack-map-height 22 "Max height of the map")
-
-
-(defun nethack-setup-map-buffer (buffer)
-  "Initialize the gamegrid and setup Nethack mode and keymap."
-  (save-excursion
-    (set-buffer buffer)
-    (nethack-map-mode)))
-    
 
 ;;; Functions to restore nethack window configurations
 
