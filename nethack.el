@@ -399,6 +399,7 @@ attribute, the new value and the old value."
   "When the process ends kill the process buffer if this is t.")
 (defvar nh-log-buffer "*nh-log*")
 
+;;;###autoload
 (defun nethack ()
   "Start a game of Nethack.
 
