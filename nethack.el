@@ -230,6 +230,6 @@ to str."
 (defun nethack-print-status-lines ()
   "Updates the nhw-status window"
   (save-excursion
-;    (set-buffer (nethack-get-buffer 'nhw-status))
+    (set-buffer (cdr (assq 'nhw-status nethack-buffer-name-alist)))
     (erase-buffer)
     (insert (car nethack-status-lines) "\n" (cdr nethack-status-lines))))
