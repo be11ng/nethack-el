@@ -144,8 +144,14 @@ the `nethack-process-buffer' for debugging."
       (setq buffer-read-only nil)
       (erase-buffer)
       (if (eq type 'nhw-map)
-	  (progn
-	    (gamegrid-init (make-vector 256 nil))
-	    (gamegrid-init-buffer nethack-map-width 
-				  nethack-map-height
-				  ? ))))))
+	  (nethack-setup-map-buffer buffer-name)))))
+
+
+(defun nethack-setup-map-buffer (buffer-name)
+  "Initialize the gamegrid and setup Nethack mode and keymap."
+  (save-excursion
+    (set-buffer buffer-name)
+    (gamegrid-init (make-vector 256 nil))
+    (gamegrid-init-buffer nethack-map-width 
+			  nethack-map-height
+			  ? )))
