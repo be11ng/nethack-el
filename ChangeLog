@@ -1,5 +1,17 @@
 2004-11-22  Shawn Betts  <katia_dilkina@verizon.net>
 
+	* nethack-nhlaunch.el (nethack-network-server): new defvar
+	(nethack-network-port): likewise
+	(nethack-network-user): likewise
+	(nethack-network-password): likewise
+	(nethack-network-game): likewise
+	(nh-network-server): remove
+	(nh-network-port): likewise
+	(nh-network-user): likewise
+	(nh-network-filter): use the new nethack-network-* variables.
+	(nethack-connect-to-server): ask for the password. Ask for the
+	game when universal arg is given.
+
 	* nhlaunch.c (games): make nethack the first entry.
 
 	* nethack-nhlaunch.el (nh-network-game): new defvar
