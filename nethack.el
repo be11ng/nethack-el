@@ -110,8 +110,10 @@ nethack-api-putstr")
 (defface nethack-yellow
   `((((type tty) (class color))
      (:foreground "yellow" :bold t))
-    (((class color))
+    (((class color) (background dark))
      (:foreground "yellow"))
+    (((class color) (background light))
+     (:foreground "yellow3"))
     (t (:foreground "gray")))
   "nethack yellow")
 

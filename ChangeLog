@@ -1,3 +1,12 @@
+2001-07-05  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nethack-yellow): Use "yellow3" for light
+	backgrounds.
+
+	* nethack-menu.el (nethack-menu-draw): Print close instructions at
+	the top of menu.  Place the point at the top of menu after drawing
+	it.
+
 2001-07-05  shawn  <sabetts@diggin.lamenet.tmp>
 
 	* nethack.el (nethack-load-hook): new hook
