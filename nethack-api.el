@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.24 2001/07/07 03:45:17 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.25 2001/07/10 05:24:00 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -280,8 +280,7 @@
 	(nw (where-is-internal 'nethack-command-northwest nethack-mode-map))
 	(se (where-is-internal 'nethack-command-southeast nethack-mode-map))
 	(sw (where-is-internal 'nethack-command-southwest nethack-mode-map))
-	(ch))
-    (setq ch (read-key-sequence-vector "In what direction? "))
+	(ch (read-key-sequence-vector "In what direction? ")))
     (cond ((member ch n) 'n)
 	  ((member ch s) 's)
 	  ((member ch e) 'e)
