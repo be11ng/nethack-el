@@ -822,7 +822,7 @@ displayed."
 	       (setq value 0))
 	      (t (setq value (string-to-number value))))
 	(if (/= value 0)
-	    (setq menu-data (cons (list identifier value) menu-data)))))
+	    (setq menu-data (cons (list accelerator value) menu-data)))))
     (nh-send menu-data)
     (set-window-configuration nethack-window-configuration)
     (message "%S" menu-data)))
