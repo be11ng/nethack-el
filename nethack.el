@@ -218,6 +218,10 @@ The variable `nethack-program' is the name of the executable to run."
 	(nethack-restore-window-configuration)
 	(message "Nethack process already running..."))
     (save-excursion
+      ;; Reset intermediate variables.
+      (setq nethack-status-alist nil)
+      (setq nethack-menu nil)
+      ;; Start the process.
       (pop-to-buffer "*nh*")
       (erase-buffer)
       (apply 'make-comint "nh" nethack-program nil nethack-program-args)
@@ -225,8 +229,8 @@ The variable `nethack-program' is the name of the executable to run."
       (setq nh-comint-proc (get-buffer-process (current-buffer)))
       (set-process-filter nh-comint-proc 'nh-filter)
       (set-process-sentinel nh-comint-proc 'nh-sentinel)
-      (make-variable-buffer-local 'nethack-buffer-type)	; FIXME: obsolete?
-      (setq nethack-menu nil))))
+      (make-variable-buffer-local 'nethack-buffer-type)))) ; FIXME: obsolete?
+
 
 ;;;; Process code to communicate with the Nethack executable
 (define-derived-mode nh-comint-mode comint-mode "Nethack Process"
