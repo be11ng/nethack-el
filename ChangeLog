@@ -1,3 +1,8 @@
+2000-09-19  Ryan yeske  <rcyeske@van.gobasis.com>
+
+	* nethack-api.el (nethack-api-get-command): renamed from
+	nethack-api-getch and rewrote.
+
 2000-09-11  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el (nethack-handle-command): Renamed from

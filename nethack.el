@@ -11,7 +11,7 @@
 (require 'nethack-cmd)
 (require 'nethack-keys)
 
-
+;; FIXME: dirty hack:
 (defvar nethack-status-line-number 0
   "The line that will be updated in the status window next time
 nethack-api-putstr")
