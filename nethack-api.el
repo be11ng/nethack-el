@@ -305,22 +305,23 @@ highlighted."
 		;; Process flags. If a flag was not there before, it should be
 		;; marked in red as all flag updates are for bad things.
 		;; FIXME: Not quite functioning but it doesn't need CL anymore.
-		(mapcar (lambda (flag)
-			  (let ((old-flag (assoc flag (cadr (assoc "Flags" nethack-status-alist)))))
-			    (cond ((null old-flag)
-				   ;; new flag, so highlight it and set the timer
-				   (insert (concat (propertize flag 'face 'nethack-red-face) " "))
-				   (list flag nethack-status-highlight-delay))
-				  ((> (cadr old-flag) 0)
-				   ;; existing flag. Highlight the flag if it hasn't timed-out yet.
-				   (insert (concat (propertize flag 'face 'nethack-red-face) " "))
-				   (list flag (1- (cadr old-flag))))
-				  (t 
-				   ;; The flag is old and its highlight has timed out. 
-				   ;; Just print the flag.
-				   (insert (concat flag " "))
-				   old-flag))))
-			(cadr (assoc "Flags" status)))))
+		(list "Flags"
+		      (mapcar (lambda (flag)
+				(let ((old-flag (assoc flag (cadr (assoc "Flags" nethack-status-alist)))))
+				  (cond ((null old-flag)
+					 ;; new flag, so highlight it and set the timer
+					 (insert (concat (propertize flag 'face 'nethack-red-face) " "))
+					 (list flag nethack-status-highlight-delay))
+					((> (cadr old-flag) 0)
+					 ;; existing flag. Highlight the flag if it hasn't timed-out yet.
+					 (insert (concat (propertize flag 'face 'nethack-red-face) " "))
+					 (list flag (1- (cadr old-flag))))
+					(t 
+					 ;; The flag is old and its highlight has timed out. 
+					 ;; Just print the flag.
+					 (insert (concat flag " "))
+					 old-flag))))
+			      (cadr (assoc "Flags" status))))))
 	  ;; Add a trailing newline to the status buffer
 	  (insert "\n")))
 
