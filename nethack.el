@@ -93,7 +93,8 @@ the `nethack-process-buffer' for debugging."
     (cond ((eq retval 'unimplemented)
 	   (error "nethack: unimplemented function"))
 	  ((eq retval 'no-retval)
-	   (message "nethack: no-retval"))
+	   nil)
+	   ;;(message "nethack: no-retval: waiting for a key"))
 	  (t 
 	   (nethack-process-send-string (prin1-to-string retval))))))
 

@@ -1,5 +1,9 @@
 2000-09-07  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack-cmd.el: obsolete, removed file from CVS.
+	
+	* nethack-keys.el: obsolete, removed file from CVS.
+
 	* nethack-api.el (nethack-api-delay-output): implemented.
 	(nethack-api-outrip): implemented.
 	(nethack-api-wait-synch): implemented.
