@@ -414,7 +414,7 @@ are no newlines in `nethack-status-string'."
 ;; the first and then the second.  In the tty port, pline() achieves this
 ;; by calling more() or displaying both on the same line.
 
-(defun nethack-api-putstr (menuid attr str)
+(defun nethack-api-menu-putstr (menuid attr str)
   "On buffer associated with MENUID, insert with ATTR the STR."
   (with-current-buffer (nethack-buffer menuid)
     (let ((inhibit-read-only t))
