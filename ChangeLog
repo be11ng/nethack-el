@@ -1,3 +1,12 @@
+2003-03-10  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* enh-341.patch: Update file (was added without ChangeLog entry).
+
+	* Makefile (NH_VER): Add variable to specify nethack source
+	version to create patch from.
+
+	* mkpatch: Update to use NH_VER.
+
 2003-03-08  Shawn Betts  <sabetts@sfu.ca>
 
 	* nethack-api.el (nh-menu-submit): Don't print the list of
