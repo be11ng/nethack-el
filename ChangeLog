@@ -1,3 +1,10 @@
+2003-06-03  Shawn Betts  <sabetts@sfu.ca>
+
+	* nethack.el (nethack-pet-face): new face.
+
+	* nethack-api.el (nhapi-print-glyph): new optional argument,
+	special. When special is 'pet, use the pet face.
+ 
 2003-04-09  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-api.el (nhapi-clear-map): Make sure gamegrid doesn't try

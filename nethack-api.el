@@ -307,7 +307,7 @@ FIXME: doesnt actually use ATTR!"
    nethack-bright-cyan-face 	nethack-white-face]
   "Vector indexed by Nethack's color number.")
 
-(defun nhapi-print-glyph (x y color glyph tile ch)
+(defun nhapi-print-glyph (x y color glyph tile ch &optional special)
   "Insert glyph into `nh-map-buffer'."
   (set-buffer nh-map-buffer)
   (setq x (- x 1))			; FIXME: put this hack in C
@@ -319,10 +319,15 @@ FIXME: doesnt actually use ATTR!"
 	    (delete-char 1)
 	    (insert-image (elt nh-tile-vector tile))))
       (gamegrid-set-cell x y ch)
-      (put-text-property (gamegrid-cell-offset x y)
-			 (1+ (gamegrid-cell-offset x y))
-			 'face
-			 (aref nh-colors color)))))
+      ;; If the glyph is a pet then color it with the
+      ;; nethack-pet-face.
+      (let ((color (if (eq special 'pet)
+		       'nethack-pet-face
+		     (aref nh-colors color))))
+	(put-text-property (gamegrid-cell-offset x y)
+			   (1+ (gamegrid-cell-offset x y))
+			   'face
+			   color)))))
 
 (defun nhapi-yn-function (ques choices default)
   ""
