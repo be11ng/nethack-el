@@ -1,4 +1,12 @@
+2002-01-15  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nethack-map-mode-syntax-table): New variable.
+	(nethack-map-mode): Use nethack-map-mode-syntax-table.
+
 2002-01-14  Ryan C Yeske  <rcyeske@sfu.ca>
+
+	* nethack.el (nh-send-and-wait): Stop waiting for process output
+	if the process dies.
 
 	* nethack-api.el (nethack-api-putstr): Use overlay for highlight.
 	Insert newline after text, not before.

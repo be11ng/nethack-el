@@ -309,7 +309,8 @@ position if we are looking at a prompt."
   (nh-send form)
   ;; wait until we get back to a "command" prompt before returning
   (setq nh-at-prompt nil)
-  (while (not nh-at-prompt)
+  (while (and (eq (process-status nh-comint-proc) 'run)
+	      (not nh-at-prompt))
     (accept-process-output nh-comint-proc)))
 
 ;;; Buffer code (aka windows in Nethack)
@@ -332,11 +333,20 @@ position if we are looking at a prompt."
   :type '(hook)
   :group 'nethack)
 
+(defvar nethack-map-mode-syntax-table
+  (let ((table (make-syntax-table)))
+    (modify-syntax-entry ?\( "w   " table)
+    (modify-syntax-entry ?\) "w   " table)
+    table)
+  "Syntax table used in the Nethack map.")
+
+
 (defun nethack-map-mode ()
   "Major mode for the main Nethack map window.
 
 \\{nethack-map-mode-map}"
   (use-local-map nethack-map-mode-map)
+  (set-syntax-table nethack-map-mode-syntax-table)
   (setq mode-name "NETHACK MAP")
   (setq major-mode 'nethack-map-mode)
 
