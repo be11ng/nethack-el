@@ -1,4 +1,4 @@
-;;; nethack-api.el -- low level Emacs interface the lisp window-port
+;;; nethack-api.el -- Emacs interface the lisp window-port
 
 ;; Copyright (C) 2002  Ryan Yeske and Shawn Betts
 
