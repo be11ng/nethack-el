@@ -4,6 +4,8 @@
 	items that have identifiers.
 	(nethack-api-update-status): remove CL dependancy for flag
 	processing.
+	(nethack-api-update-status): properly re-create the "Flags" status
+	alist.
 
 2001-12-20  shawn  <sabetts@vcn.bc.ca>
 
