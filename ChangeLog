@@ -1,5 +1,7 @@
 2001-10-22  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack-apix.el: Removed from repository.
+
 	* nethack.el (nethack-colors): New vector.
 	(nethack-colors-alist): Remove.
 
