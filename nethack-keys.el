@@ -100,7 +100,7 @@
     (define-key map "G" 'nethack-command-move)
 
     ;;h       Go west 1 space
-    (define-key map "h" 'nethack-command-west-one-space)
+    (define-key map "h" 'nethack-command-west)
 
     ;;H       Go west until you are on top of something
     (define-key map "H" 'nethack-command-west-until-ontop)
