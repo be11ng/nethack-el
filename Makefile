@@ -22,7 +22,9 @@ DISTDIR=nethack_el-$(shell date +%Y%m%d)
 PATCH_OK=.patch-ok
 $(PATCH_OK): test-patch ;
 
-dist: $(PATCH_OK)
+dist: clean all $(PATCH_OK)
+	@echo
+	@echo Things look in order... building the distribution tarball.
 	mkdir ./$(DISTDIR)
 	cp $(DISTFILES) ./$(DISTDIR)
 	tar -cf /dev/stdout ./$(DISTDIR) | gzip > ./$(DISTDIR).tar.gz
@@ -32,17 +34,20 @@ dist: $(PATCH_OK)
 # Apply the generated patch from inside the nethack dir like this: 
 # src/nethack-3.4.0$ patch -p 1 < PATH/TO/$(PATCHFILE)
 patch:
+	@echo
+	@echo Creating $(PATCHFILE)
 	sh ./mkpatch > $(PATCHFILE)
 	rm -f $(PATCH_OK)
 
 # Make sure nothing obvious was missed when hacking the source and
 # creating the patch
 test-patch: $(PATCHFILE)
-	@echo testing: $< for sanity
+	@echo
+	@echo Testing $< for sanity
 	cd ..; tar -xzf nethack-340.tgz
 	cd ../nethack-3.4.0 ; patch -fp1 < ../nethack-el/$(PATCHFILE)
 	cd ../nethack-3.4.0/sys/unix; sh setup.sh
 	$(MAKE) -C ../nethack-3.4.0
-	HACKDIR=. ../nethack-3.4.0/src/nethack | grep api-init
+	cd ../nethack-3.4.0/src; HACKDIR=. ./nethack | grep api-init
 	rm -r ../nethack-3.4.0
 	touch $(PATCH_OK)

@@ -3,7 +3,7 @@
 ;; Copyright (C) 2002  Shawn Betts and Ryan Yeske
 
 ;; Author: Shawn Betts <sabetts@vcn.bc.ca>
-;; Version: $Id: nethack-api.el,v 1.77 2002/09/13 06:33:20 rcyeske Exp $
+;; Version: $Id: nethack-example.el,v 1.2 2002/09/17 04:28:58 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -35,13 +35,13 @@ Add the following to your ~/.emacs
 
   (add-hook 'nethack-message-pre-print-hook 
 	    'nethack-timestamp-message)"
-  (insert (format "(%d) " (elt nethack-status-attribute-T 0))))
+  (insert (format "(%d) " (elt nh-status-attribute-T 0))))
 
-(defun nh-gdb ()
+(defun nethack-gdb ()
   "Debug running nethack process with gdb."
   (interactive)
   (gdb (format "gdb %s/nethack %d"
-	       nethack-directory
+	       nh-directory
 	       (process-id nh-proc))))
 
 (provide 'nethack-example)

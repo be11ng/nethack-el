@@ -1,3 +1,22 @@
+2002-09-19  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el: Renamed all "non-user" functions and variables from
+	nethack-* to nh-*.  Renamed all nethack-api-* functions and
+	variables to nhapi-*.  Renamed all references of "glyphs" to
+	"tiles" (except for the filename nethack-glyphs.el).
+
+	* nethack-keys.el: Likewise.
+
+	* nethack-glyphs.el: Likewise.
+
+	* nethack-example.el: Likewise.
+	
+	* nethack-cmd.el: Likewise.
+
+	* nethack-api.el: Likewise.
+	
+	* nethack-api.el (overlay): Added require for XEmacs.
+
 2002-09-16  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* Makefile (test-patch): Add rule.

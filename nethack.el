@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.67 2002/04/24 01:39:52 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.68 2002/09/13 03:49:33 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -30,6 +30,7 @@
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
+;; (require 'nethack-vars)
 
 (defgroup nethack nil
   "Emacs lisp frontend to the lisp window port of Nethack 3.3.x."
@@ -213,24 +214,24 @@
   "nethack white"
   :group 'nethack-faces)
 
-(defface nethack-map-glyph-face 
+(defface nethack-map-tile-face 
   `((((type tty)) 
      nil)
     (t (:font "6x10")))
-  "Nethack map face for keeping glyphs from separating due to the
-newlines being in a font with height > 16."
+  "Map face with height less than the tile size (16 pixels)."
   :group 'nethack-faces)
 
-(defvar nethack-use-glyphs nil
-  "If non-nil, use XPMs to draw glyphs.")
+;;; FIXME: custom this
+(defvar nethack-use-tiles nil
+  "If non-nil, use XPMs to draw tiles.")
 
-(defun nethack-toggle-glyphs ()
-  "Toggle the use of glyphs on the map."
+(defun nethack-toggle-tiles ()
+  "Toggle the use of tiles on the map."
   (interactive)
-  (setq nethack-use-glyphs (not nethack-use-glyphs))
+  (setq nethack-use-tiles (not nethack-use-tiles))
   (nethack-command-redraw-screen 2))
 
-(defconst nethack-colors
+(defconst nh-colors
   [nethack-black-face 		nethack-red-face
    nethack-green-face 		nethack-brown-face
    nethack-blue-face 		nethack-magenta-face
@@ -243,7 +244,7 @@ newlines being in a font with height > 16."
 
 
 (defvar nh-proc nil)
-(defvar nh-proc-buffer-name "*nethack-output*")
+(defvar nh-proc-buffer-name "*nh-output*")
 (defvar nh-log-process-text t)
 
 (defun nethack ()
@@ -255,9 +256,9 @@ The variable `nethack-program' is the name of the executable to run."
 	   (eq (process-status nh-proc) 'run))
       (progn
 	(message "Nethack process already running...")
-	(nethack-api-restore-window-configuration))
+	(nhapi-restore-window-configuration))
     (save-excursion
-      (nethack-reset-status-variables)
+      (nh-reset-status-variables)
       ;;; Start the process.
       (if (get-buffer nh-proc-buffer-name)
 	  (kill-buffer nh-proc-buffer-name))
@@ -265,8 +266,7 @@ The variable `nethack-program' is the name of the executable to run."
 	    (apply 'start-process "nh" nh-proc-buffer-name
 		   nethack-program nethack-program-args))
       (set-process-filter nh-proc 'nh-filter)
-      (set-process-sentinel nh-proc 'nh-sentinel)
-      (make-variable-buffer-local 'nethack-buffer-type)))) ; FIXME: obsolete?
+      (set-process-sentinel nh-proc 'nh-sentinel))))
 
 
 ;;;; Process code to communicate with the Nethack executable
@@ -314,7 +314,7 @@ delete the contents, perhaps logging the text."
 	  (eval-region (point-min) (point))
 	  (cond ((or (equal prompt "command")
 		     (equal prompt "menu"))
-		 (nethack-print-status)
+		 (nh-print-status)
 		 (sit-for 0)
 		 (setq nh-at-prompt t)))))))
 
@@ -338,9 +338,9 @@ delete the contents, perhaps logging the text."
 
 ;;; Buffer code (aka windows in Nethack)
 
-(defun nethack-buffer (id)
-  "Return the buffer that corresponds to the Nethack window ID."
-  (let ((buffer (cdr (assq id nethack-buffer-table))))
+(defun nh-menu-buffer (menuid)
+  "Return the buffer that corresponds to the MENUID."
+  (let ((buffer (cdr (assq menuid nh-menu-buffer-table))))
     (if (buffer-live-p buffer)
 	buffer
       'nobuffer)))
@@ -356,7 +356,7 @@ delete the contents, perhaps logging the text."
   :type '(hook)
   :group 'nethack)
 
-(defvar nethack-map-mode-syntax-table
+(defvar nh-map-mode-syntax-table
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?\( "w   " table)
     (modify-syntax-entry ?\) "w   " table)
@@ -367,22 +367,21 @@ delete the contents, perhaps logging the text."
     table)
   "Syntax table used in the Nethack map.")
 
-
-(defun nethack-map-mode ()
+(defun nh-map-mode ()
   "Major mode for the main Nethack map window.
 
-\\{nethack-map-mode-map}"
-  (use-local-map nethack-map-mode-map)
-  (set-syntax-table nethack-map-mode-syntax-table)
+\\{nh-map-mode-map}"
+  (use-local-map nh-map-mode-map)
+  (set-syntax-table nh-map-mode-syntax-table)
   (setq mode-name "NETHACK MAP")
-  (setq major-mode 'nethack-map-mode)
+  (setq major-mode 'nh-map-mode)
   ;; make scroll-other-window work on the message buffer
   (make-variable-buffer-local 'other-window-scroll-buffer)
-  (setq other-window-scroll-buffer nethack-message-buffer)
+  (setq other-window-scroll-buffer nh-message-buffer)
   (run-hooks 'nethack-map-mode-hook))
 
-(defvar nethack-map-width 79 "Max width of the map.")
-(defvar nethack-map-height 22 "Max height of the map.")
+(defconst nh-map-width 79 "Max width of the map.")
+(defconst nh-map-height 22 "Max height of the map.")
 
 
 ;;; status line handling
@@ -400,12 +399,12 @@ delete the contents, perhaps logging the text."
 
 
 ;;; utility/compatibility functions
-(defun nethack-propertize (string &rest properties)
+(defun nh-propertize (string &rest properties)
   "Add text PROPERTIES to STRING and return the new string."
   (add-text-properties 0 (length string) properties string)
   string)
 
-(defun nethack-assq-delete-all (key alist)
+(defun nh-assq-delete-all (key alist)
   "Delete from ALIST all elements whose car is KEY.
 Return the modified alist."
   ;; this is defined in emacs21 as `assq-delete-all'.
@@ -416,23 +415,24 @@ Return the modified alist."
       (setq tail (cdr tail)))
     alist))
 
-(defun nethack-window-buffer-height (window)
+(defun nh-window-buffer-height (window)
   "Return the height (in screen lines) of the buffer that WINDOW is displaying."
   (save-excursion
     (set-buffer (window-buffer window))
     (count-lines (point-min) (point-max))))
 
-(defun nethack-char-to-int (char)
+(defun nh-char-to-int (char)
   ;; XEmacs chars are not ints
   (if (fboundp 'char-to-int)
       (char-to-int char)
     char))
 
-(defun nethack-read-char (&optional prompt)
+(defun nh-read-char (&optional prompt)
   (message prompt)
   (let ((char (read-char-exclusive)))
     (message "")
-    (nethack-char-to-int char)))
+    (nh-char-to-int char)))
+
 
 (run-hooks 'nethack-load-hook)
 

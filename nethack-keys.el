@@ -28,7 +28,7 @@
 
 (require 'nethack-api) 
 
-(defvar nethack-accelerator-chars
+(defvar nh-accelerator-chars
   [?a ?b ?c ?d ?e ?f ?g ?h ?i ?j ?k ?l ?m ?n ?o ?p ?q ?r ?s ?t ?u ?v
 ?w ?x ?y ?z ?A ?B ?C ?D ?E ?F ?G ?H ?I ?J ?K ?L ?M ?N ?O ?P ?Q ?R ?S
 ?T ?U ?V ?W ?X ?Y ?Z ?*]
@@ -47,28 +47,28 @@
 ;;  *		 ,    select	 .
 ;;  *		 \    deselect	 -
 ;;  *		 ~    invert	 @
-(defvar nethack-menu-mode-map
+(defvar nh-menu-mode-map
   (let ((map (make-sparse-keymap)))
     (suppress-keymap map)
     ;; add all of the accelerator characters
     (mapc (lambda (char)
-	    (define-key map (vector char) 'nethack-menu-toggle-item))
-	  nethack-accelerator-chars)
-    (define-key map "\C-c\C-c" 'nethack-menu-submit)
-    (define-key map "\C-m" 'nethack-menu-submit)
-    (define-key map "\C-g" 'nethack-menu-cancel)
-    (define-key map "\e\e\e" 'nethack-menu-cancel)
+	    (define-key map (vector char) 'nh-menu-toggle-item))
+	  nh-accelerator-chars)
+    (define-key map "\C-c\C-c" 'nh-menu-submit)
+    (define-key map "\C-m" 'nh-menu-submit)
+    (define-key map "\C-g" 'nh-menu-cancel)
+    (define-key map "\e\e\e" 'nh-menu-cancel)
     (define-key map " " 'scroll-up)
     (define-key map "\C-?" 'scroll-down)
-    (define-key map "\t" 'nethack-menu-goto-next)
-    (define-key map "\e\t" 'nethack-menu-goto-prev)
-    (define-key map "," 'nethack-menu-toggle-all-items)
-    (define-key map "-" 'nethack-menu-toggle-all-items)
+    (define-key map "\t" 'nh-menu-goto-next)
+    (define-key map "\e\t" 'nh-menu-goto-prev)
+    (define-key map "," 'nh-menu-toggle-all-items)
+    (define-key map "-" 'nh-menu-toggle-all-items)
     map)
   "Keymap used in Nethack menus.")
   
 ;; cmd.c is where the command-key mappings are done in the nh src
-(defvar nethack-map-mode-map
+(defvar nh-map-mode-map
   (let ((map (make-sparse-keymap)))
     (suppress-keymap map)
     (define-key map "^" 'nethack-command-identify-trap)	;^
@@ -322,10 +322,10 @@
     ;;M-w     Wipe off your face
     (define-key map "\ew" 'nethack-command-wipe)
     
-
     ;;; extended wizard commands....
-
-    map))
+  
+    map)
+  "Keymap used on the Nethack map.")
 
 
 (provide 'nethack-keys)

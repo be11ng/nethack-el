@@ -201,7 +201,7 @@
 (defun-nethack-command previous-message	; ^P
   "Scroll through previously displayed game messages"
   nil ;;"doprev" FIXME: is not implemented in C
-  (nethack-api-doprev-message))
+  (nhapi-doprev-message))
 
 (defun-nethack-command redraw-screen	; ^R
   "Restores the default window configuration.
@@ -210,7 +210,7 @@ With a prefix arg, also redraws the map glyphs."
   ;; only send process a redraw if there is a prefix arg
   (and (> count 1) "redraw")
   ;; but always restore the window configuration
-  (nethack-api-restore-window-configuration))
+  (nhapi-restore-window-configuration))
 
 (defun-nethack-command teleport-around-level ; ^T
   "Teleport around level" 
