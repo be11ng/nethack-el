@@ -1,3 +1,9 @@
+2004-11-19  Shawn Betts  <katia_dilkina@verizon.net>
+
+	* nethack-nhlaunch.el (nethack-connect-to-server): make autoload
+
+	* nethack.el (nethack): make autoload
+
 2004-11-19  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack-add-menu-hook): new hook

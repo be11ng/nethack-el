@@ -51,6 +51,7 @@
 	((string-equal str (format "Unknown user %s.\n" nh-network-user))
 	 (process-send-string proc (format "new %s %s\n" nh-network-user nh-network-password)))))
 
+;;;###autoload
 (defun nethack-connect-to-server (server port user passwd)
   (interactive "sServer: \nsPort: \nsUser: \nsPasswd: ")
   (if (nethack-is-running)

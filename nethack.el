@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.81 2004/11/17 04:23:39 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.82 2004/11/19 23:05:39 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -399,6 +399,7 @@ attribute, the new value and the old value."
   "When the process ends kill the process buffer if this is t.")
 (defvar nh-log-buffer "*nh-log*")
 
+;;;###autoload
 (defun nethack ()
   "Start a game of Nethack.
 
