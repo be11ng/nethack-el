@@ -1,3 +1,21 @@
+2003-03-28  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* INSTALL: Update nethack version references (to 3.4.1).
+
+	* nethack-api.el: No longer require overlay.  Require
+	nethack-compat.
+
+	* nethack-compat.el: Add file.  Localize version specific hacks
+	here.
+
+	* nethack.el (nh-propertize):
+	(nh-assq-delete-all):
+	(nh-window-buffer-height):
+	(nh-char-to-int):
+	(nh-read-char): Move these functions to nethack-compat.el.
+
+	* Makefile (clean): Clean *.elc not *elc.
+
 2003-03-10  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* enh-341.patch: Update file (was added without ChangeLog entry).

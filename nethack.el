@@ -1,10 +1,10 @@
 ;;; nethack.el --- run Nethack as a subprocess
 
-;; Copyright (C) 2002  Ryan Yeske and Shawn Betts
+;; Copyright (C) 2003  Ryan Yeske and Shawn Betts
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.72 2002/09/21 02:56:55 rcyeske Exp $
+;; Version: $Id: nethack.el,v 1.73 2002/09/27 06:36:59 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -23,10 +23,11 @@
 ;; Boston, MA 02111-1307, USA.
 
 ;;; Commentary:
-;; Requires: a copy of Nethack 3.3.x with the lisp window port
+;; Requires: a copy of Nethack 3.4.x with the lisp window port
 
 ;;; Code:
 
+(require 'nethack-compat)
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
@@ -481,40 +482,6 @@ delete the contents, perhaps logging the text."
   (setq other-window-scroll-buffer nh-message-buffer)
   (run-hooks 'nethack-map-mode-hook))
 
-
-;;; utility/compatibility functions
-(defun nh-propertize (string &rest properties)
-  "Add text PROPERTIES to STRING and return the new string."
-  (add-text-properties 0 (length string) properties string)
-  string)
-
-(defun nh-assq-delete-all (key alist)
-  "Delete from ALIST all elements whose car is KEY.
-Return the modified alist."
-  ;; this is defined in emacs21 as `assq-delete-all'.
-  (let ((tail alist))
-    (while tail
-      (if (eq (car (car tail)) key)
-	  (setq alist (delq (car tail) alist)))
-      (setq tail (cdr tail)))
-    alist))
-
-(defun nh-window-buffer-height (window)
-  "Return the height (in screen lines) of the buffer that WINDOW is displaying."
-  (save-excursion
-    (set-buffer (window-buffer window))
-    (count-lines (point-min) (point-max))))
-
-;; XEmacs chars are not ints
-(defalias 'nh-char-to-int (if (fboundp 'char-to-int)
-			      'char-to-int
-			    'identity))
-
-(defun nh-read-char (&optional prompt)
-  (message prompt)
-  (let ((char (read-char-exclusive)))
-    (message "")
-    (nh-char-to-int char)))
 
 (run-hooks 'nethack-load-hook)
 

@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.82 2002/09/27 06:36:59 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.83 2003/03/09 04:25:28 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -32,8 +32,8 @@
 
 ;;; Code:
 
+(require 'nethack-compat)
 (require 'gamegrid)
-(require 'overlay)			; needed for XEmacs
 (require 'nethack-keys)
 
 ;;; Buffer handling
