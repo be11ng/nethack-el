@@ -1,5 +1,16 @@
 ;; cmd.c is the cheat sheet for this file
 
+;; (defun nethack-key-command (command)
+;;   "Qualify a key COMMAND and send it to the Nethack process."
+;;   (interactive)
+;;   (nethack-handle-command (symbol-name command)))
+
+;; (setq nethack-command-alist
+;;   '((doidtrap "Show the type of a trap" "^")
+;;     (doapply  "Apply (use) a tool" "a")))
+
+;; (assoc 'doidtrap nethack-command-alist)
+
 ;;(defun nethack-command-redo-previous ()
 ;;   "^A      Redo the previous command"
 ;;   )
@@ -112,19 +123,17 @@
 ;;   )
 
 (defun nethack-command-west ()
-  "h       Go west 1 space"
-  (interactive)
-  (nethack-handle-command "gowest"))
+   "h       Go west 1 space"
+   (interactive)
+   (nethack-handle-command "gowest"))
 
-(defun nethack-command-west-until-ontop ()
-  "H       Go west until you are on top of something"
-  (interactive)
-  (nethack-handle-command "gowestontop"))
-
-(defun nethack-command-west-until-near ()
-  "^H      Go west until you are near something"
-  (interactive)
-  (nethack-handle-command "gowestnear"))
+;; (defun nethack-command-west-until-ontop ()
+;;   "H       Go west until you are on top of something"
+;;   )
+;;
+;; (defun nethack-command-west-until-near ()
+;;   "^H      Go west until you are near something"
+;;   )
 
 (defun nethack-command-inventory ()
   "i       Show your inventory"

@@ -143,9 +143,8 @@ the `nethack-process-buffer' for debugging."
 
 ;;; Main Map Buffer code
 (defvar nethack-command-queue nil
-  "List of strings held the car of which will be sent to the running
-`nethack-process' in response to the next call to
-`nethack-api-get-command'.")
+  "List of strings held to be sent to the running `nethack-process' in
+response to the next call to `nethack-api-get-command'.")
 
 
 (defvar nethack-waiting-for-command-flag nil
@@ -163,7 +162,7 @@ eventual delivery to the running nethack process."
 	(setq nethack-waiting-for-command-flag nil))
     (setq nethack-command-queue
 	  (append nethack-command-queue
-		  (list key)))))
+		  (list cmd)))))
 
 
 (defvar nethack-map-mode-hook nil
