@@ -1,3 +1,17 @@
+2001-06-27  shawn  <sabetts@diggin.lamenet.tmp>
+
+	* nethack.el (nethack-restore-windows): new function
+
+	* nethack-menu.el (nethack-menu-buffer): new var
+	(nethack-menu-draw): assign the nethack-menu-buffer to the
+	buffer. horizontally split the current window. 
+	(nethack-menu-submit): call nethack-restore-windows.
+
+	* nethack-api.el (nethack-api-yn-function): pressing return
+	returns the default value. returns the key as an integer. Add a
+	space after the prompt.
+	(nethack-api-ask-direction): new function
+
 2001-06-25  shawn  <sabetts@diggin.lamenet.tmp>
 
 	* nethack.el (nethack-process-command-list): use while to loop

@@ -244,3 +244,24 @@ eventual delivery to the running nethack process."
     (set-buffer (cdr (assq 'nhw-status nethack-buffer-name-alist)))
     (erase-buffer)
     (insert (car nethack-status-lines) "\n" (cdr nethack-status-lines))))
+
+
+;;; Functions to restore nethack window configurations
+
+(defun nethack-restore-windows ()
+  "Restore a standard nethack window configuration."
+  (interactive)
+  (let ((new-win))
+    (delete-other-windows)
+    (set-window-buffer (selected-window) 
+		       (cdr (assoc 'nhw-map
+				   nethack-buffer-name-alist)))
+    (setq new-win (split-window nil 4))
+    (set-window-buffer (selected-window) 
+		       (cdr (assoc 'nhw-message
+				   nethack-buffer-name-alist)))
+    (select-window new-win)
+    (setq new-win (split-window nil (- (window-height) 4)))
+    (set-window-buffer new-win
+		       (cdr (assoc 'nhw-status
+				   nethack-buffer-name-alist)))))
