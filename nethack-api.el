@@ -243,8 +243,9 @@
 
 (defun nethack-api-yn-function (ques choices defaults)
   ""  
-
-  'unimplemented)
+  (message ques)
+  (nethack-api-getch))
+;;  (intern (char-to-string (read-char ques))))
 
 
 ;; getlin(const char *ques, char *input) -- Prints ques as a prompt
@@ -409,8 +410,7 @@ it, we can just bury them or something."
 
 (defun nethack-api-start-menu (window)
   ""
-
-  'unimplemented)
+  'void-fixme)
 
 
 ;; add_menu(windid window, int glyph, const anything identifier, char
@@ -536,9 +536,8 @@ it, we can just bury them or something."
 ;; etc. so that the display is OK when return from wait_synch().
 
 (defun nethack-api-wait-synch ()
-  ""
-
-  'unimplemented)
+  "Does nothing."
+  'void)
 
 
 ;; delay_output() -- Causes a visible delay of 50ms in the output.
@@ -546,9 +545,9 @@ it, we can just bury them or something."
 ;; but allows asynchronous operation.
 
 (defun nethack-api-delay-output ()
-  ""
-
-  'unimplemented)
+  "Sleep for 50ms."
+  (sleep-for 0 50)
+  'void-maybe-sketchy)
 
 
 ;; askname() -- Ask the user for a player name.
@@ -617,10 +616,13 @@ it, we can just bury them or something."
 ;; traditional code use genl_outrip for the value and check the #if in
 ;; rip.c.
 
-(defun nethack-api-outrip (winid int)
+(defun nethack-api-outrip (winid who int message)
   ""
 
-  'unimplemented)
+  (save-excursion
+    (set-buffer (nethack-get-buffer window))
+    (insert (concat who " -- " message))
+  'void-fixme))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
