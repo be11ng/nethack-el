@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.77 2003/06/03 21:37:25 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.78 2003/09/15 12:07:07 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -77,6 +77,11 @@
   "n w <L,l> A   f"
   "Format string for the status on the header-line."
   :type '(string)
+  :group 'nethack)
+
+(defcustom nethack-purge-buffers t
+  "When this variable is non-nil, kill all nethack buffers when nethack quits."
+  :type '(boolean)
   :group 'nethack)
 
 ;;; Insert variables that control how the status gets displayed here.
@@ -381,12 +386,11 @@ attribute, the new value and the old value."
   "nethack white"
   :group 'nethack-faces)
 
-
 
 ;;; Process
 (defvar nh-proc nil)
 (defvar nh-proc-buffer-name "*nh-output*")
-(defvar nh-proc-kill-buffer-on-quit nil
+(defvar nh-proc-kill-buffer-on-quit t
   "When the process ends kill the process buffer if this is t.")
 (defvar nh-log-buffer "*nh-log*")
 
@@ -433,7 +437,9 @@ PROC is the process object and MSG is the exit message."
     )
   (delete-process proc)
   (if nh-proc-kill-buffer-on-quit
-      (kill-buffer (get-buffer nh-proc-buffer-name))))
+      (kill-buffer (get-buffer nh-proc-buffer-name)))
+  (if nethack-purge-buffers
+      (nethack-kill-buffers)))
 
 (defvar nh-log-process-text t)
 (defun nh-log (string)
