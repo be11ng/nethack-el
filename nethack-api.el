@@ -373,6 +373,7 @@ are no newlines in `nethack-status-string'."
     (let ((inhibit-read-only t))
       (cond ((eq nethack-buffer-type 'nhw-message)
 	     (goto-char (point-max))
+	     (run-hooks 'nethack-message-pre-print-hook)
 	     (insert str "\n")
 	     ;; cover new text with highlight overlay
 	     (let ((start (overlay-start nethack-message-highlight-overlay)))

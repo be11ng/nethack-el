@@ -1,3 +1,10 @@
+2002-02-01  Shawn Betts  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nethack-message-pre-print-hook): new hook.
+
+	* nethack-api.el (nethack-api-putstr): run the
+	nethack-message-pre-print-hook hook.
+
 2002-02-01  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el (nethack-black-face, nethack-green-face) 

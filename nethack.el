@@ -24,6 +24,11 @@
     :type '(hook)
     :group 'nethack)
 
+(defcustom nethack-message-pre-print-hook nil
+  "Hook run before a message is printed."
+  :type '(hook)
+  :group 'nethack)
+
 (defface nethack-black-face
   `((t (:foreground "dark blue")))
   "nethack black face"
