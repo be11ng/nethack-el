@@ -24,6 +24,9 @@
 	(nethack-menu-reset-keymap): New function.
 	(nethack-api-display-nhwindow): Don't split vertically.  Protect
 	the status and message windows.
+	(nethack-api-exit-nhwindows): Raw print the argument.
+	(nethack-api-add-menu): Propertize strings with attributes.
+	(nethack-api-raw-print-bold): Propertize string bold.
 
 	* nethack.el (nethack): Kill off leftover buffers before starting.
 	(nethack-buffer-name-alist): Remove.

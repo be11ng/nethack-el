@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.32 2001/10/17 14:24:09 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.33 2001/10/17 14:30:13 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -120,7 +120,7 @@
 ;; bold/standout (if possible).
 
 (defun nethack-api-raw-print-bold (str)
-  (nethack-api-raw-print (upcase str)) 	; FIXME: do bold not UPCASE
+  (nethack-api-raw-print (propertize str 'face 'bold))
   'void)
 
 
@@ -621,7 +621,13 @@ specified by `nethack-unassigned-accelerator-index'."
 		      (zerop accelerator))
 		 (nethack-specify-accelerator)
 	       accelerator)))
-    (ewoc-enter-last nethack-menu (vector acc preselected str identifier))
+    (ewoc-enter-last nethack-menu (vector
+				   acc
+				   preselected
+				   (if (eq attr 'atr-none)
+				       str
+				     (propertize str 'face 'highlight))	;FIXME:
+				   identifier))
     (if (not (= -1 identifier))
 	(define-key nethack-menu-keymap (vector acc) 'nethack-menu-toggle-item)))
   'void)
