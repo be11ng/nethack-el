@@ -12,6 +12,14 @@
 ;;(require 'nethack-keys)
 
 
+(defvar nethack-status-line-number 0
+  "The line that will be updated in the status window next time
+nethack-api-putstr")
+
+(defvar nethack-status-lines '("" . "")
+  "The 2 lines of the status window")
+
+
 (defun nethack ()
   "Start a game of Nethack.
 
@@ -209,3 +217,19 @@ eventual delivery to the running nethack process."
     (gamegrid-init-buffer nethack-map-width 
 			  nethack-map-height
 			  ? )))
+
+;;; Functions to manipulate, update and display the status window
+
+(defun nethack-set-status-line (str)
+  "Set the current status line (stored in nethack-status-line-number)
+to str."
+  (if (= nethack-status-line-number 0)
+      (setcar nethack-status-lines str)
+    (setcdr nethack-status-lines str)))
+
+(defun nethack-print-status-lines ()
+  "Updates the nhw-status window"
+  (save-excursion
+;    (set-buffer (nethack-get-buffer 'nhw-status))
+    (erase-buffer)
+    (insert (car nethack-status-lines) "\n" (cdr nethack-status-lines))))
