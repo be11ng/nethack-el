@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.4 2000/08/22 04:14:28 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.5 2000/08/31 23:39:32 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -175,7 +175,15 @@
 
 (defun nethack-api-getch ()
   ""
-  'unimplemented)
+  (if (null nethack-key-queue)
+      (setq nethack-waiting-for-key-p t)
+    (nethack-process-send-string (car nethack-key-queue))
+    (setq nethack-key-queue (cdr nethack-key-queue)))
+  'no-retval)				; hack to prevent the process
+					; filter from sending another
+					; string (retval) to the
+					; nethack process
+				   
 
 ;; int nh_poskey(int *x, int *y, int *mod) -- Returns a single
 ;; character input from the user or a a positioning event (perhaps from a
@@ -201,7 +209,7 @@
 ;; whatever the window- port wants (symbol, font, color, attributes,
 ;; ...there's a 1-1 map between glyphs and distinct things on the map).
 
-(defun nethack-api-print-glyph (window x y glyph)
+(defun nethack-api-print-glyph (window x y type offset glyph)
   ""
 
   (save-excursion
