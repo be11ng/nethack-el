@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.10 2000/09/10 07:48:03 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.11 2000/09/10 07:57:22 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -104,18 +104,16 @@
 ;; 'saving').
 
 (defun nethack-api-raw-print (str)
-  ""
-
-  'unimplemented)
+  "FIXME: I'm not sure where to print the string."
+  'void-fixme)
 
 
 ;; raw_print_bold(str) -- Like raw_print(), but prints in
 ;; bold/standout (if possible).
 
 (defun nethack-api-raw-print-bold (str)
-  ""  
-
-  'unimplemented)
+  "FIXME: I'm not sure where to print the string."
+  'void-fixme)
 
 
 ;; curs(window, x, y) -- Next output to window will start at (x,y),
@@ -270,11 +268,9 @@
 ;; specific way.  An index into extcmdlist[] is returned on a successful
 ;; selection, -1 otherwise.
 
-(defun nethack-api-get-ext-cmd ()
-  "" 
-  
-  'unimplemented)
-
+(defun nethack-api-get-ext-cmd (cmd-alist)
+  "Get an extended command from the user." 
+  (nethack-apix-choose-attribute "# " cmd-alist))
 
 ;; player_selection() -- Do a window-port specific player type
 ;; selection.  If player_selection() offers a Quit option, it is its
@@ -419,7 +415,9 @@ it, we can just bury them or something."
 
 (defun nethack-api-start-menu (window)
   ""
-  'void-fixme)
+  (set-buffer (nethack-get-buffer window))
+  (erase-buffer)
+  'void)
 
 
 ;; add_menu(windid window, int glyph, const anything identifier, char
@@ -448,8 +446,11 @@ it, we can just bury them or something."
 
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
   ""
-
-  'unimplemented)
+  (set-buffer (nethack-get-buffer window))
+  (if (not (= accelerator ? ))
+      (insert accelerator " - "))
+  (insert str "\n")
+  'void)
 
 
 ;; end_menu(window, prompt) -- Stop adding entries to the menu and
@@ -460,8 +461,8 @@ it, we can just bury them or something."
 
 (defun nethack-api-end-menu (window prompt)
   ""
-
-  'unimplemented)
+  (display-buffer (nethack-get-buffer window))
+  'void-fixme)
 
 
 ;; int select_menu(windid window, int how, menu_item **selected) --
@@ -484,10 +485,10 @@ it, we can just bury them or something."
 ;; of knowing whether select_menu() will be called for the window at
 ;; create_nhwindow() time.
 
-(defun nethack-api-select-menu (window how selected)
+(defun nethack-api-select-menu (window how)
   ""
 
-  'unimplemented)
+  'void-fixme)
 
 
 ;; char message_menu(char let, int how, const char *mesg) --
