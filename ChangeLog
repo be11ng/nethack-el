@@ -1,5 +1,9 @@
 2001-12-20  shawn  <sabetts@vcn.bc.ca>
 
+	* nethack-api.el (nethack-api-update-status): take 1 argument
+	which is an alist of status properties. Print each status
+	property.
+
 	* nethack.el (nh-sentinel): evaluate any remaining lisp code when
 	the lisp process gets a sentinel event.
 
