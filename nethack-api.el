@@ -582,7 +582,7 @@ it, we can just bury them or something."
 (defun nethack-api-delay-output ()
   "Sleep for 50ms."
   (sleep-for 0 50)
-  'void-maybe-sketchy)
+  'void)
 
 
 ;; askname() -- Ask the user for a player name.
