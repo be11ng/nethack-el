@@ -1,7 +1,7 @@
 ;;; nethack.el --- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id:$
+;;; $Id: nethack.el,v 1.45 2001/10/23 10:38:43 rcyeske Exp $
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 
@@ -451,9 +451,9 @@ times the command should be executed."
 							 (match-string 0 line-2)
 							 (if (not (string-equal (match-string 0 line-2)
 										(elt old-status 1)))
-							     nethack-status-highlight-delay
-							   (if (> old-highlight-delay 0)
-							       (1- old-highlight-delay)
+							     (- nethack-status-highlight-delay)
+							   (if (< old-highlight-delay 0)
+							       (1+ old-highlight-delay)
 							     0))))
 			    (add-to-list 'status (list (car pair) "" 0))))))
 	    '((hungry . "Satiated\\|Hungry\\|Weak\\|Fainting\\|Fainted\\|Starved")
