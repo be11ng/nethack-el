@@ -186,8 +186,8 @@
 
 (defface nethack-map-glyph-face 
   `((((type tty)) 
-     nil
-    (t (:font "6x10"))))
+     nil)
+    (t (:font "6x10")))
   "Nethack map face for keeping glyphs from separating due to the
 newlines being in a font with height > 16."
   :group 'nethack-faces)
@@ -339,6 +339,8 @@ position if we are looking at a prompt."
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?\( "w   " table)
     (modify-syntax-entry ?\) "w   " table)
+    (modify-syntax-entry ?\[ "w   " table)
+    (modify-syntax-entry ?\] "w   " table)
     table)
   "Syntax table used in the Nethack map.")
 

@@ -1,3 +1,26 @@
+2002-01-16  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-keys-dvorak.el (nethack-map-mode-hook): Add binding for
+	nethack-command-offer.
+
+	* nethack-api.el (nethack-api-print-status-numeric): Remove
+	function.
+	(nethack-api-print-status-string): Remove function.
+	(nethack-print-status-string): Add function.
+	(nethack-api-update-status): Use nethack-print-status.
+	(nethack-api-raw-print): Print to nethack-message-buffer.
+	(nethack-api-exit-nhwindows): Don't clean up buffers.
+	(nethack-api-display-nhwindow): Try to print text to
+	nethack-message-buffer.
+	(nethack-restore-window-configuration): Remove buffer dedication
+	of status window.
+	(nethack-api-end-menu): Don't move the point.
+	(nethack-api-select-menu): Use the window displaying the message
+	buffer for the menu, and enlarge it only if necessary.
+
+	* nethack.el (nethack-map-glyph-face): Fix typo.
+	(nethack-map-mode-syntax-table): Add `[' and `]'.
+
 2002-01-15  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el (nethack-map-mode-syntax-table): New variable.

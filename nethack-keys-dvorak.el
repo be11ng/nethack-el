@@ -63,6 +63,7 @@
 	    (local-set-key "P" 'nethack-command-remove-accessory)
 	    (local-set-key "o" 'nethack-command-search)
 	    (local-set-key "O" 'nethack-command-save-game)
+	    (local-set-key "\M-o" 'nethack-command-offer)
 	    (local-set-key "y" 'nethack-command-throw)
 	    (local-set-key "Y" 'nethack-command-remove-single-armor)
 	    (local-set-key "g" 'nethack-command-northeast-one-space)
