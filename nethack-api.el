@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.3 2000/08/21 06:04:15 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.4 2000/08/22 04:14:28 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -35,12 +35,12 @@
 ;; There are 5 basic window types, used to call create_nhwindow():
 
 ;;; FIXME: what are the values for these
-(defconst nethack-api-wmessage nil)	;NHW_MESSAGE (top line)
-(defconst nethack-api-wstatus nil)	;NHW_STATUS	(bottom lines)
-(defconst nethack-api-wmap nil)		;NHW_MAP(main dungeon)
-(defconst nethack-api-wmenu nil)	;NHW_MENU (inventory or other
-					;"corner" windows)
-(defconst nethack-api-wtext nil)	;NHW_TEXT (help/text, full
+;; (defconst nethack-api-wmessage nil)	;NHW_MESSAGE (top line)
+;; (defconst nethack-api-wstatus nil)	;NHW_STATUS	(bottom lines)
+;; (defconst nethack-api-wmap nil)		;NHW_MAP(main dungeon)
+;; (defconst nethack-api-wmenu nil)	;NHW_MENU (inventory or other
+;; 					;"corner" windows)
+;; (defconst nethack-api-wtext nil)	;NHW_TEXT (help/text, full
 					;screen paged window)
 
 ;; The tty window-port also uses NHW_BASE (the base display)
@@ -95,63 +95,63 @@
 ;; A.  Low-level routines:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun nethack-api-raw-print (str)
-  "raw_print(str) -- Print directly to a screen, or otherwise
-guarantee that the user sees str.  raw_print() appends a newline to
-str.  It need not recognize ASCII control characters.  This is used
-during startup (before windowing system initialization -- maybe this
-means only error startup messages are raw), for error messages, and
-maybe other 'msg' uses.  E.g.  updating status for micros (i.e,
-'saving').
+;; raw_print(str) -- Print directly to a screen, or otherwise
+;; guarantee that the user sees str.  raw_print() appends a newline to
+;; str.  It need not recognize ASCII control characters.  This is used
+;; during startup (before windowing system initialization -- maybe this
+;; means only error startup messages are raw), for error messages, and
+;; maybe other 'msg' uses.  E.g.  updating status for micros (i.e,
+;; 'saving').
 
------"
+(defun nethack-api-raw-print (str)
+  ""
 
   'unimplemented)
 
+
+;; raw_print_bold(str) -- Like raw_print(), but prints in
+;; bold/standout (if possible).
 
 (defun nethack-api-raw-print-bold (str)
-  "raw_print_bold(str) -- Like raw_print(), but prints in
-bold/standout (if possible).
-
------"  
+  ""  
 
   'unimplemented)
 
 
-(defun nethack-api-curs (window x y)
-  "curs(window, x, y) -- Next output to window will start at (x,y),
-also moves displayable cursor to (x,y).  For backward compatibility, 1
-<= x < cols, 0 <= y < rows, where cols and rows are the size of
-window.  -- For variable sized windows, like the status window, the
-behavior when curs() is called outside the window's limits is
-unspecified. The mac port wraps to 0, with the status window being 2
-lines high and 80 columns wide.  -- Still used by curs_on_u(), status
-updates, screen locating (identify, teleport).  -- NHW_MESSAGE,
-NHW_MENU and NHW_TEXT windows do not currently support curs in the tty
-window-port.
+;; curs(window, x, y) -- Next output to window will start at (x,y),
+;; also moves displayable cursor to (x,y).  For backward compatibility, 1
+;; <= x < cols, 0 <= y < rows, where cols and rows are the size of
+;; window.  -- For variable sized windows, like the status window, the
+;; behavior when curs() is called outside the window's limits is
+;; unspecified. The mac port wraps to 0, with the status window being 2
+;; lines high and 80 columns wide.  -- Still used by curs_on_u(), status
+;; updates, screen locating (identify, teleport).  -- NHW_MESSAGE,
+;; NHW_MENU and NHW_TEXT windows do not currently support curs in the tty
+;; window-port.
 
------"
+(defun nethack-api-curs (window x y)
+  ""
   (save-excursion
     (set-buffer (nethack-get-buffer window))
     (goto-char (gamegrid-cell-offset x y)))
   'void-fixme)
 
 
-(defun nethack-api-putstr (window attr str)
-  "putstr(window, attr, str) -- Print str on the window with the
-given attribute.  Only printable ASCII characters (040-0126) must be
-supported.  Multiple putstr()s are output on separate lines.
-Attributes can be one of ATR_NONE (or 0) ATR_ULINE ATR_BOLD ATR_BLINK
-ATR_INVERSE If a window-port does not support all of these, it may map
-unsupported attributes to a supported one (e.g. map them all to
-ATR_INVERSE).  putstr() may compress spaces out of str, break str, or
-truncate str, if necessary for the display.  Where putstr() breaks a
-line, it has to clear to end-of-line.  -- putstr should be implemented
-such that if two putstr()s are done consecutively the user will see
-the first and then the second.  In the tty port, pline() achieves this
-by calling more() or displaying both on the same line.
+;; putstr(window, attr, str) -- Print str on the window with the
+;; given attribute.  Only printable ASCII characters (040-0126) must be
+;; supported.  Multiple putstr()s are output on separate lines.
+;; Attributes can be one of ATR_NONE (or 0) ATR_ULINE ATR_BOLD ATR_BLINK
+;; ATR_INVERSE If a window-port does not support all of these, it may map
+;; unsupported attributes to a supported one (e.g. map them all to
+;; ATR_INVERSE).  putstr() may compress spaces out of str, break str, or
+;; truncate str, if necessary for the display.  Where putstr() breaks a
+;; line, it has to clear to end-of-line.  -- putstr should be implemented
+;; such that if two putstr()s are done consecutively the user will see
+;; the first and then the second.  In the tty port, pline() achieves this
+;; by calling more() or displaying both on the same line.
 
------"
+(defun nethack-api-putstr (window attr str)
+  ""
 
   (save-excursion
     (set-buffer (nethack-get-buffer window))
@@ -159,35 +159,35 @@ by calling more() or displaying both on the same line.
   'void-fixme)
 
 
-(defun nethack-api-get-event ()
-  "get_nh_event() -- Does window event processing (e.g. exposure
-events).  A noop for the tty and X window-ports.
+;; get_nh_event() -- Does window event processing (e.g. exposure
+;; events).  A noop for the tty and X window-ports.
 
------"
+(defun nethack-api-get-event ()
+  ""
 
   'void)
 
 
-(defun nethack-api-getch ()
-  "int nhgetch() -- Returns a single character input from the
-user. (int) -- In the tty window-port, nhgetch() assumes that tgetch()
-will be the routine the OS provides to read a character.  Returned
-character _must_ be non-zero.
+;; int nhgetch() -- Returns a single character input from the
+;; user. (int) -- In the tty window-port, nhgetch() assumes that tgetch()
+;; will be the routine the OS provides to read a character.  Returned
+;; character _must_ be non-zero.
 
------"
+(defun nethack-api-getch ()
+  ""
   'unimplemented)
 
-(defun nethack-api-poskey (x y mod)
-  "int nh_poskey(int *x, int *y, int *mod) -- Returns a single
-character input from the user or a a positioning event (perhaps from a
-mouse).  If the return value is non-zero, a character was typed, else,
-a position in the MAP window is returned in x, y and mod.  mod may be
-one of CLICK_1 /* mouse click type 1 */ CLICK_2 /* mouse click type 2
-*/ The different click types can map to whatever the hardware
-supports.  If no mouse is supported, this routine always returns a
-non-zero character.
+;; int nh_poskey(int *x, int *y, int *mod) -- Returns a single
+;; character input from the user or a a positioning event (perhaps from a
+;; mouse).  If the return value is non-zero, a character was typed, else,
+;; a position in the MAP window is returned in x, y and mod.  mod may be
+;; one of CLICK_1 /* mouse click type 1 */ CLICK_2 /* mouse click type 2
+;; */ The different click types can map to whatever the hardware
+;; supports.  If no mouse is supported, this routine always returns a
+;; non-zero character.
 
------"
+(defun nethack-api-poskey (x y mod)
+  ""
 
   'unimplemented)
 
@@ -196,13 +196,13 @@ non-zero character.
 ;;; B.  High-level routines:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun nethack-api-print-glyph (window x y glyph)
-  "print_glyph(window, x, y, glyph) -- Print the glyph at (x,y) on the
-given window.  Glyphs are integers at the interface, mapped to
-whatever the window- port wants (symbol, font, color, attributes,
-...there's a 1-1 map between glyphs and distinct things on the map).
+;; print_glyph(window, x, y, glyph) -- Print the glyph at (x,y) on the
+;; given window.  Glyphs are integers at the interface, mapped to
+;; whatever the window- port wants (symbol, font, color, attributes,
+;; ...there's a 1-1 map between glyphs and distinct things on the map).
 
------"
+(defun nethack-api-print-glyph (window x y glyph)
+  ""
 
   (save-excursion
     (set-buffer (nethack-get-buffer window))
@@ -210,100 +210,100 @@ whatever the window- port wants (symbol, font, color, attributes,
   'void-fixme)
 
 
-(defun nethack-api-yn-function (ques choices defaults)
-  "char yn_function(const char *ques, const char *choices, char
-default) -- Print a prompt made up of ques, choices and default.  Read
-a single character response that is contained in choices or default.
-If choices is NULL, all possible inputs are accepted and returned.
-This overrides everything else.  The choices are expected to be in
-lower case.  Entering ESC always maps to 'q', or 'n', in that order,
-if present in choices, otherwise it maps to default.  Entering any
-other quit character (SPACE, RETURN, NEWLINE) maps to default.  -- If
-the choices string contains ESC, then anything after it is an
-acceptable response, but the ESC and whatever follows is not included
-in the prompt.  -- If the choices string contains a '#' then accept a
-count.  Place this value in the global *yn_number* and return '#'.  --
-This uses the top line in the tty window-port, other ports might use a
-popup.
+;; char yn_function(const char *ques, const char *choices, char
+;; default) -- Print a prompt made up of ques, choices and default.  Read
+;; a single character response that is contained in choices or default.
+;; If choices is NULL, all possible inputs are accepted and returned.
+;; This overrides everything else.  The choices are expected to be in
+;; lower case.  Entering ESC always maps to 'q', or 'n', in that order,
+;; if present in choices, otherwise it maps to default.  Entering any
+;; other quit character (SPACE, RETURN, NEWLINE) maps to default.  -- If
+;; the choices string contains ESC, then anything after it is an
+;; acceptable response, but the ESC and whatever follows is not included
+;; in the prompt.  -- If the choices string contains a '#' then accept a
+;; count.  Place this value in the global *yn_number* and return '#'.  --
+;; This uses the top line in the tty window-port, other ports might use a
+;; popup.
 
------"  
+(defun nethack-api-yn-function (ques choices defaults)
+  ""  
 
   'unimplemented)
 
+
+;; getlin(const char *ques, char *input) -- Prints ques as a prompt
+;; and reads a single line of text, up to a newline.  The string entered
+;; is returned without the newline.  ESC is used to cancel, in which case
+;; the string '\033\000' is returned.  -- getlin() must call
+;; flush_screen(1) before doing anything.  -- This uses the top line in
+;; the tty window-port, other ports might use a popup.
 
 (defun nethack-api-getlin (ques input)
-  "getlin(const char *ques, char *input) -- Prints ques as a prompt
-and reads a single line of text, up to a newline.  The string entered
-is returned without the newline.  ESC is used to cancel, in which case
-the string '\033\000' is returned.  -- getlin() must call
-flush_screen(1) before doing anything.  -- This uses the top line in
-the tty window-port, other ports might use a popup.
-
------" 
+  "" 
 
   'unimplemented)
 
 
-(defun nethack-api-get-ext-cmd ()
-  "int get_ext_cmd(void) -- Get an extended command in a window-port
-specific way.  An index into extcmdlist[] is returned on a successful
-selection, -1 otherwise.
+;; int get_ext_cmd(void) -- Get an extended command in a window-port
+;; specific way.  An index into extcmdlist[] is returned on a successful
+;; selection, -1 otherwise.
 
------" 
+(defun nethack-api-get-ext-cmd ()
+  "" 
   
   'unimplemented)
 
 
-(defun nethack-api-player-selection ()
-  "player_selection() -- Do a window-port specific player type
-selection.  If player_selection() offers a Quit option, it is its
-responsibility to clean up and terminate the process.  You need to
-fill in pl_character[0].
+;; player_selection() -- Do a window-port specific player type
+;; selection.  If player_selection() offers a Quit option, it is its
+;; responsibility to clean up and terminate the process.  You need to
+;; fill in pl_character[0].
 
------ Does nothing right now, perhaps simply indicates that the
+(defun nethack-api-player-selection ()
+  " Does nothing right now, perhaps simply indicates that the
 nethack-apix-choose-X calls are to follow for actual
 role/race/gender/align selection."
   'void)
 
 
-(defun nethack-api-display-file (str complain)
-  " display_file(str, boolean complain) -- Display the file named str.
-Complain about missing files iff complain is TRUE.
+;;  display_file(str, boolean complain) -- Display the file named str.
+;; Complain about missing files iff complain is TRUE.
 
------ FIXME: what to do, this will break network play slightly"
+(defun nethack-api-display-file (str complain)
+  " FIXME: what to do, this will break network play slightly"
   
   'void-fixme)
 
 
-(defun nethack-api-update-inventory ()
-  "update_inventory() -- Indicate to the window port that the
-inventory has been changed.  -- Merely calls display_inventory() for
-window-ports that leave the window up, otherwise empty.
+;; update_inventory() -- Indicate to the window port that the
+;; inventory has been changed.  -- Merely calls display_inventory() for
+;; window-ports that leave the window up, otherwise empty.
 
------ FIXME: should set a flag or something, later"
+(defun nethack-api-update-inventory ()
+  " FIXME: should set a flag or something, later"
 
   'void)
 
 
-(defun nethack-api-doprev-message ()
-  "doprev_message() -- Display previous messages.  Used by the ^P
-command.  -- On the tty-port this scrolls WIN_MESSAGE back one line.
+;; doprev_message() -- Display previous messages.  Used by the ^P
+;; command.  -- On the tty-port this scrolls WIN_MESSAGE back one line.
 
------"
+(defun nethack-api-doprev-message ()
+  ""
 
   'unimplemented)
 
 
-(defun nethack-api-update-positionbar (features)
-  "update_positionbar(char *features) -- Optional, POSITIONBAR must be
-defined. Provide some additional information for use in a horizontal
-position bar (most useful on clipped displays).  Features is a series
-of char pairs.  The first char in the pair is a symbol and the second
-char is the column where it is currently located.  A '<' is used to
-mark an upstairs, a '>' for a downstairs, and an '@' for the current
-player location. A zero char marks the end of the list.
+;; update_positionbar(char *features) -- Optional, POSITIONBAR must be
+;; defined. Provide some additional information for use in a horizontal
+;; position bar (most useful on clipped displays).  Features is a series
+;; of char pairs.  The first char in the pair is a symbol and the second
+;; char is the column where it is currently located.  A '<' is used to
+;; mark an upstairs, a '>' for a downstairs, and an '@' for the current
+;; player location. A zero char marks the end of the list.
 
------"
+(defun nethack-api-update-positionbar (features)
+  ""
 
   'unimplemented)
 
@@ -312,18 +312,18 @@ player location. A zero char marks the end of the list.
 ;; C.  Window Utility Routines
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun nethack-api-init-nhwindows (argcp argv)
-  "init_nhwindows(int* argcp, char** argv) -- Initialize the windows
-used by NetHack.  This can also create the standard windows listed at
-the top, but does not display them.  -- Any commandline arguments
-relevant to the windowport should be interpreted, and *argcp and *argv
-should be changed to remove those arguments.  -- When the message
-window is created, the variable iflags.window_inited needs to be set
-to TRUE.  Otherwise all plines() will be done via raw_print().  ** Why
-not have init_nhwindows() create all of the 'standard' ** windows?  Or
-at least all but WIN_INFO? -dean
+;; init_nhwindows(int* argcp, char** argv) -- Initialize the windows
+;; used by NetHack.  This can also create the standard windows listed at
+;; the top, but does not display them.  -- Any commandline arguments
+;; relevant to the windowport should be interpreted, and *argcp and *argv
+;; should be changed to remove those arguments.  -- When the message
+;; window is created, the variable iflags.window_inited needs to be set
+;; to TRUE.  Otherwise all plines() will be done via raw_print().  ** Why
+;; not have init_nhwindows() create all of the 'standard' ** windows?  Or
+;; at least all but WIN_INFO? -dean
 
------ This is the first function sent by the nethack process.  Does
+(defun nethack-api-init-nhwindows (argcp argv)
+  " This is the first function sent by the nethack process.  Does
 all of the appropriate setup."
 
   ;; TODO: the winlisp port should send a list here, i am only getting
@@ -331,29 +331,29 @@ all of the appropriate setup."
   'void)
 
 
-(defun nethack-api-exit-nhwindows (str)
-  "exit_nhwindows(str) -- Exits the window system.  This should
-dismiss all windows, except the 'window' used for raw_print().  str is
-printed if possible.
+;; exit_nhwindows(str) -- Exits the window system.  This should
+;; dismiss all windows, except the 'window' used for raw_print().  str is
+;; printed if possible.
 
------" 
+(defun nethack-api-exit-nhwindows (str)
+  "" 
   'unimplemented)
 
 
-(defun nethack-api-create-nhwindow (type)
-  "window = create_nhwindow(type) -- Create a window of type 'type'.
+;; window = create_nhwindow(type) -- Create a window of type 'type'.
 
------ Associate a digit ID with the buffer (`nethack-buffer-alist')
+(defun nethack-api-create-nhwindow (type)
+  " Associate a digit ID with the buffer (`nethack-buffer-alist')
 and send the digit to nethack."
   (nethack-create-buffer type)
   (car (rassq type nethack-buffer-id-alist)))
 
 
-(defun nethack-api-clear-nhwindow (window)
-  "clear_nhwindow(window) -- Clear the given window, when
-appropriate.
+;; clear_nhwindow(window) -- Clear the given window, when
+;; appropriate.
 
------"
+(defun nethack-api-clear-nhwindow (window)
+  ""
   (if (not (eq window (car (rassq 'nhw-map nethack-buffer-id-alist))))
       (save-excursion
 	(set-buffer (nethack-get-buffer window))
@@ -361,124 +361,124 @@ appropriate.
   'void)
 
 
-(defun nethack-api-display-nhwindow (window blocking)
-  "display_nhwindow(window, boolean blocking) -- Display the window on
-the screen.  If there is data pending for output in that window, it
-should be sent.  If blocking is TRUE, display_nhwindow() will not
-return until the data has been displayed on the screen, and
-acknowledged by the user where appropriate.  -- All calls are blocking
-in the tty window-port.  -- Calling display_nhwindow(WIN_MESSAGE,???)
-will do a --more--, if necessary, in the tty window-port.
+;; display_nhwindow(window, boolean blocking) -- Display the window on
+;; the screen.  If there is data pending for output in that window, it
+;; should be sent.  If blocking is TRUE, display_nhwindow() will not
+;; return until the data has been displayed on the screen, and
+;; acknowledged by the user where appropriate.  -- All calls are blocking
+;; in the tty window-port.  -- Calling display_nhwindow(WIN_MESSAGE,???)
+;; will do a --more--, if necessary, in the tty window-port.
 
------ not sure what this should do.  makes buffer visible in some
+(defun nethack-api-display-nhwindow (window blocking)
+  " not sure what this should do.  makes buffer visible in some
 way?"
   (display-buffer (nethack-get-buffer window))
   'void)
 
 
-(defun nethack-api-destroy-nhwindow (window)
-  "destroy_nhwindow(window) -- Destroy will dismiss the window if the
-window has not already been dismissed.
+;; destroy_nhwindow(window) -- Destroy will dismiss the window if the
+;; window has not already been dismissed.
 
------we are going to try not to destroy windows/buffers if we can help
+(defun nethack-api-destroy-nhwindow (window)
+  "we are going to try not to destroy windows/buffers if we can help
 it, we can just bury them or something."
 
   'void-fixme)
 
 
-(defun nethack-api-start-menu (window)
-  "start_menu(window) -- Start using window as a menu.  You must call
-start_menu() before add_menu().  After calling start_menu() you may
-not putstr() to the window.  Only windows of type NHW_MENU may be used
-for menus.
+;; start_menu(window) -- Start using window as a menu.  You must call
+;; start_menu() before add_menu().  After calling start_menu() you may
+;; not putstr() to the window.  Only windows of type NHW_MENU may be used
+;; for menus.
 
------"
+(defun nethack-api-start-menu (window)
+  ""
 
   'unimplemented)
 
+
+;; add_menu(windid window, int glyph, const anything identifier, char
+;; accelerator, char groupacc, int attr, char *str, boolean preselected)
+;; -- Add a text line str to the given menu window.  If identifier is 0,
+;; then the line cannot be selected (e.g. a title).  Otherwise,
+;; identifier is the value returned if the line is selected.  Accelerator
+;; is a keyboard key that can be used to select the line.  If the
+;; accelerator of a selectable item is 0, the window system is free to
+;; select its own accelerator.  It is up to the window-port to make the
+;; accelerator visible to the user (e.g. put 'a - ' in front of str).
+;; The value attr is the same as in putstr().  Glyph is an optional glyph
+;; to accompany the line.  If window port cannot or does not want to
+;; display it, this is OK.  If there is no glyph applicable, then this
+;; value will be NO_GLYPH.  -- All accelerators should be in the range
+;; [A-Za-z].  -- It is expected that callers do not mix accelerator
+;; choices.  Either all selectable items have an accelerator or let the
+;; window system pick them.  Don't do both.  -- Groupacc is a group
+;; accelerator.  It may be any character outside of the standard
+;; accelerator (see above) or a number.  If 0, the item is unaffected by
+;; any group accelerator.  If this accelerator conflicts with the menu
+;; command (or their user defined alises), it loses.  The menu commands
+;; and aliases take care not to interfere with the default object class
+;; symbols.  -- If you want this choice to be preselected when the menu
+;; is displayed, set preselected to TRUE.
 
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
-  "add_menu(windid window, int glyph, const anything identifier, char
-accelerator, char groupacc, int attr, char *str, boolean preselected)
--- Add a text line str to the given menu window.  If identifier is 0,
-then the line cannot be selected (e.g. a title).  Otherwise,
-identifier is the value returned if the line is selected.  Accelerator
-is a keyboard key that can be used to select the line.  If the
-accelerator of a selectable item is 0, the window system is free to
-select its own accelerator.  It is up to the window-port to make the
-accelerator visible to the user (e.g. put 'a - ' in front of str).
-The value attr is the same as in putstr().  Glyph is an optional glyph
-to accompany the line.  If window port cannot or does not want to
-display it, this is OK.  If there is no glyph applicable, then this
-value will be NO_GLYPH.  -- All accelerators should be in the range
-[A-Za-z].  -- It is expected that callers do not mix accelerator
-choices.  Either all selectable items have an accelerator or let the
-window system pick them.  Don't do both.  -- Groupacc is a group
-accelerator.  It may be any character outside of the standard
-accelerator (see above) or a number.  If 0, the item is unaffected by
-any group accelerator.  If this accelerator conflicts with the menu
-command (or their user defined alises), it loses.  The menu commands
-and aliases take care not to interfere with the default object class
-symbols.  -- If you want this choice to be preselected when the menu
-is displayed, set preselected to TRUE.
-
------"
+  ""
 
   'unimplemented)
 
+
+;; end_menu(window, prompt) -- Stop adding entries to the menu and
+;; flushes the window to the screen (brings to front?).  Prompt is a
+;; prompt to give the user.  If prompt is NULL, no prompt will be
+;; printed.  ** This probably shouldn't flush the window any more (if **
+;; it ever did).  That should be select_menu's job.  -dean
 
 (defun nethack-api-end-menu (window prompt)
-  "end_menu(window, prompt) -- Stop adding entries to the menu and
-flushes the window to the screen (brings to front?).  Prompt is a
-prompt to give the user.  If prompt is NULL, no prompt will be
-printed.  ** This probably shouldn't flush the window any more (if **
-it ever did).  That should be select_menu's job.  -dean
-
------"
+  ""
 
   'unimplemented)
 
+
+;; int select_menu(windid window, int how, menu_item **selected) --
+;; Return the number of items selected; 0 if none were chosen, -1 when
+;; explicitly cancelled.  If items were selected, then selected is filled
+;; in with an allocated array of menu_item structures, one for each
+;; selected line.  The caller must free this array when done with it.
+;; The 'count' field of selected is a user supplied count.  If the user
+;; did not supply a count, then the count field is filled with -1
+;; (meaning all).  A count of zero is equivalent to not being selected
+;; and should not be in the list.  If no items were selected, then
+;; selected is NULL'ed out.  How is the mode of the menu.  Three valid
+;; values are PICK_NONE, PICK_ONE, and PICK_ANY, meaning: nothing is
+;; selectable, only one thing is selectable, and any number valid items
+;; may selected.  If how is PICK_NONE, this function should never return
+;; anything but 0 or -1.  -- You may call select_menu() on a window
+;; multiple times -- the menu is saved until start_menu() or
+;; destroy_nhwindow() is called on the window.  -- Note that NHW_MENU
+;; windows need not have select_menu() called for them. There is no way
+;; of knowing whether select_menu() will be called for the window at
+;; create_nhwindow() time.
 
 (defun nethack-api-select-menu (window how selected)
-  "int select_menu(windid window, int how, menu_item **selected) --
-Return the number of items selected; 0 if none were chosen, -1 when
-explicitly cancelled.  If items were selected, then selected is filled
-in with an allocated array of menu_item structures, one for each
-selected line.  The caller must free this array when done with it.
-The 'count' field of selected is a user supplied count.  If the user
-did not supply a count, then the count field is filled with -1
-(meaning all).  A count of zero is equivalent to not being selected
-and should not be in the list.  If no items were selected, then
-selected is NULL'ed out.  How is the mode of the menu.  Three valid
-values are PICK_NONE, PICK_ONE, and PICK_ANY, meaning: nothing is
-selectable, only one thing is selectable, and any number valid items
-may selected.  If how is PICK_NONE, this function should never return
-anything but 0 or -1.  -- You may call select_menu() on a window
-multiple times -- the menu is saved until start_menu() or
-destroy_nhwindow() is called on the window.  -- Note that NHW_MENU
-windows need not have select_menu() called for them. There is no way
-of knowing whether select_menu() will be called for the window at
-create_nhwindow() time.
-
------"
+  ""
 
   'unimplemented)
 
 
-(defun nethack-api-message-menu (let- how mesg)
-  "char message_menu(char let, int how, const char *mesg) --
-tty-specific hack to allow single line context-sensitive help to
-behave compatibly with multi-line help menus.  -- This should only be
-called when a prompt is active; it sends `mesg' to the message window.
-For tty, it forces a --More-- prompt and enables `let' as a viable
-keystroke for dismissing that prompt, so that the original prompt can
-be answered from the message line 'help menu'.  -- Return value is
-either `let', '\0' (no selection was made), or '\033' (explicit
-cancellation was requested).  -- Interfaces which issue prompts and
-messages to separate windows typically won't need this functionality,
-so can substitute genl_message_menu (windows.c) instead.
+;; char message_menu(char let, int how, const char *mesg) --
+;; tty-specific hack to allow single line context-sensitive help to
+;; behave compatibly with multi-line help menus.  -- This should only be
+;; called when a prompt is active; it sends `mesg' to the message window.
+;; For tty, it forces a --More-- prompt and enables `let' as a viable
+;; keystroke for dismissing that prompt, so that the original prompt can
+;; be answered from the message line 'help menu'.  -- Return value is
+;; either `let', '\0' (no selection was made), or '\033' (explicit
+;; cancellation was requested).  -- Interfaces which issue prompts and
+;; messages to separate windows typically won't need this functionality,
+;; so can substitute genl_message_menu (windows.c) instead.
 
------"
+(defun nethack-api-message-menu (let- how mesg)
+  ""
 
   'unimplemented)
 
@@ -487,122 +487,122 @@ so can substitute genl_message_menu (windows.c) instead.
 ;; D.  Misc. Routines
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun nethack-api-make-sound ()
-  "make_sound(???) -- To be determined later.  THIS IS CURRENTLY
-UN-IMPLEMENTED.
+;; make_sound(???) -- To be determined later.  THIS IS CURRENTLY
+;; UN-IMPLEMENTED.
 
------"
+(defun nethack-api-make-sound ()
+  ""
 
   'unimplemented)
 
+
+;; nhbell() -- Beep at user.  [This will exist at least until sounds
+;; are redone, since sounds aren't attributable to windows anyway.]
 
 (defun nethack-api-bell ()
-  "nhbell() -- Beep at user.  [This will exist at least until sounds
-are redone, since sounds aren't attributable to windows anyway.]
-
------"
+  ""
 
   'unimplemented)
 
+
+;; mark_synch() -- Don't go beyond this point in I/O on any channel
+;; until all channels are caught up to here.  Can be an empty call for
+;; the moment
 
 (defun nethack-api-mark-synch ()
-  "mark_synch() -- Don't go beyond this point in I/O on any channel
-until all channels are caught up to here.  Can be an empty call for
-the moment
-
------" 
+  "" 
 
   'unimplemented)
 
+
+;; wait_synch() -- Wait until all pending output is complete
+;; :flush for streams goes here:.  -- May also deal with exposure events
+;; etc. so that the display is OK when return from wait_synch().
 
 (defun nethack-api-wait-synch ()
-  "wait_synch() -- Wait until all pending output is complete
-:flush for streams goes here:.  -- May also deal with exposure events
-etc. so that the display is OK when return from wait_synch().
-
------"
+  ""
 
   'unimplemented)
 
+
+;; delay_output() -- Causes a visible delay of 50ms in the output.
+;; Conceptually, this is similar to wait_synch() followed by a nap(50ms),
+;; but allows asynchronous operation.
 
 (defun nethack-api-delay-output ()
-  "delay_output() -- Causes a visible delay of 50ms in the output.
-Conceptually, this is similar to wait_synch() followed by a nap(50ms),
-but allows asynchronous operation.
-
------"
+  ""
 
   'unimplemented)
 
+
+;; askname() -- Ask the user for a player name.
 
 (defun nethack-api-askname ()
-  "askname() -- Ask the user for a player name.
-
------"
+  ""
 
   'unimplemented)
 
 
-(defun nethack-api-cliparound (x y)
-  "cliparound(x, y)-- Make sure that the user is more-or-less centered
-on the screen if the playing area is larger than the screen.  -- This
-function is only defined if CLIPPING is defined.
+;; cliparound(x, y)-- Make sure that the user is more-or-less centered
+;; on the screen if the playing area is larger than the screen.  -- This
+;; function is only defined if CLIPPING is defined.
 
------ FIXME: huh? not sure what to do here..."
+(defun nethack-api-cliparound (x y)
+  " FIXME: huh? not sure what to do here..."
 
   'void-fixme)
 
 
-(defun nethack-api-number-pad (state)
-  "number_pad(state) -- Initialize the number pad to the given state.
+;; number_pad(state) -- Initialize the number pad to the given state.
 
------"
+(defun nethack-api-number-pad (state)
+  ""
 
   'unimplemented)
 
+
+;; suspend_nhwindows(str) -- Prepare the window to be suspended.
 
 (defun nethack-api-suspend-nhwindows (str)
-  "suspend_nhwindows(str) -- Prepare the window to be suspended.
-
------"  
+  ""  
 
   'unimplemented)
 
+
+;; resume_nhwindows() -- Restore the windows after being suspended.
 
 (defun nethack-api-resume-nhwindows ()
-  "resume_nhwindows() -- Restore the windows after being suspended.
-
------"
+  ""
 
   'unimplemented)
 
+
+;; start_screen() -- Only used on Unix tty ports, but must be declared
+;; for completeness.  Sets up the tty to work in full-screen graphics
+;; mode.  Look at win/tty/termcap.c for an example.  If your window-port
+;; does not need this function just declare an empty function.
 
 (defun nethack-api-start-screen ()
-  "start_screen() -- Only used on Unix tty ports, but must be declared
-for completeness.  Sets up the tty to work in full-screen graphics
-mode.  Look at win/tty/termcap.c for an example.  If your window-port
-does not need this function just declare an empty function.
-
------"
+  ""
 
   'unimplemented)
 
+
+;; end_screen() -- Only used on Unix tty ports, but must be declared
+;; for completeness.  The complement of start_screen().
 
 (defun nethack-api-end-screen ()
-  "end_screen() -- Only used on Unix tty ports, but must be declared
-for completeness.  The complement of start_screen().
-
------"
+  ""
 
   'unimplemented)
 
 
-(defun nethack-api-outrip (winid int)
-  "outrip(winid, int) -- The tombstone code.  If you want the
-traditional code use genl_outrip for the value and check the #if in
-rip.c.
+;; outrip(winid, int) -- The tombstone code.  If you want the
+;; traditional code use genl_outrip for the value and check the #if in
+;; rip.c.
 
------"
+(defun nethack-api-outrip (winid int)
+  ""
 
   'unimplemented)
 
