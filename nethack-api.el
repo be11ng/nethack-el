@@ -813,6 +813,9 @@ the menu is dismissed."
   (with-current-buffer (nethack-buffer window)
     (insert (concat who " -- " message) "\n")))
 
+(defun nethack-api-end ()
+  (message "Goodbye."))
+
 (provide 'nethack-api)
 
 ;;; nethack-api.el ends here

@@ -2,6 +2,7 @@
 
 	* nethack-api.el: Removed the remains of the window.doc comments.
 	They were misleadingly out of date.
+	(nethack-api-end): Add function.
 
 	* mkpatch: Don't include win/lisp/TODO file in patch.
 
