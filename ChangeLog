@@ -1,11 +1,18 @@
 2001-12-20  shawn  <sabetts@vcn.bc.ca>
 
+	* nethack.el (nethack-map-glyph-face): new face.
+
 	* nethack-api.el (nethack-api-update-status): take 1 argument
 	which is an alist of status properties. Print each status
 	property.
 	(nethack-api-print-status-numeric): new function
 	(nethack-api-print-status-string): new function
-	(nethack-api-update-status): highlight status attributes that change.
+	(nethack-api-update-status): highlight status attributes that
+	change.
+	(nethack-api-update-status): Insert a space between each
+	attribute.
+	(nethack-api-clear-nhwindow): insert newlines using the
+	nethack-map-glyph-face when using glyphs.
 
 	* nethack.el (nh-sentinel): evaluate any remaining lisp code when
 	the lisp process gets a sentinel event.

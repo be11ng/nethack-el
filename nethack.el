@@ -184,6 +184,12 @@
   "nethack white"
   :group 'nethack-faces)
 
+(defface nethack-map-glyph-face 
+  `((t (:font "6x10")))
+  "nethack map face for keeping glyphs from 'seperating' due to the
+newlines being in a font with height > 16."
+  :group 'nethack-faces-faces)
+
 (defvar nethack-use-glyphs (display-images-p)
   "If set to T, nethack will use XPMs to draw glyphs.")
 
@@ -328,6 +334,7 @@ position if we are looking at a prompt."
 
 (defvar nethack-map-width 79 "Max width of the map.")
 (defvar nethack-map-height 22 "Max height of the map.")
+
 
 ;;; status line handling
 
