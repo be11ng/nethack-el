@@ -1,4 +1,4 @@
-2004-11-19  Shawn Betts  <katia_dilkina@verizon.net>
+2004-11-19  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack-add-menu-hook): new hook
 
@@ -9,7 +9,7 @@
 
 	* nethack-api.el (nhapi-add-menu): run the nethack-add-menu-hook.
 
-2004-11-16  Shawn Betts  <katia_dilkina@verizon.net>
+2004-11-16  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* mkpatch: src, ref, and work are pulled from args 1, 2, and 3.
 
@@ -26,7 +26,7 @@
 
 	* nethack-cmd.el (travel): new nethack command
 
-2004-11-14  Shawn Betts  <katia_dilkina@verizon.net>
+2004-11-14  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack): call nethack-create-process
 	(nethack-connect-to-server): new function
