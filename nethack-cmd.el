@@ -1,4 +1,33 @@
-;;; FIXME: add copyright
+;;; nethack-cmd.el --- Nethack command definitions
+
+;; Copyright (C) 2001  Ryan Yeske
+
+;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
+;; Keywords: games
+
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
+
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+;; Boston, MA 02111-1307, USA.
+
+;;; Commentary:
+
+;; 
+
+;;; Code:
+
+(provide 'nethack-cmd)
+
 ;;; cmd.c is the cheat sheet for this file
 
 (defmacro defun-nethack-command (fun docstr cmdstr &rest body)
@@ -6,9 +35,11 @@
   `(defun ,(intern (concat "nethack-command-" (symbol-name fun))) (&optional count)
      ,docstr
      (interactive "p")
-     ,(if cmdstr
-	  `(nethack-handle-command ,cmdstr count))
-     (progn ,@body)))
+     (unwind-protect
+	 ,(if cmdstr
+	      `(nh-send-and-wait
+		(concat ,cmdstr " " (if count (number-to-string count) "1"))))
+       ,@body)))
 
 (defun-nethack-command north		;k
   "Go north 1 space (or if number_pad is on, kick something)"
@@ -165,13 +196,13 @@
 
 (defun-nethack-command previous-message	; ^P
   "Toggle through previously displayed game messages"
-  nil ;;"doprev"
+  nil ;;"doprev" FIXME: is not implemented in C
   (nethack-api-doprev-message))
 
 (defun-nethack-command redraw-screen	; ^R
   "Redraw screen"
   "redraw"
-  (nethack-setup-window-configuration))
+  (nethack-restore-window-configuration))
 
 ;;; FIXME: defun these:
 (defun-nethack-command redo-previous "Redo the previous command" "xxx") ;^A
@@ -191,3 +222,4 @@
 (defun-nethack-command show-tool-in-use "Show the tools currently in use" "xxx") ;(
 
 (provide 'nethack-cmd)
+;;; nethack-cmd.el ends here

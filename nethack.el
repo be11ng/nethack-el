@@ -1,14 +1,16 @@
-;;; nethack.el --- run Nethack as an inferior process in Emacs
+;;; nethack.el -- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id: nethack.el,v 1.45 2001/10/23 10:38:43 rcyeske Exp $
+;;; $Id: nethack.el,v 1.46 2001/10/24 18:35:36 sabetts Exp $
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
-
 
+;;; Commentary:
+;; 
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
 
+;;; Code:
 (defgroup nethack nil
   "Emacs lisp frontend to the lisp window port of Nethack 3.3.x."
   :group 'games)
@@ -21,6 +23,12 @@
     "Hook run after loading nethack."
     :type '(hook)
     :group 'nethack)
+
+;; FIXME: what should this look like?
+(defface nethack-black-face
+  `((t (:foreground "blue")))
+  "nethack black face"
+  :group 'nethack-faces-faces)
 
 (defface nethack-red-face
   `((((type tty) (class color))
@@ -84,9 +92,9 @@
   `((((type tty) (class color))
      (:foreground "white"))
     (((class color) (background dark))
-     (:foreground "gray"))
+     (:foreground "lightgray"))
     (((class color) (background light))
-     (:foreground "gray20"))
+     (:foreground "darkgray"))
     (t (:foreground "gray")))
   "nethack gray"
   :group 'nethack-faces)
@@ -94,8 +102,10 @@
 (defface nethack-dark-gray-face
   `((((type tty) (class color))
      (:foreground "black" :bold t))
-    (((class color))
-     (:foreground "gray50"))
+    (((class color) (background dark))
+     (:foreground "darkgray"))
+    (((class color) (background light))
+     (:foreground "lightgray"))
     (t (:foreground "gray")))
   "nethack dark gray"
   :group 'nethack-faces)
@@ -185,38 +195,34 @@
   "Vector indexed by Nethack's color number.")
 
 
+(defvar nh-comint-proc nil)
+
 (defun nethack ()
   "Start a game of Nethack.
 
 The variable `nethack-program' is the name of the executable to run."
   (interactive)
-  (if (and (processp nethack-process)
-	   (eq (process-status nethack-process) 'run))
+  (if (and (processp nh-comint-proc)
+	   (eq (process-status nh-comint-proc) 'run))
       (progn
-	(nethack-setup-window-configuration)
+	(nethack-restore-window-configuration)
 	(message "Nethack process already running..."))
-
-    (make-variable-buffer-local 'nethack-buffer-type)
-
-    ;; clean up old buffers
-    (mapc (lambda (b) (kill-buffer (cdr b))) nethack-buffer-table)
-    (setq nethack-buffer-table nil)
-    (if (get-buffer nethack-raw-print-buffer-name)
-	(kill-buffer nethack-raw-print-buffer-name))
-
-    (setq nethack-waiting-for-command-flag nil) ;move these to nethack-mode
-    (setq nethack-command-queue nil)
-
-    (setq nethack-process (nethack-start-program))))
-
-
-(defun nethack-quit ()
-  "Quit nethack."
-  (interactive)
-  (kill-process nethack-process))
+    (save-excursion
+      (pop-to-buffer "*nh*")
+      (erase-buffer)
+      (apply 'make-comint "nh" nethack-program nil nethack-program-args)
+      (nh-comint-mode)
+      (setq nh-comint-proc (get-buffer-process (current-buffer)))
+      (set-process-filter nh-comint-proc 'nh-filter)
+      (set-process-sentinel nh-comint-proc 'nh-sentinel)
+      (make-variable-buffer-local 'nethack-buffer-type)	; FIXME: obsolete?
+      (setq nethack-menu nil))))
 
-;;; Process code to communicate with the Nethack executable
-(defvar nethack-process nil)
+;;;; Process code to communicate with the Nethack executable
+(define-derived-mode nh-comint-mode comint-mode "Nethack Process"
+  (make-local-variable 'comint-prompt-regexp)
+  (setq comint-prompt-regexp
+	"^\\(command\\|menu\\|dummy\\|direction\\|number\\|string\\)> *"))
 
 (defcustom nethack-program "nethack"
   "Program to run to start a game of Nethack."
@@ -228,99 +234,68 @@ The variable `nethack-program' is the name of the executable to run."
   :type '(repeat string)
   :group 'nethack)
 
-(defvar nethack-process-buffer-name "*nethack-process*"
-  "Name of the buffer used to communicate with `nethack-program'.")
+(defun nh-sentinel (proc msg)
+  "Nethack background process sentinel.
+PROC is the process object and MSG is the exit message."
+  (if (buffer-name (process-buffer proc))
+      (save-excursion
+	(set-buffer (process-buffer proc))
+	(goto-char (point-max))
+	(insert ?\n "Nethack " msg)))
+  (delete-process proc))
 
-(defvar nethack-process-name "nethack")
+(defun nh-filter (proc string)
+  "Insert contents of STRING into the buffer associated with PROC.
+Evaluate the buffer contents between the last prompt and the current
+position if we are looking at a prompt."
+  ;; insert output into process buffer
+  (comint-output-filter proc string)
+  ;; if we have made it to a prompt, evaluate the block of output
+  (if (buffer-name (process-buffer proc))
+      (with-current-buffer (set-buffer (process-buffer proc))
+	(goto-char (process-mark proc))
+	(forward-line 0)
+	(if (looking-at comint-prompt-regexp)
+	    (let ((prompt (match-string 1)))
+	      (eval-region comint-last-input-end (point))
+	      (cond ((or (equal prompt "command")
+			 (equal prompt "menu"))
+		     (sit-for 0)
+		     (setq nh-at-prompt t)))))
+	(goto-char (point-max)))))
 
-(defun nethack-start-program ()
-  "Start `nethack-program' with `nethack-program-args' as an
-asynchronous subprocess.  Returns a process object."
-  (save-excursion
-    (set-buffer (get-buffer-create nethack-process-buffer-name))
-    (erase-buffer))
-  (let ((proc (apply 'start-process nethack-process-name
-		     nethack-process-buffer-name
-		     nethack-program nethack-program-args)))
-    (set-process-filter proc 'nethack-process-filter)
-    proc))
-
-(defun nethack-process-send-string (string)
-  "Send a STRING to the running `nethack-process'.  Appends a newline
-char to the STRING."
-  (let ((string-to-send (concat string "\n")))
-    (if (and (processp nethack-process)
-	     (eq (process-status nethack-process) 'run))
-	(progn
-	  ;; log the command in the process buffer
-	  (nethack-log-string (concat " => " string))
-
-	  ;; send it...
-	  (process-send-string nethack-process string-to-send))
-      (error "Nethack process not running"))))
-
-(defun nethack-process-send (form)
-  "Send lisp FORM to the running `nethack-process'."
-  (nethack-process-send-string
-   (if (not form)
-       "()"				; the process doesn't handle
-					; `nil' properly
-     (prin1-to-string form))))
-
-(defun nethack-process-filter (proc string)
-  (with-current-buffer (process-buffer proc)
-    (goto-char (point-max))
-    (insert string)
-
-    (let (old-mark)
-      (condition-case ()
-	  (while t
-	    (setq oldpos (marker-position (process-mark proc)))
-	    (let ((form (read (process-mark proc))))
-	      (save-excursion (eval form))))
-	(end-of-file
-	 (set-marker (process-mark proc) oldpos))))))
-
-(defun nethack-log-string (str)
-  "Write STR into `nethack-process-buffer'."
-  (with-current-buffer (process-buffer nethack-process)
-    (goto-char (- (point-max) 1))
-    (insert " ; " str)
-    (set-marker (process-mark nethack-process) (point))))
-
+(defvar nh-at-prompt nil)
+(defun nh-send (form)
+  (if (buffer-name (process-buffer nh-comint-proc))
+      (save-excursion
+	(set-buffer (process-buffer nh-comint-proc))
+	(save-restriction
+	  (widen)
+	  (goto-char (point-max))
+	  (insert (cond
+		   ((null form) "()")	; the process doesn't handle `nil'
+		   ((stringp form) form)
+		   (t (prin1-to-string form))))
+	  (comint-send-input)))
+    (error "No nethack process")))
+  
+(defun nh-send-and-wait (form)
+  (nh-send form)
+  ;; wait until we get back to a "command" prompt before returning
+  (setq nh-at-prompt nil)
+  (while (not nh-at-prompt)
+    (accept-process-output nh-comint-proc)))
 
 ;;; Buffer code (aka windows in Nethack)
 
 (defun nethack-buffer (id)
-  "Returns the buffer that corresponds to the Nethack window ID."
-  (cdr (assq id nethack-buffer-table)))
+  "Return the buffer that corresponds to the Nethack window ID."
+  (let ((buffer (cdr (assq id nethack-buffer-table))))
+    (if (buffer-live-p buffer)
+	buffer
+      'nobuffer)))
 
 ;;; Main Map Buffer code
-(defvar nethack-command-queue nil
-  "List of strings held to be sent to the running `nethack-process' in
-response to the next call to `nethack-api-get-command'.")
-
-
-(defvar nethack-waiting-for-command-flag nil
-  "True if the nethack process is waiting for a command.")
-
-
-(defun nethack-handle-command (cmd &optional n)
-  "If the nethack process is waiting for a command, send CMD to the
-nethack process.  Otherwise, add CMD to `nethack-command-queue' for
-eventual delivery to the running nethack process. N is the number of
-times the command should be executed."
-  (interactive)
-  (if (null n) (setq n 1))
-  (if nethack-waiting-for-command-flag
-      (progn
-	(nethack-process-send-string (concat cmd " " (int-to-string n)))
-	(setq nethack-waiting-for-command-flag nil))
-    (setq nethack-command-queue
-	  (nconc nethack-command-queue
-		 (list (concat cmd " " (int-to-string n)))))))
-
-
 (defcustom nethack-map-mode-hook nil
   "Functions to be called after setting up the Nethack map."
   :type '(hook)
@@ -340,35 +315,28 @@ times the command should be executed."
   (setq major-mode 'nethack-map-mode)
 
   ;; make sure show-paren-mode is off in this buffer
-  (make-local-variable 'show-paren-mode)
-  (show-paren-mode -1)
+  ;; FIXME: do this with syntax tables or something
+;;  (make-local-variable 'show-paren-mode)
+;;  (show-paren-mode -1)
 
   (run-hooks 'nethack-map-mode-hook))
- 
 
-(defvar nethack-map-width 79 "Max width of the map")
-(defvar nethack-map-height 22 "Max height of the map")
+(defvar nethack-map-width 79 "Max width of the map.")
+(defvar nethack-map-height 22 "Max height of the map.")
 
 ;;; status line handling
-;; FIXME: dirty hack:
-(defvar nethack-status-line-number 0
-  "The line that will be updated in the status window next time
-`nethack-api-putstr' is called.")
-
-(defvar nethack-status-lines '("" . "")
-  "The 2 lines of the status window")
 
 (defcustom nethack-status-highlight-delay 5
-  "The number of turns to keep a changed status field highlighted"
+  "The number of turns to keep a changed status field highlighted."
   :type '(integer)
   :group 'nethack)
 
 (defvar nethack-status-alist nil
-  "An alist of the players status")
+  "An alist of the players status.")
 
-(defcustom nethack-status-string
+(defcustom nethack-status-format
   "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"
-  "The nethack status format string"
+  "The nethack status format string."
   :type '(string)
   :group 'nethack)
 
@@ -390,24 +358,25 @@ times the command should be executed."
 				    0))
 	     (data-changed (not (string-equal (match-string count line-1)
 					      (elt old-status 1)))))
-      (add-to-list 'status (list (elt symbols-1 (1- count))
-				 (if (match-string count line-1)
-				     (match-string count line-1)
-				   "")
-				 (if data-changed
-				     (* (if (eq (elt symbols-2 (1- count)) 'armor-class)
-					    -1 1)
-					(if (< (string-to-int (match-string count line-1))
-					       (if (null (elt old-status 1))
-						   0
-						 (string-to-int (elt old-status 1))))
-					 (- nethack-status-highlight-delay)
-					 nethack-status-highlight-delay))
-				   (cond ((> old-highlight-delay 0)
-					  (1- old-highlight-delay))
-					 ((< old-highlight-delay 0)
-					  (1+ old-highlight-delay))
-					 (t 0)))))
+      (push (list (elt symbols-1 (1- count))
+		  (if (match-string count line-1)
+		      (match-string count line-1)
+		    "")
+		  (if data-changed
+		      (* (if (eq (elt symbols-2 (1- count)) 'armor-class)
+			     -1 1)
+			 (if (< (string-to-int (match-string count line-1))
+				(if (null (elt old-status 1))
+				    0
+				  (string-to-int (elt old-status 1))))
+			     (- nethack-status-highlight-delay)
+			   nethack-status-highlight-delay))
+		    (cond ((> old-highlight-delay 0)
+			   (1- old-highlight-delay))
+			  ((< old-highlight-delay 0)
+			   (1+ old-highlight-delay))
+			  (t 0))))
+	    status)
       (setq count (1- count))))
 
     ;; Parse the second line
@@ -420,25 +389,26 @@ times the command should be executed."
 				    0))
 	     (data-changed (not (string-equal (match-string count line-2)
 					      (elt old-status 1)))))
-	(add-to-list 'status (list (elt symbols-2 (1- count))
-				   (if (match-string count line-2)
-				       (match-string count line-2)
-				     "")
-				   (if data-changed
-				       (* (if (eq (elt symbols-2 (1- count)) 'armor-class)
-					      -1 1)
-					  (if (< (string-to-int (match-string count line-2)) 
-						 (if (null (elt old-status 1))
-						     0
-						   (string-to-int (elt old-status 1))))
-					  (- nethack-status-highlight-delay)
-					  nethack-status-highlight-delay))
-				     (cond ((> old-highlight-delay 0)
-					  (1- old-highlight-delay))
-					 ((< old-highlight-delay 0)
-					  (1+ old-highlight-delay))
-					 (t 0)))))
-      (setq count (1- count))))
+	(push (list (elt symbols-2 (1- count))
+		    (if (match-string count line-2)
+			(match-string count line-2)
+		      "")
+		    (if data-changed
+			(* (if (eq (elt symbols-2 (1- count)) 'armor-class)
+			       -1 1)
+			   (if (< (string-to-int (match-string count line-2))
+				  (if (null (elt old-status 1))
+				      0
+				    (string-to-int (elt old-status 1))))
+			       (- nethack-status-highlight-delay)
+			     nethack-status-highlight-delay))
+		      (cond ((> old-highlight-delay 0)
+			     (1- old-highlight-delay))
+			    ((< old-highlight-delay 0)
+			     (1+ old-highlight-delay))
+			    (t 0))))
+	      status)
+	(setq count (1- count))))
 
     ;; Fill in the flags
     (mapcar (function (lambda (pair)
@@ -468,7 +438,7 @@ times the command should be executed."
     (setq nethack-status-alist status)))
 
 (defun nethack-format-status (fmt)
-  "Return a string containing the player status. fmt is the format string."
+  "Return a string containing the player status.  FMT is the format string."
     (let ((str fmt)
 	  (match-phrase '((name . "%n")
 			  (strength . "%s")
@@ -501,7 +471,7 @@ times the command should be executed."
 				(start 0))
 			    (when (string-match (cdr (assoc (elt l 0) match-phrase)) str)
 			      (setq str (replace-match (cond ((> (elt l 2) 0)
-							      (propertize (elt l 1) 
+							      (propertize (elt l 1)
 									  'face 'nethack-green-face))
 							     ((< (elt l 2) 0)
 							      (propertize (elt l 1)

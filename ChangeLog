@@ -1,3 +1,34 @@
+2001-12-02  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-api.el (nethack-return): Remove.
+	(nh-use-cooked-status): New variable.
+	(nethack-api-update-status): New function.
+	(nethack-api-get-command): Comment out, it is obsolete with new
+	comint process handling.
+	(nethack-restore-window-configuration): Rename from
+	nethack-setup-window-configuration.
+	(nethack-api-create-message-window)
+	(nethack-api-create-status-window, nethack-api-create-map-window)
+	(nethack-api-create-inventory-window)
+	(nethack-api-create-menu-window, nethack-api-create-text-window):
+	New function.
+
+	* nethack-cmd.el (defun-nethack-command): Update to handle new
+	process handling code nh-send-and-wait.
+
+	* nethack.el (nethack): Use comint to communicate with process.
+	(nh-comint-mode): New function.
+	(nethack-process-buffer-name): Remove.
+	(nethack-process-name): Remove.
+	(nethack-start-program): Remove.
+	(nethack-process-send-string): Remove.
+	(nh-send): New function.
+	(nh-send-and-wait): New function.
+	(nethack-status-line-number, nethack-status-line):
+	Remove.
+	(nh-sentinel): New function.
+	(nh-filter): New function.
+
 2001-10-23  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack-parse-status-lines): flags are highlighted
