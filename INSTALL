@@ -1,0 +1,24 @@
+-*- outline -*-
+
+This needs more detail, obviously.
+
+* download nethack-331.tgz from nethack.org or some mirror.
+
+* apply the patch
+enh-331.patch
+
+* configure it and build it
+Read the Install file in the nethack tree.
+
+Select LISP everywhere that is appropriate.
+
+* byte-compile and install the emacs lisp code
+make, and copy the .elc files somewhere into the load-path
+
+* start emacs
+
+* (require 'nethack)
+or do some autoload magic
+
+* M-x nethack RET
+and 'hack away.
