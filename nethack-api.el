@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.81 2002/09/21 02:07:25 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.82 2002/09/27 06:36:59 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -644,8 +644,7 @@ displayed."
     (nh-send menu-data)
     (and (window-configuration-p nh-window-configuration)
 	 (set-window-configuration nh-window-configuration))
-    (setq nh-active-menu-buffer nil)
-    (message "%S" menu-data)))
+    (setq nh-active-menu-buffer nil)))
 	
 (defun nh-menu-cancel ()
   "Dismiss a menu with out making any choices."
