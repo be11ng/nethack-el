@@ -1,8 +1,9 @@
 ;;; nethack-example.el --- Sample configurations for nethack-el
 
-;; Copyright (C) 2002  Shawn Betts
+;; Copyright (C) 2002  Shawn Betts and Ryan Yeske
 
 ;; Author: Shawn Betts <sabetts@vcn.bc.ca>
+;; Version: $Id$
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -22,16 +23,26 @@
 
 ;;; Commentary:
 
-;; Here are some common customizations that illustrate the power of
-;; nethack and emacs combined.
+;; Here are some hacks that illustrate the power of nethack and emacs
+;; combined.
 
 ;;; Code:
 
-;; This code will add a time-stamp to every message that gets printed
-;; in the message window.
-(add-hook 'nethack-message-pre-print-hook 
-	  (lambda ()
-	    (insert (format "(%d) " (elt nethack-status-attribute-T 0)))))
+(defun nethack-timestamp-message ()
+  "Add a time-stamp to every message.
+
+Add the following to your ~/.emacs
+
+  (add-hook 'nethack-message-pre-print-hook 
+	    'nethack-timestamp-message)"
+  (insert (format "(%d) " (elt nethack-status-attribute-T 0))))
+
+(defun nh-gdb ()
+  "Debug running nethack process with gdb."
+  (interactive)
+  (gdb (format "gdb %s/nethack %d"
+	       nethack-directory
+	       (process-id nh-proc))))
 
 (provide 'nethack-example)
 ;;; nethack-example.el ends here
