@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.15 2000/09/23 18:24:18 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.16 2000/09/27 05:02:02 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -582,7 +582,7 @@ it, we can just bury them or something."
 (defun nethack-api-delay-output ()
   "Sleep for 50ms."
   (sleep-for 0 50)
-  'void-maybe-sketchy)
+  'void)
 
 
 ;; askname() -- Ask the user for a player name.
