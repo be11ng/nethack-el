@@ -229,8 +229,8 @@ The variable `nethack-program' is the name of the executable to run."
       ;; Reset intermediate variables.
       (setq nethack-status-alist nil)
       ;;; Start the process.
-      ;;(if (get-buffer "*nh*")
-      ;;(kill-buffer "*nh*"))
+      (if (get-buffer "*nethack-output*")
+	  (kill-buffer "*nethack-output*"))
       ;; pop to buffer so if there is an error right away the user can
       ;; see what the output from the process was
       ;;(pop-to-buffer "*nh*")
@@ -264,12 +264,10 @@ The variable `nethack-program' is the name of the executable to run."
 (defun nh-sentinel (proc msg)
   "Nethack background process sentinel.
 PROC is the process object and MSG is the exit message."
-  (if (buffer-name (process-buffer proc))
-      (save-excursion
-	(set-buffer (process-buffer proc))
-	(eval-region comint-last-input-end (point))
-	(goto-char (point-max))
-	(insert ?\n "Nethack " msg)))
+  (with-current-buffer (get-buffer-create "*nethack-output*")
+    (eval-region (point-min) (point-max))
+    (insert "Nethack " msg)
+    (pop-to-buffer (current-buffer)))
   (delete-process proc))
 
 (defun nh-filter (proc string)
@@ -277,7 +275,7 @@ PROC is the process object and MSG is the exit message."
 Evaluate the buffer contents between the last prompt and the current
 position if we are looking at a prompt."
   ;; insert output into process buffer
-  (with-current-buffer (get-buffer-create " *nethack-output*")
+  (with-current-buffer (get-buffer-create "*nethack-output*")
     (goto-char (point-max))
     (insert string)
     (forward-line 0)
