@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.80 2002/09/21 01:48:30 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.81 2002/09/21 02:07:25 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -35,8 +35,6 @@
 (require 'gamegrid)
 (require 'overlay)			; needed for XEmacs
 (require 'nethack-keys)
-(eval-when-compile
-  (require 'nethack-glyphs))
 
 ;;; Buffer handling
 (defvar nh-map-buffer nil)
@@ -60,7 +58,7 @@
 (defun nhapi-raw-print (str)
   (save-current-buffer
     (let ((buffer (get-buffer-create nh-raw-print-buffer-name)))
-      (pop-to-buffer nh-message-buffer)
+      (pop-to-buffer buffer)
       (delete-other-windows)
       (insert str "\n"))))
 
@@ -446,6 +444,7 @@ all of the appropriate setup."
 (defun nhapi-create-message-window ()
   "Create the message buffer."
   (with-current-buffer (get-buffer-create "*nethack message*")
+    (erase-buffer)
     (setq nh-message-highlight-overlay
 	  (make-overlay (point-max) (point-max)))
     (overlay-put nh-message-highlight-overlay 
@@ -519,7 +518,8 @@ The TYPE argument is legacy and serves no real purpose."
 (defun nhapi-block ()
   ;;(nh-read-char "nethack: -- more --")
   (read-from-minibuffer "--more--")
-  (nh-send 'dummy))
+  (nhapi-clear-message)
+  (nh-send 'block-dummy))
 
 (defvar nh-active-menu-buffer nil)
 (defvar nh-menu-how nil
@@ -532,7 +532,7 @@ The TYPE argument is legacy and serves no real purpose."
       (if (or (not window)
 	      (>= size (window-height window)))
 	  (nhapi-select-menu menuid 'pick-none)
-	(nhapi-message 'atr-none 
+	(nhapi-message 'atr-none
 			     (buffer-substring (point-min)
 					       (- (point-max) 1)))
 	(nh-send 'dummy)))))
@@ -716,8 +716,8 @@ the menu is dismissed."
     (if buffer
 	(progn
 	  (setq nh-window-configuration (current-window-configuration))
-	  ;; use the window displaying the message buffer for the
-	  ;; menu, if possible.
+	  ;; Use the window displaying the message buffer for the menu
+	  ;; buffer, if possible.
 	  (let ((message-window (get-buffer-window nh-message-buffer)))
 	    (if (not message-window)
 		(pop-to-buffer (nh-menu-buffer menuid) nil t)

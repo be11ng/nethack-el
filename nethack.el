@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.71 2002/09/21 02:07:25 rcyeske Exp $
+;; Version: $Id: nethack.el,v 1.72 2002/09/21 02:56:55 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -117,7 +117,6 @@ attribute, the new value and the old value."
 (defgroup nethack-faces nil
   "Customizations for faces used by Enethack."
   :group 'nethack)
-
 
 (defface nethack-status-good-face
   `((((type tty)
@@ -408,7 +407,9 @@ PROC is the process object and MSG is the exit message."
     (nh-log (buffer-substring (point-min) (point)))
     (eval-region (point-min) (point-max))
     (insert "Nethack " msg)
-    (pop-to-buffer (current-buffer)))
+;;    (if (not (string-equal msg "Nethack finished"))
+;;	(pop-to-buffer (current-buffer)))
+    )
   (delete-process proc))
 
 (defvar nh-log-process-text t)
