@@ -250,10 +250,10 @@
   (interactive)
   (nethack-handle-command "remring"))
 
-(defun nethack-command-search ()
+(defun nethack-command-search (&optional n)
   "s       Search for traps and secret doors"
-  (interactive)
-  (nethack-handle-command "search"))
+  (interactive "p")
+  (nethack-handle-command "search" n))
 
 (defun nethack-command-save-game ()
   "S       Save the game"
@@ -375,15 +375,10 @@
   (interactive)
   (nethack-handle-command "discovered"))
 
-(defun nethack-command-rest-one-move ()
+(defun nethack-command-rest-one-move (&optional n)
   ".       Rest one move while doing nothing"
-  (interactive)
-  (nethack-handle-command "null"))
-
-(defun nethack-command-rest-one-move ()
-  "<space>     Rest one move while doing nothing (if rest_on_space option is on)"
-  (interactive)
-  (nethack-handle-command "null"))
+  (interactive "p")
+  (nethack-handle-command "null" n))
 
 (defun nethack-command-look-here ()
   ":       Look at what is on the floor"

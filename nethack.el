@@ -322,18 +322,20 @@ response to the next call to `nethack-api-get-command'.")
   "True if the nethack process is waiting for a command.")
 
 
-(defun nethack-handle-command (cmd)
+(defun nethack-handle-command (cmd &optional n)
   "If the nethack process is waiting for a command, send CMD to the
 nethack process.  Otherwise, add CMD to `nethack-key-queue' for
-eventual delivery to the running nethack process."
+eventual delivery to the running nethack process. N is the number of
+times the command should be executed."
   (interactive)
+  (if (null n) (setq n 1))
   (if nethack-waiting-for-command-flag
       (progn
-	(nethack-process-send-string cmd)
+	(nethack-process-send-string (concat cmd " " (int-to-string n)))
 	(setq nethack-waiting-for-command-flag nil))
     (setq nethack-command-queue
 	  (append nethack-command-queue
-		  (list cmd)))))
+		  (list (concat cmd " " (int-to-string n)))))))
 
 
 (defvar nethack-map-mode-hook nil
