@@ -344,7 +344,7 @@ times the command should be executed."
 (defvar nethack-map-height 22 "Max height of the map")
 
 (defun nethack-parse-status-lines (line-1 line-2)
-  (let ((regexp-line-1 "\\(\\(?:\\w+\\s-\\)*\\w+\\)+\\s-+St:\\([0-9]+\\)\\s-+Dx:\\([0-9]+\\)\\s-+Co:\\([0-9]+\\)\\s-+In:\\([0-9]+\\)\\s-+Wi:\\([0-9]+\\)\\s-+Ch:\\([0-9]+\\)\\s-+\\(\\w+\\)\\s-*\\(\\(?:Satiated\\)\\|\\(?:Hungry\\)\\|\\(?:Weak\\)\\|\\(?:Fainting\\)\\|\\(?:Fainted\\)\\|\\(?:Starved\\)\\)?\\s-?\\(Conf\\)?\\s-?\\(\\(?:FoodPois\\)\\|\\(Ill\\)\\)?\\s-?\\(Blind\\)?\\s-?\\(Stun\\)?\\s-?\\(Hallu\\)?\\s-?\\(Slime\\)?\\s-?\\(\\(?:Burdened\\)\\|\\(?:Stressed\\)\\|\\(?:Strained\\)\\|\\(?:Overtaxed\\)\\(?:Overloaded\\)\\)?")
+  (let ((regexp-line-1 "\\(\\(?:\\w+\\s-\\)*\\w+\\)+\\s-+St:\\([0-9]+\\)\\s-+Dx:\\([0-9]+\\)\\s-+Co:\\([0-9]+\\)\\s-+In:\\([0-9]+\\)\\s-+Wi:\\([0-9]+\\)\\s-+Ch:\\([0-9]+\\)\\s-+\\(\\w+\\)")
 	(regexp-line-2 "Dlvl:\\([0-9]+\\)\\s-+\\$:\\([0-9]+\\)\\s-+HP:\\([0-9]+\\)\\s(\\([0-9]+\\)\\s)\\s-+Pw:\\([0-9]+\\)\\s(\\([0-9]+\\)\\s)\\s-+AC:\\(-?[0-9]+\\)\\s-+Xp:\\([0-9]+\\)\\/\\([0-9]+\\)\\s-+T:\\([0-9]+\\)")
 	(symbols-1 '(name strength dexterity constution intelligence wisdom charisma alignment))
 	(symbols-2 '(dungeon-level zorkmids hitpoints max-hitpoints power max-power armor-class experience experience-level-up time))
@@ -358,8 +358,8 @@ times the command should be executed."
 				 (if (match-string count line-1)
 				     (match-string count line-1)
 				   "")
-				 (not (string-equal (match-string count line-1)
-						    (elt (assoc (elt symbols-1 (1- count)) nethack-status-alist) 1)))))
+				 (not (equal (match-string count line-1)
+					     (elt (assoc (elt symbols-1 (1- count)) nethack-status-alist) 1)))))
       (setq count (1- count)))
 
     (string-match regexp-line-2 line-2)
@@ -367,7 +367,7 @@ times the command should be executed."
     (while (> count 0)
       (add-to-list 'status (list (elt symbols-2 (1- count))
 				(match-string count line-2) 
-				(not (string-equal (match-string count line-2) 
+				(not (equal (match-string count line-2) 
 						   (elt (assoc (elt symbols-2 (1- count)) nethack-status-alist) 1)))))
       (setq count (1- count)))
 

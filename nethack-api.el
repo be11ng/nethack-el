@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.37 2001/10/19 11:02:17 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.38 2001/10/19 11:05:16 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -167,11 +167,11 @@
     (cond ((eq nethack-buffer-type 'nhw-status)
 	   (if (= nethack-status-line-number 0)
 	       (setcar nethack-status-lines str)
-	     (setcdr nethack-status-lines str))
+	     (setcdr nethack-status-lines str)
 	   (set-buffer (nethack-buffer winid))
 	   (erase-buffer)
 	   (nethack-parse-status-lines (car nethack-status-lines) (cdr nethack-status-lines))
-	   (insert (nethack-format-status nethack-status-string)))
+	   (insert (nethack-format-status nethack-status-string))))
 	  ((eq nethack-buffer-type 'nhw-message)
 	   (goto-char (point-max))
 	   (insert "\n" (propertize str 'face 'bold))
