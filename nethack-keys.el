@@ -70,8 +70,11 @@
   (let ((map (make-sparse-keymap)))
     (suppress-keymap map)
     (define-key map "^" 'nethack-command-identify-trap)	;^
+
     ;;^[ Cancel command
-    (define-key map "\e[" 'nethack-command-cancel)
+    ;; I don't think we need a cancel command (rcy)
+    ;;(define-key map "\e[" 'nethack-command-cancel)
+
     ;;^A      Redo the previous command
     (define-key map "\C-a" 'nethack-command-redo-previous)
     ;;^C      Quit the game
