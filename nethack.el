@@ -1,7 +1,7 @@
 ;;; nethack.el -- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id: nethack.el,v 1.46 2001/10/24 18:35:36 sabetts Exp $
+;;; $Id: nethack.el,v 1.47 2001/12/02 06:30:29 rcyeske Exp $
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 ;;; Commentary:
@@ -9,6 +9,7 @@
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
+(require 'nethack-glyphs)
 
 ;;; Code:
 (defgroup nethack nil
@@ -182,6 +183,9 @@
     (t (:foreground "gray")))
   "nethack white"
   :group 'nethack-faces)
+
+(defvar nethack-use-glyphs (display-images-p)
+  "If set to T, nethack will use XPMs to draw glyphs.")
 
 (defconst nethack-colors
   [nethack-black-face 		nethack-red-face
