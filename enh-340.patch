@@ -17,8 +17,8 @@ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR B
 INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
---- nethack-3.4.0/include/config.h	Wed Mar 20 15:42:43 2002
-+++ nethack/include/config.h	Wed Jul 10 13:20:51 2002
+--- nethack-3.4.0/include/config.h	2002-03-20 15:42:43.000000000 -0800
++++ nethack/include/config.h	2002-07-18 12:56:46.000000000 -0700
 @@ -42,17 +42,18 @@
   * Define all of those you want supported in your binary.
   * Some combinations make no sense.  See the installation document.
@@ -69,8 +69,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #endif
  
  #ifndef COMPRESS
---- /dev/null	Thu Jul 26 19:41:53 2001
-+++ nethack/include/winlisp.h	Thu Jan 10 19:54:20 2002
+--- /dev/null	2002-09-07 13:22:20.000000000 -0700
++++ nethack/include/winlisp.h	2002-01-10 19:54:20.000000000 -0800
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
 +#define WINLISP_H
@@ -142,8 +142,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +E void FDECL(lisp_outrip, (winid,int));
 +
 +#endif /* WINLISP_H */
---- nethack-3.4.0/src/windows.c	Wed Mar 20 15:43:21 2002
-+++ nethack/src/windows.c	Wed Jul 10 13:15:03 2002
+--- nethack-3.4.0/src/windows.c	2002-03-20 15:43:21.000000000 -0800
++++ nethack/src/windows.c	2002-07-10 13:15:03.000000000 -0700
 @@ -40,6 +40,10 @@
  #ifdef MSWIN_GRAPHICS
  extern struct window_procs mswin_procs;
@@ -155,18 +155,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  
  STATIC_DCL void FDECL(def_raw_print, (const char *s));
  
-@@ -80,6 +84,9 @@
- #endif
+@@ -81,6 +85,9 @@
  #ifdef MSWIN_GRAPHICS
      { &mswin_procs, 0 },
-+#endif
+ #endif
 +#ifdef LISP_GRAPHICS
 +    { &lisp_procs, win_lisp_init },
- #endif
++#endif
      { 0, 0 }		/* must be last */
  };
---- nethack-3.4.0/sys/unix/Makefile.src	Wed Mar 20 15:43:54 2002
-+++ nethack/sys/unix/Makefile.src	Wed Jul 10 13:15:40 2002
+ 
+--- nethack-3.4.0/sys/unix/Makefile.src	2002-03-20 15:43:54.000000000 -0800
++++ nethack/sys/unix/Makefile.src	2002-07-10 13:15:40.000000000 -0700
 @@ -202,6 +202,11 @@
  #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
  
@@ -198,9 +198,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  # all windowing-system-dependent .cpp (for dependencies and such)
  WINCXXSRC = $(WINQTSRC) $(WINBESRC)
  
---- /dev/null	Thu Jul 26 19:41:53 2001
-+++ nethack/win/lisp/ChangeLog	Wed Jul 10 13:16:21 2002
-@@ -0,0 +1,256 @@
+--- /dev/null	2002-09-07 13:22:20.000000000 -0700
++++ nethack/win/lisp/ChangeLog	2002-09-12 21:04:01.000000000 -0700
+@@ -0,0 +1,275 @@
++2002-09-12  Ryan Yeske  <rcyeske@vcn.bc.ca>
++
++	* winlisp.c (lisp_curs): Don't send winid.  Add error check.
++	(lisp_putstr): Call `nethack-api-message' or
++	`nethack-api-menu-putstr' when appropriate.
++	(lisp_nhgetch): Update error message call.
++	(lisp_create_nhwindow): Don't send winids when creating message,
++	map, or status windows.
++	(lisp_clear_nhwindow): Call clear-message or clear-map instead of
++	clear-nhwindow.
++	(lisp_display_nhwindow): Call display-menu instead of
++	display-nhwindow.  Call block when handling case of blocking on
++	displaying the map window.
++	(lisp_destroy_nhwindow): Use WIN_* values instead of hardcoded
++	numbers.
++	(lisp_print_glyph): Don't send winid.  Add error check for bad
++	winids.
++	(lisp_outrip): Change reference to Enethack to nethack-el.
++
 +2002-04-23  Shawn  <sabetts@vcn.bc.ca>
 +
 +	* winlisp.c (lisp_player_selection): Update to use new 3.4.0
@@ -457,8 +476,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	Thu Jul 26 19:41:53 2001
-+++ nethack/win/lisp/TODO	Wed Jan 23 15:43:56 2002
+--- /dev/null	2002-09-07 13:22:20.000000000 -0700
++++ nethack/win/lisp/TODO	2002-01-23 15:43:56.000000000 -0800
 @@ -0,0 +1,55 @@
 +-*- outline -*-
 +
@@ -515,9 +534,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +something like what gnus has.  or maybe something else.
 +
 +I like what we have now, I think we can call this done.
---- /dev/null	Thu Jul 26 19:41:53 2001
-+++ nethack/win/lisp/winlisp.c	Wed Jul 10 13:16:21 2002
-@@ -0,0 +1,1785 @@
+--- /dev/null	2002-09-07 13:22:20.000000000 -0700
++++ nethack/win/lisp/winlisp.c	2002-09-12 21:03:46.000000000 -0700
+@@ -0,0 +1,1820 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +
@@ -1371,9 +1390,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +{
 +  if (window == WIN_MAP)
 +    lisp_cmd ("curs",
-+	      lisp_int (window);
 +	      lisp_int (x);
 +	      lisp_int (y));
++  else if (window == WIN_STATUS)
++    {
++      /* do nothing */
++    }
++  else
++    lisp_cmd ("error", lisp_string("lisp_curs bad window"); lisp_int (window));
 +}
 +
 +static void
@@ -1550,8 +1574,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	  statline1[0]='\0';
 +	}
 +    }
++  else if (window == WIN_MESSAGE)
++    lisp_cmd ("message", 
++	      lisp_literal (attr_to_string (attr));
++	      lisp_string (str));
 +  else
-+    lisp_cmd ("putstr",
++    lisp_cmd ("menu-putstr",
 +	      lisp_int (window);
 +	      lisp_literal (attr_to_string (attr));
 +	      lisp_string (str));
@@ -1807,7 +1835,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +      cmd = lisp_get_cmd (cmdstr);
 +      if (cmd == -1)
 +	{
-+	  printf ("(nethack-api-putstr 0 'atr-none \"undefined-command %s\")\n", cmdstr);
++	  printf ("(nethack-api-message 'atr-none \"undefined-command %s\")\n", cmdstr);
 +	  cmd = lisp_get_cmd ("null");
 +	}
 +
@@ -1959,13 +1987,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  switch (type)
 +    {
 +    case NHW_MESSAGE:
-+      lisp_cmd ("create-message-window", lisp_int (id));
++      lisp_cmd ("create-message-window",);
 +      break;
 +    case NHW_MAP:
-+      lisp_cmd ("create-map-window", lisp_int (id));
++      lisp_cmd ("create-map-window",);
 +      break;
 +    case NHW_STATUS:
-+      lisp_cmd ("create-status-window", lisp_int (id));
++      lisp_cmd ("create-status-window",);
 +      break;
 +    case NHW_TEXT:
 +      lisp_cmd ("create-text-window", lisp_int (id));
@@ -1980,7 +2008,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	lisp_cmd ("create-menu-window", lisp_int (id));
 +      break;
 +    default:
-+      panic ("Unknown window type: %d", type);
++      impossible ("Unknown window type: %d", type);
 +    };
 +
 +  return id;
@@ -1990,7 +2018,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +lisp_clear_nhwindow(window)
 +     winid window;
 +{
-+  lisp_cmd ("clear-nhwindow", lisp_int (window));	    
++  if (window == WIN_MESSAGE)
++    lisp_cmd ("clear-message",);
++  else if (window == WIN_MAP)
++    lisp_cmd ("clear-map",);
++  else
++    /* are other window types ever cleared? */
++    lisp_cmd ("error", lisp_string("clearing unknown winid"));
 +}
 +
 +void
@@ -1998,17 +2032,33 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +     winid window;
 +     boolean blocking;
 +{
-+  if (window == WIN_MESSAGE || window == WIN_STATUS)
++  /* don't send display messages for anything but menus */
++  char *dummy;
++  if (window != WIN_MESSAGE && window != WIN_STATUS && window != WIN_MAP)
 +    {
-+      /* do nothing */
-+    }
-+  else if ((window == WIN_MAP && blocking)
-+	   || window != WIN_MAP)
-+    {
-+      char *dummy;
-+      lisp_cmd ("display-nhwindow", lisp_int (window); lisp_t);
++      lisp_cmd ("display-menu", lisp_int (window));
 +      read_string ("menu", &dummy);
 +      free (dummy);
++    }
++  else if (blocking)
++    {
++      if (window == WIN_MESSAGE)
++	{
++	  /* blocking on the message window happens only at the end of
++	     the game */
++	  lisp_cmd ("INSERTYOURENDOFGAMEHACKHEREYESRIGHTHERE",);
++	}
++      else
++	{
++	  lisp_cmd ("block",);
++	  read_string ("dummy", &dummy);
++	  free (dummy);
++	}
++    }
++  else if (window == WIN_STATUS)
++    {
++      /* initial window setup hack here :) */
++      lisp_cmd ("restore-window-configuration",);
 +    }
 +}
 +
@@ -2016,11 +2066,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +lisp_destroy_nhwindow(window)
 +     winid window;
 +{
-+  if ((window != 0)
-+      && (window != 1)
-+      && (window != 2))		/* FIXME: don't hardcode */
++  if ((window != WIN_STATUS)
++      && (window != WIN_MESSAGE)
++      && (window != WIN_MAP))
 +    {
-+      lisp_cmd ("destroy-nhwindow", lisp_int (window));
++      lisp_cmd ("destroy-menu", lisp_int (window));
 +      return_winid (window);
 +    }
 +}
@@ -2258,14 +2308,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +    /* map glyph to character and color */
 +    mapglyph(glyph, &ch, &color, &special, x, y);
 +
-+    lisp_cmd ("print-glyph",
-+	      lisp_int (window);
-+	      lisp_int (x);
-+	      lisp_int (y);
-+	      lisp_int (color);
-+	      lisp_int (glyph);
-+	      lisp_int (glyph2tile[glyph]);
-+	      lisp_int (ch););
++    if (window == WIN_MAP)
++      lisp_cmd ("print-glyph",
++		lisp_int (x);
++		lisp_int (y);
++		lisp_int (color);
++		lisp_int (glyph);
++		lisp_int (glyph2tile[glyph]);
++		lisp_int (ch););
++    else
++      lisp_cmd ("error",
++		lisp_string ("lisp_print_glyph bad window");
++		lisp_int (window));
 +}
 +
 +#ifdef CLIPPING
@@ -2301,5 +2355,5 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	    lisp_int (window);	    
 +	    lisp_string (plname);
 +	    lisp_int (u.ugold);
-+	    lisp_string ("Died while trying to finish enethack."));
++	    lisp_string ("Died while trying to finish nethack-el."));
 +}
