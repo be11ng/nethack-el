@@ -1,3 +1,24 @@
+2001-05-06  shawn  <sabetts@diggin.lamenet.tmp>
+
+	* nethack-menu.el (nethack-menu-options): new defvar
+	(nethack-menu-widgets): likewise
+	(nethack-menu-how): likewise
+	(nethack-menu-mode-map): likewise
+	(nethack-menu-add-item): new function
+	(nethack-menu-create-item): likewise
+	(nethack-menu-draw): likewise
+	(nethack-menu-get-choices): likewise
+	(nethack-menu-submit): likewise
+
+	* nethack.el (nethack-menu): require nethack-menu
+	(nethack-create-buffer): kill-all-local-variables on the buffer
+
+	* nethack-api.el (nethack-api-start-menu): initialize some
+	internal menu variables
+	(nethack-api-add-menu): call nethack-menu-add-item
+	(nethack-api-end-menu): do nothing
+	(nethack-api-select-menu): call nethack-menu-draw
+
 2000-09-26  Shawn  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack-process-command-list): The filter can now

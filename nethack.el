@@ -10,6 +10,7 @@
 (require 'nethack-apix)
 (require 'nethack-cmd)
 (require 'nethack-keys)
+(require 'nethack-menu)
 
 ;; FIXME: dirty hack:
 (defvar nethack-status-line-number 0
@@ -211,6 +212,7 @@ eventual delivery to the running nethack process."
     (get-buffer-create buffer-name)
     (save-excursion
       (set-buffer buffer-name)
+      (kill-all-local-variables)
       (setq buffer-read-only nil)
       (erase-buffer)
       (if (eq type 'nhw-map)
