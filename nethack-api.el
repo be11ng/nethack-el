@@ -1,10 +1,10 @@
-;;; nethack-api.el -- low level Emacs interface the lisp window-port
+;;; nethack-api.el -- Emacs interface the lisp window-port
 
 ;; Copyright (C) 2002  Ryan Yeske and Shawn Betts
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.76 2002/09/13 04:35:52 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.77 2002/09/13 06:33:20 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
