@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.53 2001/12/21 03:17:14 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.54 2002/01/02 00:17:08 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -303,8 +303,9 @@ highlighted."
 						  (assoc "T" nethack-status-alist)
 						  "T:%s " t)
 
-	;; Process flags. If a flag was not there before, it should be
-	      ;; marked in red as all flag updates are for bad things.
+		;; Process flags. If a flag was not there before, it should be
+		;; marked in red as all flag updates are for bad things.
+		;; FIXME: this code introduces a CL dependency. 
 		(list "Flags"
 		      (loop for flag in (cadr (assoc "Flags" status))
 			    for old-flag = nil
