@@ -1,3 +1,10 @@
+2002-04-10  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* mkpatch: Add file.
+
+	* Makefile (patch): Call external mkpatch sh-script to generate
+	the patch.
+
 2002-02-14  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack-glyphs.el (nethack-glyph-vector): Add warning glyphs.
