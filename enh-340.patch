@@ -227,8 +227,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  	/* hilites[] not used */
  	return iflags.use_color;
 --- /dev/null	2002-09-07 13:22:20.000000000 -0700
-+++ nethack/win/lisp/ChangeLog	2002-09-16 20:00:18.000000000 -0700
-@@ -0,0 +1,289 @@
++++ nethack/win/lisp/ChangeLog	2002-09-19 21:14:00.000000000 -0700
+@@ -0,0 +1,293 @@
++2002-09-19  Ryan Yeske  <rcyeske@vcn.bc.ca>
++
++	* winlisp.c (lisp_cmd): nethack-api-* renamed to nhapi-*.
++
 +2002-09-16  Ryan Yeske  <rcyeske@vcn.bc.ca>
 +
 +	* ../tty/termcap.c (has_color): Add condition for LISP_GRAPHICS
@@ -519,7 +523,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
 --- /dev/null	2002-09-07 13:22:20.000000000 -0700
-+++ nethack/win/lisp/winlisp.c	2002-09-12 23:29:52.000000000 -0700
++++ nethack/win/lisp/winlisp.c	2002-09-19 20:10:27.000000000 -0700
 @@ -0,0 +1,1820 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
@@ -806,12 +810,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +#define lisp_cmd(s,body)			\
 +  do						\
 +    {						\
-+      printf("(nethack-api-%s ",s);		\
++      printf("(nhapi-%s ",s);		\
 +      body;					\
 +      printf(")\n");				\
 +    }						\
 +  while (0)
-+/* #define lisp_cmd0(s) printf ("(nethack-api-%s)\n", s) */
++/* #define lisp_cmd0(s) printf ("(nhapi-%s)\n", s) */
 +#define lisp_list(body)				\
 +  do						\
 +    {						\
@@ -1394,7 +1398,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  hpmax = Upolyd ? u.mhmax : u.uhpmax;
 +  if(hp < 0) hp = 0;
 +
-+  printf ("(nethack-api-update-status ");
++  printf ("(nhapi-update-status ");
 +  lisp_quote;
 +  printf ("(");
 +  lisp_list (lisp_string ("name");
@@ -1819,7 +1823,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +      cmd = lisp_get_cmd (cmdstr);
 +      if (cmd == -1)
 +	{
-+	  printf ("(nethack-api-message 'atr-none \"undefined-command %s\")\n", cmdstr);
++	  printf ("(nhapi-message 'atr-none \"undefined-command %s\")\n", cmdstr);
 +	  cmd = lisp_get_cmd ("null");
 +	}
 +
