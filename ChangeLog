@@ -1,3 +1,8 @@
+2002-01-01  shawn  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nethack): set nethack-status-alist to nil when
+	starting a new nethack game.
+
 2002-01-01    <sabetts@watchman.phalanx.tmp>
 
 	* nethack-api.el (nethack-menu-toggle-all-items): only toggle
