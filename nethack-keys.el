@@ -29,8 +29,16 @@
 (defvar nh-accelerator-chars
   [?a ?b ?c ?d ?e ?f ?g ?h ?i ?j ?k ?l ?m ?n ?o ?p ?q ?r ?s ?t ?u ?v
 ?w ?x ?y ?z ?A ?B ?C ?D ?E ?F ?G ?H ?I ?J ?K ?L ?M ?N ?O ?P ?Q ?R ?S
-?T ?U ?V ?W ?X ?Y ?Z ?*]
+?T ?U ?V ?W ?X ?Y ?Z ?* ?#]
   "Vector of accelerator characters.")
+
+(defvar nh-accelerator-chars-regexp
+  (concat "[" (mapconcat 'char-to-string nh-accelerator-chars nil) "]")
+  "A regexp that matches one of the nh-accelerator-chars")
+
+(defvar nh-menu-item-regexp
+  (concat "^\\(" nh-accelerator-chars-regexp "\\) \\([-+]\\|[0-9]+\\) .+$")
+  "A regexp that matches a menu item.")
 
 ;; from src/options.c:
 ;;  * Standard letters (for now) are:

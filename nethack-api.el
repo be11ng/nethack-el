@@ -609,7 +609,7 @@ was actually toggled."
       (save-excursion
 	(let ((inhibit-read-only t))
 	  (goto-char (point-min))
-	  (while (re-search-forward "^[a-zA-Z*] \\([-+]\\|[0-9]+\\) .+$" nil t)
+	  (while (re-search-forward nh-menu-item-regexp nil t)
 	    (let ((value (match-string 1)))
 	      (if (string-equal value "-")
 		  (replace-match "+" nil nil nil 1)
@@ -620,7 +620,7 @@ was actually toggled."
   (interactive)
   (let ((old-point (point)))
     (goto-char (line-end-position))
-    (goto-char (if (re-search-forward "^[a-zA-Z*] [-+]\\|[0-9]+ .+$" nil t)
+    (goto-char (if (re-search-forward nh-menu-item-regexp nil t)
 		   (line-beginning-position)
 		 old-point))))
 
@@ -629,7 +629,7 @@ was actually toggled."
   (interactive)
   (let ((old-point (point)))
     (goto-char (line-beginning-position))
-    (goto-char (if (re-search-backward "^[a-zA-Z*] [-+]\\|[0-9]+ .+$" nil t)
+    (goto-char (if (re-search-backward nh-menu-item-regexp nil t)
 		   (line-beginning-position)
 		 old-point))))
 
@@ -642,7 +642,7 @@ displayed."
   (interactive)
   (goto-char (point-min))
   (let ((menu-data nil))
-    (while (re-search-forward "^\\([a-zA-Z*]\\) \\([-+]\\|[0-9]+\\) .+$" nil t)
+    (while (re-search-forward nh-menu-item-regexp nil t)
       (let ((accelerator (string-to-char (match-string 1)))
 	    (value (match-string 2)))
 	(cond ((string-equal value "+")
@@ -663,7 +663,7 @@ displayed."
   (let ((inhibit-read-only t))
     (goto-char (point-min))
     ;; turn off all the options
-    (while (re-search-forward "^[a-zA-Z*] \\([-+]\\|[0-9]+\\) .+$" nil t)
+    (while (re-search-forward nh-menu-item-regexp nil t)
       (replace-match "-" nil nil nil 1)))
   (nh-menu-submit))
 
