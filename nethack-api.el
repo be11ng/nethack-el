@@ -449,7 +449,18 @@ way?"
 ;;     (setq new-win (split-window nil nil t))
 ;;     (set-window-buffer new-win buffer)
 ;;     (select-window new-win))
-  (display-buffer (nethack-get-buffer window))
+  (if (eq (cdr (assoc window nethack-buffer-id-alist))
+	  'nhw-menu)
+      (progn
+	(setq nethack-menu-keymap (make-sparse-keymap))
+	(define-key nethack-menu-keymap [(control c) (control c)]
+	  (lambda ()
+	    (interactive)
+	    (nethack-restore-windows)))
+
+	(split-window nil nil t)
+	(set-window-buffer (selected-window) (nethack-get-buffer window))
+	(use-local-map nethack-menu-keymap)))
   'void)
 
 

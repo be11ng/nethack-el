@@ -1,3 +1,15 @@
+2001-07-22  shawn  <sabetts@diggin.lamenet.tmp>
+
+	* nethack-menu.el (nethack-menu-fill-accelerators): new function
+	(nethack-menu-draw): fill in valid accelerators for items that do
+	not have them.
+	(nethack-menu-draw): use elt to access the elements of
+	nethack-menu-options.
+
+	* nethack-api.el (nethack-api-display-nhwindow): vertically split
+	the current buffer if the nethack buffer to be shown is the menu
+	buffer. Add a keystroke to the menu buffer to hide it.
+
 2001-07-21  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el (nethack-restore-windows): split so that the status
