@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.7 2000/09/07 07:34:14 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.8 2000/09/08 05:17:26 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -208,21 +208,20 @@
 ;; whatever the window- port wants (symbol, font, color, attributes,
 ;; ...there's a 1-1 map between glyphs and distinct things on the map).
 
-(defun nethack-api-print-glyph (window x y type offset glyph)
+(defun nethack-api-print-glyph (window x y type offset glyph ch)
   ""
-
   (set-buffer (nethack-get-buffer window))
-  (let ((ch))
-    (cond ((eq type 'monster) (setq ch ?@))
-	  ((eq type 'pet) (setq ch ?d))
-	  ((eq type 'invisible) (setq ch ?I))
-	  ((eq type 'detect) (setq ch ?D))
-	  ((eq type 'corpse) (setq ch ?%))
-	  ((eq type 'ridden) (setq ch ?R))
-	  ((eq type 'object) (setq ch ??))
-	  ((eq type 'cmap) (setq ch ?.))
-	  ((eq type 'zap-beam) (setq ch ??)))
-    (gamegrid-set-cell x y ch))
+;   (let ((ch))
+;     (cond ((eq type 'monster) (setq ch ?@))
+; 	  ((eq type 'pet) (setq ch ?d))
+; 	  ((eq type 'invisible) (setq ch ?I))
+; 	  ((eq type 'detect) (setq ch ?D))
+; 	  ((eq type 'corpse) (setq ch ?%))
+; 	  ((eq type 'ridden) (setq ch ?R))
+; 	  ((eq type 'object) (setq ch ??))
+; 	  ((eq type 'cmap) (setq ch ?.))
+; 	  ((eq type 'zap-beam) (setq ch ??)))
+    (gamegrid-set-cell x y ch)
   'void-fixme)
 
 
