@@ -1,3 +1,14 @@
+2004-11-19  Shawn Betts  <katia_dilkina@verizon.net>
+
+	* nethack.el (nethack-add-menu-hook): new hook
+
+	* nethack-example.el (nethack-x-highlights): new defvar
+	(nethack-x-highlight-option): new function
+
+	* nethack-cmd.el (technique): new nethack command
+
+	* nethack-api.el (nhapi-add-menu): run the nethack-add-menu-hook.
+
 2004-11-16  Shawn Betts  <katia_dilkina@verizon.net>
 
 	* mkpatch: src, ref, and work are pulled from args 1, 2, and 3.

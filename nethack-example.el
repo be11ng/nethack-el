@@ -3,7 +3,7 @@
 ;; Copyright (C) 2002  Shawn Betts and Ryan Yeske
 
 ;; Author: Shawn Betts <sabetts@vcn.bc.ca>
-;; Version: $Id: nethack-example.el,v 1.3 2002/09/20 04:15:48 rcyeske Exp $
+;; Version: $Id: nethack-example.el,v 1.4 2002/09/21 02:10:12 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -46,18 +46,39 @@ Add the following to your ~/.emacs
 	       (process-id nh-proc))))
 
 ;;;;;;;;;;;;;;
+;; Add the following to your ~/.emacs
+;; (add-hook 'nethack-status-attribute-change-functions 'nethack-x-warn-low-hp)
 (defun nethack-x-warn-low-hp (attr new old)
-  "Print a message in `nh-message-buffer' when hitpoints get low.
-
-Add the following to your ~/.emacs
-
-(add-hook 'nethack-status-attribute-change-functions
-	  'nethack-x-warn-low-hp)"
+  "Print a message in `nh-message-buffer' when hitpoints get low."
   (if (and (string-equal attr "HP")
 	   (< new old)
 	   (< (/ new (float (car nh-status-attribute-HPmax))) 0.20))
       (nhapi-message 'atr-blink "Hitpoints below 20%")))
 
 ;;;;;;;;;;;;;;
+;; add the following to your ~/.emacs
+;; (add-hook 'nethack-add-menu-hook 'nethack-x-highlight-option)
+(defvar nethack-x-highlights '((" blessed " . nethack-green-face)
+			       (" holy " . nethack-green-face)
+			       (" cursed " . nethack-red-face)
+			       (" unholy " . nethack-green-face)
+			       (" cursed .* (being worn)" . nethack-orange-face)))
+  "An assoc of regexps and font colors")
+
+(defun nethack-x-highlight-option ()
+  "Highlight a nethack menu option based on a regexp."
+  ;; Move to the beginning of the option just added
+  (save-excursion
+    (let (start
+	  (end (point)))
+    (forward-line -1)
+    (forward-line 0)
+    ;; A mini-hack so the option accelerator doesn't get highlighted
+    (setq start (+ (point) 4))
+    (mapc (lambda (x)
+	    (if (re-search-forward (car x) nil t)
+		(put-text-property start end 'face (cdr x))))
+	  nethack-x-highlights))))
+
 (provide 'nethack-example)
 ;;; nethack-example.el ends here

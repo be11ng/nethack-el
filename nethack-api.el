@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.91 2004/11/13 00:15:43 sabetts Exp $
+;; Version: $Id: nethack-api.el,v 1.92 2004/11/15 05:12:23 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -705,7 +705,8 @@ buffer."
 			(if preselected ?+ ?-)
 			str)))
       (put-text-property start (point) 'face (nh-attr-face attr))
-      (insert-char ?\n 1 nil))))
+      (insert-char ?\n 1 nil)
+      (run-hooks 'nethack-add-menu-hook))))
 
 ;; FIXME: xemacs propertize bug here
 (defun nhapi-end-menu (window prompt)

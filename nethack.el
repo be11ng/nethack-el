@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.80 2004/11/15 05:12:23 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.81 2004/11/17 04:23:39 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -123,6 +123,11 @@ attribute, the new value and the old value."
     "Hook run after loading nethack."
     :type '(hook)
     :group 'nethack)
+
+(defcustom nethack-add-menu-hook nil
+  "Hook run after a menu option has been added."
+  :type '(hook)
+  :group 'nethack)
 
 
 (defgroup nethack-faces nil

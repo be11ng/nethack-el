@@ -201,6 +201,10 @@
 
 (defun-nethack-command extended-version "list compile time options for this version of NetHack." "version")
 (defun-nethack-command wipe "wipe off your face." "wipe")
+
+;; This is a slash'em only command
+(defun-nethack-command technique "Perform a technique." "technique")
+
 
 (defun-nethack-command previous-message	; ^P
   "Scroll through previously displayed game messages"
