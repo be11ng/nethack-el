@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.75 2003/04/10 00:07:39 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.76 2003/06/03 09:05:02 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -504,6 +504,6 @@ delete the contents, perhaps logging the text."
 (defun nethack-el-version ()
   (interactive)
   (message (format "nethack-el %s" nethack-el-version)))
-(defconst nethack-el-version "20030309")
+(defconst nethack-el-version "0.9.0")
 
 ;;; nethack.el ends here
