@@ -366,7 +366,7 @@ are no newlines in `nethack-status-string'."
 
 (defun nethack-api-getlin (ques)
   "" 
-  (nethack-return
+  (nethack-process-send-string
    (read-from-minibuffer (concat ques " "))))
 
 
