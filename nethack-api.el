@@ -12,7 +12,6 @@
 ;;; Commentary:
 ;; 
 
-(require 'ewoc)
 (require 'gamegrid)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -741,21 +740,6 @@ Return the buffer."
   (setq nethack-menu-how how)
   (run-hooks 'nethack-menu-mode-hook))
 
-(defvar nethack-menu nil)
-
-(defun nethack-menu-item-print (item)
-  (let ((acc (aref item 0))
-	(val (aref item 1))
-	(str (aref item 2))
-	(id  (aref item 3)))
-    (insert (if (equal id -1)
-		""
-	      (concat (char-to-string acc)
-		      (cond ((= val 0) " - ")
-			    ((= val -1) " + ")
-			    (t (format " %d " val)))))
-	    str)))
-
 (defvar nethack-menu-how nil
   "One of pick-one, pick-none, pick-any.")
 
@@ -770,48 +754,56 @@ Does nothing if this is a pick-none menu.
 Automatically submits menu if this is a pick-one menu if an option was
 actually toggled."
   (interactive "P")
-  (setq count
-	(if (null count)
-	    -1
-	  (prefix-numeric-value count)))
   (if (not (eq nethack-menu-how 'pick-none))
-      (let ((changed nil))
-	(ewoc-map (lambda (i)
-		    (when (equal (aref i 0) last-command-event)
-		      (aset i 1 (if (or (= (aref i 1) 0)
-					(> count -1))
-				    count
-				  0))
-		      (setq changed t))) ; non-nil retval forces
-					 ; ewoc entry redisplay
-		  nethack-menu)
-	(and changed
-	     (eq nethack-menu-how 'pick-one)
-	     (nethack-menu-submit)))))
-
+      (let ((case-fold-search nil)
+	    (old-point (point)))
+	(goto-char (point-min))
+	(if (re-search-forward 
+	     (format "^%c \\([-+]\\|[0-9]+\\) .+$" last-command-event) 
+	     nil t)
+	    (let ((inhibit-read-only t))
+	      (if (and count (> count 1))
+		       (replace-match (number-to-string count) nil nil nil 1)
+		(let ((value (match-string 1)))
+		  (if (string-equal value "-")
+		      (replace-match "+" nil nil nil 1)
+		    (replace-match "-" nil nil nil 1))))
+	      (if (eq nethack-menu-how 'pick-one)
+		  (nethack-menu-submit)
+		(goto-char (line-beginning-position))))
+	  (message "No such menu option: %c" last-command-event)
+	  (goto-char old-point)))))
+	  
 (defun nethack-menu-toggle-all-items ()
   "Toggle all menu items, only for pick-any menus."
   (interactive)
   (if (eq nethack-menu-how 'pick-any)
-      (ewoc-map (lambda (i)
-		  (unless (= (aref i 3) -1)
-		    (aset i 1 (if (= (aref i 1) 0)
-				  -1
-				0))
-		    t))			; redisplay this entry
-		nethack-menu)))
+      (save-excursion
+	(let ((inhibit-read-only t))
+	  (goto-char (point-min))
+	  (while (re-search-forward "^[a-zA-Z] \\([-+]\\|[0-9]+\\) .+$" nil t)
+	    (let ((value (match-string 1)))
+	      (if (string-equal value "-")
+		  (replace-match "+" nil nil nil 1)
+		(replace-match "-" nil nil nil 1))))))))
 
 (defun nethack-menu-goto-next ()
   "Move to the next selectable menu item."
   (interactive)
-  (if nethack-menu
-      (ewoc-goto-next nethack-menu 1)))
+  (let ((old-point (point)))
+    (goto-char (line-end-position))
+    (goto-char (if (re-search-forward "^[a-zA-Z] [-+]\\|[0-9]+ .+$" nil t)
+		   (line-beginning-position)
+		 old-point))))
 
 (defun nethack-menu-goto-prev ()
   "Move to the previous selectable menu item."
   (interactive)
-  (if nethack-menu
-      (ewoc-goto-prev nethack-menu 1)))
+  (let ((old-point (point)))
+    (goto-char (line-beginning-position))
+    (goto-char (if (re-search-backward "^[a-zA-Z] [-+]\\|[0-9]+ .+$" nil t)
+		   (line-beginning-position)
+		 old-point))))
 
 (defun nethack-menu-submit ()
   "Submit the selected menu options to the nethack process.
@@ -819,17 +811,31 @@ actually toggled."
 Restores the window configuration what it was before the menu was
 displayed."
   (interactive)
-  (if nethack-menu
-      (let ((selected (ewoc-collect nethack-menu (lambda (x) (not (= 0 (aref x 1)))))))
-	(setq nethack-menu nil)
-	(nh-send (mapcar (lambda (x) (list (aref x 3) (aref x 1))) selected)))
-    (nh-send nil))
-  (set-window-configuration nethack-window-configuration))
-
+  (goto-char (point-min))
+  (let ((menu-data nil))
+    (while (re-search-forward "^\\([a-zA-Z]\\) \\([-+]\\|[0-9]+\\) .+$" nil t)
+      (let ((accelerator (match-string 1))
+	    (value (match-string 2))
+	    (identifier (get-text-property (point) 'nethack-id)))
+	(cond ((string-equal value "+")
+	       (setq value -1))
+	      ((string-equal value "-")
+	       (setq value 0))
+	      (t (setq value (string-to-number value))))
+	(if (/= value 0)
+	    (setq menu-data (cons (list identifier value) menu-data)))))
+    (nh-send menu-data)
+    (set-window-configuration nethack-window-configuration)
+    (message "%S" menu-data)))
+	
 (defun nethack-menu-cancel ()
   "Dismiss a menu with out making any choices."
   (interactive)
-  (setq nethack-menu nil)
+  (let ((inhibit-read-only t))
+    (goto-char (point-min))
+    ;; turn off all the options
+    (while (re-search-forward "^[a-zA-Z] \\([-+]\\|[0-9]+\\) .+$" nil t)
+      (replace-match "-" nil nil nil 1)))
   (nethack-menu-submit))
 
 ;; start_menu(window) -- Start using window as a menu.  You must call
@@ -843,8 +849,8 @@ displayed."
       (erase-buffer)
       ;; we don't turn on nethack-menu-mode yet, since we do not yet
       ;; know "how" this menu is going to work.
-      (setq nethack-menu (ewoc-create 'nethack-menu-item-print))
       (setq nethack-unassigned-accelerator-index 0))))
+      
 
 (defvar nethack-unassigned-accelerator-index 0
   "Index into `nethack-accelerator-chars' indicating the next
@@ -886,17 +892,22 @@ specified by `nethack-unassigned-accelerator-index'."
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
   "Create a menu item out of arguments and draw it in the menu
 buffer."
-  (let ((acc (if (and (not (= -1 identifier))
-		      (zerop accelerator))
-		 (nethack-specify-accelerator)
-	       accelerator)))
-    (ewoc-enter-last nethack-menu
-		     (vector acc
-			     (if preselected -1 0)
-			     (propertize str
-					 'face
-					 (nethack-attr-face attr))
-			     identifier))))
+  (with-current-buffer (nethack-buffer window)
+    (goto-char (point-max))
+    (let ((inhibit-read-only t)
+	  (start (point)))
+      (if (= identifier -1)
+	  (insert str)			;FIXME: propertize
+	(insert (format "%c %c %s [%d]" 
+			(if (eq accelerator 0)
+			    (nethack-specify-accelerator)
+			  accelerator)
+			(if preselected ?+ ?-)
+			str
+			identifier))
+	;; store the identifier as a text property
+	(add-text-properties start (point) (list 'nethack-id identifier)))
+      (newline))))
 
 ;; end_menu(window, prompt) -- Stop adding entries to the menu and
 ;; flushes the window to the screen (brings to front?).  Prompt is a
@@ -907,11 +918,10 @@ buffer."
 (defun nethack-api-end-menu (window prompt)
   ""
   (with-current-buffer (nethack-buffer window)
-    (ewoc-set-hf nethack-menu
-		 prompt
-		 ;; preserve footer:
-		 (cdr (ewoc-get-hf nethack-menu)))
-    (ewoc-refresh nethack-menu)))
+    (let ((inhibit-read-only t))
+      (goto-char (point-min))
+      (insert prompt)
+      (newline))))
 
 ;; int select_menu(windid window, int how, menu_item **selected) --
 ;; Return the number of items selected; 0 if none were chosen, -1 when
