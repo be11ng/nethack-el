@@ -1,3 +1,9 @@
+2003-09-18  Shawn Betts  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nethack-purge-buffers): new global
+	(nh-proc-kill-buffer-on-quit): set to `t' by default
+	(nh-sentinel): call nethack-kill-buffers.
+
 2003-09-15  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nethack-end-hook): new hook
