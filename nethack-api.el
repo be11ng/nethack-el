@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.60 2002/01/17 04:08:18 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.62 2002/01/21 21:26:28 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -448,18 +448,6 @@ corresponding cdr."
 	     (cdr (assoc (completing-read prompt alist nil t) alist))
 	   (quit abort)))
      (cdar alist))))
-
-(defun nethack-api-choose-role (role-alist)
-  (nethack-choose-attribute "Choose role: " role-alist -1))
-
-(defun nethack-api-choose-race (race-alist)
-  (nethack-choose-attribute "Choose race: " race-alist -1))
-
-(defun nethack-api-choose-gender (gender-alist)
-  (nethack-choose-attribute "Choose gender: " gender-alist -1))
-
-(defun nethack-api-choose-alignment (alignment-alist)
-  (nethack-choose-attribute "Choose alignment: " alignment-alist -1))
 
 ;;  display_file(str, boolean complain) -- Display the file named str.
 ;; Complain about missing files iff complain is TRUE.
