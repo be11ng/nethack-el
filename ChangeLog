@@ -1,3 +1,22 @@
+2002-01-22  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-cmd.el (southwest-until-ontop, southwest-until-near):
+	Fill in definitions.
+
+	* nethack.el (nethack-assq-delete-all): New function.
+	(nethack-propertize): New function.
+	(nh-proc): Rename from nh-comint-proc.
+	(nethack): Use start-process not make-comint.
+	(nh-comint-mode): Remove.
+	(nh-filter): Rewrite without comint.
+	(nh-send): Rewrite without comint.
+
+	* nethack-api.el (nethack-api-raw-print-bold): Use
+	nethack-propertize.
+	(nethack-api-update-status, nethack-api-putstr): Likewise.
+	(nethack-api-add-menu): Add nethack attributes.
+	(nethack-api-destroy-nhwindow): Use nethack-assq-delete-all.
+
 2002-01-22  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack-keys.el (nethack-accelerator-chars): add ?* to the
@@ -22,6 +41,7 @@
 	(nethack-menu-submit, nethack-menu-cancel)
 	(nethack-api-start-menu, nethack-api-add-menu)
 	(nethack-api-end-menu): Rewrite to remove ewoc dependancy.
+	(nethack-api-add-menu): Add tile argument.
 
 	* nethack.el (nethack): Don't setq nethack-menu.
 
