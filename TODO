@@ -4,6 +4,8 @@ This is a list of things I think need to be done before release.  Add
 to it and subtract from it.
 
 * high priority
+** parse .nethackrc
+
 ** finish up the cooked status window stuff
 
 ** Makefile shouldn't require GNU make
@@ -46,6 +48,8 @@ try to bury it if possible after submitting it, otherwise its always
 the next buffer in the list, so switching away from the map lands you
 there.  at best, erase its contents so its not quite so confusing.
 perhaps it should be a hidden buffer?
+
+** fix byte-compile warnings
 
 * finished, sorta?
 ** make all the variables customizable through M-x customize
