@@ -784,6 +784,48 @@ the menu is dismissed."
   (message "Goodbye.")
   (run-hooks 'nethack-end-hook))
 
+;; Options
+(defvar nh-options-cbreak nil)
+(defvar nh-options-dec-graphics nil)
+(defvar nh-options-echo nil)
+(defvar nh-options-ibm-graphics nil)
+(defvar nh-options-msg-history nil)
+(defvar nh-options-num-pad nil)
+(defvar nh-options-news nil)
+(defvar nh-options-window-inited nil)
+(defvar nh-options-vision-inited nil)
+(defvar nh-options-menu-tab-sep nil)
+(defvar nh-options-menu-requested nil)
+(defvar nh-options-num-pad-mode nil)
+(defvar nh-options-purge-monsters nil)
+(defvar nh-options-bouldersym nil)
+(defvar nh-options-travelcc nil)
+(defvar nh-options-sanity-check nil)
+(defvar nh-options-mon-polycontrol nil)
+
+(defun nhapi-options (cbreak dec-graphics echo ibm-graphics msg-history
+			     num-pad news window-inited vision-inited
+			     menu-tab-sep menu-requested num-pad-mode
+			     purge-monsters bouldersym travelcc
+			     sanity-check mon-polycontrol &rest ignore)
+  (setq nh-options-cbreak cbreak)
+  (setq nh-options-dec-graphics dec-graphics)
+  (setq nh-options-echo echo)
+  (setq nh-options-ibm-graphics ibm-graphics)
+  (setq nh-options-msg-history msg-history)
+  (setq nh-options-num-pad num-pad)
+  (setq nh-options-news news)
+  (setq nh-options-window-inited window-inited)
+  (setq nh-options-vision-inited vision-inited)
+  (setq nh-options-menu-tab-sep menu-tab-sep)
+  (setq nh-options-menu-requested menu-requested)
+  (setq nh-options-num-pad-mode num-pad-mode)
+  (setq nh-options-purge-monsters purge-monsters)
+  (setq nh-options-bouldersym bouldersym)
+  (setq nh-options-travelcc travelcc)
+  (setq nh-options-sanity-check sanity-check)
+  (setq nh-options-mon-polycontrol mon-polycontrol))
+
 (provide 'nethack-api)
 
 ;;; nethack-api.el ends here
