@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # the nethack source tarball
-src=nethack-340.tgz
+src=nethack-$NH_VER_NODOTS.tgz
 # should be a clean version of the Nethack sources
-ref=${1:-nethack-3.4.0}
+ref=${1:-nethack-$NH_VER}
 # your working directory, with your changes
 work=${2:-nethack}
 
