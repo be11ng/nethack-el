@@ -1,3 +1,8 @@
+2001-12-04  Ryan Yeske  <rcyeske@sfu.ca>
+
+	* nethack-api.el (nethack-cooked-status): Rename from
+	nh-cooked-status.
+
 2001-12-02  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-api.el (nethack-return): Remove.
