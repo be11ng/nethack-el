@@ -303,8 +303,9 @@ highlighted."
 						  (assoc "T" nethack-status-alist)
 						  "T:%s " t)
 
-	;; Process flags. If a flag was not there before, it should be
-	      ;; marked in red as all flag updates are for bad things.
+		;; Process flags. If a flag was not there before, it should be
+		;; marked in red as all flag updates are for bad things.
+		;; FIXME: this code introduces a CL dependency. 
 		(list "Flags"
 		      (loop for flag in (cadr (assoc "Flags" status))
 			    for old-flag = nil
