@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.47 2001/12/02 06:30:29 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.48 2001/12/03 18:34:14 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -185,9 +185,9 @@ are no newlines in `nethack-status-string'."
 
 ;; FIXME: this is a temporary kludge which will disappear when we have
 ;; real cooked status information coming from the process.
-(defvar nethack-cooked-status nil)
+(defvar nethack-cook-status nil)
 (defun nethack-api-update-status (l1 l2)
-  (if nethack-use-cooked-status
+  (if nethack-cook-status
       (progn
 	(nethack-parse-status-lines l1 l2)
 	(let ((status-string (nethack-format-status nethack-status-format)))
