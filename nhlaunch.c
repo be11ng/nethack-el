@@ -31,10 +31,46 @@ To build on OpenBSD
 
 /* Config values. Tweak these to fit your system */
 #define USER_FILE 	"/etc/nh-login"
-#define NETHACK_PROGRAM "/usr/games/nethack"
 #define CHROOT_DIR 	"/home/sabetts/src/nethack-el/gl"
 #define SHED_UID 	1000
 #define SHED_GID 	1000
+
+struct game_t
+{
+  char *name;
+  char *path;
+};
+
+/* This structure describes the games are playable on this server. The
+   MUST be at least one entry. */
+struct game_t games[] = {{"slashem", "/usr/games/slashem"},
+			 {"nethack", "/usr/games/nethack"},
+			 /* The last entry must be NULL. */
+			 {NULL, NULL}};
+
+char *
+find_program(char *game)
+{
+  struct game_t *i;
+
+  for (i=games; i->name; i++)
+    {
+      if (!strcmp(game, i->name))
+	return i->path;
+    }
+  /* No match? pick the first one in the list. */
+  return games[0].path;
+}
+
+void
+list_programs()
+{
+  struct game_t *i;
+
+  for (i=games; i->name; i++)
+    printf("%s\n", i->name);
+}
+
 
 int
 valid_user_p(char *username, char *passwd)
@@ -138,14 +174,28 @@ read_cmd()
 	    }
 	}
     }
+  else if (!strncmp(line, "list", 4))
+    {
+      list_programs();
+    }
   else if (!strncmp(line, "play", 4))
     {
       if (logged_in)
 	{
 	  int pid;
+	  char *cmd, *game, *program;
+	  /* Find out which game to play. */
+	  cmd = (char *)strtok(line, " \n");
+	  game = (char *)strtok(NULL, " \n");
+	  if (game)
+	    program = find_program(game);
+	  else
+	    program = find_program("");
+	  printf("Playing '%s'\n", program);
+	  /* Fork and run the game. */
 	  pid = fork();
 	  if (pid == 0)
-	    execlp(NETHACK_PROGRAM, NETHACK_PROGRAM, "-u", player_name, NULL);
+	    execlp(program, program, "-u", player_name, (char *)NULL);
 	  else
 	    waitpid(pid, NULL, 0);
 	  exit(0);
