@@ -236,9 +236,9 @@ char to the STRING."
   "Handle command output from `nethack-process' and copy the text to
 the `nethack-process-buffer' for debugging."
   (nethack-log-string (concat "RECV: " output))
-  (setq nethack-process-output (concat nethack-process-output output))
-  (let ((commands (split-string nethack-process-output "\n")))
-    (nethack-process-command-list commands)))
+  (nethack-process-command-list (split-string (concat nethack-process-output 
+						      output)
+						      "\n")))
 
 
 (defun nethack-process-command-list (l)
@@ -251,6 +251,7 @@ the `nethack-process-buffer' for debugging."
   (condition-case nil
       (nethack-parse-command (car l))
       (end-of-file
+       (nethack-log-string (concat "INCOMPLETE: " (car l)))
        (setq nethack-process-output (car l)))))
 
 (defun nethack-log-string (string)
@@ -274,11 +275,7 @@ the `nethack-process-buffer' for debugging."
   (let ((retval (eval (car (read-from-string command)))))
     (cond ((eq retval 'unimplemented)
 	   (error "nethack: unimplemented function"))
-	  ((eq retval 'no-retval)
-	   nil)
-	  ((eq retval 'void)
-	   nil)
-	  ((eq retval 'void-fixme)
+	  ((eq retval 'void) 
 	   nil)
 	  (t 
 	   (nethack-process-send-string (prin1-to-string retval))))))

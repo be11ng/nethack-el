@@ -1,3 +1,26 @@
+2001-07-01  shawn  <sabetts@diggin.lamenet.tmp>
+
+	* nethack.el (nethack-process-filter): remove let variables
+	(nethack-process-command-list): log the incomplete command as such
+	(nethack-parse-command): remove 'void-fixme and 'no-retval from
+	the cond.
+
+	* nethack-menu.el (nethack-menu-draw): menu appears on the left
+	side of the split
+
+	* nethack-api.el (nethack-api-raw-print): return 'void
+	(nethack-api-raw-print-bold): likewise
+	(nethack-api-raw-print-bold): likewise
+	(nethack-api-curs): likewise
+	(nethack-api-putstr): likewise
+	(nethack-api-get-command): likewise
+	(nethack-api-destroy-nhwindow): likewise
+	(nethack-api-end-menu): likewise
+	(nethack-api-select-menu): likewise
+	(nethack-api-cliparound): likewise
+	(nethack-api-outrip): likewise
+	(nethack-api-delay-output): comment out body
+
 2001-06-28  shawn  <sabetts@diggin.lamenet.tmp>
 
 	* nethack.el (nethack-red): new face

@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.20 2001/06/27 21:26:09 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.21 2001/06/28 23:41:25 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -105,7 +105,7 @@
 
 (defun nethack-api-raw-print (str)
   "FIXME: I'm not sure where to print the string."
-  'void-fixme)
+  'void)
 
 
 ;; raw_print_bold(str) -- Like raw_print(), but prints in
@@ -113,7 +113,7 @@
 
 (defun nethack-api-raw-print-bold (str)
   "FIXME: I'm not sure where to print the string."
-  'void-fixme)
+  'void)
 
 
 ;; curs(window, x, y) -- Next output to window will start at (x,y),
@@ -134,7 +134,7 @@
       (progn
 	(setq nethack-status-line-number y))
     (goto-char (gamegrid-cell-offset x y)))
-  'void-fixme)
+  'void)
 
 
 ;; putstr(window, attr, str) -- Print str on the window with the
@@ -163,7 +163,7 @@
       (goto-char (point-max))
       (insert str "\n")))
 
-  'void-fixme)
+  'void)
 
 
 ;; get_nh_event() -- Does window event processing (e.g. exposure
@@ -186,7 +186,7 @@
       (setq nethack-waiting-for-command-flag t)
     (nethack-process-send-string (car nethack-command-queue))
     (setq nethack-command-queue (cdr nethack-command-queue)))
-  'no-retval)				; hack to prevent the process
+  'void)				; hack to prevent the process
 					; filter from sending another
 					; string (retval) to the
 					; nethack process
@@ -322,7 +322,7 @@ role/race/gender/align selection."
 (defun nethack-api-display-file (str complain)
   " FIXME: what to do, this will break network play slightly"
   
-  'void-fixme)
+  'void)
 
 
 ;; update_inventory() -- Indicate to the window port that the
@@ -444,7 +444,7 @@ way?"
   "we are going to try not to destroy windows/buffers if we can help
 it, we can just bury them or something."
 
-  'void-fixme)
+  'void)
 
 
 ;; start_menu(window) -- Start using window as a menu.  You must call
@@ -501,7 +501,7 @@ it, we can just bury them or something."
 (defun nethack-api-end-menu (window prompt)
   ""
 ;  (display-buffer (nethack-get-buffer window))
-  'void-fixme)
+  'void)
 
 
 ;; int select_menu(windid window, int how, menu_item **selected) --
@@ -527,7 +527,7 @@ it, we can just bury them or something."
 (defun nethack-api-select-menu (window how)
   ""
   (nethack-menu-draw (nethack-get-buffer window) how)
-  'void-fixme)
+  'void)
 
 
 ;; char message_menu(char let, int how, const char *mesg) --
@@ -595,7 +595,11 @@ it, we can just bury them or something."
 
 (defun nethack-api-delay-output ()
   "Sleep for 50ms."
-  (sleep-for 0 50)
+  ;; FIXME: sleep-for lets emacs process the nethack process input
+  ;; stream and if there is any pending data on the stream
+  ;; `nethack-process-filter' is called again which totally garbles
+  ;; everything since it hasn't finished the first batch of commands
+  ;(sleep-for 0 50)
   'void)
 
 
@@ -614,7 +618,7 @@ it, we can just bury them or something."
 (defun nethack-api-cliparound (x y)
   " FIXME: huh? not sure what to do here..."
 
-  'void-fixme)
+  'void)
 
 
 ;; number_pad(state) -- Initialize the number pad to the given state.
@@ -671,7 +675,7 @@ it, we can just bury them or something."
   (save-excursion
     (set-buffer (nethack-get-buffer window))
     (insert (concat who " -- " message))
-  'void-fixme))
+  'void))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
