@@ -244,6 +244,7 @@ PROC is the process object and MSG is the exit message."
   (if (buffer-name (process-buffer proc))
       (save-excursion
 	(set-buffer (process-buffer proc))
+	(eval-region comint-last-input-end (point))
 	(goto-char (point-max))
 	(insert ?\n "Nethack " msg)))
   (delete-process proc))

@@ -1,3 +1,8 @@
+2001-12-20  shawn  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nh-sentinel): evaluate any remaining lisp code when
+	the lisp process gets a sentinel event.
+
 2001-12-19  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack.el: require nethack-glyphs
