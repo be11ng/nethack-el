@@ -1,7 +1,7 @@
 ;;; nethack.el -- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id: nethack.el,v 1.55 2002/01/16 06:00:44 rcyeske Exp $
+;;; $Id: nethack.el,v 1.56 2002/01/16 07:11:19 rcyeske Exp $
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 ;;; Commentary:
@@ -186,8 +186,8 @@
 
 (defface nethack-map-glyph-face 
   `((((type tty)) 
-     nil
-    (t (:font "6x10"))))
+     nil)
+    (t (:font "6x10")))
   "Nethack map face for keeping glyphs from separating due to the
 newlines being in a font with height > 16."
   :group 'nethack-faces)
@@ -339,6 +339,8 @@ position if we are looking at a prompt."
   (let ((table (make-syntax-table)))
     (modify-syntax-entry ?\( "w   " table)
     (modify-syntax-entry ?\) "w   " table)
+    (modify-syntax-entry ?\[ "w   " table)
+    (modify-syntax-entry ?\] "w   " table)
     table)
   "Syntax table used in the Nethack map.")
 

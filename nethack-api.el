@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.58 2002/01/10 21:21:43 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.59 2002/01/14 10:32:14 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -117,9 +117,9 @@
 (defun nethack-api-raw-print (str)
   (save-current-buffer
     (let ((buffer (get-buffer-create nethack-raw-print-buffer-name)))
-      (switch-to-buffer buffer)
-      (insert str "\n")
-      (delete-other-windows))))
+      (pop-to-buffer nethack-message-buffer)
+      (delete-other-windows)
+      (insert str "\n"))))
 
 ;; raw_print_bold(str) -- Like raw_print(), but prints in
 ;; bold/standout (if possible).
@@ -182,58 +182,13 @@ are no newlines in `nethack-status-string'."
   :type '(boolean)
   :group 'nethack)
 
-
-(defun nethack-api-print-status-numeric (new old fmt &optional positive-is-bad-p)
-  "Print the numeric attribute. POSITIVE-IS-BAD-P is T if a positive
-increment is bad."
-  (let ((attr (number-to-string (cadr new)))
-	(inc-face (if positive-is-bad-p 'nethack-red-face 'nethack-green-face))
-	(dec-face (if positive-is-bad-p 'nethack-green-face 'nethack-red-face)))
-    (cond ((or (null (cadr old))
-	       (null (elt old 2)))
-	   (insert (format fmt attr))
-	   (append new '(0)))
-
-	  ((> (cadr old)
-	      (cadr new))
-	   (insert (format fmt (propertize attr 'face dec-face)))
-	   (append new (list nethack-status-highlight-delay dec-face)))
-
-	  ((< (cadr old)
-	      (cadr new))
-	   (insert (format fmt (propertize attr 'face inc-face)))
-	   (append new (list nethack-status-highlight-delay inc-face)))
-
-	  (t (if (= 0 (elt old 2))
-		 (progn
-		   (insert (format fmt (number-to-string (cadr new))))
-		   old)
-	       (insert (format fmt (propertize attr 'face (elt old 3))))
-	       (append new (list (1- (elt old 2)) (elt old 3))))))))
-
-(defun nethack-api-print-status-string (new old fmt &optional change-is-bad-p)
-  "Print the status attribute. CHANGE-IS-BAD-P is t if an attribute
-change is bad. Returns a list containing relevant info about the
-attribute, its highlight delay and what color it should be
-highlighted."
-  (let ((attr (cadr new))
-	(change-face (if change-is-bad-p 'nethack-red-face 'nethack-green-face)))
-    (cond ((or (null (cadr old))
-	       (null (elt old 2)))
-	   (insert (format fmt attr))
-	   (append new '(0)))
-
-	  ((not (string-equal (cadr old)
-			      (cadr new)))
-	   (insert (format fmt (propertize attr 'face change-face)))
-	   (append new (list nethack-status-highlight-delay change-face)))
-
-	  (t (if (= 0 (elt old 2))
-		 (progn
-		   (insert (format fmt attr))
-		   old)
-	       (insert (format fmt (propertize attr 'face (elt old 3))))
-	       (append new (list (1- (elt old 2)) (elt old 3))))))))
+(defun nethack-print-status-string (alist attr fmt)
+  (let ((new-value (cadr (assoc attr alist))))
+    (if new-value
+	(progn
+	  (if (numberp new-value)
+	      (setq new-value (number-to-string new-value)))
+	  (insert (format fmt new-value))))))
 
 ;; FIXME: this is a temporary kludge which will disappear when we have
 ;; real cooked status information coming from the process.
@@ -243,87 +198,53 @@ highlighted."
     (insert (format "%s the " (cadr (assoc "name" status))))
     ;; Recreate nethack-status-alist and simultaneously print each attribute
     (setq nethack-status-alist
-	  (list (nethack-api-print-status-string (assoc "rank" status) 
-						 (assoc "rank" nethack-status-alist)
-						 "%s  ")
-		(nethack-api-print-status-numeric (assoc "St" status)
-						  (assoc "St" nethack-status-alist)
-						  "St:%s ")
-		(nethack-api-print-status-numeric (assoc "Dx" status)
-						  (assoc "Dx" nethack-status-alist)
-						  "Dx:%s ")
-		(nethack-api-print-status-numeric (assoc "Co" status)
-						  (assoc "Co" nethack-status-alist)
-						  "Co:%s ")
-		(nethack-api-print-status-numeric (assoc "In" status)
-						  (assoc "In" nethack-status-alist)
-						  "In:%s ")
-		(nethack-api-print-status-numeric (assoc "Wi" status)
-						  (assoc "Wi" nethack-status-alist)
-						  "Wi:%s ")
-		(nethack-api-print-status-numeric (assoc "Ch" status)
-						  (assoc "Ch" nethack-status-alist)
-						  "Ch:%s ")
-		(nethack-api-print-status-string (assoc "Align" status)
-						 (assoc "Align" nethack-status-alist)
-						 " %s\n" t)
+	  (list
+	   (if (assoc "rank" status)
+	       (nethack-print-status-string status "rank" "%s  ")
+	     (nethack-print-status-string status "monster" "%s  "))
+	   (nethack-print-status-string status "St" "St:%s ")
+	   (nethack-print-status-string status "Dx" "Dx:%s ")
+	   (nethack-print-status-string status "Co" "Co:%s ")
+	   (nethack-print-status-string status "In" "In:%s ")
+	   (nethack-print-status-string status "Wi" "Wi:%s ")
+	   (nethack-print-status-string status "Ch" "Ch:%s ")
+	   (nethack-print-status-string status "Align" " %s\n")
+	   (nethack-print-status-string status "Dungeon" "%s ")
+	   (nethack-print-status-string status "Dlvl" "Dlvl:%s ")
+	   (nethack-print-status-string status "$" "$:%s ")
+	   (nethack-print-status-string status "HP" "HP:%s")
+	   (nethack-print-status-string status "HPmax" "(%s) ")
+	   (nethack-print-status-string status "PW" "Pw:%s")
+	   (nethack-print-status-string status "PWmax" "(%s) ")
+	   (nethack-print-status-string status "AC" "AC:%s ")
+	   (if (assoc "HD" status)
+	       (nethack-print-status-string status "HD" "HD:%s ")
+	     (nethack-print-status-string status "Level" "Xp:%s")
+	     (nethack-print-status-string status "XP" "/%s "))
+	   (nethack-print-status-string status "T" "T:%s ")
 
-		(nethack-api-print-status-string (assoc "Dungeon" status)
-						 (assoc "Dungeon" nethack-status-alist)
-						 "%s ")
-		(nethack-api-print-status-numeric (assoc "Dlvl" status)
-						 (assoc "Dlvl" nethack-status-alist)
-						 "Dlvl:%s ")
-		(nethack-api-print-status-numeric (assoc "$" status)
-						  (assoc "$" nethack-status-alist)
-						  "$:%s ")
-		(nethack-api-print-status-numeric (assoc "HP" status)
-						  (assoc "HP" nethack-status-alist)
-						  "HP:%s")
-		(nethack-api-print-status-numeric (assoc "HPmax" status)
-						  (assoc "HPmax" nethack-status-alist)
-						  "(%s) ")
-		(nethack-api-print-status-numeric (assoc "PW" status)
-						  (assoc "PW" nethack-status-alist)
-						  "Pw:%s")
-		(nethack-api-print-status-numeric (assoc "PWmax" status)
-						  (assoc "PWmax" nethack-status-alist)
-						  "(%s) ")
-		(nethack-api-print-status-numeric (assoc "AC" status)
-						  (assoc "AC" nethack-status-alist)
-						  "AC:%s " t)
-		(nethack-api-print-status-numeric (assoc "Level" status)
-						  (assoc "Level" nethack-status-alist)
-						  "Xp:%s")
-		(nethack-api-print-status-numeric (assoc "XP" status)
-						  (assoc "XP" nethack-status-alist)
-						  "/%s ")
-		(nethack-api-print-status-numeric (assoc "T" status)
-						  (assoc "T" nethack-status-alist)
-						  "T:%s " t)
-
-		;; Process flags. If a flag was not there before, it should be
-		;; marked in red as all flag updates are for bad things.
-		;; FIXME: Not quite functioning but it doesn't need CL anymore.
-		(list "Flags"
-		      (mapcar (lambda (flag)
-				(let ((old-flag (assoc flag (cadr (assoc "Flags" nethack-status-alist)))))
-				  (cond ((null old-flag)
-					 ;; new flag, so highlight it and set the timer
-					 (insert (concat (propertize flag 'face 'nethack-red-face) " "))
-					 (list flag nethack-status-highlight-delay))
-					((> (cadr old-flag) 0)
-					 ;; existing flag. Highlight the flag if it hasn't timed-out yet.
-					 (insert (concat (propertize flag 'face 'nethack-red-face) " "))
-					 (list flag (1- (cadr old-flag))))
-					(t 
-					 ;; The flag is old and its highlight has timed out. 
-					 ;; Just print the flag.
-					 (insert (concat flag " "))
-					 old-flag))))
-			      (cadr (assoc "Flags" status))))))
-	  ;; Add a trailing newline to the status buffer
-	  (insert "\n")))
+	   ;; Process flags. If a flag was not there before, it should be
+	   ;; marked in red as all flag updates are for bad things.
+	   ;; FIXME: Not quite functioning but it doesn't need CL anymore.
+	   (list "Flags"
+		 (mapcar (lambda (flag)
+			   (let ((old-flag (assoc flag (cadr (assoc "Flags" nethack-status-alist)))))
+			     (cond ((null old-flag)
+				    ;; new flag, so highlight it and set the timer
+				    (insert (concat (propertize flag 'face 'nethack-red-face) " "))
+				    (list flag nethack-status-highlight-delay))
+				   ((> (cadr old-flag) 0)
+				    ;; existing flag. Highlight the flag if it hasn't timed-out yet.
+				    (insert (concat (propertize flag 'face 'nethack-red-face) " "))
+				    (list flag (1- (cadr old-flag))))
+				   (t 
+				    ;; The flag is old and its highlight has timed out. 
+				    ;; Just print the flag.
+				    (insert (concat flag " "))
+				    old-flag))))
+			 (cadr (assoc "Flags" status))))))
+    ;; Add a trailing newline to the status buffer
+    (insert "\n")))
 
 ;; putstr(window, attr, str) -- Print str on the window with the
 ;; given attribute.  Only printable ASCII characters (040-0126) must be
@@ -622,13 +543,8 @@ all of the appropriate setup."
 
 (defun nethack-api-exit-nhwindows (str)
   ""
-  ;; clean up buffers
-  (mapc (lambda (b) (kill-buffer (cdr b))) nethack-buffer-table)
-  (setq nethack-buffer-table nil)
   ;; print the message in STR to the raw print buffer
-  (nethack-api-raw-print str)
-  ;; the process waits for this final acknowledgment
-  (nh-send 'dummy))
+  (nethack-api-raw-print str))
 
 ;; window = create_nhwindow(type) -- Create a window of type 'type'.
 
@@ -745,20 +661,21 @@ Return the buffer."
     (if blocking
 	(cond
 	 ;; Both menu's and text can be filled with arbitrary message
-	 ;; text.  Try to show the message in the echo area,
+	 ;; text.  Try to show the message in the message window,
 	 ;; otherwise setup a "choiceless" menu.
 	 ((or (eq nethack-buffer-type 'nhw-menu)
 	      (eq nethack-buffer-type 'nhw-text))
-	  (setq nethack-window-configuration (current-window-configuration))
-	  (let ((maybe-window
-		 (display-message-or-buffer (nethack-buffer winid))))
-	    (if (not (windowp maybe-window))
-		(let ((cursor-in-echo-area t))
-		  ;(read-char-exclusive)
-		  (nh-send 'dummy))
-	      (setq nethack-menu nil)
-	      (select-window maybe-window)
-	      (nethack-menu-mode 'pick-none))))
+	  (let ((message-window (get-buffer-window nethack-message-buffer))
+		(message-size (count-lines (point-min) (point-max)))
+		(message-winid (car (rassoc nethack-message-buffer
+					    nethack-buffer-table))))
+	    (if (or (not message-window)
+		    (>= message-size (window-height message-window)))
+		(nethack-api-select-menu winid 'pick-none)
+	      (nethack-api-putstr message-winid 'atr-none
+				  (buffer-substring (point-min)
+						    (- (point-max) 1)))
+	      (nh-send 'dummy))))
 	 ;; This is called on the map when there is something that
 	 ;; needs to be temporarily unhidden, for example all of the
 	 ;; monsters.
@@ -795,7 +712,6 @@ Return the buffer."
   (switch-to-buffer nethack-message-buffer)
   (split-window-vertically (- nethack-message-window-height))
   (switch-to-buffer nethack-status-buffer)
-  (set-window-dedicated-p (selected-window) t)
   (split-window-vertically nethack-status-window-height)
   (switch-to-buffer-other-window nethack-map-buffer))
 
@@ -994,14 +910,7 @@ buffer."
 		 prompt
 		 ;; preserve footer:
 		 (cdr (ewoc-get-hf nethack-menu)))
-    (ewoc-refresh nethack-menu)
-
-    ;; position the point on the first selectable menu item
-    (let ((node (ewoc-goto-node nethack-menu
- 				(ewoc-nth nethack-menu 0))))
-;;;       (while (and node (zerop (aref (ewoc-data node) 0)))
-;;; 	(setq node (ewoc-goto-next nethack-menu 1))))))
-      )))
+    (ewoc-refresh nethack-menu)))
 
 ;; int select_menu(windid window, int how, menu_item **selected) --
 ;; Return the number of items selected; 0 if none were chosen, -1 when
@@ -1033,8 +942,21 @@ the menu is dismissed."
     (if buffer
 	(progn
 	  (setq nethack-window-configuration (current-window-configuration))
-	  (pop-to-buffer (nethack-buffer winid) nil t)
-	  (nethack-menu-mode how))
+	  ;; use the window displaying the message buffer for the
+	  ;; menu, if possible.
+	  (let ((message-window (get-buffer-window nethack-message-buffer)))
+	    (if (not message-window)
+		(pop-to-buffer (nethack-buffer winid) nil t)
+	      (select-window message-window)
+	      (switch-to-buffer (nethack-buffer winid) t)))
+	  ;; make window larger, if necessary
+	  (let ((bh (window-buffer-height (selected-window)))
+		(wh (- (window-height) 1)))
+	    (if (> bh wh)
+		(enlarge-window (- bh wh))))
+	  (nethack-menu-mode how)
+	  (goto-char (point-min))
+	  (message "Displaying menu"))
       (error "No such winid: %d" winid))))
 
 ;; char message_menu(char let, int how, const char *mesg) --
