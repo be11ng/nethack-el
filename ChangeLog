@@ -1,3 +1,45 @@
+2002-01-29  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-cmd.el (defun-nethack-command): Reformat.
+
+	* nethack-api.el (nethack-api-update-status): Rewrite using a
+	separate variable for each attribute.  Don't print the attributes
+	here.  Run hooks when an attribute has changed.
+	(nethack-print-status): New function.
+	(nethack-status-attribute-name, nethack-status-attribute-monster) 
+	(nethack-status-attribute-rank, nethack-status-attribute-St) 
+	(nethack-status-attribute-Dx, nethack-status-attribute-Co) 
+	(nethack-status-attribute-In, nethack-status-attribute-Wi) 
+	(nethack-status-attribute-Ch, nethack-status-attribute-Align) 
+	(nethack-status-attribute-Dungeon, nethack-status-attribute-Dlvl) 
+	(nethack-status-attribute-$, nethack-status-attribute-HP) 
+	(nethack-status-attribute-HPmax, nethack-status-attribute-PW) 
+	(nethack-status-attribute-PWmax, nethack-status-attribute-AC) 
+	(nethack-status-attribute-Level, nethack-status-attribute-XP) 
+	(nethack-status-attribute-HD, nethack-status-attribute-T) 
+	(nethack-status-attribute-confusion) 
+	(nethack-status-attribute-hunger, nethack-status-attribute-sick) 
+	(nethack-status-attribute-blind) 
+	(nethack-status-attribute-stunned) 
+	(nethack-status-attribute-hallucination) 
+	(nethack-status-attribute-slimed) 
+	(nethack-status-attribute-encumbrance): Add variables.
+	(nethack-status-good-face, nethack-status-bad-face) 
+	(nethack-status-neutral-face): Add faces.
+	(nethack-active-menu-buffer): Add variable.
+	(nethack-api-select-menu): Set nethack-active-menu-buffer.
+	(nethack-menu-submit): Clear nethack-active-menu-buffer.
+	(nethack-menu-toggle-item): Fix count bug, so C-u 1 works.
+	(nethack-restore-window-configuration): Make sure the menu is
+	displayed if it is active.
+
+2002-01-27  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nh-filter): Remove nh-log-process-text test.
+	(nh-log): Test nh-log-process-text here.
+	(nh-prompt-regexp): Make constant.
+	(nh-log-process-text): Rename from nh-log-process.
+
 2002-01-23  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el (nh-proc-buffer-name): Add variable.

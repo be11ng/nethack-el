@@ -39,7 +39,10 @@
      (unwind-protect
 	 (if ,cmdstr
 	     (nh-send-and-wait
-	      (concat ,cmdstr " " (if count (number-to-string count) "1"))))
+	      (concat ,cmdstr " " 
+		      (if count
+			  (number-to-string count)
+			"1"))))
        ,@body)))
 
 (defun-nethack-command north		;k
