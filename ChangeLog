@@ -1,3 +1,11 @@
+2001-07-18  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-menu.el (nethack-menu-keymap): rename from
+	nethack-menu-mode-map.
+	(nethack-menu-create-item): pass in HOW argument
+	(nethack-menu-how): remove variable
+	(nethack-menu-create-item): use accelerators.
+
 2001-07-16  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el: tweak faces for light background.
