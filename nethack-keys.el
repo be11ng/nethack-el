@@ -313,7 +313,7 @@
     ;;(define-key map "" 'nethack-command-)
 
     ;;M-f     Force a lock
-    ;;(define-key map "" 'nethack-command-)
+    (define-key map (kbd "M-l") 'nethack-command-force)
 
     ;;M-i     Invoke an object's special powers
     ;;(define-key map "" 'nethack-command-)
@@ -322,7 +322,7 @@
     ;;(define-key map "" 'nethack-command-)
 
     ;;M-l     Loot a box on the floor
-    ;;(define-key map "" 'nethack-command-)
+    (define-key map (kbd "M-l") 'nethack-command-loot)
 
     ;;M-m     Use a monster's special ability
     ;;(define-key map "" 'nethack-command-)

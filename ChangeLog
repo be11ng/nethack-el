@@ -1,3 +1,39 @@
+2001-10-18  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-apix.el: Remove file, move functions into
+	nethack-api.el.
+
+	* nethack-keys.el (nethack-mode-map): Add nethack-command-loot
+	binding.
+
+	* nethack.el (gamegrid,nethack-apix): Don't require.
+	(nethack-process-filter): Remove save-excursion wrapper.
+	(nethack-setup-map-buffer): Remove.
+	(nethack-map-mode): Turn off show-paren mode.
+
+	* nethack-api.el (gamegrid): Require.
+	(nethack-api-curs): Wrap in save-excursion.  Subtract 1 from x
+	value.
+	(nethack-api-putstr): Wrap in save-excursion.  Propertize strings
+	going into menu and text windows.
+	(nethack-api-print-glyph): Wrap in save-excursion.  Subtract 1
+	from x value.
+	(nethack-api-get-ext-cmd): Remove.
+	(nethack-choose-attribute): Move here from nethack-apix.el.  Check
+	for choice lists of only 1 element here.
+	(nethack-api-choose-role): Move here from nethack-apix.el.  Don't
+	Check for choice lists of only 1 element here.
+	(nethack-api-choose-race): Likewise.
+	(nethack-api-choose-gender): Likewise.
+	(nethack-api-choose-alignment): Likewise.
+	(nethack-api-doprev-message): Uncomment body.
+	(nethack-api-clear-nhwindow): Initialize gamegrid with .'s instead
+	of spaces for debugging.
+	(nethack-api-display-nhwindow): Display short messages in the echo
+	area.
+	(nethack-api-start-menu): Wrap in save-excursion.
+	(nethack-api-end-menu): Wrap in save-excursion.
+
 2001-10-17  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-api.el (nethack-raw-print-buffer-name): New variable.

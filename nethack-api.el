@@ -9,6 +9,7 @@
 ;;; Sat Mar 18 11:24:02 2000
 
 (require 'ewoc)
+(require 'gamegrid)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Introduction
@@ -137,11 +138,12 @@
 
 (defun nethack-api-curs (winid x y)
   ""
-  (set-buffer (nethack-buffer winid))
-  (cond ((eq nethack-buffer-type 'nhw-map)
-	 (goto-char (gamegrid-cell-offset x y)))
-	((eq nethack-buffer-type 'nhw-status)
-	 (setq nethack-status-line-number y)))
+  (save-excursion
+    (set-buffer (nethack-buffer winid))
+    (cond ((eq nethack-buffer-type 'nhw-map)
+	   (goto-char (gamegrid-cell-offset (- x 1) y)))
+	  ((eq nethack-buffer-type 'nhw-status)
+	   (setq nethack-status-line-number y))))
   'void)
 
 
@@ -160,29 +162,32 @@
 
 (defun nethack-api-putstr (winid attr str)
   ""
-  (set-buffer (nethack-buffer winid))
-  (cond ((eq nethack-buffer-type 'nhw-status)
-	 (if (= nethack-status-line-number 0)
-	     (setcar nethack-status-lines str)
-	   (setcdr nethack-status-lines str))
-	 (save-excursion
+  (save-excursion
+    (set-buffer (nethack-buffer winid))
+    (cond ((eq nethack-buffer-type 'nhw-status)
+	   (if (= nethack-status-line-number 0)
+	       (setcar nethack-status-lines str)
+	     (setcdr nethack-status-lines str))
 	   (set-buffer (nethack-buffer winid))
 	   (erase-buffer)
-	   (insert (car nethack-status-lines) "\n" (cdr nethack-status-lines))))
-	(t
-	 (goto-char (point-max))
-	 (insert "\n"
-		 (if (eq nethack-buffer-type 'nhw-message)
-		     (propertize str 'face 'bold)
-		   str))
-	 ;; scroll to show maximum output on all windows displaying buffer
-	 (let ((l (get-buffer-window-list (nethack-buffer winid))))
-	   (save-selected-window
-	     (mapc (lambda (w)
-		     (select-window w)
-		     (set-window-point w (point-max))
-		     (recenter -1))
-		   l)))))
+	   (insert (car nethack-status-lines) "\n" (cdr nethack-status-lines)))
+	  ((eq nethack-buffer-type 'nhw-message)
+	   (goto-char (point-max))
+	   (insert "\n" (propertize str 'face 'bold))
+	   ;; scroll to show maximum output on all windows displaying buffer
+	   (let ((l (get-buffer-window-list (nethack-buffer winid))))
+	     (save-selected-window
+	       (mapc (lambda (w)
+		       (select-window w)
+		       (set-window-point w (point-max))
+		       (recenter -1))
+		     l))))
+	  (t
+	   (goto-char (point-max))
+	   (insert (if (eq attr 'atr-none)
+		       str
+		     (propertize str 'face 'highlight)) ;FIXME: other attrs
+		   "\n"))))
   'void)
 
 
@@ -233,13 +238,15 @@
 
 (defun nethack-api-print-glyph (winid x y type offset face glyph ch)
   ""
-  (set-buffer (nethack-buffer winid))
-  (let ((inhibit-read-only t))
-    (gamegrid-set-cell x y ch)
-    (put-text-property (gamegrid-cell-offset x y)
-		       (1+ (gamegrid-cell-offset x y))
-		       'face
-		       (cdr (assoc face nethack-color-alist))))
+  (save-excursion
+    (set-buffer (nethack-buffer winid))
+    (setq x (- x 1)) 				; FIXME: hack
+    (let ((inhibit-read-only t))
+      (gamegrid-set-cell x y ch)
+      (put-text-property (gamegrid-cell-offset x y)
+			 (1+ (gamegrid-cell-offset x y))
+			 'face
+			 (cdr (assoc face nethack-color-alist)))))
   'void)
 
 
@@ -261,8 +268,8 @@
 (defun nethack-api-yn-function (ques choices default)
   ""  
   (let ((cursor-in-echo-area t)
-	(all-choices)
-	(key))
+	all-choices 
+	key)
 
     (if (= default 0)
 	(setq all-choices (string-to-list choices))
@@ -320,10 +327,6 @@
 ;; specific way.  An index into extcmdlist[] is returned on a successful
 ;; selection, -1 otherwise.
 
-(defun nethack-api-get-ext-cmd (cmd-alist)
-  "Get an extended command from the user." 
-  (nethack-api-choose-attribute "# " cmd-alist))
-
 ;; player_selection() -- Do a window-port specific player type
 ;; selection.  If player_selection() offers a Quit option, it is its
 ;; responsibility to clean up and terminate the process.  You need to
@@ -331,10 +334,31 @@
 
 (defun nethack-api-player-selection ()
   " Does nothing right now, perhaps simply indicates that the
-nethack-apix-choose-X calls are to follow for actual
-role/race/gender/align selection."
+nethack-api-choose-X calls are to follow for actual
+role/race/gender/align selection."  
   'void)
 
+(defun nethack-choose-attribute (prompt alist abort)
+  "Prompts user for an element from the cars of ALIST and returns the
+corresponding cdr."
+  (if (> (length alist) 1)
+      (let ((completion-ignore-case t))
+	(condition-case nil
+	    (cdr (assoc (completing-read prompt alist nil t) alist))
+	  (quit abort)))
+    (cdar alist)))
+  
+(defun nethack-api-choose-role (role-alist)
+  (nethack-choose-attribute "Choose role: " role-alist -1))
+
+(defun nethack-api-choose-race (race-alist)
+  (nethack-choose-attribute "Choose race: " race-alist -1))
+
+(defun nethack-api-choose-gender (gender-alist)
+  (nethack-choose-attribute "Choose gender: " gender-alist -1))
+
+(defun nethack-api-choose-alignment (alignment-alist)
+  (nethack-choose-attribute "Choose alignment: " alignment-alist -1))
 
 ;;  display_file(str, boolean complain) -- Display the file named str.
 ;; Complain about missing files iff complain is TRUE.
@@ -361,13 +385,13 @@ role/race/gender/align selection."
 
 (defun nethack-api-doprev-message ()
   ""
-  ;;   (save-selected-window
-  ;;     (mapcar (lambda (w)
-  ;; 	      (select-window w)
-  ;; 	      (scroll-down))
-  ;; 	    (get-buffer-window-list 
-  ;; 	     (cdr (assoc 'nhw-message
-  ;; 			 nethack-buffer-name-alist)))))
+  (save-selected-window
+    (save-excursion
+      (walk-windows (lambda (w)
+		      (select-window w)
+		      (set-buffer (window-buffer))
+		      (if (eq nethack-buffer-type 'nhw-message)
+			  (scroll-down))))))
   'void)
 
 
@@ -440,7 +464,7 @@ type specific initalizations, and return a digit id."
       (kill-all-local-variables)
       (setq nethack-buffer-type type)
       (if (eq type 'nhw-map)
-	  (nethack-setup-map-buffer buf)))
+	  (nethack-map-mode)))
     (push (cons winid buf) nethack-buffer-table)
     winid))
 
@@ -455,7 +479,7 @@ type specific initalizations, and return a digit id."
 	   (gamegrid-init (make-vector 256 nil))
 	   (gamegrid-init-buffer nethack-map-width
 				 nethack-map-height
-				 ? ))
+				 ?.))
 	  ((eq nethack-buffer-type 'nhw-message)
 	   (set-text-properties (point-min) (point-max) nil))
 	  (t
@@ -475,12 +499,31 @@ type specific initalizations, and return a digit id."
 (defun nethack-api-display-nhwindow (winid blocking)
   "not sure what this should do.  makes buffer visible in some
 way?"
-  (if (not blocking)
-      (nethack-protect-windows
-       (display-buffer (nethack-buffer winid)))
-    ;; if its blocking, then set it up like a choiceless menu
-    (nethack-menu-reset-keymap)
-    (nethack-api-select-menu winid 'pick-none))
+  (save-excursion
+    (set-buffer (nethack-buffer winid))
+    (if blocking
+	(cond ((or (eq nethack-buffer-type 'nhw-menu)
+		   (eq nethack-buffer-type 'nhw-text))
+	       (nethack-protect-windows
+		(let ((maybe-window
+		       (display-message-or-buffer (nethack-buffer winid))))
+		  (if (not (windowp maybe-window))
+		      (let ((cursor-in-echo-area t))
+			(read-char-exclusive)
+			(nethack-process-send nil))
+		    (setq nethack-window-configuration (current-window-configuration))
+		    (select-window maybe-window)
+		    (nethack-menu-reset-keymap)
+		    (use-local-map nethack-menu-keymap)))))		      
+	      ;; At the end of the game, the message buffer is shown
+	      ;; one last time...we should do something better here,
+	      ;; but the problem is we have no way of indicating to
+	      ;; the user that we are waiting for a key to move on.
+	      ((eq nethack-buffer-type 'nhw-message)
+	       (nethack-process-send nil))
+	      (t (message "displaying %d with blocking %s" winid blocking)))
+      ;; do nothing for nonblocking
+      ))
   'void)
 
 ;; destroy_nhwindow(window) -- Destroy will dismiss the window if the
@@ -563,11 +606,12 @@ popups).")
 
 (defun nethack-api-start-menu (winid)
   ""
-  (set-buffer (get-buffer-create (nethack-buffer winid)))
-  (erase-buffer)
-  (setq nethack-menu (ewoc-create 'nethack-menu-item-print "" ""))
-  (nethack-menu-reset-keymap)
-  (setq nethack-unassigned-accelerator-index 0)
+  (save-excursion
+    (set-buffer (get-buffer-create (nethack-buffer winid)))
+    (erase-buffer)
+    (setq nethack-menu (ewoc-create 'nethack-menu-item-print "" ""))
+    (nethack-menu-reset-keymap)
+    (setq nethack-unassigned-accelerator-index 0))
   'void)
 
 
@@ -626,7 +670,7 @@ specified by `nethack-unassigned-accelerator-index'."
 				   preselected
 				   (if (eq attr 'atr-none)
 				       str
-				     (propertize str 'face 'highlight))	;FIXME:
+				     (propertize str 'face 'highlight))	;FIXME: other attrs
 				   identifier))
     (if (not (= -1 identifier))
 	(define-key nethack-menu-keymap (vector acc) 'nethack-menu-toggle-item)))
@@ -641,10 +685,11 @@ specified by `nethack-unassigned-accelerator-index'."
 
 (defun nethack-api-end-menu (window prompt)
   ""
-  (set-buffer (nethack-buffer window))
-  (ewoc-set-hf nethack-menu prompt "") ; might this clobber an existing footer?
-  (ewoc-refresh nethack-menu)
-  (ewoc-goto-node nethack-menu (ewoc-nth nethack-menu 0))
+  (save-excursion
+    (set-buffer (nethack-buffer window))
+    (ewoc-set-hf nethack-menu prompt "") ; might this clobber an existing footer?
+    (ewoc-refresh nethack-menu)
+    (ewoc-goto-node nethack-menu (ewoc-nth nethack-menu 0)))
   'void)
 
 
@@ -694,7 +739,8 @@ menus."
 	  (setq nethack-window-configuration (current-window-configuration))
 	  (nethack-protect-windows
 	   (pop-to-buffer (nethack-buffer winid) nil t)
-	   (goto-char (point-min)))	  
+;;	   (goto-char (point-min)))
+	   )
 	  (setq nethack-menu-how how)
 	  (use-local-map nethack-menu-keymap))
       (error "No such winid: %d" winid)))
