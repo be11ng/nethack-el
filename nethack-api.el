@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.87 2003/08/29 20:03:58 sabetts Exp $
+;; Version: $Id: nethack-api.el,v 1.88 2003/09/15 12:07:07 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -350,7 +350,12 @@ FIXME: doesnt actually use ATTR!"
 	  (setq key (nh-read-char (concat 
 					(format "(bad %d) " key)
 					ques " ")))))
-    (nh-send (if (= 13 key) default key))))
+    ;; 13, 27, and 7 are abort keys
+    (nh-send (if (or (= 13 key)
+		     (= 27 key)
+		     (= 7 key))
+		 default
+	       key))))
 
 (defun nhapi-ask-direction (prompt)
   "Prompt the user for a direction"

@@ -1,3 +1,7 @@
+2004-11-11  Shawn Betts  <katia_dilkina@verizon.net>
+
+	* nethack-api.el (nhapi-yn-function): Add ESC and C-g as abort keys.
+
 2004-07-24  Shawn Betts  <sabetts@burnt.emmett.ca>
 
 	* Makefile (NETHACK_EL_VER): version bump to 0.9.3
