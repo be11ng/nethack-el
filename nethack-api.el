@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.68 2002/01/23 23:28:12 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.69 2002/01/29 23:18:49 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -221,31 +221,48 @@ are no newlines in `nethack-status-string'."
 (defvar nethack-status-attribute-encumbrance (list nil nil 0))
 
 (defface nethack-status-good-face
-  `((((type tty) (class color))
-     (:background "green"))
-    (((class color) (background dark))
-     (:background "green"))
-    (((class color) (background light))
-     (:background "lime green")))
+  `((((type tty)
+      (class color))
+     (:background "green" :foreground "black"))
+    (((class color)
+      (background light))
+     (:background "darkseagreen2"))
+    (((class color)
+      (background dark))
+     (:background "green4")))
   "Face for highlighting good changes in the status buffer."
   :group 'nethack-faces)
 
 (defface nethack-status-bad-face
-  `((((type tty) (class color))
+  `((((type tty)
+      (class color))
      (:background "red"))
-    (((class color))
-     (:background "red")))
+    (((class color)
+      (background light))
+     (:background "pink"))
+    (((class color)
+      (background dark))
+     (:background "red"))
+    (t 
+     (:inverse-video t)))
   "Face for highlighting bad changes in the status buffer."
   :group 'nethack-faces)
 
 (defface nethack-status-neutral-face
-  `((((type tty) (class color))
-     (:background "yellow" :bold t))
-    (((class color) (background dark))
-     (:background "yellow"))
-    (((class color) (background light))
-     (:background "yellow3"))
-    (t (:background "gray")))
+  `((((type tty)
+      (class color))
+     (:foreground "white" :background "blue"))
+    (((type tty)
+      (class mono))
+     (:inverse-video t))
+    (((class color)
+      (background dark))
+     (:background "blue3"))
+    (((class color)
+      (background light))
+     (:background "lightgoldenrod2"))
+    (t
+     (:background "gray")))
   "Face for highlighting neutral changes in the status buffer."
   :group 'nethack-faces)
 

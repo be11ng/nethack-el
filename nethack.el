@@ -1,7 +1,7 @@
 ;;; nethack.el -- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id: nethack.el,v 1.62 2002/01/23 23:28:12 rcyeske Exp $
+;;; $Id: nethack.el,v 1.63 2002/01/29 23:18:49 rcyeske Exp $
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 ;;; Commentary:
@@ -24,9 +24,8 @@
     :type '(hook)
     :group 'nethack)
 
-;; FIXME: what should this look like?
 (defface nethack-black-face
-  `((t (:foreground "blue")))
+  `((t (:foreground "dark blue")))
   "nethack black face"
   :group 'nethack-faces)
 
@@ -43,7 +42,7 @@
   `((((type tty) (class color))
      (:foreground "green"))
     (((class color) (background dark))
-     (:foreground "green"))
+     (:foreground "lime green"))
     (((class color) (background light))
      (:foreground "lime green"))
     (t (:foreground "gray")))
@@ -53,7 +52,9 @@
 (defface nethack-brown-face
   `((((type tty) (class color))
      (:foreground "yellow"))
-    (((class color))
+    (((class color) (background dark))
+     (:foreground "chocolate"))
+    (((class color) (background light))
      (:foreground "brown"))
     (t (:foreground "gray")))
   "nethack brown"
@@ -62,8 +63,10 @@
 (defface nethack-blue-face
   `((((type tty) (class color))
      (:foreground "blue"))
-    (((class color))
-     (:foreground "blue"))
+    (((class color) (background dark))
+     (:foreground "dark blue"))
+    (((class color) (background light))
+     (:foreground "dark blue"))
     (t (:foreground "gray")))
   "nethack blue"
   :group 'nethack-faces)
@@ -71,8 +74,10 @@
 (defface nethack-magenta-face
   `((((type tty) (class color))
      (:foreground "magenta"))
-    (((class color))
-     (:foreground "magenta"))
+    (((class color) (background dark))
+     (:foreground "dark magenta"))
+    (((class color) (background light))
+     (:foreground "dark magenta"))
     (t (:foreground "gray")))
   "nethack magenta"
   :group 'nethack-faces)
@@ -81,7 +86,7 @@
   `((((type tty) (class color))
      (:foreground "cyan"))
     (((class color) (background dark))
-     (:foreground "cyan"))
+     (:foreground "dark cyan"))
     (((class color) (background light))
      (:foreground "cyan4"))
     (t (:foreground "gray")))
@@ -123,7 +128,7 @@
   `((((type tty) (class color))
      (:foreground "green" :bold t))
     (((class color) (background dark))
-     (:foreground "lightgreen"))
+     (:foreground "green"))
     (((class color) (background light))
      (:foreground "dark green"))
     (t (:foreground "gray")))
@@ -145,9 +150,9 @@
   `((((type tty) (class color))
      (:foreground "blue" :bold t))
     (((class color) (background dark))
-     (:foreground "lightblue"))
+     (:foreground "blue"))
     (((class color) (background light))
-     (:foreground "dodger blue"))
+     (:foreground "blue"))
     (t (:foreground "gray")))
   "nethack bright blue"
   :group 'nethack-faces)
@@ -283,9 +288,9 @@ delete the contents, perhaps logging the text."
 	(let ((prompt (match-string 1)))
 	  (nh-log (buffer-substring (point-min) (point)))
 	  (eval-region (point-min) (point))
-	  (nethack-print-status)
 	  (cond ((or (equal prompt "command")
 		     (equal prompt "menu"))
+		 (nethack-print-status)
 		 (sit-for 0)
 		 (setq nh-at-prompt t)))))))
 
