@@ -97,7 +97,7 @@
 (defun-nethack-command save-game "Save the game" "save") ;S
 (defun-nethack-command throw "Throw something" "throw") ;t
 (defun-nethack-command remove-single-armor "Take off one piece of armor" "takeoff") ;T
-(defun-nethack-command version "Show version" "version") ;v
+(defun-nethack-command version "Show version" "simpleversion") ;v
 (defun-nethack-command version-and-history "Show long version and game history" "history") ;V
 
 (defun-nethack-command wield "Wield (put in use) a weapon" "wield") ;w
@@ -132,6 +132,10 @@
 (defun-nethack-command kick "Kick" "kick") ;^D
 (defun-nethack-command list-known-spells "List known spells" "listspells") ;+
 
+(defun-nethack-command show-attributes ;^X
+  "Show your attributes (intrinsic ones included in debug or explore mode)"
+  "attributes")
+
 ;;; wizard (debug) mode only commands:
 (defun-nethack-command wizard-detect	;^E
   "Search a room (available in debug mode only)"
@@ -154,9 +158,6 @@
 (defun-nethack-command wizard-wish	;^W
   "Wish (available in debug mode only)"
   "wiz_wish")
-(defun-nethack-command wizard-attributes ;^X
-  "Show your intrinsic attributes (in debug or explore mode only)"
-  "wiz_attributes")
 ;; wizard extended commands
 ;; 	{"light sources", "show mobile light sources", wiz_light_sources, TRUE},
 ;; 	{"seenv", "show seen vectors", wiz_show_seenv, TRUE},
@@ -165,7 +166,6 @@
 ;; 	{"vision", "show vision array", wiz_show_vision, TRUE},
 ;; 	{"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE},
 ;;	{"wmode", "show wall modes", wiz_show_wmodes, TRUE},
-
 
 ;; Extended commands
 (defun-nethack-command pray "pray to the gods for help." "pray")
@@ -192,7 +192,7 @@
 (defun-nethack-command twoweapon "toggle two-weapon combat." "twoweapon")
 (defun-nethack-command untrap "untrap something." "untrap")
 
-(defun-nethack-command extended-version "list compile time options for this version of NetHack." "extversion")
+(defun-nethack-command extended-version "list compile time options for this version of NetHack." "version")
 (defun-nethack-command wipe "wipe off your face." "wipe")
 
 (defun-nethack-command previous-message	; ^P
@@ -210,22 +210,66 @@ With a prefix arg, also redraws the map glyphs."
   ;; but always restore the window configuration
   (nethack-restore-window-configuration))
 
+(defun-nethack-command teleport-around-level ; ^T
+  "Teleport around level" 
+  "teleport")
+
 ;;; FIXME: defun these:
-(defun-nethack-command redo-previous "Redo the previous command" "xxx") ;^A
-(defun-nethack-command teleport-around-level "Teleport around level" "xxx") ;^T
-(defun-nethack-command suspend-game "Suspend game (only if defined)" "xxx") ;^Z
-(defun-nethack-command cancel "Cancel command" "xxx") ;^[
-(defun-nethack-command call-monster "Call (name) a particular monster" "xxx") ;C
-(defun-nethack-command force-fight "Followed by direction, fight a monster (even if you don't sense it)" "xxx") ;F
-(defun-nethack-command move-until-near "Followed by direction, move until you are near something" "xxx") ;g
-(defun-nethack-command move "Followed by direction, same as control-direction" "xxx") ;G
-(defun-nethack-command move-no-pickup-or-fight "Followed by direction, move without picking anything up or fighting" "xxx") ;m
-(defun-nethack-command move-distance-no-pickup "Followed by direction, move a distance without picking anything up" "xxx") ;M
-(defun-nethack-command show-wielded-weapon "Show the weapon currently wielded" "xxx") ;)
-(defun-nethack-command show-worn-armor "Show the armor currently worn" "xxx") ;[
-(defun-nethack-command show-worn-rings "Show the ring(s) currently worn" "xxx") ;=
-(defun-nethack-command show-worn-amulet "Show the amulet currently worn" "xxx") ;"
-(defun-nethack-command show-tool-in-use "Show the tools currently in use" "xxx") ;(
+(defun-nethack-command redo-previous  ;^A
+  "Redo the previous command"
+  "again")
+
+;;(defun-nethack-command suspend-game ;^Z
+;;"Suspend game (only if defined)"
+;;  "suspend")
+
+;;(defun-nethack-command cancel  ;^[
+;;"Cancel command"
+;;"")
+
+(defun-nethack-command call-monster ;C
+  "Call (name) a particular monster"
+  "callmon")
+
+(defun-nethack-command force-fight  ;F
+  "Followed by direction, fight a monster (even if you don't sense it)"
+  "fight")
+
+(defun-nethack-command move-until-near  ;g
+  "Followed by direction, move until you are near something"
+  "movenear")
+
+(defun-nethack-command move  ;G
+  "Followed by direction, same as control-direction" 
+  "move")
+
+(defun-nethack-command move-no-pickup-or-fight ;m
+  "Followed by direction, move without picking anything up or fighting"
+  "movenopickuporfight")
+
+(defun-nethack-command move-distance-no-pickup ;M
+  "Followed by direction, move a distance without picking anything up"
+  "movenopickup")
+
+(defun-nethack-command show-wielded-weapon  ;)
+  "Show the weapon currently wielded" 
+  "showweapon")
+
+(defun-nethack-command show-worn-armor  ;[
+  "Show the armor currently worn"
+  "showarmor")
+
+(defun-nethack-command show-worn-rings  ;=
+  "Show the ring(s) currently worn"
+  "showrings")
+
+(defun-nethack-command show-worn-amulet  ;"
+  "Show the amulet currently worn"
+  "showamulet")
+
+(defun-nethack-command show-tool-in-use  ;(
+  "Show the tools currently in use"
+  "showtool")
 
 (provide 'nethack-cmd)
 ;;; nethack-cmd.el ends here

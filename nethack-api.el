@@ -404,8 +404,8 @@ are no newlines in `nethack-status-string'."
 	   ((eq cmd 'nethack-command-east) "e")
 	   ((eq cmd 'nethack-command-northwest) "nw")
 	   ((eq cmd 'nethack-command-northeast) "ne")
-	   ((eq cmd 'nethack-command-southwest) "se")
-	   ((eq cmd 'nethack-command-southeast) "sw")
+	   ((eq cmd 'nethack-command-southwest) "sw")
+	   ((eq cmd 'nethack-command-southeast) "se")
 	   ((eq cmd 'nethack-command-up) "up")
 	   ((eq cmd 'nethack-command-down) "down")
 	   ((eq cmd 'nethack-command-rest-one-move) "self")
@@ -421,8 +421,9 @@ are no newlines in `nethack-status-string'."
 
 (defun nethack-api-getlin (ques)
   ""
-  (nh-send (read-from-minibuffer (concat ques " "))))
-
+  (nh-send (condition-case nil
+	       (read-from-minibuffer (concat ques " "))
+	     (quit ""))))
 
 ;; int get_ext_cmd(void) -- Get an extended command in a window-port
 ;; specific way.  An index into extcmdlist[] is returned on a successful

@@ -1,3 +1,20 @@
+2002-01-20  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-keys.el: Add bindings for remaining functions.
+
+	* nethack-cmd.el: Define remaining functions.
+
+2002-01-18  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-api.el (nethack-api-ask-direction): Correct se and sw
+	correspondances.
+
+2002-01-17  Ryan C Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-api.el (nethack-api-getlin): Handle Quit.
+
+	* nethack.el (nethack-map-mode-syntax-table): Add '{' and '}'.
+
 2002-01-16  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-keys-dvorak.el (nethack-map-mode-hook): Add binding for

@@ -286,6 +286,7 @@ position if we are looking at a prompt."
 	(if (looking-at comint-prompt-regexp)
 	    (let ((prompt (match-string 1)))
 	      (eval-region comint-last-input-end (point))
+	      ;(delete-region (point-min) (point))
 	      (cond ((or (equal prompt "command")
 			 (equal prompt "menu"))
 		     (sit-for 0)
@@ -341,6 +342,8 @@ position if we are looking at a prompt."
     (modify-syntax-entry ?\) "w   " table)
     (modify-syntax-entry ?\[ "w   " table)
     (modify-syntax-entry ?\] "w   " table)
+    (modify-syntax-entry ?{ "w   " table)
+    (modify-syntax-entry ?} "w   " table)
     table)
   "Syntax table used in the Nethack map.")
 
