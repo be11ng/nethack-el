@@ -10,7 +10,6 @@
 (require 'nethack-apix)
 (require 'nethack-cmd)
 (require 'nethack-keys)
-(require 'nethack-menu)
 
 (defvar nethack-load-hook nil
     "Run after loading nethack.
@@ -224,7 +223,6 @@ asynchronous subprocess.  Returns a process object."
   (let ((proc (apply 'start-process nethack-process-name
 		     nethack-process-buffer-name
 		     nethack-program nethack-program-args)))
-    (setq nethack-process-output "")
     (set-process-filter proc 'nethack-process-filter)
     proc))
 
@@ -236,41 +234,45 @@ char to the STRING."
 	     (eq (process-status nethack-process) 'run))
 	(progn
 	  ;; log the command in the process buffer
-	  (nethack-log-string (concat "SEND: " string))
+	  (nethack-log-string (concat " => " string))
 
 	  ;; send it...
 	  (process-send-string nethack-process string-to-send))
       (error "Nethack process not running"))))
 
+(defun nethack-process-send (form)
+  "Send lisp FORM to the running `nethack-process'."
+  (nethack-process-send-string
+   (if (not form)
+       "()"				; the process can't handle '()'
+     (prin1-to-string form))))
+
 (defun nethack-process-filter (proc string)
   (with-current-buffer (process-buffer proc)
-    (save-excursion
-      (goto-char (process-mark proc))
+    (save-excursion ;; might be unneccesary
+      (goto-char (point-max))
       (insert string)
-      (set-marker (process-mark proc) (point)))
 
-     (let ((old-point))
-       (condition-case ()
-	   (while t
-	     (setq old-point (point))
-	     (let* ((form (read (current-buffer)))
-		    (retval (save-excursion (eval form))))
-;;	       (insert (format "; %S" (prin1-to-string retval)))
-	       (cond ((eq retval 'void)) ; do nothing
-		     ((eq retval 'unimplemented) (error "nethack: unimplemented function"))
-		     (t (nethack-process-send-string (prin1-to-string retval))))))
-	 (end-of-file (goto-char old-point))))))
+      (let (old-mark)
+	(condition-case ()
+	    (while t
+	      (setq oldpos (marker-position (process-mark proc)))
+	      (let* ((form (read (process-mark proc)))
+		     (retval (save-excursion (eval form))))
+		(cond ((eq retval 'void))
+		      ((eq retval 'unimplemented) 
+		       (ding)
+		       (message "nethack: unimplemented: `%s'" form))
+		      (t (nethack-process-send retval)))))
+	  (end-of-file
+	   (set-marker (process-mark proc) oldpos)))))))
 
-(defun nethack-log-string (string)
-  "Write STRING into `nethack-process-buffer'."
-)
-;;   (with-current-buffer (process-buffer nethack-process)
-;;     (let ((moving (= (point) (process-mark nethack-process))))
-;;       (save-excursion		       
-;; 	(goto-char (process-mark nethack-process))
-;; 	(insert string "\n")
-;; 	(set-marker (process-mark nethack-process) (point)))
-;;       (if moving (goto-char (process-mark nethack-process)))))())
+(defun nethack-log-string (str)
+  "Write STR into `nethack-process-buffer'."
+  (with-current-buffer (process-buffer nethack-process)
+    (goto-char (- (point-max) 1))
+    (insert " ; " str)
+    (set-marker (process-mark nethack-process) (point))))
 
 
 ;;; Buffer code (aka windows in Nethack)
@@ -320,8 +322,8 @@ times the command should be executed."
 	(nethack-process-send-string (concat cmd " " (int-to-string n)))
 	(setq nethack-waiting-for-command-flag nil))
     (setq nethack-command-queue
-	  (append nethack-command-queue
-		  (list (concat cmd " " (int-to-string n)))))))
+	  (nconc nethack-command-queue
+		 (list (concat cmd " " (int-to-string n)))))))
 
 
 (defvar nethack-map-mode-hook nil
