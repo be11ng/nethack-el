@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.27 2001/07/14 22:15:03 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.28 2001/07/17 02:21:27 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -449,7 +449,18 @@ way?"
 ;;     (setq new-win (split-window nil nil t))
 ;;     (set-window-buffer new-win buffer)
 ;;     (select-window new-win))
-  (display-buffer (nethack-get-buffer window))
+  (if (eq (cdr (assoc window nethack-buffer-id-alist))
+	  'nhw-menu)
+      (progn
+	(setq nethack-menu-keymap (make-sparse-keymap))
+	(define-key nethack-menu-keymap [(control c) (control c)]
+	  (lambda ()
+	    (interactive)
+	    (nethack-restore-windows)))
+
+	(split-window nil nil t)
+	(set-window-buffer (selected-window) (nethack-get-buffer window))
+	(use-local-map nethack-menu-keymap)))
   'void)
 
 
