@@ -107,14 +107,8 @@
 ;; 'saving').
 
 (defun nethack-return (form)
-  "Construct a return value for the process filter."
-  (cons 'nethack-retval form))
-
-(defun nethack-retval (retval)
-  "Used by the process filter to unpack a return value."
-  (if (and (consp retval)
-	   (eq (car retval) 'nethack-retval))
-      (cdr retval)))
+  "Return FORM to the running Nethack process."
+  (nethack-process-send form))
 
 (defvar nethack-raw-print-buffer-name "*nhw raw-print*"
   "Buffer name for Nethack raw-print messages.")
@@ -334,18 +328,21 @@ are no newlines in `nethack-status-string'."
 	 default
        key))))
 
-(defun nethack-api-ask-direction ()
+(defun nethack-api-ask-direction (prompt)
   "Prompt the user for a direction"
   (let ((cursor-in-echo-area t)
-	(e (where-is-internal 'nethack-command-east nethack-mode-map))
-	(w (where-is-internal 'nethack-command-west nethack-mode-map))
-	(n (where-is-internal 'nethack-command-north nethack-mode-map))
-	(s (where-is-internal 'nethack-command-south nethack-mode-map))
-	(ne (where-is-internal 'nethack-command-northeast nethack-mode-map))
-	(nw (where-is-internal 'nethack-command-northwest nethack-mode-map))
-	(se (where-is-internal 'nethack-command-southeast nethack-mode-map))
-	(sw (where-is-internal 'nethack-command-southwest nethack-mode-map))
-	(ch (read-key-sequence-vector "In what direction? ")))
+	(e (where-is-internal 'nethack-command-east nethack-map-mode-map))
+	(w (where-is-internal 'nethack-command-west nethack-map-mode-map))
+	(n (where-is-internal 'nethack-command-north nethack-map-mode-map))
+	(s (where-is-internal 'nethack-command-south nethack-map-mode-map))
+	(ne (where-is-internal 'nethack-command-northeast nethack-map-mode-map))
+	(nw (where-is-internal 'nethack-command-northwest nethack-map-mode-map))
+	(se (where-is-internal 'nethack-command-southeast nethack-map-mode-map))
+	(sw (where-is-internal 'nethack-command-southwest nethack-map-mode-map))
+	(up (where-is-internal 'nethack-command-up nethack-map-mode-map))
+	(down (where-is-internal 'nethack-command-down nethack-map-mode-map))
+	(self (where-is-internal 'nethack-command-rest-one-move nethack-map-mode-map))
+	(ch (read-key-sequence-vector prompt)))
     (nethack-return
      (cond ((member ch n) 'n)
 	   ((member ch s) 's)
@@ -354,7 +351,11 @@ are no newlines in `nethack-status-string'."
 	   ((member ch ne) 'ne)
 	   ((member ch nw) 'nw)
 	   ((member ch se) 'se)
-	   ((member ch sw) 'sw)))))
+	   ((member ch sw) 'sw)
+	   ((member ch up) 'up)
+	   ((member ch down) 'down)
+	   ((member ch self) 'self)
+	   (t 'default)))))
 
 ;; getlin const char *ques, char *input) -- Prints ques as a prompt
 ;; and reads a single line of text, up to a newline.  The string entered
@@ -557,16 +558,16 @@ type specific initalizations, and return a digit id."
     (if blocking
 	(cond ((or (eq nethack-buffer-type 'nhw-menu)
 		   (eq nethack-buffer-type 'nhw-text))
-	       (nethack-protect-windows
-		(let ((maybe-window
-		       (display-message-or-buffer (nethack-buffer winid))))
-		  (if (not (windowp maybe-window))
-		      (let ((cursor-in-echo-area t))
-			(read-char-exclusive)
-			(nethack-process-send nil))
-		    (setq nethack-window-configuration (current-window-configuration))
-		    (select-window maybe-window)
-		    (nethack-menu-mode 'pick-none)))))
+	       (setq nethack-menu nil)
+	       (setq nethack-window-configuration (current-window-configuration))
+	       (let ((maybe-window
+		      (display-message-or-buffer (nethack-buffer winid))))
+		 (if (not (windowp maybe-window))
+		     (let ((cursor-in-echo-area t))
+		       (read-char-exclusive)
+		       (nethack-process-send nil))
+		   (select-window maybe-window)
+		   (nethack-menu-mode 'pick-none))))
 	      ;; At the end of the game, the message buffer is shown
 	      ;; one last time...we should do something better here,
 	      ;; but the problem is we have no way of indicating to
@@ -674,12 +675,14 @@ actually toggled."
 (defun nethack-menu-goto-next ()
   "Move to the next selectable menu item."
   (interactive)
-  (ewoc-goto-next nethack-menu 1))	     	     
+  (if nethack-menu
+      (ewoc-goto-next nethack-menu 1)))
 
 (defun nethack-menu-goto-prev ()
   "Move to the previous selectable menu item."
   (interactive)
-  (ewoc-goto-prev nethack-menu 1))
+  (if nethack-menu
+      (ewoc-goto-prev nethack-menu 1)))
 
 (defun nethack-menu-submit ()
   "Submit the selected menu options to the nethack process.
@@ -805,24 +808,6 @@ buffer."
 ;; of knowing whether select_menu() will be called for the window at
 ;; create_nhwindow() time.
 
-(defmacro nethack-protect-windows (&rest body)
-  "Protect the status and message windows from obstruction by popup
-menus by making them dedicated windows." 
-  `(progn
-     (walk-windows (lambda (w)
-		     (set-buffer (window-buffer w))
-		     (if (or (eq nethack-buffer-type 'nhw-status)
-			     (eq nethack-buffer-type 'nhw-message))
-			 (set-window-dedicated-p w t))))
-     (unwind-protect
-	 (progn 
-	   ,@body)
-       (walk-windows (lambda (w)
-		       (set-buffer (window-buffer w))
-		       (if (or (eq nethack-buffer-type 'nhw-status)
-			       (eq nethack-buffer-type 'nhw-message))
-			   (set-window-dedicated-p w nil)))))))
-
 (defun nethack-api-select-menu (winid how)
   "Display the menu given by WINID and put the buffer in
 `nethack-menu-mode'.
@@ -833,8 +818,7 @@ the menu is dismissed."
     (if buffer
 	(progn
 	  (setq nethack-window-configuration (current-window-configuration))
-	  (nethack-protect-windows
-	   (pop-to-buffer (nethack-buffer winid) nil t))
+	  (pop-to-buffer (nethack-buffer winid) nil t)
 	  (nethack-menu-mode how))
       (error "No such winid: %d" winid))))
 
