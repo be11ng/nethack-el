@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.16 2000/09/27 05:02:02 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.17 2000/10/03 05:35:33 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -440,8 +440,11 @@ it, we can just bury them or something."
 
 (defun nethack-api-start-menu (window)
   ""
-  (set-buffer (nethack-get-buffer window))
-  (erase-buffer)
+;  (set-buffer (nethack-get-buffer window))
+;  (kill-all-local-variables)
+;  (erase-buffer)
+  (setq nethack-menu-widgets nil
+	nethack-menu-options nil)
   'void)
 
 
@@ -471,10 +474,7 @@ it, we can just bury them or something."
 
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
   ""
-  (set-buffer (nethack-get-buffer window))
-  (if (not (= accelerator ? ))
-      (insert accelerator " - "))
-  (insert str "\n")
+  (nethack-menu-add-item identifier str)
   'void)
 
 
@@ -486,7 +486,7 @@ it, we can just bury them or something."
 
 (defun nethack-api-end-menu (window prompt)
   ""
-  (display-buffer (nethack-get-buffer window))
+;  (display-buffer (nethack-get-buffer window))
   'void-fixme)
 
 
@@ -512,7 +512,7 @@ it, we can just bury them or something."
 
 (defun nethack-api-select-menu (window how)
   ""
-
+  (nethack-menu-draw (nethack-get-buffer window) how)
   'void-fixme)
 
 
