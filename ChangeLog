@@ -1,3 +1,16 @@
+2001-07-05  shawn  <sabetts@diggin.lamenet.tmp>
+
+	* nethack.el (nethack-load-hook): new hook
+	run nethack-load-hook hooks.
+
+	* nethack-keys.el (nethack-mode-map): remove binding to
+	nethack-command-cancel
+
+	* nethack-cmd.el (nethack-command-southwest): new function
+
+	* nethack-api.el (nethack-api-ask-direction): accepts any keys
+	that are bound to nethack movement commands.
+
 2001-07-02  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el: add provide line.
