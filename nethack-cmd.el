@@ -72,6 +72,8 @@
 (defun-nethack-command northeast-until-ontop "Go northeast until you are on top of something" "gonortheastontop") ;U
 (defun-nethack-command northeast-until-near "Go northeast until you are near something" "gonortheastnear") ;^U
 
+(defun-nethack-command travel "Move via a shortest-path algorithm to a point on the map." "travel") ;_
+
 (defun-nethack-command identify-trap "Show the type of a trap" "idtrap") ;^
 (defun-nethack-command apply "Apply (use) a tool" "apply") ;a
 (defun-nethack-command remove-all-armor "Remove all armor" "remarm") ;A

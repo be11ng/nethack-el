@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.79 2003/09/18 19:09:04 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.80 2004/11/15 05:12:23 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -399,32 +399,29 @@ attribute, the new value and the old value."
 
 The variable `nethack-program' is the name of the executable to run."
   (interactive)
-  (nethack-create-process 'process))
-
-(defun nethack-connect-to-server (server port)
-  "Start a game of Nethack by connecting to the nethack server, SERVER."
-  (interactive "sServer: \nnPort: ")
-  (nethack-create-process 'tcp server port))
-
-(defun nethack-create-process (how &optional server port)  
-  (if (and (processp nh-proc)
-	   (member (process-status nh-proc) '(open run)))
+  (if (nethack-is-running)
       (progn
 	(message "Nethack process already running...")
 	(nhapi-restore-window-configuration))
-    (save-excursion
-      (nh-reset-status-variables)
-      ;;; Start the process.
+    (progn
+      ;; Start the process.
       (if (get-buffer nh-proc-buffer-name)
 	  (kill-buffer nh-proc-buffer-name))
-      (setq nh-proc
-	    (if (eql how 'tcp)
-		(open-network-stream "nh" nh-proc-buffer-name server port)
-	      (apply 'start-process "nh" nh-proc-buffer-name
-		     nethack-program nethack-program-args)))
-      (set-process-filter nh-proc 'nh-filter)
-      (set-process-sentinel nh-proc 'nh-sentinel))))
+      (nethack-start (apply 'start-process "nh" nh-proc-buffer-name
+			    nethack-program nethack-program-args)))))
 
+(defun nethack-is-running ()
+  "return T if nethack is already running."
+  (and (processp nh-proc)
+	   (member (process-status nh-proc) '(open run))))
+
+(defun nethack-start (process)
+  "Given the process, start nethack. Assumes nethack is not already running."
+  (save-excursion
+    (setq nh-proc process)
+    (nh-reset-status-variables)
+    (set-process-filter nh-proc 'nh-filter)
+    (set-process-sentinel nh-proc 'nh-sentinel)))
 
 (defun nethack-toggle-tiles ()
   "Toggle the use of tiles on the map."
