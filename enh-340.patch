@@ -166,8 +166,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  };
  
 --- nethack-3.4.0/sys/unix/Makefile.src	2002-03-20 15:43:54.000000000 -0800
-+++ nethack/sys/unix/Makefile.src	2002-07-10 13:15:40.000000000 -0700
-@@ -202,6 +202,11 @@
++++ nethack/sys/unix/Makefile.src	2002-09-12 22:18:27.000000000 -0700
+@@ -202,9 +202,14 @@
  #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
  
  #
@@ -177,9 +177,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +#
  #
- WINSRC = $(WINTTYSRC)
- WINOBJ = $(WINTTYOBJ)
-@@ -243,6 +248,9 @@
+-WINSRC = $(WINTTYSRC)
+-WINOBJ = $(WINTTYOBJ)
++WINSRC = $(WINLISPSRC)
++WINOBJ = $(WINLISPOBJ)
+ 
+ # on some systems the termcap library is in -ltermcap or -lcurses
+ # on 386 Xenix, the -ltermlib tputs() seems not to work; use -lcurses instead
+@@ -243,8 +248,11 @@
  #
  # libraries for BeOS 
  WINBELIB = -lbe
@@ -187,8 +192,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +# libraries for lisp port
 +WINLISPLIB =
  
- WINLIB = $(WINTTYLIB)
+-WINLIB = $(WINTTYLIB)
++WINLIB = $(WINLISPLIB)
  
+ # any other strange libraries your system needs (for Sysunix only -- the more
+ # specialized targets should already be right)
 @@ -327,7 +335,7 @@
  GENCSRC = monstr.c vis_tab.c	#tile.c
  
@@ -198,6 +206,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  # all windowing-system-dependent .cpp (for dependencies and such)
  WINCXXSRC = $(WINQTSRC) $(WINBESRC)
  
+@@ -534,6 +542,11 @@
+ 	- diff Makefile.bak Makefile
+ 	@rm -f Makefile.bak
+ 
++# winlisp
++winlisp.o: ../win/lisp/winlisp.c $(HACK_H) ../include/winlisp.h \
++		../include/func_tab.h ../include/dlb.h ../include/patchlevel.h
++	$(CC) $(CFLAGS) -c ../win/lisp/winlisp.c
++
+ # DO NOT DELETE THIS LINE OR CHANGE ANYTHING BEYOND IT
+ 
+ # config.h timestamp
+@@ -787,7 +800,8 @@
+ weapon.o: weapon.c $(HACK_H)
+ were.o: were.c $(HACK_H)
+ wield.o: wield.c $(HACK_H)
+-windows.o: windows.c $(HACK_H) ../include/wingem.h ../include/winGnome.h
++windows.o: windows.c $(HACK_H) ../include/wingem.h ../include/winGnome.h \
++	../include/winlisp.h
+ wizard.o: wizard.c $(HACK_H) ../include/qtext.h
+ worm.o: worm.c $(HACK_H) ../include/lev.h
+ worn.o: worn.c $(HACK_H)
 --- /dev/null	2002-09-07 13:22:20.000000000 -0700
 +++ nethack/win/lisp/ChangeLog	2002-09-12 21:04:01.000000000 -0700
 @@ -0,0 +1,275 @@
