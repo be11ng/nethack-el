@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.21 2001/06/28 23:41:25 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.22 2001/07/01 21:32:24 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -272,19 +272,26 @@
 (defun nethack-api-ask-direction ()
   "Prompt the user for a direction"
   (let ((cursor-in-echo-area t)
+	(e (where-is-internal 'nethack-command-east nethack-mode-map))
+	(w (where-is-internal 'nethack-command-west nethack-mode-map))
+	(n (where-is-internal 'nethack-command-north nethack-mode-map))
+	(s (where-is-internal 'nethack-command-north nethack-mode-map))
+	(ne (where-is-internal 'nethack-command-northeast nethack-mode-map))
+	(nw (where-is-internal 'nethack-command-northwest nethack-mode-map))
+	(se (where-is-internal 'nethack-command-southeast nethack-mode-map))
+	(sw (where-is-internal 'nethack-command-southwest nethack-mode-map))
 	(ch))
-    (message "In what direction? ")
-    (setq ch (read-char-exclusive))
-    (cond ((= ch ?k) 'n)
-	  ((= ch ?j) 's)
-	  ((= ch ?l) 'e)
-	  ((= ch ?h) 'w)
-	  ((= ch ?u) 'ne)
-	  ((= ch ?y) 'nw)
-	  ((= ch ?n) 'se)
-	  ((= ch ?b) 'sw))))
-  
-;; getlin(const char *ques, char *input) -- Prints ques as a prompt
+    (setq ch (read-key-sequence-vector "In what direction? "))
+    (cond ((member ch n) 'n)
+	  ((member ch s) 's)
+	  ((member ch e) 'e)
+	  ((member ch w) 'w)
+	  ((member ch ne) 'ne)
+	  ((member ch nw) 'nw)
+	  ((member ch se) 'se)
+	  ((member ch sw) 'sw))))
+
+;; getlin const char *ques, char *input) -- Prints ques as a prompt
 ;; and reads a single line of text, up to a newline.  The string entered
 ;; is returned without the newline.  ESC is used to cancel, in which case
 ;; the string '\033\000' is returned.  -- getlin() must call

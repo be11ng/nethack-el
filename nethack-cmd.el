@@ -190,6 +190,11 @@
 ;;   "M       Followed by direction, move a distance without picking anything up"
 ;;   )
 
+(defun nethack-command-southwest ()
+  "b       Go southeast 1 space"
+  (interactive)
+  (nethack-handle-command "gosouthwest"))
+
 (defun nethack-command-southeast ()
   "n       Go southeast 1 space"
   (interactive)

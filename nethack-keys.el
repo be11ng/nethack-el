@@ -6,7 +6,7 @@
     (define-key map "^" 'nethack-command-identify-trap)
 
     ;;^[ Cancel command (NOTE: cant use "C-[" in Emacs, this generates an ESC)
-    (define-key map "\M-[" 'nethack-command-cancel)
+    ;;(define-key map "\M-[" 'nethack-command-cancel)
 
     ;;^A      Redo the previous command
     (define-key map "\C-a" 'nethack-command-redo-previous)

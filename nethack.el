@@ -12,6 +12,10 @@
 (require 'nethack-keys)
 (require 'nethack-menu)
 
+(defvar nethack-load-hook nil
+    "Run after loading nethack.
+You can customize key bindings or load extensions with this.")
+
 ;; FIXME: dirty hack:
 (defvar nethack-status-line-number 0
   "The line that will be updated in the status window next time
@@ -409,3 +413,7 @@ eventual delivery to the running nethack process."
 				   nethack-buffer-name-alist)))))
 
 (provide 'nethack)
+
+(run-hooks 'nethack-load-hook)		; for your customizations
+
+;;; nethack.el ends here
