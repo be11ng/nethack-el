@@ -125,7 +125,7 @@
 
 (defun nethack-api-raw-print-bold (str)
   (nethack-api-raw-print
-   (nethack-propertize str (list 'face (nethack-attr-face 'atr-bold)))))
+   (nethack-propertize str 'face (nethack-attr-face 'atr-bold))))
 
 ;; curs(window, x, y) -- Next output to window will start at (x,y),
 ;; also moves displayable cursor to (x,y).  For backward compatibility, 1
@@ -287,12 +287,11 @@ are no newlines in `nethack-status-string'."
 			 (set-window-point w (- (point-max) 1))
 			 (recenter -1))
 		       l))))
-	    (t
-	     (goto-char (point-max))
-	     (insert (nethack-propertize str 
-					 'face 
-					 (nethack-attr-face attr))
-		     "\n"))))))
+	    (t (goto-char (point-max))
+	       (insert (nethack-propertize str 
+					   'face 
+					   (nethack-attr-face attr))
+		       "\n"))))))
 
 (defun nethack-attr-face (attr)
   "Return the face corresponding with ATTR."
@@ -390,13 +389,11 @@ are no newlines in `nethack-status-string'."
     ;; Add some special keys of our own to the choices
     (push 13 all-choices)
 
-    (message (concat ques " "))
-    (setq key (read-char))
+    (setq key (nethack-read-char (concat ques " ")))
 
     (if (> (length choices) 0)
 	(while (not (member key all-choices))
-	  (message (concat ques " "))
-	  (setq key (read-char))))
+	  (setq key (nethack-read-char (concat ques " ")))))
 
     (nh-send (if (= 13 key)
 		 default
@@ -406,7 +403,7 @@ are no newlines in `nethack-status-string'."
   "Prompt the user for a direction"
   (let* ((cursor-in-echo-area t)
 	 (cmd (lookup-key nethack-map-mode-map
-			  (vector (read-char-exclusive
+			  (vector (nethack-read-char
 				   (concat prompt " "))))))
     (nh-send
      (cond ((eq cmd 'nethack-command-north) "n")
@@ -566,7 +563,7 @@ all of the appropriate setup."
   "Overlay used to highlight new text in the message window.")
 
 (defface nethack-message-highlight-face
-  '((t (:inherit highlight)))
+  '((t (:foreground "black" :background "green")))
   "The face used to highlight new text in the message window."
   :group 'nethack-faces)
 
@@ -635,18 +632,19 @@ Return the buffer."
 	   (let ((inhibit-read-only t))
 	     (erase-buffer)
 	     (if nethack-use-glyphs
-		 ;; initialize the map with empty glyphs
-		 (dotimes (i nethack-map-height)
-		   (dotimes (j nethack-map-width)
-		     (insert-image nethack-empty-glyph))
-		   (insert (propertize "\n" 'face 'nethack-map-glyph-face)))
+		 (progn ;; FIXME: test to see if emacs is capable of glyphs
+		   (require 'nethack-glyphs)
+		   ;; initialize the map with empty glyphs
+		   (dotimes (i nethack-map-height)
+		     (dotimes (j nethack-map-width)
+		       (insert-image nethack-empty-glyph))
+		     (insert (propertize "\n" 'face 'nethack-map-glyph-face))))
 	       (gamegrid-init (make-vector 256 nil))
 	       (gamegrid-init-buffer nethack-map-width
 				     nethack-map-height
 				     ? ))))
-	  (t
-	   (let ((inhibit-read-only t))
-	     (erase-buffer))))))
+	  (t (let ((inhibit-read-only t))
+	       (erase-buffer))))))
 
 ;; display_nhwindow(window, boolean blocking) -- Display the window on
 ;; the screen.  If there is data pending for output in that window, it
@@ -680,7 +678,7 @@ Return the buffer."
 	 ;; needs to be temporarily unhidden, for example all of the
 	 ;; monsters.
 	 ((eq nethack-buffer-type 'nhw-map)
-	  (read-char-exclusive)
+	  (nethack-read-char)
 	  (nh-send 'dummy))
 	 ;; At the end of the game, the message buffer is shown one
 	 ;; last time, not sure why.  We should do something better
@@ -757,21 +755,25 @@ actually toggled."
       (let ((case-fold-search nil)
 	    (old-point (point)))
 	(goto-char (point-min))
-	(if (re-search-forward 
-	     (format "^[%c] \\([-+]\\|[0-9]+\\) .+$" last-command-event) 
-	     nil t)
-	    (let ((inhibit-read-only t))
+	(if (re-search-forward (format "^[%c] \\([-+]\\|[0-9]+\\) .+$" 
+				last-command-char)
+			       nil t)
+	    (let ((value (match-string 1))
+		  (start (match-beginning 1))
+		  (end (match-end 1))
+		  (inhibit-read-only t))
+	      (delete-region start end)
+	      (goto-char start)
 	      (if (and count (> count 1))
-		       (replace-match (number-to-string count) nil nil nil 1)
-		(let ((value (match-string 1)))
-		  (if (string-equal value "-")
-		      (replace-match "+" nil nil nil 1)
-		    (replace-match "-" nil nil nil 1))))
-	      (if (eq nethack-menu-how 'pick-one)
-		  (nethack-menu-submit)
-		(goto-char (line-beginning-position))))
-	  (message "No such menu option: %c" last-command-event)
-	  (goto-char old-point)))))
+		  (insert (number-to-string count))
+		(if (string-equal value "-")
+		    (insert "+")
+		  (insert "-"))))
+	  (if (eq nethack-menu-how 'pick-one)
+	      (nethack-menu-submit)
+	    (beginning-of-line)))
+	(message "No such menu option: %c" last-command-char)
+	(goto-char old-point))))
 	  
 (defun nethack-menu-toggle-all-items ()
   "Toggle all menu items, only for pick-any menus."
@@ -821,7 +823,7 @@ displayed."
 	       (setq value 0))
 	      (t (setq value (string-to-number value))))
 	(if (/= value 0)
-	    (setq menu-data (cons (list accelerator value) menu-data)))))
+	    (setq menu-data (cons (list (nethack-char-to-int accelerator) value) menu-data)))))
     (nh-send menu-data)
     (set-window-configuration nethack-window-configuration)
     (message "%S" menu-data)))
@@ -901,6 +903,7 @@ buffer."
 			  accelerator)
 			(if preselected ?+ ?-)
 			str)))
+      (put-text-property start (point) 'face (nethack-attr-face attr))
       (insert-char ?\n 1 nil))))
 
 ;; end_menu(window, prompt) -- Stop adding entries to the menu and
@@ -955,7 +958,7 @@ the menu is dismissed."
 	      (select-window message-window)
 	      (switch-to-buffer (nethack-buffer winid) t)))
 	  ;; make window larger, if necessary
-	  (let ((bh (window-buffer-height (selected-window)))
+	  (let ((bh (nethack-window-buffer-height (selected-window)))
 		(wh (- (window-height) 1)))
 	    (if (> bh wh)
 		(enlarge-window (- bh wh))))
