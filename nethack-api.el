@@ -185,20 +185,37 @@ are no newlines in `nethack-status-string'."
 
 ;; FIXME: this is a temporary kludge which will disappear when we have
 ;; real cooked status information coming from the process.
-(defvar nethack-cook-status nil)
-(defun nethack-api-update-status (l1 l2)
-  (if nethack-cook-status
-      (progn
-	(nethack-parse-status-lines l1 l2)
-	(let ((status-string (nethack-format-status nethack-status-format)))
-	  (with-current-buffer nethack-status-buffer
-	    (erase-buffer)
-	    (insert status-string))))
-    (with-current-buffer nethack-status-buffer
-      (erase-buffer)
-      (insert l1)
-      (newline)
-      (insert l2))))
+(defun nethack-api-update-status (status)
+  (with-current-buffer nethack-status-buffer
+    (erase-buffer)
+    (insert (format "%s the %s  St:%d Dx:%d Co:%d In:%d Wi:%d Ch:%d  %s\n"
+		    (cadr (assoc "name" status))
+		    (cadr (assoc "rank" status))
+		    (cadr (assoc "St" status))
+		    (cadr (assoc "Dx" status))
+		    (cadr (assoc "Co" status))
+		    (cadr (assoc "In" status))
+		    (cadr (assoc "Wi" status))
+		    (cadr (assoc "Ch" status))
+		    (cadr (assoc "Align" status))))
+    (insert (format "%s Dlvl:%d $:%d HP:%d(%d) Pw:%d(%d) AC:%d Xp:%d/%d T:%d "
+		    (cadr (assoc "Dungeon" status))
+		    (cadr (assoc "Dlvl" status))
+		    (cadr (assoc "$" status))
+		    (cadr (assoc "HP" status))
+		    (cadr (assoc "HPmax" status))
+		    (cadr (assoc "PW" status))
+		    (cadr (assoc "PWmax" status))
+		    (cadr (assoc "AC" status))
+		    (cadr (assoc "Level" status))
+		    (cadr (assoc "XP" status))
+		    (cadr (assoc "T" status))))
+
+    (loop for flag in (cadr (assoc "Flags" status))
+	  do
+	  (insert flag))
+    (insert "\n")))
+
 
 ;; putstr(window, attr, str) -- Print str on the window with the
 ;; given attribute.  Only printable ASCII characters (040-0126) must be
