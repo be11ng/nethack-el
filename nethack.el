@@ -22,7 +22,7 @@ You can customize key bindings or load extensions with this.")
   "The 2 lines of the status window")
 
 
-(defface nethack-red
+(defface nethack-red-face
   `((((type tty) (class color))
      (:foreground "red"))
     (((class color))
@@ -30,7 +30,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack red")
 
-(defface nethack-green
+(defface nethack-green-face
   `((((type tty) (class color))
      (:foreground "green"))
     (((class color) (background dark))
@@ -40,7 +40,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack green")
 
-(defface nethack-brown
+(defface nethack-brown-face
   `((((type tty) (class color))
      (:foreground "yellow"))
     (((class color))
@@ -48,7 +48,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack brown")
 
-(defface nethack-blue
+(defface nethack-blue-face
   `((((type tty) (class color))
      (:foreground "blue"))
     (((class color))
@@ -56,7 +56,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack blue")
 
-(defface nethack-magenta
+(defface nethack-magenta-face
   `((((type tty) (class color))
      (:foreground "magenta"))
     (((class color))
@@ -64,7 +64,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack magenta")
 
-(defface nethack-cyan
+(defface nethack-cyan-face
   `((((type tty) (class color))
      (:foreground "cyan"))
     (((class color) (background dark))
@@ -74,7 +74,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack cyan")
 
-(defface nethack-gray
+(defface nethack-gray-face
   `((((type tty) (class color))
      (:foreground "white"))
     (((class color) (background dark))
@@ -84,7 +84,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack gray")
 
-(defface nethack-dark-gray
+(defface nethack-dark-gray-face
   `((((type tty) (class color))
      (:foreground "black" :bold t))
     (((class color))
@@ -92,7 +92,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack dark gray")
 
-(defface nethack-orange
+(defface nethack-orange-face
   `((((type tty) (class color))
      (:foreground "red" :bold t))
     (((class color))
@@ -100,7 +100,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack light orange")
 
-(defface nethack-bright-green
+(defface nethack-bright-green-face
   `((((type tty) (class color))
      (:foreground "green" :bold t))
     (((class color) (background dark))
@@ -110,7 +110,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack bright green")
 
-(defface nethack-yellow
+(defface nethack-yellow-face
   `((((type tty) (class color))
      (:foreground "yellow" :bold t))
     (((class color) (background dark))
@@ -120,7 +120,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack yellow")
 
-(defface nethack-bright-blue
+(defface nethack-bright-blue-face
   `((((type tty) (class color))
      (:foreground "blue" :bold t))
     (((class color) (background dark))
@@ -130,7 +130,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack bright blue")
 
-(defface nethack-bright-magenta
+(defface nethack-bright-magenta-face
   `((((type tty) (class color))
      (:foreground "magenta" :bold t))
     (((class color))
@@ -138,7 +138,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack bright magenta")
 
-(defface nethack-bright-cyan
+(defface nethack-bright-cyan-face
   `((((type tty) (class color))
      (:foreground "cyan" :bold t))
     (((class color) (background dark))
@@ -148,7 +148,7 @@ You can customize key bindings or load extensions with this.")
     (t (:foreground "gray")))
   "nethack bright cyan")
 
-(defface nethack-white
+(defface nethack-white-face
   `((((type tty) (class color))
      (:foreground "white" :bold t))
     (((class color) (background dark))
@@ -159,22 +159,22 @@ You can customize key bindings or load extensions with this.")
   "nethack white")
 
 (defconst nethack-color-alist 
-  '((0 . nethack-black)
-    (1 . nethack-red)
-    (2 . nethack-green)
-    (3 . nethack-brown)
-    (4 . nethack-blue)
-    (5 . nethack-magenta)
-    (6 . nethack-cyan)
-    (7 . nethack-gray)
-    (8 . nethack-dark-gray)
-    (9 . nethack-orange)
-    (10 . nethack-bright-green)
-    (11 . nethack-yellow)
-    (12 . nethack-bright-blue)
-    (13 . nethack-bright-magenta)
-    (14 . nethack-bright-cyan)
-    (15 . nethack-white))
+  '((0 . nethack-black-face)
+    (1 . nethack-red-face)
+    (2 . nethack-green-face)
+    (3 . nethack-brown-face)
+    (4 . nethack-blue-face)
+    (5 . nethack-magenta-face)
+    (6 . nethack-cyan-face)
+    (7 . nethack-gray-face)
+    (8 . nethack-dark-gray-face)
+    (9 . nethack-orange-face)
+    (10 . nethack-bright-green-face)
+    (11 . nethack-yellow-face)
+    (12 . nethack-bright-blue-face)
+    (13 . nethack-bright-magenta-face)
+    (14 . nethack-bright-cyan-face)
+    (15 . nethack-white-face))
   "An alist of nethack's color number and the corresponding face.")
 
 
@@ -252,7 +252,8 @@ char to the STRING."
   "Send lisp FORM to the running `nethack-process'."
   (nethack-process-send-string
    (if (not form)
-       "()"				; the process can't handle '()'
+       "()"				; the process doesn't handle
+					; `nil' properly
      (prin1-to-string form))))
 
 (defun nethack-process-filter (proc string)
