@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.43 2001/10/23 05:29:21 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.44 2001/10/23 09:16:04 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -672,6 +672,15 @@ actually toggled."
 		 (eq nethack-menu-how 'pick-one))
 	    (nethack-menu-submit)))))
 
+(defun nethack-menu-toggle-all-items ()
+  "Toggle all menu items, only for pick-any menus."
+  (interactive)
+  (if (eq nethack-menu-how 'pick-any)
+      (ewoc-map (lambda (i)
+		  (aset i 1 (not (aref i 1)))
+		  t)			; redisplay this entry
+		nethack-menu)))
+
 (defun nethack-menu-goto-next ()
   "Move to the next selectable menu item."
   (interactive)
@@ -784,9 +793,10 @@ buffer."
 
     ;; position the point on the first selectable menu item
     (let ((node (ewoc-goto-node nethack-menu
-				(ewoc-nth nethack-menu 0))))
-      (while (and node (zerop (aref (ewoc-data node) 0)))
-	(setq node (ewoc-goto-next nethack-menu 1))))))
+ 				(ewoc-nth nethack-menu 0))))
+;;;       (while (and node (zerop (aref (ewoc-data node) 0)))
+;;; 	(setq node (ewoc-goto-next nethack-menu 1))))))
+      )))
 
 ;; int select_menu(windid window, int how, menu_item **selected) --
 ;; Return the number of items selected; 0 if none were chosen, -1 when

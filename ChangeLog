@@ -1,3 +1,14 @@
+2001-10-23  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-keys.el (nethack-menu-mode-map): Add
+	(nethack-menu-mode-map): Add bindings for
+	`nethack-menu-toggle-all-items'.
+	(nethack-menu-mode-map): Bind keys to the extended commands.
+
+	* nethack-api.el (nethack-api-end-menu): Comment out broken
+	initial positioning code.
+	(nethack-menu-toggle-all-items): New function.
+
 2001-10-23  shawn  <sabetts@vcn.bc.ca>
 
 	* nethack-api.el (nethack-api-getlin): send the string read from
