@@ -1,3 +1,12 @@
+2000-09-25  Shawn  <sabetts@vcn.bc.ca>
+
+	* nethack-apix.el: In player selection, doesn't ask the user if
+	there is only one choice.
+
+	* nethack-api.el (nethack-api-yn-function): implemented.
+
+	* nethack-cmd.el: Added the rest of the movement commands
+
 2000-09-19  Ryan yeske  <rcyeske@van.gobasis.com>
 
 	* nethack-api.el (nethack-api-get-command): renamed from
