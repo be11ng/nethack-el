@@ -29,8 +29,8 @@ The variable `nethack-program' is the name of the executable to run."
 	   (eq (process-status nethack-process) 'run))
       (message "Nethack process already running...")
 
-    (setq nethack-waiting-for-key-p nil) ;move these to nethack-mode
-    (setq nethack-key-queue nil)
+    (setq nethack-waiting-for-command-flag nil) ;move these to nethack-mode
+    (setq nethack-command-queue nil)
 
     (setq nethack-process (nethack-start-program))))
 
@@ -148,36 +148,31 @@ the `nethack-process-buffer' for debugging."
 	     nethack-buffer-name-alist)))
 
 ;;; Main Map Buffer code
-(defvar nethack-key-queue nil
+(defvar nethack-command-queue nil
   "List of strings to be sent to the running `nethack-process' in
-response to the next call to `nethack-api-getch'.")
+response to the next call to `nethack-api-get-command'.")
 
-(defvar nethack-waiting-for-key-p nil
-  "True if the nethack process is waiting for a key.")
+(defvar nethack-waiting-for-command-flag nil
+  "True if the nethack process is waiting for a command.")
 
-(defun nethack-handle-key ()
-  "If the nethack process is waiting for a key, send the key that
-invoked this command, otherwise add the key to `nethack-key-queue' for
+(defun nethack-handle-command (cmd)
+  "If the nethack process is waiting for a command, send CMD to the
+nethack process.  Otherwise, add CMD to `nethack-key-queue' for
 eventual delivery to the running nethack process."
   (interactive)
-  (let ((key (this-command-keys)))
-    (if nethack-waiting-for-key-p
-	(progn
-	  (nethack-process-send-string key)
-	  (setq nethack-waiting-for-key-p nil))
-      (setq nethack-key-queue
-	    (append nethack-key-queue
-		    (list key))))))
+  (if nethack-waiting-for-command-flag
+      (progn
+	(nethack-process-send-string cmd)
+	(setq nethack-waiting-for-command-flag nil))
+    (setq nethack-command-queue
+	  (append nethack-command-queue
+		  (list key)))))
 
 (defvar nethack-map-mode-map
   (let ((map (make-sparse-keymap)))
     (mapcar (lambda (x) 
 	      (define-key map (char-to-string x) 'nethack-handle-key))
 	    "1234567890-=!@#$%^&*()_+qwertyuiop[]QWERTYUIOP{}asdfghjkl;'ASDFGHJKL:\"zxcvbnm,./ZXCVBNM<>?`~|\\")
-;;     (define-key map "h" 'nethack-handle-key)
-;;     (define-key map "j" 'nethack-handle-key)
-;;     (define-key map "k" 'nethack-handle-key)
-;;     (define-key map "l" 'nethack-handle-key)
     map)
   "Keymap for nethack-map mode")
 

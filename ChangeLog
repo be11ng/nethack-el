@@ -1,3 +1,16 @@
+2000-09-11  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack.el (nethack-handle-command): Renamed from
+	nethack-handle-key and rewritten in preparation for the removal of
+	nethack-api-getch in favour of nethack-get-command.
+	(nethack-waiting-for-command-flag): renamed from
+	nethack-waiting-for-key-p.
+	(nethack-command-queue): renamed from nethack-key-queue.
+
+	* nethack-cmd.el: Revived file.  Added a provide line to end.
+	Renamed all calls to nethack-send-command to
+	nethack-handle-command.
+
 2000-09-07  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-cmd.el: obsolete, removed file from CVS.
