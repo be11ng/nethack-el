@@ -1,9 +1,18 @@
 2002-01-22  shawn  <sabetts@vcn.bc.ca>
 
+	* nethack-keys.el (nethack-accelerator-chars): add ?* to the
+	vector.
+
 	* nethack-api.el (nethack-api-choose-role): remove function
 	(nethack-api-choose-race): likewise
 	(nethack-api-choose-gender): likewise
 	(nethack-api-choose-alignment): likewise
+	(nethack-menu-toggle-item): adjust item regexp to include ?*
+	(nethack-menu-toggle-all-items): likewise
+	(nethack-menu-goto-next): likewise
+	(nethack-menu-goto-prev): likewise
+	(nethack-menu-submit): likewise
+	(nethack-menu-cancel): likewise
 
 2002-01-21  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 

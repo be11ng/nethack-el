@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.62 2002/01/21 21:26:28 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.63 2002/01/22 10:24:11 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -747,7 +747,7 @@ actually toggled."
 	    (old-point (point)))
 	(goto-char (point-min))
 	(if (re-search-forward 
-	     (format "^%c \\([-+]\\|[0-9]+\\) .+$" last-command-event) 
+	     (format "^[%c] \\([-+]\\|[0-9]+\\) .+$" last-command-event) 
 	     nil t)
 	    (let ((inhibit-read-only t))
 	      (if (and count (> count 1))
@@ -769,7 +769,7 @@ actually toggled."
       (save-excursion
 	(let ((inhibit-read-only t))
 	  (goto-char (point-min))
-	  (while (re-search-forward "^[a-zA-Z] \\([-+]\\|[0-9]+\\) .+$" nil t)
+	  (while (re-search-forward "^[a-zA-Z*] \\([-+]\\|[0-9]+\\) .+$" nil t)
 	    (let ((value (match-string 1)))
 	      (if (string-equal value "-")
 		  (replace-match "+" nil nil nil 1)
@@ -780,7 +780,7 @@ actually toggled."
   (interactive)
   (let ((old-point (point)))
     (goto-char (line-end-position))
-    (goto-char (if (re-search-forward "^[a-zA-Z] [-+]\\|[0-9]+ .+$" nil t)
+    (goto-char (if (re-search-forward "^[a-zA-Z*] [-+]\\|[0-9]+ .+$" nil t)
 		   (line-beginning-position)
 		 old-point))))
 
@@ -789,7 +789,7 @@ actually toggled."
   (interactive)
   (let ((old-point (point)))
     (goto-char (line-beginning-position))
-    (goto-char (if (re-search-backward "^[a-zA-Z] [-+]\\|[0-9]+ .+$" nil t)
+    (goto-char (if (re-search-backward "^[a-zA-Z*] [-+]\\|[0-9]+ .+$" nil t)
 		   (line-beginning-position)
 		 old-point))))
 
@@ -801,7 +801,7 @@ displayed."
   (interactive)
   (goto-char (point-min))
   (let ((menu-data nil))
-    (while (re-search-forward "^\\([a-zA-Z]\\) \\([-+]\\|[0-9]+\\) .+$" nil t)
+    (while (re-search-forward "^\\([a-zA-Z*]\\) \\([-+]\\|[0-9]+\\) .+$" nil t)
       (let ((accelerator (match-string 1))
 	    (value (match-string 2))
 	    (identifier (get-text-property (point) 'nethack-id)))
@@ -822,7 +822,7 @@ displayed."
   (let ((inhibit-read-only t))
     (goto-char (point-min))
     ;; turn off all the options
-    (while (re-search-forward "^[a-zA-Z] \\([-+]\\|[0-9]+\\) .+$" nil t)
+    (while (re-search-forward "^[a-zA-Z*] \\([-+]\\|[0-9]+\\) .+$" nil t)
       (replace-match "-" nil nil nil 1)))
   (nethack-menu-submit))
 
