@@ -1,3 +1,7 @@
+2003-09-13  Shawn Betts  <sabetts@vcn.bc.ca>
+
+	* Makefile (NH_VER): bumped to 3.4.2
+
 2003-08-29  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack-api.el (nhapi-ask-direction): use
