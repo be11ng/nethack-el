@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.73 2002/04/24 01:39:52 sabetts Exp $
+;; Version: $Id: nethack-api.el,v 1.74 2002/09/13 03:49:34 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -414,7 +414,7 @@ are no newlines in `nethack-status-string'."
 ;; the first and then the second.  In the tty port, pline() achieves this
 ;; by calling more() or displaying both on the same line.
 
-(defun nethack-api-putstr (menuid attr str)
+(defun nethack-api-menu-putstr (menuid attr str)
   "On buffer associated with MENUID, insert with ATTR the STR."
   (with-current-buffer (nethack-buffer menuid)
     (let ((inhibit-read-only t))
