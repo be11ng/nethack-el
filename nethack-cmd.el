@@ -1,16 +1,5 @@
 ;; cmd.c is the cheat sheet for this file
 
-;; (defun nethack-key-command (command)
-;;   "Qualify a key COMMAND and send it to the Nethack process."
-;;   (interactive)
-;;   (nethack-handle-command (symbol-name command)))
-
-;; (setq nethack-command-alist
-;;   '((doidtrap "Show the type of a trap" "^")
-;;     (doapply  "Apply (use) a tool" "a")))
-
-;; (assoc 'doidtrap nethack-command-alist)
-
 ;;(defun nethack-command-redo-previous ()
 ;;   "^A      Redo the previous command"
 ;;   )
@@ -122,31 +111,35 @@
 ;;   "G       Followed by direction, same as control-direction"
 ;;   )
 
-;; (defun nethack-command-west-one-space ()
-;;   "h       Go west 1 space"
-;;   )
+(defun nethack-command-west ()
+  "h       Go west 1 space"
+  (interactive)
+  (nethack-handle-command "gowest"))
 
-;; (defun nethack-command-west-until-ontop ()
-;;   "H       Go west until you are on top of something"
-;;   )
-;;
-;; (defun nethack-command-west-until-near ()
-;;   "^H      Go west until you are near something"
-;;   )
+(defun nethack-command-west-until-ontop ()
+  "H       Go west until you are on top of something"
+  (interactive)
+  (nethack-handle-command "gowestontop"))
+
+(defun nethack-command-west-until-near ()
+  "^H      Go west until you are near something"
+  (interactive)
+  (nethack-handle-command "gowestnear"))
 
 (defun nethack-command-inventory ()
   "i       Show your inventory"
   (interactive)
-  (nethack-handle-command "ddoinv"))
+  (nethack-handle-command "doinv"))
 
 (defun nethack-command-type-inventory ()
   "I       Inventory specific item types"
   (interactive)
   (nethack-handle-command "dotypeinv"))
 
-;; (defun nethack-command-south ()
-;;   "j       Go south 1 space (or if number_pad is on, jump to another location)"
-;;   )
+(defun nethack-command-south ()
+  "j       Go south 1 space (or if number_pad is on, jump to another location)"
+  (interactive)
+  (nethack-handle-command "gosouth"))
 
 ;; (defun nethack-command-south-until-ontop ()
 ;;   "J       Go south until you are on top of something"
@@ -157,9 +150,10 @@
 
 ;;   )
 
-;; (defun nethack-command-north ()
-;;   "k       Go north 1 space (or if number_pad is on, kick something)"
-;;   )
+(defun nethack-command-north ()
+   "k       Go north 1 space (or if number_pad is on, kick something)"
+   (interactive)
+   (nethack-handle-command "gonorth"))
 
 ;; (defun nethack-command-north-until-ontop ()
 ;;   "K       Go north until you are on top of something"
@@ -169,9 +163,11 @@
 ;;   "^K      Go north until you are near something"
 ;;   )
 
-;; (defun nethack-command-east ()
-;;   "l       Go east 1 space (or if number_pad is on, loot a box on the floor)"
-;;   )
+(defun nethack-command-east ()
+   "l       Go east 1 space (or if number_pad is on, loot a box on the floor)"
+   (interactive)
+   (nethack-handle-command "goeast"))
+
 
 ;; (defun nethack-command-east-until-ontop ()
 ;;   "L       Go east until you are on top of something"

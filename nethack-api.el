@@ -177,12 +177,12 @@
 ;; will be the routine the OS provides to read a character.  Returned
 ;; character _must_ be non-zero.
 
-(defun nethack-api-getch ()
+(defun nethack-api-get-command ()
   ""
-  (if (null nethack-key-queue)
-      (setq nethack-waiting-for-key-p t)
-    (nethack-process-send-string (car nethack-key-queue))
-    (setq nethack-key-queue (cdr nethack-key-queue)))
+  (if (null nethack-command-queue)
+      (setq nethack-waiting-for-command-flag t)
+    (nethack-process-send-string (car nethack-command-queue))
+    (setq nethack-command-queue (cdr nethack-command-queue)))
   'no-retval)				; hack to prevent the process
 					; filter from sending another
 					; string (retval) to the
@@ -247,8 +247,10 @@
 
 (defun nethack-api-yn-function (ques choices defaults)
   ""  
-  (message ques)
-  (nethack-api-getch))
+  'unimplemented)
+
+;;  (message ques)
+;;  (nethack-api-getch))
 ;;  (intern (char-to-string (read-char ques))))
 
 
