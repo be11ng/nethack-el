@@ -249,21 +249,23 @@
   ""  
   (let ((cursor-in-echo-area t)
 	all-choices
-	key)
+	key def)
 
     (if (= default 0)
-	(string-to-list choices)
-      (string-to-list (concat (char-to-string default) choices)))
-
+	(setq all-choices (string-to-list choices))
+      (setq all-choices (string-to-list (concat (char-to-string default) choices))))
+    
     (message ques)
     (setq key (read-char))
+    (setq def (intern (char-to-string key)))
     (if (= default 0)
-	key
+	def
       (progn
 	(while (not (member key all-choices))
 	      (message ques)
-	      (setq key (read-char)))
-	key))))
+	      (setq key (read-char))
+	      (setq def (intern (char-to-string key))))
+	def))))
 
 ;;  (message ques)
 ;;  (nethack-api-getch))
