@@ -26,6 +26,6 @@ _$*
 *.ln
 core
 # CVS default ignores end
+*.x86f
 *.tar.gz
 .patch-ok
-

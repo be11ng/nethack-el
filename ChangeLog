@@ -1,3 +1,8 @@
+2004-11-14  Shawn Betts  <katia_dilkina@verizon.net>
+
+	* Makefile (DISTFILES): change nethack-glyphs.el to nethack-tiles.el
+	(all): likewise
+
 2004-11-12  Shawn Betts  <katia_dilkina@verizon.net>
 
 	* nethack-api.el (nh-menu-toggle-all-items): fix which regexp
