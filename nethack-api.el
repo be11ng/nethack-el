@@ -813,9 +813,8 @@ displayed."
   (goto-char (point-min))
   (let ((menu-data nil))
     (while (re-search-forward "^\\([a-zA-Z*]\\) \\([-+]\\|[0-9]+\\) .+$" nil t)
-      (let ((accelerator (match-string 1))
-	    (value (match-string 2))
-	    (identifier (get-text-property (match-beginning 0) 'nethack-id)))
+      (let ((accelerator (string-to-char (match-string 1)))
+	    (value (match-string 2)))
 	(cond ((string-equal value "+")
 	       (setq value -1))
 	      ((string-equal value "-")
@@ -887,14 +886,14 @@ specified by `nethack-unassigned-accelerator-index'."
 ;; symbols.  -- If you want this choice to be preselected when the menu
 ;; is displayed, set preselected to TRUE.
 
-(defun nethack-api-add-menu (window glyph tile identifier accelerator groupacc attr str preselected)
+(defun nethack-api-add-menu (window glyph tile accelerator groupacc attr str preselected)
   "Create a menu item out of arguments and draw it in the menu
 buffer."
   (with-current-buffer (nethack-buffer window)
     (goto-char (point-max))
     (let ((inhibit-read-only t)
 	  (start (point)))
-      (if (= identifier -1)
+      (if (= accelerator -1)
 	  (insert str)
 	(insert (format "%c %c %s"
 			(if (eq accelerator 0)
@@ -902,9 +901,6 @@ buffer."
 			  accelerator)
 			(if preselected ?+ ?-)
 			str)))
-      ;; store the identifier as a text property
-      (add-text-properties start (point) (list 'nethack-id identifier
-					       'face (nethack-attr-face attr)))
       (insert-char ?\n 1 nil))))
 
 ;; end_menu(window, prompt) -- Stop adding entries to the menu and
