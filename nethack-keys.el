@@ -50,10 +50,6 @@
     ;;(define-key map "\C-c\C-c" 'nethack-command-quit)
     ;;^D      Kick something (usually a door, chest, or box)
     (define-key map "\C-d" 'nethack-command-kick)
-    ;;^G      Create a monster (available in debug mode only)
-    (define-key map "\M-\C-g" 'nethack-command-create-monster)
-    ;;^I      Identify all items (available in debug mode only)
-    (define-key map "\C-i" 'nethack-command-identify-all-items)
     ;;^P      Toggle through previously displayed game messages
     (define-key map "\C-p" 'nethack-command-previous-message)
     ;;^R      Redraw screen
@@ -177,7 +173,7 @@
     ;;Y       Go northwest until you are on top of something
     (define-key map "Y" 'nethack-command-northwest-until-ontop)
     ;;^Y      Go northwest until you are near something
-    (define-key map "" 'nethack-command-northwest-until-near)
+    (define-key map "\M-\C-y" 'nethack-command-northwest-until-near)
     ;;z       Zap a wand
     (define-key map "z" 'nethack-command-zap-wand)
     ;;Z       Zap (cast) a spell
@@ -224,22 +220,25 @@
     (define-key map "$" 'nethack-command-count-gold)
     ;;+       List known spells
     (define-key map "+" 'nethack-command-list-known-spells)
+    ;;^X      Show your attributes (intrinsic ones included in debug or explore mode)
+    (define-key map "\M-\C-x" 'nethack-command-show-attributes)
+
 
     ;;; standard wizard commands
     ;;^E      Search a room (available in debug mode only)
-    (define-key map "\C-e" 'nethack-command-wizard-search)
+    (define-key map "\C-e" 'nethack-command-wizard-detect)
     ;;^F      Map the level (available in debug mode only)
     (define-key map "\C-f" 'nethack-command-wizard-map)
+    ;;^G      Create a monster (available in debug mode only)
+    (define-key map "\M-\C-g" 'nethack-command-wizard-genesis)
+    ;;^I      Identify all items (available in debug mode only)
+    (define-key map "\C-i" 'nethack-command-wizard-identify)
     ;;^O      Show location of special levels (available in debug mode only)
-    (define-key map "\C-o" 'nethack-command-wizard-show-location)
+    (define-key map "\C-o" 'nethack-command-wizard-where)
     ;;^V      Teleport between levels (available in debug mode only)
-    (define-key map "\C-v" 'nethack-command-wizard-teleport-between-levels)
-
+    (define-key map "\C-v" 'nethack-command-wizard-level-teleport)
     ;;^W      Wish (available in debug mode only)
     (define-key map "\C-w" 'nethack-command-wizard-wish)
-
-    ;;^X      Show your intrinsic attributes (in debug or explore mode only)
-    (define-key map "\M-\C-x" 'nethack-command-wizard-show-instrinsic-attributes)
 
     ;;; extended commands
 
@@ -289,7 +288,7 @@
     (define-key map "\eu" 'nethack-command-untrap)
 
     ;;M-v     Print compile time options for this version of NetHack
-    (define-key map "\ev" 'nethack-command-version)
+    (define-key map "\ev" 'nethack-command-extended-version)
     ;;M-w     Wipe off your face
     (define-key map "\ew" 'nethack-command-wipe)
     

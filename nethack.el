@@ -1,7 +1,7 @@
 ;;; nethack.el -- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id: nethack.el,v 1.56 2002/01/16 07:11:19 rcyeske Exp $
+;;; $Id: nethack.el,v 1.57 2002/01/17 04:08:19 rcyeske Exp $
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 ;;; Commentary:
@@ -286,6 +286,7 @@ position if we are looking at a prompt."
 	(if (looking-at comint-prompt-regexp)
 	    (let ((prompt (match-string 1)))
 	      (eval-region comint-last-input-end (point))
+	      ;(delete-region (point-min) (point))
 	      (cond ((or (equal prompt "command")
 			 (equal prompt "menu"))
 		     (sit-for 0)
@@ -341,6 +342,8 @@ position if we are looking at a prompt."
     (modify-syntax-entry ?\) "w   " table)
     (modify-syntax-entry ?\[ "w   " table)
     (modify-syntax-entry ?\] "w   " table)
+    (modify-syntax-entry ?{ "w   " table)
+    (modify-syntax-entry ?} "w   " table)
     table)
   "Syntax table used in the Nethack map.")
 
