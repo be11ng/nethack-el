@@ -1,35 +1,4 @@
-;;; nethack-glyphs.el --- graphical tiles
-
-;; Copyright (C) 2002  Ryan Yeske and Shawn Betts
-
-;; Author: Shawn Betts <sabetts@vcn.bc.ca>
-;; Keywords: games
-
-;; This file is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 2, or (at your option)
-;; any later version.
-
-;; This file is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs; see the file COPYING.  If not, write to
-;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-;; Boston, MA 02111-1307, USA.
-
-;;; Commentary:
-
-;; Should this be an auto generated file?
-
-;; The order is monsters.txt, objects.txt, other.txt.
-
-;; FIXME: this file should be renamed to `nethack-tiles.el'
-
-;;; Code:
-
+;;; This file in auto-generated with gen-tiles.lisp
 (defconst nh-empty-tile
   (create-image "/* XPM */
 static char *xpm[] = {
@@ -70,9 +39,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\"
 };" nil t))
-
-(defconst nh-tile-vector
-  (vector
+(defconst nh-tile-vector (vector
 (create-image "/* XPM */
 static char *xpm[] = {
 /* width height ncolors chars_per_pixel */
@@ -88,7 +55,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -110,7 +77,7 @@ static char *xpm[] = {
 \"MMJBJAJAJAAMMMMM\",
 \"MMMMMAJAMJAMMMMM\",
 \"MMMMMMJAMJAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -127,7 +94,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -149,7 +116,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -166,7 +133,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -188,7 +155,7 @@ static char *xpm[] = {
 \"JJJBJAJAJAAMMMMM\",
 \"JAAJJAJAMJAMMMMM\",
 \"MMJJAAJAMJAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -205,7 +172,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -227,7 +194,7 @@ static char *xpm[] = {
 \"MMDGDADADAAMMMMM\",
 \"MMMMMADAMDAMMMMM\",
 \"MMMMMMDAMDAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -244,7 +211,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -266,7 +233,7 @@ static char *xpm[] = {
 \"MMMABAKDDKMMMMMM\",
 \"MMMMMMAAMAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -283,7 +250,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -305,7 +272,7 @@ static char *xpm[] = {
 \"MMJJMMJJMJMHHAHM\",
 \"MMJAAAJAAJMMHHMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -322,7 +289,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -344,7 +311,7 @@ static char *xpm[] = {
 \"MMMIMDDAMMMMDAMM\",
 \"MMMMMMMMMIAMMMMM\",
 \"MMIAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -361,7 +328,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -383,7 +350,7 @@ static char *xpm[] = {
 \"BBBPBBBBBBPPPPAM\",
 \"MMBBBBBBBBBBPAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -400,7 +367,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -422,7 +389,7 @@ static char *xpm[] = {
 \"MMMMMCCCCDDAAAAM\",
 \"MMMMMMMCCDAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -439,7 +406,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -461,7 +428,7 @@ static char *xpm[] = {
 \"MMMMMMMFMMFFAMMM\",
 \"MMMMMMMAFFAAMMMM\",
 \"MMMMMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -478,7 +445,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -500,7 +467,7 @@ static char *xpm[] = {
 \"MMMMFAMMMMFFAMMM\",
 \"MMMMFAMMFFFAMMMM\",
 \"MMMMMFFFFAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -517,7 +484,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -539,7 +506,7 @@ static char *xpm[] = {
 \"MMMMJAMMMMJJAMMM\",
 \"MMMMKAMMKKKAMMMM\",
 \"MMMMMJKKKAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -556,7 +523,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -578,7 +545,7 @@ static char *xpm[] = {
 \"MMMMOJOLKALKAAMM\",
 \"MMMOOAOAAAOAAMMM\",
 \"MMMMMOOMMOOAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -595,7 +562,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -617,7 +584,7 @@ static char *xpm[] = {
 \"MMMAACCCCMACCMMM\",
 \"MMMMACAACMMAAMMM\",
 \"MMMACMACAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -634,7 +601,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -656,7 +623,7 @@ static char *xpm[] = {
 \"MMMAKKAKAMAKKMMM\",
 \"MMMMMAKKMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -673,7 +640,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -695,7 +662,7 @@ static char *xpm[] = {
 \"MMMMLJLLKALKAAMM\",
 \"MMLLLALAAAOAAMMM\",
 \"MMMLMLLMMOOAMMMM\",
-\"MMMMMMLMMMMMMMMM\",
+\"MMMMMMLMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -712,7 +679,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -734,7 +701,7 @@ static char *xpm[] = {
 \"MMMMKJKJJAJJAAMM\",
 \"MMMKKAKAAAKAAMMM\",
 \"MMMMMKKMMMKAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -751,7 +718,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -773,7 +740,7 @@ static char *xpm[] = {
 \"MMMMKAKJAAAAKJAM\",
 \"MMMKKAKAAAAAKAAM\",
 \"MMMMMKKAAMMMKAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -790,7 +757,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -812,7 +779,7 @@ static char *xpm[] = {
 \"MMMMKAKJAAAAKJAM\",
 \"MMMKKAKAAAAAKAAM\",
 \"MMMMMKKAAMMMKAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -829,7 +796,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -851,7 +818,7 @@ static char *xpm[] = {
 \"MMMMCCACAAAMMCCA\",
 \"MMMMMACCAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -868,7 +835,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -890,7 +857,7 @@ static char *xpm[] = {
 \"MMMMPAPMAAAAPMAM\",
 \"MMMPPAPAAAAAPAAM\",
 \"MMMMMPPAAMMPPAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -907,7 +874,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -929,7 +896,7 @@ static char *xpm[] = {
 \"MMMMLALMAAAAPMAM\",
 \"MMLLLALAAAAAPPAM\",
 \"MMMLMLLAAMMPPMMM\",
-\"MMMMMLLMMMMMMMMM\",
+\"MMMMMLLMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -946,7 +913,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -968,7 +935,7 @@ static char *xpm[] = {
 \"MMMPAAPMAAAAPMAM\",
 \"MPPPAAPAAAAAPAAM\",
 \"MMMMPPPAAMPPPAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -985,7 +952,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1007,7 +974,7 @@ static char *xpm[] = {
 \"MMMMNNNBBANBAAMM\",
 \"MMMNBANAAANAAMMM\",
 \"MMMMMNBMMNBAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1024,7 +991,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1046,7 +1013,7 @@ static char *xpm[] = {
 \"MMMMNANBAAAANBAM\",
 \"MMMNNANAAAAANAAM\",
 \"MMMMMNNAAMMNNAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1063,7 +1030,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1085,7 +1052,7 @@ static char *xpm[] = {
 \"MDMMCCCCCACCAAMM\",
 \"MMMCCACAAACAAMMM\",
 \"MMMMMCCMMMCAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1102,7 +1069,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1124,7 +1091,7 @@ static char *xpm[] = {
 \"MMMCAACMAAAACMAM\",
 \"MCCCAACAAAAACAAM\",
 \"MMMMCCCAAMCCCAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1141,7 +1108,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1163,7 +1130,7 @@ static char *xpm[] = {
 \"JJAAAAJJAAAAJJAM\",
 \"JAAAAAJAAAAAJAAM\",
 \"MMMMMJJAAMMMJAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1180,7 +1147,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1202,7 +1169,7 @@ static char *xpm[] = {
 \"MMMMMPFGGFPMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1219,7 +1186,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1241,7 +1208,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAAM\",
 \"MMMMMMMAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1258,7 +1225,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1280,7 +1247,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAAM\",
 \"MMMMMMMAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1297,7 +1264,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1319,7 +1286,7 @@ static char *xpm[] = {
 \"MMMMDADDDCDADMMM\",
 \"MMMMMDADDDADMMMM\",
 \"MMMMMMJJJJJMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1336,7 +1303,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1358,7 +1325,7 @@ static char *xpm[] = {
 \"MMMPANANAPAPAPMM\",
 \"MMMMPPAIAPAPPMMM\",
 \"MMMMMMPPPPPMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1375,7 +1342,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1397,7 +1364,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAAM\",
 \"MMMMMMMAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1414,7 +1381,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1436,7 +1403,7 @@ static char *xpm[] = {
 \"MMMMIACCLLCCCAAM\",
 \"MMMMMCACCJCCJAMM\",
 \"MMMMMMCCAMMCAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1453,7 +1420,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1475,7 +1442,7 @@ static char *xpm[] = {
 \"MMMAACCLCLCCCAAM\",
 \"MMMCCACCJJCCJAMM\",
 \"MMMMMCCAMMMCAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1492,7 +1459,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1514,7 +1481,7 @@ static char *xpm[] = {
 \"MMMMCACAAAAACJAM\",
 \"MMMCKACAAAAACAAM\",
 \"MMMMMCCAAMMMCAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1531,7 +1498,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1553,7 +1520,7 @@ static char *xpm[] = {
 \"MMMMCACAAAACCAMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1570,7 +1537,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1592,7 +1559,7 @@ static char *xpm[] = {
 \"MMMMMAAMMMMAAAMM\",
 \"MMAAAAMMAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1609,7 +1576,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1631,7 +1598,7 @@ static char *xpm[] = {
 \"MMMMCACCJJJCCJAM\",
 \"MMMCKALAAAAACAAM\",
 \"MMMMMCCAAMMMCAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1648,7 +1615,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1670,7 +1637,7 @@ static char *xpm[] = {
 \"MMMMAACAAAAAAJAM\",
 \"MMMCKACAAAAACAAM\",
 \"MMMMMCCAAMMCCAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1687,7 +1654,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1709,7 +1676,7 @@ static char *xpm[] = {
 \"MGFMGFAGAAFAAAAM\",
 \"MMMMFFAGFAAMAAMM\",
 \"MMMGFAMFGAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1726,7 +1693,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1748,7 +1715,7 @@ static char *xpm[] = {
 \"MMMMMPMMMMAAAAMM\",
 \"MMMMMPMAPMAAMMMM\",
 \"MMMMPFAMFPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1765,7 +1732,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1787,7 +1754,7 @@ static char *xpm[] = {
 \"MMMMMPMMMMAAAAMM\",
 \"MMMMMPMAPMAAMMMM\",
 \"MMMMPFAMFPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1804,7 +1771,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1826,7 +1793,7 @@ static char *xpm[] = {
 \"MMMLMLKJLALAAMMM\",
 \"MMMMMLLALLAMAMMM\",
 \"MMMMLLLMLLLMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1843,7 +1810,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1865,7 +1832,7 @@ static char *xpm[] = {
 \"MMMMEBAEEAAMMMMM\",
 \"MMMMBEAEBMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1882,7 +1849,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1904,7 +1871,7 @@ static char *xpm[] = {
 \"MMMCMMKJAKJAAMMM\",
 \"MMMMMCCAAKJAMMMM\",
 \"MMMMMMMMCCAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1921,7 +1888,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1943,7 +1910,7 @@ static char *xpm[] = {
 \"MMMMEBAEEAAMMMMM\",
 \"MMMMBEAEBMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1960,7 +1927,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -1982,7 +1949,7 @@ static char *xpm[] = {
 \"MMMMEBAEEAAMMMMM\",
 \"MMMMBEAEBMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -1999,7 +1966,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2021,7 +1988,7 @@ static char *xpm[] = {
 \"MMMIIIBBFFACAAAM\",
 \"MMMMMMBBFCAAAAMM\",
 \"MMMMMMCFFCAAMMMM\",
-\"MMMMIICMIIAMMMMM\",
+\"MMMMIICMIIAMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2038,7 +2005,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2060,7 +2027,7 @@ static char *xpm[] = {
 \"MMMIIIBBEEEEAAAM\",
 \"MMMMEEBEEEEAAAMM\",
 \"MMMEEECEEEAAMMMM\",
-\"MMMMIICMIIAMMMMM\",
+\"MMMMIICMIIAMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2077,7 +2044,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2099,7 +2066,7 @@ static char *xpm[] = {
 \"MMPMMMMPMPMPMPMM\",
 \"MMMMMMMMPMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2116,7 +2083,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2138,7 +2105,7 @@ static char *xpm[] = {
 \"MMMMMMBAPAAAAMMM\",
 \"MMMMMLLALCAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2155,7 +2122,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2177,7 +2144,7 @@ static char *xpm[] = {
 \"MMMMMMGAFAAAAMMM\",
 \"MMMMMCDADDAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2194,7 +2161,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2216,7 +2183,7 @@ static char *xpm[] = {
 \"MMPMPMMPPPPMPPMM\",
 \"MMMMMMMMPMPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2233,7 +2200,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2255,7 +2222,7 @@ static char *xpm[] = {
 \"MMMMMMGAFAAAAMMM\",
 \"MMMMMCDADDAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2272,7 +2239,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2294,7 +2261,7 @@ static char *xpm[] = {
 \"MMMMMMPPPPAAAAMM\",
 \"MMMMMMPPPPAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2311,7 +2278,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2333,7 +2300,7 @@ static char *xpm[] = {
 \"MMMMBBBBBEEEAAAM\",
 \"MMMMMMBBBEEAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2350,7 +2317,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2372,7 +2339,7 @@ static char *xpm[] = {
 \"MMMMBCCCBEEDAAAM\",
 \"MMMMMMCCBEEAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2389,7 +2356,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2411,7 +2378,7 @@ static char *xpm[] = {
 \"MMMMCCCCCDDDAAAM\",
 \"MMMMMMCCCDDAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2428,7 +2395,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2450,7 +2417,7 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2467,7 +2434,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2489,7 +2456,7 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2506,7 +2473,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2528,7 +2495,7 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2545,7 +2512,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2567,7 +2534,7 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2584,7 +2551,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2606,7 +2573,7 @@ static char *xpm[] = {
 \"MMMMGFAGKJAKAMMM\",
 \"MMMGFAAMGFAKMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2623,7 +2590,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2645,7 +2612,7 @@ static char *xpm[] = {
 \"MMMMMMNAOAAMAMMM\",
 \"MMMMMNNMOOAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2662,7 +2629,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2684,7 +2651,7 @@ static char *xpm[] = {
 \"MMMMMNOMNOAAMAMM\",
 \"MMMMNNOMNOOAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2701,7 +2668,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2723,7 +2690,7 @@ static char *xpm[] = {
 \"MMMMONOMNNOAAMMA\",
 \"MMMMNNOMNNOAAMMA\",
 \"MMMNNNOMNNOOAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2740,7 +2707,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2762,7 +2729,7 @@ static char *xpm[] = {
 \"MMMJMKKKKJAAMMMM\",
 \"MMMMJKKKKKJAMMMM\",
 \"MMMMKJKJKJKJMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2779,7 +2746,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2801,7 +2768,7 @@ static char *xpm[] = {
 \"MMMPMBBBBPAAMMMM\",
 \"MMMMPBBBBBPAMMMM\",
 \"MMMMBPBPBPBPMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2818,7 +2785,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2840,7 +2807,7 @@ static char *xpm[] = {
 \"MMMLMOOOOLAAMMMM\",
 \"MMMMLOOOOOLAMMMM\",
 \"MMMMOLOLOLOLMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2857,7 +2824,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2879,7 +2846,7 @@ static char *xpm[] = {
 \"MMMMIKAIJAMMMMMM\",
 \"MMMIKAAMIKMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2896,7 +2863,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2918,7 +2885,7 @@ static char *xpm[] = {
 \"MMMMIKAIJAMMMMMM\",
 \"MMMIKAAMIKMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2935,7 +2902,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2957,7 +2924,7 @@ static char *xpm[] = {
 \"MMMBJACPAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -2974,7 +2941,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -2996,7 +2963,7 @@ static char *xpm[] = {
 \"MMMGGAGFAAAAMMMM\",
 \"MMKJJAKJJAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3013,7 +2980,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3035,7 +3002,7 @@ static char *xpm[] = {
 \"MMMBIAIPAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3052,7 +3019,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3074,7 +3041,7 @@ static char *xpm[] = {
 \"MMMBIAKMAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3091,7 +3058,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3113,7 +3080,7 @@ static char *xpm[] = {
 \"MMMBCACPAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3130,7 +3097,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3152,7 +3119,7 @@ static char *xpm[] = {
 \"MMMBDAIPAAAAMMMM\",
 \"MMBPPABPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3169,7 +3136,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3191,7 +3158,7 @@ static char *xpm[] = {
 \"MMMMMJMMMMMMMMMM\",
 \"MMMMMJMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3208,7 +3175,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3230,7 +3197,7 @@ static char *xpm[] = {
 \"MMMMMBMMMMMMMMMM\",
 \"MMMMMPMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3247,7 +3214,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3269,7 +3236,7 @@ static char *xpm[] = {
 \"MMMMMNMMMMMMMMMM\",
 \"MMMMMPMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3286,7 +3253,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3308,7 +3275,7 @@ static char *xpm[] = {
 \"MMAAKAMKAMMMMMMM\",
 \"MMAMMAMKMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3325,7 +3292,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3347,7 +3314,7 @@ static char *xpm[] = {
 \"OOPPOOAAPPAMMMMM\",
 \"MPPPAPAMPPMMMMMM\",
 \"PPPAMMMMMMMMMMMM\",
-\"MAAMMMMMMMMMMMMM\",
+\"MAAMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3364,7 +3331,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3386,7 +3353,7 @@ static char *xpm[] = {
 \"MPAPAAPAPAMMMMMM\",
 \"MPAPAMPAPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3403,7 +3370,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3425,7 +3392,7 @@ static char *xpm[] = {
 \"MMEEEEEAABBAMMMM\",
 \"MMMMMBBAMBBMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3442,7 +3409,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3464,7 +3431,7 @@ static char *xpm[] = {
 \"PPPPMAAPPAAMMMMM\",
 \"MPPMPPAPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3481,7 +3448,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3503,7 +3470,7 @@ static char *xpm[] = {
 \"PPPPMAAPPAAMMMMM\",
 \"MPPMPPAPPAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3520,7 +3487,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3542,7 +3509,7 @@ static char *xpm[] = {
 \"MMPPAAAPPPPAPPAM\",
 \"MMPMMMAPPAAAPPAM\",
 \"MMMMMMMPPAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3559,7 +3526,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3581,7 +3548,7 @@ static char *xpm[] = {
 \"MPJJAAKKAJAJKAMM\",
 \"MMAAMKKAMMJKAMMM\",
 \"MMMMMMMMMJJAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3598,7 +3565,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3620,7 +3587,7 @@ static char *xpm[] = {
 \"MPJJAAKKAJJAJKAM\",
 \"MMAAMKKAAMMJKAMM\",
 \"MMMMMMMMMMJJAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3637,7 +3604,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3659,7 +3626,7 @@ static char *xpm[] = {
 \"MPJOOAKKAJJAJKAM\",
 \"MMAOOOKAAMMJKAMM\",
 \"MOOOOOOOOMJJAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3676,7 +3643,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3698,7 +3665,7 @@ static char *xpm[] = {
 \"MPJJAAKKAJJAJKAM\",
 \"MMAAMKKAAMMJKAMM\",
 \"MMMMMMMMMMJJAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3715,7 +3682,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3737,7 +3704,7 @@ static char *xpm[] = {
 \"ANMNAAAAAAAAAAAM\",
 \"AMMMAAAAMMMAAAMM\",
 \"ANMNAAMAAMMMAAMM\",
-\"MAAAAMMMMMMMMMMM\",
+\"MAAAAMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3754,7 +3721,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3776,7 +3743,7 @@ static char *xpm[] = {
 \"MMMMMMKLLJAAAAAM\",
 \"MMMMMMKJJJAAAAMM\",
 \"MMMMMJJAAJJAAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3793,7 +3760,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3815,7 +3782,7 @@ static char *xpm[] = {
 \"MMDMPAPAPAAPPAMM\",
 \"MMMMDMPAAPAMAPAM\",
 \"MMMMMPAAMAPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3832,7 +3799,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3854,7 +3821,7 @@ static char *xpm[] = {
 \"MMMPPGPAAPMMMMMM\",
 \"MMBMPAAMMMMMMMMM\",
 \"MMMBMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3871,7 +3838,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3893,7 +3860,7 @@ static char *xpm[] = {
 \"MMDMJAJAJAAJJAMM\",
 \"MMMMDMJAAJAMAJAM\",
 \"MMMMMJAAMAJAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3910,7 +3877,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3932,7 +3899,7 @@ static char *xpm[] = {
 \"MMDMJAJAJAAJJAMM\",
 \"MMMMDMJAAJAMJAAM\",
 \"MMMMMMMJAAJAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3949,7 +3916,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -3971,7 +3938,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -3988,7 +3955,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4010,7 +3977,7 @@ static char *xpm[] = {
 \"MMMMAODODODOAMMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMAAGFAAGFAAAMM\",
-\"MAAAAAAAAAAAAAAA\",
+\"MAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4027,7 +3994,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4049,7 +4016,7 @@ static char *xpm[] = {
 \"MMMLAOAAOAOAMMMM\",
 \"MMMMMOAALAOMMMMM\",
 \"MMMMMLAMMMLMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4066,7 +4033,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4088,7 +4055,7 @@ static char *xpm[] = {
 \"MMMLAMAAMAMAMMMM\",
 \"MMMMMMAALAMMMMMM\",
 \"MMMMMLAMMMLMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4105,7 +4072,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4127,7 +4094,7 @@ static char *xpm[] = {
 \"MMMLPAPPAPAPMMMM\",
 \"MMMMMAPPLPAMMMMM\",
 \"MMMMMLPMMMLMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4144,7 +4111,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4166,7 +4133,7 @@ static char *xpm[] = {
 \"MMMJAJAAJAJAMMMM\",
 \"MMMLMJAALAJMMMMM\",
 \"MMMMMLAMMMLMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4183,7 +4150,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4205,7 +4172,7 @@ static char *xpm[] = {
 \"MMJAAJAAAJAJAAMM\",
 \"MMLAMJAAMLMJAMMM\",
 \"MMMMMLAMMMMLMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4222,7 +4189,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4244,7 +4211,7 @@ static char *xpm[] = {
 \"MMKJAKJAKJAKJAMM\",
 \"MMLCMKJALCMKJMMM\",
 \"MMMMMLCMMMMLCMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4261,7 +4228,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4283,7 +4250,7 @@ static char *xpm[] = {
 \"MMPMPMMMMPPMMMMM\",
 \"MMMMMMMPMMMMPMMM\",
 \"MMPMMPMPMMPMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4300,7 +4267,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4322,7 +4289,7 @@ static char *xpm[] = {
 \"MMKMMJJJJKMMKMMM\",
 \"MMMKJJJKKMMKMMMM\",
 \"MMMMKKKKMMKMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4339,7 +4306,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4361,7 +4328,7 @@ static char *xpm[] = {
 \"MMNMMOOOONMMNMMM\",
 \"MMMNOOONNMMNMMMM\",
 \"MMMMNNNNMMNMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4378,7 +4345,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4400,7 +4367,7 @@ static char *xpm[] = {
 \"MMEMMAAAAEMMEMMM\",
 \"MMMEAAAEEMMEMMMM\",
 \"MMMMEEEEMMEMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4417,7 +4384,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4439,7 +4406,7 @@ static char *xpm[] = {
 \"MMPMMBBBBPMMPMMM\",
 \"MMMPBBBPPMMPMMMM\",
 \"MMMMPPPPMMPMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4456,7 +4423,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4478,7 +4445,7 @@ static char *xpm[] = {
 \"MMDMMCCCCDMMDMMM\",
 \"MMMDCCCDDMMDMMMM\",
 \"MMMMDDDDMMDMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4495,7 +4462,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4517,7 +4484,7 @@ static char *xpm[] = {
 \"MMMMMMMMCLLMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4534,7 +4501,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4556,7 +4523,7 @@ static char *xpm[] = {
 \"MMMMMMMMIIIMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4573,7 +4540,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4595,7 +4562,7 @@ static char *xpm[] = {
 \"MMMMMMCLLLLMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4612,7 +4579,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4634,7 +4601,7 @@ static char *xpm[] = {
 \"MMMMMMDIIIIMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4651,7 +4618,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4673,7 +4640,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4690,7 +4657,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4712,7 +4679,7 @@ static char *xpm[] = {
 \"MMGGGNANAAMAAAMM\",
 \"MGGGANNNAAMAMAMM\",
 \"MMGMMAAAAAAMMMMM\",
-\"MMMMMMAAMAAMMMMM\",
+\"MMMMMMAAMAAMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4729,7 +4696,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4751,7 +4718,7 @@ static char *xpm[] = {
 \"MMMMMMHAMMMMMMMM\",
 \"MMMMMMNAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4768,7 +4735,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4790,7 +4757,7 @@ static char *xpm[] = {
 \"MMMMMMAAMMMMMMMM\",
 \"MMMMMMAAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4807,7 +4774,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4829,7 +4796,7 @@ static char *xpm[] = {
 \"MMMKJJAAAAKJAAAM\",
 \"MMJKJJJAAJJJJMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4846,7 +4813,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4868,7 +4835,7 @@ static char *xpm[] = {
 \"MMMMMJJAAMMMJAMM\",
 \"MMMMMMJJJJJJAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4885,7 +4852,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4907,7 +4874,7 @@ static char *xpm[] = {
 \"MMBFMMLJJLAAABAM\",
 \"MMMBFMLLALAABAMM\",
 \"MMBFMLLAALLAFBMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4924,7 +4891,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4946,7 +4913,7 @@ static char *xpm[] = {
 \"MMMMMBNNNPAAMAMM\",
 \"MMMMMBNNNNPAMMMM\",
 \"MMMMBNNNNNNPMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -4963,7 +4930,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -4985,7 +4952,7 @@ static char *xpm[] = {
 \"MMMLMKALAKMMMMMM\",
 \"MMMMMLAMMLMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5002,7 +4969,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5024,7 +4991,7 @@ static char *xpm[] = {
 \"MMMMMAAAAAJJJMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5041,7 +5008,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5063,7 +5030,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5080,7 +5047,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5102,7 +5069,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5119,7 +5086,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5141,7 +5108,7 @@ static char *xpm[] = {
 \"MMMMMMMMPMPMPMMM\",
 \"MMMMMMMMMMMPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5158,7 +5125,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5180,7 +5147,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5197,7 +5164,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5219,7 +5186,7 @@ static char *xpm[] = {
 \"MMCAKAAJAKAMMMMM\",
 \"MMMMKAAKAKMMMMMM\",
 \"MMMMCAMMMCMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5236,7 +5203,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5258,7 +5225,7 @@ static char *xpm[] = {
 \"MKAAKAAJAKAMMMMM\",
 \"MMCMKAAKAKMMMMMM\",
 \"MMMMCAMMMCMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5275,7 +5242,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5297,7 +5264,7 @@ static char *xpm[] = {
 \"MMCAKAAJAKAMMMMM\",
 \"MMMMKAAKAKMMMMMM\",
 \"MMMMCAMMMCMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5314,7 +5281,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5336,7 +5303,7 @@ static char *xpm[] = {
 \"MMBPPBPPOBPAPPAM\",
 \"MMBPABPMABPAPPAM\",
 \"MMMMMBPAAMMPPAAM\",
-\"MMMMMMMMMMMPAAMM\",
+\"MMMMMMMMMMMPAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5353,7 +5320,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5375,7 +5342,7 @@ static char *xpm[] = {
 \"MMPBBPBBNPBABBAM\",
 \"MMPBAPBMAPBABBAM\",
 \"MMMMMPBAAMMBBAAM\",
-\"MMMMMMMMMMMBAAMM\",
+\"MMMMMMMMMMMBAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5392,7 +5359,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5414,7 +5381,7 @@ static char *xpm[] = {
 \"BFBPPBPPOBPAPPFB\",
 \"BMBPABPMABPAPPFB\",
 \"BMMMMBPAAMMPPAAB\",
-\"MBMMMMMMMMMPAABM\",
+\"MBMMMMMMMMMPAABM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5431,7 +5398,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5453,7 +5420,7 @@ static char *xpm[] = {
 \"MMIDDIDDHIDADDAM\",
 \"MMIDAIDMAIDADDAM\",
 \"MMMMMIDAAMMDDAAM\",
-\"MMMMMMMMMMMDAAMM\",
+\"MMMMMMMMMMMDAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5470,7 +5437,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5492,7 +5459,7 @@ static char *xpm[] = {
 \"MMNOONOOONOAOOAM\",
 \"MMNOANOMANOAOOAM\",
 \"MMMMMNOAAMMOOAAM\",
-\"MMMMMMMMMMMOAAMM\",
+\"MMMMMMMMMMMOAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5509,7 +5476,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5531,7 +5498,7 @@ static char *xpm[] = {
 \"MMLCCLCCOLCACCAM\",
 \"MMLCALCMALCACCAM\",
 \"MMMMMLCAAMMCCAAM\",
-\"MMMMMMMMMMMCAAMM\",
+\"MMMMMMMMMMMCAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5548,7 +5515,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5570,7 +5537,7 @@ static char *xpm[] = {
 \"MMAAAAAAAAAPAAPM\",
 \"MMAAPAAMPAAPAAPM\",
 \"MMMMMAAPMMMAAPPM\",
-\"MMMMMMMMMMMAPPMM\",
+\"MMMMMMMMMMMAPPMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5587,7 +5554,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5609,7 +5576,7 @@ static char *xpm[] = {
 \"MMBEEBEEOBEAEEAM\",
 \"MMBEABEMABEAEEAM\",
 \"MMMMMBEAAMMEEAAM\",
-\"MMMMMMMMMMMEAAMM\",
+\"MMMMMMMMMMMEAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5626,7 +5593,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5648,7 +5615,7 @@ static char *xpm[] = {
 \"MMGFFGFFOGFAFFAM\",
 \"MMGFAGFMAGFAFFAM\",
 \"MMMMMGFAAMMFFAAM\",
-\"MMMMMMMMMMMFAAMM\",
+\"MMMMMMMMMMMFAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5665,7 +5632,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5687,7 +5654,7 @@ static char *xpm[] = {
 \"MMNHHNHHONHAHHAM\",
 \"MMNHANHMANHAHHAM\",
 \"MMMMMNHAAMMHHAAM\",
-\"MMMMMMMMMMMHAAMM\",
+\"MMMMMMMMMMMHAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5704,7 +5671,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5726,7 +5693,7 @@ static char *xpm[] = {
 \"BPMOBPPOOPPMPMAM\",
 \"BPAABPMAAPPAPPAM\",
 \"MMMMBPAAMMMPPMAM\",
-\"MMMMMMMMPPPPMAMM\",
+\"MMMMMMMMPPPPMAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5743,7 +5710,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5765,7 +5732,7 @@ static char *xpm[] = {
 \"PBMNPBBNNBBMBMAM\",
 \"PBAAPBMAABBABBAM\",
 \"MMMMPBAAMMMBBMAM\",
-\"MMMMMMMMBBBBMAMM\",
+\"MMMMMMMMBBBBMAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5782,7 +5749,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5804,7 +5771,7 @@ static char *xpm[] = {
 \"BPMOBPPOOPPMPMFB\",
 \"BPAABPMAAPPAPPFB\",
 \"MMMMBPAAMMMPPMAB\",
-\"MMMMMMMMPPPPMABM\",
+\"MMMMMMMMPPPPMABM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5821,7 +5788,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5843,7 +5810,7 @@ static char *xpm[] = {
 \"IDMHIDDHHDDJDJAM\",
 \"IDAAIDMAADDADDAM\",
 \"MMMMIDAAJJJDDJAM\",
-\"MMMMMMMMDDDDJAMM\",
+\"MMMMMMMMDDDDJAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5860,7 +5827,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5882,7 +5849,7 @@ static char *xpm[] = {
 \"NOMONOOOOOOMOJAM\",
 \"NOAANOMAAOOAOOAM\",
 \"MMMMNOAAMMMOOJAM\",
-\"MMMMMMMMOOOOJAMM\",
+\"MMMMMMMMOOOOJAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5899,7 +5866,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5921,7 +5888,7 @@ static char *xpm[] = {
 \"LCMOLCCOOCCKCJAM\",
 \"LCAALCMAACCACCAM\",
 \"MMMMLCAAMKKCCJAM\",
-\"MMMMMMMMCCCCJAMM\",
+\"MMMMMMMMCCCCJAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5938,7 +5905,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5960,7 +5927,7 @@ static char *xpm[] = {
 \"AAMAAAAAAAAMAAPM\",
 \"AAPPAAMPPAAPAAPM\",
 \"MMMMAAPPMMMAAAPM\",
-\"MMMMMMMMAAAAAMMM\",
+\"MMMMMMMMAAAAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -5977,7 +5944,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -5999,7 +5966,7 @@ static char *xpm[] = {
 \"BEMOBEEOOEEMEJAM\",
 \"BEAABEMAAEEAEEAM\",
 \"MMMMBEAAMMMEEJAM\",
-\"MMMPMMMMEEEEJAMM\",
+\"MMMPMMMMEEEEJAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6016,7 +5983,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6038,7 +6005,7 @@ static char *xpm[] = {
 \"GFMOGFFOOFFMFJAM\",
 \"GFAAGFMAAFFAFFAM\",
 \"MMMMGFAAMMMFFJAM\",
-\"MMMMMMMMFFFFJAMM\",
+\"MMMMMMMMFFFFJAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6055,7 +6022,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6077,7 +6044,7 @@ static char *xpm[] = {
 \"NHMONHHOOHHJHJAM\",
 \"NHAANHMAAHHAHHAM\",
 \"MMMMNHAAJJJHHJAM\",
-\"MMMMMMMMHHHHJAMM\",
+\"MMMMMMMMHHHHJAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6094,7 +6061,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6116,7 +6083,7 @@ static char *xpm[] = {
 \"MMMMMMPMMPMMMMMM\",
 \"MMMMMMPMMPMMMMMM\",
 \"MMMMMPPMMPPMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6133,7 +6100,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6155,7 +6122,7 @@ static char *xpm[] = {
 \"MMMMPMAPAAAAAAAM\",
 \"MMPMPMAPPAAAAAAM\",
 \"MMMPPMAPPPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6172,7 +6139,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6194,7 +6161,7 @@ static char *xpm[] = {
 \"MMMMDCADAAAAAAAM\",
 \"MHMLDCADDAAAAAAM\",
 \"MMLDDCADDDAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6211,7 +6178,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6233,7 +6200,7 @@ static char *xpm[] = {
 \"MMMMKJAKAAAAAAAM\",
 \"MFMCKJAKKAAAAAAM\",
 \"MMCKKJAKKKAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6250,7 +6217,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6272,7 +6239,7 @@ static char *xpm[] = {
 \"MMMMBEABAAAAAAAM\",
 \"MEMPBEABBAAAAAAM\",
 \"MMPBBEABBBAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6289,7 +6256,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6311,7 +6278,7 @@ static char *xpm[] = {
 \"MMMFFFAAFFFFFAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6328,7 +6295,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6350,7 +6317,7 @@ static char *xpm[] = {
 \"MMMJJJAAJJJJJAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6367,7 +6334,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6389,7 +6356,7 @@ static char *xpm[] = {
 \"MMMHHHAAHHHHHAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6406,7 +6373,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6428,7 +6395,7 @@ static char *xpm[] = {
 \"MMMFFFAAFFFFFAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6445,7 +6412,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6467,7 +6434,7 @@ static char *xpm[] = {
 \"MMMDDDAADDDDDAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6484,7 +6451,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6506,7 +6473,7 @@ static char *xpm[] = {
 \"MMMMAGGGFFAAAAAA\",
 \"MMMAGGGGGGFAAAAM\",
 \"MMMAAAAAAAAAAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6523,7 +6490,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6545,7 +6512,7 @@ static char *xpm[] = {
 \"MMMIIIAAIIIIIAMM\",
 \"MMMMMAAMAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6562,7 +6529,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6584,7 +6551,7 @@ static char *xpm[] = {
 \"MMMMFGAFFAAMMMMM\",
 \"MMMMGFAFGMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6601,7 +6568,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6623,7 +6590,7 @@ static char *xpm[] = {
 \"MMMMFGAFFAAMMMMM\",
 \"MMMMGFAFGMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6640,7 +6607,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6662,7 +6629,7 @@ static char *xpm[] = {
 \"MMMFFGFFFFAMMMMM\",
 \"MMMGFFFFGFAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6679,7 +6646,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6701,7 +6668,7 @@ static char *xpm[] = {
 \"MMMMFGAFFAAMMMMM\",
 \"MMMMGFAFGMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6718,7 +6685,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6740,7 +6707,7 @@ static char *xpm[] = {
 \"MCLCMJJJJJKKCLAA\",
 \"MMLLMCLJACLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMCLLLKAA\",
+\"MMMLLLLJMCLLLKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6757,7 +6724,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6779,7 +6746,7 @@ static char *xpm[] = {
 \"MCLCPPPAJJKKCLAA\",
 \"MMLLPPALACLJLLAA\",
 \"MMMMMALJACLJAAAA\",
-\"MMMLLLLJMCLLLKAA\",
+\"MMMLLLLJMCLLLKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6796,7 +6763,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6818,7 +6785,7 @@ static char *xpm[] = {
 \"MMLCMJJJJJKKCLAA\",
 \"MMLLMCLJACLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMLLLLKAA\",
+\"MMMLLLLJMLLLLKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6835,7 +6802,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6857,7 +6824,7 @@ static char *xpm[] = {
 \"JJLJDHHJJJKKCLAA\",
 \"MMLLJJJJACLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMLLLLKAA\",
+\"MMMLLLLJMLLLLKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6874,7 +6841,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6896,7 +6863,7 @@ static char *xpm[] = {
 \"MMLCMJJJJJKKCLAA\",
 \"MMLLMCJJAJLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMCLLLKAA\",
+\"MMMLLLLJMCLLLKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6913,7 +6880,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6935,7 +6902,7 @@ static char *xpm[] = {
 \"MMLCMJJJJJKHAAAA\",
 \"MMLLMCLJACHAAAAA\",
 \"MMMMMCLJACCJAAAA\",
-\"MMMLLLLJMLLLLKAA\",
+\"MMMLLLLJMLLLLKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6952,7 +6919,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -6974,7 +6941,7 @@ static char *xpm[] = {
 \"MBPBMIIFFIIABPAA\",
 \"MMPPMBPAABPAPPAA\",
 \"MMMMMBPAABPAAAAA\",
-\"MMMPPPPAMBPPPFAA\",
+\"MMMPPPPAMBPPPFAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -6991,7 +6958,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7013,7 +6980,7 @@ static char *xpm[] = {
 \"MCLCMJJJJJKKCLAA\",
 \"MMLLMCLJACLJLLAA\",
 \"MMMMMCLJACLJAAAA\",
-\"MMMLLLLJMCLLLKAA\",
+\"MMMLLLLJMCLLLKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7030,7 +6997,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7052,7 +7019,7 @@ static char *xpm[] = {
 \"MLLMJJJJJJJLLAAA\",
 \"MLLMJJJJJJJLLAAA\",
 \"MMMMCLCACLCAAAAA\",
-\"MMLLLLLMLLLLLAAM\",
+\"MMLLLLLMLLLLLAAM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7069,7 +7036,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7091,7 +7058,7 @@ static char *xpm[] = {
 \"MMMMIDDAIDDDDAMM\",
 \"MMMMIDAAIDAAMMMM\",
 \"MMMIDAAMMIDMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7108,7 +7075,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7130,7 +7097,7 @@ static char *xpm[] = {
 \"MMMMFGGAFGGGGAMM\",
 \"MMMMFGAAFGAAMMMM\",
 \"MMMFGAAMMFGMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7147,7 +7114,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7169,7 +7136,7 @@ static char *xpm[] = {
 \"MAMAAAAAAPAAAMMM\",
 \"AAAAAMPAAAAAMMMM\",
 \"MMAAMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7186,7 +7153,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7208,7 +7175,7 @@ static char *xpm[] = {
 \"MAMAAAAAAPAAAMMM\",
 \"AAAAAMPAAAAAMMMM\",
 \"MMAAMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7225,7 +7192,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7247,7 +7214,7 @@ static char *xpm[] = {
 \"MAMAAAAAAPAAAMMM\",
 \"AAAAAMPAAAAAMMMM\",
 \"MMAAMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7264,7 +7231,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7286,7 +7253,7 @@ static char *xpm[] = {
 \"MAMAAAAAAPAAAMMM\",
 \"AAAAAMPAAAAAMMMM\",
 \"MMAAMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7303,7 +7270,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7325,7 +7292,7 @@ static char *xpm[] = {
 \"MMMMMOPAPMAMMMMM\",
 \"MMMOOOAMOAMMMMMM\",
 \"MMMMMMOOOMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7342,7 +7309,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7364,7 +7331,7 @@ static char *xpm[] = {
 \"MMMMMLLALMAMMMMM\",
 \"MMMLLLAMLAMMMMMM\",
 \"MMMMMMLLLMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7381,7 +7348,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7403,7 +7370,7 @@ static char *xpm[] = {
 \"MMMMMOPAPMAMMMMM\",
 \"MMMOOOAMOAMMMMMM\",
 \"MMMMMMOOOMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7420,7 +7387,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7442,7 +7409,7 @@ static char *xpm[] = {
 \"MMAMMOPAPMAMMMMM\",
 \"MMAOOOAMOAMMMMMM\",
 \"MMMMMMOOOMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7459,7 +7426,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7481,7 +7448,7 @@ static char *xpm[] = {
 \"MMMMNANAAAAMMMMM\",
 \"MMMOOANOAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7498,7 +7465,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7520,7 +7487,7 @@ static char *xpm[] = {
 \"MMMMNOANDAAMMMMM\",
 \"MMMMNOAOOMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7537,7 +7504,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7559,7 +7526,7 @@ static char *xpm[] = {
 \"MMMCCAOOAAAAMMMM\",
 \"MMOOOAOOOAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7576,7 +7543,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7598,7 +7565,7 @@ static char *xpm[] = {
 \"MMMMNOANDAAMMMMM\",
 \"MMMMNOAOOMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7615,7 +7582,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7637,7 +7604,7 @@ static char *xpm[] = {
 \"MMMMMMOOAOAAMAMM\",
 \"MMMMMOOAMOOAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7654,7 +7621,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7676,7 +7643,7 @@ static char *xpm[] = {
 \"MNMOOMOLAAAAAAAM\",
 \"MMMOOAOOAAAMMMMM\",
 \"MMNNNMNNNAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7693,7 +7660,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7715,7 +7682,7 @@ static char *xpm[] = {
 \"MOOOMONOONOOOOAA\",
 \"MMOOMNNOANOLOOAA\",
 \"MMMMMNOOANOOAAAA\",
-\"MMMOOOOOMOOOOKAA\",
+\"MMMOOOOOMOOOOKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7732,7 +7699,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7754,7 +7721,7 @@ static char *xpm[] = {
 \"MOOOMONOONOOOOAA\",
 \"MMOOMNNOANOLOOAA\",
 \"MMMMMNOOANOOAAAA\",
-\"MMMOOOOOMOOOOKAA\",
+\"MMMOOOOOMOOOOKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7771,7 +7738,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7793,7 +7760,7 @@ static char *xpm[] = {
 \"MMMIDDAAAAADAMMM\",
 \"MMMIDDDAAADDAMMM\",
 \"MMMMIIDDDDDAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7810,7 +7777,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7832,7 +7799,7 @@ static char *xpm[] = {
 \"MMMAAAPAMMPAAMMM\",
 \"MMMAAAAPPPAAAMMM\",
 \"MMMMAAAAAAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7849,7 +7816,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7871,7 +7838,7 @@ static char *xpm[] = {
 \"MMMNHHAAAAAHAMMM\",
 \"MMMNHHHAAAHHAMMM\",
 \"MMMMNNHHHHHAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7888,7 +7855,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7910,7 +7877,7 @@ static char *xpm[] = {
 \"MMMGFFAAAAAFAMMM\",
 \"MMMGFFFAAAFFAMMM\",
 \"MMMMGGFFFFFAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7927,7 +7894,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7949,7 +7916,7 @@ static char *xpm[] = {
 \"MMMIDDDDDDAAMDDA\",
 \"MMMMDDDDDAMMDDAM\",
 \"MMMMMDDAAMMDDAMM\",
-\"MMMMMMMMMMDAMMMM\",
+\"MMMMMMMMMMDAMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -7966,7 +7933,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -7988,7 +7955,7 @@ static char *xpm[] = {
 \"MMMAAAAAAAPPMAAP\",
 \"MMMMAAAAAPMMAAPM\",
 \"MMMMMAAPPMMAAPMM\",
-\"MMMMMMMMMMAPMMMM\",
+\"MMMMMMMMMMAPMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8005,7 +7972,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8027,7 +7994,7 @@ static char *xpm[] = {
 \"MMMNHHHHHHAAMHHA\",
 \"MMMMHHHHHAMMHHAM\",
 \"MMMMMHHAAMMHHAMM\",
-\"MMMMMMMMMMHAMMMM\",
+\"MMMMMMMMMMHAMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8044,7 +8011,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8066,7 +8033,7 @@ static char *xpm[] = {
 \"MMMGFFFFFFAAMFFA\",
 \"MMMMFFFFFAMMFFAM\",
 \"MMMMMFFAAMMFFAMM\",
-\"MMMMMMMMMMFAMMMM\",
+\"MMMMMMMMMMFAMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8083,7 +8050,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8105,7 +8072,7 @@ static char *xpm[] = {
 \"MLCMHHHBHHACLAAA\",
 \"MLLMJJJJJJALLAAA\",
 \"MMMMCJJJCLAAAAAA\",
-\"MMLLLLLMLLLLLAAM\",
+\"MMLLLLLMLLLLLAAM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8122,7 +8089,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8144,7 +8111,7 @@ static char *xpm[] = {
 \"MLCMHHHBHHACLAAA\",
 \"MLLMJJJJJJALLAAA\",
 \"MMMMCJJJCLAAAAAA\",
-\"MMLLLLLMLLLLLAAM\",
+\"MMLLLLLMLLLLLAAM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8161,7 +8128,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8183,7 +8150,7 @@ static char *xpm[] = {
 \"MLCMHHHBHHACLAAA\",
 \"MLLMJJJJJJALLAAA\",
 \"MMMMCJJJCLAAAAAA\",
-\"MMLLLLLMLLLLLAAM\",
+\"MMLLLLLMLLLLLAAM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8200,7 +8167,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8222,7 +8189,7 @@ static char *xpm[] = {
 \"MMMPBBBAAAKPPJMM\",
 \"MMMMMMMMACPPAKMM\",
 \"MMMMMMMMMKCCCJMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8239,7 +8206,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8261,7 +8228,7 @@ static char *xpm[] = {
 \"MMMMJJJJJJAAAMMM\",
 \"MMMMMAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8278,7 +8245,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8300,7 +8267,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMAAAAAAMAM\",
 \"MMMMMMMMAAAAAAAA\",
-\"MMMMMMMMMMAAAAMM\",
+\"MMMMMMMMMMAAAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8317,7 +8284,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8339,7 +8306,7 @@ static char *xpm[] = {
 \"MNGGGGGFGFGMMMMM\",
 \"NGGGGFGGFGMGMMGF\",
 \"NGGFGGFMMGFMMMMM\",
-\"MMGGFMMGGFMMGMMM\",
+\"MMGGFMMGGFMMGMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8356,7 +8323,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8378,7 +8345,7 @@ static char *xpm[] = {
 \"MMMMMNBEBENAMAMM\",
 \"MMMMMNBEBENNMMMM\",
 \"MMMMNAAEBAANNMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8395,7 +8362,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8417,7 +8384,7 @@ static char *xpm[] = {
 \"MMMMAEEEEEEEAAAM\",
 \"MMMMMEEEEEAAMMAM\",
 \"MMMMMMAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8434,7 +8401,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8456,7 +8423,7 @@ static char *xpm[] = {
 \"MMMMAPPPPPPPAAAM\",
 \"MMMMMPPPPPAAMMAM\",
 \"MMMMMMAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8473,7 +8440,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8495,7 +8462,7 @@ static char *xpm[] = {
 \"MMMMKAAKKAAPMMMM\",
 \"MMMMMKAAAAPMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8512,7 +8479,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8534,7 +8501,7 @@ static char *xpm[] = {
 \"MMMMKJJJJJJAMMMM\",
 \"MMMMMKJJJJAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8551,7 +8518,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8573,7 +8540,7 @@ static char *xpm[] = {
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMAAAAAAAMMMMM\",
 \"MMMMMAAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8590,7 +8557,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8612,7 +8579,7 @@ static char *xpm[] = {
 \"MMMMMAAMMAAAMMMM\",
 \"MMMMMAAAAAAMMMMM\",
 \"MMMMMMAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8629,7 +8596,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8651,7 +8618,7 @@ static char *xpm[] = {
 \"MMMJJJJJJJJJAAMM\",
 \"MMMMJJJJJJJAAMMM\",
 \"MMMMMJJJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8668,7 +8635,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8690,7 +8657,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMAAAAMM\",
 \"MMMMAAAMMMMMMAAM\",
 \"MMMMMAAAAAAAAAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8707,7 +8674,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8729,7 +8696,7 @@ static char *xpm[] = {
 \"MMMGFAGPMAAMAAMM\",
 \"MMKJJAKJAAMAAMMM\",
 \"MMKJAMMKAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8746,7 +8713,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8768,7 +8735,7 @@ static char *xpm[] = {
 \"MMMBEABPMAAMAAMM\",
 \"MMKJJAKJAAMAAMMM\",
 \"MMKJAMMKAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8785,7 +8752,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8807,7 +8774,7 @@ static char *xpm[] = {
 \"MMMAFAGFMAAMAAMM\",
 \"MMKJJAKJAAMAAMMM\",
 \"MMKJAMMKAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8824,7 +8791,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8846,7 +8813,7 @@ static char *xpm[] = {
 \"MMMBEABPMAAMAAMM\",
 \"MMKJJAKJAAMAAMMM\",
 \"MMKJAMMKAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8863,7 +8830,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8885,7 +8852,7 @@ static char *xpm[] = {
 \"MMMPPAPPMPPMPPMM\",
 \"MMAAAAAAAPMPPMMM\",
 \"MMAAAMAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8902,7 +8869,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8924,7 +8891,7 @@ static char *xpm[] = {
 \"MMMAAPAAPPPPMMMM\",
 \"MMAAAPAAAPPMMMMM\",
 \"MAAAPMMAAPMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8941,7 +8908,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -8963,7 +8930,7 @@ static char *xpm[] = {
 \"MMMMMAAPAAPPMMMM\",
 \"MMMMAAPMMAPMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -8980,7 +8947,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9002,7 +8969,7 @@ static char *xpm[] = {
 \"MNAAAAAAAAAPPPMM\",
 \"MNMMMAAAPAAPPMMM\",
 \"MNMMAAPPMMAPMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9019,7 +8986,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9041,7 +9008,7 @@ static char *xpm[] = {
 \"MMMMMAAPAAPPMMMM\",
 \"MMMMAAPMMAPMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9058,7 +9025,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9080,7 +9047,7 @@ static char *xpm[] = {
 \"MANAAAAAAAAPPPPM\",
 \"MMNMMAAAPAAPPPMM\",
 \"MMNMAAPPMMAPMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9097,7 +9064,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9119,7 +9086,7 @@ static char *xpm[] = {
 \"MJMMMPPPPPPPAAMM\",
 \"MJMMLLPPPPPPAMMM\",
 \"MJMMMMMLLAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9136,7 +9103,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9158,7 +9125,7 @@ static char *xpm[] = {
 \"MMMMMMPPPPAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9175,7 +9142,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9197,7 +9164,7 @@ static char *xpm[] = {
 \"MMMAAPPOAAAPPAMM\",
 \"MMMMMPPAPPPPAMMM\",
 \"MMMMMMPPPPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9214,7 +9181,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9236,7 +9203,7 @@ static char *xpm[] = {
 \"MMMBOBBPPBPAAMMM\",
 \"MMMBOMBPMPPAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9253,7 +9220,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9275,7 +9242,7 @@ static char *xpm[] = {
 \"MMMMMMKJJJAAAAMM\",
 \"MMMMMMJAAJAAAMMM\",
 \"MMMMMJJAMJJAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9292,7 +9259,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9314,7 +9281,7 @@ static char *xpm[] = {
 \"MMMMMCLJACLJAAAA\",
 \"MMMLLLLJACLLLKAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9331,7 +9298,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9353,7 +9320,7 @@ static char *xpm[] = {
 \"MMMJJPAKJPJJAAAM\",
 \"MMMJAAJAJAAJAAMM\",
 \"MMMPJPJAJPJPAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9370,7 +9337,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9392,7 +9359,7 @@ static char *xpm[] = {
 \"MMMMNNANPAAKKJAM\",
 \"MMMBNNANNPAACKAM\",
 \"MMBNNAMMNNAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9409,7 +9376,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9431,7 +9398,7 @@ static char *xpm[] = {
 \"MMMDDALJACLJAAAA\",
 \"MMDDALLJACLLLKAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9448,7 +9415,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9470,7 +9437,7 @@ static char *xpm[] = {
 \"MMMCKJAKKJAAAAAM\",
 \"MKCKJJACKJKJAAMM\",
 \"MCJJJKACKJJKAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9487,7 +9454,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9509,7 +9476,7 @@ static char *xpm[] = {
 \"MMMMBABAAAAMMMMM\",
 \"MMMBBABBAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9526,7 +9493,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9548,7 +9515,7 @@ static char *xpm[] = {
 \"MMMMFGAFFAAMMMMM\",
 \"MMMMGFAFGMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9565,7 +9532,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9587,7 +9554,7 @@ static char *xpm[] = {
 \"MMMBJAAEPAAAMMMM\",
 \"MMBPPAAAPPMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9604,7 +9571,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9626,7 +9593,7 @@ static char *xpm[] = {
 \"MMMMEBAEEAAMMMMM\",
 \"MMMMBEAEBMAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9643,7 +9610,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9665,7 +9632,7 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMKDAMFKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9682,7 +9649,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9704,7 +9671,7 @@ static char *xpm[] = {
 \"MMMMMPFABPAAMMMM\",
 \"MMMMMBFABFAMMMMM\",
 \"MMMMGGAGGAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9721,7 +9688,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9743,7 +9710,7 @@ static char *xpm[] = {
 \"MFFFMIIFFIIAGFAA\",
 \"MMFFMGFAAGFAFFAA\",
 \"MMMMMGFAAGFAAAAA\",
-\"MMMFFFFAMGFFFFAA\",
+\"MMMFFFFAMGFFFFAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9760,7 +9727,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9782,7 +9749,7 @@ static char *xpm[] = {
 \"FFAMMJJJJJKAGFAA\",
 \"MMMMMGFAGFFAFFAA\",
 \"MMMMGFFAGFFAAAAA\",
-\"MMMGFFAAGFFFAAAA\",
+\"MMMGFFAAGFFFAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9799,7 +9766,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9821,7 +9788,7 @@ static char *xpm[] = {
 \"MMMMMPPAPPAAMMMM\",
 \"MMMMMPPAPPAMMMMM\",
 \"MMMMOOAOOAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9838,7 +9805,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9860,7 +9827,7 @@ static char *xpm[] = {
 \"MMMMMOMAOMAMMMMM\",
 \"MMMOOOAMOAMMMMMM\",
 \"MMMMMMOOOMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9877,7 +9844,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9899,7 +9866,7 @@ static char *xpm[] = {
 \"MMMMMHJAACALHAAA\",
 \"MMMMCJLAAJHALHAM\",
 \"MMMMHALAMAHAALMM\",
-\"MMMMMMMMMMLMMMMM\",
+\"MMMMMMMMMMLMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9916,7 +9883,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9938,7 +9905,7 @@ static char *xpm[] = {
 \"MMMMMNOAAOAAAAAM\",
 \"MMMMMNOAMMNOAAMM\",
 \"MMMMOOAMMMOOAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9955,7 +9922,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -9977,7 +9944,7 @@ static char *xpm[] = {
 \"MMMMOOMMAMMOMAMM\",
 \"MMMOMMAAMMMOMAMM\",
 \"MMMOMAMMMMOAAMMM\",
-\"MMMMOAMMMMMMMMMM\",
+\"MMMMOAMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -9994,7 +9961,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10016,7 +9983,7 @@ static char *xpm[] = {
 \"MMHMANCMAHNCMAAA\",
 \"MMMMHJCMAHJCMAAM\",
 \"HMMMHNCMAHNCMAMH\",
-\"MMHMMMMMMMMMMMMM\",
+\"MMHMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10033,7 +10000,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10055,7 +10022,7 @@ static char *xpm[] = {
 \"MMKKJJJAKKJJJAAM\",
 \"MMKKKJJAKKKJJAMM\",
 \"MMMKJJAMMKJJAMMM\",
-\"MMMMKAMMMMKAMMMM\",
+\"MMMMKAMMMMKAMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10072,7 +10039,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10094,7 +10061,7 @@ static char *xpm[] = {
 \"MMKJACKJAKCKJAAA\",
 \"MMMMKCKJAKCKJAAM\",
 \"MMMMKCKJAKCKJAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10111,7 +10078,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10133,7 +10100,7 @@ static char *xpm[] = {
 \"MMMMLLALLAALLAAA\",
 \"MMCLLLAAAADLLAMM\",
 \"MMLLDDDMMDDDDDMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10150,7 +10117,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10172,7 +10139,7 @@ static char *xpm[] = {
 \"MMCKKKKKKKKKAAAA\",
 \"MMCKKKAACKKKAAMM\",
 \"MMCKKKAMCKKKAAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10189,7 +10156,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10211,7 +10178,7 @@ static char *xpm[] = {
 \"MMBPPPAPPPAAAAAM\",
 \"MMPPPPAPPPPAAAMM\",
 \"MMMPPAAMPPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10228,7 +10195,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10250,7 +10217,7 @@ static char *xpm[] = {
 \"MMMMBNABNABPAAAM\",
 \"MMMBNPAMMMBNAAAM\",
 \"MMBNPAMMMMNPAAMM\",
-\"MMMBAMMMMMBPAMMM\",
+\"MMMBAMMMMMBPAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10267,7 +10234,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10289,7 +10256,7 @@ static char *xpm[] = {
 \"MMPMABPMAPBPMAAA\",
 \"MMMMPJPMAPJPMAAM\",
 \"MMMMPBPMAPBPMAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10306,7 +10273,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10328,7 +10295,7 @@ static char *xpm[] = {
 \"MMMMMMJJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10345,7 +10312,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10367,7 +10334,7 @@ static char *xpm[] = {
 \"MMMMMMJJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10384,7 +10351,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10406,7 +10373,7 @@ static char *xpm[] = {
 \"MMMMMMJJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10423,7 +10390,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10445,7 +10412,7 @@ static char *xpm[] = {
 \"MMMMMJJAJAAMAMMM\",
 \"MMMMKLAMLKAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10462,7 +10429,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10484,7 +10451,7 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10501,7 +10468,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10523,7 +10490,7 @@ static char *xpm[] = {
 \"MMMMMMPPAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10540,7 +10507,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10562,7 +10529,7 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10579,7 +10546,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10601,7 +10568,7 @@ static char *xpm[] = {
 \"MMMMMMPMAMAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10618,7 +10585,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10640,7 +10607,7 @@ static char *xpm[] = {
 \"MMMMMMHFAFAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10657,7 +10624,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10679,7 +10646,7 @@ static char *xpm[] = {
 \"MMMMMIIFAFDAAAMM\",
 \"MMMIIKLAILKDIMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10696,7 +10663,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10718,7 +10685,7 @@ static char *xpm[] = {
 \"MMCDMMLJJLAAACAM\",
 \"MMMCDMLLALAACAMM\",
 \"MMCDMLLAALLADCMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10735,7 +10702,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10757,7 +10724,7 @@ static char *xpm[] = {
 \"MMMMMMNNAOAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10774,7 +10741,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10796,7 +10763,7 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMJJAMJJAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10813,7 +10780,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10835,7 +10802,7 @@ static char *xpm[] = {
 \"MMLCMBPPPPPPCLAA\",
 \"MMLLMBPPABPPLLAA\",
 \"MMMMMBPPABPPAAAA\",
-\"MMMMBPPPMBPPPAAA\",
+\"MMMMBPPPMBPPPAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10852,7 +10819,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10874,7 +10841,7 @@ static char *xpm[] = {
 \"MMMMMMNAANAAAMMM\",
 \"MMMMMMPAAPAAMMMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10891,7 +10858,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10913,7 +10880,7 @@ static char *xpm[] = {
 \"MMLLCLBLLELLCLAA\",
 \"MMMCLLLLLLLCLAAM\",
 \"MMMMLELLLLELAAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10930,7 +10897,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10952,7 +10919,7 @@ static char *xpm[] = {
 \"MJMMKCJCCCJAAAAM\",
 \"MJMACCJCCCJAAAMM\",
 \"MJACCCJJCCCAAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -10969,7 +10936,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -10985,13 +10952,13 @@ static char *xpm[] = {
 \"MCHLACCCCJCCCKMM\",
 \"MMHAACCJJCCCCCKM\",
 \"MMHCCCCJCCJCCCMA\",
-\"AMHMMCCJCCLJCAAA\",
-\"AMHMMCCJCLLCAAAA\",
+\"MMHMMCCJCCLJCAAA\",
+\"MMHMMCCJCLLCAAAA\",
 \"MMHMMKCJCCCJAAAA\",
 \"MMHMMKCJCCCJAAAA\",
 \"MMHMACCJCCCJAAAM\",
 \"MMHACCCJJCCCAAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11008,7 +10975,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11030,7 +10997,7 @@ static char *xpm[] = {
 \"MMMMMMFAFMAAMMMM\",
 \"MMMMMFFAFFAMMMMM\",
 \"MMMMMJJMJJMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11047,7 +11014,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11069,7 +11036,7 @@ static char *xpm[] = {
 \"MMMMMMFAFMAAMMMM\",
 \"MMMMMFFAFFAMMMMM\",
 \"MMMMMAAMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11086,7 +11053,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11108,7 +11075,7 @@ static char *xpm[] = {
 \"MMMMMMFAFMAAMMMM\",
 \"MMMMMFFAFFAMMMMM\",
 \"MMMMMAAMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11125,7 +11092,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11147,7 +11114,7 @@ static char *xpm[] = {
 \"MMMMMMFAFMJJJAMM\",
 \"MMMMMFFAFFJJJAMM\",
 \"MMMMMAAMAAAAAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11164,7 +11131,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11186,7 +11153,7 @@ static char *xpm[] = {
 \"MMMMMMPAPMAAMMMM\",
 \"MMMMMPPAPPAMMMMM\",
 \"MMMMJJJMJJJMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11203,7 +11170,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11225,7 +11192,7 @@ static char *xpm[] = {
 \"MMMMMJPAPMAAMMMM\",
 \"MMMMMPPAPPAMMMMM\",
 \"MMMMJJJMJJJMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11242,7 +11209,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11264,7 +11231,7 @@ static char *xpm[] = {
 \"MMMIKAAKIIAAAMMM\",
 \"MMMIIKKIIIAAMMMM\",
 \"MMIIKIKIKIAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11281,7 +11248,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11303,7 +11270,7 @@ static char *xpm[] = {
 \"MMMEEEEEEEEAAAAA\",
 \"MMEEEEEEEEEAAAAA\",
 \"MEEEEEEEEEEEAAAM\",
-\"EEEEEEEEEEEEEEAM\",
+\"EEEEEEEEEEEEEEAM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11320,7 +11287,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11337,12 +11304,12 @@ static char *xpm[] = {
 \"MMMHIALLLAIHMAMA\",
 \"MMMHIHAAAHIHAAAA\",
 \"MMIIIEHHHIIIIAAA\",
-\"AMIIIIEHIIIIIAAM\",
-\"AMILLIHHHILLIAAA\",
-\"AMMLIIKHIIILAAAA\",
+\"MMIIIIEHIIIIIAAM\",
+\"MMILLIHHHILLIAAA\",
+\"MMMLIIKHIIILAAAA\",
 \"MMGIIIKJIIIIGAAM\",
 \"MGIIIKJJKKIIIGGM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11359,7 +11326,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11381,7 +11348,7 @@ static char *xpm[] = {
 \"MMMJJJJJJJJAAAAA\",
 \"MMJJJJJJJJJAAAAA\",
 \"MJJJJJJJJJJJAAAM\",
-\"JJJJJJJJJJJJJJAM\",
+\"JJJJJJJJJJJJJJAM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11398,7 +11365,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11420,7 +11387,7 @@ static char *xpm[] = {
 \"MOOOPOPPOPPPMPPM\",
 \"MPPMPPOPPPMMMPMM\",
 \"MOMMMPMMMMPMMMMM\",
-\"MMMMMMMMPMMMMMMM\",
+\"MMMMMMMMPMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11437,7 +11404,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11459,7 +11426,7 @@ static char *xpm[] = {
 \"MMAAAAAAAAAAAAAA\",
 \"MAAAAAAAAAAAAAMM\",
 \"AAAAMAAAAJAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11476,7 +11443,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11498,7 +11465,7 @@ static char *xpm[] = {
 \"MMMAAEEEAAAAAMMM\",
 \"MMMMEEAEEAAMMMMM\",
 \"MMMMEEAEEAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11515,7 +11482,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11537,7 +11504,7 @@ static char *xpm[] = {
 \"MMMMCDDDKAAAAAMM\",
 \"MMMCDDADDKAAMMMM\",
 \"MMCDDAAMDDKMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11554,7 +11521,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11576,7 +11543,7 @@ static char *xpm[] = {
 \"HMHMMDDAADDAAMMM\",
 \"MMHMMDDAAMDAAMMM\",
 \"MMMMDDAAMMDDAAMM\",
-\"MMMDDJAMMMDDDAMM\",
+\"MMMDDJAMMMDDDAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11593,7 +11560,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11615,7 +11582,7 @@ static char *xpm[] = {
 \"MMMMJDJJADKAAMMM\",
 \"MMMMDDKAADDKAMMM\",
 \"MMMDDKAAMMDDAAMM\",
-\"MMDDKAAMMMDDDAMM\",
+\"MMDDKAAMMMDDDAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11632,7 +11599,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11654,7 +11621,7 @@ static char *xpm[] = {
 \"MMMBBBBBBBAAAMMM\",
 \"MMMBBBBBBBAAMMMM\",
 \"MMBBEBEBEBAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11671,7 +11638,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11693,7 +11660,7 @@ static char *xpm[] = {
 \"MMMMCDDDKAAAAAMM\",
 \"MKMCDDADDKAAKMMM\",
 \"MCCDDAAMDDKKMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11710,7 +11677,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11732,7 +11699,7 @@ static char *xpm[] = {
 \"MMFGFFFFFFAFFFFA\",
 \"MMFGFFFFFFFFFFAM\",
 \"MMFGFFFFFFFFFAMM\",
-\"MMMMGFFFFFFAAMMM\",
+\"MMMMGFFFFFFAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11749,7 +11716,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11771,7 +11738,7 @@ static char *xpm[] = {
 \"MMMMMMDAADAAAAMM\",
 \"MMMMMMDAADAAMAMM\",
 \"MMMMMDDAMDDAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11788,7 +11755,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11810,7 +11777,7 @@ static char *xpm[] = {
 \"MMLAFLLLAAGFMFAA\",
 \"MMMMMLMLAGFFFFAA\",
 \"MMMMMMMMMMMFFFAM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11827,7 +11794,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11849,7 +11816,7 @@ static char *xpm[] = {
 \"MMMMNOOOLAAAAAMM\",
 \"MMMNOOAOOLAAMMMM\",
 \"MMNOOAAMOOLMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11866,7 +11833,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11888,7 +11855,7 @@ static char *xpm[] = {
 \"MMMMBNNNPAAAAAMM\",
 \"MMMBNNANNPAAMMMM\",
 \"MMBNNAAMNNPMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11905,7 +11872,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11927,7 +11894,7 @@ static char *xpm[] = {
 \"MMMMMMLLAAKDAMMM\",
 \"MMMMMMMMMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11944,7 +11911,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -11966,7 +11933,7 @@ static char *xpm[] = {
 \"MMMMMCDDDKAAAAMM\",
 \"MMMMCDDADDKAMMMM\",
 \"MMMCDDAAMDDKMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -11983,7 +11950,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12005,7 +11972,7 @@ static char *xpm[] = {
 \"JJMMCCDDDKKAAJJA\",
 \"JMMCDDDADDDKAAJA\",
 \"MMCDDDAAMDDDKMAA\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12022,7 +11989,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12044,7 +12011,7 @@ static char *xpm[] = {
 \"CKFCCFCCKKFKJJAM\",
 \"CCKKCFCKFFKKKKAM\",
 \"MCCCCCCCCCCCKAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12061,7 +12028,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12072,9 +12039,9 @@ static char *xpm[] = {
 \"MMMMBPPPPMMMMMMM\",
 \"MMMBPLCPPHMMMMMM\",
 \"MKBPPCCPPHMMMMMM\",
-\"MPPPPPPPMHMMMMMK\",
-\"MPPMMMPMPHMMMMMJ\",
-\"MMMMBPPPPPAAAMMJ\",
+\"MPPPPPPPMHMMMMMM\",
+\"MPPMMMPMPHMMMMMM\",
+\"MMMMBPPPPPAAAMMM\",
 \"MMBPPPPPPPPAAAAM\",
 \"MBPMPPPPPAPPAAAA\",
 \"MBMMMBPPMAAPAAAA\",
@@ -12083,7 +12050,7 @@ static char *xpm[] = {
 \"MMMMBPMPPAAMMMAM\",
 \"MMMBPMAAPPAMMAMM\",
 \"MMMBPAAMPPAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12100,7 +12067,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12122,7 +12089,7 @@ static char *xpm[] = {
 \"MMMPMPPPPPPPMPMA\",
 \"MMMBPPPAPPPPAAPA\",
 \"MMMOOPPAOOPPAGAM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12139,7 +12106,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12161,7 +12128,7 @@ static char *xpm[] = {
 \"MMMMGGGGFFAAFFAA\",
 \"MMMMGFFFFFAAFGFA\",
 \"MMMMFGGGFFFFFFFA\",
-\"MMMMMFFFFFFFFFAM\",
+\"MMMMMFFFFFFFFFAM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12178,7 +12145,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12200,7 +12167,7 @@ static char *xpm[] = {
 \"MMMMMMCKAJAJJAMM\",
 \"MMMMMMCKAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12217,7 +12184,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12239,7 +12206,7 @@ static char *xpm[] = {
 \"MMMMMMCKKKJAAAMM\",
 \"MMMMMMCKAKJAMAMM\",
 \"MMMMMFFAMMFFMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12256,7 +12223,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12278,7 +12245,7 @@ static char *xpm[] = {
 \"MMMMMMCKAJAJJAMM\",
 \"MMMMMMCKAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12295,7 +12262,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12317,7 +12284,7 @@ static char *xpm[] = {
 \"MGFAGFAAFFAFFAMM\",
 \"MMGAGJAAJFAFAAMM\",
 \"MMGAGFAFFFAFAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12334,7 +12301,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12356,7 +12323,7 @@ static char *xpm[] = {
 \"MCMMJAAAAAJJJAAA\",
 \"MCMJAAAAAAAJJAAM\",
 \"MCJJAAAAAAAAJJAM\",
-\"ACJAAAAAAAAAAAJM\",
+\"ACJAAAAAAAAAAAJM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12373,7 +12340,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12395,7 +12362,7 @@ static char *xpm[] = {
 \"MMMJJBFJJJJJJAAM\",
 \"MMMJAABFBJJJJAAM\",
 \"MMJJFBFAFFAJJJAM\",
-\"MJJAAFAFAAAAAAJM\",
+\"MJJAAFAFAAAAAAJM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12412,7 +12379,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12434,7 +12401,7 @@ static char *xpm[] = {
 \"KMMMMMJAJJAAMMMM\",
 \"KMMMMMJAAJAAMMMM\",
 \"KMMMJJAAAJJAAMMM\",
-\"KMMJJAAAAAJJJAMM\",
+\"KMMJJAAAAAJJJAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12451,7 +12418,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12473,7 +12440,7 @@ static char *xpm[] = {
 \"MMMMBBEEENNNNNMM\",
 \"MMMBEEEAANNNNNAM\",
 \"MMCDDDAAAMDDDKMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12490,7 +12457,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12512,7 +12479,7 @@ static char *xpm[] = {
 \"MMMMMMMFEDAAAMMM\",
 \"MMMMMMMIMGEAMAMM\",
 \"MMMMMMMMMIFEDMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12529,7 +12496,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12551,7 +12518,7 @@ static char *xpm[] = {
 \"MCDMMDDJDDAADCAM\",
 \"MMCDMDDADDADCAMM\",
 \"MCDMDDAADDDADCMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12568,7 +12535,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12590,7 +12557,7 @@ static char *xpm[] = {
 \"MMPEEPEMMPEMPMMM\",
 \"MMPMEPMEEPMMPMMM\",
 \"MMPEEMPMEMMEMMMM\",
-\"MPMMEMPMMEMMMMMM\",
+\"MPMMEMPMMEMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12607,7 +12574,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12629,7 +12596,7 @@ static char *xpm[] = {
 \"MMEMMMPPPPPAAMEM\",
 \"MMMMMEMMPPAEMMMM\",
 \"MMMMMEMMPMMMMMMM\",
-\"MMMMEMMEMMMEMMMM\",
+\"MMMMEMMEMMMEMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12646,7 +12613,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12668,7 +12635,7 @@ static char *xpm[] = {
 \"PPPPPPPMMEEMMMMM\",
 \"NDPPAPEPPPMEMMEE\",
 \"PDNPPEEMMEEMMMMM\",
-\"MPPPEMMEEEMMEMMM\",
+\"MPPPEMMEEEMMEMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12685,7 +12652,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12707,7 +12674,7 @@ static char *xpm[] = {
 \"MMMEMAAEEAAAEEMM\",
 \"MMEMMAAAAAAEMEMM\",
 \"MMMEEMAAAAEMEMMM\",
-\"MMEMMMEEMEMMMEMM\",
+\"MMEMMMEEMEMMMEMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12724,7 +12691,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12746,7 +12713,7 @@ static char *xpm[] = {
 \"MMMEMAAEEDDMEEMM\",
 \"MMEMMAAADDDEMEMM\",
 \"MMMEEMAAADEMEMMM\",
-\"MMEMMMEEMEMMMEMM\",
+\"MMEMMMEEMEMMMEMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12763,7 +12730,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12785,7 +12752,7 @@ static char *xpm[] = {
 \"MEGFFAGFFEEMMMMM\",
 \"EEGFFEEEEEMEMMEE\",
 \"EEEEEEEMMEEMMMMM\",
-\"MMEEEMMEEEMMEMMM\",
+\"MMEEEMMEEEMMEMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12802,7 +12769,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12824,7 +12791,7 @@ static char *xpm[] = {
 \"MMMLLAAALLAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12841,7 +12808,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12863,7 +12830,7 @@ static char *xpm[] = {
 \"MMMOODAOPAMMMMMM\",
 \"MMFMAAMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12880,7 +12847,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12902,7 +12869,7 @@ static char *xpm[] = {
 \"MPPFFAFPPAAMMMMM\",
 \"DMAAAAAAPPAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12919,7 +12886,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12941,7 +12908,7 @@ static char *xpm[] = {
 \"MMGGDFAFGGAMMMMM\",
 \"MMMDMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12958,7 +12925,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -12980,7 +12947,7 @@ static char *xpm[] = {
 \"MJFAAAAFAAMMMMMM\",
 \"MDMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -12997,7 +12964,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13019,7 +12986,7 @@ static char *xpm[] = {
 \"MDGFFAFGGAAMMMMM\",
 \"DMAAAAAAGGAMMMMM\",
 \"MDDMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13036,7 +13003,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13058,7 +13025,7 @@ static char *xpm[] = {
 \"GGDDFAFGGGAMMMMM\",
 \"GDDFAAAAGGAMMMMM\",
 \"MDFMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13075,7 +13042,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13097,7 +13064,7 @@ static char *xpm[] = {
 \"CCCCCCDCCAAMMMMM\",
 \"MDAADAAACCAMMMMM\",
 \"MMACCAMMMMMMMMMM\",
-\"MMMAAAMMMMMMMMMM\",
+\"MMMAAAMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13114,7 +13081,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13136,7 +13103,7 @@ static char *xpm[] = {
 \"LLAMMMMMMMMLLAMM\",
 \"LILAMMMMMMLLAMMM\",
 \"MLLLIIIILLLAMMMM\",
-\"MMMLLLLLAAAMMMMM\",
+\"MMMLLLLLAAAMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13153,7 +13120,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13175,7 +13142,7 @@ static char *xpm[] = {
 \"MMMMMMCJJKAAAAMM\",
 \"MMMMMKCJAJJAMAMM\",
 \"MMMMMCJJMJKJMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13192,7 +13159,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13214,7 +13181,7 @@ static char *xpm[] = {
 \"MMMMMMLJJLAAAAMM\",
 \"MMMMMMLLALAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13231,7 +13198,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13253,7 +13220,7 @@ static char *xpm[] = {
 \"MMMMMMLAMLAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13270,7 +13237,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13292,7 +13259,7 @@ static char *xpm[] = {
 \"MMMMMMLAMLAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13309,7 +13276,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13331,7 +13298,7 @@ static char *xpm[] = {
 \"MMMMMNOOOPAAMAMM\",
 \"MMMMNOOOOOPAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13348,7 +13315,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13370,7 +13337,7 @@ static char *xpm[] = {
 \"MMMMMMBPAPAAMAMM\",
 \"MMMMMPPAMPPAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13387,7 +13354,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13409,7 +13376,7 @@ static char *xpm[] = {
 \"MMMMMCDCCCDDAMAM\",
 \"MMMMCCCCCCCDDMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13426,7 +13393,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13448,7 +13415,7 @@ static char *xpm[] = {
 \"MMMMMDDIIDDAMAMM\",
 \"MMMMDIIIIIDDMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13465,7 +13432,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13487,7 +13454,7 @@ static char *xpm[] = {
 \"MMMMMDDIIDDAMAMM\",
 \"MMMMDIIIIIDDMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13504,7 +13471,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13526,7 +13493,7 @@ static char *xpm[] = {
 \"MMMMMMMBPAPAAMAM\",
 \"MMMMMMPPAMPPAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13543,7 +13510,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13565,7 +13532,7 @@ static char *xpm[] = {
 \"MMMMLAJJHJALAAMM\",
 \"MMMMMMKKJKAAAAMM\",
 \"MMMMMKKAMKKAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13582,7 +13549,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13604,7 +13571,7 @@ static char *xpm[] = {
 \"MMMMMMIDDDAAAAMM\",
 \"MMMMMMIDADAAMAMM\",
 \"MMMMMIIAMIIAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13621,7 +13588,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13643,7 +13610,7 @@ static char *xpm[] = {
 \"MMMMMMJJJKAAAAMM\",
 \"MMMMMMLLALAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13660,7 +13627,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13682,7 +13649,7 @@ static char *xpm[] = {
 \"MMMMMMKJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13699,7 +13666,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13721,7 +13688,7 @@ static char *xpm[] = {
 \"MMMMMBPPPEAAMAMM\",
 \"MMMMMBPPPPEAMMMM\",
 \"MMMMBPPPPPPEMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13738,7 +13705,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13760,7 +13727,7 @@ static char *xpm[] = {
 \"MMMMMICKAJIAAAMM\",
 \"MMMMMMCKAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13777,7 +13744,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13799,7 +13766,7 @@ static char *xpm[] = {
 \"MMMMMMCKAJAAAAMM\",
 \"MMMMMMCKAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13816,7 +13783,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13838,7 +13805,7 @@ static char *xpm[] = {
 \"MMMMMMCKKJAAAAMM\",
 \"MMMMMMLAMLAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13855,7 +13822,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13877,7 +13844,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13894,7 +13861,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13916,7 +13883,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAAMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13933,7 +13900,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13955,7 +13922,7 @@ static char *xpm[] = {
 \"MMMLCCCCDABAAAMM\",
 \"MMLLCCCCDAAMAAMM\",
 \"MLCCCCCCCDAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -13972,7 +13939,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -13994,7 +13961,7 @@ static char *xpm[] = {
 \"MMMMMBPAPPAAMAMM\",
 \"MMMMMBPAPPAAMAMM\",
 \"MMMMPPAAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14011,7 +13978,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14033,7 +14000,7 @@ static char *xpm[] = {
 \"MMJMMCCCCCCCAAAA\",
 \"MMJMACCCCCCCAAAM\",
 \"MMJACCCCCCCCAAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14050,7 +14017,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14072,7 +14039,7 @@ static char *xpm[] = {
 \"MMHMMKCJCCDJAAAA\",
 \"MMHMACCJCCDJAAAM\",
 \"MMHACCCJJCCCAAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14089,7 +14056,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14111,7 +14078,7 @@ static char *xpm[] = {
 \"MMMMMMBPMPAAAAAM\",
 \"MMMMMMBPMPAAAAMM\",
 \"MMMMMMBPAPAAMAMM\",
-\"MMMMMPPAMPPAMMMM\",
+\"MMMMMPPAMPPAMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14128,7 +14095,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14150,7 +14117,7 @@ static char *xpm[] = {
 \"MMMMJKKKJAAAAAMM\",
 \"MMMMKJAJKAAAAMMM\",
 \"MMMJJAMMJJAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14167,7 +14134,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14189,7 +14156,7 @@ static char *xpm[] = {
 \"MMMIIDDDDAAAAAAM\",
 \"MMMIIAAIDAAAMMAM\",
 \"MMIIIAMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14206,7 +14173,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14228,7 +14195,7 @@ static char *xpm[] = {
 \"MMMMMMJJJKAAAAMM\",
 \"MMMMMMJJAKAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14245,7 +14212,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14267,7 +14234,7 @@ static char *xpm[] = {
 \"MMMMMMKJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14284,7 +14251,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14306,7 +14273,7 @@ static char *xpm[] = {
 \"MNMMMBPPPEAAMAMM\",
 \"MMMMBPPPPPEAMMMM\",
 \"MMMBPPPPPPPEMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14323,7 +14290,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14345,7 +14312,7 @@ static char *xpm[] = {
 \"MMMMCCDDDDKKAAMM\",
 \"MMMCDDDAADDDKAAM\",
 \"MMCDDDAAAMDDDKMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14362,7 +14329,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14384,7 +14351,7 @@ static char *xpm[] = {
 \"MMMMMMBPAMAMMAMM\",
 \"MMMMMMBPAPAAAAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14401,7 +14368,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14423,7 +14390,7 @@ static char *xpm[] = {
 \"HBMOIEFOODDMCJAM\",
 \"HBAAGEMAADDACCAM\",
 \"MMMMGFAAMMMCCJAM\",
-\"MMMMMMMMFFFFJAMM\",
+\"MMMMMMMMFFFFJAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14440,7 +14407,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14462,7 +14429,7 @@ static char *xpm[] = {
 \"MMMMIJKJJAMMMMMM\",
 \"MMMIKAAMIKMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14479,7 +14446,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14501,7 +14468,7 @@ static char *xpm[] = {
 \"MLCMGGGHGGACLAAA\",
 \"MLLMJJJJJJALLAAA\",
 \"MMMMCJJJCLAAAAAA\",
-\"MMLLLLLMLLLLLAAM\",
+\"MMLLLLLMLLLLLAAM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14518,7 +14485,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14540,7 +14507,7 @@ static char *xpm[] = {
 \"MMMMCCDDDDKKAAMM\",
 \"MMMCDDDAADDDKAAM\",
 \"MMCDDDAAAMDDDKMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14557,7 +14524,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14579,7 +14546,7 @@ static char *xpm[] = {
 \"MMMMKJJJJJJKAAAM\",
 \"MMMKJJJJJJJJKAAM\",
 \"MMMKJJJJJJJJJAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14596,7 +14563,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14618,7 +14585,7 @@ static char *xpm[] = {
 \"MMMMCCDDDDKKAAMM\",
 \"MMMCDDDAADDDKAAM\",
 \"MMCDDDAAAMDDDKMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14635,7 +14602,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14657,7 +14624,7 @@ static char *xpm[] = {
 \"MJJGGAJACAAJJAAA\",
 \"DMJJAAJAACAMJAAM\",
 \"MMMDMMMJAAJAMJJM\",
-\"MMMMMMMMJAMJAMMM\",
+\"MMMMMMMMJAMJAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14674,7 +14641,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14696,7 +14663,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAPPPMM\",
 \"MMMMMMAAAAAPMPMM\",
 \"MMMMMAAAMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14713,7 +14680,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14735,7 +14702,7 @@ static char *xpm[] = {
 \"MMMMMMIIIIAAAAMM\",
 \"MMMMMMIIAIAAMAMM\",
 \"MMMMMIIAMIIAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14752,7 +14719,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14774,7 +14741,7 @@ static char *xpm[] = {
 \"JJLJDHHPBPPPCLAA\",
 \"MMLLJBPPABPPLLAA\",
 \"MMMMMBPPABPPAAAA\",
-\"MMMLLLLJMBLLLKAA\",
+\"MMMLLLLJMBLLLKAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14791,7 +14758,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14813,7 +14780,7 @@ static char *xpm[] = {
 \"MMMAAAAAAAAAAMMM\",
 \"MMAAAAAAAAAAAAMM\",
 \"AAAAAAAAAAAAAAAA\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14830,7 +14797,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14852,7 +14819,7 @@ static char *xpm[] = {
 \"MMMMLACJKJALAAAM\",
 \"MMMMMKCJAJJAMAMM\",
 \"MMMMMCJJMJKJMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14869,7 +14836,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14891,7 +14858,7 @@ static char *xpm[] = {
 \"MMMMMMLJJLAAAAMM\",
 \"MMMMMMLLALAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14908,7 +14875,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14930,7 +14897,7 @@ static char *xpm[] = {
 \"MMMMMMLAMLAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14947,7 +14914,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -14969,7 +14936,7 @@ static char *xpm[] = {
 \"MMMMMMGFAFAAMAMM\",
 \"MMMMMMGFAFAAMMMM\",
 \"MMMMMMGFAFAAMMMM\",
-\"MMMMMKLAMLKAMMMM\",
+\"MMMMMKLAMLKAMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -14986,7 +14953,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15008,7 +14975,7 @@ static char *xpm[] = {
 \"MMMMMLCCCDAAMAMM\",
 \"MMMMLCCCCCDAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15025,7 +14992,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15047,7 +15014,7 @@ static char *xpm[] = {
 \"MMMMMMLLALAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15064,7 +15031,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15086,7 +15053,7 @@ static char *xpm[] = {
 \"MMMDDDDCDDDDAAMM\",
 \"MMMMAACCCDAAAAMM\",
 \"MMMMCDCCCDDAMAMM\",
-\"MMMCCCCCCCDDMMMM\",
+\"MMMCCCCCCCDDMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15103,7 +15070,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15125,7 +15092,7 @@ static char *xpm[] = {
 \"MMMMMMLCCDAAAAMM\",
 \"MMMMMLDCCDDAMAMM\",
 \"MMMMLCCCCCDDMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15142,7 +15109,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15164,7 +15131,7 @@ static char *xpm[] = {
 \"MMMJMMBPMPAAAAMM\",
 \"MMMJMMBPAPAAMAMM\",
 \"MMMMJPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15181,7 +15148,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15203,7 +15170,7 @@ static char *xpm[] = {
 \"MMMMMMKKJKAAAAMM\",
 \"MMMMMMKAAKAAAAMM\",
 \"MMMMMKKAMKKAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15220,7 +15187,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15242,7 +15209,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAPPPMM\",
 \"MMMMMMAAAAAPMPMM\",
 \"MMMMMAAAMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15259,7 +15226,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15281,7 +15248,7 @@ static char *xpm[] = {
 \"MMMMMMPMMMAAAAMM\",
 \"MMMMMMPMAMAAMAMM\",
 \"MMMMMPPAMPPAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15298,7 +15265,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15320,7 +15287,7 @@ static char *xpm[] = {
 \"MMMMMMJJJKAAAAMM\",
 \"MMMMMMJJAKAAMAMM\",
 \"MMMMMLLAMLLAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15337,7 +15304,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15359,7 +15326,7 @@ static char *xpm[] = {
 \"MMMMMMKJAJAAMAMM\",
 \"MMMMMMKJAJAAMAMM\",
 \"MMMMMKLAMLKAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15376,7 +15343,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15398,7 +15365,7 @@ static char *xpm[] = {
 \"MMMMMBPPPEAAMAMM\",
 \"MMMMMBPPPPEAMMMM\",
 \"MMMMBPPPPPPEMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15415,7 +15382,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15437,7 +15404,7 @@ static char *xpm[] = {
 \"MMMMMMNNMMMMMMMM\",
 \"MMMMMMNNAMMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15454,7 +15421,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15476,7 +15443,7 @@ static char *xpm[] = {
 \"CJKKKCJKKKCJJJAA\",
 \"CJCCCCJCCCCJJAAM\",
 \"CKKKKKKKKKKJAAMM\",
-\"MAAAAAAAAAAAAMMM\",
+\"MAAAAAAAAAAAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15493,7 +15460,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15515,7 +15482,7 @@ static char *xpm[] = {
 \"MONNAMMMMMMMMMMM\",
 \"MNNOAMMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15532,7 +15499,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15554,7 +15521,7 @@ static char *xpm[] = {
 \"MONNAMMMMMMMMMMM\",
 \"MNNOAMMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15571,7 +15538,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15593,7 +15560,7 @@ static char *xpm[] = {
 \"MONAAMMMMMMMMMMM\",
 \"MNNOAMMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15610,7 +15577,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15632,7 +15599,7 @@ static char *xpm[] = {
 \"MOPPAMMMMMMMMMMM\",
 \"MNNOAMMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15649,7 +15616,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15671,7 +15638,7 @@ static char *xpm[] = {
 \"OCJAMMMMMMMMMMMM\",
 \"ONAMMMMMMMMMMMMM\",
 \"NNPAMMMMMMMMMMMM\",
-\"MAAMMMMMMMMMMMMM\",
+\"MAAMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15688,7 +15655,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15710,7 +15677,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMAJJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15727,7 +15694,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15749,7 +15716,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15766,7 +15733,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15788,7 +15755,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15805,7 +15772,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15827,7 +15794,7 @@ static char *xpm[] = {
 \"MMMMJHDJAMMMMMMM\",
 \"MMMMMKJAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15844,7 +15811,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15866,7 +15833,7 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MMJAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15883,7 +15850,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15905,7 +15872,7 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MMJAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15922,7 +15889,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15944,7 +15911,7 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MMJAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -15961,7 +15928,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -15983,7 +15950,7 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMJJAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16000,7 +15967,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16022,7 +15989,7 @@ static char *xpm[] = {
 \"MMMPAMMMMMMMMMMM\",
 \"MMOAMMMMMMMMMMMM\",
 \"MOAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16039,7 +16006,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16061,7 +16028,7 @@ static char *xpm[] = {
 \"MMMIAMMMMMMMMMMM\",
 \"MMOAMMMMMMMMMMMM\",
 \"MOAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16078,7 +16045,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16100,7 +16067,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMJPKAMM\",
 \"MMMMMMMMMMMJPKAM\",
 \"MMMMMMMMMMMMJAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16117,7 +16084,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16139,7 +16106,7 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16156,7 +16123,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16178,7 +16145,7 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16195,7 +16162,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16217,7 +16184,7 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16234,7 +16201,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16256,7 +16223,7 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16273,7 +16240,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16295,7 +16262,7 @@ static char *xpm[] = {
 \"MMMKJAMMMMMMMMMM\",
 \"MMMMAMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16312,7 +16279,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16334,7 +16301,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16351,7 +16318,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16373,7 +16340,7 @@ static char *xpm[] = {
 \"MMMAAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16390,7 +16357,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16412,7 +16379,7 @@ static char *xpm[] = {
 \"MMMKJAOPMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MMAAAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16429,7 +16396,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16451,7 +16418,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16468,7 +16435,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16490,7 +16457,7 @@ static char *xpm[] = {
 \"MMMKJAMMMMMMMMMM\",
 \"MMMMAMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16507,7 +16474,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16529,7 +16496,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMCAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16546,7 +16513,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16568,7 +16535,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMCAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16585,7 +16552,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16607,7 +16574,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMAAJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16624,7 +16591,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16646,7 +16613,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMAFGMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16663,7 +16630,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16685,7 +16652,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMABJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16702,7 +16669,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16724,7 +16691,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16741,7 +16708,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16763,7 +16730,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAJKJMMM\",
 \"MMMMMMMMMMAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16780,7 +16747,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16802,7 +16769,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16819,7 +16786,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16841,7 +16808,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMAAJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16858,7 +16825,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16880,7 +16847,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMAAJMMM\",
 \"MMMMMMMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16897,7 +16864,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16919,7 +16886,7 @@ static char *xpm[] = {
 \"MMKJAOPMMMMMMMMM\",
 \"MNDAAMMMMMMMMMMM\",
 \"MAAAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16936,7 +16903,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16958,7 +16925,7 @@ static char *xpm[] = {
 \"MMKJAAMMMMMMMMMM\",
 \"MNDAAMMMMMMMMMMM\",
 \"MAAAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -16975,7 +16942,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -16997,7 +16964,7 @@ static char *xpm[] = {
 \"MMMJKJAAMMMMMMMM\",
 \"MMJJAAMMMMMMMMMM\",
 \"MMAAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17014,7 +16981,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17036,7 +17003,7 @@ static char *xpm[] = {
 \"MMMJKJAAMMMMMMMM\",
 \"MMJJAAMMMMMMMMMM\",
 \"MMAAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17053,7 +17020,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17075,7 +17042,7 @@ static char *xpm[] = {
 \"MMNNPOPMMMMMMMMM\",
 \"MNNPPMMMMMMMMMMM\",
 \"MPPPMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17092,7 +17059,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17114,7 +17081,7 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"JJAAMMMMMMMMMMMM\",
+\"JJAAMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17131,7 +17098,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17153,7 +17120,7 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"JJAAMMMMMMMMMMMM\",
+\"JJAAMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17170,7 +17137,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17192,7 +17159,7 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"JJAAMMMMMMMMMMMM\",
+\"JJAAMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17209,7 +17176,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17231,7 +17198,7 @@ static char *xpm[] = {
 \"MKJAAMMMMMMMMMMM\",
 \"KJAAMMMMMMMMMMMM\",
 \"JAAMMMMMMMMMMMMM\",
-\"AAMMMMMMMMMMMMMM\",
+\"AAMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17248,7 +17215,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17270,7 +17237,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMOONOAM\",
 \"MMMMMMMMMMOOONOA\",
 \"MMMMMMMMMMOAMONO\",
-\"MMMMMMMMMMMMMMON\",
+\"MMMMMMMMMMMMMMON\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17287,7 +17254,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17309,7 +17276,7 @@ static char *xpm[] = {
 \"MMKJAAMMMMMMMMMM\",
 \"MKJAAMMMMMMMMMMM\",
 \"JJAAMMMMMMMMMMMM\",
-\"JAAMMMMMMMMMMMMM\",
+\"JAAMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17326,7 +17293,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17348,7 +17315,7 @@ static char *xpm[] = {
 \"MKJAAMMMMMMMMMMM\",
 \"JJAAMMMMMMMMMMMM\",
 \"JAAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17365,7 +17332,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17387,7 +17354,7 @@ static char *xpm[] = {
 \"MKJAAMMMMMMMMMMM\",
 \"KJAAMMMMMMMMMMMM\",
 \"JAAMMMMMMMMMMMMM\",
-\"AAMMMMMMMMMMMMMM\",
+\"AAMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17404,7 +17371,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17426,7 +17393,7 @@ static char *xpm[] = {
 \"MKJAMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17443,7 +17410,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17465,7 +17432,7 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MKJAMMMMMMMMMMMM\",
 \"KJAMMMMMMMMMMMMM\",
-\"MAMMMMMMMMMMMMMM\",
+\"MAMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17482,7 +17449,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17504,7 +17471,7 @@ static char *xpm[] = {
 \"MKJAAMMMMMMMMMMM\",
 \"KJAAMMMMMMMMMMMM\",
 \"JAAMMMMMMMMMMMMM\",
-\"AAMMMMMMMMMMMMMM\",
+\"AAMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17521,7 +17488,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17543,7 +17510,7 @@ static char *xpm[] = {
 \"MMONOAAMMMMMMMMM\",
 \"MPNOAAMMMMMMMMMM\",
 \"PNPAAMMMMMMMMMMM\",
-\"OPAAMMMMMMMMMMMM\",
+\"OPAAMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17560,7 +17527,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17582,7 +17549,7 @@ static char *xpm[] = {
 \"MMMKJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"JJAAMMMMMMMMMMMM\",
+\"JJAAMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17599,7 +17566,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17621,7 +17588,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMCAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17638,7 +17605,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17660,7 +17627,7 @@ static char *xpm[] = {
 \"MMMKJAMMMMMMMMMM\",
 \"MMKJAMMMMMMMMMMM\",
 \"MMMAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17677,7 +17644,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17699,7 +17666,7 @@ static char *xpm[] = {
 \"MMMMKAMMMMMMMMMM\",
 \"MMMMMKAMMMMMMMMM\",
 \"MMMMMMKAMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17716,7 +17683,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17738,7 +17705,7 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MKJAMMMMMMMMMMMM\",
 \"MJAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17755,7 +17722,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17777,7 +17744,7 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MKJAMMMMMMMMMMMM\",
 \"MJAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17794,7 +17761,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17816,7 +17783,7 @@ static char *xpm[] = {
 \"MMMMMMMGAMMMMMMM\",
 \"MMMGGGFAMMMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17833,7 +17800,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17855,7 +17822,7 @@ static char *xpm[] = {
 \"MMMJJAAMMMMMMMMM\",
 \"MMKJAAMMMMMMMMMM\",
 \"MJJAAMMMMMMMMMMM\",
-\"MMAMMMMMMMMMMMMM\",
+\"MMAMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17872,7 +17839,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17894,7 +17861,7 @@ static char *xpm[] = {
 \"MMMMKAAMMMMMMMMM\",
 \"MMMMMAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17911,7 +17878,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17933,7 +17900,7 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MJKAMMMMMMMMMMMM\",
 \"MMJAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17950,7 +17917,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -17972,7 +17939,7 @@ static char *xpm[] = {
 \"MMMAPKMMMKAMMMMM\",
 \"MMMMMAKKKAMMMMMM\",
 \"MMMMMMAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -17989,7 +17956,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18011,7 +17978,7 @@ static char *xpm[] = {
 \"MMMMMPKMMAAMMMMM\",
 \"MMMMMKPAAAMMMMMM\",
 \"MMMMMKAAMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18028,7 +17995,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18050,7 +18017,7 @@ static char *xpm[] = {
 \"MMMMMPKJMMAAMMMM\",
 \"MMMMMPKMMAAMMMMM\",
 \"MMMMMKPAAAMMMMMM\",
-\"MMMMMKAAMMMMMMMM\",
+\"MMMMMKAAMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18067,7 +18034,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18089,7 +18056,7 @@ static char *xpm[] = {
 \"MMMMMPKMAAAMMMMM\",
 \"MMMMKKPAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18106,7 +18073,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18128,7 +18095,7 @@ static char *xpm[] = {
 \"MMMMMPLOMMAAMMMM\",
 \"MMMMMPLMMAAMMMMM\",
 \"MMMMMLPAAAMMMMMM\",
-\"MMMMMLAAMMMMMMMM\",
+\"MMMMMLAAMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18145,7 +18112,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18167,7 +18134,7 @@ static char *xpm[] = {
 \"MMMJAAMMMAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18184,7 +18151,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18206,7 +18173,7 @@ static char *xpm[] = {
 \"MMMMMMMCJJAAMMAM\",
 \"MMMMMMMOAOAMMMMM\",
 \"MMMMMMMMOAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18223,7 +18190,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18245,7 +18212,7 @@ static char *xpm[] = {
 \"MMMJAMAMJAMMMMMM\",
 \"MMMMJAMJAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18262,7 +18229,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18284,7 +18251,7 @@ static char *xpm[] = {
 \"MMMJAMAMJAMMMMMM\",
 \"MMMMJAMJAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18301,7 +18268,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18323,7 +18290,7 @@ static char *xpm[] = {
 \"MMMJAMAMJAMMMMMM\",
 \"MMMMJAMJAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18340,7 +18307,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18362,7 +18329,7 @@ static char *xpm[] = {
 \"MMMMKAMMKAMMMMMM\",
 \"MMMMMMMKAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18379,7 +18346,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18401,7 +18368,7 @@ static char *xpm[] = {
 \"MMMEBBBBPEAEAMMM\",
 \"MMMEEMMAMAEEMMMM\",
 \"MMMMEEEEEEEMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18418,7 +18385,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18440,7 +18407,7 @@ static char *xpm[] = {
 \"MMMEBBBBPEAEAMMM\",
 \"MMMEEMMAMAEEMMMM\",
 \"MMMMEEEEEEEMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18457,7 +18424,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18479,7 +18446,7 @@ static char *xpm[] = {
 \"MMMMMBBPPPAAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18496,7 +18463,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18518,7 +18485,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18535,7 +18502,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18557,7 +18524,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18574,7 +18541,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18596,7 +18563,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18613,7 +18580,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18635,7 +18602,7 @@ static char *xpm[] = {
 \"MMMMMMPPAAAAMMMM\",
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18652,7 +18619,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18674,7 +18641,7 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18691,7 +18658,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18713,7 +18680,7 @@ static char *xpm[] = {
 \"MNNNBAMNBAAOOOOA\",
 \"MMNBAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18730,7 +18697,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18752,7 +18719,7 @@ static char *xpm[] = {
 \"MBBBOAMBBAAOOOCA\",
 \"MMBOAAMMMMMMKCAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18769,7 +18736,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18791,7 +18758,7 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18808,7 +18775,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18830,7 +18797,7 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18847,7 +18814,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18869,7 +18836,7 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18886,7 +18853,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18908,7 +18875,7 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18925,7 +18892,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18947,7 +18914,7 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -18964,7 +18931,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -18986,7 +18953,7 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19003,7 +18970,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19025,7 +18992,7 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19042,7 +19009,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19064,7 +19031,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19081,7 +19048,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19103,7 +19070,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19120,7 +19087,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19142,7 +19109,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19159,7 +19126,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19181,7 +19148,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19198,7 +19165,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19220,7 +19187,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19237,7 +19204,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19259,7 +19226,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19276,7 +19243,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19298,7 +19265,7 @@ static char *xpm[] = {
 \"MMMMMMMMPPMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19315,7 +19282,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19337,7 +19304,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19354,7 +19321,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19376,7 +19343,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19393,7 +19360,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19415,7 +19382,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19432,7 +19399,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19454,7 +19421,7 @@ static char *xpm[] = {
 \"MNNNOAMNOAAOOOOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19471,7 +19438,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19493,7 +19460,7 @@ static char *xpm[] = {
 \"MNNNBAMNBAABBBBA\",
 \"MMNBAAMMMMMMBBAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19510,7 +19477,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19532,7 +19499,7 @@ static char *xpm[] = {
 \"MLLLCAMLCAACCCCA\",
 \"MMLCAAMMMMMMCCAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19549,7 +19516,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19571,7 +19538,7 @@ static char *xpm[] = {
 \"MNPJOAMNOAAOJPOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19588,7 +19555,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19610,7 +19577,7 @@ static char *xpm[] = {
 \"MNPMOAMNOAAOMPOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19627,7 +19594,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19649,7 +19616,7 @@ static char *xpm[] = {
 \"MNPNOAMNOAAOOMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19666,7 +19633,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19688,7 +19655,7 @@ static char *xpm[] = {
 \"MNPNOAMOOAAOOMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19705,7 +19672,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19727,7 +19694,7 @@ static char *xpm[] = {
 \"MNPNOAMNOAAOOMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19744,7 +19711,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19766,7 +19733,7 @@ static char *xpm[] = {
 \"MKKKJAMKJAAJJJJA\",
 \"MMKJAAMMMMMMJJAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19783,7 +19750,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19805,7 +19772,7 @@ static char *xpm[] = {
 \"MNPPOAMNOAAOMMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19822,7 +19789,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19844,7 +19811,7 @@ static char *xpm[] = {
 \"MNKKJAMNOAAOKKKA\",
 \"MMKJAAMMMMMMKKAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19861,7 +19828,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19883,7 +19850,7 @@ static char *xpm[] = {
 \"MNPBOAMNOAAOPMOA\",
 \"MMNOAAMMMMMMOOAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19900,7 +19867,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19922,7 +19889,7 @@ static char *xpm[] = {
 \"MKPBJAMKJAAJPMJA\",
 \"MMKJAAMMMMMMJJAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19939,7 +19906,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -19961,7 +19928,7 @@ static char *xpm[] = {
 \"MKKKJAMNOAAJJJJA\",
 \"MMKJAAMMMMMMJJAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -19978,7 +19945,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20000,7 +19967,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20017,7 +19984,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20039,7 +20006,7 @@ static char *xpm[] = {
 \"MMMMHHHCHHHAMMMM\",
 \"MMMMMAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20056,7 +20023,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20078,7 +20045,7 @@ static char *xpm[] = {
 \"MMMMNNNNNNNAMMMM\",
 \"MMMMMAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20095,7 +20062,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20117,7 +20084,7 @@ static char *xpm[] = {
 \"MMAMNNOOAOAAOAAM\",
 \"MMMOODOOAAOOOAMM\",
 \"MMNMAANMNAMOOMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20134,7 +20101,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20156,7 +20123,7 @@ static char *xpm[] = {
 \"MMMOGAFFFFGFAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20173,7 +20140,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20195,7 +20162,7 @@ static char *xpm[] = {
 \"MMMCCAJJJJCKAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20212,7 +20179,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20234,7 +20201,7 @@ static char *xpm[] = {
 \"MMMBBAMMMMBPAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20251,7 +20218,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20273,7 +20240,7 @@ static char *xpm[] = {
 \"MMMJJAAAAAJAAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20290,7 +20257,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20312,7 +20279,7 @@ static char *xpm[] = {
 \"MMMCCCCCCCAKAMMM\",
 \"MMMCCCCCCCAKAMMM\",
 \"MMMACCCCCCAAAMMM\",
-\"MMMMAAAAAAAAMMMM\",
+\"MMMMAAAAAAAAMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20329,7 +20296,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20351,7 +20318,7 @@ static char *xpm[] = {
 \"MMMMNNNNNNNAAMMM\",
 \"MMMMNNNNNNNAAMMM\",
 \"MMMMMNNNNNAAMMMM\",
-\"MMMMMMAAAAAMMMMM\",
+\"MMMMMMAAAAAMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20368,7 +20335,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20390,7 +20357,7 @@ static char *xpm[] = {
 \"MMMKKAJJJJKJAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20407,7 +20374,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20429,7 +20396,7 @@ static char *xpm[] = {
 \"MMOOOAMMAPOPAMMM\",
 \"MMMAAMMMMAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20446,7 +20413,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20468,7 +20435,7 @@ static char *xpm[] = {
 \"MNNNNNNNNNNAOOAM\",
 \"MNNNNNNNNNNAOOAM\",
 \"MMAANNNNNNAOOAAM\",
-\"MMMMAAAAAAAAAAMM\",
+\"MMMMAAAAAAAAAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20485,7 +20452,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20507,7 +20474,7 @@ static char *xpm[] = {
 \"MMAAAAAAAAAAAPMM\",
 \"MMAAAAAAAAAAAPMM\",
 \"MMAAAAAAAAAAAPMM\",
-\"MMMPPPPPPPPPPPMM\",
+\"MMMPPPPPPPPPPPMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20524,7 +20491,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20546,7 +20513,7 @@ static char *xpm[] = {
 \"MMMPPPBPBPPPAAMM\",
 \"MMMMPBPPPBPAAMMM\",
 \"MMMMMPPPPPAAMMMM\",
-\"MMMMMMMPPAAMMMMM\",
+\"MMMMMMMPPAAMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20563,7 +20530,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20585,7 +20552,7 @@ static char *xpm[] = {
 \"MMMMMMCAAMMMMMMM\",
 \"MMMMMMMAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20602,7 +20569,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20624,7 +20591,7 @@ static char *xpm[] = {
 \"MMMMMMNNAAMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20641,7 +20608,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20663,7 +20630,7 @@ static char *xpm[] = {
 \"MMMMMMKPMJAAMMMM\",
 \"MMMMMMMKJAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20680,7 +20647,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20702,7 +20669,7 @@ static char *xpm[] = {
 \"MMMMMMMKJAAMMMMM\",
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20719,7 +20686,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20741,7 +20708,7 @@ static char *xpm[] = {
 \"MMMMMMNPPOAAMMMM\",
 \"MMMMMMMNOAAMMMMM\",
 \"MMMMMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20758,7 +20725,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20780,7 +20747,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20797,7 +20764,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20819,7 +20786,7 @@ static char *xpm[] = {
 \"MMMMMMMNOAAMMMMM\",
 \"MMMMMMMMAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20836,7 +20803,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20858,7 +20825,7 @@ static char *xpm[] = {
 \"MMMMMAAAJJJJJAAM\",
 \"MMMMMMMMAJJJAAMM\",
 \"MMMMMMMMMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20875,7 +20842,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20897,7 +20864,7 @@ static char *xpm[] = {
 \"MMMMMAAAJJKKKAAM\",
 \"MMMMMMMMAJJKAAMM\",
 \"MMMMMMMMMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20914,7 +20881,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20936,7 +20903,7 @@ static char *xpm[] = {
 \"MMMMMAAAJJJJJAAM\",
 \"MMMMMMMMAJJJAAMM\",
 \"MMMMMMMMMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20953,7 +20920,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -20975,7 +20942,7 @@ static char *xpm[] = {
 \"MMMMMAAAOOOOOAAM\",
 \"MMMMMMMMAOOOAAMM\",
 \"MMMMMMMMMAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -20992,7 +20959,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21014,7 +20981,7 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21031,7 +20998,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21053,7 +21020,7 @@ static char *xpm[] = {
 \"MMMPMMMMMMMMMAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21070,7 +21037,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21092,7 +21059,7 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21109,7 +21076,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21131,7 +21098,7 @@ static char *xpm[] = {
 \"MMJMMMMMMMMMMAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21148,7 +21115,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21170,7 +21137,7 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21187,7 +21154,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21209,7 +21176,7 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21226,7 +21193,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21248,7 +21215,7 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21265,7 +21232,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21287,7 +21254,7 @@ static char *xpm[] = {
 \"MMJJJJJJJJJJJAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21304,7 +21271,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21326,7 +21293,7 @@ static char *xpm[] = {
 \"MMMAAAAAAAAAAPMM\",
 \"MMMPPPPPPPPPPPMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21343,7 +21310,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21365,7 +21332,7 @@ static char *xpm[] = {
 \"MOOOOOOOOOOOOOAM\",
 \"MMLALALALALALAAM\",
 \"MMMAMAMAMAMAMAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21382,7 +21349,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21404,7 +21371,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21421,7 +21388,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21443,7 +21410,7 @@ static char *xpm[] = {
 \"MMMMMPBPPPAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21460,7 +21427,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21482,7 +21449,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21499,7 +21466,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21521,7 +21488,7 @@ static char *xpm[] = {
 \"MMMMMCCCCCAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21538,7 +21505,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21560,7 +21527,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21577,7 +21544,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21599,7 +21566,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21616,7 +21583,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21638,7 +21605,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21655,7 +21622,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21677,7 +21644,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21694,7 +21661,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21716,7 +21683,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21733,7 +21700,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21755,7 +21722,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21772,7 +21739,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21794,7 +21761,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21811,7 +21778,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21833,7 +21800,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21850,7 +21817,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21872,7 +21839,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21889,7 +21856,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21911,7 +21878,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21928,7 +21895,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21950,7 +21917,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -21967,7 +21934,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -21989,7 +21956,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22006,7 +21973,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22028,7 +21995,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22045,7 +22012,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22067,7 +22034,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22084,7 +22051,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22106,7 +22073,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22123,7 +22090,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22145,7 +22112,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22162,7 +22129,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22184,7 +22151,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22201,7 +22168,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22223,7 +22190,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22240,7 +22207,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22262,7 +22229,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22279,7 +22246,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22301,7 +22268,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22318,7 +22285,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22340,7 +22307,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22357,7 +22324,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22379,7 +22346,7 @@ static char *xpm[] = {
 \"MMMMMPPPAAAMMMMM\",
 \"MMMMMMAAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22396,7 +22363,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22418,7 +22385,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22435,7 +22402,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22457,7 +22424,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22474,7 +22441,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22496,7 +22463,7 @@ static char *xpm[] = {
 \"MMMMMMMKKKAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22513,7 +22480,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22535,7 +22502,7 @@ static char *xpm[] = {
 \"MMMMMMAKKKAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22552,7 +22519,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22574,7 +22541,7 @@ static char *xpm[] = {
 \"MMMMMMAKKKKAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22591,7 +22558,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22613,7 +22580,7 @@ static char *xpm[] = {
 \"MMMMMCKKKKKKAMMM\",
 \"MMMMMMMAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22630,7 +22597,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22652,7 +22619,7 @@ static char *xpm[] = {
 \"MMMMMCCCKKKKAMMM\",
 \"MMMMCCKJJJJKKAMM\",
 \"MMMMKJJJJJJJJAMM\",
-\"MMMMMMMAAAAAAAMM\",
+\"MMMMMMMAAAAAAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22669,7 +22636,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22691,7 +22658,7 @@ static char *xpm[] = {
 \"MMMMMMCKKKKAMMMM\",
 \"MMMMMMCKKKKAMMMM\",
 \"MMMMMMMAAAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22708,7 +22675,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22730,7 +22697,7 @@ static char *xpm[] = {
 \"MMMMMJJKKCLCAMMM\",
 \"MMMMMMJJCLCAAMMM\",
 \"MMMMMMMKCCAAMMMM\",
-\"MMMMMMMMAAAMMMMM\",
+\"MMMMMMMMAAAMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22747,7 +22714,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22769,7 +22736,7 @@ static char *xpm[] = {
 \"MMMMMMKKKKKAAMMM\",
 \"MMMMMMMKKKAAMMMM\",
 \"MMMMMMMMAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22786,7 +22753,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22808,7 +22775,7 @@ static char *xpm[] = {
 \"MMMMMCKKKKKKAMMM\",
 \"MMMMMMKKKKKAAMMM\",
 \"MMMMMMMKKKAAMMMM\",
-\"MMMMMMMMAAAMMMMM\",
+\"MMMMMMMMAAAMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22825,7 +22792,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22847,7 +22814,7 @@ static char *xpm[] = {
 \"MMMMMMABPPAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22864,7 +22831,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22886,7 +22853,7 @@ static char *xpm[] = {
 \"MMMMMMABPPAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22903,7 +22870,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22925,7 +22892,7 @@ static char *xpm[] = {
 \"CJKKKCJKKKCJJJAA\",
 \"CJCCCCJCCCCJJAAM\",
 \"CKKKKKKKKKKJAAMM\",
-\"MAAAAAAAAAAAAMMM\",
+\"MAAAAAAAAAAAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22942,7 +22909,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -22964,7 +22931,7 @@ static char *xpm[] = {
 \"CJKKKCJKKKCJJJAA\",
 \"CJCCCCJCCCCJJAAM\",
 \"CKKKKKKKKKKJAAMM\",
-\"MAAAAAAAAAAAAMMM\",
+\"MAAAAAAAAAAAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -22981,7 +22948,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23003,7 +22970,7 @@ static char *xpm[] = {
 \"NNBBBBBBBBBPPPAA\",
 \"NBBBBBBBBBBPPAAM\",
 \"NBBBBBBBBBBPAAMM\",
-\"MAAAAAAAAAAAAMMM\",
+\"MAAAAAAAAAAAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23020,7 +22987,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23042,7 +23009,7 @@ static char *xpm[] = {
 \"MMMCKKKKJJJJAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23059,7 +23026,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23081,7 +23048,7 @@ static char *xpm[] = {
 \"MMMCKKKKJJJJAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23098,7 +23065,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23120,7 +23087,7 @@ static char *xpm[] = {
 \"MMMCKKKKJJJJAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23137,7 +23104,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23159,7 +23126,7 @@ static char *xpm[] = {
 \"MMMCKKKKJJJJAMMM\",
 \"MMMMAAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23176,7 +23143,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23198,7 +23165,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23215,7 +23182,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23237,7 +23204,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23254,7 +23221,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23276,7 +23243,7 @@ static char *xpm[] = {
 \"MMMAAAAAAAAAAAAM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23293,7 +23260,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23315,7 +23282,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMOPAMM\",
 \"MMMMMMMMMMMMAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23332,7 +23299,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23354,7 +23321,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMOPAMM\",
 \"MMMMMMMMMMMMAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23371,7 +23338,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23393,7 +23360,7 @@ static char *xpm[] = {
 \"MMMMMLHHHLAMMMMM\",
 \"MMMMLHHHHHLMMMMM\",
 \"MMMMMAAAAAAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23410,7 +23377,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23432,7 +23399,7 @@ static char *xpm[] = {
 \"MMMMMMLHHHLAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23449,7 +23416,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23471,7 +23438,7 @@ static char *xpm[] = {
 \"MMMMMMLHHHLAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23488,7 +23455,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23510,7 +23477,7 @@ static char *xpm[] = {
 \"MMAAAAPPPAAAAAPM\",
 \"MMAAAAAAAAAAAAPM\",
 \"MMMPPPPPPPPPPPPM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23527,7 +23494,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23549,7 +23516,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMBBBAM\",
 \"MMMMMMMMMMMMBBAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23566,7 +23533,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23588,7 +23555,7 @@ static char *xpm[] = {
 \"MMMMKKKKJJAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23605,7 +23572,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23627,7 +23594,7 @@ static char *xpm[] = {
 \"MMMBPAAMBPAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23644,7 +23611,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23666,7 +23633,7 @@ static char *xpm[] = {
 \"MMMMMOAMMMMMOAMM\",
 \"MMMMMMOOAMMOAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23683,7 +23650,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23705,7 +23672,7 @@ static char *xpm[] = {
 \"MPPPPPPPAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23722,7 +23689,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23744,7 +23711,7 @@ static char *xpm[] = {
 \"MMMMMMPPPAMMMMMM\",
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23761,7 +23728,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23783,7 +23750,7 @@ static char *xpm[] = {
 \"MMPPAAAPPKAAMMMM\",
 \"MMMPPPPPAAAMMMMM\",
 \"MMMMMAAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23800,7 +23767,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23822,7 +23789,7 @@ static char *xpm[] = {
 \"MMMMMMJAMJJAMMMM\",
 \"MMMMMMMJJJAMMMMM\",
 \"MMMMMMMMAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23839,7 +23806,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23861,7 +23828,7 @@ static char *xpm[] = {
 \"MMMMMBPPPMAMMMMM\",
 \"MMMMMABPMAMMMMMM\",
 \"MMMMMMAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23878,7 +23845,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23900,7 +23867,7 @@ static char *xpm[] = {
 \"MMMMMMMKJAMMMMMM\",
 \"MMMMMMMKJAMMMMMM\",
 \"MMMMMMMMAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23917,7 +23884,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23939,7 +23906,7 @@ static char *xpm[] = {
 \"MMMMBBPPPMMAAMMM\",
 \"MMMMMBPPPMAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23956,7 +23923,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -23978,7 +23945,7 @@ static char *xpm[] = {
 \"MMMJKKKKJJJJAMMM\",
 \"MMMMJJKKJJJAAMMM\",
 \"MMMMMJJJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -23995,7 +23962,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24017,7 +23984,7 @@ static char *xpm[] = {
 \"MMMMNNAAMMMMMMMM\",
 \"MMMMMAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24034,7 +24001,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24056,7 +24023,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24073,7 +24040,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24095,7 +24062,7 @@ static char *xpm[] = {
 \"MMMMMMPPPAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24112,7 +24079,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24134,7 +24101,7 @@ static char *xpm[] = {
 \"MMMAAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24151,7 +24118,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24173,7 +24140,7 @@ static char *xpm[] = {
 \"MMMAAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24190,7 +24157,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24212,7 +24179,7 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MJJAMMMMMMMMMMMM\",
 \"MMAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24229,7 +24196,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24251,7 +24218,7 @@ static char *xpm[] = {
 \"MMKJAMMMMMMMMMMM\",
 \"MJJAMMMMMMMMMMMM\",
 \"MMAMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24268,7 +24235,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24290,7 +24257,7 @@ static char *xpm[] = {
 \"MMMMNNPAAAMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24307,7 +24274,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24329,7 +24296,7 @@ static char *xpm[] = {
 \"MMMMNNPAAAMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24346,7 +24313,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24368,7 +24335,7 @@ static char *xpm[] = {
 \"MMMMNNPAAAMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24385,7 +24352,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24407,7 +24374,7 @@ static char *xpm[] = {
 \"MMMMNNPAAAMMMMMM\",
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24424,7 +24391,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24446,7 +24413,7 @@ static char *xpm[] = {
 \"MMMMMKKKKKKMAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24463,7 +24430,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24485,7 +24452,7 @@ static char *xpm[] = {
 \"MMMMMKKKKKKMAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24502,7 +24469,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24524,7 +24491,7 @@ static char *xpm[] = {
 \"MMMMMAAKKAAAMMMM\",
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24541,7 +24508,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24563,7 +24530,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24580,7 +24547,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24602,7 +24569,7 @@ static char *xpm[] = {
 \"MMMMMJJJJJJAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24619,7 +24586,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24641,7 +24608,7 @@ static char *xpm[] = {
 \"MMMMMJJJJJJAAMMM\",
 \"MMMMMMAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24658,7 +24625,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24680,7 +24647,7 @@ static char *xpm[] = {
 \"MKJAMMMMMMMMMMMM\",
 \"MMAMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24697,7 +24664,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24719,7 +24686,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMOAMMMM\",
 \"MOAMMMMMMMOAMMMM\",
 \"MMOOAMMOOOAMMMMM\",
-\"MMMMOOOAAMMMMMMM\",
+\"MMMMOOOAAMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24736,7 +24703,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24758,7 +24725,7 @@ static char *xpm[] = {
 \"MMMMMMMMHDDAMMMM\",
 \"MMMMMMMMMAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24775,7 +24742,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24797,7 +24764,7 @@ static char *xpm[] = {
 \"MMMMMOHHHHAMMAMM\",
 \"MMMMMMHHHAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24814,7 +24781,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24836,7 +24803,7 @@ static char *xpm[] = {
 \"MMMMMAAPPAAAMMMM\",
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24853,7 +24820,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24875,7 +24842,7 @@ static char *xpm[] = {
 \"MMMMMODOODAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24892,7 +24859,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24914,7 +24881,7 @@ static char *xpm[] = {
 \"MMMLNAAMDMNPAMMM\",
 \"MMMMAAMMMMMAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24931,7 +24898,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24953,7 +24920,7 @@ static char *xpm[] = {
 \"MMMMPOOOPAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -24970,7 +24937,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -24992,7 +24959,7 @@ static char *xpm[] = {
 \"MMMMMJJAJAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25009,7 +24976,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25031,7 +24998,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25048,7 +25015,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25070,7 +25037,7 @@ static char *xpm[] = {
 \"DKKKKAJJAJDAJJAM\",
 \"KKKKKKKKKJJJAJAM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25087,7 +25054,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25109,7 +25076,7 @@ static char *xpm[] = {
 \"MMMMOAAAMMOAAMMM\",
 \"MMMMMOOOOOAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25126,7 +25093,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25148,7 +25115,7 @@ static char *xpm[] = {
 \"MMMMMFFAMMMMMMMM\",
 \"MMMMMFFFAMMMMMMM\",
 \"MMMMMFFFFAMMMMMM\",
-\"MMMMMMFFFFAMMMMM\",
+\"MMMMMMFFFFAMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25165,7 +25132,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25187,7 +25154,7 @@ static char *xpm[] = {
 \"MMMMOAMMMMMMMMMM\",
 \"MMMOAMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25204,7 +25171,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25226,7 +25193,7 @@ static char *xpm[] = {
 \"MMMMMKAAKAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25243,7 +25210,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25265,7 +25232,7 @@ static char *xpm[] = {
 \"MMMMMMAKKJAAMMMM\",
 \"MMMMMMMAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25282,7 +25249,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25304,7 +25271,7 @@ static char *xpm[] = {
 \"MMMMFFFMMAAMMMMM\",
 \"MMMMMAAAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25321,7 +25288,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25343,7 +25310,7 @@ static char *xpm[] = {
 \"MMMFKAGGGFAAMMMM\",
 \"MMMMMFFFAAAMMMMM\",
 \"MMMMMMAAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25360,7 +25327,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25382,7 +25349,7 @@ static char *xpm[] = {
 \"MMJHOOOOHHJAAMMM\",
 \"MMMMHHHHJAAAMMMM\",
 \"MMMMMAAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25399,7 +25366,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25421,7 +25388,7 @@ static char *xpm[] = {
 \"MMCDAAMMMMMMMMMM\",
 \"MMCAAMMMMMMMMMMM\",
 \"MMMAMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25438,7 +25405,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25460,7 +25427,7 @@ static char *xpm[] = {
 \"MMMMAAAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25477,7 +25444,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25499,7 +25466,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25516,7 +25483,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25538,7 +25505,7 @@ static char *xpm[] = {
 \"MMMMCCCKJAAAMMMM\",
 \"MMMMMAAAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25555,7 +25522,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25577,7 +25544,7 @@ static char *xpm[] = {
 \"MMMMHOOHHAAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25594,7 +25561,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25616,7 +25583,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25633,7 +25600,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25655,7 +25622,7 @@ static char *xpm[] = {
 \"MMIIIAAMMMMMMMMM\",
 \"MMMIAAMMMMMMMMMM\",
 \"MMMMAMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25672,7 +25639,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25694,7 +25661,7 @@ static char *xpm[] = {
 \"MMMMLLLLAAMMMMMM\",
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25711,7 +25678,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25733,7 +25700,7 @@ static char *xpm[] = {
 \"MMMMOOOOOOOAAMMM\",
 \"MMMMMAAAAAAAMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25750,7 +25717,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25772,7 +25739,7 @@ static char *xpm[] = {
 \"MMMMMMMAOOAMMMMM\",
 \"MMMMMMMMMAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25789,7 +25756,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25811,7 +25778,7 @@ static char *xpm[] = {
 \"MMMMKLOLLOKAAMMM\",
 \"MMMMKKKKKKKAMMMM\",
 \"MMMMMAAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25828,7 +25795,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25850,7 +25817,7 @@ static char *xpm[] = {
 \"MMMAKOLOOOLLKJAA\",
 \"MMMMKLOLLLLOKAAM\",
 \"MMMMKKKKKKKKKAMM\",
-\"MMMMMAAAAAAAAMMM\",
+\"MMMMMAAAAAAAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25867,7 +25834,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25889,7 +25856,7 @@ static char *xpm[] = {
 \"MMMAKOLELELLKJAM\",
 \"MMMMKLLLLLLOKAAM\",
 \"MMMMKKKKKKKKKAMM\",
-\"MMMMMAAAAAAAAMMM\",
+\"MMMMMAAAAAAAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25906,7 +25873,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25928,7 +25895,7 @@ static char *xpm[] = {
 \"MMMAKOLEEELLKJAM\",
 \"MMMMKLOLLLLOKAAM\",
 \"MMMMKKKKKKKKKAMM\",
-\"MMMMMAAAAAAAAMMM\",
+\"MMMMMAAAAAAAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25945,7 +25912,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -25967,7 +25934,7 @@ static char *xpm[] = {
 \"MMMMMBPPMAMMMMMM\",
 \"MMMMMMAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -25984,7 +25951,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26006,7 +25973,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26023,7 +25990,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26045,7 +26012,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26062,7 +26029,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26084,7 +26051,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26101,7 +26068,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26123,7 +26090,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26140,7 +26107,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26162,7 +26129,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26179,7 +26146,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26201,7 +26168,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26218,7 +26185,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26240,7 +26207,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26257,7 +26224,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26279,7 +26246,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26296,7 +26263,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26318,7 +26285,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26335,7 +26302,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26357,7 +26324,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26374,7 +26341,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26396,7 +26363,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26413,7 +26380,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26435,7 +26402,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26452,7 +26419,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26474,7 +26441,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26491,7 +26458,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26513,7 +26480,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26530,7 +26497,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26552,7 +26519,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26569,7 +26536,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26591,7 +26558,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26608,7 +26575,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26630,7 +26597,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26647,7 +26614,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26669,7 +26636,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26686,7 +26653,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26708,7 +26675,7 @@ static char *xpm[] = {
 \"MMMMAAAAPMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26725,7 +26692,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26747,7 +26714,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26764,7 +26731,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26786,7 +26753,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26803,7 +26770,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26825,7 +26792,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26842,7 +26809,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26864,7 +26831,7 @@ static char *xpm[] = {
 \"MMMMAAAAPMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26881,7 +26848,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26903,7 +26870,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26920,7 +26887,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26942,7 +26909,7 @@ static char *xpm[] = {
 \"MMMMAAAAPMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26959,7 +26926,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -26981,7 +26948,7 @@ static char *xpm[] = {
 \"MMMMMAAAAMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -26998,7 +26965,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27020,7 +26987,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27037,7 +27004,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27059,7 +27026,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27076,7 +27043,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27098,7 +27065,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27115,7 +27082,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27137,7 +27104,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27154,7 +27121,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27176,7 +27143,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27193,7 +27160,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27215,7 +27182,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27232,7 +27199,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27254,7 +27221,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27271,7 +27238,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27293,7 +27260,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27310,7 +27277,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27332,7 +27299,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27349,7 +27316,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27371,7 +27338,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27388,7 +27355,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27410,7 +27377,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27427,7 +27394,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27449,7 +27416,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27466,7 +27433,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27488,7 +27455,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27505,7 +27472,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27527,7 +27494,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27544,7 +27511,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27566,7 +27533,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27583,7 +27550,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27605,7 +27572,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27622,7 +27589,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27644,7 +27611,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27661,7 +27628,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27683,7 +27650,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27700,7 +27667,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27722,7 +27689,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27739,7 +27706,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27761,7 +27728,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27778,7 +27745,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27800,7 +27767,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27817,7 +27784,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27839,7 +27806,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27856,7 +27823,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27878,7 +27845,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27895,7 +27862,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27917,7 +27884,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27934,7 +27901,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27956,7 +27923,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -27973,7 +27940,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -27995,7 +27962,7 @@ static char *xpm[] = {
 \"MOOOOOOOOOOOOAMM\",
 \"MMMAAAAAAAAAAAMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28012,7 +27979,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28034,7 +28001,7 @@ static char *xpm[] = {
 \"MMMMPOOOOOPJAAMM\",
 \"MMMMMAAAAAAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28051,7 +28018,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28073,7 +28040,7 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28090,7 +28057,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28112,7 +28079,7 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28129,7 +28096,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28151,7 +28118,7 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJOOOOOJAMMMM\",
 \"MMMMMMOOJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28168,7 +28135,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28190,7 +28157,7 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28207,7 +28174,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28229,7 +28196,7 @@ static char *xpm[] = {
 \"MMJJLLOKKCOAAMMM\",
 \"MMMMJJJOLLJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28246,7 +28213,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28268,7 +28235,7 @@ static char *xpm[] = {
 \"MMJJOLOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28285,7 +28252,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28307,7 +28274,7 @@ static char *xpm[] = {
 \"MMPPOOOPPEOAAMMM\",
 \"MMMMPPPOOOPAMMMM\",
 \"MMMMMMMPPPAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28324,7 +28291,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28346,7 +28313,7 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28363,7 +28330,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28385,7 +28352,7 @@ static char *xpm[] = {
 \"MMPNOOONNNOAAMMM\",
 \"MMMMPNNOOONAMMMM\",
 \"MMMMMMMPNNAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28402,7 +28369,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28424,7 +28391,7 @@ static char *xpm[] = {
 \"MMIIOOOIICOAAMMM\",
 \"MMMMIIIOOOIAMMMM\",
 \"MMMMMMMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28441,7 +28408,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28463,7 +28430,7 @@ static char *xpm[] = {
 \"MMDDOOODDCOAAMMM\",
 \"MMMMDDDOOODAMMMM\",
 \"MMMMMMMDDDAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28480,7 +28447,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28502,7 +28469,7 @@ static char *xpm[] = {
 \"MMCCOOOCCLOAAMMM\",
 \"MMMMCCCOOOCAMMMM\",
 \"MMMMMMMCCCAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28519,7 +28486,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28541,7 +28508,7 @@ static char *xpm[] = {
 \"MMHHOOOHHLOAAMMM\",
 \"MMMMHHHOOOHAMMMM\",
 \"MMMMMMMHHHAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28558,7 +28525,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28580,7 +28547,7 @@ static char *xpm[] = {
 \"MMEEOOOIIBOAAMMM\",
 \"MMMMEEEOOOEAMMMM\",
 \"MMMMMMMEEEAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28597,7 +28564,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28619,7 +28586,7 @@ static char *xpm[] = {
 \"MMGGOOOGGHOAAMMM\",
 \"MMMMGGGOOOGAMMMM\",
 \"MMMMMMMGGGAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28636,7 +28603,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28658,7 +28625,7 @@ static char *xpm[] = {
 \"MMFFOOOFFGOAAMMM\",
 \"MMMMFFFOOOFAMMMM\",
 \"MMMMMMMFFFAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28675,7 +28642,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28697,7 +28664,7 @@ static char *xpm[] = {
 \"MMBBOOOBBBOAAMMM\",
 \"MMMMFBBOOOBAMMMM\",
 \"MMMMMMMFBBAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28714,7 +28681,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28736,7 +28703,7 @@ static char *xpm[] = {
 \"MMBBOOOBBBOAAMMM\",
 \"MMMMBBBOOOBAMMMM\",
 \"MMMMMMMBBBAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28753,7 +28720,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28775,7 +28742,7 @@ static char *xpm[] = {
 \"MMBBOOOBBBOAAMMM\",
 \"MMMMBBBOOOBAMMMM\",
 \"MMMMMMMBBBAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28792,7 +28759,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28814,7 +28781,7 @@ static char *xpm[] = {
 \"MMEEOOOEEBOAAMMM\",
 \"MMMMEEEOOOEAMMMM\",
 \"MMMMMMMEEEAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28831,7 +28798,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28853,7 +28820,7 @@ static char *xpm[] = {
 \"MMEEOOOEEBOAAMMM\",
 \"MMMMEEEOOOEAMMMM\",
 \"MMMMMMMEEEAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28870,7 +28837,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28892,7 +28859,7 @@ static char *xpm[] = {
 \"MMIIOOOIICOAAMMM\",
 \"MMMMIIIOOOIAMMMM\",
 \"MMMMMMMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28909,7 +28876,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28931,7 +28898,7 @@ static char *xpm[] = {
 \"MMIIOOOEDCOAAMMM\",
 \"MMMMIIIOOOIAMMMM\",
 \"MMMMMMMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28948,7 +28915,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -28970,7 +28937,7 @@ static char *xpm[] = {
 \"MMIIOOOIBCOAAMMM\",
 \"MMMMIIIOOOIAMMMM\",
 \"MMMMMMMIIIAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -28987,7 +28954,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29009,7 +28976,7 @@ static char *xpm[] = {
 \"MMKKOOOKCCOAAMMM\",
 \"MMMMKKKOOOKAMMMM\",
 \"MMMMMMMKKKAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29026,7 +28993,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29048,7 +29015,7 @@ static char *xpm[] = {
 \"MMEDOOODDCOAAMMM\",
 \"MMMMEFDOOOFAMMMM\",
 \"MMMMMMMEFDAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29065,7 +29032,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29087,7 +29054,7 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29104,7 +29071,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29126,7 +29093,7 @@ static char *xpm[] = {
 \"MMJJOOOJJKOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29143,7 +29110,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29165,7 +29132,7 @@ static char *xpm[] = {
 \"MMPPOOOPPBOAAMMM\",
 \"MMMMPPPOOOPAMMMM\",
 \"MMMMMMMPPPAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29182,7 +29149,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29204,7 +29171,7 @@ static char *xpm[] = {
 \"MMJKOOKKKKOAAMMM\",
 \"MMMMJKLOOOKAMMMM\",
 \"MMMMMMJJKKAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29221,7 +29188,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29243,7 +29210,7 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MKAKAMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29260,7 +29227,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29282,7 +29249,7 @@ static char *xpm[] = {
 \"MMCCOOOCCCOAAMMM\",
 \"MMMMCCCOOOCAMMMM\",
 \"MMMMMMMCCCAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29299,7 +29266,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29321,7 +29288,7 @@ static char *xpm[] = {
 \"MMCJOOOCKCOAAMMM\",
 \"MMMMJCJOOOJAMMMM\",
 \"MMMMMMMJCJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29338,7 +29305,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29360,7 +29327,7 @@ static char *xpm[] = {
 \"MMPPOOOPPBOAAMMM\",
 \"MMMMPPPOOOPAMMMM\",
 \"MMMMMMMPPPAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29377,7 +29344,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29399,7 +29366,7 @@ static char *xpm[] = {
 \"MMHHOOOHHNOAAMMM\",
 \"MMMMHHHOOOHAMMMM\",
 \"MMMMMMMHHHAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29416,7 +29383,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29438,7 +29405,7 @@ static char *xpm[] = {
 \"MMPPOONPPBOAAMMM\",
 \"MMMNMPPOOOPAMMMM\",
 \"MMMMMMMPPPANMMMM\",
-\"MMMMMMMNMMMMMMMM\",
+\"MMMMMMMNMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29455,7 +29422,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29477,7 +29444,7 @@ static char *xpm[] = {
 \"MMPPOOOPPBOAAMMM\",
 \"MMMMPPPOOOPAMMMM\",
 \"MMMMMMMPPPAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29494,7 +29461,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29516,7 +29483,7 @@ static char *xpm[] = {
 \"MMJJPPPKKJPAAMMM\",
 \"MMMMJJJPPPJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29533,7 +29500,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29555,7 +29522,7 @@ static char *xpm[] = {
 \"MMJJOOCKKKOAAMMM\",
 \"MMMMJJJOCOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29572,7 +29539,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29594,7 +29561,7 @@ static char *xpm[] = {
 \"MMJJLLLOOOLAAMMM\",
 \"MMMMJJJLLLJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29611,7 +29578,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29633,7 +29600,7 @@ static char *xpm[] = {
 \"MMJJOOOKKCOAAMMM\",
 \"MMMMJJJOOOJAMMMM\",
 \"MMMMMMMJJJAAMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29650,7 +29617,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29672,7 +29639,7 @@ static char *xpm[] = {
 \"MMAAOOOAAAOMMMMM\",
 \"MMMMAAAOOOAMMMMM\",
 \"MMMMMMMAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29689,7 +29656,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29711,7 +29678,7 @@ static char *xpm[] = {
 \"MMMBAFMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29728,7 +29695,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29750,7 +29717,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29767,7 +29734,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29789,7 +29756,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29806,7 +29773,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29828,7 +29795,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29845,7 +29812,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29867,7 +29834,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29884,7 +29851,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29906,7 +29873,7 @@ static char *xpm[] = {
 \"MMMNAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29923,7 +29890,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29945,7 +29912,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -29962,7 +29929,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -29984,7 +29951,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30001,7 +29968,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30023,7 +29990,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30040,7 +30007,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30062,7 +30029,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30079,7 +30046,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30101,7 +30068,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30118,7 +30085,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30140,7 +30107,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30157,7 +30124,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30179,7 +30146,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30196,7 +30163,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30218,7 +30185,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30235,7 +30202,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30257,7 +30224,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30274,7 +30241,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30296,7 +30263,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30313,7 +30280,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30335,7 +30302,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30352,7 +30319,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30374,7 +30341,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30391,7 +30358,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30413,7 +30380,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30430,7 +30397,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30452,7 +30419,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30469,7 +30436,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30491,7 +30458,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30508,7 +30475,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30530,7 +30497,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30547,7 +30514,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30569,7 +30536,7 @@ static char *xpm[] = {
 \"MMNOAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30586,7 +30553,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30608,7 +30575,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30625,7 +30592,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30647,7 +30614,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30664,7 +30631,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30686,7 +30653,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30703,7 +30670,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30725,7 +30692,7 @@ static char *xpm[] = {
 \"MMMMAAMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30742,7 +30709,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30764,7 +30731,7 @@ static char *xpm[] = {
 \"MMMMAAAALAHAMHAM\",
 \"MMMMMMHAMMMMMMMM\",
 \"MMMMMMMMMHAMMMMM\",
-\"MMMMMMMMMMMHAMMM\",
+\"MMMMMMMMMMMHAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30781,7 +30748,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30803,7 +30770,7 @@ static char *xpm[] = {
 \"MMMMMMOOOAAAMMMM\",
 \"MMMMMMMOAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30820,7 +30787,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30842,7 +30809,7 @@ static char *xpm[] = {
 \"MMMMMMOOOAAAMMMM\",
 \"MMMMMMMOAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30859,7 +30826,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30881,7 +30848,7 @@ static char *xpm[] = {
 \"MMMMMMDDDAAAMMMM\",
 \"MMMMMMMDAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30898,7 +30865,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30920,7 +30887,7 @@ static char *xpm[] = {
 \"MMMMMMCCCAAAMMMM\",
 \"MMMMMMMCAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30937,7 +30904,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30959,7 +30926,7 @@ static char *xpm[] = {
 \"MMMMMMBBBAAAMMMM\",
 \"MMMMMMMBAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -30976,7 +30943,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -30998,7 +30965,7 @@ static char *xpm[] = {
 \"MMMMMMAAAPPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31015,7 +30982,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31037,7 +31004,7 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31054,7 +31021,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31076,7 +31043,7 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31093,7 +31060,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31115,7 +31082,7 @@ static char *xpm[] = {
 \"MMMMMMHHHAAAMMMM\",
 \"MMMMMMMHAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31132,7 +31099,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31154,7 +31121,7 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31171,7 +31138,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31193,7 +31160,7 @@ static char *xpm[] = {
 \"MMMMMMKKKAAAMMMM\",
 \"MMMMMMMKAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31210,7 +31177,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31232,7 +31199,7 @@ static char *xpm[] = {
 \"MMMMMMKKKAAAMMMM\",
 \"MMMMMMMKAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31249,7 +31216,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31271,7 +31238,7 @@ static char *xpm[] = {
 \"MMMMMMAAAPPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31288,7 +31255,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31310,7 +31277,7 @@ static char *xpm[] = {
 \"MMMMMMOOOAAAMMMM\",
 \"MMMMMMMOAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31327,7 +31294,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31349,7 +31316,7 @@ static char *xpm[] = {
 \"MMMMMMHHHAAAMMMM\",
 \"MMMMMMMHAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31366,7 +31333,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31388,7 +31355,7 @@ static char *xpm[] = {
 \"MMMMMMDDDAAAMMMM\",
 \"MMMMMMMDAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31405,7 +31372,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31427,7 +31394,7 @@ static char *xpm[] = {
 \"MMMMMMIIIAAAMMMM\",
 \"MMMMMMMIAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31444,7 +31411,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31466,7 +31433,7 @@ static char *xpm[] = {
 \"MMMMMMDDDAAAMMMM\",
 \"MMMMMMMDAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31483,7 +31450,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31505,7 +31472,7 @@ static char *xpm[] = {
 \"MMMMMMIIIAAAMMMM\",
 \"MMMMMMMIAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31522,7 +31489,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31544,7 +31511,7 @@ static char *xpm[] = {
 \"MMMMMMAAAPPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31561,7 +31528,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31583,7 +31550,7 @@ static char *xpm[] = {
 \"MMMMMMCCCAAAMMMM\",
 \"MMMMMMMCAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31600,7 +31567,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31622,7 +31589,7 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31639,7 +31606,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31661,7 +31628,7 @@ static char *xpm[] = {
 \"MMMMMMOOOAAAMMMM\",
 \"MMMMMMMOAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31678,7 +31645,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31700,7 +31667,7 @@ static char *xpm[] = {
 \"MMMMMMBBBAAAMMMM\",
 \"MMMMMMMBAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31717,7 +31684,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31739,7 +31706,7 @@ static char *xpm[] = {
 \"MMMMMMDDDAAAMMMM\",
 \"MMMMMMMDAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31756,7 +31723,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31778,7 +31745,7 @@ static char *xpm[] = {
 \"MMMMMMKKKAAAMMMM\",
 \"MMMMMMMKAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31795,7 +31762,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31817,7 +31784,7 @@ static char *xpm[] = {
 \"MMMMMMCCCAAAMMMM\",
 \"MMMMMMMCAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31834,7 +31801,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31856,7 +31823,7 @@ static char *xpm[] = {
 \"MMMMMMHHHAAAMMMM\",
 \"MMMMMMMHAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31873,7 +31840,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31895,7 +31862,7 @@ static char *xpm[] = {
 \"MMMMMMAAAPPPMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31912,7 +31879,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31934,7 +31901,7 @@ static char *xpm[] = {
 \"MMMMMMFGFAAAMMMM\",
 \"MMMMMMMFAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31951,7 +31918,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -31973,7 +31940,7 @@ static char *xpm[] = {
 \"MMMMMMIIIAAAMMMM\",
 \"MMMMMMMIAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -31990,7 +31957,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32012,7 +31979,7 @@ static char *xpm[] = {
 \"MMMPPPPPPPPPAAAM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32029,7 +31996,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32051,7 +32018,7 @@ static char *xpm[] = {
 \"MMMPPPPPPPPPAAAM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32068,7 +32035,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32090,7 +32057,7 @@ static char *xpm[] = {
 \"MMMPPPPPPPPPAAAM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32107,7 +32074,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32129,7 +32096,7 @@ static char *xpm[] = {
 \"MMMPPPPPPPPPAAAM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32146,7 +32113,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32168,7 +32135,7 @@ static char *xpm[] = {
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32185,7 +32152,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32207,7 +32174,7 @@ static char *xpm[] = {
 \"MMMMJJJJJJJJAAMM\",
 \"MMMMMMJJJJAAAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32224,7 +32191,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32246,7 +32213,7 @@ static char *xpm[] = {
 \"MMMJKKKKJJJJJAMM\",
 \"MMMMJJKKKJJJAAMM\",
 \"MMMMMJJJJJJAAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32263,7 +32230,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32285,7 +32252,7 @@ static char *xpm[] = {
 \"MMMMMMMAAAMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32302,7 +32269,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32324,7 +32291,7 @@ static char *xpm[] = {
 \"MMMMMMMMMPAPPMPM\",
 \"MMMMMMMMMMPMAPAP\",
 \"MMMMMMMMMMMPPMPA\",
-\"MMMMMMMMMMMMAAMM\",
+\"MMMMMMMMMMMMAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32341,7 +32308,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32363,7 +32330,7 @@ static char *xpm[] = {
 \"MMMMMHHHHMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32380,7 +32347,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32402,7 +32369,7 @@ static char *xpm[] = {
 \"MMMMMHHHHMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32419,7 +32386,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32441,7 +32408,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32458,7 +32425,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32480,7 +32447,7 @@ static char *xpm[] = {
 \"AOOOAMMPMPMMOOOA\",
 \"AMAAAMMPPPPMMAMA\",
 \"AMMMAMMPPPPMMMMA\",
-\"AOPPAMMPPPPMOPMA\",
+\"AOPPAMMPPPPMOPMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32497,7 +32464,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32519,7 +32486,7 @@ static char *xpm[] = {
 \"MOPPPPMOPPPPMOPP\",
 \"MPPPPPMPPPPPMPPP\",
 \"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32536,7 +32503,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32558,7 +32525,7 @@ static char *xpm[] = {
 \"AOOOAMPPPPPMOOOA\",
 \"AMAAAMMPPPPMMAMA\",
 \"AMMMAMMPPPPMMMMA\",
-\"AOPPAMMPPPPMOPMA\",
+\"AOPPAMMPPPPMOPMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32575,7 +32542,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32597,7 +32564,7 @@ static char *xpm[] = {
 \"AOOOAMPPPPPMOOOA\",
 \"AMAAAMMPPPPMMAMA\",
 \"AMMMAMMPPPPMMMMA\",
-\"AOPPAMMPPPPMOPMA\",
+\"AOPPAMMPPPPMOPMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32614,7 +32581,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32636,7 +32603,7 @@ static char *xpm[] = {
 \"MOPPPPMOPPPPMOPP\",
 \"MPPPPPMPPPPPMPPP\",
 \"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32653,7 +32620,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32675,7 +32642,7 @@ static char *xpm[] = {
 \"MOPPPPMOPPPPMOPP\",
 \"MPPPPPMPPPPPMPPP\",
 \"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32692,7 +32659,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32714,7 +32681,7 @@ static char *xpm[] = {
 \"AOOOAMPPPPPMOOOA\",
 \"AMAAAMMPPPPMMAMA\",
 \"AMMMAMMPPPPMMMMA\",
-\"AOPPAMMPPPPMOPMA\",
+\"AOPPAMMPPPPMOPMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32731,7 +32698,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32753,7 +32720,7 @@ static char *xpm[] = {
 \"MOPPPPMOPPPPMOPP\",
 \"MPPPPPMPPPPPMPPP\",
 \"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32770,7 +32737,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32792,7 +32759,7 @@ static char *xpm[] = {
 \"AOOOAMPPPPPMOOOA\",
 \"AMAAAMMPPPPMMAMA\",
 \"AMMMAMMPPPPMMMMA\",
-\"AOPPAMMPPPPMOPMA\",
+\"AOPPAMMPPPPMOPMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32809,7 +32776,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32831,7 +32798,7 @@ static char *xpm[] = {
 \"AOOOAMPPPPPMOOOA\",
 \"AMAAAMMPPPPMMAMA\",
 \"AMMMAMMPPPPMMMMA\",
-\"AOPPAMMPPPPMOPMA\",
+\"AOPPAMMPPPPMOPMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32848,7 +32815,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32870,7 +32837,7 @@ static char *xpm[] = {
 \"AOOOAMPPPPPMOOOA\",
 \"AMAAAMMPPPPMMAMA\",
 \"AMMMAMMPPPPMMMMA\",
-\"AOPPAMMPPPPMOPMA\",
+\"AOPPAMMPPPPMOPMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32887,7 +32854,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32909,7 +32876,7 @@ static char *xpm[] = {
 \"AMMMMMMMMMMMMMMA\",
 \"AMMMMMMMMMMMMMMA\",
 \"AAMMMMMMMMMMMMAA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32926,7 +32893,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32948,7 +32915,7 @@ static char *xpm[] = {
 \"AMMMMMMMMMMMMMMA\",
 \"AMMMMMMMMMMMMMMA\",
 \"AMMMMMMMMMMMMMMA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -32965,7 +32932,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -32987,7 +32954,7 @@ static char *xpm[] = {
 \"AMJMMMMMMMMMMMMA\",
 \"AKMMMMMMMMMMMMMA\",
 \"AAAAAAAAAAAAAAAA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33004,7 +32971,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33026,7 +32993,7 @@ static char *xpm[] = {
 \"AMJJMJJJJJJJJJJA\",
 \"AJKJJKJJKJJJJJJA\",
 \"AAAAAAAAAAAAAAAA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33043,7 +33010,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33065,7 +33032,7 @@ static char *xpm[] = {
 \"AMJJMJJJJJJJJJJA\",
 \"AJKJJKJJKJJJJJJA\",
 \"AAAAAAAAAAAAAAAA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33082,7 +33049,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33104,7 +33071,7 @@ static char *xpm[] = {
 \"MBPABPABPAPPAPPA\",
 \"MBPABPABPAPPAPPA\",
 \"MBPMBPMBPMPPMPPM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33121,7 +33088,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33143,7 +33110,7 @@ static char *xpm[] = {
 \"MMMMMMMKJAAAMMMM\",
 \"MMMMMMKJJJAAMMMM\",
 \"MMMJJJJMJMJJJAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33160,7 +33127,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33182,7 +33149,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33199,7 +33166,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33221,7 +33188,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33238,7 +33205,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33260,7 +33227,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33277,7 +33244,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33299,7 +33266,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAMMMA\",
 \"AAAAAAAAAAAAAMMA\",
 \"AAAAAAAAAAAAAAMA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33316,7 +33283,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33338,7 +33305,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAMMMA\",
 \"AAAAAAAAAAAAAMMA\",
 \"AAAAAAAAAAAAAAMA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33355,7 +33322,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33377,7 +33344,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAMMMA\",
 \"AAAAAAAAAAAAAMMA\",
 \"AAAAAAAAAAAAAAMA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33394,7 +33361,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33416,7 +33383,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAMMMA\",
 \"AAAAAAAAAAAAAMMA\",
 \"AAAAAAAAAAAAAAMA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33433,7 +33400,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33455,7 +33422,7 @@ static char *xpm[] = {
 \"MMMBPPPPPPMMAMMM\",
 \"MMPPMMMMMMMPPMMM\",
 \"MMMAAAAAAAAAAAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33472,7 +33439,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33494,7 +33461,7 @@ static char *xpm[] = {
 \"MOPPPPPPPFPPPAAM\",
 \"MOPPFMMPPFMPPAMM\",
 \"FFFFFFFFFFFFFFFM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33511,7 +33478,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33533,7 +33500,7 @@ static char *xpm[] = {
 \"MMMHALAAALAHAAMM\",
 \"MMHAMAAAAAAAHMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33550,7 +33517,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33572,7 +33539,7 @@ static char *xpm[] = {
 \"MMMMMOOOOAAAAAMM\",
 \"MMMMOOOOOOAMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33589,7 +33556,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33611,7 +33578,7 @@ static char *xpm[] = {
 \"MMPNNNNNNNNPAAAM\",
 \"MMMPPPPPPPPAAAMM\",
 \"MMMMAAAAAAAAAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33628,7 +33595,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33650,7 +33617,7 @@ static char *xpm[] = {
 \"MMMMMMMNEEEEMMMM\",
 \"MMEEEMMEMMMEEEMM\",
 \"MEMMEEMMMEMMEEEM\",
-\"EEMMMMEEEMMMMMEE\",
+\"EEMMMMEEEMMMMMEE\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33667,7 +33634,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33689,7 +33656,7 @@ static char *xpm[] = {
 \"NNNNNNNNNNNNNNNN\",
 \"NNNNNNNNNNNNNNNN\",
 \"NNNNNNNNNNNNNNNN\",
-\"NNNNNNNNNNNNNNNN\",
+\"NNNNNNNNNNNNNNNN\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33706,7 +33673,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33728,7 +33695,7 @@ static char *xpm[] = {
 \"DDDCJJKDDDDDDDDD\",
 \"CDDCJDKDDDDDDJDD\",
 \"DDDDKKDDDDCDDDDD\",
-\"DDDDDDDDDDDKDDDD\",
+\"DDDDDDDDDDDKDDDD\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33745,7 +33712,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33767,7 +33734,7 @@ static char *xpm[] = {
 \"EKKAKKKKKKKAKKAE\",
 \"EJKKKKKKKKKKKJAA\",
 \"EEJJJJJJJJJJJAAA\",
-\"EJKKKKKKKKKKKJAA\",
+\"EJKKKKKKKKKKKJAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33784,7 +33751,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33806,7 +33773,7 @@ static char *xpm[] = {
 \"KJKKKJKKKKKKKJKK\",
 \"JAJKJAJKJAJKJAJK\",
 \"AAAAAAAAAAAAAAAA\",
-\"AAAEAAAEAAAEAAAE\",
+\"AAAEAAAEAAAEAAAE\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33823,7 +33790,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33845,7 +33812,7 @@ static char *xpm[] = {
 \"MJKKKJKKKKKKKJAM\",
 \"MMJKJAJKJAJKJAAM\",
 \"MMMAAAMAAAMAAAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33862,7 +33829,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33884,7 +33851,7 @@ static char *xpm[] = {
 \"MJKKKKKKKKKKKJAM\",
 \"MMJJJJJJJJJJJAAM\",
 \"MMMAAAAAAAAAAAMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33901,7 +33868,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33923,7 +33890,7 @@ static char *xpm[] = {
 \"BBBBBBBBBBBBBBBB\",
 \"BBBBBBBBBBBBBBBB\",
 \"BBBBBBBBBBBBBBBB\",
-\"BBBBBBBBBBBBBBBB\",
+\"BBBBBBBBBBBBBBBB\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33940,7 +33907,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -33962,7 +33929,7 @@ static char *xpm[] = {
 \"BBOOONNNNOOOOOOB\",
 \"BBBOOOOOOOOOOBBB\",
 \"BBBBBBOOOOBBBBBB\",
-\"BBBBBBBBBBBBBBBB\",
+\"BBBBBBBBBBBBBBBB\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -33979,7 +33946,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34001,7 +33968,7 @@ static char *xpm[] = {
 \"EEEEEEEEEEEEEEEE\",
 \"EEEEEEEEEEEEEEEE\",
 \"EEEEEEEEEEEEEEEE\",
-\"EEEEEEEEEEEEEEEE\",
+\"EEEEEEEEEEEEEEEE\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34018,7 +33985,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34040,7 +34007,7 @@ static char *xpm[] = {
 \"MMMMDAACAADAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34057,7 +34024,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34079,7 +34046,7 @@ static char *xpm[] = {
 \"MMMMDDCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34096,7 +34063,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34118,7 +34085,7 @@ static char *xpm[] = {
 \"MMMMDCCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34135,7 +34102,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34157,7 +34124,7 @@ static char *xpm[] = {
 \"MMMMDCCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34174,7 +34141,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34196,7 +34163,7 @@ static char *xpm[] = {
 \"MMMMDDAAADDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34213,7 +34180,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34235,7 +34202,7 @@ static char *xpm[] = {
 \"MMMMDCCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34252,7 +34219,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34274,7 +34241,7 @@ static char *xpm[] = {
 \"MMMMDCCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34291,7 +34258,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34313,7 +34280,7 @@ static char *xpm[] = {
 \"MMMMDDCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34330,7 +34297,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34352,7 +34319,7 @@ static char *xpm[] = {
 \"MMMMDCCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34369,7 +34336,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34391,7 +34358,7 @@ static char *xpm[] = {
 \"MMMMDCCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34408,7 +34375,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34430,7 +34397,7 @@ static char *xpm[] = {
 \"AMMMPPPPPPPPPBBA\",
 \"AMMPPPPPPPPPPPBA\",
 \"AMPPPPPPPPPPPPPA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34447,7 +34414,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34469,7 +34436,7 @@ static char *xpm[] = {
 \"AMMMPPPPPPPPPBBA\",
 \"AMMPPPPPPPPPPPBA\",
 \"AMPPPPPPPPPPPPPA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34486,7 +34453,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34508,7 +34475,7 @@ static char *xpm[] = {
 \"MMMMMMAAAAABMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34525,7 +34492,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34547,7 +34514,7 @@ static char *xpm[] = {
 \"AMMMPPPPPPPPPBBA\",
 \"AMMPPPPPPPPPPPBA\",
 \"AMPPPPPPPPPPPPPA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34564,7 +34531,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34586,7 +34553,7 @@ static char *xpm[] = {
 \"MMMMDDCACDDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34603,7 +34570,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34625,7 +34592,7 @@ static char *xpm[] = {
 \"MMMMDDAAADDAAMMM\",
 \"MMMMMDDADDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34642,7 +34609,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34664,7 +34631,7 @@ static char *xpm[] = {
 \"MMMMDDCACDDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34681,7 +34648,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34703,7 +34670,7 @@ static char *xpm[] = {
 \"MMOAMMMMMMMMMMMM\",
 \"MOAMMMMMMMMMMMMM\",
 \"MOAMMMMMMMMMMMMM\",
-\"OAMMMMMMMMMMMMMM\",
+\"OAMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34720,7 +34687,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34742,7 +34709,7 @@ static char *xpm[] = {
 \"MMMMDCCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34759,7 +34726,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34781,7 +34748,7 @@ static char *xpm[] = {
 \"MMMMACCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34798,7 +34765,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34820,7 +34787,7 @@ static char *xpm[] = {
 \"MMMAADCCCCCAMMMM\",
 \"MMMMAADDDDDMMMMM\",
 \"MMMMMAAAAAMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34837,7 +34804,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34859,7 +34826,7 @@ static char *xpm[] = {
 \"MMMMDCCCCCDAAMMM\",
 \"MMMMMDDDDDAAMMMM\",
 \"MMMMMMAAAAAMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34876,7 +34843,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34898,7 +34865,7 @@ static char *xpm[] = {
 \"MMMMMMMNNMMMMMMM\",
 \"MMMMMMMMNNMMMMMM\",
 \"MMMMMMMMMNNMMMMM\",
-\"MMMMMMMMNNMMMMMM\",
+\"MMMMMMMMNNMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34915,7 +34882,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34937,7 +34904,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34954,7 +34921,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -34976,7 +34943,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMNMMM\",
 \"MMMMMMMMMMMMNMMM\",
 \"MMMMMMMMMMMMNMMM\",
-\"MMMMMMMMMMMMNNNN\",
+\"MMMMMMMMMMMMNNNN\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -34993,7 +34960,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35015,7 +34982,7 @@ static char *xpm[] = {
 \"MMMMNMMMMMMMMMMM\",
 \"MMMMNMMMMMMMMMMM\",
 \"MMMMNMMMMMMMMMMM\",
-\"NNNNNMMMMMMMMMMM\",
+\"NNNNNMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35032,7 +34999,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35054,7 +35021,7 @@ static char *xpm[] = {
 \"MMAMMMAAMMAMMAAM\",
 \"MMAAAAAMMAAAAAMM\",
 \"MMMMAAMMMMAAAMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35071,7 +35038,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35093,7 +35060,7 @@ static char *xpm[] = {
 \"MMNNNNNNNNNNNNMM\",
 \"MMMNNNNNNNNNNMMM\",
 \"MMMMMNNNNNNMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35110,7 +35077,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35132,7 +35099,7 @@ static char *xpm[] = {
 \"MMMMJHDJAMMMMMMM\",
 \"MMMMMKJAMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35149,7 +35116,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35171,7 +35138,7 @@ static char *xpm[] = {
 \"MMMMMMMMMKHKAMMM\",
 \"MMMMMMMMMMKKAMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35188,7 +35155,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35210,7 +35177,7 @@ static char *xpm[] = {
 \"MMMIMMMMMMMMIMMM\",
 \"MMMMIMMMMMMIMMMM\",
 \"MMMMMIMMMMIMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35227,7 +35194,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35249,7 +35216,7 @@ static char *xpm[] = {
 \"MCMCCCCCCCCCCMCM\",
 \"MCMMMMMMMMMMMMCM\",
 \"MCCCCCCCCCCCCCCM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35266,7 +35233,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35288,7 +35255,7 @@ static char *xpm[] = {
 \"MMMHMMMHHMMMHMMM\",
 \"MMMMHHMHHMHHMMMM\",
 \"MMMMMMMHHMMMMMMM\",
-\"MMMMMMMHHMMMMMMM\",
+\"MMMMMMMHHMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35305,7 +35272,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35327,7 +35294,7 @@ static char *xpm[] = {
 \"MMMNNNMNMNNNNMMM\",
 \"MMMMMMMNMMMMMMMM\",
 \"MMMMMNNNNNMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35344,7 +35311,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35366,7 +35333,7 @@ static char *xpm[] = {
 \"AAADDDDDDDMMMMMM\",
 \"AAAADDDDDDMMMMMM\",
 \"AAAADDDDDDMMMMMM\",
-\"AAAADDDDDDMMMMMM\",
+\"AAAADDDDDDMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35383,7 +35350,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35405,7 +35372,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35422,7 +35389,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35444,7 +35411,7 @@ static char *xpm[] = {
 \"MMMMDDDDDDDDDDDD\",
 \"MMMMDDDDDDDDDDDD\",
 \"MMMMDDDDDDDDDDDD\",
-\"MMMMDDDDDDDDDDDA\",
+\"MMMMDDDDDDDDDDDA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35461,7 +35428,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35483,7 +35450,7 @@ static char *xpm[] = {
 \"DDDDDDDDMMMMMMMM\",
 \"DDDDDDDMMMMMMMMM\",
 \"DDDDDDDMMMMMMMMM\",
-\"DDCCDDDMMMMMMMMM\",
+\"DDCCDDDMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35500,7 +35467,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35522,7 +35489,7 @@ static char *xpm[] = {
 \"MMMMDDDDDDDDDAAA\",
 \"MMMMMDDDDDDDDAAA\",
 \"MMMMMMDDDDDDDDAA\",
-\"MMMMMMMDDDDDDDAA\",
+\"MMMMMMMDDDDDDDAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35539,7 +35506,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35561,7 +35528,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAADDDDD\",
 \"AAAAAAAAAAADDDDD\",
 \"AAAAAAAAAAAADDDD\",
-\"AAAAAAAAAAAAAADD\",
+\"AAAAAAAAAAAAAADD\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35578,7 +35545,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35600,7 +35567,7 @@ static char *xpm[] = {
 \"DDDDDDDDDDDDDDDC\",
 \"DDDDDDDDDDDDDDDD\",
 \"DDDDDDDDDDDDDDDD\",
-\"DDDDDDDDDDDDDDAA\",
+\"DDDDDDDDDDDDDDAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35617,7 +35584,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35639,7 +35606,7 @@ static char *xpm[] = {
 \"CDDDDAAAAAAAAAAA\",
 \"DDDDAAAAAAAAAAAA\",
 \"DDAAAAAAAAAAAAAA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35656,7 +35623,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35678,7 +35645,7 @@ static char *xpm[] = {
 \"MMMMAAAAAAAAAAMM\",
 \"MMMAAAAMMAAAMMMM\",
 \"MMAAAAMMAAAAMMMM\",
-\"MMAAAMMAAAAAMMMM\",
+\"MMAAAMMAAAAAMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35695,7 +35662,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35717,7 +35684,7 @@ static char *xpm[] = {
 \"MAMMMMMAMMMMAAAA\",
 \"MMMMMAMMAMMMPAAA\",
 \"MMMMMMMMAMAMAPAA\",
-\"MPAMMMAPAAAAAAAA\",
+\"MPAMMMAPAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35734,7 +35701,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35756,7 +35723,7 @@ static char *xpm[] = {
 \"AAPAAMAAAAAAMAMM\",
 \"AAAMMMMMAAAAMMMM\",
 \"AAMAMMAMAAAAMMMM\",
-\"AMAAMMAMAAAAAMMM\",
+\"AMAAMMAMAAAAAMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35773,7 +35740,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35795,7 +35762,7 @@ static char *xpm[] = {
 \"MMMMAAAMMMPMMPMA\",
 \"MMMMMAAMMMMMAAAM\",
 \"MMAMAMMMAAPMMMPA\",
-\"MMMMAMMMMMMMMMPA\",
+\"MMMMAMMMMMMMMMPA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35812,7 +35779,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35834,7 +35801,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAMAA\",
-\"AAAAAAAAAAAMHHMM\",
+\"AAAAAAAAAAAMHHMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35851,7 +35818,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35873,7 +35840,7 @@ static char *xpm[] = {
 \"MMAAMPPMAAAMMMMM\",
 \"AMMMMMMAAAAAMMMM\",
 \"AAAMMMAAAAAAAMMM\",
-\"MMMMPPAAAAAAAAMM\",
+\"MMMMPPAAAAAAAAMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35890,7 +35857,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35912,7 +35879,7 @@ static char *xpm[] = {
 \"MMMMMMMMAAMAAAAA\",
 \"MMMAMMMMMMMMAAAA\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35929,7 +35896,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35951,7 +35918,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAMMMMMMMMMMAA\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -35968,7 +35935,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -35990,7 +35957,7 @@ static char *xpm[] = {
 \"AAAAAAMMMMAMMMMM\",
 \"AAAMMMAMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36007,7 +35974,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36029,7 +35996,7 @@ static char *xpm[] = {
 \"MMMMFFFFFFFFFFMM\",
 \"MMMFFFFMMFFFMMMM\",
 \"MMFFFFMMFFFFMMMM\",
-\"MMFFFMMFFFFFMMMM\",
+\"MMFFFMMFFFFFMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36046,7 +36013,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36068,7 +36035,7 @@ static char *xpm[] = {
 \"MHMMMMMFMMMMFFFF\",
 \"MMMMMFMMFMMMGFFF\",
 \"MMMMMMMMFMFMFGFF\",
-\"MGHMMMHGHHFFFFFF\",
+\"MGHMMMHGHHFFFFFF\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36085,7 +36052,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36107,7 +36074,7 @@ static char *xpm[] = {
 \"FFGFFMFFFFFFMFMM\",
 \"FFFMMMMMFFFFMMMM\",
 \"FFMFMMFMFFFFMMMM\",
-\"FMFFMMFMFFFFFMMM\",
+\"FMFFMMFMFFFFFMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36124,7 +36091,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36146,7 +36113,7 @@ static char *xpm[] = {
 \"MMMMFFFMMMGMMGMH\",
 \"MMMMMFFMMMMMHHFM\",
 \"MMFMFMMMFHGMMMGH\",
-\"MMMMFMMMMMMMMMGH\",
+\"MMMMFMMMMMMMMMGH\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36163,7 +36130,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36185,7 +36152,7 @@ static char *xpm[] = {
 \"HHHHNHNNNHHHGGGG\",
 \"HGGNGHNNNHHHGGGF\",
 \"HHHHNHNHNMGGGMGF\",
-\"GGGGNHHHGGGMHHMM\",
+\"GGGGNHHHGGGMHHMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36202,7 +36169,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36224,7 +36191,7 @@ static char *xpm[] = {
 \"MMHFMGGMFFFMMMMM\",
 \"HMMMMMMFFFFFMMMM\",
 \"HFHMMMFFFFFFFMMM\",
-\"MMMMGGFFFFFFFFMM\",
+\"MMMMGGFFFFFFFFMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36241,7 +36208,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36263,7 +36230,7 @@ static char *xpm[] = {
 \"MMMMMMMMFFMFFFFF\",
 \"MMMFMMMMMMMMFFFF\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36280,7 +36247,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36302,7 +36269,7 @@ static char *xpm[] = {
 \"FFFFFFFFFFFFFFFF\",
 \"FFFFMMMMMMMMMMFF\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36319,7 +36286,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36341,7 +36308,7 @@ static char *xpm[] = {
 \"FFFFFFMMMMFMMMMM\",
 \"FFFMMMFMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36358,7 +36325,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36380,7 +36347,7 @@ static char *xpm[] = {
 \"MMMMJJJJJJJJJJKK\",
 \"MMMJJJJKKJJJKKKK\",
 \"MMJJJJKKJJJJKKKK\",
-\"MMJJJKKJJJJJKKKK\",
+\"MMJJJKKJJJJJKKKK\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36397,7 +36364,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36419,7 +36386,7 @@ static char *xpm[] = {
 \"KLKKKKKJKKKKJJJJ\",
 \"KKKKKJKKJKKKCJJJ\",
 \"KKKKKKKKJKJKJCJJ\",
-\"KCLKKKLCLLJJJJJJ\",
+\"KCLKKKLCLLJJJJJJ\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36436,7 +36403,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36458,7 +36425,7 @@ static char *xpm[] = {
 \"JJCJJKJJJJJJMJMM\",
 \"JJJKKKKKJJJJMMMM\",
 \"JJKJKKJKJJJJMMMM\",
-\"JKJJKKJKJJJJJMMM\",
+\"JKJJKKJKJJJJJMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36475,7 +36442,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36497,7 +36464,7 @@ static char *xpm[] = {
 \"MMMMJJJKKKCKKCKL\",
 \"MMMMMJJKKKKKLLJK\",
 \"MMJMJKKKJLCKKKCL\",
-\"MMMMJKKKKKKKKKCL\",
+\"MMMMJKKKKKKKKKCL\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36514,7 +36481,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36536,7 +36503,7 @@ static char *xpm[] = {
 \"LLLLCLCCCLLLCCCC\",
 \"LCCCCLCCCLLLCCCJ\",
 \"LLLLCLCLCKCCCKCJ\",
-\"CCCCCLLLCCCKLLKK\",
+\"CCCCCLLLCCCKLLKK\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36553,7 +36520,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36575,7 +36542,7 @@ static char *xpm[] = {
 \"KKLJKCCKJJJMMMMM\",
 \"LKKKKKKJJJJJMMMM\",
 \"LJLKKKJJJJJJJMMM\",
-\"KKKKCCJJJJJJJJMM\",
+\"KKKKCCJJJJJJJJMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36592,7 +36559,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36614,7 +36581,7 @@ static char *xpm[] = {
 \"MMMMMMMMJJMJJJJJ\",
 \"MMMJMMMMMMMMJJJJ\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36631,7 +36598,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36653,7 +36620,7 @@ static char *xpm[] = {
 \"JJJJJJJJJJJJJJJJ\",
 \"JJJJMMMMMMMMMMJJ\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36670,7 +36637,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36692,7 +36659,7 @@ static char *xpm[] = {
 \"JJJJJJMMMMJMMMMM\",
 \"JJJMMMJMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36709,7 +36676,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36731,7 +36698,7 @@ static char *xpm[] = {
 \"MMMMEEEEEEEEEEPP\",
 \"MMMEEEEPPEEEPPPP\",
 \"MMEEEEPPEEEEPPPP\",
-\"MMEEEPPEEEEEPPPP\",
+\"MMEEEPPEEEEEPPPP\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36748,7 +36715,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36770,7 +36737,7 @@ static char *xpm[] = {
 \"PNPPPPPEPPPPEEEE\",
 \"PPPPPEPPEPPPBEEE\",
 \"PPPPPPPPEPEPEBEE\",
-\"PBNPPPNBEEEEEEEE\",
+\"PBNPPPNBEEEEEEEE\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36787,7 +36754,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36809,7 +36776,7 @@ static char *xpm[] = {
 \"EEBEEPEEEEEEMEMM\",
 \"EEEPPPPPEEEEMMMM\",
 \"EEPEPPEPEEEEMMMM\",
-\"EPEEPPEPEEEEEMMM\",
+\"EPEEPPEPEEEEEMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36826,7 +36793,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36848,7 +36815,7 @@ static char *xpm[] = {
 \"MMMMEEEPPPBPPBPN\",
 \"MMMMMEEPPPPPNNEP\",
 \"MMEMEPPPENBPPPBE\",
-\"MMMMEPPPPPPPPPBE\",
+\"MMMMEPPPPPPPPPBE\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36865,7 +36832,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36887,7 +36854,7 @@ static char *xpm[] = {
 \"EEEEEEEEEEEEBBBB\",
 \"EBBEBEEEEEEEBBBE\",
 \"EEEEEEEEEPBBBPBE\",
-\"BBBBEEEEBBBPNNPP\",
+\"BBBBEEEEBBBPNNPP\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36904,7 +36871,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36926,7 +36893,7 @@ static char *xpm[] = {
 \"PPNEPBBPEEEMMMMM\",
 \"NPPPPPPEEEEEMMMM\",
 \"NENPPPEEEEEEEMMM\",
-\"PPPPBBEEEEEEEEMM\",
+\"PPPPBBEEEEEEEEMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36943,7 +36910,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -36965,7 +36932,7 @@ static char *xpm[] = {
 \"MMMMMMMMEEMEEEEE\",
 \"MMMEMMMMMMMMEEEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -36982,7 +36949,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37004,7 +36971,7 @@ static char *xpm[] = {
 \"EEEEEEEEEEEEEEEE\",
 \"EEEEMMMMMMMMMMEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37021,7 +36988,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37043,7 +37010,7 @@ static char *xpm[] = {
 \"EEEEEEMMMMEMMMMM\",
 \"EEEMMMEMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37060,7 +37027,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37082,7 +37049,7 @@ static char *xpm[] = {
 \"MMMMEEEEEEEEEEII\",
 \"MMMEEEEIIEEEIIII\",
 \"MMEEEEIIEEEEIIII\",
-\"MMEEEIIEEEEEIIII\",
+\"MMEEEIIEEEEEIIII\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37099,7 +37066,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37121,7 +37088,7 @@ static char *xpm[] = {
 \"IHIIIIIEIIIIEEEE\",
 \"IIIIIEIIEIIILEEE\",
 \"IIIIIIIIEIEIELEE\",
-\"ILHIIIHLHHEEEEEE\",
+\"ILHIIIHLHHEEEEEE\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37138,7 +37105,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37160,7 +37127,7 @@ static char *xpm[] = {
 \"EELEEIEEEEEEMEMM\",
 \"EEEIIIIIEEEEMMMM\",
 \"EEIEIIEIEEEEMMMM\",
-\"EIEEIIEIEEEEEMMM\",
+\"EIEEIIEIEEEEEMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37177,7 +37144,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37199,7 +37166,7 @@ static char *xpm[] = {
 \"MMMMEEEIIIIIIIIN\",
 \"MMMMMEEIIIIINNEI\",
 \"MMEMEIIIENIIIIIN\",
-\"MMMMEIIIIIIIIIIN\",
+\"MMMMEIIIIIIIIIIN\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37216,7 +37183,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37238,7 +37205,7 @@ static char *xpm[] = {
 \"NNNNNNNNNNNNIIII\",
 \"NIININNNNNNNIIIE\",
 \"NNNNNNNNNIIIIIIE\",
-\"IIIINNNNIIIINNII\",
+\"IIIINNNNIIIINNII\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37255,7 +37222,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37277,7 +37244,7 @@ static char *xpm[] = {
 \"IINEIIIIEEEMMMMM\",
 \"NIIIIIIEEEEEMMMM\",
 \"NENIIIEEEEEEEMMM\",
-\"IIIIIIEEEEEEEEMM\",
+\"IIIIIIEEEEEEEEMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37294,7 +37261,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37316,7 +37283,7 @@ static char *xpm[] = {
 \"MMMMMMMMEEMEEEEE\",
 \"MMMEMMMMMMMMEEEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37333,7 +37300,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37355,7 +37322,7 @@ static char *xpm[] = {
 \"EEEEEEEEEEEEEEEE\",
 \"EEEEMMMMMMMMMMEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37372,7 +37339,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37394,7 +37361,7 @@ static char *xpm[] = {
 \"EEEEEEMMMMEMMMMM\",
 \"EEEMMMEMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37411,7 +37378,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37433,7 +37400,7 @@ static char *xpm[] = {
 \"MMMMDDDDDDDDDDCC\",
 \"MMMDDDDCCDDDCCCC\",
 \"MMDDDDCCDDDDCCCC\",
-\"MMDDDCCDDDDDCCCC\",
+\"MMDDDCCDDDDDCCCC\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37450,7 +37417,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37472,7 +37439,7 @@ static char *xpm[] = {
 \"CHCCCCCDCCCCDDDD\",
 \"CCCCCDCCDCCCLDDD\",
 \"CCCCCCCCDCDCDLDD\",
-\"CLHCCCHLHHDDDDDD\",
+\"CLHCCCHLHHDDDDDD\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37489,7 +37456,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37511,7 +37478,7 @@ static char *xpm[] = {
 \"DDLDDCDDDDDDMDMM\",
 \"DDDCCCCCDDDDMMMM\",
 \"DDCDCCDCDDDDMMMM\",
-\"DCDDCCDCDDDDDMMM\",
+\"DCDDCCDCDDDDDMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37528,7 +37495,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37550,7 +37517,7 @@ static char *xpm[] = {
 \"MMMMDDDCCCLCCLCH\",
 \"MMMMMDDCCCCCHHDC\",
 \"MMDMDCCCDHLCCCLH\",
-\"MMMMDCCCCCCCCCLH\",
+\"MMMMDCCCCCCCCCLH\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37567,7 +37534,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37589,7 +37556,7 @@ static char *xpm[] = {
 \"HHHHNHNNNHHHLLLL\",
 \"HLLNLHNNNHHHLLLD\",
 \"HHHHNHNHNCLLLCLD\",
-\"LLLLNHHHLLLCHHCC\",
+\"LLLLNHHHLLLCHHCC\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37606,7 +37573,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37628,7 +37595,7 @@ static char *xpm[] = {
 \"CCHDCLLCDDDMMMMM\",
 \"HCCCCCCDDDDDMMMM\",
 \"HDHCCCDDDDDDDMMM\",
-\"CCCCLLDDDDDDDDMM\",
+\"CCCCLLDDDDDDDDMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37645,7 +37612,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37667,7 +37634,7 @@ static char *xpm[] = {
 \"MMMMMMMMDDMDDDDD\",
 \"MMMDMMMMMMMMDDDD\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37684,7 +37651,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37706,7 +37673,7 @@ static char *xpm[] = {
 \"DDDDDDDDDDDDDDDD\",
 \"DDDDMMMMMMMMMMDD\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37723,7 +37690,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37745,7 +37712,7 @@ static char *xpm[] = {
 \"DDDDDDMMMMDMMMMM\",
 \"DDDMMMDMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37762,7 +37729,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37784,7 +37751,7 @@ static char *xpm[] = {
 \"MMMMEEEEEEEEEEPP\",
 \"MMMEEEEPPEEEPPPP\",
 \"MMEEEEPPNBEEPPPP\",
-\"MMEEEPPEEEEEPPPP\",
+\"MMEEEPPEEEEEPPPP\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37801,7 +37768,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37823,7 +37790,7 @@ static char *xpm[] = {
 \"PNPPPPPEPPPPEEEE\",
 \"PPPPPEPPEPPPBEEE\",
 \"PPPPPPPPEPEPEBEE\",
-\"PBNPPPNBNNEEEEEE\",
+\"PBNPPPNBNNEEEEEE\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37840,7 +37807,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37862,7 +37829,7 @@ static char *xpm[] = {
 \"EEBEEPEEEEEEMEMM\",
 \"EEEPPPPPEEEEMMMM\",
 \"EEPEPPEPEEEEMMMM\",
-\"EPEEPPEPEEEEEMMM\",
+\"EPEEPPEPEEEEEMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37879,7 +37846,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37901,7 +37868,7 @@ static char *xpm[] = {
 \"MMMMEENPPPBPPBPN\",
 \"MMMMMEEPPPPPNNEP\",
 \"MMEMEPPPENBPPPBN\",
-\"MMMMEPPPPPPPPPBN\",
+\"MMMMEPPPPPPPPPBN\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37918,7 +37885,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37940,7 +37907,7 @@ static char *xpm[] = {
 \"NNNNNNNNNNNNBBBB\",
 \"NBBNBNNNNNNNBBBE\",
 \"NNNNNNNNNPBBBPBE\",
-\"BBBBNNNNBBBPNNPP\",
+\"BBBBNNNNBBBPNNPP\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37957,7 +37924,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -37979,7 +37946,7 @@ static char *xpm[] = {
 \"PPNEPBBPEEEMMMMM\",
 \"NPPPPPPEEEEEMMMM\",
 \"NENPPPEEEEEEEMMM\",
-\"PPPPBBEEEEEEEEMM\",
+\"PPPPBBEEEEEEEEMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -37996,7 +37963,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38018,7 +37985,7 @@ static char *xpm[] = {
 \"MMMMMNMMEEMEEEEE\",
 \"MMMEMMMMMMMMEEEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38035,7 +38002,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38057,7 +38024,7 @@ static char *xpm[] = {
 \"EEEEEEEEEEENEEEE\",
 \"EEEEMMMMMMNMNMEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38074,7 +38041,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38096,7 +38063,7 @@ static char *xpm[] = {
 \"EEEEEEMMMMENMMMM\",
 \"EEEMMMEMMMNMNMMM\",
 \"MMMMMMMMMMMNMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38113,7 +38080,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38135,7 +38102,7 @@ static char *xpm[] = {
 \"MMMMMMMIIMMMMMMM\",
 \"MMMMMMIIIIMMMMMM\",
 \"MMMMMMIIIIMMMMMM\",
-\"MMMMMMMIIMMMMMMM\",
+\"MMMMMMMIIMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38152,7 +38119,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38174,7 +38141,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38191,7 +38158,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38213,7 +38180,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMIIIIM\",
 \"MMMMMMMMMMMMIIII\",
 \"MMMMMMMMMMMMIIII\",
-\"MMMMMMMMMMMMMIII\",
+\"MMMMMMMMMMMMMIII\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38230,7 +38197,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38252,7 +38219,7 @@ static char *xpm[] = {
 \"MIIIIMMMMMMMMMMM\",
 \"IIIIMMMMMMMMMMMM\",
 \"IIIIMMMMMMMMMMMM\",
-\"IIIMMMMMMMMMMMMM\",
+\"IIIMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38269,7 +38236,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38291,7 +38258,7 @@ static char *xpm[] = {
 \"MMMMMMMCCMMMMMMM\",
 \"MMMMMMCCCCMMMMMM\",
 \"MMMMMMCCCCMMMMMM\",
-\"MMMMMMMCCMMMMMMM\",
+\"MMMMMMMCCMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38308,7 +38275,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38330,7 +38297,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38347,7 +38314,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38369,7 +38336,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMCCCCM\",
 \"MMMMMMMMMMMMCCCC\",
 \"MMMMMMMMMMMMCCCC\",
-\"MMMMMMMMMMMMMCCC\",
+\"MMMMMMMMMMMMMCCC\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38386,7 +38353,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38408,7 +38375,7 @@ static char *xpm[] = {
 \"MCCCCMMMMMMMMMMM\",
 \"CCCCMMMMMMMMMMMM\",
 \"CCCCMMMMMMMMMMMM\",
-\"CCCMMMMMMMMMMMMM\",
+\"CCCMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38425,7 +38392,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38447,7 +38414,7 @@ static char *xpm[] = {
 \"MMMMMMMNNMMMMMMM\",
 \"MMMMMMNNNNMMMMMM\",
 \"MMMMMMNNNNMMMMMM\",
-\"MMMMMMMNNMMMMMMM\",
+\"MMMMMMMNNMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38464,7 +38431,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38486,7 +38453,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38503,7 +38470,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38525,7 +38492,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMNNNNM\",
 \"MMMMMMMMMMMMNNNN\",
 \"MMMMMMMMMMMMNNNN\",
-\"MMMMMMMMMMMMMNNN\",
+\"MMMMMMMMMMMMMNNN\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38542,7 +38509,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38564,7 +38531,7 @@ static char *xpm[] = {
 \"MNNNNMMMMMMMMMMM\",
 \"NNNNMMMMMMMMMMMM\",
 \"NNNNMMMMMMMMMMMM\",
-\"NNNMMMMMMMMMMMMM\",
+\"NNNMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38581,7 +38548,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38603,7 +38570,7 @@ static char *xpm[] = {
 \"MMMMMMMBBMMMMMMM\",
 \"MMMMMMBBBBMMMMMM\",
 \"MMMMMMBBBBMMMMMM\",
-\"MMMMMMMBBMMMMMMM\",
+\"MMMMMMMBBMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38620,7 +38587,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38642,7 +38609,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38659,7 +38626,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38681,7 +38648,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMBBBBM\",
 \"MMMMMMMMMMMMBBBB\",
 \"MMMMMMMMMMMMBBBB\",
-\"MMMMMMMMMMMMMBBB\",
+\"MMMMMMMMMMMMMBBB\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38698,7 +38665,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38720,7 +38687,7 @@ static char *xpm[] = {
 \"MBBBBMMMMMMMMMMM\",
 \"BBBBMMMMMMMMMMMM\",
 \"BBBBMMMMMMMMMMMM\",
-\"BBBMMMMMMMMMMMMM\",
+\"BBBMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38737,7 +38704,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38759,7 +38726,7 @@ static char *xpm[] = {
 \"MMMMMMMAAMMMMMMM\",
 \"MMMMMMAAAAMMMMMM\",
 \"MMMMMMAAAAMMMMMM\",
-\"MMMMMMMAAMMMMMMM\",
+\"MMMMMMMAAMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38776,7 +38743,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38798,7 +38765,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38815,7 +38782,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38837,7 +38804,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMAAAAM\",
 \"MMMMMMMMMMMMAAAA\",
 \"MMMMMMMMMMMMAAAA\",
-\"MMMMMMMMMMMMMAAA\",
+\"MMMMMMMMMMMMMAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38854,7 +38821,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38876,7 +38843,7 @@ static char *xpm[] = {
 \"MAAAAMMMMMMMMMMM\",
 \"AAAAMMMMMMMMMMMM\",
 \"AAAAMMMMMMMMMMMM\",
-\"AAAMMMMMMMMMMMMM\",
+\"AAAMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38893,7 +38860,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38915,7 +38882,7 @@ static char *xpm[] = {
 \"MMMMMMMNNMMMMMMM\",
 \"MMMMMMNNNNMMMMMM\",
 \"MMMMMMNNNNMMMMMM\",
-\"MMMMMMMNNMMMMMMM\",
+\"MMMMMMMNNMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38932,7 +38899,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38954,7 +38921,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -38971,7 +38938,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -38993,7 +38960,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMNNNNM\",
 \"MMMMMMMMMMMMNNNN\",
 \"MMMMMMMMMMMMNNNN\",
-\"MMMMMMMMMMMMMNNN\",
+\"MMMMMMMMMMMMMNNN\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39010,7 +38977,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39032,7 +38999,7 @@ static char *xpm[] = {
 \"MNNNNMMMMMMMMMMM\",
 \"NNNNMMMMMMMMMMMM\",
 \"NNNNMMMMMMMMMMMM\",
-\"NNNMMMMMMMMMMMMM\",
+\"NNNMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39049,7 +39016,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39071,7 +39038,7 @@ static char *xpm[] = {
 \"MMMMMMMFFMMMMMMM\",
 \"MMMMMMFFFFMMMMMM\",
 \"MMMMMMFFFFMMMMMM\",
-\"MMMMMMMFFMMMMMMM\",
+\"MMMMMMMFFMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39088,7 +39055,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39110,7 +39077,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39127,7 +39094,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39149,7 +39116,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMFFFFM\",
 \"MMMMMMMMMMMMFFFF\",
 \"MMMMMMMMMMMMFFFF\",
-\"MMMMMMMMMMMMMFFF\",
+\"MMMMMMMMMMMMMFFF\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39166,7 +39133,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39188,7 +39155,7 @@ static char *xpm[] = {
 \"MFFFFMMMMMMMMMMM\",
 \"FFFFMMMMMMMMMMMM\",
 \"FFFFMMMMMMMMMMMM\",
-\"FFFMMMMMMMMMMMMM\",
+\"FFFMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39205,7 +39172,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39227,7 +39194,7 @@ static char *xpm[] = {
 \"MMMMMMMGGMMMMMMM\",
 \"MMMMMMGGGGMMMMMM\",
 \"MMMMMMGGGGMMMMMM\",
-\"MMMMMMMGGMMMMMMM\",
+\"MMMMMMMGGMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39244,7 +39211,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39266,7 +39233,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
 \"MMMMMMMMMMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39283,7 +39250,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39305,7 +39272,7 @@ static char *xpm[] = {
 \"MMMMMMMMMMMGGGGM\",
 \"MMMMMMMMMMMMGGGG\",
 \"MMMMMMMMMMMMGGGG\",
-\"MMMMMMMMMMMMMGGG\",
+\"MMMMMMMMMMMMMGGG\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39322,7 +39289,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39344,7 +39311,7 @@ static char *xpm[] = {
 \"MGGGGMMMMMMMMMMM\",
 \"GGGGMMMMMMMMMMMM\",
 \"GGGGMMMMMMMMMMMM\",
-\"GGGMMMMMMMMMMMMM\",
+\"GGGMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39361,7 +39328,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39383,7 +39350,7 @@ static char *xpm[] = {
 \"MMMMMMOOMMMMMMMM\",
 \"MMMMMMOOAMMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39400,7 +39367,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39422,7 +39389,7 @@ static char *xpm[] = {
 \"MMMMMMCOMMMMMMMM\",
 \"MMMMMMOCAMMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39439,7 +39406,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39461,7 +39428,7 @@ static char *xpm[] = {
 \"MMMMMMCCMMMMMMMM\",
 \"MMMMMMCCAMMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39478,7 +39445,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39500,7 +39467,7 @@ static char *xpm[] = {
 \"MMMMMMDDMMMMMMMM\",
 \"MMMMMMDDAMMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39517,7 +39484,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39539,7 +39506,7 @@ static char *xpm[] = {
 \"MMMMMMIIMMMMMMMM\",
 \"MMMMMMIIAMMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39556,7 +39523,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39578,7 +39545,7 @@ static char *xpm[] = {
 \"MMMMMMEIMMMMMMMM\",
 \"MMMMMMIEAMMMMMMM\",
 \"MMMMMMMAAMMMMMMM\",
-\"MMMMMMMMMMMMMMMM\",
+\"MMMMMMMMMMMMMMMM\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39595,7 +39562,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39617,7 +39584,7 @@ static char *xpm[] = {
 \"ACKKKACLJJAJJJJA\",
 \"AAKKACLCKJJAJJAA\",
 \"AAJACKCKKJJJAJAA\",
-\"AAJCKKJAAAJJJJJA\",
+\"AAJCKKJAAAJJJJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39634,7 +39601,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39656,7 +39623,7 @@ static char *xpm[] = {
 \"JJJJJJJJJJJJJJJJ\",
 \"JJJJJJJJJJJJJJJJ\",
 \"JJJJJJJJJJJJJJJJ\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39673,7 +39640,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39695,7 +39662,7 @@ static char *xpm[] = {
 \"ACKKKACLJJAJJJJA\",
 \"AAKKACLCKJJAJJAA\",
 \"AAJACKCKKJJJAJAA\",
-\"AAJCKKJAAAJJJJJA\",
+\"AAJCKKJAAAJJJJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39712,7 +39679,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39734,7 +39701,7 @@ static char *xpm[] = {
 \"ACKKKACLJJAJJJJA\",
 \"AKKKACLCKJJAJJAA\",
 \"AAJACKCKKJJJAJAA\",
-\"AAJCKKJAAAJJJJJA\",
+\"AAJCKKJAAAJJJJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39751,7 +39718,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39773,7 +39740,7 @@ static char *xpm[] = {
 \"AKJJJJJJJJJJJJJJ\",
 \"AKJJJJJJJJJJJJJJ\",
 \"AJJJJJJJJJJJJJJJ\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39790,7 +39757,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39812,7 +39779,7 @@ static char *xpm[] = {
 \"JJJJJJJJJJJJJJJA\",
 \"JJJJJJJJJJJJJJJA\",
 \"JJJJJJJJJJJJJJJA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39829,7 +39796,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39851,7 +39818,7 @@ static char *xpm[] = {
 \"ACKKKACLJJAJJJJA\",
 \"AKKKACLCKJJAJJAA\",
 \"AAJACKCKKJJJAJAA\",
-\"AAJCKKJAAAJJJJJA\",
+\"AAJCKKJAAAJJJJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39868,7 +39835,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39890,7 +39857,7 @@ static char *xpm[] = {
 \"JJJJJJJJJJJJJJJJ\",
 \"JJJJJJJJJJJJJJJJ\",
 \"JJJJJJJJJJJJJJJJ\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39907,7 +39874,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39929,7 +39896,7 @@ static char *xpm[] = {
 \"ACKKKACLJJAJJJJA\",
 \"AKKKACLCKJJAJJAA\",
 \"AAJACKCKKJJJAJAA\",
-\"AAJCKKJAAAJJJJJA\",
+\"AAJCKKJAAAJJJJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39946,7 +39913,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -39968,7 +39935,7 @@ static char *xpm[] = {
 \"ACKKKACLJJAJJJJA\",
 \"AAKKACLCKJJAJJAA\",
 \"AAJACKCKKJJJAJAA\",
-\"AAJCKKJAAAJJJJJA\",
+\"AAJCKKJAAAJJJJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -39985,7 +39952,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40007,7 +39974,7 @@ static char *xpm[] = {
 \"ACKKKACLJJAJJJJA\",
 \"AKKKACLCKJJAJJAA\",
 \"AAJACKCKKJJJAJAA\",
-\"AAJCKKJAAAJJJJJA\",
+\"AAJCKKJAAAJJJJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40024,7 +39991,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40046,7 +40013,7 @@ static char *xpm[] = {
 \"ADDDAJJMJMJJDDDA\",
 \"AJAAAJJMMMMJJAJA\",
 \"AJJJAJJMMMMJJJJA\",
-\"ADMMAJJMMMMJDMJA\",
+\"ADMMAJJMMMMJDMJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40063,7 +40030,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40085,7 +40052,7 @@ static char *xpm[] = {
 \"JDMMMMJDMMMMJDMM\",
 \"JMMMMMJMMMMMJMMM\",
 \"JJJJJJJJJJJJJJJJ\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40102,7 +40069,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40124,7 +40091,7 @@ static char *xpm[] = {
 \"ADDDAJMMMMMJDDDA\",
 \"AJAAAJJMMMMJJAJA\",
 \"AJJJAJJMMMMJJJJA\",
-\"ADMMAJJMMMMJDMJA\",
+\"ADMMAJJMMMMJDMJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40141,7 +40108,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40163,7 +40130,7 @@ static char *xpm[] = {
 \"ADDDAJMMMMMJDDDA\",
 \"AJAAAJJMMMMJJAJA\",
 \"AJJJAJJMMMMJJJJA\",
-\"ADMMAJJMMMMJDMJA\",
+\"ADMMAJJMMMMJDMJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40180,7 +40147,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40202,7 +40169,7 @@ static char *xpm[] = {
 \"JDMMMMJDMMMMJDMM\",
 \"JMMMMMJMMMMMJMMM\",
 \"JJJJJJJJJJJJJJJJ\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40219,7 +40186,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40241,7 +40208,7 @@ static char *xpm[] = {
 \"JDMMMMJDMMMMJDMM\",
 \"JMMMMMJMMMMMJMMM\",
 \"JJJJJJJJJJJJJJJJ\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40258,7 +40225,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40280,7 +40247,7 @@ static char *xpm[] = {
 \"ADDDAJMMMMMJDDDA\",
 \"AJAAAJJMMMMJJAJA\",
 \"AJJJAJJMMMMJJJJA\",
-\"ADMMAJJMMMMJDMJA\",
+\"ADMMAJJMMMMJDMJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40297,7 +40264,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40319,7 +40286,7 @@ static char *xpm[] = {
 \"JDMMMMJDMMMMJDMM\",
 \"JMMMMMJMMMMMJMMM\",
 \"JJJJJJJJJJJJJJJJ\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40336,7 +40303,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40358,7 +40325,7 @@ static char *xpm[] = {
 \"ADDDAJMMMMMJDDDA\",
 \"AJAAAJJMMMMJJAJA\",
 \"AJJJAJJMMMMJJJJA\",
-\"ADMMAJJMMMMJDMJA\",
+\"ADMMAJJMMMMJDMJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40375,7 +40342,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40397,7 +40364,7 @@ static char *xpm[] = {
 \"ADDDAJMMMMMJDDDA\",
 \"AJAAAJJMMMMJJAJA\",
 \"AJJJAJJMMMMJJJJA\",
-\"ADMMAJJMMMMJDMJA\",
+\"ADMMAJJMMMMJDMJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40414,7 +40381,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40436,7 +40403,7 @@ static char *xpm[] = {
 \"ADDDAJMMMMMJDDDA\",
 \"AJAAAJJMMMMJJAJA\",
 \"AJJJAJJMMMMJJJJA\",
-\"ADMMAJJMMMMJDMJA\",
+\"ADMMAJJMMMMJDMJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40453,7 +40420,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40475,7 +40442,7 @@ static char *xpm[] = {
 \"AJJJAACLJJAAJJJA\",
 \"AAAAACLCKJJAAAAA\",
 \"AAJAAACKKJAAAJAA\",
-\"ACJJAAAAAAAACJJA\",
+\"ACJJAAAAAAAACJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40492,7 +40459,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40514,7 +40481,7 @@ static char *xpm[] = {
 \"KJAACJJACJAAKJJA\",
 \"KJJAKJJAKJJACJAA\",
 \"KJJACJJAKJJACJJA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40531,7 +40498,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40553,7 +40520,7 @@ static char *xpm[] = {
 \"AJJJAACLJJAAJJJA\",
 \"AAAAACLCKJJAAAAA\",
 \"AAJAAACKKJAAAJAA\",
-\"ACJJAAAAAAAACJJA\",
+\"ACJJAAAAAAAACJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40570,7 +40537,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40592,7 +40559,7 @@ static char *xpm[] = {
 \"AJJJAACLJJAAJJJA\",
 \"AAAAACLCKJJAAAAA\",
 \"AAJAAACKKJAAAJAA\",
-\"ACJJAAAAAAAACJJA\",
+\"ACJJAAAAAAAACJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40609,7 +40576,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40631,7 +40598,7 @@ static char *xpm[] = {
 \"KJAACJJACJAAKJJA\",
 \"KJJAKJJAKJJACJAA\",
 \"KJJACJJAKJJACJJA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40648,7 +40615,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40670,7 +40637,7 @@ static char *xpm[] = {
 \"KJAACJJACJAAKJJA\",
 \"KJJAKJJAKJJACJAA\",
 \"KJJACJJAKJJACJJA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40687,7 +40654,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40709,7 +40676,7 @@ static char *xpm[] = {
 \"AJJJAACLJJAAJJJA\",
 \"AAAAACLCKJJAAAAA\",
 \"AAJAAACKKJAAAJAA\",
-\"ACJJAAAAAAAACJJA\",
+\"ACJJAAAAAAAACJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40726,7 +40693,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40748,7 +40715,7 @@ static char *xpm[] = {
 \"KJAACJJACJAAKJJA\",
 \"KJJAKJJAKJJACJAA\",
 \"KJJACJJAKJJACJJA\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40765,7 +40732,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40787,7 +40754,7 @@ static char *xpm[] = {
 \"AJJJAACLJJAAJJJA\",
 \"AAAAACLCKJJAAAAA\",
 \"AAJAAACKKJAAAJAA\",
-\"ACJJAAAAAAAACJJA\",
+\"ACJJAAAAAAAACJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40804,7 +40771,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40826,7 +40793,7 @@ static char *xpm[] = {
 \"AJJJAACLJJAAJJJA\",
 \"AAAAACLCKJJAAAAA\",
 \"AAJAAACKKJAAAJAA\",
-\"ACJJAAAAAAAACJJA\",
+\"ACJJAAAAAAAACJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40843,7 +40810,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40865,7 +40832,7 @@ static char *xpm[] = {
 \"AJJJAACLJJAAJJJA\",
 \"AAAAACLCKJJAAAAA\",
 \"AAJAAACKKJAAAJAA\",
-\"ACJJAAAAAAAACJJA\",
+\"ACJJAAAAAAAACJJA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40882,7 +40849,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40904,7 +40871,7 @@ static char *xpm[] = {
 \"ABBBAMMEMEMMBBBA\",
 \"AMAAAMMEEEEMMAMA\",
 \"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\",
+\"ABEEAMMEEEEMBEMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40921,7 +40888,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40943,7 +40910,7 @@ static char *xpm[] = {
 \"MBEEEEMBEEEEMBEE\",
 \"MEEEEEMEEEEEMEEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40960,7 +40927,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -40982,7 +40949,7 @@ static char *xpm[] = {
 \"ABBBAMEEEEEMBBBA\",
 \"AMAAAMMEEEEMMAMA\",
 \"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\",
+\"ABEEAMMEEEEMBEMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -40999,7 +40966,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -41021,7 +40988,7 @@ static char *xpm[] = {
 \"ABBBAMEEEEEMBBBA\",
 \"AMAAAMMEEEEMMAMA\",
 \"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\",
+\"ABEEAMMEEEEMBEMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -41038,7 +41005,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -41060,7 +41027,7 @@ static char *xpm[] = {
 \"MBEEEEMBEEEEMBEE\",
 \"MEEEEEMEEEEEMEEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -41077,7 +41044,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -41099,7 +41066,7 @@ static char *xpm[] = {
 \"MBEEEEMBEEEEMBEE\",
 \"MEEEEEMEEEEEMEEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -41116,7 +41083,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -41138,7 +41105,7 @@ static char *xpm[] = {
 \"ABBBAMEEEEEMBBBA\",
 \"AMAAAMMEEEEMMAMA\",
 \"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\",
+\"ABEEAMMEEEEMBEMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -41155,7 +41122,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -41177,7 +41144,7 @@ static char *xpm[] = {
 \"MBEEEEMBEEEEMBEE\",
 \"MEEEEEMEEEEEMEEE\",
 \"MMMMMMMMMMMMMMMM\",
-\"AAAAAAAAAAAAAAAA\",
+\"AAAAAAAAAAAAAAAA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -41194,7 +41161,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -41216,7 +41183,7 @@ static char *xpm[] = {
 \"ABBBAMEEEEEMBBBA\",
 \"AMAAAMMEEEEMMAMA\",
 \"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\",
+\"ABEEAMMEEEEMBEMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -41233,7 +41200,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -41255,7 +41222,7 @@ static char *xpm[] = {
 \"ABBBAMEEEEEMBBBA\",
 \"AMAAAMMEEEEMMAMA\",
 \"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\",
+\"ABEEAMMEEEEMBEMA\"
 };" nil t)
 (create-image "/* XPM */
 static char *xpm[] = {
@@ -41272,7 +41239,7 @@ static char *xpm[] = {
 \"H c #FFFF00\",
 \"I c #FF00FF\",
 \"J c #914700\",
-\"K c #CC7900\",
+\"K c #CC4F00\",
 \"L c #FFB691\",
 \"M c #476C6C\",
 \"N c #FFFFFF\",
@@ -41294,8 +41261,6 @@ static char *xpm[] = {
 \"ABBBAMEEEEEMBBBA\",
 \"AMAAAMMEEEEMMAMA\",
 \"AMMMAMMEEEEMMMMA\",
-\"ABEEAMMEEEEMBEMA\",
+\"ABEEAMMEEEEMBEMA\"
 };" nil t)))
-
 (provide 'nethack-glyphs)
-;;; nethack-glyphs.el ends here
