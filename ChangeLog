@@ -1,3 +1,8 @@
+2000-09-26  Shawn  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nethack-process-command-list): The filter can now
+	handle globs of nethack lisp commands.
+
 2000-09-25  Shawn  <sabetts@vcn.bc.ca>
 
 	* nethack-apix.el: In player selection, doesn't ask the user if
