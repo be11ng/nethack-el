@@ -50,3 +50,10 @@ install elisp code?
 (setq nethack-program "/PATH/TO/nethack")
 
 ** M-x nethack RET
+
+* Notes
+
+** SlashEM
+I have created a patch for SlashEM Alpha Version 0.0.7E0. The patch is
+called ese-007e0.patch. To play SlashEM inside emacs, do the same as
+above, but use the SlashEM patch and SlashEM source.

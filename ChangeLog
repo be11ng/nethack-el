@@ -1,3 +1,7 @@
+2003-04-09  Shawn Betts  <sabetts@sfu.ca>
+
+	* nethack.el (nethack-el-version): version update
+
 2003-04-03  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-keys.el (nh-map-mode-map): Don't map M-[.
