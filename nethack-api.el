@@ -644,8 +644,7 @@ displayed."
     (nh-send menu-data)
     (and (window-configuration-p nh-window-configuration)
 	 (set-window-configuration nh-window-configuration))
-    (setq nh-active-menu-buffer nil)
-    (message "%S" menu-data)))
+    (setq nh-active-menu-buffer nil)))
 	
 (defun nh-menu-cancel ()
   "Dismiss a menu with out making any choices."

@@ -1,3 +1,8 @@
+2003-03-08  Shawn Betts  <sabetts@sfu.ca>
+
+	* nethack-api.el (nh-menu-submit): Don't print the list of
+	selected menu items to the minibuffer.
+
 2002-09-26  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el (nh-sentinel): Don't pop to process buffer on signal.
