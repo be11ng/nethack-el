@@ -1,3 +1,41 @@
+2001-10-17  Ryan Yeske  <rcyeske@vcn.bc.ca>
+
+	* nethack-api.el (nethack-raw-print-buffer-name): New variable.
+	(nethack-api-raw-print): Print text into
+	`nethack-raw-print-buffer-name' and display it.
+	(nethack-api-raw-print-bold): Call nethack-api-raw-print.
+	(nethack-api-putstr): Move code from nethack-print-status-lines
+	and nethack-set-status-line here.
+	(nethack-api-putstr): Propertize strings going into the message
+	buffer.
+	(nethack-api-display-file): Use the nethack-directory when
+	searching for file.
+	(nethack-protect-windows): Add macro.
+	(nethack-window-configuration): New variable.
+	(nethack-api-select-menu): Save window-configuration before
+	popping to window.
+	(nethack-menu-submit): Restore window configuration.
+	(nethack-unassigned-accelerators): New variable.
+	(nethack-unassigned-accelerator-index): New variable.
+	(nethack-specify-accelerator): New function.
+	(nethack-api-add-menu): Specify accelerators for menus that do
+	not.
+	(nethack-menu-cancel): New function.
+	(nethack-menu-reset-keymap): New function.
+	(nethack-api-display-nhwindow): Don't split vertically.  Protect
+	the status and message windows.
+
+	* nethack.el (nethack): Kill off leftover buffers before starting.
+	(nethack-buffer-name-alist): Remove.
+	(nethack-buffer-id-alist): Remove.
+	(nethack-get-buffer): Rename to `nethack-buffer'.
+	(nethack-map-mode): Don't kill-local-variables.
+	(nethack-create-buffer): Remove.
+	(nethack-set-status-line): Remove, code moved into
+	`nethack-api-putstr'.
+	(nethack-print-status-lines): Likewise.
+	(nethack-restore-windows): Comment out.
+
 2001-10-16  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el: Don't require nethack-menu.

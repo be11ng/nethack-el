@@ -18,7 +18,7 @@ You can customize key bindings or load extensions with this.")
 ;; FIXME: dirty hack:
 (defvar nethack-status-line-number 0
   "The line that will be updated in the status window next time
-nethack-api-putstr")
+`nethack-api-putstr' is called.")
 
 (defvar nethack-status-lines '("" . "")
   "The 2 lines of the status window")
@@ -189,9 +189,18 @@ The variable `nethack-program' is the name of the executable to run."
 	   (eq (process-status nethack-process) 'run))
       (message "Nethack process already running...")
 
+    (make-variable-buffer-local 'nethack-buffer-type)
+
+    ;; clean up old buffers
+    (mapc (lambda (b) (kill-buffer (cdr b))) nethack-buffer-table)
+    (setq nethack-buffer-table nil)
+    (if (get-buffer nethack-raw-print-buffer-name)
+	(kill-buffer nethack-raw-print-buffer-name))
+
     (setq nethack-waiting-for-command-flag nil) ;move these to nethack-mode
     (setq nethack-command-queue nil)
 
+    (delete-other-windows)
     (setq nethack-process (nethack-start-program))))
 
 
@@ -260,7 +269,7 @@ char to the STRING."
 	      (let* ((form (read (process-mark proc)))
 		     (retval (save-excursion (eval form))))
 		(cond ((eq retval 'void))
-		      ((eq retval 'unimplemented) 
+		      ((eq retval 'unimplemented)
 		       (ding)
 		       (message "nethack: unimplemented: `%s'" form))
 		      (t (nethack-process-send retval)))))
@@ -276,29 +285,10 @@ char to the STRING."
 
 
 ;;; Buffer code (aka windows in Nethack)
-(defvar nethack-buffer-name-alist
-  '((nhw-message . "*nhw-message*")
-    (nhw-status  . "*nhw-status*")
-    (nhw-map     . "*nhw-map*")
-    (nhw-menu    . "*nhw-menu*")
-    (nhw-text    . "*nhw-text*"))
-  "Buffer names for each window type.")
 
-;; digit ids to send back and forth to nethack process to refer to
-;; windows
-(defvar nethack-buffer-id-alist
-  '((0 . nhw-message)
-    (1 . nhw-status)
-    (2 . nhw-map)
-    (3 . nhw-menu)
-    (4 . nhw-text)))
-
-
-(defun nethack-get-buffer (window)
-  "Returns the buffer that corresponds to the Nethack WINDOW."
-  (cdr (assq (cdr (assq window nethack-buffer-id-alist))
-	     nethack-buffer-name-alist)))
-
+(defun nethack-buffer (id)
+  "Returns the buffer that corresponds to the Nethack window ID."
+  (cdr (assq id nethack-buffer-table)))
 
 ;;; Main Map Buffer code
 (defvar nethack-command-queue nil
@@ -334,7 +324,6 @@ times the command should be executed."
   "Major mode for the main Nethack map window.
 
 \\{nethack-mode-map}"
-  (kill-all-local-variables)
   (use-local-map nethack-mode-map)
   (setq mode-name "NETHACK MAP")
   (setq major-mode 'nethack-map-mode)
@@ -345,67 +334,33 @@ times the command should be executed."
 (defvar nethack-map-height 22 "Max height of the map")
 
 
-(defun nethack-create-buffer (type)
-  "Create a buffer for a Nethack window of TYPE."
-  (let ((buffer-name (cdr (assq type nethack-buffer-name-alist))))
-    (get-buffer-create buffer-name)
-    (save-excursion
-      (set-buffer buffer-name)
-      (kill-all-local-variables)
-      (setq buffer-read-only nil)
-      (erase-buffer)
-      (if (eq type 'nhw-map)
-	  (nethack-setup-map-buffer buffer-name)))))
-
-
-(defun nethack-setup-map-buffer (buffer-name)
+(defun nethack-setup-map-buffer (buffer)
   "Initialize the gamegrid and setup Nethack mode and keymap."
   (save-excursion
-    (set-buffer buffer-name)
-    (nethack-map-mode)
-    (gamegrid-init (make-vector 256 nil))
-    (gamegrid-init-buffer nethack-map-width 
-			  nethack-map-height
-			  ? )))
-
-
-;;; Functions to manipulate, update and display the status window
-
-(defun nethack-set-status-line (str)
-  "Set the current status line (stored in
-`nethack-status-line-number') to str."
-  (if (= nethack-status-line-number 0)
-      (setcar nethack-status-lines str)
-    (setcdr nethack-status-lines str)))
-
-(defun nethack-print-status-lines ()
-  "Updates the *nhw-status* buffer."
-  (save-excursion
-    (set-buffer (cdr (assq 'nhw-status nethack-buffer-name-alist)))
-    (erase-buffer)
-    (insert (car nethack-status-lines) "\n" (cdr nethack-status-lines))))
-
+    (set-buffer buffer)
+    (nethack-map-mode)))
+    
 
 ;;; Functions to restore nethack window configurations
 
-(defun nethack-restore-windows ()
-  "Restore a standard nethack window configuration."
-  (interactive)
-  (let ((new-win))
-    (delete-other-windows)
-    (set-window-buffer (selected-window) 
-		       (cdr (assoc 'nhw-map
-				   nethack-buffer-name-alist)))
-    (setq new-win (split-window nil 4))
-    (set-window-buffer (selected-window) 
-		       (cdr (assoc 'nhw-message
-				   nethack-buffer-name-alist)))
-    (select-window new-win)
-    (let ((window-min-height 3))
-      (setq new-win (split-window nil (- (window-height) 3))))
-    (set-window-buffer new-win
-		       (cdr (assoc 'nhw-status
-				   nethack-buffer-name-alist)))))
+;; (defun nethack-restore-windows ()
+;;   "Restore a standard nethack window configuration."
+;;   (interactive)
+;;   (let ((new-win))
+;;     (delete-other-windows)
+;;     (set-window-buffer (selected-window) 
+;; 		       (cdr (assoc 'nhw-map
+;; 				   nethack-buffer-name-alist)))
+;;     (setq new-win (split-window nil 4))
+;;     (set-window-buffer (selected-window) 
+;; 		       (cdr (assoc 'nhw-message
+;; 				   nethack-buffer-name-alist)))
+;;     (select-window new-win)
+;;     (let ((window-min-height 3))
+;;       (setq new-win (split-window nil (- (window-height) 3))))
+;;     (set-window-buffer new-win
+;; 		       (cdr (assoc 'nhw-status
+;; 				   nethack-buffer-name-alist)))))
 
 (provide 'nethack)
 
