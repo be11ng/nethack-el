@@ -1,3 +1,9 @@
+2001-06-25  shawn  <sabetts@diggin.lamenet.tmp>
+
+	* nethack.el (nethack-process-command-list): use while to loop
+	through the command list. If the last command fails to parse, keep
+	it in the command list.
+
 2001-06-21  Shawn Betts  <sabetts@van.gobasis.com>
 
 	* nethack-menu.el (nethack-menu-create-item): insert a space after

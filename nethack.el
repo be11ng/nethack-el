@@ -99,16 +99,16 @@ the `nethack-process-buffer' for debugging."
 
 (defun nethack-process-command-list (l)
   "Process a list of commands. The last command may not be complete."
-  (cond ((null (cdr l))
-	 (if (eq ?\) (elt (car l) (- (length (car l)) 1)))
-	     (progn
-	       (nethack-parse-command (car l))
-	       (setq nethack-process-output ""))
-	       (setq nethack-process-output (car l))))
-	(t (nethack-parse-command (car l))
-	   (nethack-process-command-list (cdr l)))))
+  (while (not (null (cdr l)))
+    (nethack-parse-command (car l))
+    (setq l (cdr l)))
 
-	       
+  (setq nethack-process-output "")
+  (condition-case nil
+      (nethack-parse-command (car l))
+      (end-of-file
+       (setq nethack-process-output (car l)))))
+
 (defun nethack-log-string (string)
   "Write STRING into `nethack-process-buffer'."
   (with-current-buffer (process-buffer nethack-process)
