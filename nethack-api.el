@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.2 2000/08/20 18:30:12 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.3 2000/08/21 06:04:15 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -133,7 +133,7 @@ window-port.
 -----"
   (save-excursion
     (set-buffer (nethack-get-buffer window))
-    (goto-char (+ x (* y nethack-map-width))))
+    (goto-char (gamegrid-cell-offset x y)))
   'void-fixme)
 
 
@@ -175,9 +175,7 @@ will be the routine the OS provides to read a character.  Returned
 character _must_ be non-zero.
 
 -----"
-
   'unimplemented)
-
 
 (defun nethack-api-poskey (x y mod)
   "int nh_poskey(int *x, int *y, int *mod) -- Returns a single
@@ -374,9 +372,7 @@ will do a --more--, if necessary, in the tty window-port.
 
 ----- not sure what this should do.  makes buffer visible in some
 way?"
-  (display-buffer (cdr (assq (cdr (assq window
-					nethack-buffer-id-alist))
-			     nethack-buffer-name-alist)))
+  (display-buffer (nethack-get-buffer window))
   'void)
 
 
@@ -384,9 +380,10 @@ way?"
   "destroy_nhwindow(window) -- Destroy will dismiss the window if the
 window has not already been dismissed.
 
------"
+-----we are going to try not to destroy windows/buffers if we can help
+it, we can just bury them or something."
 
-  'unimplemented)
+  'void-fixme)
 
 
 (defun nethack-api-start-menu (window)
