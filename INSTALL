@@ -2,10 +2,10 @@
 
 This needs more detail, obviously.
 
-* download nethack-331.tgz from nethack.org or some mirror.
+* download nethack-340.tgz from nethack.org or some mirror.
 
 * apply the patch
-enh-331.patch
+patch -p 1 < PATH/TO/enh-340.patch
 
 * configure it and build it
 Read the Install file in the nethack tree.
