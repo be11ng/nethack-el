@@ -43,8 +43,8 @@ struct game_t
 
 /* This structure describes the games are playable on this server. The
    MUST be at least one entry. */
-struct game_t games[] = {{"slashem", "/usr/games/slashem"},
-			 {"nethack", "/usr/games/nethack"},
+struct game_t games[] = {{"nethack", "/usr/games/nethack"},
+			 {"slashem", "/usr/games/slashem"},
 			 /* The last entry must be NULL. */
 			 {NULL, NULL}};
 
