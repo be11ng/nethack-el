@@ -86,9 +86,12 @@ the `nethack-process-buffer' for debugging."
 	      
   ;; handle command
   (let ((retval (nethack-parse-command command)))
-    (if (eq retval 'unimplemented)
-	(error "nethack: unimplemented function")
-      (nethack-process-send-string (prin1-to-string retval)))))
+    (cond ((eq retval 'unimplemented)
+	   (error "nethack: unimplemented function"))
+	  ((eq retval 'no-retval)
+	   (message "nethack: no-retval"))
+	  (t 
+	   (nethack-process-send-string (prin1-to-string retval))))))
 
 
 (defun nethack-log-string (string)
@@ -132,6 +135,48 @@ the `nethack-process-buffer' for debugging."
 	     nethack-buffer-name-alist)))
 
 ;;; Main Map Buffer code
+(defvar nethack-key-queue nil
+  "List of strings to be sent to the running `nethack-process' in
+response to the next call to `nethack-api-getch'.")
+
+(defvar nethack-waiting-for-key-p nil
+  "True if the nethack process is waiting for a key.")
+
+(defun nethack-handle-key ()
+  "If the nethack process is waiting for a key, send the key that
+invoked this command, otherwise add the key to `nethack-key-queue' for
+eventual delivery to the running nethack process."
+  (interactive)
+  (let ((key (this-command-keys)))
+    (if nethack-waiting-for-key-p
+	(progn
+	  (nethack-process-send-string key)
+	  (setq nethack-waiting-for-key-p nil))
+      (setq nethack-key-queue
+	    (append nethack-key-queue
+		    (list key))))))
+
+(defvar nethack-map-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map "h" 'nethack-handle-key)
+    (define-key map "j" 'nethack-handle-key)
+    (define-key map "k" 'nethack-handle-key)
+    (define-key map "l" 'nethack-handle-key)
+    map)
+  "Keymap for nethack-map mode")
+
+(defvar nethack-map-mode-hook nil
+  "Functions to run after setting up the nethack-map mode.")
+
+(defun nethack-map-mode ()
+  "Major mode for the main Nethack map window."
+  (kill-all-local-variables)
+  (use-local-map nethack-map-mode-map)
+  (setq mode-name "NETHACK MAP")
+  (setq major-mode 'nethack-map-mode)
+  (run-hooks nethack-map-mode-hook))
+ 
+
 (defvar nethack-map-width 79 "Max width of the map")
 (defvar nethack-map-height 22 "Max height of the map")
 
@@ -151,6 +196,7 @@ the `nethack-process-buffer' for debugging."
   "Initialize the gamegrid and setup Nethack mode and keymap."
   (save-excursion
     (set-buffer buffer-name)
+    (nethack-map-mode)
     (gamegrid-init (make-vector 256 nil))
     (gamegrid-init-buffer nethack-map-width 
 			  nethack-map-height
