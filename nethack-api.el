@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.52 2001/12/21 02:57:50 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.53 2001/12/21 03:17:14 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -12,6 +12,7 @@
 ;;; Commentary:
 ;; 
 
+(require 'cl)
 (require 'ewoc)
 (require 'gamegrid)
 
@@ -837,8 +838,9 @@ actually toggled."
   (interactive)
   (if (eq nethack-menu-how 'pick-any)
       (ewoc-map (lambda (i)
-		  (aset i 1 (not (aref i 1)))
-		  t)			; redisplay this entry
+		  (unless (= (aref i 3) -1)
+		    (aset i 1 (not (aref i 1)))
+		    t))			; redisplay this entry
 		nethack-menu)))
 
 (defun nethack-menu-goto-next ()
