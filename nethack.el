@@ -198,7 +198,7 @@ eventual delivery to the running nethack process."
   (use-local-map nethack-mode-map)
   (setq mode-name "NETHACK MAP")
   (setq major-mode 'nethack-map-mode)
-  (run-hooks nethack-map-mode-hook))
+  (run-hooks 'nethack-map-mode-hook))
  
 
 (defvar nethack-map-width 79 "Max width of the map")
