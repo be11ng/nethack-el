@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.69 2002/01/29 23:18:49 rcyeske Exp $
+;;; $Id: nethack-api.el,v 1.70 2002/02/01 09:59:27 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -373,6 +373,7 @@ are no newlines in `nethack-status-string'."
     (let ((inhibit-read-only t))
       (cond ((eq nethack-buffer-type 'nhw-message)
 	     (goto-char (point-max))
+	     (run-hooks 'nethack-message-pre-print-hook)
 	     (insert str "\n")
 	     ;; cover new text with highlight overlay
 	     (let ((start (overlay-start nethack-message-highlight-overlay)))

@@ -1,7 +1,7 @@
 ;;; nethack.el -- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id: nethack.el,v 1.63 2002/01/29 23:18:49 rcyeske Exp $
+;;; $Id: nethack.el,v 1.64 2002/02/01 09:59:27 rcyeske Exp $
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 ;;; Commentary:
@@ -23,6 +23,11 @@
     "Hook run after loading nethack."
     :type '(hook)
     :group 'nethack)
+
+(defcustom nethack-message-pre-print-hook nil
+  "Hook run before a message is printed."
+  :type '(hook)
+  :group 'nethack)
 
 (defface nethack-black-face
   `((t (:foreground "dark blue")))
