@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.64 2002/02/01 09:59:27 rcyeske Exp $
+;; Version: $Id: nethack.el,v 1.66 2002/02/01 10:34:23 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -258,7 +258,7 @@ The variable `nethack-program' is the name of the executable to run."
 	(message "Nethack process already running..."))
     (save-excursion
       ;; Reset intermediate variables.
-      (setq nethack-status-alist nil)
+      (nethack-reset-status)
       ;;; Start the process.
       (if (get-buffer nh-proc-buffer-name)
 	  (kill-buffer nh-proc-buffer-name))
@@ -389,9 +389,6 @@ delete the contents, perhaps logging the text."
   "The number of turns to keep a changed status field highlighted."
   :type '(integer)
   :group 'nethack)
-
-(defvar nethack-status-alist nil
-  "An alist of the players status.")
 
 (defcustom nethack-status-format
   "%n\nSt:%s Dx:%d Co:%c In:%i Wi:%w Ch:%c %a\nDlvl:%D $:%z HP:%h(%H) Pw:%p(%P) AC:%m Xp:%e(%E) T:%t %u %C %S %b %T %A %L %N"

@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.70 2002/02/01 09:59:27 rcyeske Exp $
+;; Version: $Id: nethack-api.el,v 1.72 2002/02/01 10:34:21 rcyeske Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -227,6 +227,7 @@ are no newlines in `nethack-status-string'."
 (defvar nethack-status-attribute-XP (list 0 0 0))
 (defvar nethack-status-attribute-HD (list 0 0 0))
 (defvar nethack-status-attribute-T (list 0 0 0))
+(defvar nethack-status-attribute-Score (list 0 0 0))
 (defvar nethack-status-attribute-confusion (list nil nil 0))
 (defvar nethack-status-attribute-hunger (list nil nil 0))
 (defvar nethack-status-attribute-sick (list nil nil 0))
@@ -235,6 +236,39 @@ are no newlines in `nethack-status-string'."
 (defvar nethack-status-attribute-hallucination (list nil nil 0))
 (defvar nethack-status-attribute-slimed (list nil nil 0))
 (defvar nethack-status-attribute-encumbrance (list nil nil 0))
+
+(defun nethack-reset-status ()
+  (setq nethack-status-attribute-name (list nil nil 0)
+	nethack-status-attribute-monster (list nil nil 0)
+	nethack-status-attribute-rank (list nil nil 0)
+	nethack-status-attribute-St (list 0 0 0)
+	nethack-status-attribute-Dx (list 0 0 0)
+	nethack-status-attribute-Co (list 0 0 0)
+	nethack-status-attribute-In (list 0 0 0)
+	nethack-status-attribute-Wi (list 0 0 0)
+	nethack-status-attribute-Ch (list 0 0 0)
+	nethack-status-attribute-Align (list nil nil 0)
+	nethack-status-attribute-Dungeon (list nil nil 0)
+	nethack-status-attribute-Dlvl (list 0 0 0)
+	nethack-status-attribute-$ (list 0 0 0)
+	nethack-status-attribute-HP (list 0 0 0)
+	nethack-status-attribute-HPmax (list 0 0 0)
+	nethack-status-attribute-PW (list 0 0 0)
+	nethack-status-attribute-PWmax (list 0 0 0)
+	nethack-status-attribute-AC (list 0 0 0)
+	nethack-status-attribute-Level (list 0 0 0)
+	nethack-status-attribute-XP (list 0 0 0)
+	nethack-status-attribute-HD (list 0 0 0)
+	nethack-status-attribute-T (list 0 0 0)
+	nethack-status-attribute-Score (list 0 0 0)
+	nethack-status-attribute-confusion (list nil nil 0)
+	nethack-status-attribute-hunger (list nil nil 0)
+	nethack-status-attribute-sick (list nil nil 0)
+	nethack-status-attribute-blind (list nil nil 0)
+	nethack-status-attribute-stunned (list nil nil 0)
+	nethack-status-attribute-hallucination (list nil nil 0)
+	nethack-status-attribute-slimed (list nil nil 0)
+	nethack-status-attribute-encumbrance (list nil nil 0)))
 
 (defface nethack-status-good-face
   `((((type tty)
@@ -459,7 +493,7 @@ are no newlines in `nethack-status-string'."
 ;; whatever the window- port wants (symbol, font, color, attributes,
 ;; ...there's a 1-1 map between glyphs and distinct things on the map).
 
-(defun nethack-api-print-glyph (winid x y type offset color glyph tile ch)
+(defun nethack-api-print-glyph (winid x y color glyph tile ch)
   ""
 ;;  (with-current-buffer (nethack-buffer winid)
   (set-buffer (nethack-buffer winid))
