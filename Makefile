@@ -10,7 +10,7 @@ all: nethack.elc nethack-api.elc nethack-cmd.elc nethack-glyphs.elc nethack-keys
 		-f batch-byte-compile $<
 
 clean:
-	$(RM) *elc
+	$(RM) *.elc
 
 #
 # Make a datestamped distribution in the current directory

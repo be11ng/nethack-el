@@ -32,8 +32,8 @@
 
 ;;; Code:
 
+(require 'nethack-compat)
 (require 'gamegrid)
-(require 'overlay)			; needed for XEmacs
 (require 'nethack-keys)
 
 ;;; Buffer handling
