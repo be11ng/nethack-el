@@ -106,7 +106,7 @@
     (define-key map "H" 'nethack-command-west-until-ontop)
 
     ;;^H      Go west until you are near something (NOTE: what to do with this key?)
-    (define-key map "\C-h" 'nethack-command-west-until-near)
+    ;;(define-key map "\C-h" 'nethack-command-west-until-near)
 
     ;;i       Show your inventory
     (define-key map "i" 'nethack-command-inventory)
