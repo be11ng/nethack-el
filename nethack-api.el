@@ -449,18 +449,6 @@ corresponding cdr."
 	   (quit abort)))
      (cdar alist))))
 
-(defun nethack-api-choose-role (role-alist)
-  (nethack-choose-attribute "Choose role: " role-alist -1))
-
-(defun nethack-api-choose-race (race-alist)
-  (nethack-choose-attribute "Choose race: " race-alist -1))
-
-(defun nethack-api-choose-gender (gender-alist)
-  (nethack-choose-attribute "Choose gender: " gender-alist -1))
-
-(defun nethack-api-choose-alignment (alignment-alist)
-  (nethack-choose-attribute "Choose alignment: " alignment-alist -1))
-
 ;;  display_file(str, boolean complain) -- Display the file named str.
 ;; Complain about missing files iff complain is TRUE.
 

@@ -1,3 +1,10 @@
+2002-01-22  shawn  <sabetts@vcn.bc.ca>
+
+	* nethack-api.el (nethack-api-choose-role): remove function
+	(nethack-api-choose-race): likewise
+	(nethack-api-choose-gender): likewise
+	(nethack-api-choose-alignment): likewise
+
 2002-01-21  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-api.el (nethack-menu): Remove variable.
