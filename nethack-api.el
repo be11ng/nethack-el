@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.38 2001/10/19 11:05:16 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.39 2001/10/19 11:22:12 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -112,16 +112,17 @@
 (defun nethack-api-raw-print (str)
   (save-excursion
     (let ((buffer (get-buffer-create nethack-raw-print-buffer-name)))
-    (set-buffer buffer)
-    (insert str "\n")
-    (display-buffer buffer)))
+      (switch-to-buffer buffer)
+      (insert str "\n")
+      (delete-other-windows)))
   'void)
 
 ;; raw_print_bold(str) -- Like raw_print(), but prints in
 ;; bold/standout (if possible).
 
 (defun nethack-api-raw-print-bold (str)
-  (nethack-api-raw-print (propertize str 'face 'bold))
+  (nethack-api-raw-print 
+   (propertize str 'face (nethack-attr-face 'atr-bold)))
   'void)
 
 
@@ -160,6 +161,27 @@
 ;; the first and then the second.  In the tty port, pline() achieves this
 ;; by calling more() or displaying both on the same line.
 
+;; is this the way to make a "default" face?
+(defface nethack-atr-none-face
+  `((t))    				
+  "Nethack default face.")
+
+(defface nethack-atr-uline-face
+  `((t (:underline t)))
+  "Nethack underline face.")
+
+(defface nethack-atr-bold-face
+  `((t (:bold t)))
+  "Nethack bold face.")
+
+(defface nethack-atr-blink-face
+  `((t (:inverse-video t)))
+  "Nethack blink face.")
+
+(defface nethack-atr-inverse-face
+  `((t (:inverse-video t)))
+  "Nethack inverse face.")
+
 (defun nethack-api-putstr (winid attr str)
   ""
   (save-excursion
@@ -185,12 +207,13 @@
 		     l))))
 	  (t
 	   (goto-char (point-max))
-	   (insert (if (eq attr 'atr-none)
-		       str
-		     (propertize str 'face 'highlight)) ;FIXME: other attrs
+	   (insert (propertize str 'face (nethack-attr-face attr))
 		   "\n"))))
   'void)
 
+(defun nethack-attr-face (attr)
+  "Return the face corresponding with ATTR."
+  (intern-soft (concat "nethack-" (symbol-name attr) "-face")))
 
 ;; get_nh_event() -- Does window event processing (e.g. exposure
 ;; events).  A noop for the tty and X window-ports.
@@ -493,7 +516,7 @@ type specific initalizations, and return a digit id."
 	   (gamegrid-init (make-vector 256 nil))
 	   (gamegrid-init-buffer nethack-map-width
 				 nethack-map-height
-				 ?.))
+				 ? ))
 	  ((eq nethack-buffer-type 'nhw-message)
 	   (set-text-properties (point-min) (point-max) nil))
 	  (t
@@ -533,7 +556,9 @@ type specific initalizations, and return a digit id."
 	      ;; the user that we are waiting for a key to move on.
 	      ((eq nethack-buffer-type 'nhw-message)
 	       (nethack-process-send nil))
-	      (t (message "displaying %d with blocking %s" winid blocking)))
+	      ((eq nethack-buffer-type 'nhw-map)
+	       (read-char-exclusive)
+	       (nethack-process-send nil)))
       ;; Do nothing for nonblocking, except use if we are displaying
       ;; the status window, in which case set up all of the windows
       ;; for display for the first time.
@@ -698,9 +723,7 @@ specified by `nethack-unassigned-accelerator-index'."
     (ewoc-enter-last nethack-menu (vector
 				   acc
 				   preselected
-				   (if (eq attr 'atr-none)
-				       str
-				     (propertize str 'face 'highlight))	;FIXME: other attrs
+				   (propertize str 'face (nethack-attr-face attr))
 				   identifier))
     (if (not (= -1 identifier))
 	(define-key nethack-menu-keymap (vector acc) 'nethack-menu-toggle-item)))
@@ -916,10 +939,9 @@ menus."
 
 (defun nethack-api-outrip (window who int message)
   ""
-
   (save-excursion
     (set-buffer (nethack-buffer window))
-    (insert (concat who " -- " message))
+    (insert (concat who " -- " message) "\n")
     'void))
 
 
