@@ -261,10 +261,9 @@
 ;; flush_screen(1) before doing anything.  -- This uses the top line in
 ;; the tty window-port, other ports might use a popup.
 
-(defun nethack-api-getlin (ques input)
+(defun nethack-api-getlin (ques)
   "" 
-
-  'unimplemented)
+  (read-from-minibuffer (concat ques " ")))
 
 
 ;; int get_ext_cmd(void) -- Get an extended command in a window-port
