@@ -350,7 +350,12 @@ FIXME: doesnt actually use ATTR!"
 	  (setq key (nh-read-char (concat 
 					(format "(bad %d) " key)
 					ques " ")))))
-    (nh-send (if (= 13 key) default key))))
+    ;; 13, 27, and 7 are abort keys
+    (nh-send (if (or (= 13 key)
+		     (= 27 key)
+		     (= 7 key))
+		 default
+	       key))))
 
 (defun nhapi-ask-direction (prompt)
   "Prompt the user for a direction"
