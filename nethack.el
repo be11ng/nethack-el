@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.74 2003/03/29 07:01:26 rcyeske Exp $
+;; Version: $Id: nethack.el,v 1.75 2003/04/10 00:07:39 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -364,6 +364,18 @@ attribute, the new value and the old value."
     (t (:font "6x10")))
   "Map face with height less than the tile size (16 pixels)."
   :group 'nethack-faces)
+
+(defface nethack-pet-face
+  `((((type tty) (class color))
+     (:foreground "black" :background "white" :bold t))
+    (((class color) (background dark))
+     (:foreground "black" :background "white"))
+    (((class color) (background light))
+     (:foreground "white" :background "black"))
+    (t (:foreground "gray")))
+  "nethack white"
+  :group 'nethack-faces)
+
 
 
 ;;; Process
