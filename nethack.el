@@ -1,16 +1,36 @@
-;;; nethack.el -- run Nethack as an inferior process in Emacs
-;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
-;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id: nethack.el,v 1.64 2002/02/01 09:59:27 rcyeske Exp $
-;;; Requires: a copy of Nethack 3.3.x with the lisp window port
-
+;;; nethack.el --- run Nethack as a subprocess
+
+;; Copyright (C) 2002  Ryan Yeske and Shawn Betts
+
+;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
+;; Created: Sat Mar 18 11:31:52 2000
+;; Version: $Id: nethack.el,v 1.64 2002/02/01 09:59:27 rcyeske Exp $
+;; Keywords: games
+
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
+
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+;; Boston, MA 02111-1307, USA.
+
 ;;; Commentary:
-;; 
+;; Requires: a copy of Nethack 3.3.x with the lisp window port
+
+;;; Code:
+
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
 
-;;; Code:
 (defgroup nethack nil
   "Emacs lisp frontend to the lisp window port of Nethack 3.3.x."
   :group 'games)
