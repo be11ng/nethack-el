@@ -1,5 +1,13 @@
 2001-10-19  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
+	* nethack.el (nethack-red-face): Add -face, and to all other color
+	faces.
+
+	* nethack-api.el (nethack-api-toplines, nethack-api-win-message)
+	(nethack-api-win-message, nethack-api-win-map)
+	(nethack-api-win-status, nethack-api-ae, nethack-api-ae)
+	(nethack-api-li, nethack-api-li, nethack-api-ospeed): Comment out.
+
 	* nethack.el (nethack): If the process is already running,
 	display all of the game windows.
 
