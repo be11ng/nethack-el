@@ -1,5 +1,7 @@
 2003-06-03  Shawn Betts  <sabetts@sfu.ca>
 
+	* nethack.el (nethack-el-version): bump version to 0.9.0
+
 	* Makefile (NETHACK_EL_VER): new variable
 	(DISTDIR): use NETHACK_EL_VER in directory
 	(DISTFILES): add ese-007e0.patch

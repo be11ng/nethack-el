@@ -504,6 +504,6 @@ delete the contents, perhaps logging the text."
 (defun nethack-el-version ()
   (interactive)
   (message (format "nethack-el %s" nethack-el-version)))
-(defconst nethack-el-version "20030309")
+(defconst nethack-el-version "0.9.0")
 
 ;;; nethack.el ends here
