@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.44 2001/10/23 09:16:04 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.45 2001/10/23 09:28:50 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -98,6 +98,13 @@
 ;; A.  Low-level routines:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defun nethack-return (form)
+  "Return FORM to the running Nethack process."
+  (nethack-process-send form))
+
+(defvar nethack-raw-print-buffer-name "*nhw raw-print*"
+  "Buffer name for Nethack raw-print messages.")
+
 ;; raw_print(str) -- Print directly to a screen, or otherwise
 ;; guarantee that the user sees str.  raw_print() appends a newline to
 ;; str.  It need not recognize ASCII control characters.  This is used
@@ -105,13 +112,6 @@
 ;; means only error startup messages are raw), for error messages, and
 ;; maybe other 'msg' uses.  E.g.  updating status for micros (i.e,
 ;; 'saving').
-
-(defun nethack-return (form)
-  "Return FORM to the running Nethack process."
-  (nethack-process-send form))
-
-(defvar nethack-raw-print-buffer-name "*nhw raw-print*"
-  "Buffer name for Nethack raw-print messages.")
 
 (defun nethack-api-raw-print (str)
   (save-excursion
@@ -148,19 +148,6 @@
 	  ((eq nethack-buffer-type 'nhw-status)
 	   (setq nethack-status-line-number y)))))
 
-;; putstr(window, attr, str) -- Print str on the window with the
-;; given attribute.  Only printable ASCII characters (040-0126) must be
-;; supported.  Multiple putstr()s are output on separate lines.
-;; Attributes can be one of ATR_NONE (or 0) ATR_ULINE ATR_BOLD ATR_BLINK
-;; ATR_INVERSE If a window-port does not support all of these, it may map
-;; unsupported attributes to a supported one (e.g. map them all to
-;; ATR_INVERSE).  putstr() may compress spaces out of str, break str, or
-;; truncate str, if necessary for the display.  Where putstr() breaks a
-;; line, it has to clear to end-of-line.  -- putstr should be implemented
-;; such that if two putstr()s are done consecutively the user will see
-;; the first and then the second.  In the tty port, pline() achieves this
-;; by calling more() or displaying both on the same line.
-
 ;; is this the way to make a "default" face?
 (defface nethack-atr-none-face
   `((t))    				
@@ -194,6 +181,19 @@ Since the modeline can only display 1 line, you must make sure there
 are no newlines in `nethack-status-string'."
   :type '(boolean)
   :group 'nethack)
+
+;; putstr(window, attr, str) -- Print str on the window with the
+;; given attribute.  Only printable ASCII characters (040-0126) must be
+;; supported.  Multiple putstr()s are output on separate lines.
+;; Attributes can be one of ATR_NONE (or 0) ATR_ULINE ATR_BOLD ATR_BLINK
+;; ATR_INVERSE If a window-port does not support all of these, it may map
+;; unsupported attributes to a supported one (e.g. map them all to
+;; ATR_INVERSE).  putstr() may compress spaces out of str, break str, or
+;; truncate str, if necessary for the display.  Where putstr() breaks a
+;; line, it has to clear to end-of-line.  -- putstr should be implemented
+;; such that if two putstr()s are done consecutively the user will see
+;; the first and then the second.  In the tty port, pline() achieves this
+;; by calling more() or displaying both on the same line.
 
 (defun nethack-api-putstr (winid attr str)
   ""
@@ -612,12 +612,6 @@ type specific initalizations, and return a digit id."
     (kill-buffer buffer)
     (setq nethack-buffer-table (assq-delete-all winid nethack-buffer-table))))
 
-;; start_menu(window) -- Start using window as a menu.  You must call
-;; start_menu() before add_menu().  After calling start_menu() you may
-;; not putstr() to the window.  Only windows of type NHW_MENU may be used
-;; for menus.
-
-
 
 ;;; menus
 
@@ -713,6 +707,10 @@ displayed."
   (setq nethack-menu nil)
   (nethack-menu-submit))  
 
+;; start_menu(window) -- Start using window as a menu.  You must call
+;; start_menu() before add_menu().  After calling start_menu() you may
+;; not putstr() to the window.  Only windows of type NHW_MENU may be used
+;; for menus.
 (defun nethack-api-start-menu (winid)
   ""
   (save-excursion
@@ -722,6 +720,19 @@ displayed."
     ;; know "how" this menu is going to work.
     (setq nethack-menu (ewoc-create 'nethack-menu-item-print))
     (setq nethack-unassigned-accelerator-index 0)))
+
+(defvar nethack-unassigned-accelerator-index 0
+  "Index into `nethack-accelerator-chars' indicating the next
+accelerator that will be used in unassigned menus.")
+
+(defun nethack-specify-accelerator ()
+  "Return the next accelerator from `nethack-accelerator-chars'
+specified by `nethack-unassigned-accelerator-index'."
+  (prog1
+      (aref nethack-accelerator-chars
+	    nethack-unassigned-accelerator-index)
+    (setq nethack-unassigned-accelerator-index
+	  (+ 1 nethack-unassigned-accelerator-index))))
 
 ;; add_menu(windid window, int glyph, const anything identifier, char
 ;; accelerator, char groupacc, int attr, char *str, boolean preselected)
@@ -746,19 +757,6 @@ displayed."
 ;; and aliases take care not to interfere with the default object class
 ;; symbols.  -- If you want this choice to be preselected when the menu
 ;; is displayed, set preselected to TRUE.
-
-(defvar nethack-unassigned-accelerator-index 0
-  "Index into `nethack-accelerator-chars' indicating the next
-accelerator that will be used in unassigned menus.")
-
-(defun nethack-specify-accelerator ()
-  "Return the next accelerator from `nethack-accelerator-chars'
-specified by `nethack-unassigned-accelerator-index'."
-  (prog1
-      (aref nethack-accelerator-chars
-	    nethack-unassigned-accelerator-index)
-    (setq nethack-unassigned-accelerator-index
-	  (+ 1 nethack-unassigned-accelerator-index))))
 
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
   "Create a menu item out of arguments and draw it in the menu
