@@ -1,3 +1,15 @@
+2003-09-15  Shawn Betts  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nethack-end-hook): new hook
+	(nh-proc-kill-buffer-on-quit): new defvar
+	(nh-log-buffer): likewise
+	(nh-sentinel): kill the process buffer if
+	nh-proc-kill-buffer-on-quit is t.
+	(nh-log): use nh-log-buffer
+	(nethack-kill-buffers): new function
+
+	* nethack-api.el (nhapi-end): run the hook, nethack-end-hook.
+
 2003-09-14  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* Makefile (DISTFILES): added nethack-compat.el and ese-007e3.patch

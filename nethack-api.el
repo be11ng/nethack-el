@@ -776,7 +776,8 @@ the menu is dismissed."
     (insert (concat who " -- " message) "\n")))
 
 (defun nhapi-end ()
-  (message "Goodbye."))
+  (message "Goodbye.")
+  (run-hooks 'nethack-end-hook))
 
 (provide 'nethack-api)
 
