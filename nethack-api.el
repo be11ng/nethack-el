@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.57 2002/01/02 00:45:09 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.58 2002/01/10 21:21:43 rcyeske Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -339,23 +339,28 @@ highlighted."
 ;; by calling more() or displaying both on the same line.
 
 (defun nethack-api-putstr (winid attr str)
-  ""
+  "Print STR on WINID with ATTR."
   (with-current-buffer (nethack-buffer winid)
-    (cond ((eq nethack-buffer-type 'nhw-message)
-	   (goto-char (point-max))
-	   (insert "\n" (propertize str 'face 'bold))
-	   ;; scroll to show maximum output on all windows displaying buffer
-	   (let ((l (get-buffer-window-list (nethack-buffer winid))))
-	     (save-selected-window
-	       (mapc (lambda (w)
-		       (select-window w)
-		       (set-window-point w (point-max))
-		       (recenter -1))
-		     l))))
-	  (t
-	   (goto-char (point-max))
-	   (insert (propertize str 'face (nethack-attr-face attr))
-		   "\n")))))
+    (let ((inhibit-read-only t))
+      (cond ((eq nethack-buffer-type 'nhw-message)
+	     (goto-char (point-max))
+	     (insert str "\n")
+	     ;; cover new text with highlight overlay
+	     (let ((start (overlay-start nethack-message-highlight-overlay)))
+	       (move-overlay nethack-message-highlight-overlay
+			     start (point-max)))
+	     ;; scroll to show maximum output on all windows displaying buffer
+	     (let ((l (get-buffer-window-list (nethack-buffer winid))))
+	       (save-selected-window
+		 (mapc (lambda (w)
+			 (select-window w)
+			 (set-window-point w (- (point-max) 1))
+			 (recenter -1))
+		       l))))
+	    (t
+	     (goto-char (point-max))
+	     (insert (propertize str 'face (nethack-attr-face attr))
+		     "\n"))))))
 
 (defun nethack-attr-face (attr)
   "Return the face corresponding with ATTR."
@@ -638,41 +643,66 @@ all of the appropriate setup."
 (defvar nethack-status-buffer nil)
 (defvar nethack-message-buffer nil)
 
-;; these just call the old `nethack-api-create-nh-window', but only
-;; during the transition period
+;; The nethack-api-create-*-window functions call
+;; nethack-api-create-nh-window to do the creation and common setup
+
+(defvar nethack-message-highlight-overlay nil
+  "Overlay used to highlight new text in the message window.")
+
+(defface nethack-message-highlight-face
+  '((t (:inherit highlight)))
+  "The face used to highlight new text in the message window."
+  :group 'nethack-faces)
+
 (defun nethack-api-create-message-window (id)
-  (nethack-api-create-nhwindow 'nhw-message id))
+  "Create the message window."
+  (with-current-buffer (nethack-api-create-nhwindow 'nhw-message id)
+    (setq nethack-message-buffer (current-buffer))
+    (setq nethack-message-highlight-overlay
+	  (make-overlay (point-max) (point-max)))
+    (overlay-put nethack-message-highlight-overlay 
+		 'face 'nethack-message-highlight-face)))
+
 (defun nethack-api-create-status-window (id)
-  (nethack-api-create-nhwindow 'nhw-status id))
+  "Create the status window."
+  (with-current-buffer (nethack-api-create-nhwindow 'nhw-status id)
+    (setq nethack-status-buffer (current-buffer))))
+
 (defun nethack-api-create-map-window (id)
-  (nethack-api-create-nhwindow 'nhw-map id)
-  (nethack-restore-window-configuration))
+  "Create the map window."
+  (with-current-buffer (nethack-api-create-nhwindow 'nhw-map id)
+    (setq nethack-map-buffer (current-buffer))
+    ;; set up the gamegrid and the keymap
+    (nethack-map-mode)
+    ;; arrange the initial window configuration
+    (nethack-restore-window-configuration)))
+
 (defun nethack-api-create-inventory-window (id)
-  (nethack-api-create-nhwindow 'nhw-menu id))
+  "Create the inventory window."
+  (nethack-api-create-menu-window id))
+
 (defun nethack-api-create-menu-window (id)
-  (nethack-api-create-nhwindow 'nhw-menu id))
+  "Create a menu window."
+  (with-current-buffer (nethack-api-create-nhwindow 'nhw-menu id)
+    (setq buffer-read-only t)))
+
 (defun nethack-api-create-text-window (id)
+  "Create a text window."
   (nethack-api-create-nhwindow 'nhw-text id))
 
 (defun nethack-api-create-nhwindow (type winid)
-  "Create a new window of TYPE and WINID and add it to the buffer
-table."
+  "Create a new window of TYPE and WINID and add it to the buffer table.
+
+Return the buffer."
   (let* ((name (format "*%s* %d" (symbol-name type) winid))
 	 (buf (get-buffer-create name)))
     (with-current-buffer buf
       (setq buffer-read-only nil)
       (erase-buffer)
       (kill-all-local-variables)
-      (setq nethack-buffer-type type)
-      (cond ((eq type 'nhw-map)
-	     (setq nethack-map-buffer (current-buffer))
-	     ;; set up the gamegrid and the keymap
-	     (nethack-map-mode))
-	    ((eq type 'nhw-status)
-	     (setq nethack-status-buffer (current-buffer)))
-	    ((eq type 'nhw-message)
-	     (setq nethack-message-buffer (current-buffer)))))
-    (push (cons winid buf) nethack-buffer-table)))
+      (setq nethack-buffer-type type))
+    (push (cons winid buf) nethack-buffer-table)
+    buf))
 
 
 ;; clear_nhwindow(window) -- Clear the given window, when
@@ -682,21 +712,22 @@ table."
   ""
   (with-current-buffer (nethack-buffer winid)
     (cond ((eq nethack-buffer-type 'nhw-message)
-	   ;; FIXME: not the whole buffer!
-	   (set-text-properties (point-min) (point-max) nil))
+	   ;; move overlay off the last messages
+	   (move-overlay nethack-message-highlight-overlay
+			 (point-max) (point-max)))
 	  ((eq nethack-buffer-type 'nhw-map)
-	   (gamegrid-init (make-vector 256 nil))
-	   (gamegrid-init-buffer nethack-map-width
-				 nethack-map-height
-				 ? )
-	  ;; A hack to initialize the grid with empty glyphs
-	   (when nethack-use-glyphs
-	     (let ((inhibit-read-only t))
-	       (erase-buffer)
-	       (dotimes (i nethack-map-height)
-		 (dotimes (j nethack-map-width)
-		   (insert-image nethack-empty-glyph))
-		 (insert (propertize "\n" 'face 'nethack-map-glyph-face))))))
+	   (let ((inhibit-read-only t))
+	     (erase-buffer)
+	     (if nethack-use-glyphs
+		 ;; initialize the map with empty glyphs
+		 (dotimes (i nethack-map-height)
+		   (dotimes (j nethack-map-width)
+		     (insert-image nethack-empty-glyph))
+		   (insert (propertize "\n" 'face 'nethack-map-glyph-face)))
+	       (gamegrid-init (make-vector 256 nil))
+	       (gamegrid-init-buffer nethack-map-width
+				     nethack-map-height
+				     ? ))))
 	  (t
 	   (let ((inhibit-read-only t))
 	     (erase-buffer))))))
@@ -891,11 +922,12 @@ displayed."
 (defun nethack-api-start-menu (winid)
   ""
   (with-current-buffer (nethack-buffer winid)
-    (erase-buffer)
-    ;; we don't turn on nethack-menu-mode yet, since we do not yet
-    ;; know "how" this menu is going to work.
-    (setq nethack-menu (ewoc-create 'nethack-menu-item-print))
-    (setq nethack-unassigned-accelerator-index 0)))
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      ;; we don't turn on nethack-menu-mode yet, since we do not yet
+      ;; know "how" this menu is going to work.
+      (setq nethack-menu (ewoc-create 'nethack-menu-item-print))
+      (setq nethack-unassigned-accelerator-index 0))))
 
 (defvar nethack-unassigned-accelerator-index 0
   "Index into `nethack-accelerator-chars' indicating the next

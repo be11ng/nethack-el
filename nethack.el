@@ -1,7 +1,7 @@
 ;;; nethack.el -- run Nethack as an inferior process in Emacs
 ;;; Author: Ryan Yeske (rcyeske@vcn.bc.ca)
 ;;; Date: Sat Mar 18 11:31:52 2000
-;;; $Id: nethack.el,v 1.52 2002/01/10 21:21:43 rcyeske Exp $
+;;; $Id: nethack.el,v 1.53 2002/01/14 06:59:13 rcyeske Exp $
 ;;; Requires: a copy of Nethack 3.3.x with the lisp window port
 
 ;;; Commentary:
@@ -227,10 +227,12 @@ The variable `nethack-program' is the name of the executable to run."
       ;; Reset intermediate variables.
       (setq nethack-status-alist nil)
       (setq nethack-menu nil)
-      ;; Start the process.
-      (kill-buffer "*nh*") ;;; ???
+      ;;; Start the process.
+      (if (get-buffer "*nh*")
+	  (kill-buffer "*nh*"))
+      ;; pop to buffer so if there is an error right away the user can
+      ;; see what the output from the process was
       (pop-to-buffer "*nh*")
-      (erase-buffer)
       (apply 'make-comint "nh" nethack-program nil nethack-program-args)
       (nh-comint-mode)
       (setq nh-comint-proc (get-buffer-process (current-buffer)))
