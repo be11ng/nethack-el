@@ -61,7 +61,7 @@
     (define-key map "A" 'nethack-command-remove-all-armor)
 
     ;;b       Go southwest 1 space
-    (define-key map "b" 'nethack-command-southwest-one-space)
+    (define-key map "b" 'nethack-command-southwest)
 
     ;;B       Go southwest until you are on top of something
     (define-key map "B" 'nethack-command-southwest-until-ontop)
@@ -193,7 +193,7 @@
     (define-key map "T" 'nethack-command-remove-single-armor)
 
     ;;u       Go northeast 1 space (or if number_pad is on, untrap something)
-    (define-key map "u" 'nethack-command-northeast-one-space)
+    (define-key map "u" 'nethack-command-northeast)
 
     ;;U       Go northeast until you are on top of something
     (define-key map "U" 'nethack-command-northeast-until-ontop)
@@ -220,7 +220,7 @@
     (define-key map "X" 'nethack-command-explore-mode)
 
     ;;y       Go northwest 1 space
-    (define-key map "y" 'nethack-command-northwest-one-space)
+    (define-key map "y" 'nethack-command-northwest)
 
     ;;Y       Go northwest until you are on top of something
     (define-key map "Y" 'nethack-command-northwest-until-ontop)

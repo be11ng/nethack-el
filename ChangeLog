@@ -1,3 +1,31 @@
+2001-06-28  shawn  <sabetts@diggin.lamenet.tmp>
+
+	* nethack.el (nethack-red): new face
+	(nethack-green): likewise
+	(nethack-brown): likewise
+	(nethack-blue): likewise
+	(nethack-magenta): likewise
+	(nethack-cyan): likewise
+	(nethack-gray): likewise
+	(nethack-dark-gray): likewise
+	(nethack-orange): likewise
+	(nethack-bright-green): likewise
+	(nethack-yellow): likewise
+	(nethack-bright-blue): likewise
+	(nethack-bright-magenta): likewise
+	(nethack-bright-cyan): likewise
+	(nethack-white): likewise
+	(nethack-color-alist): new const
+
+	* nethack-keys.el (nethack-mode-map): "b" key calls
+	nethack-command-southwest.
+	(nethack-mode-map): "u" key calls nethack-command-northeast.
+	(nethack-mode-map): "y" key calls nethack-command-northwest.
+
+	* nethack-api.el (nethack-api-print-glyph): new parameter
+	`face'. Set the color for each glyph.
+	
+
 2001-06-27  shawn  <sabetts@diggin.lamenet.tmp>
 
 	* nethack.el (nethack-restore-windows): new function

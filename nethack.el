@@ -21,6 +21,150 @@ nethack-api-putstr")
   "The 2 lines of the status window")
 
 
+(defface nethack-red
+  `((((type tty) (class color))
+     (:foreground "red"))
+    (((class color))
+     (:foreground "red"))
+    (t (:foreground "gray")))
+  "nethack red")
+
+(defface nethack-green
+  `((((type tty) (class color))
+     (:foreground "green"))
+    (((class color))
+     (:foreground "green"))
+    (t (:foreground "gray")))
+  "nethack green")
+
+(defface nethack-brown
+  `((((type tty) (class color))
+     (:foreground "yellow"))
+    (((class color))
+     (:foreground "brown"))
+    (t (:foreground "gray")))
+  "nethack brown")
+
+(defface nethack-blue
+  `((((type tty) (class color))
+     (:foreground "blue"))
+    (((class color))
+     (:foreground "blue"))
+    (t (:foreground "gray")))
+  "nethack blue")
+
+(defface nethack-magenta
+  `((((type tty) (class color))
+     (:foreground "magenta"))
+    (((class color))
+     (:foreground "magenta"))
+    (t (:foreground "gray")))
+  "nethack magenta")
+
+(defface nethack-cyan
+  `((((type tty) (class color))
+     (:foreground "cyan"))
+    (((class color))
+     (:foreground "cyan"))
+    (t (:foreground "gray")))
+  "nethack cyan")
+
+(defface nethack-gray
+  `((((type tty) (class color))
+     (:foreground "white"))
+    (((class color) (background dark))
+     (:foreground "gray"))
+    (((class color) (background light))
+     (:foreground "gray20"))
+    (t (:foreground "gray")))
+  "nethack gray")
+
+(defface nethack-dark-gray
+  `((((type tty) (class color))
+     (:foreground "black" :bold t))
+    (((class color))
+     (:foreground "gray50"))
+    (t (:foreground "gray")))
+  "nethack dark gray")
+
+(defface nethack-orange
+  `((((type tty) (class color))
+     (:foreground "red" :bold t))
+    (((class color))
+     (:foreground "orange"))
+    (t (:foreground "gray")))
+  "nethack light orange")
+
+(defface nethack-bright-green
+  `((((type tty) (class color))
+     (:foreground "green" :bold t))
+    (((class color))
+     (:foreground "lightgreen"))
+    (t (:foreground "gray")))
+  "nethack bright green")
+
+(defface nethack-yellow
+  `((((type tty) (class color))
+     (:foreground "yellow" :bold t))
+    (((class color))
+     (:foreground "yellow"))
+    (t (:foreground "gray")))
+  "nethack yellow")
+
+(defface nethack-bright-blue
+  `((((type tty) (class color))
+     (:foreground "blue" :bold t))
+    (((class color))
+     (:foreground "lightblue"))
+    (t (:foreground "gray")))
+  "nethack bright blue")
+
+(defface nethack-bright-magenta
+  `((((type tty) (class color))
+     (:foreground "magenta" :bold t))
+    (((class color))
+     (:foreground "magenta"))
+    (t (:foreground "gray")))
+  "nethack bright magenta")
+
+(defface nethack-bright-cyan
+  `((((type tty) (class color))
+     (:foreground "cyan" :bold t))
+    (((class color))
+     (:foreground "cyan"))
+    (t (:foreground "gray")))
+  "nethack bright cyan")
+
+(defface nethack-white
+  `((((type tty) (class color))
+     (:foreground "white" :bold t))
+    (((class color) (background dark))
+     (:foreground "white"))
+    (((class color) (background light))
+     (:foreground "black"))
+    (t (:foreground "gray")))
+  "nethack white")
+
+(defconst nethack-color-alist 
+  '((0 . nethack-black)
+    (1 . nethack-red)
+    (2 . nethack-green)
+    (3 . nethack-brown)
+    (4 . nethack-blue)
+    (5 . nethack-magenta)
+    (6 . nethack-cyan)
+    (7 . nethack-gray)
+    (8 . nethack-dark-gray)
+    (9 . nethack-orange)
+    (10 . nethack-bright-green)
+    (11 . nethack-yellow)
+    (12 . nethack-bright-blue)
+    (13 . nethack-bright-magenta)
+    (14 . nethack-bright-cyan)
+    (15 . nethack-white))
+  "An alist of nethack's color number and the corresponding face.")
+
+
 (defun nethack ()
   "Start a game of Nethack.
 
@@ -228,6 +372,7 @@ eventual delivery to the running nethack process."
     (gamegrid-init-buffer nethack-map-width 
 			  nethack-map-height
 			  ? )))
+
 
 ;;; Functions to manipulate, update and display the status window
 
