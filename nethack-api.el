@@ -1,6 +1,6 @@
 ;;; nethack-api.el -- low level Emacs interface the lisp window-port
 ;;; of Nethack-3.3.x
-;;; $Id: nethack-api.el,v 1.23 2001/07/06 02:14:00 sabetts Exp $
+;;; $Id: nethack-api.el,v 1.24 2001/07/07 03:45:17 sabetts Exp $
 
 ;;; originally a machine translation of nethack-3.3.0/doc/window.doc
 ;;; from the nethack src package.
@@ -495,7 +495,7 @@ it, we can just bury them or something."
 
 (defun nethack-api-add-menu (window glyph identifier accelerator groupacc attr str preselected)
   ""
-  (nethack-menu-add-item identifier str)
+  (nethack-menu-add-item identifier accelerator str)
   'void)
 
 
@@ -573,8 +573,8 @@ it, we can just bury them or something."
 
 (defun nethack-api-bell ()
   ""
-
-  'unimplemented)
+  (ding)
+  'void)
 
 
 ;; mark_synch() -- Don't go beyond this point in I/O on any channel

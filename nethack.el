@@ -194,11 +194,6 @@ The variable `nethack-program' is the name of the executable to run."
 ;;; Process code to communicate with the Nethack executable
 (defvar nethack-process nil)
 
-(defvar nethack-process-output nil
-  "output from the process which has yet to be evaluated because it is
-not a complete command yet. This is used to accumulate output from
-nethack until at least 1 full command has been read.")
-
 (defvar nethack-program "nethack"
   "* Program to run to start a game of Nethack.")
 
@@ -208,20 +203,20 @@ nethack until at least 1 full command has been read.")
 (defvar nethack-process-buffer-name "*nethack-process*"
   "Name of the buffer used to communicate with `nethack-program'.")
 
-
 (defvar nethack-process-name "nethack")
-
 
 (defun nethack-start-program ()
   "Start `nethack-program' with `nethack-program-args' as an
 asynchronous subprocess.  Returns a process object."
+  (save-excursion
+    (set-buffer (get-buffer-create nethack-process-buffer-name))
+    (erase-buffer))
   (let ((proc (apply 'start-process nethack-process-name
 		     nethack-process-buffer-name
 		     nethack-program nethack-program-args)))
     (setq nethack-process-output "")
     (set-process-filter proc 'nethack-process-filter)
     proc))
-
 
 (defun nethack-process-send-string (string)
   "Send a STRING to the running `nethack-process'.  Appends a newline
@@ -237,54 +232,35 @@ char to the STRING."
 	  (process-send-string nethack-process string-to-send))
       (error "Nethack process not running"))))
 
+(defun nethack-process-filter (proc string)
+  (with-current-buffer (process-buffer proc)
+    (save-excursion
+      (goto-char (process-mark proc))
+      (insert string)
+      (set-marker (process-mark proc) (point)))
 
-(defun nethack-process-filter (proc output)
-  "Handle command output from `nethack-process' and copy the text to
-the `nethack-process-buffer' for debugging."
-  (nethack-log-string (concat "RECV: " output))
-  (nethack-process-command-list (split-string (concat nethack-process-output 
-						      output)
-						      "\n")))
-
-
-(defun nethack-process-command-list (l)
-  "Process a list of commands. The last command may not be complete."
-  (while (not (null (cdr l)))
-    (nethack-parse-command (car l))
-    (setq l (cdr l)))
-
-  (setq nethack-process-output "")
-  (condition-case nil
-      (nethack-parse-command (car l))
-      (end-of-file
-       (nethack-log-string (concat "INCOMPLETE: " (car l)))
-       (setq nethack-process-output (car l)))))
+     (let ((old-point))
+       (condition-case ()
+	   (while t
+	     (setq old-point (point))
+	     (let* ((form (read (current-buffer)))
+		    (retval (save-excursion (eval form))))
+;;	       (insert (format "; %S" (prin1-to-string retval)))
+	       (cond ((eq retval 'void)) ; do nothing
+		     ((eq retval 'unimplemented) (error "nethack: unimplemented function"))
+		     (t (nethack-process-send-string (prin1-to-string retval))))))
+	 (end-of-file (goto-char old-point))))))
 
 (defun nethack-log-string (string)
   "Write STRING into `nethack-process-buffer'."
-  (with-current-buffer (process-buffer nethack-process)
-    (let ((moving (= (point) (process-mark nethack-process))))
-      (save-excursion		       
-	(goto-char (process-mark nethack-process))
-	(insert string "\n")
-	(set-marker (process-mark nethack-process) (point)))
-      (if moving (goto-char (process-mark nethack-process)))))())
-
-
-(defun nethack-parse-command (command)
-  "Parse and COMMAND and do it."
-  ;;(message (concat "Parsing: " command))
-  ;; log received command in the process-buffer
-  (nethack-log-string (concat "PARSE: " command))
-	      
-  ;; handle command
-  (let ((retval (eval (car (read-from-string command)))))
-    (cond ((eq retval 'unimplemented)
-	   (error "nethack: unimplemented function"))
-	  ((eq retval 'void) 
-	   nil)
-	  (t 
-	   (nethack-process-send-string (prin1-to-string retval))))))
+)
+;;   (with-current-buffer (process-buffer nethack-process)
+;;     (let ((moving (= (point) (process-mark nethack-process))))
+;;       (save-excursion		       
+;; 	(goto-char (process-mark nethack-process))
+;; 	(insert string "\n")
+;; 	(set-marker (process-mark nethack-process) (point)))
+;;       (if moving (goto-char (process-mark nethack-process)))))())
 
 
 ;;; Buffer code (aka windows in Nethack)
@@ -324,7 +300,7 @@ response to the next call to `nethack-api-get-command'.")
 
 (defun nethack-handle-command (cmd &optional n)
   "If the nethack process is waiting for a command, send CMD to the
-nethack process.  Otherwise, add CMD to `nethack-key-queue' for
+nethack process.  Otherwise, add CMD to `nethack-command-queue' for
 eventual delivery to the running nethack process. N is the number of
 times the command should be executed."
   (interactive)
