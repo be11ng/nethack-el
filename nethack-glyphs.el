@@ -37,7 +37,7 @@ static char *xpm[] = {
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\",
 \"AAAAAAAAAAAAAAAA\"
-};" nil t))
+};" nil t :mode 'heuristic))
 
 (defconst nethack-glyph-vector  
   (vector
