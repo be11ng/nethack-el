@@ -35,6 +35,9 @@ make
 make install
 
 * Installing the emacs lisp sources
+Edit the Makefile to set the value of EMACS to the location of your
+favourite emacs version.
+
 ** byte compile (not strictly necessary)
 make all
 
