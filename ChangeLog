@@ -2,6 +2,8 @@
 
 	* nethack-menu.el (nethack-menu-add-item): add the item to the end
 	of the list.
+	(nethack-menu-create-item): only buttonize items with positive
+	id's.
 
 2001-05-06  shawn  <sabetts@diggin.lamenet.tmp>
 
