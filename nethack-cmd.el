@@ -425,39 +425,50 @@
   (interactive)
   (nethack-handle-command "prinuse"))
 
-;; (defun nethack-command-count-gold ()
-;;   "$       Count your gold"
-;;   )
+(defun nethack-command-count-gold ()
+  "$       Count your gold"
+  (interactive)
+  (nethack-handle-command "countgold"))
 
-;; (defun nethack-command-list-known-spells ()
-;;   "+       List known spells"
-;;   )
+(defun nethack-command-list-known-spells ()
+  "+       List known spells"
+  (interactive)
+  (nethack-handle-command "listspells"))
 
 ;;; wizard (debug) mode only commands:
-;; (defun nethack-command-wizard-search ()
-;;   "^E      Search a room (available in debug mode only)"
-;;   )
+(defun nethack-command-wizard-search ()
+  "^E      Search a room (available in debug mode only)"
+  (interactive)
+  (nethack-handle-command "wizardsearch"))
 
-;; (defun nethack-command-wizard-map ()
-;;   "^F      Map the level (available in debug mode only)"
-;;   )
+(defun nethack-command-wizard-map ()
+  "^F      Map the level (available in debug mode only)"
+  (interactive)
+  (nethack-handle-command "wizardmap"))
 
-;; (defun nethack-command-wizard-show-location ()
-;;   "^O      Show location of special levels (available in debug mode only)"
-;;   )
+(defun nethack-command-wizard-show-location ()
+  "^O      Show location of special levels (available in debug mode only)"
+  (interactive)
+  (nethack-handle-command "wizardshowlocation"))
 
-;; (defun nethack-command-wizard-teleport-between-levels ()
-;;   "^V      Teleport between levels (available in debug mode only)"
-;;   )
+(defun nethack-command-wizard-teleport-between-levels ()
+  "^V      Teleport between levels (available in debug mode only)"
+  (interactive)
+  (nethack-handle-command "wizardteleportbetweenlevels"))
 
-;; (defun nethack-command-wizard-wish ()
-;;   "^W      Wish (available in debug mode only)"
-;;   )
+(defun nethack-command-wizard-wish ()
+  "^W      Wish (available in debug mode only)"
+  (interactive)
+  (nethack-handle-command "wizardwish"))
 
+(defun nethack-command-kick ()
+  "^D      Kick"
+  (interactive)
+  (nethack-handle-command "kick"))
 
 ;; Extended commands
 (defun nethack-command-adjust ()
-"adjust inventory letters."
+  "adjust inventory letters."
   (interactive)
   (nethack-handle-command "adjust"))
 
