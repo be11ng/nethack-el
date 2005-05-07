@@ -1,6 +1,6 @@
 ;;; nethack-example.el --- Sample configurations for nethack-el
 
-;; Copyright (C) 2002  Shawn Betts and Ryan Yeske
+;; Copyright (C) 2002,2003,2005  Shawn Betts and Ryan Yeske
 
 ;; Author: Shawn Betts <sabetts@vcn.bc.ca>
 ;; Version: $Id$
@@ -62,7 +62,7 @@ Add the following to your ~/.emacs
 			       (" holy " . nethack-green-face)
 			       (" cursed " . nethack-red-face)
 			       (" unholy " . nethack-green-face)
-			       (" cursed .* (being worn)" . nethack-orange-face)))
+			       (" cursed .* (being worn)" . nethack-orange-face))
   "An assoc of regexps and font colors")
 
 (defun nethack-x-highlight-option ()
