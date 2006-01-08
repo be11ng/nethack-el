@@ -1,3 +1,8 @@
+2006-01-07  Michael Olson  <mwolson@gnu.org>
+
+	* nethack.el (nh-filter): Don't use eval-region, since Emacs22
+	chokes on it.  Use eval-buffer on a narrowed region instead.
+
 2005-02-27    <katia_dilkina@verizon.net>
 
 	* mkpatch: get $src $ref and $work as arguments.

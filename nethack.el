@@ -475,7 +475,9 @@ delete the contents, perhaps logging the text."
     (if (looking-at nh-prompt-regexp)
 	(let ((prompt (match-string 1)))
 	  (nh-log (buffer-substring (point-min) (point)))
-	  (eval-region (point-min) (point))
+	  (save-restriction
+	    (narrow-to-region (point-min) (point))
+	    (eval-buffer))
 	  (cond ((or (equal prompt "command")
 		     (equal prompt "menu"))
 		 (nh-print-status)
