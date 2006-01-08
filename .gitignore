@@ -29,3 +29,5 @@ core
 *.x86f
 *.tar.gz
 .patch-ok
+{arch}
+.arch-ids
