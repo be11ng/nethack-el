@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.82 2004/11/19 23:05:39 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.83 2004/11/19 23:09:09 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -475,7 +475,9 @@ delete the contents, perhaps logging the text."
     (if (looking-at nh-prompt-regexp)
 	(let ((prompt (match-string 1)))
 	  (nh-log (buffer-substring (point-min) (point)))
-	  (eval-region (point-min) (point))
+	  (save-restriction
+	    (narrow-to-region (point-min) (point))
+	    (eval-buffer))
 	  (cond ((or (equal prompt "command")
 		     (equal prompt "menu"))
 		 (nh-print-status)
