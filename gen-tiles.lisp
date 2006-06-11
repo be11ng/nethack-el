@@ -1,12 +1,38 @@
+;; gen-tiles.lisp - Generate nethack-tiles.el and slashem-tiles.el
+;; Author: Shawn Betts
+;; Copyright (C) 2005 Shawn Betts
+;;
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
+;;
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+;; Boston, MA 02111-1307, USA.
+;;
+;; To generate the tiles eval: (txt2tiles)
+;;
+
 (defpackage :nh-tiles
   (:use :cl)
   (:export txt2tiles))
 
 (in-package :nh-tiles)
 
-(defconstant +files+ '(#p"../nethack/win/share/monsters.txt"
-			 #p"../nethack/win/share/objects.txt" 
-			 #p"../nethack/win/share/other.txt"))
+(defconstant +nethack-files+ '(#p"../nethack/win/share/monsters.txt"
+				 #p"../nethack/win/share/objects.txt" 
+				 #p"../nethack/win/share/other.txt"))
+
+(defconstant +slashem-files+ '(#p"../slashem/win/share/monsters.txt"
+				 #p"../slashem/win/share/objects.txt" 
+				 #p"../slashem/win/share/other.txt"))
 
 ;; If we've read from the file too far, we can push it back
 (defvar *line* nil)
@@ -115,7 +141,7 @@ static char *xpm[] = {
   (format stream "(defconst nh-tile-vector (vector"))
 
 (defun gen-footer (stream)
-  (format stream "))~%(provide 'nethack-glyphs)"))
+  (format stream "))~%(provide 'nethack-tiles)"))
 
 (defun gen-glyphs (src out)
   (with-open-file (in src)
@@ -124,11 +150,15 @@ static char *xpm[] = {
 	  ((null g))
 	(gen-glyph palette g out)))))
 
+(defun do-conversion (output files)
+  (with-open-file (out output :direction :output :if-exists :supersede)
+    (gen-header out)
+    (loop for f in files
+	  do (gen-glyphs f out))
+    (gen-footer out)))
+
 (defun txt2tiles ()
   ;; Reset our pop buffer
   (setf *line* nil)
-  (with-open-file (out "nethack-tiles.el" :direction :output :if-exists :supersede)
-    (gen-header out)
-    (loop for f in +files+
-	  do (gen-glyphs f out))
-    (gen-footer out)))
+  (do-conversion "nethack-tiles.el" +nethack-files+)
+  (do-conversion "slashem-tiles.el" +slashem-files+))

@@ -1,6 +1,6 @@
 ;;; nethack-compat.el --- compatibility file for various emacsen
 
-;; Copyright (C) 2003 Ryan Yeske and Shawn Betts
+;; Copyright (C) 2003,2005 Ryan Yeske and Shawn Betts
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Keywords: 

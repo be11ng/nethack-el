@@ -1,6 +1,6 @@
 ;;; nethack-keys.el --- key bindings for nethack-el
 
-;; Copyright (C) 2002  Ryan Yeske and Shawn Betts
+;; Copyright (C) 2002,2003,2005  Ryan Yeske and Shawn Betts
 
 ;; Author: Ryan C Yeske <rcyeske@vcn.bc.ca>
 ;; Keywords: games
