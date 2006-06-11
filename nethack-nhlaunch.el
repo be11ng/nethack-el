@@ -1,8 +1,8 @@
 ;;; nethack-nhlaunch.el --- Negotiate with nhlaunch to start a game of nethack
 
-;; Copyright (C) 2004  Free Software Foundation, Inc.
+;; Copyright (C) 2005 Shawn Betts
 
-;; Author: Shawn Betts <katia_dilkina@verizon.net>
+;; Author: Shawn Betts <sabetts@vcn.bc.ca>
 ;; Keywords: 
 
 ;; This file is free software; you can redistribute it and/or modify

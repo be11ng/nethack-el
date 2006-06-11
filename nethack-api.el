@@ -1,10 +1,10 @@
 ;;; nethack-api.el -- Emacs interface the lisp window-port
 
-;; Copyright (C) 2002  Ryan Yeske and Shawn Betts
+;; Copyright (C) 2002,2003,2005  Ryan Yeske and Shawn Betts
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.92 2004/11/15 05:12:23 sabetts Exp $
+;; Version: $Id: nethack-api.el,v 1.93 2004/11/19 23:05:39 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -324,10 +324,12 @@ FIXME: doesnt actually use ATTR!"
       (let ((color (if (eq special 'pet)
 		       'nethack-pet-face
 		     (aref nh-colors color))))
-	(put-text-property (gamegrid-cell-offset x y)
+	(set-text-properties (gamegrid-cell-offset x y)
 			   (1+ (gamegrid-cell-offset x y))
-			   'face
-			   color)))))
+			   `(face
+			     ,color
+			     glyph
+			     ,glyph))))))
 
 (defun nhapi-yn-function (ques choices default)
   ""
@@ -514,7 +516,7 @@ The TYPE argument is legacy and serves no real purpose."
       (erase-buffer)
       (if nethack-use-tiles
 	  (progn ;; FIXME: test to see if emacs is capable of tiles
-	    (require 'nethack-glyphs)
+	    (require 'nethack-tiles)
 	    ;; initialize the map with empty tiles
 	    (dotimes (i nh-map-height)
 	      (dotimes (j nh-map-width)

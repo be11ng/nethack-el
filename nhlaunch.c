@@ -1,6 +1,6 @@
 /* nhlaunch.c -- Handle logging in and launching nethack
    Author: Shawn Betts
-   Copyright (c) 2004 Shawn Betts
+   Copyright (c) 2004,2005 Shawn Betts
 
 To build on linux:
    gcc -D__LINUX__ nhlaunch.c -o nhlaunch -lcrypt

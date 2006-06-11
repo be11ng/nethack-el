@@ -1,3 +1,17 @@
+2006-06-11  Shawn Betts  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nh-at-prompt-hook): new var
+	(nh-filter): run nh-at-prompt-hook hooks
+
+	* nethack-tiles.el: provide nethack-tiles
+
+	* nethack-api.el (nhapi-print-glyph): use set-text-properties
+	(nhapi-clear-map): require nethack-tiles
+
+	* gen-tiles.lisp: export slash'em tiles
+
+	* Makefile: build slash'em tarballs
+
 2006-01-07  Michael Olson  <mwolson@gnu.org>
 
 	* nethack.el (nh-filter): Don't use eval-region, since Emacs22

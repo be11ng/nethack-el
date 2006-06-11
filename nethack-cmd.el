@@ -1,6 +1,6 @@
 ;;; nethack-cmd.el --- Nethack command definitions
 
-;; Copyright (C) 2001  Ryan Yeske
+;; Copyright (C) 2001,2002,2003,2005  Ryan Yeske
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Keywords: games

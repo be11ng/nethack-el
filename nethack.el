@@ -1,10 +1,10 @@
 ;;; nethack.el --- run Nethack as a subprocess
 
-;; Copyright (C) 2003  Ryan Yeske and Shawn Betts
+;; Copyright (C) 2003,2005  Ryan Yeske and Shawn Betts
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.83 2004/11/19 23:09:09 sabetts Exp $
+;; Version: $Id: nethack.el,v 1.84 2006/01/08 00:39:15 mwolson Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -463,6 +463,8 @@ PROC is the process object and MSG is the exit message."
 	(insert string))))
 
 (defvar nh-at-prompt nil)
+(defvar nh-at-prompt-hook nil
+  "Called when there is a prompt. Takes one arg: the kind of prompt. Either \"command\" or \"menu\"")
 (defun nh-filter (proc string)
   "Insert contents of STRING into the buffer associated with PROC.
 Evaluate the buffer contents if we are looking at a prompt and then
@@ -482,7 +484,8 @@ delete the contents, perhaps logging the text."
 		     (equal prompt "menu"))
 		 (nh-print-status)
 		 (sit-for 0)
-		 (setq nh-at-prompt t)))))))
+		 (setq nh-at-prompt t)
+		 (run-hook-with-args 'nh-at-prompt-hook prompt)))))))
 
 (defun nh-send (form)
   (let ((command (cond 

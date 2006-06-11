@@ -41263,4 +41263,4 @@ static char *xpm[] = {
 \"AMMMAMMEEEEMMMMA\",
 \"ABEEAMMEEEEMBEMA\"
 };" nil t)))
-(provide 'nethack-glyphs)
+(provide 'nethack-tiles)

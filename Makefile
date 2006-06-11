@@ -3,7 +3,7 @@ EMACS = emacs
 
 .PHONY: clean patch dist
 
-all: nethack.elc nethack-api.elc nethack-cmd.elc nethack-tiles.elc nethack-keys.elc
+all: nethack.elc nethack-api.elc nethack-cmd.elc nethack-tiles.elc slashem-tiles.elc nethack-keys.elc
 
 %.elc: %.el
 	$(EMACS) -batch --eval "(add-to-list 'load-path \".\")" \
@@ -20,7 +20,7 @@ clean:
 #
 
 # nethack-el version
-NETHACK_EL_VER=0.9.4
+NETHACK_EL_VER=0.9.6
 
 # nethack source version
 NH_VER=3.4.3
@@ -34,7 +34,7 @@ SLASHEM_PATCHFILE=enh-$(SLASHEM_VER_NODOTS).patch
 DISTFILES=AUTHORS BUGS COPYING ChangeLog INSTALL Makefile README TODO	\
 	$(PATCHFILE) $(SLASHEM_PATCHFILE) mkpatch nethack-api.el	\
 	nethack-cmd.el nethack-example.el				\
-	nethack-tiles.el nethack-keys-dvorak.el nethack-keys.el		\
+	nethack-tiles.el slashem-tiles.el nethack-keys-dvorak.el nethack-keys.el		\
 	nethack.el nethack-compat.el
 DISTDIR=nethack_el-$(NETHACK_EL_VER)
 
@@ -75,7 +75,7 @@ test-patch: $(PATCHFILE)
 	@echo
 	@echo Testing $< for sanity
 	cd ..; tar -xzf nethack-$(NH_VER_NODOTS).tgz
-	cd ../nethack-$(NH_VER) ; patch -fp1 < ../nethack-el/$(PATCHFILE)
+	cd ../nethack-$(NH_VER) ; patch -p1 < ../nethack-el/$(PATCHFILE)
 	cd ../nethack-$(NH_VER)/sys/unix; sh setup.sh
 	$(MAKE) -C ../nethack-$(NH_VER)
 	cd ../nethack-$(NH_VER)/src; HACKDIR=. ./nethack | grep api-init
@@ -85,8 +85,8 @@ test-patch: $(PATCHFILE)
 slashem-test-patch: $(SLASHEM_PATCHFILE)
 	@echo
 	@echo Testing $< for sanity
-	cd ..; tar -xzf se$(SLASHEM_VER_NODOTS).tgz
-	cd ../slashem-$(SLASHEM_VER) ; patch -fp1 < ../nethack-el/$(SLASHEM_PATCHFILE)
+	cd ..; tar -xzf se$(SLASHEM_VER_NODOTS).tar.gz
+	cd ../slashem-$(SLASHEM_VER) ; patch -p1 < ../nethack-el/$(SLASHEM_PATCHFILE)
 	cd ../slashem-$(SLASHEM_VER)/sys/unix; sh setup.sh
 	$(MAKE) -C ../slashem-$(SLASHEM_VER)
 	cd ../slashem-$(SLASHEM_VER)/src; HACKDIR=. ./slashem | grep api-init
