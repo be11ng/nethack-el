@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.84 2006/01/08 00:39:15 mwolson Exp $
+;; Version: $Id: nethack.el,v 1.85 2006/06/11 17:16:53 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -79,6 +79,12 @@
   :type '(string)
   :group 'nethack)
 
+(defcustom nethack-status-style t
+  "Decides how the status will be displayed. Valid values are :map, :header-line, :mode-line, or t."
+  :type '(symbol)
+  :options '(:map :mode-line :header-line t)
+  :group 'nethack)
+
 (defcustom nethack-purge-buffers t
   "When this variable is non-nil, kill all nethack buffers when nethack quits."
   :type '(boolean)
@@ -104,6 +110,20 @@
 (defcustom nethack-before-print-message-hook nil
   "Hook run before a message is printed."
   :type '(hook)
+  :group 'nethack)
+
+(defcustom nethack-message-style t
+  "Decides where messages appear. :map means messages display in
+the map buffer. t means in a seperate buffer."
+  :type '(symbol)
+  :options '(:map t)
+  :group 'nethack)
+
+(defcustom nethack-prompt-style t
+  "Decides where nethack-el prompts for input. :map means in the
+map buffer. t means in the minibuffer."
+  :type '(symbol)
+  :options '(:map t)
   :group 'nethack)
 
 (defcustom nethack-end-hook nil
@@ -481,7 +501,8 @@ delete the contents, perhaps logging the text."
 	    (narrow-to-region (point-min) (point))
 	    (eval-buffer))
 	  (cond ((or (equal prompt "command")
-		     (equal prompt "menu"))
+		     (equal prompt "menu")
+		     (equal prompt "dummy"))
 		 (nh-print-status)
 		 (sit-for 0)
 		 (setq nh-at-prompt t)

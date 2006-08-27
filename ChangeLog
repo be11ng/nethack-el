@@ -1,3 +1,46 @@
+2006-08-26  Shawn Betts  <sabetts@vcn.bc.ca>
+
+	* nethack.el (nethack-status-style): new customizable variable
+	(nethack-message-style): likewise
+	(nethack-prompt-style): likewise
+	(nh-filter): add "dummy" as a valid prompt indicator.
+
+	* nethack-compat.el (nh-map-read-mode-map): new global variable
+	(nh-map-read-self-insert): new function
+	(nh-map-read-submit): likewise
+	(nh-map-read-mode): new minor mode
+	(nh-read-from-map): new function
+	(nh-read-line): likewise
+	(nh-last-message): new global variable
+	(nh-display-message-in-map): new function
+	(nh-message): likewise
+	(nh-clear-map-message): likewise
+	(nh-clear-message): likewise
+	(nh-read-key-sequence-vector): likewise
+	(nh-read-char-in-map): likewise
+	(nh-read-char): display the prompt in the map buffer when
+	nethack-prompt-style is :map
+	(nh-pause): new function
+	(nh-overwrite-insert): likewise
+	(nh-with-point): new macro
+
+	* nethack-api.el (nh-print-status): print status in different
+	places depending on nethack-status-style
+	(nhapi-message): call nh-message
+	(nhapi-yn-function): call nh-read-char
+	(nhapi-ask-direction): call nh-read-key-sequence-vector
+	(nhapi-getlin): call nh-read-line
+	(nhapi-doprev-message): show the last message depending on
+	nethack-message-style
+	(nhapi-create-message-window): create the nethack-map buffer and
+	add a blank line to it when nethack-message-style is :map.
+	(nhapi-clear-message): call nh-clear-message
+	(nhapi-block): show a block message in different places depending
+	on nethack-prompt-style
+	(nhapi-restore-window-configuration): only restore nethack windows
+	that are being used based on nethack-message-style and
+	nethack-status-style.
+
 2006-06-11  Shawn Betts  <sabetts@vcn.bc.ca>
 
 	* nethack.el (nh-at-prompt-hook): new var
