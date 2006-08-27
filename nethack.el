@@ -79,6 +79,12 @@
   :type '(string)
   :group 'nethack)
 
+(defcustom nethack-status-style t
+  "Decides how the status will be displayed. Valid values are :map, :header-line, :mode-line, or t."
+  :type '(symbol)
+  :options '(:map :mode-line :header-line t)
+  :group 'nethack)
+
 (defcustom nethack-purge-buffers t
   "When this variable is non-nil, kill all nethack buffers when nethack quits."
   :type '(boolean)
@@ -104,6 +110,20 @@
 (defcustom nethack-before-print-message-hook nil
   "Hook run before a message is printed."
   :type '(hook)
+  :group 'nethack)
+
+(defcustom nethack-message-style t
+  "Decides where messages appear. :map means messages display in
+the map buffer. t means in a seperate buffer."
+  :type '(symbol)
+  :options '(:map t)
+  :group 'nethack)
+
+(defcustom nethack-prompt-style t
+  "Decides where nethack-el prompts for input. :map means in the
+map buffer. t means in the minibuffer."
+  :type '(symbol)
+  :options '(:map t)
   :group 'nethack)
 
 (defcustom nethack-end-hook nil
@@ -481,7 +501,8 @@ delete the contents, perhaps logging the text."
 	    (narrow-to-region (point-min) (point))
 	    (eval-buffer))
 	  (cond ((or (equal prompt "command")
-		     (equal prompt "menu"))
+		     (equal prompt "menu")
+		     (equal prompt "dummy"))
 		 (nh-print-status)
 		 (sit-for 0)
 		 (setq nh-at-prompt t)

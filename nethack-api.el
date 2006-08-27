@@ -188,18 +188,27 @@
    format nil))
 
 (defun nh-print-status ()
-;; create a customizable variable to control this:
-;;   header line/mode line printing
-;;   (with-current-buffer nh-map-buffer
-;;     (setq header-line-format 
-;; 	  (nh-status-string nethack-status-header-line-format))
-;;     (setq mode-line-format
-;; 	  (nh-status-string nethack-status-mode-line-format)))
-
-  ;; print the values in the status buffer
-  (with-current-buffer nh-status-buffer
-    (erase-buffer)
-    (insert (nh-status-string nethack-status-buffer-format))))
+  (case nethack-status-style
+    (:header-line
+     (with-current-buffer nh-map-buffer
+       (setq header-line-format 
+	     (nh-status-string nethack-status-header-line-format))))
+    (:mode-line
+     (setq mode-line-format
+	  (nh-status-string nethack-status-mode-line-format)))
+    (:map
+     (with-current-buffer nh-map-buffer
+       (let ((p (next-single-property-change (point-min) 'nethack-status))
+	     (inhibit-read-only t))
+	 (when p
+	   (delete-region p (point-max)))
+	 (nh-with-point
+	  (goto-char (point-max))
+	  (insert (propertize (nh-status-string nethack-status-buffer-format) 'nethack-status t))))))
+    (t
+     (with-current-buffer nh-status-buffer
+       (erase-buffer)
+       (insert (nh-status-string nethack-status-buffer-format))))))
 
 (defun nh-status-n ()
   (nh-propertize-attribute nh-status-attribute-name))
@@ -275,22 +284,7 @@
 (defun nhapi-message (attr str)
   "Insert STR to `nh-message-buffer' using ATTR face. 
 FIXME: doesnt actually use ATTR!"
-  (with-current-buffer nh-message-buffer
-    (goto-char (point-max))
-    (run-hooks 'nethack-before-print-message-hook)
-    (insert str "\n")
-    ;; cover new text with highlight overlay
-    (let ((start (overlay-start nh-message-highlight-overlay)))
-      (move-overlay nh-message-highlight-overlay
-		    start (point-max)))
-    ;; scroll to show maximum output on all windows displaying buffer
-    (let ((l (get-buffer-window-list (current-buffer))))
-      (save-selected-window
-	(mapc (lambda (w)
-		(select-window w)
-		(set-window-point w (- (point-max) 1))
-		(recenter -1))
-	      l)))))    
+  (nh-message attr str))
 
 (defun nh-attr-face (attr)
   "Return the face corresponding with ATTR."
@@ -333,9 +327,7 @@ FIXME: doesnt actually use ATTR!"
 
 (defun nhapi-yn-function (ques choices default)
   ""
-  (let ((cursor-in-echo-area t)
-	key)
-
+  (let (key)
     ;; convert string of choices to a list of ints
     (setq choices (mapcar 'nh-char-to-int
 			  (string-to-list choices)))
@@ -361,9 +353,8 @@ FIXME: doesnt actually use ATTR!"
 
 (defun nhapi-ask-direction (prompt)
   "Prompt the user for a direction"
-  (let* ((cursor-in-echo-area t)
-	 (cmd (lookup-key nh-map-mode-map
-			  (read-key-sequence-vector (concat prompt " ")))))
+  (let ((cmd (lookup-key nh-map-mode-map
+			  (nh-read-key-sequence-vector prompt))))
     (nh-send
      (cond ((eq cmd 'nethack-command-north) "n")
 	   ((eq cmd 'nethack-command-south) "s")
@@ -382,7 +373,7 @@ FIXME: doesnt actually use ATTR!"
 (defun nhapi-getlin (ques)
   ""
   (nh-send (condition-case nil
-	       (read-from-minibuffer (concat ques " "))
+	       (nh-read-line (concat ques " "))
 	     (quit ""))))
 
 (defun nhapi-player-selection ()
@@ -423,15 +414,20 @@ Do not edit the value of this variable.  Instead, change the value of
 
 (defun nhapi-doprev-message ()
   ""
-  (save-selected-window
-    (save-current-buffer		; is this redundant since we
+  (case nethack-message-style
+    (:map
+     (nh-clear-message)
+     (nh-display-message nh-last-message))
+    (t
+     (save-selected-window
+       (save-current-buffer		; is this redundant since we
 					; already save the selected
 					; window? -rcy
-      (walk-windows (lambda (w)
-		      (select-window w)
-		      (set-buffer (window-buffer))
-		      (if (eq (current-buffer) nh-message-buffer)
-			  (scroll-down)))))))
+	 (walk-windows (lambda (w)
+			 (select-window w)
+			 (set-buffer (window-buffer))
+			 (if (eq (current-buffer) nh-message-buffer)
+			     (scroll-down)))))))))
 
 (defun nhapi-update-positionbar (features)
   ""
@@ -454,13 +450,20 @@ all of the appropriate setup."
 
 (defun nhapi-create-message-window ()
   "Create the message buffer."
-  (with-current-buffer (get-buffer-create "*nethack message*")
-    (erase-buffer)
-    (setq nh-message-highlight-overlay
-	  (make-overlay (point-max) (point-max)))
-    (overlay-put nh-message-highlight-overlay 
-		 'face 'nethack-message-highlight-face)
-    (setq nh-message-buffer (current-buffer))))
+  (case nethack-message-style
+    (:map
+     ;; we need to create this buffer because messages come in before
+     ;; the map is set up.
+     (with-current-buffer (get-buffer-create "*nethack map*")
+       (insert (make-string nh-map-width 32))))
+    (t
+     (with-current-buffer (get-buffer-create "*nethack message*")
+       (erase-buffer)
+       (setq nh-message-highlight-overlay
+	     (make-overlay (point-max) (point-max)))
+       (overlay-put nh-message-highlight-overlay 
+		    'face 'nethack-message-highlight-face)
+       (setq nh-message-buffer (current-buffer))))))
 
 (defun nhapi-create-status-window ()
   "Create the status buffer."
@@ -503,9 +506,7 @@ The TYPE argument is legacy and serves no real purpose."
 
 (defun nhapi-clear-message ()
   "Move overlay off the last message in `nh-message-buffer'."
-  (with-current-buffer nh-message-buffer
-    (move-overlay nh-message-highlight-overlay
-		  (point-max) (point-max))))
+  (nh-clear-message))
 
 (defconst nh-map-width 79 "Max width of the map.")
 (defconst nh-map-height 22 "Max height of the map.")
@@ -529,9 +530,13 @@ The TYPE argument is legacy and serves no real purpose."
 			      nh-map-height
 			      ? )))))
 (defun nhapi-block ()
-  ;;(nh-read-char "nethack: -- more --")
-  (read-from-minibuffer "--more--")
-  (nhapi-clear-message)
+  (case nethack-prompt-style
+    (:map
+     (nh-display-message-in-map 'atr-none "" t)
+     (nhapi-clear-message))
+    (t
+     ;;(nh-read-char "nethack: -- more --")
+     (read-from-minibuffer "--more--")))
   (nh-send 'block-dummy))
 
 (defvar nh-active-menu-buffer nil)
@@ -751,15 +756,26 @@ the menu is dismissed."
   "Layout the nethack windows according to the values
 `nethack-status-window-height' and `nethack-message-window-height'."
   (let ((window-min-height (min nethack-status-window-height
-				nethack-message-window-height)))
+				nethack-message-window-height))
+	other-window)
     (delete-other-windows)
-    (switch-to-buffer nh-status-buffer)
-    (split-window-vertically (- nethack-status-window-height))
-    (switch-to-buffer nh-message-buffer)
-    (split-window-vertically nethack-message-window-height)
-    (switch-to-buffer-other-window nh-map-buffer)
-    (if (buffer-live-p nh-active-menu-buffer)
-	(pop-to-buffer nh-active-menu-buffer))))
+    (case nethack-message-style
+      (:map)
+      (t
+       (switch-to-buffer nh-message-buffer)
+       (split-window-vertically nethack-message-window-height)
+       (setq other-window t)))
+    (if other-window
+	(switch-to-buffer-other-window nh-map-buffer)
+	(switch-to-buffer nh-map-buffer))
+    (case nethack-status-style
+      ((:map :mode-line :header-line))
+      (t
+       (switch-to-buffer nh-status-buffer)
+       (split-window-vertically (- nethack-status-window-height))
+       (switch-to-buffer nh-map-buffer)))
+    (when (buffer-live-p nh-active-menu-buffer)
+      (pop-to-buffer nh-active-menu-buffer))))
 
 (defun nhapi-bell ()
   "Beep at user."
