@@ -196,8 +196,9 @@ Return the modified alist."
   (case nethack-prompt-style
     (:map
      (nh-display-message-in-map prompt nil t)
-     (read-key-sequence-vector "")
-    (nhapi-clear-message))
+     (prog1
+	 (read-key-sequence-vector "")
+       (nhapi-clear-message)))
     (t
      (let ((cursor-in-echo-area t))
        (read-key-sequence-vector prompt)))))

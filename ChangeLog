@@ -1,5 +1,8 @@
 2006-08-26  Shawn Betts  <sabetts@vcn.bc.ca>
 
+	* nethack-compat.el (nh-read-key-sequence-vector): return the
+	result of read-key-sequence-vector
+
 	* nethack.el (nethack-status-style): new customizable variable
 	(nethack-message-style): likewise
 	(nethack-prompt-style): likewise
