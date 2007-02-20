@@ -130,13 +130,17 @@
 				 (setq bot-nhapi-select-menu nil))))
 
 (defun bot-start ()
-  "Start a game of nethack as a valkyrie."
+  "Start a game of nethack as a valkyrie and walk around randomly."
   (interactive)
   (ad-activate 'nhapi-select-menu)
   ;; Start the function chain that selects a character.
   (setq bot-nhapi-yn-function 'bot-pick-character)
-  ;;(add-to-list 'nh-at-prompt-hook 'random-walk)
+  (add-hook 'nh-at-prompt-hook 'random-walk)
   (nethack))
+
+(defun bot-stop ()
+  (interactive)
+  (remove-hook 'nh-at-prompt-hook 'random-walk))
 
 (provide 'nh-bot)
 ;;; nh-bot.el ends here
