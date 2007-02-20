@@ -85,6 +85,7 @@
     
 (defun bot-gather-props ()
   "Called when we get a command prompt."
+  )
 
 (defun bot-explore (prompt)
   "Find a wall and start following it."
