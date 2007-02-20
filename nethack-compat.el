@@ -224,9 +224,11 @@ Return the modified alist."
   (while (not (memq (read-char-exclusive) '(32 13)))))
 
 (defun nh-overwrite-insert (str)
-  ;; A cheap overwrite
-  (delete-region (point) (+ (point) (length str)))
-  (insert str))
+  ;; A cheap overwrite for in-map message printing
+  (delete-region (point) (min (+ (point) (length str))
+			      nh-map-width))
+  (insert (substring str 0 (min (length str)
+				(- nh-map-width (point))))))
 
 (defmacro nh-with-point (&rest body)
   "Restore the point after running body."

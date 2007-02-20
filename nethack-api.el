@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.94 2006/06/11 17:16:53 sabetts Exp $
+;; Version: $Id: nethack-api.el,v 1.95 2006/08/27 00:44:39 sabetts Exp $
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -417,7 +417,7 @@ Do not edit the value of this variable.  Instead, change the value of
   (case nethack-message-style
     (:map
      (nh-clear-message)
-     (nh-display-message nh-last-message))
+     (nh-message 'atr-none nh-last-message))
     (t
      (save-selected-window
        (save-current-buffer		; is this redundant since we
@@ -455,7 +455,8 @@ all of the appropriate setup."
      ;; we need to create this buffer because messages come in before
      ;; the map is set up.
      (with-current-buffer (get-buffer-create "*nethack map*")
-       (insert (make-string nh-map-width 32))))
+       (let ((inhibit-read-only t))
+	 (insert (make-string nh-map-width 32) "\n"))))
     (t
      (with-current-buffer (get-buffer-create "*nethack message*")
        (erase-buffer)
@@ -532,7 +533,7 @@ The TYPE argument is legacy and serves no real purpose."
 (defun nhapi-block ()
   (case nethack-prompt-style
     (:map
-     (nh-display-message-in-map 'atr-none "" t)
+     (nh-display-message-in-map "" t)
      (nhapi-clear-message))
     (t
      ;;(nh-read-char "nethack: -- more --")
@@ -545,7 +546,8 @@ The TYPE argument is legacy and serves no real purpose."
 
 (defun nhapi-display-menu (menuid)
   (with-current-buffer (nh-menu-buffer menuid)
-    (let ((window (get-buffer-window nh-message-buffer))
+    (let ((window (and nh-message-buffer
+		       (get-buffer-window nh-message-buffer)))
 	  (size (count-lines (point-min) (point-max))))
       (if (or (not window)
 	      (>= size (window-height window)))
@@ -736,7 +738,8 @@ the menu is dismissed."
 	  (setq nh-window-configuration (current-window-configuration))
 	  ;; Use the window displaying the message buffer for the menu
 	  ;; buffer, if possible.
-	  (let ((message-window (get-buffer-window nh-message-buffer)))
+	  (let ((message-window (and nh-message-buffer
+				     (get-buffer-window nh-message-buffer))))
 	    (if (not message-window)
 		(pop-to-buffer (nh-menu-buffer menuid) nil t)
 	      (select-window message-window)
