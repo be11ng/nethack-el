@@ -459,7 +459,9 @@ all of the appropriate setup."
 	 (insert (make-string nh-map-width 32) "\n"))))
     (t
      (with-current-buffer (get-buffer-create "*nethack message*")
-       (erase-buffer)
+       (nh-message-mode)
+       (let ((inhibit-read-only t))
+         (erase-buffer))
        (setq nh-message-highlight-overlay
 	     (make-overlay (point-max) (point-max)))
        (overlay-put nh-message-highlight-overlay 

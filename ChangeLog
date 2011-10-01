@@ -1,3 +1,11 @@
+2011-10-01  PJ Weisberg <pj@irregularexpressions.net>
+
+	* nethack.el (nh-message-mode): Create new major mode, for an easy
+	place to hang hooks to be run in the message window.
+	* nethack-api.el (nhapi-create-message-window): Deal with the fact
+	that I made nh-message-mode set the buffer read-only
+	* nethack-compat.el (nh-message): Likewise
+
 2007-02-20  Shawn Betts  <sabetts@shitbender.gagrod>
 
 	* nethack-compat.el (nh-overwrite-insert): rewrite

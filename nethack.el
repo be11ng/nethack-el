@@ -550,6 +550,11 @@ delete the contents, perhaps logging the text."
   (setq other-window-scroll-buffer nh-message-buffer)
   (run-hooks 'nethack-map-mode-hook))
 
+(define-derived-mode nh-message-mode text-mode "Nethack Messages"
+  "Major mode for the Nethack message window"
+  (setq buffer-read-only t))
+(put 'nh-message-mode 'mode-class 'special)
+
 (defun nethack-kill-buffers ()
   "kill all nethack associated buffers except the nethack process
 buffer."

@@ -153,8 +153,9 @@ Return the modified alist."
     (t
      (with-current-buffer nh-message-buffer
        (goto-char (point-max))
-       (run-hooks 'nethack-before-print-message-hook)
-       (insert str "\n")
+       (let ((inhibit-read-only t))
+         (run-hooks 'nethack-before-print-message-hook)
+         (insert str "\n"))
        ;; cover new text with highlight overlay
        (let ((start (overlay-start nh-message-highlight-overlay)))
 	 (move-overlay nh-message-highlight-overlay
