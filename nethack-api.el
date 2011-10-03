@@ -207,8 +207,9 @@
 	  (insert (propertize (nh-status-string nethack-status-buffer-format) 'nethack-status t))))))
     (t
      (with-current-buffer nh-status-buffer
-       (erase-buffer)
-       (insert (nh-status-string nethack-status-buffer-format))))))
+       (let ((inhibit-read-only t))
+         (erase-buffer)
+         (insert (nh-status-string nethack-status-buffer-format)))))))
 
 (defun nh-status-n ()
   (nh-propertize-attribute nh-status-attribute-name))
@@ -471,8 +472,10 @@ all of the appropriate setup."
 (defun nhapi-create-status-window ()
   "Create the status buffer."
   (with-current-buffer (get-buffer-create "*nethack status*")
-    (erase-buffer)
-    (setq nh-status-buffer (current-buffer))))
+    (nh-status-mode)
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      (setq nh-status-buffer (current-buffer)))))
 
 (defun nhapi-create-map-window ()
   "Created the map buffer."

@@ -555,6 +555,11 @@ delete the contents, perhaps logging the text."
   (setq buffer-read-only t))
 (put 'nh-message-mode 'mode-class 'special)
 
+(define-derived-mode nh-status-mode nil "Nethack Status"
+  "Major mode for the Nethack status window"
+  (setq buffer-read-only t))
+(put 'nh-status-mode 'mode-class 'special)
+
 (defun nethack-kill-buffers ()
   "kill all nethack associated buffers except the nethack process
 buffer."

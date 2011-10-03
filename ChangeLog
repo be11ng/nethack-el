@@ -1,3 +1,11 @@
+2011-10-03  PJ Weisberg <pj@irregularexpressions.net>
+	* nethack.el (nh-status-mode): Create mode for Nethack status
+	buffer
+	* nethack-api.el (nhapi-create-status-window): Make status buffer
+	use the new mode
+	(nh-print-status): Deal with the fact that the new mode makes the
+	buffer read-only.
+
 2011-10-01  PJ Weisberg <pj@irregularexpressions.net>
 
 	* nethack.el (nh-message-mode): Create new major mode, for an easy
