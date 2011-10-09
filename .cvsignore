@@ -3,3 +3,4 @@
 .patch-ok
 {arch}
 .arch-ids
+*.elc
