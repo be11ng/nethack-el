@@ -1,3 +1,7 @@
+2011-10-09 PJ Weisberg <pj@irregularexpressions.net>
+	* nethack-api.el (nh-propertize-attribute): Add logic to handle
+	strength between 18 and 19
+
 2011-10-03  PJ Weisberg <pj@irregularexpressions.net>
 	* nethack.el (nh-status-mode): Create mode for Nethack status
 	buffer

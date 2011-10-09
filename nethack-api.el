@@ -79,20 +79,32 @@
 	 (age (car (cddr attribute)))
 	 (string (format "%s" (or new-value "")))
 	 (face (if (<= age nethack-status-highlight-delay)
-		   (cond ((numberp new-value)
-			  (cond ((eq how nil)
-				 (if (> new-value old-value)
-				     'nethack-status-good-face
-				   'nethack-status-bad-face))
-				((eq how 'lower-is-better)
-				 (if (> new-value old-value)
-				     'nethack-status-bad-face
-				   'nethack-status-good-face))))
-			 ((null new-value) 
-			  nil)
-			 (t 'nethack-status-neutral-face)))))
+               (cond
+                ((numberp new-value)
+                 (cond
+                  ((eq how 'lower-is-better)
+                   (if (> new-value old-value)
+                       'nethack-status-bad-face
+                     'nethack-status-good-face))
+                  (t
+                   (if (> new-value old-value)
+                       'nethack-status-good-face
+                     'nethack-status-bad-face))))
+                ((null new-value)
+                 nil)
+                (t
+                 'nethack-status-neutral-face)))))
+    (if (and (eq how 'strength)
+             (> new-value 18))
+        (cond
+         ((> new-value 118)
+          (setq string (prin1-to-string (- new-value 100))))
+         ((= new-value 118)
+          (setq string "18/**"))
+         (t
+          (setq string (format "18/%02d" (- new-value 18))))))
     (if face
-	(nh-propertize string 'face face)
+        (nh-propertize string 'face face)
       string)))
 
 ;; value oldvalue age
@@ -220,7 +232,7 @@
 	       nh-status-attribute-monster
 	     nh-status-attribute-rank))))
 (defun nh-status-s ()
-  (concat "St:" (nh-propertize-attribute nh-status-attribute-St)))
+  (concat "St:" (nh-propertize-attribute nh-status-attribute-St 'strength)))
 (defun nh-status-d ()
   (concat "Dx:" (nh-propertize-attribute nh-status-attribute-Dx)))
 (defun nh-status-c ()
