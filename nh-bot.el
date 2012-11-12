@@ -113,19 +113,19 @@
     (setq bot-nhapi-select-menu 'bot-select-role)))
 
 (defun bot-select-role (menuid how)
-  (let ((last-command-char ?v))
+  (let ((last-command-event ?v))
     (nh-menu-toggle-item))
   (setq bot-nhapi-select-menu 'bot-select-race))
 
 (defun bot-select-race (menuid how)
-  (let ((last-command-char ?h))
+  (let ((last-command-event ?h))
     (nh-menu-toggle-item))
   (setq bot-nhapi-select-menu 'bot-select-alignment))
 
 (defun bot-select-alignment (menuid how)
-  (let ((last-command-char ?l))
+  (let ((last-command-event ?l))
     (nh-menu-toggle-item))
-  (setq bot-nhapi-select-menu '(lambda (m h) 
+  (setq bot-nhapi-select-menu '(lambda (m h)
 				 (nh-menu-submit)
 				 (setq bot-nhapi-select-menu nil))))
 

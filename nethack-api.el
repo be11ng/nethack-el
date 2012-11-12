@@ -606,8 +606,8 @@ was actually toggled."
       (let ((case-fold-search nil)
 	    (old-point (point)))
 	(goto-char (point-min))
-	(if (re-search-forward (format "^[%c] \\([-+]\\|[0-9]+\\) .+$" 
-				last-command-char)
+	(if (re-search-forward (format "^[%c] \\([-+]\\|[0-9]+\\) .+$"
+				last-command-event)
 			       nil t)
 	    (let ((value (match-string 1))
 		  (start (match-beginning 1))
@@ -625,9 +625,9 @@ was actually toggled."
 	      (beginning-of-line)
 	      (if (eq nh-menu-how 'pick-one)
 		  (nh-menu-submit)))
-	  (message "No such menu option: %c" last-command-char)
+	  (message "No such menu option: %c" last-command-event)
 	  (goto-char old-point)))))
-	  
+
 (defun nh-menu-toggle-all-items ()
   "Toggle all menu items, only for pick-any menus."
   (interactive)
