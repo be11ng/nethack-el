@@ -23,13 +23,16 @@ clean:
 NETHACK_EL_VER=0.9.6
 
 # nethack source version
-NH_VER=3.4.3
-NH_VER_NODOTS=343
+NH_VER=3.6.6
+NH_VER_NODOTS=366
 SLASHEM_VER=0.0.7E7
 SLASHEM_VER_NODOTS=007e7
 
 PATCHFILE=enh-$(NH_VER_NODOTS).patch
 SLASHEM_PATCHFILE=enh-$(SLASHEM_VER_NODOTS).patch
+
+NH_TAR=nethack-$(NH_VER_NODOTS)-src.tgz
+NH_SRC=NetHack-NetHack-$(NH_VER)_Released
 
 DISTFILES=AUTHORS BUGS COPYING ChangeLog INSTALL Makefile README TODO	\
 	$(PATCHFILE) $(SLASHEM_PATCHFILE) mkpatch nethack-api.el	\
@@ -59,7 +62,7 @@ dist: clean all $(PATCH_OK) $(SLASHEM_PATCH_OK)
 patch:
 	@echo
 	@echo Creating $(PATCHFILE)
-	sh ./mkpatch nethack-$(NH_VER_NODOTS).tgz nethack-$(NH_VER) nethack > $(PATCHFILE)
+	sh ./mkpatch $(NH_TAR) $(NH_SRC) nethack > $(PATCHFILE)
 	rm -f $(PATCH_OK)
 
 slashem-patch:
@@ -74,12 +77,12 @@ slashem-patch:
 test-patch: $(PATCHFILE)
 	@echo
 	@echo Testing $< for sanity
-	cd ..; tar -xzf nethack-$(NH_VER_NODOTS).tgz
-	cd ../nethack-$(NH_VER) ; patch -p1 < ../nethack-el/$(PATCHFILE)
-	cd ../nethack-$(NH_VER)/sys/unix; sh setup.sh
-	$(MAKE) -C ../nethack-$(NH_VER)
-	cd ../nethack-$(NH_VER)/src; HACKDIR=. ./nethack | grep api-init
-	rm -r ../nethack-$(NH_VER)
+	cd ..; tar -xzf $(NH_TAR)
+	cd ../$(NH_SRC) ; patch -p1 < ../nethack-el/$(PATCHFILE)
+	cd ../$(NH_SRC)/sys/unix; sh setup.sh
+	$(MAKE) -C ../$(NH_SRC)
+	cd ../$(NH_SRC)/src; HACKDIR=. ./nethack | grep api-init
+	rm -r ../$(NH_SRC)
 	touch $(PATCH_OK)
 
 slashem-test-patch: $(SLASHEM_PATCHFILE)
