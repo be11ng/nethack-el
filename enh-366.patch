@@ -542,7 +542,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
 --- /dev/null	2020-05-25 11:34:02.121379120 -0400
-+++ nethack/win/lisp/winlisp.c	2020-05-25 16:26:46.211924941 -0400
++++ nethack/win/lisp/winlisp.c	2020-05-25 17:22:35.180224466 -0400
 @@ -0,0 +1,1958 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
@@ -1570,7 +1570,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +		 lisp_int (depth(&u.uz)););
 +
 +  lisp_list (lisp_string ("$");
-+	     lisp_int (u.ugold););
++  lisp_int (money_cnt(invent)););
 +  lisp_list (lisp_string ("HP");
 +	     lisp_int (hp););
 +  lisp_list (lisp_string ("HPmax");
@@ -2499,6 +2499,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  lisp_cmd ("outrip",
 +	    lisp_int (window);	    
 +	    lisp_string (plname);
-+	    lisp_int (u.ugold);
-+	    lisp_string ("Died while trying to finish nethack-el."));
++      lisp_int (money_cnt(invent));
++      lisp_string ("Died while trying to finish nethack-el."));
 +}
