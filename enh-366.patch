@@ -48,7 +48,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
 --- /dev/null	2020-05-25 11:34:02.121379120 -0400
-+++ nethack/include/winlisp.h	2020-05-23 18:24:01.191821722 -0400
++++ nethack/include/winlisp.h	2020-05-25 16:23:26.474351571 -0400
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
 +#define WINLISP_H
@@ -100,7 +100,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +#ifdef POSITIONBAR
 +E void FDECL(lisp_update_positionbar, (char *));
 +#endif
-+E void FDECL(lisp_print_glyph, (winid,XCHAR_P,XCHAR_P,int));
++E void FDECL(lisp_print_glyph, (winid, XCHAR_P, XCHAR_P, int, int));
 +E void FDECL(lisp_raw_print, (const char *));
 +E void FDECL(lisp_raw_print_bold, (const char *));
 +E int NDECL(lisp_nhgetch);
@@ -530,8 +530,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
 --- /dev/null	2020-05-25 11:34:02.121379120 -0400
-+++ nethack/win/lisp/winlisp.c	2020-05-24 17:39:09.533164692 -0400
-@@ -0,0 +1,1938 @@
++++ nethack/win/lisp/winlisp.c	2020-05-25 16:26:46.211924941 -0400
+@@ -0,0 +1,1958 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +
@@ -767,59 +767,78 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  
 +/* Interface definition, for windows.c */
 +struct window_procs lisp_procs = {
-+  "lisp",
-+  WC_COLOR|WC_HILITE_PET,
-+  0L,
-+  1,
-+  lisp_init_nhwindows,
-+  lisp_player_selection,
-+  lisp_askname,
-+  lisp_get_nh_event,
-+  lisp_exit_nhwindows,
-+  lisp_suspend_nhwindows,
-+  lisp_resume_nhwindows,
-+  lisp_create_nhwindow,
-+  lisp_clear_nhwindow,
-+  lisp_display_nhwindow,
-+  lisp_destroy_nhwindow,
-+  lisp_curs,
-+  lisp_putstr,
-+  lisp_display_file,
-+  lisp_start_menu,
-+  lisp_add_menu,
-+  lisp_end_menu,
-+  lisp_select_menu,
-+  genl_message_menu,
-+  lisp_update_inventory,
-+  lisp_mark_synch,
-+  lisp_wait_synch,
++    "lisp",
++    (WC_ALIGN_MESSAGE | WC_ALIGN_STATUS | WC_COLOR | WC_INVERSE
++      | WC_HILITE_PET
++      | WC_PERM_INVENT | WC_POPUP_DIALOG | WC_SPLASH_SCREEN),
++    (WC2_DARKGRAY | WC2_HITPOINTBAR
++#if defined(STATUS_HILITES)
++     | WC2_HILITE_STATUS
++#endif
++     | WC2_FLUSH_STATUS | WC2_TERM_SIZE
++     | WC2_STATUSLINES | WC2_WINDOWBORDERS | WC2_PETATTR | WC2_GUICOLOR
++     | WC2_SUPPRESS_HIST),
++    {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},   /* color availability */
++    lisp_init_nhwindows,
++    lisp_player_selection,
++    lisp_askname,
++    lisp_get_nh_event,
++    lisp_exit_nhwindows,
++    lisp_suspend_nhwindows,
++    lisp_resume_nhwindows,
++    lisp_create_nhwindow,
++    lisp_clear_nhwindow,
++    lisp_display_nhwindow,
++    lisp_destroy_nhwindow,
++    lisp_curs,
++    lisp_putstr,
++    genl_putmixed,
++    lisp_display_file,
++    lisp_start_menu,
++    lisp_add_menu,
++    lisp_end_menu,
++    lisp_select_menu,
++    genl_message_menu,
++    lisp_update_inventory,
++    lisp_mark_synch,
++    lisp_wait_synch,
 +#ifdef CLIPPING
-+  lisp_cliparound,
++    lisp_cliparound,
 +#endif
 +#ifdef POSITIONBAR
-+  lisp_update_positionbar,
++    dummy_update_position_bar,
 +#endif
-+  lisp_print_glyph,
-+  lisp_raw_print,
-+  lisp_raw_print_bold,
-+  lisp_nhgetch,
-+  lisp_nh_poskey,
-+  lisp_nhbell,
-+  lisp_doprev_message,
-+  lisp_yn_function,
-+  lisp_getlin,
-+  lisp_get_ext_cmd,
-+  lisp_number_pad,
-+  lisp_delay_output,
-+#ifdef CHANGE_COLOR	/* the Mac uses a palette device */
-+  donull,
-+  donull,
++    lisp_print_glyph,
++    lisp_raw_print,
++    lisp_raw_print_bold,
++    lisp_nhgetch,
++    lisp_nh_poskey,
++    lisp_nhbell,
++    lisp_doprev_message,
++    lisp_yn_function,
++    lisp_getlin,
++    lisp_get_ext_cmd,
++    lisp_number_pad,
++    lisp_delay_output,
++#ifdef CHANGE_COLOR
++    dummy_change_color,
++#ifdef MAC /* old OS 9, not OSX */
++    (void (*)(int)) 0,
++    (short (*)(winid, char *)) 0,
 +#endif
-+  /* other defs that really should go away (they're tty specific) */
-+  lisp_start_screen,
-+  lisp_end_screen,
-+  lisp_outrip,
-+  genl_preference_update,
++    dummy_get_color_string,
++#endif
++    lisp_start_screen,
++    lisp_end_screen,
++    genl_outrip,
++    genl_preference_update,
++    genl_getmsghistory,
++    genl_putmsghistory,
++    genl_status_init,
++    genl_status_finish,
++    genl_status_enablefield,
++    genl_status_update,
++    genl_can_suspend_yes,
 +};
 +
 +/* macros for printing lisp output */
@@ -1117,7 +1136,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +						flags.initalign, PICK_RANDOM);
 +		if (flags.initrole < 0) {
 +/* 		    lisp_putstr(BASE_WINDOW, 0, "Incompatible role!"); */
-+		    flags.initrole = randrole();
++		    flags.initrole = randrole(FALSE);
 +		}
 + 	    } else {
 +		/* Prompt for a role */
@@ -1151,7 +1170,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +		any.a_int = pick_role(flags.initrace, flags.initgend,
 +				    flags.initalign, PICK_RANDOM)+1;
 +		if (any.a_int == 0)	/* must be non-zero */
-+		    any.a_int = randrole()+1;
++		    any.a_int = randrole(FALSE)+1;
 +		add_menu(win, NO_GLYPH, &any , '*', 0, ATR_NONE,
 +				"Random", MENU_UNSELECTED);
 +		any.a_int = i+1;	/* must be non-zero */
@@ -1439,9 +1458,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +{
 +  lisp_cmd ("options",
 +	    lisp_boolean(iflags.cbreak);	/* in cbreak mode, rogue format */
-+	    lisp_boolean(iflags.DECgraphics);	/* use DEC VT-xxx extended character set */
++	    /* lisp_boolean(iflags.DECgraphics);	/* use DEC VT-xxx extended character set */
 +	    lisp_boolean(iflags.echo);		/* 1 to echo characters */
-+	    lisp_boolean(iflags.IBMgraphics);	/* use IBM extended character set */
++	    /* lisp_boolean(iflags.IBMgraphics);	/* use IBM extended character set */
 +	    lisp_int(iflags.msg_history);	/* hint: # of top lines to save */
 +	    lisp_boolean(iflags.num_pad);	/* use numbers for movement commands */
 +	    lisp_boolean(iflags.news);		/* print news */
@@ -2379,10 +2398,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +#define warn_color(n) def_warnsyms[n].color
 +
 +void
-+lisp_print_glyph(window, x, y, glyph)
++lisp_print_glyph(window, x, y, glyph, bkglyph)
 +    winid window;
 +    xchar x, y;
 +    int glyph;
++    int bkglyph UNUSED;
 +{
 +    int ch;
 +    boolean reverse_on = FALSE;
@@ -2390,7 +2410,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +    unsigned special;
 +
 +    /* map glyph to character and color */
-+    mapglyph(glyph, &ch, &color, &special, x, y);
++    (void) mapglyph(glyph, &ch, &color, &special, x, y, 0);
 +
 +    /* If the user doesn't want to highlight the pet, then we erase
 +       the PET bit from special. In the lisp code the special argument
