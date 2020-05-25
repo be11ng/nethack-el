@@ -200,6 +200,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
+--- NetHack-NetHack-3.6.6_Released/util/makedefs.c	2020-03-08 13:29:31.000000000 -0400
++++ nethack/util/makedefs.c	2020-05-25 17:07:06.303645065 -0400
+@@ -1762,6 +1762,9 @@
+ #ifdef MAC /* defunct OS 9 interface */
+     { "mac", "Mac" },
+ #endif
++#ifdef LISP_GRAPHICS
++    { "lisp", "lisp" },
++#endif
+ #ifdef AMIGA_INTUITION /* unmaintained/defunct */
+     { "amii", "Amiga Intuition" },
+ #endif
 --- /dev/null	2020-05-25 11:34:02.121379120 -0400
 +++ nethack/win/lisp/ChangeLog	2020-05-23 18:24:01.191821722 -0400
 @@ -0,0 +1,326 @@
