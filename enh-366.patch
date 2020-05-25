@@ -1092,7 +1092,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +{
 +  clearlocks ();
 +  lisp_exit_nhwindows (mesg);
-+  terminate (EXIT_SUCCESS);
++  nh_terminate (EXIT_SUCCESS);
 +  /*NOTREACHED*/
 +}
 +
