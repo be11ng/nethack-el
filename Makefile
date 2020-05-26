@@ -1,5 +1,5 @@
 # path to your emacs
-EMACS = emacs
+EMACS = /usr/bin/emacs
 
 .PHONY: clean patch dist
 
