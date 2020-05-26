@@ -200,6 +200,75 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
+--- /dev/null	2020-05-26 11:27:42.974993786 -0400
++++ nethack/sys/unix/hints/linux-lisp	2020-05-26 11:56:05.833394226 -0400
+@@ -0,0 +1,65 @@
++#
++# NetHack 3.6  linux $NHDT-Date: 1432512814 2015/05/25 00:13:34 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $
++# Copyright (c) Kenneth Lorber, Kensington, Maryland, 2007.
++# NetHack may be freely redistributed.  See license for details. 
++#
++#-PRE
++# Linux hints file
++# This hints file provides a single-user lisp build for Linux,
++# installed in ~/.local/bin and usually similar to the XDG desktop specification
++
++
++#PREFIX=/usr
++#PREFIX=$(wildcard ~)/nh/install
++PREFIX=$(HOME)/.local
++HACKDIR=$(PREFIX)/share/$(GAME)dir
++SHELLDIR = $(PREFIX)/bin
++INSTDIR=$(HACKDIR)
++VARDIR = $(HACKDIR)
++
++
++
++POSTINSTALL=cp -n sys/unix/sysconf $(INSTDIR)/sysconf; $(CHOWN) $(GAMEUID) $(INSTDIR)/sysconf; $(CHGRP) $(GAMEGRP) $(INSTDIR)/sysconf; chmod $(VARFILEPERM) $(INSTDIR)/sysconf;
++
++CFLAGS=-g -O -I../include -DNOTPARMDECL
++CFLAGS+=-DDLB
++CFLAGS+=-DCOMPRESS=\"/bin/gzip\" -DCOMPRESS_EXTENSION=\".gz\"
++CFLAGS+=-DSYSCF -DSYSCF_FILE=\"$(HACKDIR)/sysconf\" -DSECURE
++CFLAGS+=-DTIMED_DELAY
++CFLAGS+=-DHACKDIR=\"$(HACKDIR)\"
++CFLAGS+=-DDUMPLOG
++CFLAGS+=-DCONFIG_ERROR_SECURE=FALSE
++CFLAGS+=-DCURSES_GRAPHICS
++#CFLAGS+=-DEXTRA_SANITY_CHECKS
++#CFLAGS+=-DEDIT_GETLIN
++#CFLAGS+=-DSCORE_ON_BOTL
++#CFLAGS+=-DMSGHANDLER
++#CFLAGS+=-DTTY_TILES_ESCCODES
++
++# Debugging
++CFLAGS+=-g
++
++LINK=$(CC)
++# Only needed for GLIBC stack trace:
++LFLAGS=-rdynamic
++
++WINSRC = $(WINTTYSRC) $(WINCURSESSRC) $(WINLISPSRC)
++WINOBJ = $(WINTTYOBJ) $(WINCURSESOBJ) $(WINLISPOBJ)
++WINLIB = $(WINTTYLIB) $(WINCURSESLIB) $(WINLISPLIB)
++
++# if TTY_TILES_ESCCODES
++#WINSRC += tile.c
++#WINOBJ += tile.o
++
++WINTTYLIB=-lncurses -ltinfo
++
++CHOWN=true
++CHGRP=true
++
++VARDIRPERM = 0755
++VARFILEPERM = 0644
++GAMEPERM = 0755
++#GAMEPERM = 04755
++FILEPERM = 0644
++EXEPERM  = 0755
++DIRPERM  = 0755
+\ No newline at end of file
 --- NetHack-NetHack-3.6.6_Released/util/makedefs.c	2020-03-08 13:29:31.000000000 -0400
 +++ nethack/util/makedefs.c	2020-05-25 17:07:06.303645065 -0400
 @@ -1762,6 +1762,9 @@
