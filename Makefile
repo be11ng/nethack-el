@@ -79,7 +79,7 @@ test-patch: $(PATCHFILE)
 	@echo Testing $< for sanity
 	cd ..; tar -xzf $(NH_TAR)
 	cd ../$(NH_SRC) ; patch -p1 < ../nethack-el/$(PATCHFILE)
-	cd ../$(NH_SRC)/sys/unix; sh setup.sh
+	cd ../$(NH_SRC)/sys/unix; sh setup.sh hints/linux-lisp
 	$(MAKE) -C ../$(NH_SRC)
 	cd ../$(NH_SRC)/src; HACKDIR=. ./nethack | grep api-init
 	rm -r ../$(NH_SRC)

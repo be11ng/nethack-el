@@ -47,7 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	2020-05-25 11:34:02.121379120 -0400
+--- /dev/null	2020-05-26 11:27:42.974993786 -0400
 +++ nethack/include/winlisp.h	2020-05-25 16:23:26.474351571 -0400
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
@@ -144,7 +144,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      { &chainin_procs, chainin_procs_init, chainin_procs_chain },
      { (struct window_procs *) &chainout_procs, chainout_procs_init,
 --- NetHack-NetHack-3.6.6_Released/sys/unix/Makefile.src	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/sys/unix/Makefile.src	2020-05-24 16:39:30.648709647 -0400
++++ nethack/sys/unix/Makefile.src	2020-05-25 21:23:32.606988441 -0400
 @@ -266,9 +266,12 @@
  #	../win/BeOS/NHMenuWindow.cpp ../win/BeOS/NHMapWindow.cpp tile.c
  #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
@@ -155,8 +155,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #
 -#WINSRC = $(WINTTYSRC)
 -#WINOBJ = $(WINTTYOBJ)
-+WINSRC = $(WINLISPSRC)
-+WINOBJ = $(WINLISPOBJ)
++#WINSRC = $(WINLISPSRC)
++#WINOBJ = $(WINLISPOBJ)
  #
  # Curses - Karl Garrison, Tangles
  #WINSRC = $(WINCURSESSRC)
@@ -165,8 +165,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  WINBELIB = -lbe
  #
 +# libraries for lisp port
-+WINLISPLIB =
-+WINLIB = $(WINLISPLIB)
++WINLISPLIB = -lncurses -ltinfo
++#WINLIB = $(WINLISPLIB)
 +#
  # libraries for curses port
  # link with ncurses
@@ -281,7 +281,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2020-05-25 11:34:02.121379120 -0400
+--- /dev/null	2020-05-26 11:27:42.974993786 -0400
 +++ nethack/win/lisp/ChangeLog	2020-05-23 18:24:01.191821722 -0400
 @@ -0,0 +1,326 @@
 +2005-02-27    <katia_dilkina@verizon.net>
@@ -610,7 +610,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2020-05-25 11:34:02.121379120 -0400
+--- /dev/null	2020-05-26 11:27:42.974993786 -0400
 +++ nethack/win/lisp/winlisp.c	2020-05-25 17:22:35.180224466 -0400
 @@ -0,0 +1,1958 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
