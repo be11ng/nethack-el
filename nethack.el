@@ -559,10 +559,11 @@ buffer."
     (kill-buffer nh-status-buffer))
   (when (buffer-live-p nh-message-buffer)
     (kill-buffer nh-message-buffer))
-  (mapcar (lambda (x) (when (buffer-live-p (cdr x))
-			(kill-buffer (cdr x)))) nh-menu-buffer-table)
+  (mapc (lambda (x) (when (buffer-live-p (cdr x))
+                      (kill-buffer (cdr x))))
+        nh-menu-buffer-table)
   (kill-buffer (get-buffer nh-log-buffer)))
-  
+
 
 
 (run-hooks 'nethack-load-hook)
@@ -571,9 +572,9 @@ buffer."
 
 
 ;;; VERSION:
+(defconst nethack-el-version "0.9.0")
 (defun nethack-el-version ()
   (interactive)
   (message (format "nethack-el %s" nethack-el-version)))
-(defconst nethack-el-version "0.9.0")
 
 ;;; nethack.el ends here
