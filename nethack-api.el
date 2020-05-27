@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske
 ;; Created: Sat Mar 18 11:24:02 2000
-;; Version: $Id: nethack-api.el,v 1.95 2006/08/27 00:44:39 sabetts Exp $
+;; Version: $Id$
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -79,20 +79,32 @@
 	 (age (car (cddr attribute)))
 	 (string (format "%s" (or new-value "")))
 	 (face (if (<= age nethack-status-highlight-delay)
-		   (cond ((numberp new-value)
-			  (cond ((eq how nil)
-				 (if (> new-value old-value)
-				     'nethack-status-good-face
-				   'nethack-status-bad-face))
-				((eq how 'lower-is-better)
-				 (if (> new-value old-value)
-				     'nethack-status-bad-face
-				   'nethack-status-good-face))))
-			 ((null new-value) 
-			  nil)
-			 (t 'nethack-status-neutral-face)))))
+               (cond
+                ((numberp new-value)
+                 (cond
+                  ((eq how 'lower-is-better)
+                   (if (> new-value old-value)
+                       'nethack-status-bad-face
+                     'nethack-status-good-face))
+                  (t
+                   (if (> new-value old-value)
+                       'nethack-status-good-face
+                     'nethack-status-bad-face))))
+                ((null new-value)
+                 nil)
+                (t
+                 'nethack-status-neutral-face)))))
+    (if (and (eq how 'strength)
+             (> new-value 18))
+        (cond
+         ((> new-value 118)
+          (setq string (prin1-to-string (- new-value 100))))
+         ((= new-value 118)
+          (setq string "18/**"))
+         (t
+          (setq string (format "18/%02d" (- new-value 18))))))
     (if face
-	(nh-propertize string 'face face)
+        (nh-propertize string 'face face)
       string)))
 
 ;; value oldvalue age
@@ -207,8 +219,9 @@
 	  (insert (propertize (nh-status-string nethack-status-buffer-format) 'nethack-status t))))))
     (t
      (with-current-buffer nh-status-buffer
-       (erase-buffer)
-       (insert (nh-status-string nethack-status-buffer-format))))))
+       (let ((inhibit-read-only t))
+         (erase-buffer)
+         (insert (nh-status-string nethack-status-buffer-format)))))))
 
 (defun nh-status-n ()
   (nh-propertize-attribute nh-status-attribute-name))
@@ -219,7 +232,7 @@
 	       nh-status-attribute-monster
 	     nh-status-attribute-rank))))
 (defun nh-status-s ()
-  (concat "St:" (nh-propertize-attribute nh-status-attribute-St)))
+  (concat "St:" (nh-propertize-attribute nh-status-attribute-St 'strength)))
 (defun nh-status-d ()
   (concat "Dx:" (nh-propertize-attribute nh-status-attribute-Dx)))
 (defun nh-status-c ()
@@ -459,7 +472,9 @@ all of the appropriate setup."
 	 (insert (make-string nh-map-width 32) "\n"))))
     (t
      (with-current-buffer (get-buffer-create "*nethack message*")
-       (erase-buffer)
+       (nh-message-mode)
+       (let ((inhibit-read-only t))
+         (erase-buffer))
        (setq nh-message-highlight-overlay
 	     (make-overlay (point-max) (point-max)))
        (overlay-put nh-message-highlight-overlay 
@@ -469,8 +484,10 @@ all of the appropriate setup."
 (defun nhapi-create-status-window ()
   "Create the status buffer."
   (with-current-buffer (get-buffer-create "*nethack status*")
-    (erase-buffer)
-    (setq nh-status-buffer (current-buffer))))
+    (nh-status-mode)
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      (setq nh-status-buffer (current-buffer)))))
 
 (defun nhapi-create-map-window ()
   "Created the map buffer."
@@ -589,8 +606,8 @@ was actually toggled."
       (let ((case-fold-search nil)
 	    (old-point (point)))
 	(goto-char (point-min))
-	(if (re-search-forward (format "^[%c] \\([-+]\\|[0-9]+\\) .+$" 
-				last-command-char)
+	(if (re-search-forward (format "^[%c] \\([-+]\\|[0-9]+\\) .+$"
+				last-command-event)
 			       nil t)
 	    (let ((value (match-string 1))
 		  (start (match-beginning 1))
@@ -608,9 +625,9 @@ was actually toggled."
 	      (beginning-of-line)
 	      (if (eq nh-menu-how 'pick-one)
 		  (nh-menu-submit)))
-	  (message "No such menu option: %c" last-command-char)
+	  (message "No such menu option: %c" last-command-event)
 	  (goto-char old-point)))))
-	  
+
 (defun nh-menu-toggle-all-items ()
   "Toggle all menu items, only for pick-any menus."
   (interactive)

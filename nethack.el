@@ -4,7 +4,7 @@
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
 ;; Created: Sat Mar 18 11:31:52 2000
-;; Version: $Id: nethack.el,v 1.85 2006/06/11 17:16:53 sabetts Exp $
+;; Version: $Id$
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
@@ -549,6 +549,16 @@ delete the contents, perhaps logging the text."
   (make-variable-buffer-local 'other-window-scroll-buffer)
   (setq other-window-scroll-buffer nh-message-buffer)
   (run-hooks 'nethack-map-mode-hook))
+
+(define-derived-mode nh-message-mode text-mode "Nethack Messages"
+  "Major mode for the Nethack message window"
+  (setq buffer-read-only t))
+(put 'nh-message-mode 'mode-class 'special)
+
+(define-derived-mode nh-status-mode nil "Nethack Status"
+  "Major mode for the Nethack status window"
+  (setq buffer-read-only t))
+(put 'nh-status-mode 'mode-class 'special)
 
 (defun nethack-kill-buffers ()
   "kill all nethack associated buffers except the nethack process

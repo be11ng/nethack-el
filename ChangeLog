@@ -1,3 +1,25 @@
+2020-05-27  PJ Weisberg <pj@irregularexpressions.net>
+
+	* nethack-api.el: Replace use of obsolete last-command-char with
+	last-command-event.
+	* nh-bot.el: Likewise.
+
+	* nethack-api.el (nh-propertize-attribute): Add logic to handle
+	strength between 18 and 19
+
+	* nethack.el (nh-status-mode): Create mode for Nethack status
+	buffer
+	* nethack-api.el (nhapi-create-status-window): Make status buffer
+	use the new mode
+	(nh-print-status): Deal with the fact that the new mode makes the
+	buffer read-only.
+
+	* nethack.el (nh-message-mode): Create new major mode, for an easy
+	place to hang hooks to be run in the message window.
+	* nethack-api.el (nhapi-create-message-window): Deal with the fact
+	that I made nh-message-mode set the buffer read-only
+	* nethack-compat.el (nh-message): Likewise
+
 2020-05-27  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack.el (nethack-kill-buffers): Use mapc instead of mapcar.

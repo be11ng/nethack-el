@@ -3,7 +3,7 @@
 ;; Copyright (C) 2002,2003,2005  Shawn Betts and Ryan Yeske
 
 ;; Author: Shawn Betts <sabetts@vcn.bc.ca>
-;; Version: $Id: nethack-example.el,v 1.5 2004/11/19 23:05:39 sabetts Exp $
+;; Version: $Id$
 ;; Keywords: games
 
 ;; This file is free software; you can redistribute it and/or modify
