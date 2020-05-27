@@ -1,3 +1,7 @@
+*.~undo-tree
+GPATH
+GRTAGS
+GTAGS
 # CVS default ignores begin
 tags
 TAGS
