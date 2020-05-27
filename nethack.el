@@ -393,10 +393,10 @@ attribute, the new value and the old value."
   "nethack white"
   :group 'nethack-faces)
 
-(defface nethack-map-tile-face 
-  `((((type tty)) 
+(defface nethack-map-tile-face
+  `((((type tty))
      nil)
-    (t (:font "6x10")))
+    (t (:height 16)))
   "Map face with height less than the tile size (16 pixels)."
   :group 'nethack-faces)
 

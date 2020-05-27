@@ -3,6 +3,7 @@
 	* nethack.el (nethack-kill-buffers): Use mapc instead of mapcar.
 	(nethack-el-version): Move def of the constant in front of the function
 	that calls it
+	(nethack-map-tile-face): Use :height instead of :font.
 
 2020-05-26  Benjamin Yang  <be11ng@protonmail.com>
 
