@@ -56,7 +56,7 @@
 	(winlisp.c): Replace terminate with nh_terminate.
 	(winlisp.c): Comment out iflags.DECgraphics and iflags.IBMgraphics.
 	(winlisp.c): Create new window_procs by using the one from curses as a
-	termplate, using genl for missing functions.
+	template, using genl for missing functions.
 
 2020-05-23  Benjamin Yang  <be11ng@protonmail.com>
 
