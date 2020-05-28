@@ -46,7 +46,7 @@
   "Return the buffer that corresponds to the MENUID."
   (let ((buffer (cdr (assq menuid nh-menu-buffer-table))))
     (if (buffer-live-p buffer)
-	buffer
+        buffer
       'nobuffer)))
 
 (defvar nh-message-highlight-overlay nil
@@ -469,16 +469,16 @@ all of the appropriate setup."
      ;; the map is set up.
      (with-current-buffer (get-buffer-create "*nethack map*")
        (let ((inhibit-read-only t))
-	 (insert (make-string nh-map-width 32) "\n"))))
+         (insert (make-string nh-map-width 32) "\n"))))
     (t
      (with-current-buffer (get-buffer-create "*nethack message*")
        (nh-message-mode)
        (let ((inhibit-read-only t))
          (erase-buffer))
        (setq nh-message-highlight-overlay
-	     (make-overlay (point-max) (point-max)))
-       (overlay-put nh-message-highlight-overlay 
-		    'face 'nethack-message-highlight-face)
+             (make-overlay (point-max) (point-max)))
+       (overlay-put nh-message-highlight-overlay
+                    'face 'nethack-message-highlight-face)
        (setq nh-message-buffer (current-buffer))))))
 
 (defun nhapi-create-status-window ()
@@ -491,13 +491,15 @@ all of the appropriate setup."
 
 (defun nhapi-create-map-window ()
   "Created the map buffer."
-  (with-current-buffer (get-buffer-create "*nethack map*")
-    (nh-map-mode)
-    (setq nh-map-buffer (current-buffer))))
+  (if (not nh-map-buffer)
+      (with-current-buffer (get-buffer-create "*nethack map*")
+        (nh-map-mode)
+        (setq nh-map-buffer (current-buffer)))))
 
 (defun nhapi-create-inventory-window (menuid)
   "Create the inventory window."
-  (nhapi-create-menu-window menuid))
+  (if (not (assq menuid nh-menu-buffer-table)) ; If that menuid doesn't exist
+      (nhapi-create-menu-window menuid)))
 
 (defun nhapi-create-menu-window (menuid)
   "Create a menu window."
@@ -510,7 +512,7 @@ all of the appropriate setup."
   (nhapi-create-menu 'text menuid))
 
 (defun nhapi-create-menu (type menuid)
-  "Return a newly created buffer and add it to the menu table.  
+  "Return a newly created buffer and add it to the menu table.
 
 The TYPE argument is legacy and serves no real purpose."
   (let* ((name (format "*%s* %d" (symbol-name type) menuid))
@@ -775,9 +777,17 @@ the menu is dismissed."
 (defun nhapi-restore-window-configuration ()
   "Layout the nethack windows according to the values
 `nethack-status-window-height' and `nethack-message-window-height'."
+  ;; By nethack 3.6.6, the nhapi-create-map-window and
+  ;; nhapi-create-inventory-window are called after
+  ;; nhapi-restore-window-configuration. This may be an issue within the source
+  ;; and it may be possible to patch it there, but patching it here is easier.
+  (if (not nh-map-buffer)
+      (nhapi-create-map-window))
+  (if (not nh-menu-buffer-table)
+      (nhapi-create-inventory-window 3))
   (let ((window-min-height (min nethack-status-window-height
-				nethack-message-window-height))
-	other-window)
+                                nethack-message-window-height))
+        other-window)
     (delete-other-windows)
     (case nethack-message-style
       (:map)
@@ -786,8 +796,8 @@ the menu is dismissed."
        (split-window-vertically nethack-message-window-height)
        (setq other-window t)))
     (if other-window
-	(switch-to-buffer-other-window nh-map-buffer)
-	(switch-to-buffer nh-map-buffer))
+        (switch-to-buffer-other-window nh-map-buffer)
+      (switch-to-buffer nh-map-buffer))
     (case nethack-status-style
       ((:map :mode-line :header-line))
       (t

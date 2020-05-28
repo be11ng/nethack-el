@@ -1,3 +1,10 @@
+2020-05-28  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack-api.el (nhapi-restore-window-configuration): If nh-map-buffer
+	or nh-menu-buffer-table are not defined, create the relevant windows.
+	(nhapi-create-map-window): If already there, don't make another one.
+	(nhapi-create-inventory-window): Likewise.
+
 2020-05-27  PJ Weisberg <pj@irregularexpressions.net>
 
 	* nethack-api.el: Replace use of obsolete last-command-char with

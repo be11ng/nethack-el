@@ -427,14 +427,14 @@ The variable `nethack-program' is the name of the executable to run."
   (interactive)
   (if (nethack-is-running)
       (progn
-	(message "Nethack process already running...")
-	(nhapi-restore-window-configuration))
+        (message "Nethack process already running...")
+        (nhapi-restore-window-configuration))
     (progn
       ;; Start the process.
       (if (get-buffer nh-proc-buffer-name)
-	  (kill-buffer nh-proc-buffer-name))
+          (kill-buffer nh-proc-buffer-name))
       (nethack-start (apply 'start-process "nh" nh-proc-buffer-name
-			    nethack-program nethack-program-args)))))
+                            nethack-program nethack-program-args)))))
 
 (defun nethack-is-running ()
   "return T if nethack is already running."
