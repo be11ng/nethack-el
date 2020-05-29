@@ -316,8 +316,10 @@
     ;;M-q     Quit
     (define-key map "\eq" 'nethack-command-quit)
 
-    ;;M-r     Rub a lamp
-    (define-key map "\er" 'nethack-command-rub)
+    ;;M-r u   Rub a lamp
+    (define-key map "\eru" 'nethack-command-rub)
+    ;;M-r i   Ride
+    (define-key map "\eri" 'nethack-command-ride)
     ;;M-s     Sit down
     (define-key map "\es" 'nethack-command-sit)
     ;;M-T     Turn undead

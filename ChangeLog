@@ -1,3 +1,7 @@
+2020-05-29  Evan Izaksonas-Smith  <izak0002@dev.null>
+
+	* nethack-keys.el (nh-mode-map): Added binding for riding and rubbing.
+
 2020-05-28  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-api.el (nhapi-restore-window-configuration): If nh-map-buffer
