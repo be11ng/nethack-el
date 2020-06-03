@@ -22,14 +22,14 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
 (defvar nh-accelerator-chars
   [?a ?b ?c ?d ?e ?f ?g ?h ?i ?j ?k ?l ?m ?n ?o ?p ?q ?r ?s ?t ?u ?v
-?w ?x ?y ?z ?A ?B ?C ?D ?E ?F ?G ?H ?I ?J ?K ?L ?M ?N ?O ?P ?Q ?R ?S
-?T ?U ?V ?W ?X ?Y ?Z ?* ?#]
+      ?w ?x ?y ?z ?A ?B ?C ?D ?E ?F ?G ?H ?I ?J ?K ?L ?M ?N ?O ?P ?Q ?R ?S
+      ?T ?U ?V ?W ?X ?Y ?Z ?* ?#]
   "Vector of accelerator characters.")
 
 (defvar nh-accelerator-chars-regexp
@@ -58,8 +58,8 @@
     (suppress-keymap map)
     ;; add all of the accelerator characters
     (mapc (lambda (char)
-	    (define-key map (vector char) 'nh-menu-toggle-item))
-	  nh-accelerator-chars)
+            (define-key map (vector char) 'nh-menu-toggle-item))
+          nh-accelerator-chars)
     (define-key map "\C-c\C-c" 'nh-menu-submit)
     (define-key map "\C-m" 'nh-menu-submit)
     (define-key map "\C-g" 'nh-menu-cancel)
@@ -72,7 +72,7 @@
     (define-key map "-" 'nh-menu-toggle-all-items)
     map)
   "Keymap used in Nethack menus.")
-  
+
 ;; cmd.c is where the command-key mappings are done in the nh src
 (defvar nh-map-mode-map
   (let ((map (make-sparse-keymap)))
@@ -291,7 +291,7 @@
     (define-key map "\ea" 'nethack-command-adjust)
     ;;M-c     Talk to someone
     (define-key map "\ec" 'nethack-command-chat)
-    ;;M-C     list which challenders you have adhered to 
+    ;;M-C     list which challenders you have adhered to
     (define-key map "\eC" 'nethack-command-conduct)
     ;;M-d     Dip an object into something
     (define-key map "\ed" 'nethack-command-dip)
@@ -333,9 +333,9 @@
     (define-key map "\ev" 'nethack-command-extended-version)
     ;;M-w     Wipe off your face
     (define-key map "\ew" 'nethack-command-wipe)
-    
+
     ;;; extended wizard commands....
-  
+
     map)
   "Keymap used on the Nethack map.")
 

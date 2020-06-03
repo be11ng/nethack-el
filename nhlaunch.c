@@ -2,9 +2,9 @@
    Author: Shawn Betts
    Copyright (c) 2004,2005 Shawn Betts
 
-To build on linux:
+   To build on linux:
    gcc -D__LINUX__ nhlaunch.c -o nhlaunch -lcrypt
-To build on OpenBSD
+   To build on OpenBSD
    gcc nhlaunch.c -o nhlaunch -lcrypto
 */
 
@@ -44,9 +44,9 @@ struct game_t
 /* This structure describes the games are playable on this server. The
    MUST be at least one entry. */
 struct game_t games[] = {{"nethack", "/usr/games/nethack"},
-			 {"slashem", "/usr/games/slashem"},
-			 /* The last entry must be NULL. */
-			 {NULL, NULL}};
+                         {"slashem", "/usr/games/slashem"},
+                         /* The last entry must be NULL. */
+                         {NULL, NULL}};
 
 char *
 find_program(char *game)
@@ -56,7 +56,7 @@ find_program(char *game)
   for (i=games; i->name; i++)
     {
       if (!strcmp(game, i->name))
-	return i->path;
+        return i->path;
     }
   /* No match? pick the first one in the list. */
   return games[0].path;
@@ -88,14 +88,14 @@ valid_user_p(char *username, char *passwd)
       n = (char *)strtok(line, ",");
       p = (char *)strtok(NULL, "\n");
       if (!strcmp(n, username))
-	{
-	  fclose(fd);
-	  if (!strcmp(crypt(passwd,passwd),p)) 
-	    return SUCCESS;
-	  else
-	    return BAD_PASSWD;
-	}
-      
+        {
+          fclose(fd);
+          if (!strcmp(crypt(passwd,passwd),p))
+            return SUCCESS;
+          else
+            return BAD_PASSWD;
+        }
+
     }
 
   fclose(fd);
@@ -143,36 +143,36 @@ read_cmd()
       name = (char *)strtok(NULL, " ");
       pass = (char *)strtok(NULL, " ");
       if (!name || !pass)
-	{
-	  printf ("Error parsing name and password.\n");
-	}
-      else 
-	{
-	  ret = valid_user_p(name, pass);
-	  if (ret == SUCCESS)
-	    {
-	      if (logged_in)
-		{
-		  printf("You are already logged in.\n");
-		}
-	      else
-		{
-		  logged_in = 1;
-		  if (player_name != NULL)
-		    free(player_name);
-		  player_name = (char *)strdup(name);
-		  printf("Welcome back %s.\n", name);
-		}
-	    }
-	  else if (ret == BAD_PASSWD)
-	    {
-	      printf("Failed to login %s.\n", name);
-	    }
-	  else
-	    {
-	      printf("Unknown user %s.\n", name);
-	    }
-	}
+        {
+          printf ("Error parsing name and password.\n");
+        }
+      else
+        {
+          ret = valid_user_p(name, pass);
+          if (ret == SUCCESS)
+            {
+              if (logged_in)
+                {
+                  printf("You are already logged in.\n");
+                }
+              else
+                {
+                  logged_in = 1;
+                  if (player_name != NULL)
+                    free(player_name);
+                  player_name = (char *)strdup(name);
+                  printf("Welcome back %s.\n", name);
+                }
+            }
+          else if (ret == BAD_PASSWD)
+            {
+              printf("Failed to login %s.\n", name);
+            }
+          else
+            {
+              printf("Unknown user %s.\n", name);
+            }
+        }
     }
   else if (!strncmp(line, "list", 4))
     {
@@ -181,26 +181,26 @@ read_cmd()
   else if (!strncmp(line, "play", 4))
     {
       if (logged_in)
-	{
-	  int pid;
-	  char *cmd, *game, *program;
-	  /* Find out which game to play. */
-	  cmd = (char *)strtok(line, " \n");
-	  game = (char *)strtok(NULL, " \n");
-	  if (game)
-	    program = find_program(game);
-	  else
-	    program = find_program("");
-	  /* Fork and run the game. */
-	  pid = fork();
-	  if (pid == 0)
-	    execlp(program, program, "-u", player_name, (char *)NULL);
-	  else
-	    waitpid(pid, NULL, 0);
-	  exit(0);
-	}
+        {
+          int pid;
+          char *cmd, *game, *program;
+          /* Find out which game to play. */
+          cmd = (char *)strtok(line, " \n");
+          game = (char *)strtok(NULL, " \n");
+          if (game)
+            program = find_program(game);
+          else
+            program = find_program("");
+          /* Fork and run the game. */
+          pid = fork();
+          if (pid == 0)
+            execlp(program, program, "-u", player_name, (char *)NULL);
+          else
+            waitpid(pid, NULL, 0);
+          exit(0);
+        }
       else
-	printf("You must login first.\n");
+        printf("You must login first.\n");
     }
   else if (!strncmp(line, "new", 3))
     {
@@ -209,18 +209,18 @@ read_cmd()
       name = (char *)strtok(NULL, " ");
       pass = (char *)strtok(NULL, " ");
       if (!name || !pass || strchr(name,','))
-	{
-	  printf ("Error parsing name and password.\n");
-	}
+        {
+          printf ("Error parsing name and password.\n");
+        }
       else if (valid_user_p(name, pass) == UNKNOWN_USER)
-	{
-	  add_user(name, pass);
-	  printf ("User %s added successfully.\n", name);
-	}
+        {
+          add_user(name, pass);
+          printf ("User %s added successfully.\n", name);
+        }
       else
-	{
-	  printf ("User %s already exists.\n", name);
-	}
+        {
+          printf ("User %s already exists.\n", name);
+        }
     }
   else
     {
@@ -231,7 +231,7 @@ read_cmd()
 void
 repl()
 {
-  while(1) 
+  while(1)
     {
       read_cmd();
       fflush(stdout);

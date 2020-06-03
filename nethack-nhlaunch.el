@@ -3,7 +3,7 @@
 ;; Copyright (C) 2005 Shawn Betts
 
 ;; Author: Shawn Betts <sabetts@vcn.bc.ca>
-;; Keywords: 
+;; Keywords:
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -48,18 +48,18 @@
 
 (defun nh-network-filter (proc str)
   (cond ((or (string-equal str "Welcome to the nethack-el server.\n")
-	     (string-equal str (format "User %s added successfully.\n" nethack-network-user)))
-	 (process-send-string proc (format "login %s %s\n" nethack-network-user nh-network-password)))
-	((string-equal str (format "Welcome back %s.\n" nethack-network-user))
-	 (message "Starting nethack...")
-	 (process-send-string proc (format "play %s\n" nh-network-game))
-	 (nethack-start proc))
-	((or (string-equal str (format "Failed to login %s.\n" nethack-network-user))
-	     (string-equal str "Error parsing name and password.\n"))
-	 (delete-process proc)
-	 (message str))
-	((string-equal str (format "Unknown user %s.\n" nethack-network-user))
-	 (process-send-string proc (format "new %s %s\n" nethack-network-user nh-network-password)))))
+             (string-equal str (format "User %s added successfully.\n" nethack-network-user)))
+         (process-send-string proc (format "login %s %s\n" nethack-network-user nh-network-password)))
+        ((string-equal str (format "Welcome back %s.\n" nethack-network-user))
+         (message "Starting nethack...")
+         (process-send-string proc (format "play %s\n" nh-network-game))
+         (nethack-start proc))
+        ((or (string-equal str (format "Failed to login %s.\n" nethack-network-user))
+             (string-equal str "Error parsing name and password.\n"))
+         (delete-process proc)
+         (message str))
+        ((string-equal str (format "Unknown user %s.\n" nethack-network-user))
+         (process-send-string proc (format "new %s %s\n" nethack-network-user nh-network-password)))))
 
 ;;;###autoload
 (defun nethack-connect-to-server (&optional prefix)
@@ -71,17 +71,17 @@ prompts for the game."
   (if (nethack-is-running)
       (message "Nethack process already running...")
     (if (get-buffer nh-proc-buffer-name)
-	(kill-buffer nh-proc-buffer-name))
+        (kill-buffer nh-proc-buffer-name))
     (setq nh-network-password (or nethack-network-password
-				  (read-from-minibuffer "Password: ")))
+                                  (read-from-minibuffer "Password: ")))
     (setq nh-network-game (if prefix
-			      (read-from-minibuffer "Game: ")
-			    nethack-network-game))
+                              (read-from-minibuffer "Game: ")
+                            nethack-network-game))
     (message nh-network-game)
     (let ((proc (open-network-stream "nh" nh-proc-buffer-name
-				     nethack-network-server
-				     nethack-network-port)))
+                                     nethack-network-server
+                                     nethack-network-port)))
       (set-process-filter proc 'nh-network-filter))))
-  
+
 (provide 'nethack-nhlaunch)
 ;;; nethack-nhlaunch.el ends here

@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 (require 'nethack-api)
@@ -36,12 +36,12 @@
      ,docstr
      (interactive "p")
      (unwind-protect
-	 (if ,cmdstr
-	     (nh-send-and-wait
-	      (concat ,cmdstr " " 
-		      (if count
-			  (number-to-string count)
-			"1"))))
+         (if ,cmdstr
+             (nh-send-and-wait
+              (concat ,cmdstr " "
+                      (if count
+                          (number-to-string count)
+                        "1"))))
        ,@body)))
 
 (defun-nethack-command north		;k
@@ -221,7 +221,7 @@ With a prefix arg, also redraws the map glyphs."
   (nhapi-restore-window-configuration))
 
 (defun-nethack-command teleport-around-level ; ^T
-  "Teleport around level" 
+  "Teleport around level"
   "teleport")
 
 ;;; FIXME: defun these:
@@ -250,7 +250,7 @@ With a prefix arg, also redraws the map glyphs."
   "movenear")
 
 (defun-nethack-command move  ;G
-  "Followed by direction, same as control-direction" 
+  "Followed by direction, same as control-direction"
   "move")
 
 (defun-nethack-command move-no-pickup-or-fight ;m
@@ -262,7 +262,7 @@ With a prefix arg, also redraws the map glyphs."
   "movenopickup")
 
 (defun-nethack-command show-wielded-weapon  ;)
-  "Show the weapon currently wielded" 
+  "Show the weapon currently wielded"
   "showweapon")
 
 (defun-nethack-command show-worn-armor  ;[
@@ -286,6 +286,6 @@ With a prefix arg, also redraws the map glyphs."
 (defun-nethack-command options  ;(
   "get all the nethack options."
   "options")
- 
+
 (provide 'nethack-cmd)
 ;;; nethack-cmd.el ends here

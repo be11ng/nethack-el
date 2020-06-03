@@ -3,7 +3,7 @@
 ;; Copyright (C) 2003,2005 Ryan Yeske and Shawn Betts
 
 ;; Author: Ryan Yeske <rcyeske@vcn.bc.ca>
-;; Keywords: 
+;; Keywords:
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@ Return the modified alist."
   (let ((tail alist))
     (while tail
       (if (eq (car (car tail)) key)
-	  (setq alist (delq (car tail) alist)))
+          (setq alist (delq (car tail) alist)))
       (setq tail (cdr tail)))
     alist))
 
@@ -61,7 +61,7 @@ Return the modified alist."
     (set-buffer (window-buffer window))
     (count-lines (point-min) (point-max))))
 
-(defvar nh-map-read-mode-map 
+(defvar nh-map-read-mode-map
   (let ((m (make-sparse-keymap)))
     ;; FIXME: this is arguably a gross hack. Create insert functions
     ;; for numbers, letters and punctuation.
@@ -80,8 +80,8 @@ Return the modified alist."
   (throw 'exit nil))
 
 (define-minor-mode nh-map-read-mode
-    :init-value nil
-    :keymap nh-map-read-mode-map)
+  :init-value nil
+  :keymap nh-map-read-mode-map)
 
 (defun nh-read-from-map (prompt)
   ;; block if there's a message so the user can read it.
@@ -93,24 +93,24 @@ Return the modified alist."
     ;; setup prompt and read input
     (nh-with-point
      (let ((inhibit-read-only t)
-	   (local-map (current-local-map)))
+           (local-map (current-local-map)))
        (goto-char (next-single-property-change (point-min) 'nh-prompt))
        (delete-region (point) (line-end-position))
        (nh-map-read-mode 1)
        (use-local-map nil)
        (setq buffer-read-only nil)
        (unwind-protect
-	    (recursive-edit)
-	 (setq buffer-read-only t)
-	 (nh-map-read-mode -1)
-	 (use-local-map local-map))
+           (recursive-edit)
+         (setq buffer-read-only t)
+         (nh-map-read-mode -1)
+         (use-local-map local-map))
        ;; extract input
        (goto-char (point-min))
        (let* ((beg (next-single-property-change (point) 'nh-prompt))
-	      (line (buffer-substring beg (line-end-position))))
-	 (delete-region (point-min) (line-end-position))
-	 (insert (make-string nh-map-width 32))
-	 line)))))
+              (line (buffer-substring beg (line-end-position))))
+         (delete-region (point-min) (line-end-position))
+         (insert (make-string nh-map-width 32))
+         line)))))
 
 (defun nh-read-line (prompt)
   (case nethack-prompt-style
@@ -127,24 +127,24 @@ Return the modified alist."
   (with-current-buffer nh-map-buffer
     (let ((old-pnt (point-marker)))
       (unwind-protect
-	   (let ((inhibit-read-only t)
-		 (p (or (next-single-property-change (point-min) 'nethack-message)
-			(point-min))))
-	     (goto-char p)
-	     (when (or block
-		       (and (> p (point-min))
-			    (>= (+ p (length str) 1 (length " --more--")) nh-map-width)))
-	       (nh-overwrite-insert " --more--")
-	       (nh-pause)
-	       ;; clear the line
-	       (delete-region (point-min) (line-end-position))
-	       (insert (make-string nh-map-width 32))
-	       (goto-char (point-min)))
-	     (unless (= (point) (point-min))
-	       (setq str (concat " " str)))
-	     (nh-overwrite-insert (propertize str 'nethack-message t)))
-	(unless dont-restore-point
-	  (goto-char old-pnt))))))
+          (let ((inhibit-read-only t)
+                (p (or (next-single-property-change (point-min) 'nethack-message)
+                       (point-min))))
+            (goto-char p)
+            (when (or block
+                      (and (> p (point-min))
+                           (>= (+ p (length str) 1 (length " --more--")) nh-map-width)))
+              (nh-overwrite-insert " --more--")
+              (nh-pause)
+              ;; clear the line
+              (delete-region (point-min) (line-end-position))
+              (insert (make-string nh-map-width 32))
+              (goto-char (point-min)))
+            (unless (= (point) (point-min))
+              (setq str (concat " " str)))
+            (nh-overwrite-insert (propertize str 'nethack-message t)))
+        (unless dont-restore-point
+          (goto-char old-pnt))))))
 
 (defun nh-message (attr str &optional block dont-restore-point)
   (case nethack-message-style
@@ -158,16 +158,16 @@ Return the modified alist."
          (insert str "\n"))
        ;; cover new text with highlight overlay
        (let ((start (overlay-start nh-message-highlight-overlay)))
-	 (move-overlay nh-message-highlight-overlay
-		       start (point-max)))
+         (move-overlay nh-message-highlight-overlay
+                       start (point-max)))
        ;; scroll to show maximum output on all windows displaying buffer
        (let ((l (get-buffer-window-list (current-buffer))))
-	 (save-selected-window
-	   (mapc (lambda (w)
-		   (select-window w)
-		   (set-window-point w (- (point-max) 1))
-		   (recenter -1))
-		 l)))))))
+         (save-selected-window
+           (mapc (lambda (w)
+                   (select-window w)
+                   (set-window-point w (- (point-max) 1))
+                   (recenter -1))
+                 l)))))))
 
 (defun nh-clear-map-message ()
   (with-current-buffer nh-map-buffer
@@ -185,12 +185,12 @@ Return the modified alist."
     (t
      (with-current-buffer nh-message-buffer
        (move-overlay nh-message-highlight-overlay
-		     (point-max) (point-max))))))
+                     (point-max) (point-max))))))
 
 ;; XEmacs chars are not ints
 (defalias 'nh-char-to-int (if (fboundp 'char-to-int)
-			      'char-to-int
-			    'identity))
+                              'char-to-int
+                            'identity))
 
 
 (defun nh-read-key-sequence-vector (prompt)
@@ -198,7 +198,7 @@ Return the modified alist."
     (:map
      (nh-display-message-in-map prompt nil t)
      (prog1
-	 (read-key-sequence-vector "")
+         (read-key-sequence-vector "")
        (nhapi-clear-message)))
     (t
      (let ((cursor-in-echo-area t))
@@ -218,8 +218,8 @@ Return the modified alist."
      (let ((cursor-in-echo-area t))
        (message prompt)
        (let ((char (read-char-exclusive)))
-	 (message "")
-	 (nh-char-to-int char))))))
+         (message "")
+         (nh-char-to-int char))))))
 
 (defun nh-pause ()
   (while (not (memq (read-char-exclusive) '(32 13)))))
@@ -227,18 +227,18 @@ Return the modified alist."
 (defun nh-overwrite-insert (str)
   ;; A cheap overwrite for in-map message printing
   (delete-region (point) (min (+ (point) (length str))
-			      nh-map-width))
+                              nh-map-width))
   (insert (substring str 0 (min (length str)
-				(- nh-map-width (point))))))
+                                (- nh-map-width (point))))))
 
 (defmacro nh-with-point (&rest body)
   "Restore the point after running body."
   (let ((old-pnt (gensym)))
     `(let ((,old-pnt (point-marker)))
        (unwind-protect
-	    (progn
-	      ,@body)
-	 (goto-char ,old-pnt)))))
+           (progn
+             ,@body)
+         (goto-char ,old-pnt)))))
 
 
 (provide 'nethack-compat)

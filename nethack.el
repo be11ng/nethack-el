@@ -61,7 +61,7 @@
   :type '(integer)
   :group 'nethack)
 
-(defcustom nethack-status-buffer-format 
+(defcustom nethack-status-buffer-format
   "n w s d c i W C A\nL l g h p a e t f"
   "Format string for the status in `nh-status-buffer'."
   :type '(string)
@@ -140,9 +140,9 @@ attribute, the new value and the old value."
   :group 'nethack)
 
 (defcustom nethack-load-hook nil
-    "Hook run after loading nethack."
-    :type '(hook)
-    :group 'nethack)
+  "Hook run after loading nethack."
+  :type '(hook)
+  :group 'nethack)
 
 (defcustom nethack-add-menu-hook nil
   "Hook run after a menu option has been added."
@@ -177,7 +177,7 @@ attribute, the new value and the old value."
     (((class color)
       (background dark))
      (:background "red"))
-    (t 
+    (t
      (:inverse-video t)))
   "Face for highlighting bad changes in the status buffer."
   :group 'nethack-faces)
@@ -439,7 +439,7 @@ The variable `nethack-program' is the name of the executable to run."
 (defun nethack-is-running ()
   "return T if nethack is already running."
   (and (processp nh-proc)
-	   (member (process-status nh-proc) '(open run))))
+       (member (process-status nh-proc) '(open run))))
 
 (defun nethack-start (process)
   "Given the process, start nethack. Assumes nethack is not already running."
@@ -466,8 +466,8 @@ PROC is the process object and MSG is the exit message."
     (nh-log (buffer-substring (point-min) (point)))
     (eval-region (point-min) (point-max))
     (insert "Nethack " msg)
-;;    (if (not (string-equal msg "Nethack finished"))
-;;	(pop-to-buffer (current-buffer)))
+    ;; (if (not (string-equal msg "Nethack finished"))
+    ;;     (pop-to-buffer (current-buffer)))
     )
   (delete-process proc)
   (if nh-proc-kill-buffer-on-quit
@@ -479,8 +479,8 @@ PROC is the process object and MSG is the exit message."
 (defun nh-log (string)
   (if nh-log-process-text
       (with-current-buffer (get-buffer-create nh-log-buffer)
-	(goto-char (point-max))
-	(insert string))))
+        (goto-char (point-max))
+        (insert string))))
 
 (defvar nh-at-prompt nil)
 (defvar nh-at-prompt-hook nil
@@ -495,34 +495,34 @@ delete the contents, perhaps logging the text."
     (insert string)
     (forward-line 0)
     (if (looking-at nh-prompt-regexp)
-	(let ((prompt (match-string 1)))
-	  (nh-log (buffer-substring (point-min) (point)))
-	  (save-restriction
-	    (narrow-to-region (point-min) (point))
-	    (eval-buffer))
-	  (cond ((or (equal prompt "command")
-		     (equal prompt "menu")
-		     (equal prompt "dummy"))
-		 (nh-print-status)
-		 (sit-for 0)
-		 (setq nh-at-prompt t)
-		 (run-hook-with-args 'nh-at-prompt-hook prompt)))))))
+        (let ((prompt (match-string 1)))
+          (nh-log (buffer-substring (point-min) (point)))
+          (save-restriction
+            (narrow-to-region (point-min) (point))
+            (eval-buffer))
+          (cond ((or (equal prompt "command")
+                     (equal prompt "menu")
+                     (equal prompt "dummy"))
+                 (nh-print-status)
+                 (sit-for 0)
+                 (setq nh-at-prompt t)
+                 (run-hook-with-args 'nh-at-prompt-hook prompt)))))))
 
 (defun nh-send (form)
-  (let ((command (cond 
-		  ((null form) "()") ; the process doesn't handle `nil'
-		  ((stringp form) form)
-		  (t (prin1-to-string form)))))
+  (let ((command (cond
+                  ((null form) "()") ; the process doesn't handle `nil'
+                  ((stringp form) form)
+                  (t (prin1-to-string form)))))
     (with-current-buffer (process-buffer nh-proc) (erase-buffer))
     (process-send-string nh-proc (concat command "\n"))
     (nh-log (format ";;; %s\n" command))))
-  
+
 (defun nh-send-and-wait (form)
   (nh-send form)
   ;; wait until we get back to a "command" prompt before returning
   (setq nh-at-prompt nil)
   (while (and (member (process-status nh-proc) '(open run))
-	      (not nh-at-prompt))
+              (not nh-at-prompt))
     (accept-process-output nh-proc)))
 
 ;;; Buffer code (aka windows in Nethack)

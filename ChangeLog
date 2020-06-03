@@ -314,13 +314,13 @@
 
 	* nethack-api.el (nhapi-print-glyph): new optional argument,
 	special. When special is 'pet, use the pet face.
- 
+
 2003-04-09  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-api.el (nhapi-clear-map): Make sure gamegrid doesn't try
 	to use glyphs.  Make sure the cursor is visible in the map window.
 	From Istvan Marko.
-	
+
 2003-04-09  Shawn Betts  <sabetts@sfu.ca>
 
 	* nethack.el (nethack-el-version): version update
@@ -382,9 +382,9 @@
 	(nethack-x-warn-low-hp): Add function.
 
 	* nethack-api.el (nh-status-string): Add function.
-	(nh-status-n, nh-status-w, nh-status-s, nh-status-d, nh-status-c) 
-	(nh-status-i, nh-status-W, nh-status-C, nh-status-A, nh-status-L) 
-	(nh-status-l, nh-status-g, nh-status-h, nh-status-p, nh-status-a) 
+	(nh-status-n, nh-status-w, nh-status-s, nh-status-d, nh-status-c)
+	(nh-status-i, nh-status-W, nh-status-C, nh-status-A, nh-status-L)
+	(nh-status-l, nh-status-g, nh-status-h, nh-status-p, nh-status-a)
 	(nh-status-e, nh-status-t, nh-status-f): Add functions.
 
 	* nethack.el (nethack-status-attribute-change-functions): Rename
@@ -411,7 +411,7 @@
 
 	* nethack.el: Reorder functions and variables.  Cosmetic change.
 	Update comments.
-	
+
 2002-09-19  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack.el: Rename all "non-user" functions and variables from
@@ -424,11 +424,11 @@
 	* nethack-glyphs.el: Likewise.
 
 	* nethack-example.el: Likewise.
-	
+
 	* nethack-cmd.el: Likewise.
 
 	* nethack-api.el: Likewise.
-	
+
 	* nethack-api.el (overlay): Add require for XEmacs.
 
 2002-09-16  Ryan Yeske  <rcyeske@vcn.bc.ca>
@@ -458,7 +458,7 @@
 
 	* nethack-api.el (nethack-api-menu-putstr): Rename from
 	`nethack-api-putstr'.
-	
+
 2002-09-12  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* Makefile (dist): Build the distribution tarball in the current
@@ -561,9 +561,9 @@
 
 2002-02-01  Ryan C Yeske  <rcyeske@vcn.bc.ca>
 
-	* nethack.el (nethack-black-face, nethack-green-face) 
-	(nethack-brown-face, nethack-blue-face, nethack-magenta-face) 
-	(nethack-cyan-face, nethack-bright-green-face) 
+	* nethack.el (nethack-black-face, nethack-green-face)
+	(nethack-brown-face, nethack-blue-face, nethack-magenta-face)
+	(nethack-cyan-face, nethack-bright-green-face)
 	(nethack-bright-blue-face): Fix colors.
 
 	* nethack-api.el (nethack-status-good-face)
@@ -590,25 +590,25 @@
 	separate variable for each attribute.  Don't print the attributes
 	here.  Run hooks when an attribute has changed.
 	(nethack-print-status): New function.
-	(nethack-status-attribute-name, nethack-status-attribute-monster) 
-	(nethack-status-attribute-rank, nethack-status-attribute-St) 
-	(nethack-status-attribute-Dx, nethack-status-attribute-Co) 
-	(nethack-status-attribute-In, nethack-status-attribute-Wi) 
-	(nethack-status-attribute-Ch, nethack-status-attribute-Align) 
-	(nethack-status-attribute-Dungeon, nethack-status-attribute-Dlvl) 
-	(nethack-status-attribute-$, nethack-status-attribute-HP) 
-	(nethack-status-attribute-HPmax, nethack-status-attribute-PW) 
-	(nethack-status-attribute-PWmax, nethack-status-attribute-AC) 
-	(nethack-status-attribute-Level, nethack-status-attribute-XP) 
-	(nethack-status-attribute-HD, nethack-status-attribute-T) 
-	(nethack-status-attribute-confusion) 
-	(nethack-status-attribute-hunger, nethack-status-attribute-sick) 
-	(nethack-status-attribute-blind) 
-	(nethack-status-attribute-stunned) 
-	(nethack-status-attribute-hallucination) 
-	(nethack-status-attribute-slimed) 
+	(nethack-status-attribute-name, nethack-status-attribute-monster)
+	(nethack-status-attribute-rank, nethack-status-attribute-St)
+	(nethack-status-attribute-Dx, nethack-status-attribute-Co)
+	(nethack-status-attribute-In, nethack-status-attribute-Wi)
+	(nethack-status-attribute-Ch, nethack-status-attribute-Align)
+	(nethack-status-attribute-Dungeon, nethack-status-attribute-Dlvl)
+	(nethack-status-attribute-$, nethack-status-attribute-HP)
+	(nethack-status-attribute-HPmax, nethack-status-attribute-PW)
+	(nethack-status-attribute-PWmax, nethack-status-attribute-AC)
+	(nethack-status-attribute-Level, nethack-status-attribute-XP)
+	(nethack-status-attribute-HD, nethack-status-attribute-T)
+	(nethack-status-attribute-confusion)
+	(nethack-status-attribute-hunger, nethack-status-attribute-sick)
+	(nethack-status-attribute-blind)
+	(nethack-status-attribute-stunned)
+	(nethack-status-attribute-hallucination)
+	(nethack-status-attribute-slimed)
 	(nethack-status-attribute-encumbrance): Add variables.
-	(nethack-status-good-face, nethack-status-bad-face) 
+	(nethack-status-good-face, nethack-status-bad-face)
 	(nethack-status-neutral-face): Add faces.
 	(nethack-active-menu-buffer): Add variable.
 	(nethack-api-select-menu): Set nethack-active-menu-buffer.
@@ -1328,7 +1328,7 @@
 
 	* nethack-api.el (nethack-api-print-glyph): new parameter
 	`face'. Set the color for each glyph.
-	
+
 
 2001-06-27  shawn  <sabetts@diggin.lamenet.tmp>
 
@@ -1336,7 +1336,7 @@
 
 	* nethack-menu.el (nethack-menu-buffer): new var
 	(nethack-menu-draw): assign the nethack-menu-buffer to the
-	buffer. horizontally split the current window. 
+	buffer. horizontally split the current window.
 	(nethack-menu-submit): call nethack-restore-windows.
 
 	* nethack-api.el (nethack-api-yn-function): pressing return
@@ -1419,7 +1419,7 @@
 2000-09-07  Ryan Yeske  <rcyeske@vcn.bc.ca>
 
 	* nethack-cmd.el: obsolete, removed file from CVS.
-	
+
 	* nethack-keys.el: obsolete, removed file from CVS.
 
 	* nethack-api.el (nethack-api-delay-output): implemented.
@@ -1478,4 +1478,3 @@
 	(nethack-send-command): new function
 
 	* nethack-api.el: updated file description in header comments
-

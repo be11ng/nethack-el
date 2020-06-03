@@ -57,7 +57,7 @@ dist: clean all $(PATCH_OK) $(SLASHEM_PATCH_OK)
 	rm -rf ./$(DISTDIR)
 
 # Generate patch.
-# Apply the generated patch from inside the nethack dir like this: 
+# Apply the generated patch from inside the nethack dir like this:
 # src/nethack-x.y.z patch -p 1 < PATH/TO/enh-xyz.patch
 patch:
 	@echo
@@ -68,7 +68,7 @@ patch:
 slashem-patch:
 	@echo
 	@echo Creating $(SLASHEM_PATCHFILE)
-	sh ./mkpatch se$(SLASHEM_VER_NODOTS).tar.gz slashem-$(SLASHEM_VER) slashem > $(SLASHEM_PATCHFILE) 
+	sh ./mkpatch se$(SLASHEM_VER_NODOTS).tar.gz slashem-$(SLASHEM_VER) slashem > $(SLASHEM_PATCHFILE)
 	rm -f $(SLASHEM_PATCH_OK)
 
 

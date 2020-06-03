@@ -12,7 +12,7 @@ known to work on a unix system.
 *** Untar the package and apply the enh-343.patch (found in nethack-el-VERSION.tar.gz)
 with the command "patch -p 1 < enh-343.patch"
 
-*** Follow the instructions in nethack/sys/*/Install.* 
+*** Follow the instructions in nethack/sys/*/Install.*
 This may be as simple as running "sys/unix/setup.sh" to copy the
 Makefiles.
 

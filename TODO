@@ -26,7 +26,7 @@ We need to hardcode/override some of the preferences.
 ;; be confused when keystokes in the map buffer arent getting any
 ;; response.
 
-** design a clean way to customize the printing 
+** design a clean way to customize the printing
    (how and where (ie modeline)).
 
 * lower priority

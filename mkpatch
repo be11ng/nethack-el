@@ -10,7 +10,7 @@ work=$3
 echo $0: cd .. >&2
 cd ..
 
-[ -e $src ]  || { echo $0: $src is missing >&2; exit 1; } 
+[ -e $src ]  || { echo $0: $src is missing >&2; exit 1; }
 [ -d $work ] || { echo $0: $work/ is missing >&2; exit 1; }
 [ -e $ref ] && { echo $0: $ref/ is in the way >&2; exit 1; }
 
@@ -42,7 +42,7 @@ LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 EOF
 
-# generate the diffs 
+# generate the diffs
 for n in `cat <<EOF
 include/config.h
 include/winlisp.h

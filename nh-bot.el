@@ -22,7 +22,7 @@
 
 ;;; Commentary:
 
-;; 
+;;
 
 ;;; Code:
 
@@ -68,10 +68,10 @@
   "Get the glyph at x,y relative to the hero."
   (save-excursion
     (let* ((p (text-property-any (point-min) (point-max) 'glyph 341))
-	   hx hy)
+           hx hy)
       (goto-char p)
       (setq hx (- p (line-beginning-position))
-	    hy (1- (count-lines (point-min) (point))))
+            hy (1- (count-lines (point-min) (point))))
       (get-text-property (gamegrid-cell-offset (+ hx x) (+ hy y)) 'glyph))))
 
 (defun bot-prop-in-room ()
@@ -79,10 +79,10 @@
   (if (string= (first nh-status-attribute-Dungeon) "The Gnomish Mines")
       nil
     (and (find (bot-get-glyph-rel -1  0) '(2363 2356 2346 2345))
-	 (find (bot-get-glyph-rel  1  0) '(2363 2356 2346 2345))
-	 (find (bot-get-glyph-rel  0 -1) '(2363 2356 2346 2345))
-	 (find (bot-get-glyph-rel  0  1) '(2363 2356 2346 2345)))))
-    
+         (find (bot-get-glyph-rel  1  0) '(2363 2356 2346 2345))
+         (find (bot-get-glyph-rel  0 -1) '(2363 2356 2346 2345))
+         (find (bot-get-glyph-rel  0  1) '(2363 2356 2346 2345)))))
+
 (defun bot-gather-props ()
   "Called when we get a command prompt."
   )
@@ -109,7 +109,7 @@
 (defun bot-pick-character (ques choices default)
   (prog1
       (if (string= ques "Shall I pick a character for you? [ynq] ")
-	  ?n)
+          ?n)
     (setq bot-nhapi-select-menu 'bot-select-role)))
 
 (defun bot-select-role (menuid how)
@@ -126,8 +126,8 @@
   (let ((last-command-event ?l))
     (nh-menu-toggle-item))
   (setq bot-nhapi-select-menu '(lambda (m h)
-				 (nh-menu-submit)
-				 (setq bot-nhapi-select-menu nil))))
+                                 (nh-menu-submit)
+                                 (setq bot-nhapi-select-menu nil))))
 
 (defun bot-start ()
   "Start a game of nethack as a valkyrie and walk around randomly."
