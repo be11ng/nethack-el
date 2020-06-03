@@ -23,14 +23,26 @@
 ;; Boston, MA 02111-1307, USA.
 
 ;;; Commentary:
-;; Requires: a copy of Nethack 3.4.x with the lisp window port
+;;
+;; Note: This package requires external libraries and works currently
+;; only on GNU/Linux systems.
+;;
+;; Note: If you ever update it, you need to restart Emacs afterwards.
+;;
+;; To activate the package put
+;;
+;; (nethack-install)
+;;
+;; somewhere in your .emacs.el .
 
 ;;; Code:
 
+(require 'cl-lib)
 (require 'nethack-compat)
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
+(require 'url)
 
 (defgroup nethack nil
   "Emacs lisp frontend to the lisp window port of Nethack 3.4.0."
@@ -38,6 +50,7 @@
 
 (defcustom nethack-program "nethack"
   "Program to run to start a game of Nethack."
+  ;; TODO this should have somthing to do with the install process
   :type '(string)
   :group 'nethack)
 
@@ -410,6 +423,189 @@ attribute, the new value and the old value."
     (t (:foreground "gray")))
   "nethack white"
   :group 'nethack-faces)
+
+
+
+;;; Installation
+
+;; Much of this code was adapted from pdf-tools, since both of these
+;; need to call an external program to do the heavy lifting, and that
+;; program needs to be built from source.
+
+(defconst nethack-directory
+  (or (and load-file-name
+           (file-name-directory load-file-name))
+      default-directory)
+  "The directory from where this library was first loaded.")
+
+(defun nethack-identify-build-directory (directory)
+  "Return non-nil, if DIRECTORY appears to contain the nethack source.
+
+Returns the expanded directory-name of DIRECTORY or nil."
+  (setq directory (file-name-as-directory
+                   (expand-file-name directory)))
+  (and (file-exists-p (expand-file-name "Makefile" directory))
+       (file-exists-p (expand-file-name "sys/unix/setup.sh" directory))
+       directory))
+
+(defun nethack-locate-build-directory ()
+  "Attempt to locate a source directory.
+
+Returns a appropriate directory or nil.  See also
+`nethack-identify-build-directory'."
+  (or
+   (nethack-identify-build-directory
+    (expand-file-name "build" nethack-directory))
+   (nethack-identify-build-directory
+    (expand-file-name "../nethack" nethack-directory))))
+
+(defcustom nethack-version
+  "3.6.6"
+  "The NetHack version to download, install, and bulid."
+  :group 'nethack
+  :type 'string)
+
+;; It might be a bad, bad practice to make these functions, but it made sense at
+;; the time.
+(defun nethack-version-nodots ()
+  "The NetHack version without separating dots."
+  (replace-regexp-in-string "\." "" nethack-version))
+
+(defun nethack-tar ()
+  "The NetHack tarball."
+  (concat "nethack-" (nethack-version-nodots) "-src.tgz"))
+
+(defun nethack-download-nethack ()
+  "Download the nethack source from nethack.org."
+  (let ((nethack-tar (nethack-tar))
+        (nethack-url
+         (concat "https://nethack.org/download/" nethack-version nethack-tar)))
+    (url-copy-file nethack-url nethack-tar t))) ; It's OK if already exists
+
+(defun nethack-untar-nethack (source-tar target-directory)
+  "Untar the nethack source out of nethack-tar.
+
+Untars SOURCE-TAR into TARGET-DIRECTORY using tar xzf.
+
+Note that this may be system specific to GNU tar and BSD tar,
+since it relies on using --strip-components."
+  (shell-command
+   (concat "tar xzf "
+           nethack-tar
+           " -C "
+           target-directory
+           " --strip-components")))
+
+(defcustom nethack-installer-os nil
+  "Specifies which installer to use.
+
+If nil the installer is chosen automatically. This variable is
+useful if you have multiple installers present on your
+system (e.g. nix on arch linux)"
+  :group 'pdf-tools
+  :type 'string)
+
+(defun nethack-build (target-directory
+                      &optional
+                      skip-dependencies-p
+                      force-dependencies-p
+                      callback
+                      build-directory)
+  "Build the NetHack program in the background.
+
+Install into TARGET-DIRECTORY, which should be a directory.
+
+If CALLBACK is non-nil, it should be a function.  It is called
+with the compiled executable as the single argument or nil, if
+the build failed.
+
+Expect sources to be in BUILD-DIRECTORY.  If nil, search for it
+using `nethack-locate-build-directory'.
+
+See `nethack-install' for the SKIP-DEPENDENCIES-P and
+FORCE-DEPENDENCIES-P arguments.
+
+Returns the buffer of the compilation process."
+  (unless callback (setq callback #'ignore))
+  (unless build-directory
+    (setq build-directory (nethack-locate-build-directory)))
+  (cl-check-type target-directory file-directory)
+  (setq target-directory (file-name-as-directory
+                          (expand-file-name target-directory)))
+  (cl-check-type build-directory (and (not null) file-directory))
+  (when (and skip-dependencies-p force-dependencies-p)
+    (error "Can't simultaneously skip and force dependencies"))
+  (let ((compilation-buffer
+         (compilation-start
+          "make all && make install"
+          t)                            ; Use compilation-shell-minor-mode
+         ))
+    (if (get-buffer-window compilation-buffer)
+        (select-window (get-buffer-window compilation-buffer))
+      (pop-to-buffer compilation-buffer))
+    (with-current-buffer compilation-buffer
+      (setq-local compilation-error-regexp-alist nil)
+      (add-hook 'compilation-finish-functions
+                (lambda (_buffer status)
+                  (funcall callback
+                           (and (equal status "finished\n")
+                                executable)))
+                nil t)                  ; Locally add-hook
+      (current-buffer))))
+
+
+;;; Initialization
+
+;;;###autoload
+(defun nethack-install (&optional no-query-p
+                                  skip-dependencies-p
+                                  no-error-p
+                                  force-dependencies-p)
+  "Download, install, and patch nethack.
+
+If the `nethack-program' is not running or does not appear to be
+working, attempt to rebuild it.  If this build succeeded,
+continue with the activation of the package.  Otherwise fail
+silently, i.e. no error is is signaled.
+
+Build the program (if necessary) without asking first, if
+NO-QUERY-P is non-nil.
+
+Don't attempt to install system packages, if SKIP-DEPENDENCIES-P
+is non-nil.
+
+Do not signal an error in case the build failed, if NO-ERROR-P is
+non-nil.
+
+Attempt to install system packages (even if it is deemed
+unnecessary), if FORCE-DEPENDENCIES-P is non-nil.
+
+Note that SKIP-DEPENDENCIES-P and FORCE-DEPENDENCIES-P are
+mutually exclusive."
+  (interactive)
+  (if (not (nethack-installed-p))
+      (let ((target-directory
+             (or (and (stringp nethack-program)
+                      (file-name-directory nethack-program))
+                 nethack-directory)))
+        (if (or no-query-p
+                (y-or-n-p "Need to (re)build the NetHack program, do it now?"))
+            (progn
+              (or no-query-p (nethack-query-for-version))
+              ;; TODO: add patch and hints
+              (nethack-build-program
+               target-directory
+               skip-dependencies-p
+               force-dependencies-p
+               (lambda (executable)
+                 (let ((msg (format
+                             "Bulding the NetHack program %s"
+                             (if executable "succeeded" "failed"))))
+                   (if (not executable)
+                       (funcall (if no-error-p #'message #'error) "%s" msg)
+                     (message "%s" msg)
+                     (setq nethack-program executable))))))
+          (message "NetHack not activated")))))
 
 
 ;;; Process

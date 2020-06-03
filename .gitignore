@@ -1,7 +1,3 @@
-*.~undo-tree
-GPATH
-GRTAGS
-GTAGS
 # CVS default ignores begin
 tags
 TAGS
@@ -35,3 +31,9 @@ core
 .patch-ok
 {arch}
 .arch-ids
+*.~undo-tree
+GPATH
+GRTAGS
+GTAGS
+*.tgz
+build/
