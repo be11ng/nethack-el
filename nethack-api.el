@@ -1,4 +1,4 @@
-;;; nethack-api.el -- Emacs interface the lisp window-port
+;;; nethack-api.el -- Emacs interface the lisp window-port -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2002,2003,2005  Ryan Yeske and Shawn Betts
 
