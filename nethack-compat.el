@@ -29,9 +29,7 @@
 
 ;;; Code:
 
-;; make sure the common lisp compatibility library is available
-(eval-when-compile
-  (require 'cl))
+(require 'cl-lib)
 
 ;; overlay is "deprecated" in XEmacs, but still exists
 (if (featurep 'xemacs)

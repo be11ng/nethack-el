@@ -1,3 +1,8 @@
+2020-06-05  Benjamin Yang  <be11ng@protonmail.com>
+
+	* Makefile: Add nethack-compat.el to rule all.
+	* nethack-compat.el (cl): Change cl to cl-lib.
+
 2020-06-04  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-api.el: Add file local variable to enable lexical scope.
