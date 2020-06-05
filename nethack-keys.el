@@ -1,4 +1,4 @@
-;;; nethack-keys.el --- key bindings for nethack-el
+;;; nethack-keys.el --- key bindings for nethack-el -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2002,2003,2005  Ryan Yeske and Shawn Betts
 

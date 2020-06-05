@@ -1,4 +1,4 @@
-;;; nh-bot.el --- a bot that solves nethack
+;;; nh-bot.el --- a bot that solves nethack -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2005  Shawn Betts
 

@@ -1,4 +1,4 @@
-;;; nethack-compat.el --- compatibility file for various emacsen
+;;; nethack-compat.el --- compatibility file for various emacsen -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2003,2005 Ryan Yeske and Shawn Betts
 

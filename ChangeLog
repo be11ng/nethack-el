@@ -1,3 +1,14 @@
+2020-06-04  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack-api.el: Add file local variable to enable lexical scope.
+	* nethack-cmd.el: Likewise.
+	* nethack-compat.el: Likewise.
+	* nethack-example.el: Likeewise.
+	* nethack-keys.el: Likeewise.
+	* nethack-nhlaunch.el: Likeewise.
+	* nethack.el: Likeewise.
+	* nh-bot.el: Likeewise.
+
 2020-05-29  Evan Izaksonas-Smith  <izak0002@dev.null>
 
 	* nethack-keys.el (nh-mode-map): Added binding for riding and
