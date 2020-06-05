@@ -200,7 +200,7 @@
    format nil))
 
 (defun nh-print-status ()
-  (case nethack-status-style
+  (cl-case nethack-status-style
     (:header-line
      (with-current-buffer nh-map-buffer
        (setq header-line-format
@@ -427,7 +427,7 @@ Do not edit the value of this variable.  Instead, change the value of
 
 (defun nhapi-doprev-message ()
   ""
-  (case nethack-message-style
+  (cl-case nethack-message-style
     (:map
      (nh-clear-message)
      (nh-message 'atr-none nh-last-message))
@@ -463,7 +463,7 @@ all of the appropriate setup."
 
 (defun nhapi-create-message-window ()
   "Create the message buffer."
-  (case nethack-message-style
+  (cl-case nethack-message-style
     (:map
      ;; we need to create this buffer because messages come in before
      ;; the map is set up.
@@ -550,7 +550,7 @@ The TYPE argument is legacy and serves no real purpose."
                               nh-map-height
                               ? )))))
 (defun nhapi-block ()
-  (case nethack-prompt-style
+  (cl-case nethack-prompt-style
     (:map
      (nh-display-message-in-map "" t)
      (nhapi-clear-message))
@@ -789,7 +789,7 @@ the menu is dismissed."
                                 nethack-message-window-height))
         other-window)
     (delete-other-windows)
-    (case nethack-message-style
+    (cl-case nethack-message-style
       (:map)
       (t
        (switch-to-buffer nh-message-buffer)
@@ -798,7 +798,7 @@ the menu is dismissed."
     (if other-window
         (switch-to-buffer-other-window nh-map-buffer)
       (switch-to-buffer nh-map-buffer))
-    (case nethack-status-style
+    (cl-case nethack-status-style
       ((:map :mode-line :header-line))
       (t
        (switch-to-buffer nh-status-buffer)

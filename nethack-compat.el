@@ -111,7 +111,7 @@ Return the modified alist."
          line)))))
 
 (defun nh-read-line (prompt)
-  (case nethack-prompt-style
+  (cl-case nethack-prompt-style
     (:map
      (nh-read-from-map prompt))
     (t
@@ -145,7 +145,7 @@ Return the modified alist."
           (goto-char old-pnt))))))
 
 (defun nh-message (attr str &optional block dont-restore-point)
-  (case nethack-message-style
+  (cl-case nethack-message-style
     (:map
      (nh-display-message-in-map str block dont-restore-point))
     (t
@@ -177,7 +177,7 @@ Return the modified alist."
        (insert (make-string nh-map-width 32))))))
 
 (defun nh-clear-message ()
-  (case nethack-message-style
+  (cl-case nethack-message-style
     (:map
      (nh-clear-map-message))
     (t
@@ -192,7 +192,7 @@ Return the modified alist."
 
 
 (defun nh-read-key-sequence-vector (prompt)
-  (case nethack-prompt-style
+  (cl-case nethack-prompt-style
     (:map
      (nh-display-message-in-map prompt nil t)
      (prog1
@@ -209,7 +209,7 @@ Return the modified alist."
     (nh-char-to-int char)))
 
 (defun nh-read-char (&optional prompt)
-  (case nethack-prompt-style
+  (cl-case nethack-prompt-style
     (:map
      (nh-read-char-in-map prompt))
     (t
