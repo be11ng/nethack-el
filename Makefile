@@ -3,7 +3,7 @@ EMACS = /usr/bin/emacs
 
 .PHONY: clean patch dist
 
-all: nethack.elc nethack-api.elc nethack-cmd.elc nethack-tiles.elc slashem-tiles.elc nethack-keys.elc
+all: nethack.elc nethack-api.elc nethack-cmd.elc nethack-tiles.elc slashem-tiles.elc nethack-keys.elc nethack-compat.elc
 
 %.elc: %.el
 	$(EMACS) -batch --eval "(add-to-list 'load-path \".\")" \

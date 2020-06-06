@@ -1,4 +1,4 @@
-;;; nh-bot.el --- a bot that solves nethack
+;;; nh-bot.el --- a bot that solves nethack -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2005  Shawn Betts
 
@@ -76,12 +76,12 @@
 
 (defun bot-prop-in-room ()
   "Determine if we're in a room. doorway: 2356, floor 2363, wall 2346 2345"
-  (if (string= (first nh-status-attribute-Dungeon) "The Gnomish Mines")
+  (if (string= (cl-first nh-status-attribute-Dungeon) "The Gnomish Mines")
       nil
-    (and (find (bot-get-glyph-rel -1  0) '(2363 2356 2346 2345))
-         (find (bot-get-glyph-rel  1  0) '(2363 2356 2346 2345))
-         (find (bot-get-glyph-rel  0 -1) '(2363 2356 2346 2345))
-         (find (bot-get-glyph-rel  0  1) '(2363 2356 2346 2345)))))
+    (and (cl-find (bot-get-glyph-rel -1  0) '(2363 2356 2346 2345))
+         (cl-find (bot-get-glyph-rel  1  0) '(2363 2356 2346 2345))
+         (cl-find (bot-get-glyph-rel  0 -1) '(2363 2356 2346 2345))
+         (cl-find (bot-get-glyph-rel  0  1) '(2363 2356 2346 2345)))))
 
 (defun bot-gather-props ()
   "Called when we get a command prompt."
@@ -94,7 +94,7 @@
 
 (defun random-walk (prompt)
   (when (string= prompt "command")
-    (case (random 8)
+    (cl-case (random 8)
       (0 (run-at-time 0.25 nil 'nethack-command-south))
       (1 (run-at-time 0.25 nil 'nethack-command-north))
       (2 (run-at-time 0.25 nil 'nethack-command-east))

@@ -1,4 +1,4 @@
-;;; nethack.el --- run Nethack as a subprocess
+;;; nethack.el --- run Nethack as a subprocess -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2003,2005  Ryan Yeske and Shawn Betts
 
@@ -37,7 +37,6 @@
 
 ;;; Code:
 
-(require 'cl-lib)
 (require 'nethack-compat)
 (require 'nethack-api)
 (require 'nethack-cmd)

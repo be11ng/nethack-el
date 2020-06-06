@@ -1,4 +1,4 @@
-;;; nethack-api.el -- Emacs interface the lisp window-port
+;;; nethack-api.el -- Emacs interface the lisp window-port -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2002,2003,2005  Ryan Yeske and Shawn Betts
 
@@ -200,7 +200,7 @@
    format nil))
 
 (defun nh-print-status ()
-  (case nethack-status-style
+  (cl-case nethack-status-style
     (:header-line
      (with-current-buffer nh-map-buffer
        (setq header-line-format
@@ -427,7 +427,7 @@ Do not edit the value of this variable.  Instead, change the value of
 
 (defun nhapi-doprev-message ()
   ""
-  (case nethack-message-style
+  (cl-case nethack-message-style
     (:map
      (nh-clear-message)
      (nh-message 'atr-none nh-last-message))
@@ -463,7 +463,7 @@ all of the appropriate setup."
 
 (defun nhapi-create-message-window ()
   "Create the message buffer."
-  (case nethack-message-style
+  (cl-case nethack-message-style
     (:map
      ;; we need to create this buffer because messages come in before
      ;; the map is set up.
@@ -491,14 +491,15 @@ all of the appropriate setup."
 
 (defun nhapi-create-map-window ()
   "Created the map buffer."
-  (if (not nh-map-buffer)
+  (if (not (buffer-live-p nh-map-buffer))
       (with-current-buffer (get-buffer-create "*nethack map*")
         (nh-map-mode)
         (setq nh-map-buffer (current-buffer)))))
 
 (defun nhapi-create-inventory-window (menuid)
   "Create the inventory window."
-  (if (not (assq menuid nh-menu-buffer-table)) ; If that menuid doesn't exist
+  (if (not (buffer-live-p (assq menuid nh-menu-buffer-table)))
+      ;; Only do if that menuid doesn't exist
       (nhapi-create-menu-window menuid)))
 
 (defun nhapi-create-menu-window (menuid)
@@ -550,7 +551,7 @@ The TYPE argument is legacy and serves no real purpose."
                               nh-map-height
                               ? )))))
 (defun nhapi-block ()
-  (case nethack-prompt-style
+  (cl-case nethack-prompt-style
     (:map
      (nh-display-message-in-map "" t)
      (nhapi-clear-message))
@@ -781,15 +782,13 @@ the menu is dismissed."
   ;; nhapi-create-inventory-window are called after
   ;; nhapi-restore-window-configuration. This may be an issue within the source
   ;; and it may be possible to patch it there, but patching it here is easier.
-  (if (not nh-map-buffer)
-      (nhapi-create-map-window))
-  (if (not nh-menu-buffer-table)
-      (nhapi-create-inventory-window 3))
+  (nhapi-create-map-window)             ; We don't need an if, since these
+  (nhapi-create-inventory-window 3)     ; already have a check for duplicates.
   (let ((window-min-height (min nethack-status-window-height
                                 nethack-message-window-height))
         other-window)
-    (delete-other-windows)
-    (case nethack-message-style
+    (delete-other-windows)              ; I think we can leave this out?
+    (cl-case nethack-message-style
       (:map)
       (t
        (switch-to-buffer nh-message-buffer)
@@ -798,7 +797,7 @@ the menu is dismissed."
     (if other-window
         (switch-to-buffer-other-window nh-map-buffer)
       (switch-to-buffer nh-map-buffer))
-    (case nethack-status-style
+    (cl-case nethack-status-style
       ((:map :mode-line :header-line))
       (t
        (switch-to-buffer nh-status-buffer)

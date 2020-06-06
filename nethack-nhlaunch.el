@@ -1,4 +1,4 @@
-;;; nethack-nhlaunch.el --- Negotiate with nhlaunch to start a game of nethack
+;;; nethack-nhlaunch.el --- Negotiate with nhlaunch to start a game of nethack -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2005 Shawn Betts
 

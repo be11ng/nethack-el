@@ -27,12 +27,12 @@
 (in-package :nh-tiles)
 
 (defconstant +nethack-files+ '(#p"../nethack/win/share/monsters.txt"
-				 #p"../nethack/win/share/objects.txt" 
-				 #p"../nethack/win/share/other.txt"))
+                                 #p"../nethack/win/share/objects.txt"
+                                 #p"../nethack/win/share/other.txt"))
 
 (defconstant +slashem-files+ '(#p"../slashem/win/share/monsters.txt"
-				 #p"../slashem/win/share/objects.txt" 
-				 #p"../slashem/win/share/other.txt"))
+                                 #p"../slashem/win/share/objects.txt"
+                                 #p"../slashem/win/share/other.txt"))
 
 ;; If we've read from the file too far, we can push it back
 (defvar *line* nil)
@@ -49,8 +49,8 @@
   (let (colors)
     ;; Read the colors. Stop when we've hit a line that starts with #
     (push-line (do ((c (pop-line stream) (pop-line stream)))
-		   ((char-equal (char c 0) #\#) c)
-		 (push c colors)))
+                   ((char-equal (char c 0) #\#) c)
+                 (push c colors)))
     (nreverse colors)))
 
 (defun read-glyph (stream)
@@ -61,20 +61,20 @@
     (pop-line stream)
     ;; read till we hit a } line
     (do ((line (pop-line stream) (pop-line stream)))
-	((or (null line)
-	     (char-equal (char line 0) #\})))
+        ((or (null line)
+             (char-equal (char line 0) #\})))
       (push line glyph))
     (nreverse glyph)))
 
 ;; ya, it's sorta hacky.
 (defun gen-color (c stream)
   (let* ((ch (char c 0))
-	 (rgb (read-from-string (subseq (remove #\, c) 4))))
+         (rgb (read-from-string (subseq (remove #\, c) 4))))
     (format stream "\\\"~C c #~2,'0X~2,'0X~2,'0X\\\",~%" ch (first rgb) (second rgb) (third rgb))))
 
 (defun gen-palette (colors stream)
   (loop for c in colors
-	do (gen-color c stream)))
+        do (gen-color c stream)))
 
 (defun gen-glyph (palette glyph stream)
   "generate a glyph and write it to STREAM"
@@ -86,10 +86,10 @@
   (gen-palette palette stream)
   (format stream "/* pixels */~%")
   (loop for g on glyph
-	do (format stream "\\\"~A\\\"" (subseq (car g) 2 18))
-	do (if (cdr g)
-	       (format stream ",~%")
-	     (format stream "~%")))
+        do (format stream "\\\"~A\\\"" (subseq (car g) 2 18))
+        do (if (cdr g)
+               (format stream ",~%")
+             (format stream "~%")))
   (format stream "};\" nil t)"))
 
 (defun gen-blank-tile (stream)
@@ -145,17 +145,17 @@ static char *xpm[] = {
 
 (defun gen-glyphs (src out)
   (with-open-file (in src)
-    (let ((palette (read-palette in)))
-      (do ((g (read-glyph in) (read-glyph in)))
-	  ((null g))
-	(gen-glyph palette g out)))))
+                  (let ((palette (read-palette in)))
+                    (do ((g (read-glyph in) (read-glyph in)))
+                        ((null g))
+                      (gen-glyph palette g out)))))
 
 (defun do-conversion (output files)
   (with-open-file (out output :direction :output :if-exists :supersede)
-    (gen-header out)
-    (loop for f in files
-	  do (gen-glyphs f out))
-    (gen-footer out)))
+                  (gen-header out)
+                  (loop for f in files
+                        do (gen-glyphs f out))
+                  (gen-footer out)))
 
 (defun txt2tiles ()
   ;; Reset our pop buffer

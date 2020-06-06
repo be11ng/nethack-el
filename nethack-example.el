@@ -1,4 +1,4 @@
-;;; nethack-example.el --- Sample configurations for nethack-el
+;;; nethack-example.el --- Sample configurations for nethack-el -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2002,2003,2005  Shawn Betts and Ryan Yeske
 

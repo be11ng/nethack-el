@@ -1,4 +1,4 @@
-;;; nethack-cmd.el --- Nethack command definitions
+;;; nethack-cmd.el --- Nethack command definitions -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2001,2002,2003,2005  Ryan Yeske
 

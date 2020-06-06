@@ -1,4 +1,4 @@
-;;; nethack-compat.el --- compatibility file for various emacsen
+;;; nethack-compat.el --- compatibility file for various emacsen -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2003,2005 Ryan Yeske and Shawn Betts
 
@@ -29,9 +29,7 @@
 
 ;;; Code:
 
-;; make sure the common lisp compatibility library is available
-(eval-when-compile
-  (require 'cl))
+(require 'cl-lib)
 
 ;; overlay is "deprecated" in XEmacs, but still exists
 (if (featurep 'xemacs)
@@ -113,7 +111,7 @@ Return the modified alist."
          line)))))
 
 (defun nh-read-line (prompt)
-  (case nethack-prompt-style
+  (cl-case nethack-prompt-style
     (:map
      (nh-read-from-map prompt))
     (t
@@ -147,7 +145,7 @@ Return the modified alist."
           (goto-char old-pnt))))))
 
 (defun nh-message (attr str &optional block dont-restore-point)
-  (case nethack-message-style
+  (cl-case nethack-message-style
     (:map
      (nh-display-message-in-map str block dont-restore-point))
     (t
@@ -179,7 +177,7 @@ Return the modified alist."
        (insert (make-string nh-map-width 32))))))
 
 (defun nh-clear-message ()
-  (case nethack-message-style
+  (cl-case nethack-message-style
     (:map
      (nh-clear-map-message))
     (t
@@ -194,7 +192,7 @@ Return the modified alist."
 
 
 (defun nh-read-key-sequence-vector (prompt)
-  (case nethack-prompt-style
+  (cl-case nethack-prompt-style
     (:map
      (nh-display-message-in-map prompt nil t)
      (prog1
@@ -211,7 +209,7 @@ Return the modified alist."
     (nh-char-to-int char)))
 
 (defun nh-read-char (&optional prompt)
-  (case nethack-prompt-style
+  (cl-case nethack-prompt-style
     (:map
      (nh-read-char-in-map prompt))
     (t
