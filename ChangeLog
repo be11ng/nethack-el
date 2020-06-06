@@ -1,3 +1,12 @@
+2020-06-06  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack-api.el (nhapi-restore-window-configuration): Remove
+	if-statement around the failsafe nhapi-create-map-window and
+	nhapi-create-inventory-window.
+	(nhapi-create-map-window): Put buffer-live-p around nh-map-buffer.
+	(nhapi-create-inventory-window): Likewise, but around an assq of
+	nh-menu-buffer-table.
+
 2020-06-05  Benjamin Yang  <be11ng@protonmail.com>
 
 	* Makefile: Add nethack-compat.el to rule all.

@@ -491,14 +491,15 @@ all of the appropriate setup."
 
 (defun nhapi-create-map-window ()
   "Created the map buffer."
-  (if (not nh-map-buffer)
+  (if (not (buffer-live-p nh-map-buffer))
       (with-current-buffer (get-buffer-create "*nethack map*")
         (nh-map-mode)
         (setq nh-map-buffer (current-buffer)))))
 
 (defun nhapi-create-inventory-window (menuid)
   "Create the inventory window."
-  (if (not (assq menuid nh-menu-buffer-table)) ; If that menuid doesn't exist
+  (if (not (buffer-live-p (assq menuid nh-menu-buffer-table)))
+      ;; Only do if that menuid doesn't exist
       (nhapi-create-menu-window menuid)))
 
 (defun nhapi-create-menu-window (menuid)
@@ -781,14 +782,12 @@ the menu is dismissed."
   ;; nhapi-create-inventory-window are called after
   ;; nhapi-restore-window-configuration. This may be an issue within the source
   ;; and it may be possible to patch it there, but patching it here is easier.
-  (if (not nh-map-buffer)
-      (nhapi-create-map-window))
-  (if (not nh-menu-buffer-table)
-      (nhapi-create-inventory-window 3))
+  (nhapi-create-map-window)             ; We don't need an if, since these
+  (nhapi-create-inventory-window 3)     ; already have a check for duplicates.
   (let ((window-min-height (min nethack-status-window-height
                                 nethack-message-window-height))
         other-window)
-    (delete-other-windows)
+    (delete-other-windows)              ; I think we can leave this out?
     (cl-case nethack-message-style
       (:map)
       (t

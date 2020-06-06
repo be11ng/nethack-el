@@ -1,6 +1,5 @@
 There aren't too many.  But then it hasn't been tested too much :)
 
 * When inside nethack, giving motions double-digit numeric prefixes crashes
-* Running nethack a second time crashes.
 
 See also ./TODO
