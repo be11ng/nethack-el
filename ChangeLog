@@ -21,11 +21,11 @@
 	* nethack-api.el: Add file local variable to enable lexical scope.
 	* nethack-cmd.el: Likewise.
 	* nethack-compat.el: Likewise.
-	* nethack-example.el: Likeewise.
-	* nethack-keys.el: Likeewise.
-	* nethack-nhlaunch.el: Likeewise.
-	* nethack.el: Likeewise.
-	* nh-bot.el: Likeewise.
+	* nethack-example.el: Likewise.
+	* nethack-keys.el: Likewise.
+	* nethack-nhlaunch.el: Likewise.
+	* nethack.el: Likewise.
+	* nh-bot.el: Likewise.
 
 2020-05-29  Evan Izaksonas-Smith  <izak0002@dev.null>
 
