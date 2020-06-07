@@ -473,7 +473,10 @@ PROC is the process object and MSG is the exit message."
   (if nh-proc-kill-buffer-on-quit
       (kill-buffer (get-buffer nh-proc-buffer-name)))
   (if nethack-purge-buffers
-      (nethack-kill-buffers)))
+      (nethack-kill-buffers))
+  (let ((raw-print-buffer (get-buffer nh-raw-print-buffer-name)))
+    (when raw-print-buffer
+      (pop-to-buffer raw-print-buffer))))
 
 (defvar nh-log-process-text t)
 (defun nh-log (string)
@@ -561,14 +564,13 @@ delete the contents, perhaps logging the text."
 (put 'nh-status-mode 'mode-class 'special)
 
 (defun nethack-kill-buffers ()
-  "kill all nethack associated buffers except the nethack process
+  "Kill all nethack associated buffers except the nethack process
 buffer."
   (when (buffer-live-p nh-map-buffer)
-    (kill-buffer nh-map-buffer))
-  (when (buffer-live-p nh-status-buffer)
-    (kill-buffer nh-status-buffer))
-  (when (buffer-live-p nh-message-buffer)
-    (kill-buffer nh-message-buffer))
+    (kill-buffer nh-map-buffer))        ; Preserve window for raw-print goodbye
+  (dolist (buffer (list nh-status-buffer nh-message-buffer))
+    (with-current-buffer buffer
+      (kill-buffer-and-window)))
   (mapc (lambda (x) (when (buffer-live-p (cdr x))
                       (kill-buffer (cdr x))))
         nh-menu-buffer-table)

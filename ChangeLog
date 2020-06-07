@@ -1,3 +1,16 @@
+2020-06-07  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack-api.el (nhapi-raw-print): Don't delete-other-windows.
+	(nhapi-restore-window-configuration): Likewise.
+	* nethack.el (nh-sentinel): Pop-to-buffer raw-print-buffer on
+	exit.
+	(nethack-kill-buffers): kill-buffer-and-window in a dolist for
+	nh-status-buffer and nh-message-buffer, not repeated kill-buffer.
+
+	* nethack-api.el (nhapi-exit-nhwindows): Put redundant comment
+	into empty docstring.
+	* nethack.el (nethack-kill-buffers): Capitalize docstring.
+
 2020-06-06  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-api.el (nhapi-restore-window-configuration): Remove
