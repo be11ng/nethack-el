@@ -987,6 +987,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +attr_to_string(attr)
 +     int attr;
 +{
++  /* Just like curses, we strip off control flags masked onto the display
++     attributes (caller should have already done this...) */
++  attr &= ~(ATR_URGENT | ATR_NOHISTORY);
++
 +  switch (attr)
 +    {
 +    case ATR_NONE:
@@ -1001,6 +1005,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +      return "atr-inverse";
 +    default:
 +      /* Should never happen. */
++      /* Note that it has a chance of happening if, somehow, attr is ATR_DIM
++         -BY 2020-06-08 */
 +      impossible ("Invalid attribute code.");
 +      exit (EXIT_FAILURE);
 +      break;
