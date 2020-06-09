@@ -282,8 +282,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      { "amii", "Amiga Intuition" },
  #endif
 --- /dev/null	2020-06-09 08:13:23.193978261 -0400
-+++ nethack/win/lisp/ChangeLog	2020-06-09 12:09:10.166011859 -0400
-@@ -0,0 +1,357 @@
++++ nethack/win/lisp/ChangeLog	2020-06-09 12:38:42.764354264 -0400
+@@ -0,0 +1,362 @@
++2020-06-09  Benjamin Yang  <be11ng@protonmail.com>
++
++	* winlisp.c (lisp_putstr): Use lisp_cmd message-nohistory when the
++	ATR_NOHISTORY bitmask is set.
++
 +2020-06-08  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* winlisp.c (attr_to_string): Strip off control flags masked onto
@@ -1763,26 +1768,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +     int attr;
 +     const char *str;
 +{
++  int mesgflags;
++  mesgflags = attr & (ATR_URGENT | ATR_NOHISTORY);
++  attr &= ~mesgflags;
++
 +  static char statline1[BUFSZ] = "";
 +  if (window == WIN_STATUS)
 +    {
 +      if (statline1[0]=='\0')
-+	Strcpy (statline1, str);
++        Strcpy (statline1, str);
 +      else
-+	{
-+	  generate_status_line ();
-+	  statline1[0]='\0';
-+	}
++        {
++          generate_status_line ();
++          statline1[0]='\0';
++        }
 +    }
++  else if (window == WIN_MESSAGE && (mesgflags & ATR_NOHISTORY) != 0)
++    lisp_cmd ("message-nohistory",
++              lisp_literal (attr_to_string (attr));
++              lisp_string (str));
 +  else if (window == WIN_MESSAGE)
 +    lisp_cmd ("message",
-+	      lisp_literal (attr_to_string (attr));
-+	      lisp_string (str));
++              lisp_literal (attr_to_string (attr));
++              lisp_string (str));
 +  else
 +    lisp_cmd ("menu-putstr",
-+	      lisp_int (window);
-+	      lisp_literal (attr_to_string (attr));
-+	      lisp_string (str));
++              lisp_int (window);
++              lisp_literal (attr_to_string (attr));
++              lisp_string (str));
 +}
 +
 +void

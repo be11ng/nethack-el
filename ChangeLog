@@ -2,6 +2,9 @@
 
 	* enh-366.patch: Update ChangeLog.
 
+	* nethack-api.el (nhapi-message-nohistory): Print message to echo
+	area when the ATR_NOHISTORY bitmask is set.
+
 2020-06-07  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-api.el (nhapi-raw-print): Don't delete-other-windows.

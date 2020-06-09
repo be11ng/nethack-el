@@ -298,6 +298,12 @@
 FIXME: doesnt actually use ATTR!"
   (nh-message attr str))
 
+(defun nhapi-message-nohistory (_attr str)
+  "Display STR in echo area.
+
+This is used when the ATR_NOHISTORY bit in a message is set."
+  (message "%s" str))
+
 (defun nh-attr-face (attr)
   "Return the face corresponding with ATTR."
   (intern-soft (concat "nethack-" (symbol-name attr) "-face")))
