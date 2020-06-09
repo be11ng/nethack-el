@@ -47,7 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	2020-06-08 08:21:54.054893677 -0400
+--- /dev/null	2020-06-09 08:13:23.193978261 -0400
 +++ nethack/include/winlisp.h	2020-05-25 16:23:26.474351571 -0400
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
@@ -200,7 +200,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2020-06-08 08:21:54.054893677 -0400
+--- /dev/null	2020-06-09 08:13:23.193978261 -0400
 +++ nethack/sys/unix/hints/linux-lisp	2020-05-26 11:56:05.833394226 -0400
 @@ -0,0 +1,65 @@
 +#
@@ -281,9 +281,38 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2020-06-08 08:21:54.054893677 -0400
-+++ nethack/win/lisp/ChangeLog	2020-05-23 18:24:01.191821722 -0400
-@@ -0,0 +1,326 @@
+--- /dev/null	2020-06-09 08:13:23.193978261 -0400
++++ nethack/win/lisp/ChangeLog	2020-06-09 12:09:10.166011859 -0400
+@@ -0,0 +1,357 @@
++2020-06-08  Benjamin Yang  <be11ng@protonmail.com>
++
++	* winlisp.c (attr_to_string): Strip off control flags masked onto
++	the display attributes.
++
++2020-05-26  Benjamin Yang  <be11ng@protonmail.com>
++
++	* ../../sys/unix/hints/linux-lisp: New file.
++	* ../../sys/unix/Makefile.src (WINSRC): Remove redundant
++	definition.
++	(WINOBJ): Likewise.
++	(WINLIB): Likewise.
++	(WINLISPLIB): Add -lncurses and -ltinfo.
++
++2020-05-25  Benjamin Yang  <be11ng@protonmail.com>
++
++	* ../../include/winlisp.h (lisp_print_glyph): Add parameter int
++	bkglyph.
++	* winlisp.c (lisp_print_glyph): Likewise, and cast mapglyph to
++	\(void).
++	(lisp_player_selection): Pass FALSE argument to both randrole().
++	(generate_status_line): Replace u.ugold with money_cnt(invent).
++	(lisp_outrip): Likewise.
++	(bail): Replace terminate with nh_terminate.
++	(get_options): Comment out iflags.DECgraphics and
++	iflags.IBMgraphics.
++	(lisp_procs): Use the one from curses as a template, using genl
++	for missing functions.
++
 +2005-02-27    <katia_dilkina@verizon.net>
 +
 +	* winlisp.c (CMD_LISP): new define
@@ -304,7 +333,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +2003-09-19  Shawn Betts  <sabetts@vcn.bc.ca>
 +
-+	* winlisp.c: add extra element to lisp_procs (structure change in 3.4.2).
++	* winlisp.c: add extra element to lisp_procs (structure change in
++	3.4.2).
 +
 +2003-06-03  Shawn Betts  <sabetts@sfu.ca>
 +
@@ -336,7 +366,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	* ../../sys/unix/Makefile.src (WINSRC,WINOBJ,WINLIB): Set to
 +	WINLISP* values.
 +	(depend): Add winlisp.o dependancies.
-+	
++
 +	* winlisp.c (lisp_curs): Don't send winid.  Add error check.
 +	(lisp_putstr): Call `nethack-api-message' or
 +	`nethack-api-menu-putstr' when appropriate.
@@ -411,14 +441,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +	* winlisp.c (lisp_exit_nhwindows): Don't wait for a dummy return
 +	value.
-+	
++
 +2002-01-10  shawn  <sabetts@vcn.bc.ca>
 +
 +	* winlisp.c (win_lisp_init): new function
 +
 +2002-01-09  Ryan C Yeske  <rcyeske@sfu.ca>
 +
-+	* winlisp.c (cmd_index): Add redraw command.	
++	* winlisp.c (cmd_index): Add redraw command.
 +	(C): New macro.
 +
 +2002-01-01  shawn  <sabetts@vcn.bc.ca>
@@ -449,7 +479,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +	* winlisp.c: add extern declaration for glyph2tile and
 +	total_tiles_used.
-+	(lisp_print_glyph): pass the glyph's graphics tile index as an argument.
++	(lisp_print_glyph): pass the glyph's graphics tile index as an
++	argument.
 +
 +2001-12-02  Ryan Yeske  <rcyeske@vcn.bc.ca>
 +
@@ -610,9 +641,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2020-06-08 08:21:54.054893677 -0400
-+++ nethack/win/lisp/winlisp.c	2020-06-08 13:49:27.170812584 -0400
-@@ -0,0 +1,1964 @@
+--- /dev/null	2020-06-09 08:13:23.193978261 -0400
++++ nethack/win/lisp/winlisp.c	2020-06-09 11:49:10.189160064 -0400
+@@ -0,0 +1,1972 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +

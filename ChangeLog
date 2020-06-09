@@ -1,7 +1,6 @@
-2020-06-08  Benjamin Yang  <be11ng@protonmail.com>
+2020-06-09  Benjamin Yang  <be11ng@protonmail.com>
 
-	* enh-366.patch/win/lisp/winlisp.c (attr_to_string): Strip off
-	control flags masked onto the display attributes.
+	* enh-366.patch: Update ChangeLog.
 
 2020-06-07  Benjamin Yang  <be11ng@protonmail.com>
 
@@ -91,27 +90,14 @@
 2020-05-26  Benjamin Yang  <be11ng@protonmail.com>
 
 	* mkpatch: Generate a diff for sys/unix/hints/linux-lisp.
-	* enh-366.patch (hints/linux-lisp): New file.
 	* Makefile (test-patch): Call sh setup.sh with hints/linux-lisp.
-	* enh-366.patch (WINSRC): Remove redundant definition
-	(WINOBJ): Likewise.
-	(WINLIB): Likewise.
-	(WINLISPLIB): Add -lncurses and -ltinfo.
 
 	* Makefile (EMACS): Use /usr/bin/emacs instead of just emacs.
 
 2020-05-25  Benjamin Yang  <be11ng@protonmail.com>
 
-	* enh-366.patch: New patch for 3.6.6, addressing compiler errors.
-	(winlisp.h): Add parameter bkglyph for lisp_print_glyph.
-	(winlisp.c): Likewise, and cast mapglyph to (void).
-	(winlisp.c): Pass FALSE argument to randrole().
-	(winlisp.c): Replace u.ugold with money_cnt(invent).
-	(winlisp.c): Replace terminate with nh_terminate.
-	(winlisp.c): Comment out iflags.DECgraphics and
-	iflags.IBMgraphics.
-	(winlisp.c): Create new window_procs by using the one from curses
-	as a template, using genl for missing functions.
+	* enh-366.patch: New patch for 3.6.6, primarily addressing
+	compiler errors.
 
 2020-05-23  Benjamin Yang  <be11ng@protonmail.com>
 
