@@ -470,6 +470,14 @@ Returns a appropriate directory or nil.  See also
   "The NetHack version without separating dots."
   (replace-regexp-in-string "\." "" nethack-version))
 
+(defun nethack-query-for-version ()
+  "Queries the user for the NetHack version.
+
+Currently, the two supported versions are 3.6.6 and 3.4.3."
+  (interactive)
+  (read-answer "NetHack version "
+               '(("3.6.6" ?6 "366")
+                 ("3.4.3" ?4 "343"))))
 
 (defun nethack-download-nethack ()
   "Download the nethack source from nethack.org."
@@ -589,8 +597,9 @@ mutually exclusive."
         (if (or no-query-p
                 (y-or-n-p "Need to (re)build the NetHack program, do it now?"))
             (progn
-              (or no-query-p (nethack-query-for-version))
-              ;; TODO: add patch and hints
+              (setq-default nethack-version
+                            (or (and no-query-p "3.6.6")
+                                (nethack-query-for-version)))
               (nethack-build-program
                target-directory
                skip-dependencies-p
