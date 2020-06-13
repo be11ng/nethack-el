@@ -470,28 +470,24 @@ Returns a appropriate directory or nil.  See also
   "The NetHack version without separating dots."
   (replace-regexp-in-string "\." "" nethack-version))
 
-(defun nethack-tar ()
-  "The NetHack tarball."
-  (concat "nethack-" (nethack-version-nodots) "-src.tgz"))
 
 (defun nethack-download-nethack ()
   "Download the nethack source from nethack.org."
-  (let ((nethack-tar (nethack-tar))
+  (let ((nethack-tar (concat "nethack-" (nethack-version-nodots) "-src.tgz"))
         (nethack-url
          (concat "https://nethack.org/download/" nethack-version nethack-tar)))
-    (url-copy-file nethack-url nethack-tar t))) ; It's OK if already exists
+    (url-copy-file nethack-url "build/nethack.tgz"
+                   t)))                 ; It's OK if it already exists.
 
-(defun nethack-untar-nethack (source-tar target-directory)
+(defun nethack-untar-nethack (target-directory)
   "Untar the nethack source out of nethack-tar.
 
-Untars SOURCE-TAR into TARGET-DIRECTORY using tar xzf.
+Untars the file nethack.tgz into TARGET-DIRECTORY using tar xzf.
 
 Note that this may be system specific to GNU tar and BSD tar,
 since it relies on using --strip-components."
   (shell-command
-   (concat "tar xzf "
-           nethack-tar
-           " -C "
+   (concat "tar xzf nethack.tgz -C "
            target-directory
            " --strip-components")))
 
@@ -534,11 +530,14 @@ Returns the buffer of the compilation process."
   (cl-check-type build-directory (and (not null) file-directory))
   (when (and skip-dependencies-p force-dependencies-p)
     (error "Can't simultaneously skip and force dependencies"))
-  (let ((compilation-buffer
-         (compilation-start
-          "make all && make install"
-          t)                            ; Use compilation-shell-minor-mode
-         ))
+  (let* ((compilation-cmd             ; This next part is a bit of an ugly HACK.
+          (concat "make patch && make hints"
+                  (while (eq (substring (nethack-version-nodots) 0 -1) "36")
+                    "-3.6")   ; Install the linux-lisp hints file when possible.
+                  " && make build"))
+         (compilation-buffer
+          (compilation-start compilation-cmd t) ; Use compilation-shell-minor-mode
+          ))
     (if (get-buffer-window compilation-buffer)
         (select-window (get-buffer-window compilation-buffer))
       (pop-to-buffer compilation-buffer))
