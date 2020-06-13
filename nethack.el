@@ -611,7 +611,7 @@ mutually exclusive."
                    (if (not executable)
                        (funcall (if no-error-p #'message #'error) "%s" msg)
                      (message "%s" msg)
-                     (setq nethack-program executable))))))
+                     (setq-default nethack-program executable))))))
           (message "NetHack not activated")))))
 
 
