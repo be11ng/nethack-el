@@ -493,7 +493,7 @@ Currently, the two supported versions are 3.6.6 and 3.4.3."
 Untars the file nethack.tgz into TARGET-DIRECTORY using tar xzf.
 
 Note that this may be system specific to GNU tar and BSD tar,
-since it relies on using --strip-components."
+since it relies on using the flag --strip-components."
   (shell-command
    (concat "tar xzf nethack.tgz -C "
            target-directory
