@@ -518,12 +518,12 @@ system (e.g. nix on arch linux)"
   :group 'nethack
   :type 'string)
 
-(defun nethack-build (target-directory
-                      &optional
-                      skip-dependencies-p
-                      force-dependencies-p
-                      callback
-                      build-directory)
+(defun nethack-build-program (target-directory
+                              &optional
+                              skip-dependencies-p
+                              force-dependencies-p
+                              callback
+                              build-directory)
   "Build the NetHack program in the background.
 
 Install into TARGET-DIRECTORY, which should be a directory.
