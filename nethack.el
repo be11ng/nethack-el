@@ -47,7 +47,7 @@
   "Emacs lisp frontend to the lisp window port of Nethack 3.4.0."
   :group 'games)
 
-(defcustom nethack-program "nethack"
+(defcustom nethack-program (expand-file-name "./build/nethack")
   "Program to run to start a game of Nethack."
   ;; TODO this should have somthing to do with the install process
   :type '(string)
