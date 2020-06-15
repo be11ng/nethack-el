@@ -549,10 +549,13 @@ Returns the buffer of the compilation process."
   (when (and skip-dependencies-p force-dependencies-p)
     (error "Can't simultaneously skip and force dependencies"))
   (let* ((compilation-cmd             ; This next part is a bit of an ugly HACK.
-          (concat "make patch && make hints"
-                  (while (eq (substring (nethack-version-nodots) 0 -1) "36")
+          (concat "NH_VER_NODOTS=" (nethack-version-nodots)
+                  " make -C build patch"
+                  " && make -C build hints"
+                  (while (string-equal "36" (substring (nethack-version-nodots)
+                                                       nil -1))
                     "-3.6")   ; Install the linux-lisp hints file when possible.
-                  " && make build"))
+                  " && make -C build build"))
          (compilation-buffer
           (compilation-start compilation-cmd t) ; Use compilation-shell-minor-mode
           ))
