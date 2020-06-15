@@ -507,7 +507,7 @@ since it relies on using the flag --strip-components."
   (shell-command
    (concat "tar xzf nethack.tgz -C "
            target-directory
-           " --strip-components")))
+           " --strip-components=1")))
 
 (defcustom nethack-installer-os nil
   "Specifies which installer to use.
