@@ -491,9 +491,9 @@ results in an output with prefix ``(nhapi-raw-print''."
 
 (defun nethack-download-nethack ()
   "Download the nethack source from nethack.org."
-  (let ((nethack-tar (concat "nethack-" (nethack-version-nodots) "-src.tgz"))
-        (nethack-url
-         (concat "https://nethack.org/download/" nethack-version nethack-tar)))
+  (let* ((nethack-tar (concat "/nethack-" (nethack-version-nodots) "-src.tgz"))
+         (nethack-url
+          (concat "https://nethack.org/download/" nethack-version nethack-tar)))
     (url-copy-file nethack-url "build/nethack.tgz"
                    t)))                 ; It's OK if it already exists.
 
