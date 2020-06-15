@@ -468,7 +468,7 @@ Returns a appropriate directory or nil.  See also
 ;; the time.
 (defun nethack-version-nodots ()
   "The NetHack version without separating dots."
-  (replace-regexp-in-string "\." "" nethack-version))
+  (replace-regexp-in-string "\\." "" nethack-version))
 
 (defun nethack-query-for-version ()
   "Queries the user for the NetHack version.
