@@ -33,9 +33,26 @@ Old Web: <http://savannah.nongnu.org/projects/nethack-el>
 
 *The following section is nearly copied verbatim from the old INSTALL file.*
 
-I'm working on a better install process, similar to that of `pdf-tools`,
-but for now, you'll need to patch, download and make your own NetHack.
 These instructions are known to work on \*NIX systems (sorry Windows users).
+
+### Easy installation
+
+* Install the Elisp sources
+
+  * Place the `*.elc` or `*.el` files in your load-path.
+
+  * Add the following line somewhere inside your `init.el`:
+
+    ```elisp
+    (nethack-install)
+    ```
+
+    This will download, patch, and build a NetHack lisp patch, and also sets the
+    variables for `nethack-el` to detect the executable.
+
+  * Play with `M-x nethack RET`.
+
+### Manual Build
 
 * Download either `nethack-343.tgz` or `nethack-366.tgz` from
   <https://nethack.org>.
