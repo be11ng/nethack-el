@@ -479,6 +479,16 @@ Currently, the two supported versions are 3.6.6 and 3.4.3."
                '(("3.6.6" ?6 "366")
                  ("3.4.3" ?4 "343"))))
 
+(defun nethack-installed-p ()
+  "Determine if a patched NetHack is installed.
+
+Checks whether a NetHack executable exists, and if running it
+results in an output with prefix ``(nhapi-raw-print''."
+  (and nethack-program
+       (string-prefix-p
+        "(nhapi-raw-print"
+        (shell-command-to-string (concat nethack-program " --version")))))
+
 (defun nethack-download-nethack ()
   "Download the nethack source from nethack.org."
   (let ((nethack-tar (concat "nethack-" (nethack-version-nodots) "-src.tgz"))
