@@ -505,7 +505,7 @@ since it relies on using the flag --strip-components."
 If nil the installer is chosen automatically. This variable is
 useful if you have multiple installers present on your
 system (e.g. nix on arch linux)"
-  :group 'pdf-tools
+  :group 'nethack
   :type 'string)
 
 (defun nethack-build (target-directory
