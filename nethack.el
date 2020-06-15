@@ -563,7 +563,8 @@ Returns the buffer of the compilation process."
 ;;; Initialization
 
 ;;;###autoload
-(defun nethack-install (&optional no-query-p
+(defun nethack-install (&optional no-download-p
+                                  no-query-p
                                   skip-dependencies-p
                                   no-error-p
                                   force-dependencies-p)
@@ -573,6 +574,8 @@ If the `nethack-program' is not running or does not appear to be
 working, attempt to rebuild it.  If this build succeeded,
 continue with the activation of the package.  Otherwise fail
 silently, i.e. no error is is signaled.
+
+Do not download (but do untar) if NO-DOWNLOAD-P is non-nill.
 
 Build the program (if necessary) without asking first, if
 NO-QUERY-P is non-nil.
@@ -600,6 +603,8 @@ mutually exclusive."
               (setq-default nethack-version
                             (or (and no-query-p "3.6.6")
                                 (nethack-query-for-version)))
+              (unless no-download-p (nethack-download-nethack))
+              (nethack-untar-nethack "build/nethack")
               (nethack-build-program
                target-directory
                skip-dependencies-p
