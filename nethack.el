@@ -505,7 +505,7 @@ Untars the file nethack.tgz into TARGET-DIRECTORY using tar xzf.
 Note that this may be system specific to GNU tar and BSD tar,
 since it relies on using the flag --strip-components."
   (shell-command
-   (concat "tar xzf nethack.tgz -C "
+   (concat "tar xzf build/nethack.tgz -C "
            target-directory
            " --strip-components=1")))
 
