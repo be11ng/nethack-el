@@ -8,14 +8,14 @@ SHELL = /bin/sh
 .PHONY: patch hints build
 
 patch:
-	cd nethack && patch -p 1 < ../../enh-$(NH_VER_NODOTS).patch
+	cd nethack-src && patch -p 1 < ../../enh-$(NH_VER_NODOTS).patch
 
 hints:
-	cd nethack/sys/unix && $(SHELL) ./setup.sh
+	cd nethack-src/sys/unix && $(SHELL) ./setup.sh
 
 hints-3.6:
-	cd nethack/sys/unix && $(SHELL) ./setup.sh hints/linux-lisp
+	cd nethack-src/sys/unix && $(SHELL) ./setup.sh hints/linux-lisp
 
 build:
-	$(MAKE) -C nethack all
-	$(MAKE) -C nethack install
+	$(MAKE) -C nethack-src all
+	$(MAKE) -C nethack-src install

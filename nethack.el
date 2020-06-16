@@ -456,7 +456,7 @@ Returns a appropriate directory or nil.  See also
 `nethack-identify-build-directory'."
   (or
    (nethack-identify-build-directory
-    (expand-file-name "build" nethack-directory))
+    (expand-file-name "build/nethack-src" nethack-directory))
    (nethack-identify-build-directory
     (expand-file-name "../nethack" nethack-directory))))
 
@@ -592,7 +592,7 @@ non-nil."
                             (or (and no-query-p "3.6.6")
                                 (nethack-query-for-version)))
               (unless no-download-p (nethack-download-nethack))
-              (nethack-untar-nethack "build/nethack")
+              (nethack-untar-nethack "build/nethack-src")
               (nethack-build-program
                target-directory
                (lambda (executable)
