@@ -534,14 +534,18 @@ Returns the buffer of the compilation process."
   (setq target-directory (file-name-as-directory
                           (expand-file-name target-directory)))
   (cl-check-type build-directory (and (not null) file-directory))
-  (let* ((compilation-cmd             ; This next part is a bit of an ugly HACK.
-          (concat "NH_VER_NODOTS=" (nethack-version-nodots)
-                  " make -C build patch"
-                  " && make -C build hints"
-                  (while (string-equal "36" (substring (nethack-version-nodots)
-                                                       nil -1))
-                    "-3.6")   ; Install the linux-lisp hints file when possible.
-                  " && make -C build build"))
+  (let* ((compilation-cmd
+          (format
+           "%s%s make -C %s %s && make -C %s %s%s && %s%s make -C %s %s"
+           "NH_VER_NODOTS=" (nethack-version-nodots)
+           "build" "patch"
+           "build" "hints"
+           (if (string-equal "36" (substring (nethack-version-nodots)
+                                             nil -1))
+               "-3.6"                   ; install the linux-lisp hints for >3.6
+             "")
+           "PREFIX=" target-directory
+           "build" "build"))
          (compilation-buffer
           (compilation-start compilation-cmd t) ; Use compilation-shell-minor-mode
           ))
