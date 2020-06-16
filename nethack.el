@@ -47,17 +47,6 @@
   "Emacs lisp frontend to the lisp window port of Nethack 3.4.0."
   :group 'games)
 
-(defcustom nethack-program (expand-file-name "./build/nethack")
-  "Program to run to start a game of Nethack."
-  ;; TODO this should have somthing to do with the install process
-  :type '(string)
-  :group 'nethack)
-
-(defcustom nethack-program-args nil
-  "Arguments to pass to `nethack-program'."
-  :type '(repeat string)
-  :group 'nethack)
-
 (defcustom nethack-status-window-height 4
   "Height of the status window."
   :type '(integer)
@@ -430,6 +419,19 @@ attribute, the new value and the old value."
 ;; Much of this code was adapted from pdf-tools, since both of these
 ;; need to call an external program to do the heavy lifting, and that
 ;; program needs to be built from source.
+
+(defcustom nethack-program (expand-file-name "./build/nethack")
+  "Program to run to start a game of Nethack.
+
+You can influence the location of the build directory by setting
+this variable (eventually, not yet implemented)."
+  :type '(string)
+  :group 'nethack)
+
+(defcustom nethack-program-args nil
+  "Arguments to pass to `nethack-program'."
+  :type '(repeat string)
+  :group 'nethack)
 
 (defconst nethack-directory
   (or (and load-file-name
