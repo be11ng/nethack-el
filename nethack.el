@@ -509,15 +509,6 @@ since it relies on using the flag --strip-components."
            target-directory
            " --strip-components=1")))
 
-(defcustom nethack-installer-os nil
-  "Specifies which installer to use.
-
-If nil the installer is chosen automatically. This variable is
-useful if you have multiple installers present on your
-system (e.g. nix on arch linux)"
-  :group 'nethack
-  :type 'string)
-
 (defun nethack-build-program (target-directory
                               &optional
                               skip-dependencies-p
