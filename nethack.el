@@ -511,8 +511,6 @@ since it relies on using the flag --strip-components."
 
 (defun nethack-build-program (target-directory
                               &optional
-                              skip-dependencies-p
-                              force-dependencies-p
                               callback
                               build-directory)
   "Build the NetHack program in the background.
@@ -526,9 +524,6 @@ the build failed.
 Expect sources to be in BUILD-DIRECTORY.  If nil, search for it
 using `nethack-locate-build-directory'.
 
-See `nethack-install' for the SKIP-DEPENDENCIES-P and
-FORCE-DEPENDENCIES-P arguments.
-
 Returns the buffer of the compilation process."
   (unless callback (setq callback #'ignore))
   (unless build-directory
@@ -537,8 +532,6 @@ Returns the buffer of the compilation process."
   (setq target-directory (file-name-as-directory
                           (expand-file-name target-directory)))
   (cl-check-type build-directory (and (not null) file-directory))
-  (when (and skip-dependencies-p force-dependencies-p)
-    (error "Can't simultaneously skip and force dependencies"))
   (let* ((compilation-cmd             ; This next part is a bit of an ugly HACK.
           (concat "NH_VER_NODOTS=" (nethack-version-nodots)
                   " make -C build patch"
@@ -569,9 +562,7 @@ Returns the buffer of the compilation process."
 ;;;###autoload
 (defun nethack-install (&optional no-download-p
                                   no-query-p
-                                  skip-dependencies-p
-                                  no-error-p
-                                  force-dependencies-p)
+                                  no-error-p)
   "Download, install, and patch nethack.
 
 If the `nethack-program' is not running or does not appear to be
@@ -584,17 +575,8 @@ Do not download (but do untar) if NO-DOWNLOAD-P is non-nill.
 Build the program (if necessary) without asking first, if
 NO-QUERY-P is non-nil.
 
-Don't attempt to install system packages, if SKIP-DEPENDENCIES-P
-is non-nil.
-
 Do not signal an error in case the build failed, if NO-ERROR-P is
-non-nil.
-
-Attempt to install system packages (even if it is deemed
-unnecessary), if FORCE-DEPENDENCIES-P is non-nil.
-
-Note that SKIP-DEPENDENCIES-P and FORCE-DEPENDENCIES-P are
-mutually exclusive."
+non-nil."
   (interactive)
   (if (not (nethack-installed-p))
       (let ((target-directory
@@ -611,8 +593,6 @@ mutually exclusive."
               (nethack-untar-nethack "build/nethack")
               (nethack-build-program
                target-directory
-               skip-dependencies-p
-               force-dependencies-p
                (lambda (executable)
                  (let ((msg (format
                              "Bulding the NetHack program %s"
