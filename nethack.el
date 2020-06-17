@@ -426,7 +426,8 @@ attribute, the new value and the old value."
       default-directory)
   "The directory from where this library was first loaded.")
 
-(defcustom nethack-program (expand-file-name "./build/nethack")
+(defcustom nethack-program
+  (expand-file-name "build/nethack" nethack-directory)
   "Program to run to start a game of Nethack.
 
 You can influence the location of the build directory by setting
