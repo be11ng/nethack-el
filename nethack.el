@@ -440,27 +440,6 @@ this variable (eventually, not yet implemented)."
   :type '(repeat string)
   :group 'nethack)
 
-(defun nethack-identify-build-directory (directory)
-  "Return non-nil, if DIRECTORY appears to contain the nethack source.
-
-Returns the expanded directory-name of DIRECTORY or nil."
-  (setq directory (file-name-as-directory
-                   (expand-file-name directory)))
-  (and (file-exists-p (expand-file-name "Makefile" directory))
-       (file-exists-p (expand-file-name "sys/unix/setup.sh" directory))
-       directory))
-
-(defun nethack-locate-build-directory ()
-  "Attempt to locate a source directory.
-
-Returns a appropriate directory or nil.  See also
-`nethack-identify-build-directory'."
-  (or
-   (nethack-identify-build-directory
-    (expand-file-name "build/nethack-src" nethack-directory))
-   (nethack-identify-build-directory
-    (expand-file-name "../nethack" nethack-directory))))
-
 (defcustom nethack-version
   "3.6.6"
   "The NetHack version to download, install, and bulid."
@@ -500,17 +479,21 @@ results in an output with prefix ``(nhapi-raw-print''."
     (url-copy-file nethack-url "build/nethack.tgz"
                    t)))                 ; It's OK if it already exists.
 
-(defun nethack-untar-nethack (target-directory)
+(defun nethack-untar-nethack (build-directory)
   "Untar the nethack source out of nethack-tar.
 
-Untars the file nethack.tgz into TARGET-DIRECTORY using tar xzf.
+Untars the file nethack.tgz located in BUILD-DIRECTORY into
+BUILD-DIRECTORY/nethack-src.
 
-Note that this may be system specific to GNU tar and BSD tar,
-since it relies on using the flag --strip-components."
-  (shell-command
-   (concat "tar xzf build/nethack.tgz -C "
-           target-directory
-           " --strip-components=1")))
+Note that this is system specific to GNU tar and BSD tar, since
+it relies on using the flag --strip-components."
+  (let ((source-directory (expand-file-name "nethack-src" build-directory)))
+    (unless (file-exists-p source-directory)
+      (mkdir source-directory))
+    (shell-command
+     (format "tar xzf %s/nethack.tgz -C %s --strip-components=1"
+             build-directory
+             source-directory))))
 
 (defun nethack-build-program (target-directory
                               &optional
@@ -524,29 +507,30 @@ If CALLBACK is non-nil, it should be a function.  It is called
 with the compiled executable as the single argument or nil, if
 the build failed.
 
-Expect sources to be in BUILD-DIRECTORY.  If nil, search for it
-using `nethack-locate-build-directory'.
+Expect sources to be in BUILD-DIRECTORY.  If nil, expect it to be
+in `nethack-directory'.
 
 Returns the buffer of the compilation process."
   (unless callback (setq callback #'ignore))
   (unless build-directory
-    (setq build-directory (nethack-locate-build-directory)))
+    (setq build-directory (expand-file-name "build" nethack-directory)))
   (cl-check-type target-directory file-directory)
   (setq target-directory (file-name-as-directory
                           (expand-file-name target-directory)))
   (cl-check-type build-directory (and (not null) file-directory))
+  (nethack-untar-nethack build-directory)
   (let* ((compilation-cmd
           (format
            "%s%s make -C %s %s && make -C %s %s%s && %s%s make -C %s %s"
            "NH_VER_NODOTS=" (nethack-version-nodots)
-           "build" "patch"
-           "build" "hints"
+           build-directory "patch"
+           build-directory "hints"
            (if (string-equal "36" (substring (nethack-version-nodots)
                                              nil -1))
                "-3.6"                   ; install the linux-lisp hints for >3.6
              "")
            "PREFIX=" target-directory
-           "build" "build"))
+           build-directory "build"))
          (compilation-buffer
           (compilation-start compilation-cmd t) ; Use compilation-shell-minor-mode
           ))
@@ -597,10 +581,9 @@ non-nil."
                             (or (and no-query-p "3.6.6")
                                 (nethack-query-for-version)))
               (unless no-download-p (nethack-download-nethack))
-              (nethack-untar-nethack "build/nethack-src")
               (nethack-build-program
                target-directory
-               (lambda (executable)
+               (lambda (executable) ; TODO: Do we need this?
                  (let ((msg (format
                              "Bulding the NetHack program %s"
                              (if executable "succeeded" "failed"))))
