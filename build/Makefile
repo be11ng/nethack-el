@@ -5,7 +5,7 @@
 
 SHELL = /bin/sh
 
-.PHONY: patch hints build
+.PHONY: patch hints build clean nuke
 
 patch:
 	cd nethack-src && patch -p 1 < ../../enh-$(NH_VER_NODOTS).patch
@@ -19,3 +19,11 @@ hints-3.6:
 build:
 	$(MAKE) -C nethack-src all
 	$(MAKE) -C nethack-src install
+
+clean:
+	rm -f nethack
+	rm -rf nethackdir
+	rm -rf nethack-src
+
+nuke: clean
+	rm -f nethack.tgz
