@@ -420,6 +420,12 @@ attribute, the new value and the old value."
 ;; need to call an external program to do the heavy lifting, and that
 ;; program needs to be built from source.
 
+(defconst nethack-directory
+  (or (and load-file-name
+           (file-name-directory load-file-name))
+      default-directory)
+  "The directory from where this library was first loaded.")
+
 (defcustom nethack-program (expand-file-name "./build/nethack")
   "Program to run to start a game of Nethack.
 
@@ -432,12 +438,6 @@ this variable (eventually, not yet implemented)."
   "Arguments to pass to `nethack-program'."
   :type '(repeat string)
   :group 'nethack)
-
-(defconst nethack-directory
-  (or (and load-file-name
-           (file-name-directory load-file-name))
-      default-directory)
-  "The directory from where this library was first loaded.")
 
 (defun nethack-identify-build-directory (directory)
   "Return non-nil, if DIRECTORY appears to contain the nethack source.
