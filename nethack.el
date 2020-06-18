@@ -552,8 +552,8 @@ Returns the buffer of the compilation process."
 ;;; Initialization
 
 ;;;###autoload
-(defun nethack-install (&optional no-download-p
-                                  no-query-p
+(defun nethack-install (&optional no-query-p
+                                  no-download-p
                                   no-error-p)
   "Download, install, and patch nethack.
 
@@ -562,10 +562,10 @@ working, attempt to rebuild it.  If this build succeeded,
 continue with the activation of the package.  Otherwise fail
 silently, i.e. no error is is signaled.
 
-Do not download (but do untar) if NO-DOWNLOAD-P is non-nill.
-
 Build the program (if necessary) without asking first, if
 NO-QUERY-P is non-nil.
+
+Do not download (but do untar) if NO-DOWNLOAD-P is non-nill.
 
 Do not signal an error in case the build failed, if NO-ERROR-P is
 non-nil."
