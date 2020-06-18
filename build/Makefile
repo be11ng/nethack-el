@@ -7,8 +7,9 @@ SHELL = /bin/sh
 
 .PHONY: patch hints build clean nuke
 
+# Patch trick copied from https://stackoverflow.com/a/52967701
 patch:
-	cd nethack-src && patch -p 1 < ../../enh-$(NH_VER_NODOTS).patch
+	cd nethack-src && patch -Nr- -p1 < ../../enh-$(NH_VER_NODOTS).patch || true
 
 hints:
 	cd nethack-src/sys/unix && $(SHELL) ./setup.sh

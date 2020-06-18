@@ -491,9 +491,10 @@ it relies on using the flag --strip-components."
     (unless (file-exists-p source-directory)
       (mkdir source-directory))
     (shell-command
-     (format "tar xzf %s/nethack.tgz -C %s --strip-components=1"
+     (format "tar xzf %s/nethack.tgz -C %s %s"
              build-directory
-             source-directory))))
+             source-directory
+             "--strip-components=1 --ignore-command-error"))))
 
 (defun nethack-build-program (target-directory
                               &optional
