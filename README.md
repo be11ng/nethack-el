@@ -39,7 +39,7 @@ These instructions are known to work on \*NIX systems (sorry Windows users).
 
 * Install the Elisp sources
 
-  * Place the `*.elc` or `*.el` files in your load-path.
+  * Add the `nethack-el` folder to your Emacs load-path.
 
   * Make sure you have all of your dependencies installed.  You'll need `make`,
     `gcc`, `bison` or `yacc`, `flex` or `lex`, and the ncurses-dev library for
