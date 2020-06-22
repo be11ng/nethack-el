@@ -58,6 +58,10 @@ These instructions are known to work on \*NIX systems (sorry Windows users).
 
 ### Manual Build
 
+I'm working on a better install process, similar to that of `pdf-tools`,
+but for now, you'll need to patch, download and make your own NetHack.
+These instructions are known to work on \*NIX systems (sorry Windows users).
+
 * Download either `nethack-343.tgz` or `nethack-366.tgz` from
   <https://nethack.org>.
 

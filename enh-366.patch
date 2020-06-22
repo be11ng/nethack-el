@@ -18,7 +18,7 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --- NetHack-NetHack-3.6.6_Released/include/config.h	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/include/config.h	2020-06-22 09:55:37.861212678 -0400
++++ nethack/include/config.h	2020-05-23 18:40:09.062020791 -0400
 @@ -50,12 +50,13 @@
  /* #define QT_GRAPHICS */    /* Qt interface */
  /* #define GNOME_GRAPHICS */ /* Gnome interface */
@@ -47,8 +47,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	2020-06-22 09:50:27.087070875 -0400
-+++ nethack/include/winlisp.h	2020-06-22 09:55:37.861212678 -0400
+--- /dev/null	2020-06-23 10:42:56.281327459 -0400
++++ nethack/include/winlisp.h	2020-05-25 16:23:26.474351571 -0400
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
 +#define WINLISP_H
@@ -121,7 +121,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +#endif /* WINLISP_H */
 --- NetHack-NetHack-3.6.6_Released/src/windows.c	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/src/windows.c	2020-06-22 09:55:37.861212678 -0400
++++ nethack/src/windows.c	2020-05-24 15:21:05.336401669 -0400
 @@ -44,6 +44,10 @@
  #ifdef MSWIN_GRAPHICS
  extern struct window_procs mswin_procs;
@@ -144,7 +144,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      { &chainin_procs, chainin_procs_init, chainin_procs_chain },
      { (struct window_procs *) &chainout_procs, chainout_procs_init,
 --- NetHack-NetHack-3.6.6_Released/sys/unix/Makefile.src	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/sys/unix/Makefile.src	2020-06-22 09:55:37.861212678 -0400
++++ nethack/sys/unix/Makefile.src	2020-05-25 21:23:32.606988441 -0400
 @@ -266,9 +266,12 @@
  #	../win/BeOS/NHMenuWindow.cpp ../win/BeOS/NHMapWindow.cpp tile.c
  #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
@@ -200,8 +200,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2020-06-22 09:50:27.087070875 -0400
-+++ nethack/sys/unix/hints/linux-lisp	2020-06-22 09:55:37.861212678 -0400
+--- /dev/null	2020-06-23 10:42:56.281327459 -0400
++++ nethack/sys/unix/hints/linux-lisp	2020-06-23 11:18:56.168417802 -0400
 @@ -0,0 +1,64 @@
 +#
 +# NetHack 3.6  linux $NHDT-Date: 1432512814 2015/05/25 00:13:34 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $
@@ -210,9 +210,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +#
 +#-PRE
 +# Linux hints file
-+# This hints file provides a single-user lisp build for Linux, taking an
-+# ``input'' of the environment variable PREFIX to determine where the
-+# installation should take place.
++# This hints file provides a single-user lisp build for Linux,
++# installed in ~/.local/bin and usually similar to the XDG desktop specification
 +
 +
 +#PREFIX=/usr
@@ -221,6 +220,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +SHELLDIR = $(PREFIX)
 +INSTDIR=$(HACKDIR)
 +VARDIR = $(HACKDIR)
++
 +
 +
 +POSTINSTALL=cp -n sys/unix/sysconf $(INSTDIR)/sysconf; $(CHOWN) $(GAMEUID) $(INSTDIR)/sysconf; $(CHGRP) $(GAMEGRP) $(INSTDIR)/sysconf; chmod $(VARFILEPERM) $(INSTDIR)/sysconf;
@@ -269,7 +269,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +DIRPERM  = 0755
 \ No newline at end of file
 --- NetHack-NetHack-3.6.6_Released/util/makedefs.c	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/util/makedefs.c	2020-06-22 09:55:37.861212678 -0400
++++ nethack/util/makedefs.c	2020-05-25 17:07:06.303645065 -0400
 @@ -1762,6 +1762,9 @@
  #ifdef MAC /* defunct OS 9 interface */
      { "mac", "Mac" },
@@ -280,12 +280,47 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2020-06-22 09:50:27.087070875 -0400
-+++ nethack/win/lisp/ChangeLog	2020-06-22 14:03:22.621609763 -0400
-@@ -0,0 +1,330 @@
+--- /dev/null	2020-06-23 10:42:56.281327459 -0400
++++ nethack/win/lisp/ChangeLog	2020-06-22 14:23:25.010921493 -0400
+@@ -0,0 +1,367 @@
 +2020-06-22  Benjamin Yang  <be11ng@protonmail.com>
 +
-+	* ../../sys/unix/hints/linux-lisp: Get PREFIX as environment input
++	* ../../sys/unix/hints/linux-lisp: Take $PREFIX as an input from
++	the environment.
++
++2020-06-09  Benjamin Yang  <be11ng@protonmail.com>
++
++	* winlisp.c (lisp_putstr): Use lisp_cmd message-nohistory when the
++	ATR_NOHISTORY bitmask is set.
++
++2020-06-08  Benjamin Yang  <be11ng@protonmail.com>
++
++	* winlisp.c (attr_to_string): Strip off control flags masked onto
++	the display attributes.
++
++2020-05-26  Benjamin Yang  <be11ng@protonmail.com>
++
++	* ../../sys/unix/hints/linux-lisp: New file.
++	* ../../sys/unix/Makefile.src (WINSRC): Remove redundant
++	definition.
++	(WINOBJ): Likewise.
++	(WINLIB): Likewise.
++	(WINLISPLIB): Add -lncurses and -ltinfo.
++
++2020-05-25  Benjamin Yang  <be11ng@protonmail.com>
++
++	* ../../include/winlisp.h (lisp_print_glyph): Add parameter int
++	bkglyph.
++	* winlisp.c (lisp_print_glyph): Likewise, and cast mapglyph to
++	\(void).
++	(lisp_player_selection): Pass FALSE argument to both randrole().
++	(generate_status_line): Replace u.ugold with money_cnt(invent).
++	(lisp_outrip): Likewise.
++	(bail): Replace terminate with nh_terminate.
++	(get_options): Comment out iflags.DECgraphics and
++	iflags.IBMgraphics.
++	(lisp_procs): Use the one from curses as a template, using genl
++	for missing functions.
 +
 +2005-02-27    <katia_dilkina@verizon.net>
 +
@@ -307,7 +342,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +2003-09-19  Shawn Betts  <sabetts@vcn.bc.ca>
 +
-+	* winlisp.c: add extra element to lisp_procs (structure change in 3.4.2).
++	* winlisp.c: add extra element to lisp_procs (structure change in
++	3.4.2).
 +
 +2003-06-03  Shawn Betts  <sabetts@sfu.ca>
 +
@@ -339,7 +375,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	* ../../sys/unix/Makefile.src (WINSRC,WINOBJ,WINLIB): Set to
 +	WINLISP* values.
 +	(depend): Add winlisp.o dependancies.
-+	
++
 +	* winlisp.c (lisp_curs): Don't send winid.  Add error check.
 +	(lisp_putstr): Call `nethack-api-message' or
 +	`nethack-api-menu-putstr' when appropriate.
@@ -414,14 +450,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +	* winlisp.c (lisp_exit_nhwindows): Don't wait for a dummy return
 +	value.
-+	
++
 +2002-01-10  shawn  <sabetts@vcn.bc.ca>
 +
 +	* winlisp.c (win_lisp_init): new function
 +
 +2002-01-09  Ryan C Yeske  <rcyeske@sfu.ca>
 +
-+	* winlisp.c (cmd_index): Add redraw command.	
++	* winlisp.c (cmd_index): Add redraw command.
 +	(C): New macro.
 +
 +2002-01-01  shawn  <sabetts@vcn.bc.ca>
@@ -452,7 +488,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +	* winlisp.c: add extern declaration for glyph2tile and
 +	total_tiles_used.
-+	(lisp_print_glyph): pass the glyph's graphics tile index as an argument.
++	(lisp_print_glyph): pass the glyph's graphics tile index as an
++	argument.
 +
 +2001-12-02  Ryan Yeske  <rcyeske@vcn.bc.ca>
 +
@@ -613,16 +650,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2020-06-22 09:50:27.087070875 -0400
-+++ nethack/win/lisp/winlisp.c	2020-06-22 09:55:37.861212678 -0400
-@@ -0,0 +1,1958 @@
+--- /dev/null	2020-06-23 10:42:56.281327459 -0400
++++ nethack/win/lisp/winlisp.c	2020-06-09 11:49:10.189160064 -0400
+@@ -0,0 +1,1972 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +
 +/*
 + * "Main" file for the lisp/emacs window-port.  This contains most of
 + * the interface routines.  Please see doc/window.doc for an
-+ * description of the window interface.  
++ * description of the window interface.
 + */
 +
 +#ifdef MSDOS			/* from compiler */
@@ -673,7 +710,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	"Starved"
 +};
 +
-+typedef struct 
++typedef struct
 +{
 +  char *name;
 +  int type;
@@ -848,7 +885,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +/* This variable is set when the user has selected an extended command. */
 +static int extended_cmd_id;
-+  
++
 +/* Interface definition, for windows.c */
 +struct window_procs lisp_procs = {
 +    "lisp",
@@ -990,6 +1027,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +attr_to_string(attr)
 +     int attr;
 +{
++  /* Just like curses, we strip off control flags masked onto the display
++     attributes (caller should have already done this...) */
++  attr &= ~(ATR_URGENT | ATR_NOHISTORY);
++
 +  switch (attr)
 +    {
 +    case ATR_NONE:
@@ -1004,6 +1045,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +      return "atr-inverse";
 +    default:
 +      /* Should never happen. */
++      /* Note that it has a chance of happening if, somehow, attr is ATR_DIM
++         -BY 2020-06-08 */
 +      impossible ("Invalid attribute code.");
 +      exit (EXIT_FAILURE);
 +      break;
@@ -1027,7 +1070,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +    case MG_RIDDEN:
 +      return "ridden";
 +    }
-+  
++
 +  /* If it's a combination, just return special. */
 +  if (special)
 +    return "special";
@@ -1194,7 +1237,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +	  pick4u = lisp_yn_function ("Shall I pick a character for you? [ynq] ", "ynq", 'y');
 +
-+	  if (pick4u != 'y' && pick4u != 'n') 
++	  if (pick4u != 'y' && pick4u != 'n')
 +	    {
 +	    give_up:	/* Quit */
 +	      if (selected) free((genericptr_t) selected);
@@ -1243,9 +1286,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +					Strcpy(rolenamebuf, roles[i].name.m);
 +					Strcat(rolenamebuf, "/");
 +					Strcat(rolenamebuf, roles[i].name.f);
-+				} else 
++				} else
 +					Strcpy(rolenamebuf, roles[i].name.m);
-+			}	
++			}
 +			add_menu(win, NO_GLYPH, &any, thisch,
 +			    0, ATR_NONE, an(rolenamebuf), MENU_UNSELECTED);
 +			lastch = thisch;
@@ -1275,7 +1318,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	    (void)  root_plselection_prompt(plbuf, QBUFSZ - 1,
 +			flags.initrole, flags.initrace, flags.initgend, flags.initalign);
 +	}
-+	
++
 +	/* Select a race, if necessary */
 +	/* force compatibility with role, try for compatibility with
 +	 * pre-selected gender/alignment */
@@ -1581,7 +1624,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  printf ("(");
 +  lisp_list (lisp_string ("name");
 +	     lisp_string (plname););
-+  if (Upolyd) 
++  if (Upolyd)
 +    {
 +      char mbot[BUFSZ];
 +      int k = 0;
@@ -1684,7 +1727,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  else
 +    lisp_list (lisp_string ("hunger"); lisp_nil);
 +
-+  if (Sick) 
++  if (Sick)
 +    {
 +      if (u.usick_type & SICK_VOMITABLE)
 +	lisp_list (lisp_string ("sick"); lisp_string ("FoodPois"));
@@ -1715,7 +1758,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +    lisp_list (lisp_string ("slimed"); lisp_nil);
 +
 +  if (near_capacity() > UNENCUMBERED)
-+    lisp_list (lisp_string ("encumbrance"); 
++    lisp_list (lisp_string ("encumbrance");
 +	       lisp_string (enc_stat[near_capacity()]));
 +  else
 +    lisp_list (lisp_string ("encumbrance"); lisp_nil);
@@ -1729,26 +1772,34 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +     int attr;
 +     const char *str;
 +{
++  int mesgflags;
++  mesgflags = attr & (ATR_URGENT | ATR_NOHISTORY);
++  attr &= ~mesgflags;
++
 +  static char statline1[BUFSZ] = "";
 +  if (window == WIN_STATUS)
 +    {
 +      if (statline1[0]=='\0')
-+	Strcpy (statline1, str);
++        Strcpy (statline1, str);
 +      else
-+	{
-+	  generate_status_line ();
-+	  statline1[0]='\0';
-+	}
++        {
++          generate_status_line ();
++          statline1[0]='\0';
++        }
 +    }
++  else if (window == WIN_MESSAGE && (mesgflags & ATR_NOHISTORY) != 0)
++    lisp_cmd ("message-nohistory",
++              lisp_literal (attr_to_string (attr));
++              lisp_string (str));
 +  else if (window == WIN_MESSAGE)
-+    lisp_cmd ("message", 
-+	      lisp_literal (attr_to_string (attr));
-+	      lisp_string (str));
++    lisp_cmd ("message",
++              lisp_literal (attr_to_string (attr));
++              lisp_string (str));
 +  else
 +    lisp_cmd ("menu-putstr",
-+	      lisp_int (window);
-+	      lisp_literal (attr_to_string (attr));
-+	      lisp_string (str));
++              lisp_int (window);
++              lisp_literal (attr_to_string (attr));
++              lisp_string (str));
 +}
 +
 +void
@@ -1781,7 +1832,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	    lisp_current_accelerator = 'A';
 +	  else
 +	    lisp_current_accelerator++;
-+	}      
++	}
 +      else
 +	lisp_menu_item_list[lisp_menu_list_num].accelerator = ch;
 +
@@ -1853,11 +1904,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +  /* The client should submit a structure like this:
 +
-+   ((ch count) (ch count) (ch count) ...) 
++   ((ch count) (ch count) (ch count) ...)
 +
 +   where ch is the accelerator for the menu item and count is the
 +   number of them to select.
-+   
++
 +   We strtok it so we just get id count id count id count. */
 +
 +  token = strtok (list, delim);
@@ -1866,7 +1917,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  *menu_list = malloc (sizeof (menu_item));
 +  if (*menu_list == NULL)
 +    {
-+      panic ("Memory allocation failure; cannot get %u bytes", 
++      panic ("Memory allocation failure; cannot get %u bytes",
 +	     sizeof (menu_item));
 +    }
 +  size = 0;
@@ -1877,7 +1928,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +      size++;
 +      if ((*menu_list = realloc (*menu_list, size * sizeof (menu_item))) == NULL)
 +	{
-+	  panic ("Memory allocation failure; cannot get %u bytes", 
++	  panic ("Memory allocation failure; cannot get %u bytes",
 +		 size * sizeof (menu_item));
 +	}
 +
@@ -1919,9 +1970,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +  for (i=0; cmd_index[i].name != (char *)0; i++)
 +    {
-+      if (!strcmp (str, cmd_index[i].name)) 
++      if (!strcmp (str, cmd_index[i].name))
 +	return i;
-+    }	  
++    }
 +
 +  return -1;
 +}
@@ -1935,7 +1986,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  for (i=0; extcmdlist[i].ef_txt != (char *)0; i++) {
 +    if (!strcmp (str, extcmdlist[i].ef_txt)) return i;
 +  }
-+  
++
 +  return -1;
 +}
 +
@@ -1945,7 +1996,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +/* { */
 +/*   int i; */
 +/*   int ret = 1; */
-+  
++
 +/*   for (i=10;n / i; i *= 10) */
 +/*     { */
 +/*       ret++; */
@@ -2110,7 +2161,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +  for (i=0; i<winid_list_len; i++)
 +    if (winid_list[i] == n) return 1;
-+  
++
 +  return 0;
 +}
 +
@@ -2118,7 +2169,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +add_winid (winid n)
 +{
 +  if (winid_is_taken (n)) return 0; /* failed. */
-+  
++
 +  winid_list[find_empty_cell()] = n;
 +  return 1; /* success! */
 +}
@@ -2127,13 +2178,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +get_unique_winid ()
 +{
 +  winid i;
-+  
++
 +  /* look for a unique number, and add it to the list of taken
 +     numbers. */
 +  i = 0;
 +  while (!add_winid (i)) i++;
 +
-+  return i;	  
++  return i;
 +}
 +
 +/* When a window is destroyed, it gives back its window number with
@@ -2145,7 +2196,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +  for (i=0; i<winid_list_len; i++)
 +    {
-+      if (winid_list[i] == n) 
++      if (winid_list[i] == n)
 +	{
 +	  winid_list[i] = -1;
 +	  return;
@@ -2560,7 +2611,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +get_death_text (buf)
 +     char buf[BUFSZ];
 +{
-+  
++
 +}
 +
 +void
@@ -2569,7 +2620,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +     int how;
 +{
 +  lisp_cmd ("outrip",
-+	    lisp_int (window);	    
++	    lisp_int (window);
 +	    lisp_string (plname);
 +      lisp_int (money_cnt(invent));
 +      lisp_string ("Died while trying to finish nethack-el."));

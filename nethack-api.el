@@ -59,7 +59,6 @@
   (save-current-buffer
     (let ((buffer (get-buffer-create nh-raw-print-buffer-name)))
       (pop-to-buffer buffer)
-      (delete-other-windows)
       (insert str "\n"))))
 
 (defun nhapi-raw-print-bold (str)
@@ -299,6 +298,12 @@
 FIXME: doesnt actually use ATTR!"
   (nh-message attr str))
 
+(defun nhapi-message-nohistory (_attr str)
+  "Display STR in echo area.
+
+This is used when the ATR_NOHISTORY bit in a message is set."
+  (message "%s" str))
+
 (defun nh-attr-face (attr)
   "Return the face corresponding with ATTR."
   (intern-soft (concat "nethack-" (symbol-name attr) "-face")))
@@ -457,8 +462,7 @@ all of the appropriate setup."
       (kill-buffer nh-raw-print-buffer-name)))
 
 (defun nhapi-exit-nhwindows (str)
-  ""
-  ;; print the message in STR to the raw print buffer
+  "Print the message in STR to the raw print buffer."
   (nhapi-raw-print str))
 
 (defun nhapi-create-message-window ()
@@ -787,7 +791,6 @@ the menu is dismissed."
   (let ((window-min-height (min nethack-status-window-height
                                 nethack-message-window-height))
         other-window)
-    (delete-other-windows)              ; I think we can leave this out?
     (cl-case nethack-message-style
       (:map)
       (t

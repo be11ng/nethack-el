@@ -14,6 +14,26 @@
 	(nethack-build-program): Likewise.
 	(nethack-install): New autoloaded function.
 
+2020-06-09  Benjamin Yang  <be11ng@protonmail.com>
+
+	* enh-366.patch: Update ChangeLog.
+
+	* nethack-api.el (nhapi-message-nohistory): Print message to echo
+	area when the ATR_NOHISTORY bitmask is set.
+
+2020-06-07  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack-api.el (nhapi-raw-print): Don't delete-other-windows.
+	(nhapi-restore-window-configuration): Likewise.
+	* nethack.el (nh-sentinel): Pop-to-buffer raw-print-buffer on
+	exit.
+	(nethack-kill-buffers): kill-buffer-and-window in a dolist for
+	nh-status-buffer and nh-message-buffer, not repeated kill-buffer.
+
+	* nethack-api.el (nhapi-exit-nhwindows): Put redundant comment
+	into empty docstring.
+	* nethack.el (nethack-kill-buffers): Capitalize docstring.
+
 2020-06-06  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-api.el (nhapi-restore-window-configuration): Remove
@@ -37,11 +57,11 @@
 	* nethack-api.el: Add file local variable to enable lexical scope.
 	* nethack-cmd.el: Likewise.
 	* nethack-compat.el: Likewise.
-	* nethack-example.el: Likeewise.
-	* nethack-keys.el: Likeewise.
-	* nethack-nhlaunch.el: Likeewise.
-	* nethack.el: Likeewise.
-	* nh-bot.el: Likeewise.
+	* nethack-example.el: Likewise.
+	* nethack-keys.el: Likewise.
+	* nethack-nhlaunch.el: Likewise.
+	* nethack.el: Likewise.
+	* nh-bot.el: Likewise.
 
 2020-05-29  Evan Izaksonas-Smith  <izak0002@dev.null>
 
@@ -89,27 +109,14 @@
 2020-05-26  Benjamin Yang  <be11ng@protonmail.com>
 
 	* mkpatch: Generate a diff for sys/unix/hints/linux-lisp.
-	* enh-366.patch (hints/linux-lisp): New file.
 	* Makefile (test-patch): Call sh setup.sh with hints/linux-lisp.
-	* enh-366.patch (WINSRC): Remove redundant definition
-	(WINOBJ): Likewise.
-	(WINLIB): Likewise.
-	(WINLISPLIB): Add -lncurses and -ltinfo.
 
 	* Makefile (EMACS): Use /usr/bin/emacs instead of just emacs.
 
 2020-05-25  Benjamin Yang  <be11ng@protonmail.com>
 
-	* enh-366.patch: New patch for 3.6.6, addressing compiler errors.
-	(winlisp.h): Add parameter bkglyph for lisp_print_glyph.
-	(winlisp.c): Likewise, and cast mapglyph to (void).
-	(winlisp.c): Pass FALSE argument to randrole().
-	(winlisp.c): Replace u.ugold with money_cnt(invent).
-	(winlisp.c): Replace terminate with nh_terminate.
-	(winlisp.c): Comment out iflags.DECgraphics and
-	iflags.IBMgraphics.
-	(winlisp.c): Create new window_procs by using the one from curses
-	as a template, using genl for missing functions.
+	* enh-366.patch: New patch for 3.6.6, primarily addressing
+	compiler errors.
 
 2020-05-23  Benjamin Yang  <be11ng@protonmail.com>
 
