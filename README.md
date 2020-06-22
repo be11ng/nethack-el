@@ -41,6 +41,10 @@ These instructions are known to work on \*NIX systems (sorry Windows users).
 
   * Place the `*.elc` or `*.el` files in your load-path.
 
+  * Make sure you have all of your dependencies installed.  You'll need `make`,
+    `gcc`, `bison` or `yacc`, `flex` or `lex`, and the ncurses-dev library for
+    your system.
+
   * Add the following line somewhere inside your `init.el`:
 
     ```elisp
