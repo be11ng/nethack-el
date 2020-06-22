@@ -1,3 +1,19 @@
+2020-06-22  Benjamin Yang  <be11ng@protonmail.com>
+
+	* build/Makefile: New file.
+	* nethack.el: Require url.
+	(nethack-directory): New constant.
+	(nethack-program-args): Move function to new section.
+	(nethack-program): Likewise, and use `nethack-directory`.
+	(nethack-version): New custom variable.
+	(nethack-version-nodots): New function.
+	(nethack-query-for-version): Likewise.
+	(nethack-installed-p): Likewise.
+	(nethack-download-nethack): Likewise.
+	(nethack-untar-nethack): Likewise.
+	(nethack-build-program): Likewise.
+	(nethack-install): New autoloaded function.
+
 2020-06-06  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-api.el (nhapi-restore-window-configuration): Remove
