@@ -476,7 +476,8 @@ results in an output with prefix ``(nhapi-raw-print''."
   (let* ((nethack-tar (concat "/nethack-" (nethack-version-nodots) "-src.tgz"))
          (nethack-url
           (concat "https://nethack.org/download/" nethack-version nethack-tar)))
-    (url-copy-file nethack-url "build/nethack.tgz"
+    (url-copy-file nethack-url (expand-file-name "build/nethack.tgz"
+                                                 nethack-directory)
                    t)))                 ; It's OK if it already exists.
 
 (defun nethack-untar-nethack (build-directory)
