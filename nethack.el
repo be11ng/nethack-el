@@ -458,8 +458,8 @@ this variable (eventually, not yet implemented)."
 Currently, the two supported versions are 3.6.6 and 3.4.3."
   (interactive)
   (read-answer "NetHack version "
-               '(("3.6.6" nil "366")
-                 ("3.4.3" nil "343"))))
+               '(("3.6.6" ?6 "366")
+                 ("3.4.3" ?3 "343"))))
 
 (defun nethack-installed-p ()
   "Determine if a patched NetHack is installed.
