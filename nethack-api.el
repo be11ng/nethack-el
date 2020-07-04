@@ -394,6 +394,10 @@ This is used when the ATR_NOHISTORY bit in a message is set."
                (nh-read-line (concat ques " "))
              (quit ""))))
 
+(defun nhapi-get-ext-cmd (cmd-alist)
+  "Get an extended command from the user."
+  (nhapi-choose-attribute "# " cmd-alist ""))
+
 (defun nhapi-player-selection ()
   "Does nothing right now, perhaps simply indicates that the
 nhapi-choose-X calls are to follow for actual

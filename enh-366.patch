@@ -47,7 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	2020-06-23 10:42:56.281327459 -0400
+--- /dev/null	2020-07-04 09:07:20.178915709 -0400
 +++ nethack/include/winlisp.h	2020-05-25 16:23:26.474351571 -0400
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
@@ -200,7 +200,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2020-06-23 10:42:56.281327459 -0400
+--- /dev/null	2020-07-04 09:07:20.178915709 -0400
 +++ nethack/sys/unix/hints/linux-lisp	2020-06-23 11:18:56.168417802 -0400
 @@ -0,0 +1,64 @@
 +#
@@ -280,9 +280,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2020-06-23 10:42:56.281327459 -0400
-+++ nethack/win/lisp/ChangeLog	2020-06-22 14:23:25.010921493 -0400
-@@ -0,0 +1,367 @@
+--- /dev/null	2020-07-04 09:07:20.178915709 -0400
++++ nethack/win/lisp/ChangeLog	2020-07-04 13:18:16.549020810 -0400
+@@ -0,0 +1,371 @@
 +2020-06-22  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* ../../sys/unix/hints/linux-lisp: Take $PREFIX as an input from
@@ -306,6 +306,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	(WINOBJ): Likewise.
 +	(WINLIB): Likewise.
 +	(WINLISPLIB): Add -lncurses and -ltinfo.
++
++2020-07-04  Benjamin Yang  <be11ng@protonmail.com>
++
++	* winlisp.c (lisp_get_ext_cmd): Restore function.
 +
 +2020-05-25  Benjamin Yang  <be11ng@protonmail.com>
 +
@@ -650,8 +654,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2020-06-23 10:42:56.281327459 -0400
-+++ nethack/win/lisp/winlisp.c	2020-06-09 11:49:10.189160064 -0400
+--- /dev/null	2020-07-04 09:07:20.178915709 -0400
++++ nethack/win/lisp/winlisp.c	2020-07-04 13:18:22.979157420 -0400
 @@ -0,0 +1,1972 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
@@ -2429,17 +2433,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +int
 +lisp_get_ext_cmd()
 +{
-+/*    int cmd; */
-+/*    int i; */
++  int cmd;
++  int i;
 +
-+/*    printf ("(nethack-api-get-ext-cmd '("); */
++  printf ("(nethack-api-get-ext-cmd '(");
 +
-+/*    for (i=0; extcmdlist[i].ef_txt != (char *)0; i++) { */
-+/*      printf ("(\"%s\" . %d)", extcmdlist[i].ef_txt, i); */
-+/*    } */
-+/*    printf ("))\n"); */
++  for (i=0; extcmdlist[i].ef_txt != (char *)0; i++) {
++    printf ("(\"%s\" . %d)", extcmdlist[i].ef_txt, i);
++  }
++  printf ("))\n");
 +
-+/*    scanf ("%d", &cmd); */
++  scanf ("%d", &cmd);
 +
 +  /* This is set when the user chooses an extended command. */
 +  return extended_cmd_id;
