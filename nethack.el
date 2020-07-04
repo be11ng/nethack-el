@@ -542,10 +542,8 @@ Returns the buffer of the compilation process."
     (with-current-buffer compilation-buffer
       (setq-local compilation-error-regexp-alist nil)
       (add-hook 'compilation-finish-functions
-                (lambda (_buffer status)
-                  (funcall callback
-                           (and (equal status "finished\n")
-                                executable)))
+                (lambda (_buffer _status)
+                  (funcall callback))
                 nil t)                  ; Locally add-hook
       (current-buffer))))
 
@@ -585,14 +583,14 @@ non-nil."
               (unless no-download-p (nethack-download-nethack))
               (nethack-build-program
                target-directory
-               (lambda (executable) ; TODO: Do we need this?
+               (lambda ()
                  (let ((msg (format
                              "Bulding the NetHack program %s"
-                             (if executable "succeeded" "failed"))))
-                   (if (not executable)
+                             (if (file-exists-p nethack-program)
+                                 "succeeded" "failed"))))
+                   (if (not (file-exists-p nethack-program))
                        (funcall (if no-error-p #'message #'error) "%s" msg)
-                     (message "%s" msg)
-                     (setq-default nethack-program executable))))))
+                     (message "%s" msg))))))
           (message "NetHack not activated")))))
 
 
