@@ -175,6 +175,8 @@
 ;;	{"wmode", "show wall modes", wiz_show_wmodes, TRUE},
 
 ;; Extended commands
+(defun-nethack-command read-extended "perform an extended command." "#")
+
 (defun-nethack-command pray "pray to the gods for help." "pray")
 (defun-nethack-command adjust "adjust inventory letters." "adjust")
 (defun-nethack-command chat "talk to someone." "chat")

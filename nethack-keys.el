@@ -283,7 +283,7 @@
     ;;; extended commands
 
     ;;#       Perform an extended command
-    ;; (define-key map "#" 'nethack-command-read-extended)
+    (define-key map "#" 'nethack-command-read-extended)
 
     ;;M-p     Pray to the gods for help
     (define-key map "\ep" 'nethack-command-pray)
