@@ -654,9 +654,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2020-07-04 09:07:20.178915709 -0400
-+++ nethack/win/lisp/winlisp.c	2020-07-04 13:18:22.979157420 -0400
-@@ -0,0 +1,1972 @@
+--- /dev/null	2020-07-05 09:39:01.158952229 -0400
++++ nethack/win/lisp/winlisp.c	2020-07-05 11:41:56.851784278 -0400
+@@ -0,0 +1,1971 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +
@@ -2445,8 +2445,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +  scanf ("%d", &cmd);
 +
-+  /* This is set when the user chooses an extended command. */
-+  return extended_cmd_id;
++  return cmd;
 +}
 +
 +void
