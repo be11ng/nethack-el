@@ -2443,7 +2443,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  }
 +  printf ("))\n");
 +
-+  scanf ("%d", &cmd);
++  read_int ("number", &cmd);
 +
 +  return cmd;
 +}
