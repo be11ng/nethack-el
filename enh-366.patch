@@ -47,7 +47,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	2020-07-04 09:07:20.178915709 -0400
+--- /dev/null	2020-07-05 09:39:01.158952229 -0400
 +++ nethack/include/winlisp.h	2020-05-25 16:23:26.474351571 -0400
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
@@ -200,7 +200,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2020-07-04 09:07:20.178915709 -0400
+--- /dev/null	2020-07-05 09:39:01.158952229 -0400
 +++ nethack/sys/unix/hints/linux-lisp	2020-06-23 11:18:56.168417802 -0400
 @@ -0,0 +1,64 @@
 +#
@@ -280,9 +280,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2020-07-04 09:07:20.178915709 -0400
-+++ nethack/win/lisp/ChangeLog	2020-07-04 13:18:16.549020810 -0400
+--- /dev/null	2020-07-05 09:39:01.158952229 -0400
++++ nethack/win/lisp/ChangeLog	2020-07-05 12:03:53.745468839 -0400
 @@ -0,0 +1,371 @@
++2020-07-04  Benjamin Yang  <be11ng@protonmail.com>
++
++	* winlisp.c (lisp_get_ext_cmd): Restore function.
++
 +2020-06-22  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* ../../sys/unix/hints/linux-lisp: Take $PREFIX as an input from
@@ -306,10 +310,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	(WINOBJ): Likewise.
 +	(WINLIB): Likewise.
 +	(WINLISPLIB): Add -lncurses and -ltinfo.
-+
-+2020-07-04  Benjamin Yang  <be11ng@protonmail.com>
-+
-+	* winlisp.c (lisp_get_ext_cmd): Restore function.
 +
 +2020-05-25  Benjamin Yang  <be11ng@protonmail.com>
 +
