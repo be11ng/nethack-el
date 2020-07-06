@@ -1,3 +1,12 @@
+2020-07-06  Benjamin Yang  <be11ng@protonmail.com>
+
+	* enh-366.patch: Restore `lisp_get_ext_cmd'.
+
+	* nethack-cmd.el (nethack-command-read-extended): New
+	nethack-command.
+	* nethack-keys.el: New key `#' for
+	`nethack-command-read-extended'.
+
 2020-07-04  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-api.el (nhapi-get-ext-cmd): Restore function.

@@ -277,11 +277,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      { "amii", "Amiga Intuition" },
  #endif
 --- /dev/null	2020-07-06 09:18:02.067775393 -0400
-+++ nethack/win/lisp/ChangeLog	2020-07-06 14:05:37.796916478 -0400
-@@ -0,0 +1,375 @@
++++ nethack/win/lisp/ChangeLog	2020-07-06 16:33:00.564458163 -0400
+@@ -0,0 +1,381 @@
 +2020-07-06  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* ../../sys/unix/hints/linux-lisp: Format file.
++
++	* winlisp.c (cmd_index): Fix format; add `#' for extended
++	commands.
++	(lisp_get_ext_cmd): Return `cmd', not `extended_cmd_id'; use
++	`read_int' rather than `scanf'; use `nhapi-get-ext-cmd' rather
++	than `nethack-api-get-ext-cmd'.
 +
 +2020-07-04  Benjamin Yang  <be11ng@protonmail.com>
 +
