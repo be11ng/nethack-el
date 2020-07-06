@@ -655,8 +655,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
 --- /dev/null	2020-07-06 09:18:02.067775393 -0400
-+++ nethack/win/lisp/winlisp.c	2020-07-05 11:41:56.851784278 -0400
-@@ -0,0 +1,1971 @@
++++ nethack/win/lisp/winlisp.c	2020-07-06 15:58:08.340855746 -0400
+@@ -0,0 +1,1976 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +
@@ -726,166 +726,171 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +#endif
 +
 +/* Taken from cmd.c */
-+cmd_index_t cmd_index[] = { {"gowest", CMD_KEY, 'h'},
-+			    {"gowestontop", CMD_KEY, 'H'},
-+			    {"gowestnear", CMD_KEY, C('h')},
++cmd_index_t cmd_index[] =
++  {
++   {"gowest", CMD_KEY, 'h'},
++   {"gowestontop", CMD_KEY, 'H'},
++   {"gowestnear", CMD_KEY, C('h')},
 +
-+			    {"gosouth", CMD_KEY, 'j'},
-+			    {"gosouthontop", CMD_KEY, 'J'},
-+			    {"gosouthnear", CMD_KEY,  C('j')},
++   {"gosouth", CMD_KEY, 'j'},
++   {"gosouthontop", CMD_KEY, 'J'},
++   {"gosouthnear", CMD_KEY,  C('j')},
 +
-+			    {"gonorth", CMD_KEY, 'k'},
-+			    {"gonorthontop", CMD_KEY, 'K'},
-+			    {"gonorthnear", CMD_KEY, C('k')},
++   {"gonorth", CMD_KEY, 'k'},
++   {"gonorthontop", CMD_KEY, 'K'},
++   {"gonorthnear", CMD_KEY, C('k')},
 +
-+			    {"goeast", CMD_KEY, 'l'},
-+			    {"goeastontop", CMD_KEY, 'L'},
-+			    {"goeastnear", CMD_KEY, C('l')},
++   {"goeast", CMD_KEY, 'l'},
++   {"goeastontop", CMD_KEY, 'L'},
++   {"goeastnear", CMD_KEY, C('l')},
 +
-+			    {"gonorthwest", CMD_KEY, 'y'},
-+			    {"gonorthwestontop", CMD_KEY, 'Y'},
-+			    {"gonorthwestnear", CMD_KEY, C('y')},
++   {"gonorthwest", CMD_KEY, 'y'},
++   {"gonorthwestontop", CMD_KEY, 'Y'},
++   {"gonorthwestnear", CMD_KEY, C('y')},
 +
-+			    {"gonortheast", CMD_KEY, 'u'},
-+			    {"gonortheastontop", CMD_KEY, 'U'},
-+			    {"gonortheastnear", CMD_KEY, C('u')},
++   {"gonortheast", CMD_KEY, 'u'},
++   {"gonortheastontop", CMD_KEY, 'U'},
++   {"gonortheastnear", CMD_KEY, C('u')},
 +
-+			    {"gosouthwest", CMD_KEY, 'b'},
-+			    {"gosouthwestontop", CMD_KEY, 'B'},
-+			    {"gosouthwestnear", CMD_KEY, C('b')},
++   {"gosouthwest", CMD_KEY, 'b'},
++   {"gosouthwestontop", CMD_KEY, 'B'},
++   {"gosouthwestnear", CMD_KEY, C('b')},
 +
-+			    {"gosoutheast", CMD_KEY, 'n'},
-+			    {"gosoutheastontop", CMD_KEY, 'N'},
-+			    {"gosoutheastnear", CMD_KEY, C('n')},
++   {"gosoutheast", CMD_KEY, 'n'},
++   {"gosoutheastontop", CMD_KEY, 'N'},
++   {"gosoutheastnear", CMD_KEY, C('n')},
 +
-+			    {"travel", CMD_KEY, '_'},
++   {"travel", CMD_KEY, '_'},
 +
-+			    {"idtrap", CMD_KEY, '^'},
-+			    {"apply", CMD_KEY, 'a'},
-+			    {"remarm", CMD_KEY, 'A'},
-+			    {"close", CMD_KEY, 'c'},
-+			    {"drop", CMD_KEY, 'd'},
++   {"idtrap", CMD_KEY, '^'},
++   {"apply", CMD_KEY, 'a'},
++   {"remarm", CMD_KEY, 'A'},
++   {"close", CMD_KEY, 'c'},
++   {"drop", CMD_KEY, 'd'},
 +
-+			    {"ddrop", CMD_KEY, 'D'},
-+			    {"eat", CMD_KEY, 'e'},
-+			    {"engrave", CMD_KEY, 'E'},
-+			    {"fire", CMD_KEY, 'f'},
-+			    {"inv", CMD_KEY, 'i'},
++   {"ddrop", CMD_KEY, 'D'},
++   {"eat", CMD_KEY, 'e'},
++   {"engrave", CMD_KEY, 'E'},
++   {"fire", CMD_KEY, 'f'},
++   {"inv", CMD_KEY, 'i'},
 +
-+			    {"typeinv", CMD_KEY, 'I'},
-+			    {"open", CMD_KEY, 'o'},
-+			    {"set", CMD_KEY, 'O'},
-+			    {"pay", CMD_KEY, 'p'},
-+			    {"puton", CMD_KEY, 'P'},
++   {"typeinv", CMD_KEY, 'I'},
++   {"open", CMD_KEY, 'o'},
++   {"set", CMD_KEY, 'O'},
++   {"pay", CMD_KEY, 'p'},
++   {"puton", CMD_KEY, 'P'},
 +
-+			    {"drink", CMD_KEY, 'q'},
-+			    {"wieldquiver", CMD_KEY, 'Q'},
-+			    {"read", CMD_KEY, 'r'},
-+			    {"remring", CMD_KEY, 'R'},
-+			    {"search", CMD_KEY, 's'},
++   {"drink", CMD_KEY, 'q'},
++   {"wieldquiver", CMD_KEY, 'Q'},
++   {"read", CMD_KEY, 'r'},
++   {"remring", CMD_KEY, 'R'},
++   {"search", CMD_KEY, 's'},
 +
-+			    {"save", CMD_KEY, 'S'},
-+			    {"throw", CMD_KEY, 't'},
-+			    {"takeoff", CMD_KEY, 'T'},
-+			    {"simpleversion", CMD_KEY, 'v'},
-+			    {"history", CMD_KEY, 'V'},
++   {"save", CMD_KEY, 'S'},
++   {"throw", CMD_KEY, 't'},
++   {"takeoff", CMD_KEY, 'T'},
++   {"simpleversion", CMD_KEY, 'v'},
++   {"history", CMD_KEY, 'V'},
 +
-+			    {"wield", CMD_KEY, 'w'},
-+			    {"wear", CMD_KEY, 'W'},
-+			    {"swapweapon", CMD_KEY, 'x'},
-+			    {"enter_explore_mode", CMD_KEY, 'X'},
-+			    {"zap", CMD_KEY, 'z'},
++   {"wield", CMD_KEY, 'w'},
++   {"wear", CMD_KEY, 'W'},
++   {"swapweapon", CMD_KEY, 'x'},
++   {"enter_explore_mode", CMD_KEY, 'X'},
++   {"zap", CMD_KEY, 'z'},
 +
-+			    {"cast", CMD_KEY, 'Z'},
-+			    {"up", CMD_KEY, '<'},
-+			    {"down", CMD_KEY, '>'},
-+			    {"whatis", CMD_KEY, '/'},
-+			    {"help", CMD_KEY, '?'},
++   {"cast", CMD_KEY, 'Z'},
++   {"up", CMD_KEY, '<'},
++   {"down", CMD_KEY, '>'},
++   {"whatis", CMD_KEY, '/'},
++   {"help", CMD_KEY, '?'},
 +
-+			    {"whatdoes", CMD_KEY, '&'},
-+			    {"sh", CMD_KEY, '!'},
-+			    {"discovered", CMD_KEY, '\\'},
-+			    {"null", CMD_KEY, '.'},
-+			    {"look", CMD_KEY, ':'},
++   {"whatdoes", CMD_KEY, '&'},
++   {"sh", CMD_KEY, '!'},
++   {"discovered", CMD_KEY, '\\'},
++   {"null", CMD_KEY, '.'},
++   {"look", CMD_KEY, ':'},
 +
-+			    {"quickwhatis", CMD_KEY, ';'},
-+			    {"pickup", CMD_KEY, ','},
-+			    {"togglepickup", CMD_KEY, '@'},
-+			    {"prinuse", CMD_KEY, '*'},
-+			    {"countgold", CMD_KEY, '$'},
++   {"quickwhatis", CMD_KEY, ';'},
++   {"pickup", CMD_KEY, ','},
++   {"togglepickup", CMD_KEY, '@'},
++   {"prinuse", CMD_KEY, '*'},
++   {"countgold", CMD_KEY, '$'},
 +
-+			    {"kick", CMD_KEY, C('d')},
-+			    {"listspells", CMD_KEY, '+'},
-+			    {"redraw", CMD_KEY, C('r')},
-+			    {"teleport", CMD_KEY, C('t')},
-+			    {"callmon", CMD_KEY, 'C'},
-+			    {"fight", CMD_KEY, 'F'},
-+			    {"movenear", CMD_KEY, 'g'},
-+			    {"move", CMD_KEY, 'G'},
-+			    {"movenopickuporfight", CMD_KEY, 'm'},
-+			    {"movenopickup", CMD_KEY, 'M'},
-+			    {"showweapon", CMD_KEY, ')'},
-+			    {"showarmor", CMD_KEY, '['},
-+			    {"showrings", CMD_KEY, '='},
-+			    {"showamulet", CMD_KEY, '"'},
-+			    {"showtool", CMD_KEY, '('},
-+			    {"attributes", CMD_KEY, C('x')},
++   {"kick", CMD_KEY, C('d')},
++   {"listspells", CMD_KEY, '+'},
++   {"redraw", CMD_KEY, C('r')},
++   {"teleport", CMD_KEY, C('t')},
++   {"callmon", CMD_KEY, 'C'},
++   {"fight", CMD_KEY, 'F'},
++   {"movenear", CMD_KEY, 'g'},
++   {"move", CMD_KEY, 'G'},
++   {"movenopickuporfight", CMD_KEY, 'm'},
++   {"movenopickup", CMD_KEY, 'M'},
++   {"showweapon", CMD_KEY, ')'},
++   {"showarmor", CMD_KEY, '['},
++   {"showrings", CMD_KEY, '='},
++   {"showamulet", CMD_KEY, '"'},
++   {"showtool", CMD_KEY, '('},
++   {"attributes", CMD_KEY, C('x')},
 +#ifdef REDO
-+			    {"again", CMD_KEY, DOAGAIN},
++   {"again", CMD_KEY, DOAGAIN},
 +#endif /* REDO */
 +
-+			    /* wizard commands */
-+			    {"wiz_detect", CMD_KEY, C('e')},
-+			    {"wiz_map", CMD_KEY, C('f')},
-+			    {"wiz_genesis", CMD_KEY, C('g')},
-+			    {"wiz_identify", CMD_KEY, C('i')},
-+			    {"wiz_where", CMD_KEY, C('o')},
-+			    {"wiz_level_tele", CMD_KEY, C('v')},
-+			    {"wiz_wish", CMD_KEY, C('w')},
++   /* wizard commands */
++   {"wiz_detect", CMD_KEY, C('e')},
++   {"wiz_map", CMD_KEY, C('f')},
++   {"wiz_genesis", CMD_KEY, C('g')},
++   {"wiz_identify", CMD_KEY, C('i')},
++   {"wiz_where", CMD_KEY, C('o')},
++   {"wiz_level_tele", CMD_KEY, C('v')},
++   {"wiz_wish", CMD_KEY, C('w')},
 +
-+			    /* wizard extended commands */
++   /* wizard extended commands */
 +#ifdef WIZARD
-+			    {"light sources", CMD_EXT, 0},
-+			    {"seenv", CMD_EXT, 0},
-+			    {"stats", CMD_EXT, 0},
-+			    {"timeout", CMD_EXT, 0},
-+			    {"vision", CMD_EXT, 0},
++   {"light sources", CMD_EXT, 0},
++   {"seenv", CMD_EXT, 0},
++   {"stats", CMD_EXT, 0},
++   {"timeout", CMD_EXT, 0},
++   {"vision", CMD_EXT, 0},
 +#ifdef DEBUG
-+			    {"wizdebug", CMD_EXT, 0},
++   {"wizdebug", CMD_EXT, 0},
 +#endif /* DEBUG */
-+			    {"wmode", CMD_EXT, 0},
++   {"wmode", CMD_EXT, 0},
 +#endif /* WIZARD */
-+			    {"pray", CMD_EXT, 0},
-+			    {"adjust", CMD_EXT, 0},
-+			    {"chat", CMD_EXT, 0},
-+			    {"conduct", CMD_EXT, 0},
-+			    {"dip", CMD_EXT, 0},
++   {"#", CMD_KEY, '#'},
 +
-+			    {"enhance", CMD_EXT, 0},
-+			    {"force", CMD_EXT, 0},
-+			    {"invoke", CMD_EXT, 0},
-+			    {"jump", CMD_EXT, 0},
-+			    {"loot", CMD_EXT, 0},
++   {"pray", CMD_EXT, 0},
++   {"adjust", CMD_EXT, 0},
++   {"chat", CMD_EXT, 0},
++   {"conduct", CMD_EXT, 0},
++   {"dip", CMD_EXT, 0},
 +
-+			    {"monster", CMD_EXT, 0},
-+			    {"name", CMD_EXT, 0},
-+			    {"offer", CMD_EXT, 0},
-+			    {"quit", CMD_EXT, 0},
-+			    {"ride", CMD_EXT, 0},
++   {"enhance", CMD_EXT, 0},
++   {"force", CMD_EXT, 0},
++   {"invoke", CMD_EXT, 0},
++   {"jump", CMD_EXT, 0},
++   {"loot", CMD_EXT, 0},
 +
-+			    {"rub", CMD_EXT, 0},
-+			    {"sit", CMD_EXT, 0},
-+			    {"turn", CMD_EXT, 0},
-+			    {"twoweapon", CMD_EXT, 0},
-+			    {"untrap", CMD_EXT, 0},
++   {"monster", CMD_EXT, 0},
++   {"name", CMD_EXT, 0},
++   {"offer", CMD_EXT, 0},
++   {"quit", CMD_EXT, 0},
++   {"ride", CMD_EXT, 0},
 +
-+			    {"version", CMD_EXT, 0},
-+			    {"wipe", CMD_EXT, 0},
++   {"rub", CMD_EXT, 0},
++   {"sit", CMD_EXT, 0},
++   {"turn", CMD_EXT, 0},
++   {"twoweapon", CMD_EXT, 0},
++   {"untrap", CMD_EXT, 0},
 +
-+			    /* Lisp port specific commands  */
-+			    {"options", CMD_LISP, 0},
++   {"version", CMD_EXT, 0},
++   {"wipe", CMD_EXT, 0},
 +
-+			    {0, CMD_KEY, '\0'} };
++   /* Lisp port specific commands  */
++   {"options", CMD_LISP, 0},
++
++   {0, CMD_KEY, '\0'}
++  };
 +
 +/* This variable is set when the user has selected an extended command. */
 +static int extended_cmd_id;
