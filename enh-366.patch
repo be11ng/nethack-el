@@ -2441,7 +2441,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  int cmd;
 +  int i;
 +
-+  printf ("(nethack-api-get-ext-cmd '(");
++  printf ("(nhapi-get-ext-cmd '(");
 +
 +  for (i=0; extcmdlist[i].ef_txt != (char *)0; i++) {
 +    printf ("(\"%s\" . %d)", extcmdlist[i].ef_txt, i);
