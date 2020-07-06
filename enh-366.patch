@@ -18,7 +18,7 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --- NetHack-NetHack-3.6.6_Released/include/config.h	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/include/config.h	2020-05-23 18:40:09.062020791 -0400
++++ nethack/include/config.h	2020-07-06 14:11:10.203832866 -0400
 @@ -50,12 +50,13 @@
  /* #define QT_GRAPHICS */    /* Qt interface */
  /* #define GNOME_GRAPHICS */ /* Gnome interface */
@@ -47,8 +47,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	2020-06-23 10:42:56.281327459 -0400
-+++ nethack/include/winlisp.h	2020-05-25 16:23:26.474351571 -0400
+--- /dev/null	2020-07-06 09:18:02.067775393 -0400
++++ nethack/include/winlisp.h	2020-07-06 14:11:10.203832866 -0400
 @@ -0,0 +1,70 @@
 +#ifndef WINLISP_H
 +#define WINLISP_H
@@ -121,7 +121,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +#endif /* WINLISP_H */
 --- NetHack-NetHack-3.6.6_Released/src/windows.c	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/src/windows.c	2020-05-24 15:21:05.336401669 -0400
++++ nethack/src/windows.c	2020-07-06 14:11:10.203832866 -0400
 @@ -44,6 +44,10 @@
  #ifdef MSWIN_GRAPHICS
  extern struct window_procs mswin_procs;
@@ -144,7 +144,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      { &chainin_procs, chainin_procs_init, chainin_procs_chain },
      { (struct window_procs *) &chainout_procs, chainout_procs_init,
 --- NetHack-NetHack-3.6.6_Released/sys/unix/Makefile.src	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/sys/unix/Makefile.src	2020-05-25 21:23:32.606988441 -0400
++++ nethack/sys/unix/Makefile.src	2020-07-06 14:11:10.203832866 -0400
 @@ -266,9 +266,12 @@
  #	../win/BeOS/NHMenuWindow.cpp ../win/BeOS/NHMapWindow.cpp tile.c
  #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
@@ -200,28 +200,25 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2020-06-23 10:42:56.281327459 -0400
-+++ nethack/sys/unix/hints/linux-lisp	2020-06-23 11:18:56.168417802 -0400
-@@ -0,0 +1,64 @@
+--- /dev/null	2020-07-06 09:18:02.067775393 -0400
++++ nethack/sys/unix/hints/linux-lisp	2020-07-06 15:04:06.593539127 -0400
+@@ -0,0 +1,61 @@
 +#
 +# NetHack 3.6  linux $NHDT-Date: 1432512814 2015/05/25 00:13:34 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $
 +# Copyright (c) Kenneth Lorber, Kensington, Maryland, 2007.
-+# NetHack may be freely redistributed.  See license for details. 
++# NetHack may be freely redistributed.  See license for details.
 +#
 +#-PRE
 +# Linux hints file
-+# This hints file provides a single-user lisp build for Linux,
-+# installed in ~/.local/bin and usually similar to the XDG desktop specification
-+
++# This hints file provides a single-user lisp build for Linux, taking its PREFIX
++# from the environment to determine the installation location.
 +
 +#PREFIX=/usr
 +#PREFIX=$(wildcard ~)/nh/install
 +HACKDIR=$(PREFIX)/$(GAME)dir
 +SHELLDIR = $(PREFIX)
-+INSTDIR=$(HACKDIR)
++INSTDIR = $(HACKDIR)
 +VARDIR = $(HACKDIR)
-+
-+
 +
 +POSTINSTALL=cp -n sys/unix/sysconf $(INSTDIR)/sysconf; $(CHOWN) $(GAMEUID) $(INSTDIR)/sysconf; $(CHGRP) $(GAMEGRP) $(INSTDIR)/sysconf; chmod $(VARFILEPERM) $(INSTDIR)/sysconf;
 +
@@ -267,9 +264,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +FILEPERM = 0644
 +EXEPERM  = 0755
 +DIRPERM  = 0755
-\ No newline at end of file
 --- NetHack-NetHack-3.6.6_Released/util/makedefs.c	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/util/makedefs.c	2020-05-25 17:07:06.303645065 -0400
++++ nethack/util/makedefs.c	2020-07-06 14:11:10.207166268 -0400
 @@ -1762,6 +1762,9 @@
  #ifdef MAC /* defunct OS 9 interface */
      { "mac", "Mac" },
@@ -280,9 +276,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2020-06-23 10:42:56.281327459 -0400
-+++ nethack/win/lisp/ChangeLog	2020-06-22 14:23:25.010921493 -0400
-@@ -0,0 +1,367 @@
+--- /dev/null	2020-07-06 09:18:02.067775393 -0400
++++ nethack/win/lisp/ChangeLog	2020-07-06 14:12:04.374961412 -0400
+@@ -0,0 +1,371 @@
++2020-07-06  Benjamin Yang  <be11ng@protonmail.com>
++
++	* ../../sys/unix/hints/linux-lisp: Format file.
++
 +2020-06-22  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* ../../sys/unix/hints/linux-lisp: Take $PREFIX as an input from
@@ -650,8 +650,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2020-06-23 10:42:56.281327459 -0400
-+++ nethack/win/lisp/winlisp.c	2020-06-09 11:49:10.189160064 -0400
+--- /dev/null	2020-07-06 09:18:02.067775393 -0400
++++ nethack/win/lisp/winlisp.c	2020-07-06 14:11:10.207166268 -0400
 @@ -0,0 +1,1972 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
