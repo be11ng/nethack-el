@@ -27,7 +27,7 @@ it looked like it dead and hadn't been updated in forever.
 Furthermore, it was only updated to NetHack 3.4.3,
 and not yet up to the 3.6.4 that I was playing (now 3.6.6).
 
-Old Web: <http://savannah.nongnu.org/projects/nethack-el>
+Old website: <http://savannah.nongnu.org/projects/nethack-el>
 
 ## Build and run
 
@@ -58,8 +58,6 @@ These instructions are known to work on \*NIX systems (sorry Windows users).
 
 ### Manual Build
 
-I'm working on a better install process, similar to that of `pdf-tools`,
-but for now, you'll need to patch, download and make your own NetHack.
 These instructions are known to work on \*NIX systems (sorry Windows users).
 
 * Download either `nethack-343.tgz` or `nethack-366.tgz` from
@@ -85,8 +83,9 @@ These instructions are known to work on \*NIX systems (sorry Windows users).
 
   * For the 3.6.6 patch, included is a hints file under
     `sys/unix/hints/linux-lisp` based under the default Linux one, which builds
-    a NetHack patch into `~/.local/bin`.
-    You may want to change this before running something along the lines of:
+    into wherever the `PREFIX` environment variable points to at runtime.  You
+    may want to edit the `linux-lisp` hints file before running something along
+    the lines of:
 
     ```
     $ cd sys/unix
