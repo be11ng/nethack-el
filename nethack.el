@@ -535,6 +535,24 @@ Returns the buffer of the compilation process."
      exit))
   )
 
+(defun nethack-build-patch (success failure)
+  "Patch the NetHack with lisp patches
+
+Takes two callbacks, SUCCESS and FAILURE."
+  ;; cd nethack-src && patch -Nr- -p1 < ../../enh-$(NH_VER_NODOTS).patch || true
+  )
+
+(defun nethack-build-setup (success failure)
+  "Setup the NetHack with ./setup.sh.
+
+Uses the hints file for >3.6.
+
+Takes two callbacks, SUCCESS and FAILURE."
+  ;; cd nethack-src/sys/unix && $(SHELL) ./setup.sh
+  ;; or
+  ;; cd nethack-src/sys/unix && $(SHELL) ./setup.sh hints/linux-lisp
+  )
+
 
 ;;; Initialization
 
