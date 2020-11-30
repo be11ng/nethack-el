@@ -517,31 +517,19 @@ Returns the buffer of the compilation process."
                           (expand-file-name target-directory)))
   (cl-check-type build-directory (and (not null) file-directory))
   (nethack-untar-nethack build-directory)
-  (let* ((compilation-cmd
-          (format
-           "%s%s make -C %s %s && make -C %s %s%s && %s%s make -C %s %s"
-           "NH_VER_NODOTS=" (nethack-version-nodots)
-           build-directory "patch"
-           build-directory "hints"
-           (if (string-equal "36" (substring (nethack-version-nodots)
-                                             nil -1))
-               "-3.6"                   ; install the linux-lisp hints for >3.6
-             "")
-           "PREFIX=" target-directory
-           build-directory "build"))
-         (compilation-buffer
-          (compilation-start compilation-cmd t) ; Use compilation-shell-minor-mode
-          ))
-    (if (get-buffer-window compilation-buffer)
-        (select-window (get-buffer-window compilation-buffer))
-      (pop-to-buffer compilation-buffer))
-    (with-current-buffer compilation-buffer
-      (setq-local compilation-error-regexp-alist nil)
-      (add-hook 'compilation-finish-functions
-                (lambda (_buffer _status)
-                  (funcall callback))
-                nil t)                  ; Locally add-hook
-      (current-buffer))))
+  ;; needs to make patch, hints(-3.6), and build
+  ;; make patch simply patches
+  ;; make hints runs ./setup.sh
+  ;; make hints-3.6 runs ./setup.sh hints/linux-lisp
+  ;; make build runs make all and make install in nethack-src
+  ;; using callback-style
+  (nethack-build-patch
+   (lambda ()
+     (nethack-build-setup
+      (lambda ()
+        ;; some other things
+        (funcall callback)))))
+  )
 
 
 ;;; Initialization
