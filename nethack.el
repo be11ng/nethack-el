@@ -523,12 +523,16 @@ Returns the buffer of the compilation process."
   ;; make hints-3.6 runs ./setup.sh hints/linux-lisp
   ;; make build runs make all and make install in nethack-src
   ;; using callback-style
-  (nethack-build-patch
-   (lambda ()
-     (nethack-build-setup
-      (lambda ()
-        ;; some other things
-        (funcall callback)))))
+  ;; We pass an exit skip in case of failure
+  (let ((exit (lambda () (funcall callback))))
+    (nethack-build-patch
+     (lambda ()
+       (nethack-build-setup
+        (lambda ()
+          ;; some other things
+          (funcall callback))
+        exit))
+     exit))
   )
 
 
