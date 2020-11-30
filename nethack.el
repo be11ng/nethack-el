@@ -493,10 +493,10 @@ it relies on using the flag --strip-components."
              source-directory
              "--strip-components=1 --ignore-command-error"))))
 
-(defun nethack-build-program (target-directory
-                              &optional
-                              callback
-                              build-directory)
+(defun nethack-build (target-directory
+                      &optional
+                      callback
+                      build-directory)
   "Build the NetHack program in the background.
 
 Install into TARGET-DIRECTORY, which should be a directory.
@@ -565,7 +565,7 @@ non-nil."
                             (or (and no-query-p "3.6.6")
                                 (nethack-query-for-version)))
               (unless no-download-p (nethack-download-nethack))
-              (nethack-build-program
+              (nethack-build
                target-directory
                (lambda ()
                  (let ((msg (format
