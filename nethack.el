@@ -507,8 +507,7 @@ Returns the buffer of the compilation process."
   ;; make build runs make all and make install in nethack-src
   ;; using callback-style
   ;; We pass an exit skip in case of failure
-  (let ((exit (lambda () (funcall callback)))
-        (default-directory build-directory))
+  (let ((default-directory build-directory))
     (nethack-build-untar
      (lambda ()
        (nethack-build-patch
@@ -516,9 +515,7 @@ Returns the buffer of the compilation process."
           (nethack-build-setup
            (lambda ()
              ;; some other things
-             (funcall callback))
-           exit))
-        exit))))
+             (funcall callback))))))))
   )
 
 (defun nethack-untar-nethack (callback)
@@ -539,19 +536,15 @@ it relies on using the flag --strip-components."
              "--strip-components=1 --ignore-command-error"))
     (funcall callback)))
 
-(defun nethack-build-patch (success failure)
-  "Patch the NetHack with lisp patches
-
-Takes two callbacks, SUCCESS and FAILURE."
+(defun nethack-build-patch (callback)
+  "Patch the NetHack with lisp patches."
   ;; cd nethack-src && patch -Nr- -p1 < ../../enh-$(NH_VER_NODOTS).patch || true
   )
 
-(defun nethack-build-setup (success failure)
+(defun nethack-build-setup (callback)
   "Setup the NetHack with ./setup.sh.
 
-Uses the hints file for >3.6.
-
-Takes two callbacks, SUCCESS and FAILURE."
+Uses the hints file for >3.6."
   ;; cd nethack-src/sys/unix && $(SHELL) ./setup.sh
   ;; or
   ;; cd nethack-src/sys/unix && $(SHELL) ./setup.sh hints/linux-lisp
