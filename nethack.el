@@ -416,10 +416,6 @@ attribute, the new value and the old value."
 
 ;;; Installation
 
-;; Much of this code was adapted from pdf-tools, since both of these
-;; need to call an external program to do the heavy lifting, and that
-;; program needs to be built from source.
-
 (defconst nethack-directory
   (or (and load-file-name
            (file-name-directory load-file-name))
