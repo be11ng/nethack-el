@@ -476,23 +476,6 @@ results in an output with prefix ``(nhapi-raw-print''."
                                                  nethack-directory)
                    t)))                 ; It's OK if it already exists.
 
-(defun nethack-untar-nethack (build-directory)
-  "Untar the nethack source out of nethack-tar.
-
-Untars the file nethack.tgz located in BUILD-DIRECTORY into
-BUILD-DIRECTORY/nethack-src.
-
-Note that this is system specific to GNU tar and BSD tar, since
-it relies on using the flag --strip-components."
-  (let ((source-directory (expand-file-name "nethack-src" build-directory)))
-    (unless (file-exists-p source-directory)
-      (mkdir source-directory))
-    (shell-command
-     (format "tar xzf %s/nethack.tgz -C %s %s"
-             build-directory
-             source-directory
-             "--strip-components=1 --ignore-command-error"))))
-
 (defun nethack-build (target-directory
                       &optional
                       callback
@@ -524,16 +507,37 @@ Returns the buffer of the compilation process."
   ;; make build runs make all and make install in nethack-src
   ;; using callback-style
   ;; We pass an exit skip in case of failure
-  (let ((exit (lambda () (funcall callback))))
-    (nethack-build-patch
+  (let ((exit (lambda () (funcall callback)))
+        (default-directory build-directory))
+    (nethack-build-untar
      (lambda ()
-       (nethack-build-setup
+       (nethack-build-patch
         (lambda ()
-          ;; some other things
-          (funcall callback))
-        exit))
-     exit))
+          (nethack-build-setup
+           (lambda ()
+             ;; some other things
+             (funcall callback))
+           exit))
+        exit))))
   )
+
+(defun nethack-untar-nethack (callback)
+  "Untar the nethack source out of nethack-tar.
+
+Untars the file nethack.tgz located in ‘default-directory’ into
+‘default-directory’/nethack-src.
+
+Note that this is system specific to GNU tar and BSD tar, since
+it relies on using the flag --strip-components."
+  (let ((source-directory (expand-file-name "nethack-src" default-directory)))
+    (unless (file-exists-p source-directory)
+      (mkdir source-directory))
+    (shell-command
+     (format "tar xzf %s/nethack.tgz -C %s %s"
+             default-directory
+             source-directory
+             "--strip-components=1 --ignore-command-error"))
+    (funcall callback)))
 
 (defun nethack-build-patch (success failure)
   "Patch the NetHack with lisp patches
