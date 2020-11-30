@@ -77,7 +77,7 @@ Return the modified alist."
   (interactive)
   (throw 'exit nil))
 
-(define-minor-mode nh-map-read-mode
+(define-minor-mode nh-map-read-mode ()
   :init-value nil
   :keymap nh-map-read-mode-map)
 
