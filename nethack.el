@@ -531,7 +531,10 @@ it relies on using the flag --strip-components."
 (defun nethack-build-patch ()
   "Patch the NetHack with lisp patches."
   ;; cd nethack-src && patch -Nr- -p1 < ../../enh-$(NH_VER_NODOTS).patch || true
-  )
+  (let ((default-directory source-directory))
+    (process-file-shell-command
+     "patch -Nr- -p1"
+     (concat "../../enh-" (nethack-version-nodots) ".patch"))))
 
 (defun nethack-build-setup ()
   "Setup the NetHack with ./setup.sh.
