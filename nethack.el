@@ -505,20 +505,14 @@ Returns the buffer of the compilation process."
   ;; make hints runs ./setup.sh
   ;; make hints-3.6 runs ./setup.sh hints/linux-lisp
   ;; make build runs make all and make install in nethack-src
-  ;; using callback-style
-  ;; We pass an exit skip in case of failure
-  (let ((default-directory build-directory))
-    (nethack-build-untar
-     (lambda ()
-       (nethack-build-patch
-        (lambda ()
-          (nethack-build-setup
-           (lambda ()
-             ;; some other things
-             (funcall callback))))))))
-  )
+  (let ((default-directory build-directory)
+        (source-directory (expand-file-name "nethack-src" default-directory)))
+    (nethack-build-untar)
+    (nethack-build-patch)
+    (nethack-build-setup)
+    (funcall callback)))
 
-(defun nethack-untar-nethack (callback)
+(defun nethack-untar-nethack ()
   "Untar the nethack source out of nethack-tar.
 
 Untars the file nethack.tgz located in ‘default-directory’ into
@@ -536,12 +530,12 @@ it relies on using the flag --strip-components."
              "--strip-components=1 --ignore-command-error"))
     (funcall callback)))
 
-(defun nethack-build-patch (callback)
+(defun nethack-build-patch ()
   "Patch the NetHack with lisp patches."
   ;; cd nethack-src && patch -Nr- -p1 < ../../enh-$(NH_VER_NODOTS).patch || true
   )
 
-(defun nethack-build-setup (callback)
+(defun nethack-build-setup ()
   "Setup the NetHack with ./setup.sh.
 
 Uses the hints file for >3.6."
