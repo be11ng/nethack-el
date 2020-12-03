@@ -543,7 +543,11 @@ Uses the hints file for >3.6."
   ;; cd nethack-src/sys/unix && $(SHELL) ./setup.sh
   ;; or
   ;; cd nethack-src/sys/unix && $(SHELL) ./setup.sh hints/linux-lisp
-  )
+  (let ((default-directory (expand-file-name "sys/unix" source-directory)))
+    (process-file-shell-command
+     (concat "./setup.sh"
+             (if (>= (nethack-version-nodots) 36)
+                 "hints/linux-lisp")))))
 
 
 ;;; Initialization
