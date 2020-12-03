@@ -510,7 +510,7 @@ with the compiled executable as the single argument or nil, if
 the build failed.
 
 Expect sources to be in BUILD-DIRECTORY.  If nil, expect it to be
-in `nethack-directory'.
+in `nethack-directory/build'.
 
 Returns the buffer of the compilation process."
   (unless callback (setq callback #'ignore))
