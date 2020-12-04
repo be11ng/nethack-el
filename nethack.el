@@ -546,8 +546,8 @@ Uses the hints file for >3.6."
   (let ((default-directory (expand-file-name "sys/unix" source-directory)))
     (process-file-shell-command
      (concat "./setup.sh"
-             (if (>= (nethack-version-nodots) 36)
-                 "hints/linux-lisp")))))
+             (if (>= (string-to-number (nethack-version-nodots)) 360)
+                 " hints/linux-lisp")))))
 
 (defmacro nethack-test-build-wrapper (build-step)
   "Setps up and executes the nethack-build function
