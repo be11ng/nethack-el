@@ -1,7 +1,7 @@
 # path to your emacs
 EMACS = /usr/bin/emacs
 
-.PHONY: clean patch dist
+.PHONY: clean patch dist build-clean build-nuke
 
 all: nethack.elc nethack-api.elc nethack-cmd.elc nethack-tiles.elc slashem-tiles.elc nethack-keys.elc nethack-compat.elc
 
@@ -55,6 +55,16 @@ dist: clean all $(PATCH_OK) $(SLASHEM_PATCH_OK)
 	cp $(DISTFILES) ./$(DISTDIR)
 	tar -cf /dev/stdout ./$(DISTDIR) | gzip > ./$(DISTDIR).tar.gz
 	rm -rf ./$(DISTDIR)
+
+# clean out the build-directory
+build-clean:
+	rm -f build/nethack
+	rm -rf build/nethackdir
+	rm -rf build/nethack-src
+
+# nuke out the build-directory
+build-nuke: build-clean
+	rm -rf build
 
 # Generate patch.
 # Apply the generated patch from inside the nethack dir like this:

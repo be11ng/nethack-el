@@ -36,6 +36,4 @@ GPATH
 GRTAGS
 GTAGS
 *.tgz
-build/nethack-src/
-build/nethack
-build/nethackdir
+build/*
