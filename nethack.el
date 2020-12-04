@@ -549,6 +549,19 @@ Uses the hints file for >3.6."
              (if (>= (nethack-version-nodots) 36)
                  "hints/linux-lisp")))))
 
+(defmacro nethack-test-build-wrapper (build-step)
+  "Setps up and executes the nethack-build function
+
+Initializes the variables ‘build-directory’, ‘default-directory’, and
+‘source-directory’, as well as calling the BUILD-STEP."
+  `(let* ((build-directory (expand-file-name "build" nethack-directory))
+          (default-directory build-directory)
+          (source-directory
+           (expand-file-name "nethack-src" default-directory)))
+     (unless (file-exists-p source-directory)
+       (mkdir source-directory))
+     (,build-step)))
+
 
 ;;; Initialization
 
