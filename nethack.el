@@ -514,7 +514,7 @@ Returns the buffer of the compilation process."
     (nethack-build-setup)
     (funcall callback)))
 
-(defun nethack-untar-nethack ()
+(defun nethack-build-untar ()
   "Untar the nethack source out of nethack-tar.
 
 Untars the file nethack.tgz located in ‘default-directory’ into
