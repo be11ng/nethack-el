@@ -22,10 +22,8 @@ All of the Elisp is GPLv2, and the patches are under the modified 3-clause BSD.
 
 This is a fork of `nethack-el` where I attempt to update it to 3.6.6.
 
-I found this hunk of Elisp code a while ago, but at the time,
-it looked like it dead and hadn't been updated in forever.
-Furthermore, it was only updated to NetHack 3.4.3,
-and not yet up to the 3.6.4 that I was playing (now 3.6.6).
+Looked pretty dead when I first stumbled upon it, and also incompatible with
+anything newer than 3.4.3.  This is my go at making it work again.
 
 Old website: <http://savannah.nongnu.org/projects/nethack-el>
 
