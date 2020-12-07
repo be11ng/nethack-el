@@ -1,3 +1,15 @@
+2020-12-07  Benjamin Yang  <be11ng@protonmail.com>
+
+	Move automated build process from Makefile to Elisp.
+
+	* Makefile: Add rules for `build-clean' and `build-nuke'.
+	* build/Makefile: Remove file.
+	* nethack.el (nethack-build-program): Rename to `nethack-build' to
+	fit with the other new build processes.  Also, now calls the other
+	`nethack-build-*' processes.  Updated callers.
+	(nethack-untar-nethack): Rename to `nethack-build-untar'.
+	(nethack-build-patch, nethack-build-setup): New functions.
+
 2020-07-06  Benjamin Yang  <be11ng@protonmail.com>
 
 	* enh-366.patch: Restore `lisp_get_ext_cmd'.
@@ -12,6 +24,8 @@
 	* nethack-api.el (nhapi-get-ext-cmd): Restore function.
 
 2020-06-22  Benjamin Yang  <be11ng@protonmail.com>
+
+	Make Makefile-based automated build process.
 
 	* build/Makefile: New file.
 	* nethack.el: Require url.
