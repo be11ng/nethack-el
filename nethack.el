@@ -416,18 +416,24 @@ attribute, the new value and the old value."
 
 ;;; Installation
 
-(defconst nethack-directory
+(defconst nethack-el-directory
   (or (and load-file-name
            (file-name-directory load-file-name))
       default-directory)
   "The directory from where this library was first loaded.")
 
-(defcustom nethack-program
-  (expand-file-name "build/nethack" nethack-directory)
-  "Program to run to start a game of Nethack.
+(defcustom nethack-build-directory
+  (expand-file-name "build" nethack-el-directory)
+  "The directory in which to build nethack.
 
 You can influence the location of the build directory by setting
 this variable (eventually, not yet implemented)."
+  :type '(string)
+  :group 'nethack)
+
+(defcustom nethack-program
+  (expand-file-name "nethack" nethack-build-directory)
+  "Program to run to start a game of Nethack."
   :type '(string)
   :group 'nethack)
 
@@ -480,17 +486,14 @@ with the compiled executable as the single argument or nil, if
 the build failed.
 
 Expect sources to be in BUILD-DIRECTORY.  If nil, expect it to be
-in `nethack-directory'.
+in `nethack-el-directory'.
 
 Returns the buffer of the compilation process."
   (unless callback (setq callback #'ignore))
-  (unless build-directory
-    (setq build-directory (expand-file-name "build" nethack-directory)))
   (cl-check-type target-directory file-directory)
   (setq target-directory (file-name-as-directory
                           (expand-file-name target-directory)))
   (cl-check-type build-directory (and (not null) file-directory))
-  (nethack-untar-nethack build-directory)
   ;; needs to make patch, hints(-3.6), and build
   ;; make patch simply patches
   ;; make hints runs ./setup.sh
@@ -555,7 +558,7 @@ Uses the hints file for >3.6."
 
 Initializes the variables ‘build-directory’, ‘default-directory’, and
 ‘source-directory’, as well as calling the BUILD-STEP."
-  `(let* ((build-directory (expand-file-name "build" nethack-directory))
+  `(let* ((build-directory (expand-file-name "build" nethack-el-directory))
           (default-directory build-directory)
           (source-directory
            (expand-file-name "nethack-src" default-directory)))
@@ -589,7 +592,7 @@ non-nil."
       (let ((target-directory
              (or (and (stringp nethack-program)
                       (file-name-directory nethack-program))
-                 nethack-directory)))
+                 nethack-el-directory)))
         (if (or no-query-p
                 (y-or-n-p "Need to (re)build the NetHack program, do it now?"))
             (progn
