@@ -467,15 +467,6 @@ results in an output with prefix ``(nhapi-raw-print''."
         "(nhapi-raw-print"
         (shell-command-to-string (concat nethack-program " --version")))))
 
-(defun nethack-download-nethack ()
-  "Download the nethack source from nethack.org."
-  (let* ((nethack-tar (concat "/nethack-" (nethack-version-nodots) "-src.tgz"))
-         (nethack-url
-          (concat "https://nethack.org/download/" nethack-version nethack-tar)))
-    (url-copy-file nethack-url (expand-file-name "build/nethack.tgz"
-                                                 nethack-directory)
-                   t)))                 ; It's OK if it already exists.
-
 (defun nethack-build (target-directory
                       &optional
                       callback
@@ -509,10 +500,20 @@ Returns the buffer of the compilation process."
         (source-directory (expand-file-name "nethack-src" default-directory)))
     (unless (file-exists-p source-directory)
       (mkdir source-directory))
+    (unless no-download-p (nethack-build-download))
     (nethack-build-untar)
     (nethack-build-patch)
     (nethack-build-setup)
     (funcall callback)))
+
+(defun nethack-build-download ()
+  "Download the nethack source from nethack.org."
+  (let* ((nethack-tar (concat "/nethack-" (nethack-version-nodots) "-src.tgz"))
+         (nethack-url
+          (concat "https://nethack.org/download/" nethack-version nethack-tar)))
+    (url-copy-file nethack-url (expand-file-name "nethack.tgz"
+                                                 default-directory)
+                   t)))                 ; It's OK if it already exists.
 
 (defun nethack-build-untar ()
   "Untar the nethack source out of nethack-tar.
@@ -595,7 +596,6 @@ non-nil."
               (setq-default nethack-version
                             (or (and no-query-p "3.6.6")
                                 (nethack-query-for-version)))
-              (unless no-download-p (nethack-download-nethack))
               (nethack-build
                target-directory
                (lambda ()
