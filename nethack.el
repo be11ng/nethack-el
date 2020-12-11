@@ -507,6 +507,8 @@ Returns the buffer of the compilation process."
   ;; make build runs make all and make install in nethack-src
   (let ((default-directory build-directory)
         (source-directory (expand-file-name "nethack-src" default-directory)))
+    (unless (file-exists-p source-directory)
+      (mkdir source-directory))
     (nethack-build-untar)
     (nethack-build-patch)
     (nethack-build-setup)
@@ -520,8 +522,6 @@ Untars the file nethack.tgz located in ‘default-directory’ into
 
 Note that this is system specific to GNU tar and BSD tar, since
 it relies on using the flag --strip-components."
-  (unless (file-exists-p source-directory)
-    (mkdir source-directory))
   (shell-command
    (format "tar xzf %s/nethack.tgz -C %s %s"
            default-directory
@@ -558,6 +558,8 @@ Initializes the variables ‘build-directory’, ‘default-directory’, and
           (default-directory build-directory)
           (source-directory
            (expand-file-name "nethack-src" default-directory)))
+     (unless (file-exists-p source-directory)
+       (mkdir source-directory))
      (,build-step)))
 
 
