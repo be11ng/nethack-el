@@ -564,7 +564,7 @@ silently, i.e. no error is is signaled.
 Build the program (if necessary) without asking first, if
 NO-QUERY-P is non-nil.
 
-Do not download (but do untar) if NO-DOWNLOAD-P is non-nill.
+Do not download (but do untar) if NO-DOWNLOAD-P is non-nil.
 
 Do not signal an error in case the build failed, if NO-ERROR-P is
 non-nil."
