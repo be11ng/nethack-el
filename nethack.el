@@ -493,7 +493,8 @@ Returns the buffer of the compilation process."
   (cl-check-type target-directory file-directory)
   (setq target-directory (file-name-as-directory
                           (expand-file-name target-directory)))
-  (cl-check-type build-directory (and (not null) file-directory))
+  (unless (file-exists-p nethack-build-directory)
+    (mkdir nethack-build-directory))
   ;; needs to make patch, hints(-3.6), and build
   ;; make patch simply patches
   ;; make hints runs ./setup.sh
