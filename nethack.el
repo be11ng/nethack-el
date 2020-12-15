@@ -473,9 +473,9 @@ results in an output with prefix ``(nhapi-raw-print''."
         "(nhapi-raw-print"
         (shell-command-to-string (concat nethack-program " --version")))))
 
-(defun nethack-build (target-directory
-                      &optional
+(defun nethack-build (&optional
                       callback
+                      target-directory
                       build-directory)
   "Build the NetHack program in the background.
 
@@ -490,9 +490,10 @@ in `nethack-el-directory'.
 
 Returns the buffer of the compilation process."
   (unless callback (setq callback #'ignore))
-  (cl-check-type target-directory file-directory)
-  (setq target-directory (file-name-as-directory
-                          (expand-file-name target-directory)))
+  (when target-directory
+    (setq target-directory (file-name-as-directory
+                            (expand-file-name target-directory)))
+    (setq-default nethack-build-directory target-directory))
   (unless (file-exists-p nethack-build-directory)
     (mkdir nethack-build-directory))
   ;; needs to make patch, hints(-3.6), and build
@@ -601,7 +602,6 @@ non-nil."
                             (or (and no-query-p "3.6.6")
                                 (nethack-query-for-version)))
               (nethack-build
-               target-directory
                (lambda ()
                  (let ((msg (format
                              "Bulding the NetHack program %s"
