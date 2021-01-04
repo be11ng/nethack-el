@@ -37,6 +37,67 @@
 
 ;;; Code:
 
+(defcustom nethack-options-file
+  ;; On windows this would be ‘\%USERPROFILE%\NetHack\3.6’, but I'm too lazy to
+  ;; figure out how to get this to work between OSs.
+  (expand-file-name "~/.nethackrc")
+  "The nethack configuration file.
+
+The NetHack executable will be called with this in mind.  Some minimal options
+parsing is also done on the Lisp-side of nethack-el."
+  :type '(file)
+  :group 'nethack)
+
+
+
+;; Much of this is heavily inspired by ‘netrc.el’.
+(defun nethack-options-parse ()
+  "Return a parsed list of ‘nethack-options-file’.
+
+Maybe I should have used eieio."
+  (when (file-exists-p nethack-options-file)
+    (let (result elem)
+      (with-temp-buffer
+        (insert-file-contents nethack-options-file)
+        (while (not (eobp))
+          (narrow-to-region (point) (point-at-eol))
+          ;; Skip blank lines and comments
+          (unless (or (eobp)
+                      (eq (char-after) ?#))
+            (setq elem (buffer-string))
+            (cond
+             ((string-prefix-p "OPTIONS=" elem)
+              (setq result
+                    (append result (nethack-options-parse-options elem))))
+             ;; ((string-prefix-p "AUTOPICKUP_EXCEPTION=" elem))
+             ;; ((string-prefix-p "MENUCOLOR=" elem))
+             ;; ((string-prefix-p "BOLDER=" elem))
+             ;; ((string-prefix-p "MSGTYPE=" elem))
+             ))
+          (widen)
+          (forward-line 1)))
+      result)))
+
+(defun nethack-options-parse-options (elem)
+  "Parse a nethackrc OPTIONS= line.
+
+Returns a list of the options set."
+  ;; (when (string-prefix-p "OPTIONS=" elem)
+  ;;   (setq elem (string-trim-left elem "[a-zA-Z]+=")))
+  (mapcar
+   'nethack-options-parse-options-1
+   (split-string (string-trim-left elem "[a-zA-Z]+=") "," t)))
+
+(defun nethack-options-parse-options-1 (elem)
+  ;; Cut out whitespace
+  (setq elem (string-trim-left elem))
+  ;; TODO: Make this more robust so if we also parse MENUCOLOR settings, then
+  ;; the ":" in the regexp won't confuse this
+  (if (string-match-p ":" elem)
+      ;; TODO: Set this up so it auto parses things like "hilite_status"
+      (split-string elem ":")
+    elem))
+
 
 (provide 'nethack-options)
 
