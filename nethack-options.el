@@ -48,6 +48,16 @@ parsing is also done on the Lisp-side of nethack-el."
   :type '(file)
   :group 'nethack)
 
+(defcustom nethack-options
+  (nethack-options-parse)
+  "Alist representing nethackrc options
+
+This can be edited through ‘custom-set’."
+  ;; TODO implement customize better
+  ;; :type '(alist :key-type string)
+  :type '(sexp)
+  :group 'nethack)
+
 
 
 (defun nethack-options-parse ()
