@@ -41,6 +41,7 @@
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
+(require 'nethack-options)
 (require 'url)
 
 (defgroup nethack nil
