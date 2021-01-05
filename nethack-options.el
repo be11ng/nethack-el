@@ -67,7 +67,7 @@ Maybe I should have used eieio."
             (cond
              ((string-prefix-p "OPTIONS=" elem)
               (setq result
-                    (append result (nethack-options-parse-options elem))))
+                    (append result (nethack-options-parse-option elem))))
              ;; ((string-prefix-p "AUTOPICKUP_EXCEPTION=" elem))
              ;; ((string-prefix-p "MENUCOLOR=" elem))
              ;; ((string-prefix-p "BOLDER=" elem))
@@ -77,17 +77,17 @@ Maybe I should have used eieio."
           (forward-line 1)))
       result)))
 
-(defun nethack-options-parse-options (elem)
+(defun nethack-options-parse-option (elem)
   "Parse a nethackrc OPTIONS= line.
 
 Returns a list of the options set."
   ;; (when (string-prefix-p "OPTIONS=" elem)
   ;;   (setq elem (string-trim-left elem "[a-zA-Z]+=")))
   (mapcar
-   'nethack-options-parse-options-1
+   'nethack-options-parse-option-1
    (split-string (string-trim-left elem "[a-zA-Z]+=") "," t)))
 
-(defun nethack-options-parse-options-1 (elem)
+(defun nethack-options-parse-option-1 (elem)
   ;; Cut out whitespace
   (setq elem (string-trim-left elem))
   ;; TODO: Make this more robust so if we also parse MENUCOLOR settings, then
