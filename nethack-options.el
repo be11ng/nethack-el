@@ -50,7 +50,6 @@ parsing is also done on the Lisp-side of nethack-el."
 
 
 
-;; Much of this is heavily inspired by ‘netrc.el’.
 (defun nethack-options-parse ()
   "Return a parsed list of ‘nethack-options-file’.
 
