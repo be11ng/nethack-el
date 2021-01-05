@@ -94,7 +94,8 @@ Returns a list of the options set."
   ;; the ":" in the regexp won't confuse this
   (if (string-match-p ":" elem)
       ;; TODO: Set this up so it auto parses things like "hilite_status"
-      (split-string elem ":")
+      ;; The string trim regexp is copied from ‘string-trim-left’.
+      (split-string elem ":" t "[ \t\n\r]+")
     elem))
 
 
