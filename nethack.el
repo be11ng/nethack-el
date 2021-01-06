@@ -501,8 +501,8 @@ Returns the buffer of the compilation process."
   ;; make hints runs ./setup.sh
   ;; make hints-3.6 runs ./setup.sh hints/linux-lisp
   ;; make build runs make all and make install in nethack-src
-  (let ((default-directory build-directory)
-        (source-directory (expand-file-name "nethack-src" default-directory)))
+  (let* ((default-directory build-directory)
+         (source-directory (expand-file-name "nethack-src" default-directory)))
     (unless (file-exists-p source-directory)
       (mkdir source-directory))
     (unless no-download-p (nethack-build-download))
