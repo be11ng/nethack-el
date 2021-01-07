@@ -475,6 +475,7 @@ results in an output with prefix ``(nhapi-raw-print''."
 
 (defun nethack-build (&optional
                       callback
+                      no-download-p
                       target-directory
                       build-directory)
   "Build the NetHack program in the background.
@@ -484,6 +485,9 @@ Install into TARGET-DIRECTORY, which should be a directory.
 If CALLBACK is non-nil, it should be a function.  It is called
 with the compiled executable as the single argument or nil, if
 the build failed.
+
+If NO-DOWNLOAD-P is non-nil, then no NetHack tarball will be downloaded and one
+will already be assumed to be in ‘nethack-build-directory/nethack.tgz’.
 
 Expect sources to be in BUILD-DIRECTORY.  If nil, expect it to be
 in `nethack-el-directory'.
@@ -609,7 +613,8 @@ non-nil."
                                  "succeeded" "failed"))))
                    (if (not (file-exists-p nethack-program))
                        (funcall (if no-error-p #'message #'error) "%s" msg)
-                     (message "%s" msg))))))
+                     (message "%s" msg))))
+               no-download-p))
           (message "NetHack not activated")))))
 
 
