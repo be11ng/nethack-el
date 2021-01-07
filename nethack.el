@@ -480,14 +480,14 @@ results in an output with prefix ``(nhapi-raw-print''."
                       build-directory)
   "Build the NetHack program in the background.
 
-Install into TARGET-DIRECTORY, which should be a directory.
-
 If CALLBACK is non-nil, it should be a function.  It is called
 with the compiled executable as the single argument or nil, if
 the build failed.
 
 If NO-DOWNLOAD-P is non-nil, then no NetHack tarball will be downloaded and one
 will already be assumed to be in ‘nethack-build-directory/nethack.tgz’.
+
+Install into TARGET-DIRECTORY, which should be a directory.
 
 Expect sources to be in BUILD-DIRECTORY.  If nil, expect it to be
 in `nethack-build-directory'.
