@@ -490,7 +490,7 @@ If NO-DOWNLOAD-P is non-nil, then no NetHack tarball will be downloaded and one
 will already be assumed to be in ‘nethack-build-directory/nethack.tgz’.
 
 Expect sources to be in BUILD-DIRECTORY.  If nil, expect it to be
-in `nethack-el-directory'.
+in `nethack-build-directory'.
 
 Returns the buffer of the compilation process."
   (unless callback (setq callback #'ignore))
@@ -498,6 +498,8 @@ Returns the buffer of the compilation process."
     (setq target-directory (file-name-as-directory
                             (expand-file-name target-directory)))
     (setq-default nethack-build-directory target-directory))
+  (when build-directory
+    (setq-default nethack-build-directory build-directory))
   (unless (file-exists-p nethack-build-directory)
     (mkdir nethack-build-directory))
   ;; needs to make patch, hints(-3.6), and build
@@ -505,7 +507,7 @@ Returns the buffer of the compilation process."
   ;; make hints runs ./setup.sh
   ;; make hints-3.6 runs ./setup.sh hints/linux-lisp
   ;; make build runs make all and make install in nethack-src
-  (let* ((default-directory build-directory)
+  (let* ((default-directory nethack-build-directory)
          (source-directory (expand-file-name "nethack-src" default-directory)))
     (unless (file-exists-p source-directory)
       (mkdir source-directory))
@@ -564,10 +566,8 @@ Uses the hints file for >3.6."
 
 Initializes the variables ‘build-directory’, ‘default-directory’, and
 ‘source-directory’, as well as calling the BUILD-STEP."
-  `(let* ((build-directory (expand-file-name "build" nethack-el-directory))
-          (default-directory build-directory)
-          (source-directory
-           (expand-file-name "nethack-src" default-directory)))
+  `(let* ((default-directory nethack-build-directory)
+          (source-directory (expand-file-name "nethack-src" default-directory)))
      (unless (file-exists-p source-directory)
        (mkdir source-directory))
      (,build-step)))
