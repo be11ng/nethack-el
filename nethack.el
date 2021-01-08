@@ -515,7 +515,7 @@ Returns the buffer of the compilation process."
     (nethack-build-untar)
     (nethack-build-patch)
     (nethack-build-setup)
-    (funcall callback)))
+    (nethack-build-compile callback)))
 
 (defun nethack-build-download ()
   "Download the nethack source from nethack.org."
@@ -560,6 +560,33 @@ Uses the hints file for >3.6."
      (concat "./setup.sh"
              (if (>= (string-to-number (nethack-version-nodots)) 360)
                  " hints/linux-lisp")))))
+
+(defun nethack-build-compile (callback)
+  "Compile NetHack with make.
+
+CALLBACK is called when the compilation finishes (with no arguments).
+
+Returns the buffer of the compilation process.
+
+Requires ‘make’, ‘gcc’, ‘bison’ or ‘yacc’, ‘flex’ or ‘lex’, and the ncurses-dev
+library for your system."
+  ;; make all && make install
+  (let* ((default-directory source-directory)
+         (compilation-cmd "make all install")
+         (compilation-buffer
+          (compilation-start compilation-cmd t) ; Use compilation-shell-minor-mode
+          ))
+    (if (get-buffer-window compilation-buffer)
+        (select-window (get-buffer-window compilation-buffer))
+      (pop-to-buffer compilation buffer))
+    (with-current-buffer compilation-buffer
+      (setq-local compilation-error-regexp-alist nil)
+      (add-hook 'compilation-finish-functions
+                (lambda (_buffer _status)
+                  (compilation-start compilation-cmd t)
+                  (funcall callback))
+                nil t)                  ; Locally add-hook
+      (current-buffer))))
 
 (defmacro nethack-test-build-wrapper (build-step)
   "Setps up and executes the nethack-build function
