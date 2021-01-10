@@ -572,7 +572,9 @@ Requires ‘make’, ‘gcc’, ‘bison’ or ‘yacc’, ‘flex’ or ‘lex�
 library for your system."
   ;; make all && make install
   (let* ((default-directory source-directory)
-         (compilation-cmd "make all install")
+         (compilation-cmd
+          (format "PREFIX=%s make all install"
+                  nethack-build-directory))
          (compilation-buffer
           (compilation-start compilation-cmd t) ; Use compilation-shell-minor-mode
           ))
