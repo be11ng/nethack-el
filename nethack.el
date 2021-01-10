@@ -585,7 +585,7 @@ non-nil."
                target-directory
                (lambda ()
                  (let ((msg (format
-                             "Bulding the NetHack program %s"
+                             "Building the NetHack program %s"
                              (if (file-exists-p nethack-program)
                                  "succeeded" "failed"))))
                    (if (not (file-exists-p nethack-program))
