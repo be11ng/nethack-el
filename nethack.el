@@ -573,6 +573,14 @@ library for your system."
   ;; make all && make install
   (let* ((default-directory source-directory)
          (compilation-cmd
+          ;; Right now, since there are two make arguments passed here, the
+          ;; comint mode sees this as two different compiles and gives messages
+          ;; in the order:  "Comint finished, Building the NetHack program
+          ;; succeeded, Comint finished".  This is maybe a little bad, as it not
+          ;; only obscures the message that the build is done, but also may make
+          ;; the ‘nethack-installed-p’ check fail sometimes.  Still, it works
+          ;; for now, so I'll just need to remember that it's currently a little
+          ;; HACK-y.
           (format "PREFIX=%s make all install"
                   nethack-build-directory))
          (compilation-buffer
