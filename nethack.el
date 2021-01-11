@@ -416,22 +416,24 @@ attribute, the new value and the old value."
 
 ;;; Installation
 
-;; Much of this code was adapted from pdf-tools, since both of these
-;; need to call an external program to do the heavy lifting, and that
-;; program needs to be built from source.
-
-(defconst nethack-directory
+(defconst nethack-el-directory
   (or (and load-file-name
            (file-name-directory load-file-name))
       default-directory)
   "The directory from where this library was first loaded.")
 
-(defcustom nethack-program
-  (expand-file-name "build/nethack" nethack-directory)
-  "Program to run to start a game of Nethack.
+(defcustom nethack-build-directory
+  (expand-file-name "build" nethack-el-directory)
+  "The directory in which to build nethack.
 
 You can influence the location of the build directory by setting
 this variable (eventually, not yet implemented)."
+  :type '(string)
+  :group 'nethack)
+
+(defcustom nethack-program
+  (expand-file-name "nethack" nethack-build-directory)
+  "Program to run to start a game of Nethack."
   :type '(string)
   :group 'nethack)
 
@@ -471,78 +473,127 @@ results in an output with prefix ``(nhapi-raw-print''."
         "(nhapi-raw-print"
         (shell-command-to-string (concat nethack-program " --version")))))
 
-(defun nethack-download-nethack ()
-  "Download the nethack source from nethack.org."
-  (let* ((nethack-tar (concat "/nethack-" (nethack-version-nodots) "-src.tgz"))
-         (nethack-url
-          (concat "https://nethack.org/download/" nethack-version nethack-tar)))
-    (url-copy-file nethack-url (expand-file-name "build/nethack.tgz"
-                                                 nethack-directory)
-                   t)))                 ; It's OK if it already exists.
-
-(defun nethack-untar-nethack (build-directory)
-  "Untar the nethack source out of nethack-tar.
-
-Untars the file nethack.tgz located in BUILD-DIRECTORY into
-BUILD-DIRECTORY/nethack-src.
-
-Note that this is system specific to GNU tar and BSD tar, since
-it relies on using the flag --strip-components."
-  (let ((source-directory (expand-file-name "nethack-src" build-directory)))
-    (unless (file-exists-p source-directory)
-      (mkdir source-directory))
-    (shell-command
-     (format "tar xzf %s/nethack.tgz -C %s %s"
-             build-directory
-             source-directory
-             "--strip-components=1 --ignore-command-error"))))
-
-(defun nethack-build-program (target-directory
-                              &optional
-                              callback
-                              build-directory)
+(defun nethack-build (&optional
+                      callback
+                      no-download-p
+                      target-directory
+                      build-directory)
   "Build the NetHack program in the background.
-
-Install into TARGET-DIRECTORY, which should be a directory.
 
 If CALLBACK is non-nil, it should be a function.  It is called
 with the compiled executable as the single argument or nil, if
 the build failed.
 
+If NO-DOWNLOAD-P is non-nil, then no NetHack tarball will be downloaded and one
+will already be assumed to be in ‘nethack-build-directory/nethack.tgz’.
+
+Install into TARGET-DIRECTORY, which should be a directory.
+
 Expect sources to be in BUILD-DIRECTORY.  If nil, expect it to be
-in `nethack-directory/build'.
+in `nethack-build-directory'.
 
 Returns the buffer of the compilation process."
   (unless callback (setq callback #'ignore))
-  (unless build-directory
-    (setq build-directory (expand-file-name "build" nethack-directory)))
-  (cl-check-type target-directory file-directory)
-  (setq target-directory (file-name-as-directory
-                          (expand-file-name target-directory)))
-  (cl-check-type build-directory (and (not null) file-directory))
-  (nethack-untar-nethack build-directory)
-  (let* ((compilation-cmd
-          (format
-           "%s%s make -C %s %s && make -C %s %s%s && %s%s make -C %s %s"
-           "NH_VER_NODOTS=" (nethack-version-nodots)
-           build-directory "patch"
-           build-directory "hints"
-           (if (string-equal "36" (substring (nethack-version-nodots)
-                                             nil -1))
-               "-3.6"                   ; install the linux-lisp hints for >3.6
-             "")
-           "PREFIX=" target-directory
-           build-directory "build"))
+  (when target-directory
+    (setq target-directory (file-name-as-directory
+                            (expand-file-name target-directory)))
+    (setq-default nethack-build-directory target-directory))
+  (when build-directory
+    (setq-default nethack-build-directory build-directory))
+  (unless (file-exists-p nethack-build-directory)
+    (mkdir nethack-build-directory))
+  ;; needs to make patch, hints(-3.6), and build
+  ;; make patch simply patches
+  ;; make hints runs ./setup.sh
+  ;; make hints-3.6 runs ./setup.sh hints/linux-lisp
+  ;; make build runs make all and make install in nethack-src
+  (let* ((default-directory nethack-build-directory)
+         (source-directory (expand-file-name "nethack-src" default-directory)))
+    (unless (file-exists-p source-directory)
+      (mkdir source-directory))
+    (unless no-download-p (nethack-build-download))
+    (nethack-build-untar)
+    (nethack-build-patch)
+    (nethack-build-setup)
+    (nethack-build-compile callback)))
+
+(defun nethack-build-download ()
+  "Download the nethack source from nethack.org."
+  (let* ((nethack-tar (concat "/nethack-" (nethack-version-nodots) "-src.tgz"))
+         (nethack-url
+          (concat "https://nethack.org/download/" nethack-version nethack-tar)))
+    (url-copy-file nethack-url (expand-file-name "nethack.tgz"
+                                                 default-directory)
+                   t)))                 ; It's OK if it already exists.
+
+(defun nethack-build-untar ()
+  "Untar the nethack source out of nethack-tar.
+
+Untars the file nethack.tgz located in ‘default-directory’ into
+‘default-directory’/nethack-src.
+
+Note that this is system specific to GNU tar and BSD tar, since
+it relies on using the flag --strip-components."
+  (shell-command
+   (format "tar xzf %s/nethack.tgz -C %s %s"
+           default-directory
+           source-directory
+           "--strip-components=1 --ignore-command-error")))
+
+(defun nethack-build-patch ()
+  "Patch the NetHack with lisp patches."
+  ;; cd nethack-src && patch -Nr- -p1 < ../../enh-$(NH_VER_NODOTS).patch || true
+  (let ((default-directory source-directory))
+    (process-file-shell-command
+     "patch -Nr- -p1"
+     (concat "../../enh-" (nethack-version-nodots) ".patch"))))
+
+(defun nethack-build-setup ()
+  "Setup the NetHack with ./setup.sh.
+
+Uses the hints file for >3.6."
+  ;; cd nethack-src/sys/unix && $(SHELL) ./setup.sh
+  ;; or
+  ;; cd nethack-src/sys/unix && $(SHELL) ./setup.sh hints/linux-lisp
+  (let ((default-directory (expand-file-name "sys/unix" source-directory)))
+    (process-file-shell-command
+     (concat "./setup.sh"
+             (if (>= (string-to-number (nethack-version-nodots)) 360)
+                 " hints/linux-lisp")))))
+
+(defun nethack-build-compile (callback)
+  "Compile NetHack with make.
+
+CALLBACK is called when the compilation finishes (with no arguments).
+
+Returns the buffer of the compilation process.
+
+Requires ‘make’, ‘gcc’, ‘bison’ or ‘yacc’, ‘flex’ or ‘lex’, and the ncurses-dev
+library for your system."
+  ;; make all && make install
+  (let* ((default-directory source-directory)
+         (compilation-cmd
+          ;; Right now, since there are two make arguments passed here, the
+          ;; comint mode sees this as two different compiles and gives messages
+          ;; in the order:  "Comint finished, Building the NetHack program
+          ;; succeeded, Comint finished".  This is maybe a little bad, as it not
+          ;; only obscures the message that the build is done, but also may make
+          ;; the ‘nethack-installed-p’ check fail sometimes.  Still, it works
+          ;; for now, so I'll just need to remember that it's currently a little
+          ;; HACK-y.
+          (format "PREFIX=%s make all install"
+                  nethack-build-directory))
          (compilation-buffer
           (compilation-start compilation-cmd t) ; Use compilation-shell-minor-mode
           ))
     (if (get-buffer-window compilation-buffer)
         (select-window (get-buffer-window compilation-buffer))
-      (pop-to-buffer compilation-buffer))
+      (pop-to-buffer compilation buffer))
     (with-current-buffer compilation-buffer
       (setq-local compilation-error-regexp-alist nil)
       (add-hook 'compilation-finish-functions
                 (lambda (_buffer _status)
+                  (compilation-start compilation-cmd t)
                   (funcall callback))
                 nil t)                  ; Locally add-hook
       (current-buffer))))
@@ -573,16 +624,14 @@ non-nil."
       (let ((target-directory
              (or (and (stringp nethack-program)
                       (file-name-directory nethack-program))
-                 nethack-directory)))
+                 nethack-el-directory)))
         (if (or no-query-p
                 (y-or-n-p "Need to (re)build the NetHack program, do it now?"))
             (progn
               (setq-default nethack-version
                             (or (and no-query-p "3.6.6")
                                 (nethack-query-for-version)))
-              (unless no-download-p (nethack-download-nethack))
-              (nethack-build-program
-               target-directory
+              (nethack-build
                (lambda ()
                  (let ((msg (format
                              "Building the NetHack program %s"
@@ -590,7 +639,8 @@ non-nil."
                                  "succeeded" "failed"))))
                    (if (not (file-exists-p nethack-program))
                        (funcall (if no-error-p #'message #'error) "%s" msg)
-                     (message "%s" msg))))))
+                     (message "%s" msg))))
+               no-download-p))
           (message "NetHack not activated")))))
 
 
