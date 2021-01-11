@@ -1,14 +1,25 @@
-2020-12-07  Benjamin Yang  <be11ng@protonmail.com>
+2021-01-11  Benjamin Yang  <be11ng@protonmail.com>
 
 	Move automated build process from Makefile to Elisp.
 
 	* Makefile: Add rules for `build-clean' and `build-nuke'.
 	* build/Makefile: Remove file.
-	* nethack.el (nethack-build-program): Rename to `nethack-build' to
+	* nethack.el (nethack-directory): Rename to `nethack-el-directory'.
+	(nethack-build-directory): New variable.
+	(nethack-program): Rely on `nethack-build-directory' instead of
+	`nethack-directory` for default definition.
+	(nethack-build-program): Rename to `nethack-build' to
 	fit with the other new build processes.  Also, now calls the other
 	`nethack-build-*' processes.  Updated callers.
 	(nethack-untar-nethack): Rename to `nethack-build-untar'.
-	(nethack-build-patch, nethack-build-setup): New functions.
+	(nethack-build-patch, nethack-build-setup, nethack-build-compile):
+	New functions.
+	(nethack-build-untar, nethack-build-patch, nethack-build-setup)
+	(nethack-build-compile):
+	Rewrite functions to rely on `default-directory` and
+	`source-directory` passed through a `let` in `nethack-build`.
+	(nethack-build, nethack-install): Add argument `no-download-p` to
+	`nethack-build` (and its call in `nethack-install`).
 
 2020-07-06  Benjamin Yang  <be11ng@protonmail.com>
 
