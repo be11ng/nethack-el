@@ -598,17 +598,6 @@ library for your system."
                 nil t)                  ; Locally add-hook
       (current-buffer))))
 
-(defmacro nethack-test-build-wrapper (build-step)
-  "Setps up and executes the nethack-build function
-
-Initializes the variables ‘build-directory’, ‘default-directory’, and
-‘source-directory’, as well as calling the BUILD-STEP."
-  `(let* ((default-directory nethack-build-directory)
-          (source-directory (expand-file-name "nethack-src" default-directory)))
-     (unless (file-exists-p source-directory)
-       (mkdir source-directory))
-     (,build-step)))
-
 
 ;;; Initialization
 
