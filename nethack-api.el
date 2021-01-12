@@ -73,6 +73,7 @@
 
 ;;; Status/Attribute code:b
 (defun nh-propertize-attribute (attribute &optional how)
+  ;; TODO: this code should depend on the hilite_status option
   (let* ((new-value (car attribute))
          (old-value (cadr attribute))
          (age (car (cddr attribute)))

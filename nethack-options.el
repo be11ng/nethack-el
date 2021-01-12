@@ -108,6 +108,13 @@ Returns a list of the options set."
       (split-string elem ":" t "[ \t\n\r]+")
     elem))
 
+;; We can probably also do something like this to turn percentages into a saner
+;; format
+(defun nethack-options-parse-hilite-status-attr (attributes)
+  (if (string-match-p "&" op)
+      (split-string op "&|+" t "[ \t\n\r]+")
+    op))
+
 
 (provide 'nethack-options)
 
