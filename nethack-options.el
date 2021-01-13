@@ -105,8 +105,19 @@ Returns a list of the options set."
   (if (string-match-p ":" elem)
       ;; TODO: Set this up so it auto parses things like "hilite_status"
       ;; The string trim regexp is copied from ‘string-trim-left’.
-      (split-string elem ":" t "[ \t\n\r]+")
-    elem))
+      (let* ((option
+              (split-string elem ":" t "[ \t\n\r]+"))
+             (op (intern (car option)))
+             (params (cadr option)))
+        (cons
+         op
+         (cond
+          ((eq 'hilite_status op)
+           (nethack-options-parse-hilite-status params))
+          (t
+           (list (intern params))))))
+    (intern elem)))
+
 
 ;; We can probably also do something like this to turn percentages into a saner
 ;; format
