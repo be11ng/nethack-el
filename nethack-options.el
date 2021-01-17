@@ -66,6 +66,13 @@ This can be edited through ‘custom-set’."
   "intelligence" "power" "hunger" "wisdom" "power-max" "carrying-capacity"
   "charisma" "armor-class" "condition" "alignment" "score" "characteristics"))
 
+(defun nethack-options-status-field-p (field)
+  (member
+   (if (symbolp field)
+       (symbol-name field)
+     field)
+   nethack-options-fields))
+
 
 
 (defun nethack-options-parse ()
@@ -126,6 +133,37 @@ Returns a list of the options set."
           (t
            (list params)))))
     elem))
+
+(defun nethack-options-parse-hilite-status (params)
+  (let* ((ops (split-string params "/" t "[ \t\n\r]+"))
+         (field-name (pop ops))
+         (result (list field-name)))
+    (while ops
+      (setq result
+            (cons
+             (cond
+              ;; These two need to be handled a little differently
+              ((equal "condition" (car ops))
+               (list (cons 'condition
+                           (pop ops))   ; (cadr ops)
+                     (nethack-options-parse-hilite-status-attr (pop ops))))
+              ((string-suffix-p "-max" field-name)
+               (list (nethack-options-parse-hilite-status-attr (pop ops))))
+              ;; In most cases:
+              ((and (nethack-options-status-field-p field-name)
+                    (cdr ops))
+               (list (nethack-options-parse-hilite-status-behav (pop ops))
+                     (nethack-options-parse-hilite-status-attr (pop ops))))
+              ;; For something like: hilite_status:hitpoints/<=30%/red/normal
+              (t
+               (list '(else)
+                     (nethack-options-parse-hilite-status-attr (pop ops)))))
+             result)))
+    (reverse result)))
+
+(defun nethack-options-parse-hilite-status-behav (behav)
+  (list 'behavior
+        behav))
 
 (defun nethack-options-parse-hilite-status-attr (attributes)
   (list 'attributes
