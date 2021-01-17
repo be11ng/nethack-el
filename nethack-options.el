@@ -177,6 +177,21 @@ Returns a list of the options set."
           attributes)))
 
 
+
+(defun nethack-options-set-p (op)
+  "Check if OP is set as a NetHack option.
+
+This only really makes sense to use it on options that don't take arguments (so
+don't use it to theck “pickup types”, but do check things like “showexp”).
+It can check these options, though it doesn't make sense to."
+  ;; There's probably a more efficient way to do this through a ‘filter’ or
+  ;; something of that like but this works.
+  (when (symbolp op)
+    (setq op (symbol-name op)))
+  (or (member op nethack-options)
+      (assoc op nethack-options)))
+
+
 (provide 'nethack-options)
 
 ;;; nethack-options.el ends here
