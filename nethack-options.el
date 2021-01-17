@@ -83,7 +83,8 @@ Maybe I should have used eieio."
                       (eq (char-after) ?#))
             (setq elem (buffer-string))
             (cond
-             ((string-prefix-p "OPTIONS=" elem)
+             ;; Matches both OPTION= and OPTIONS=
+             ((string-prefix-p "OPTION" elem)
               (setq result
                     (append result (nethack-options-parse-option elem))))
              ;; ((string-prefix-p "AUTOPICKUP_EXCEPTION=" elem))
