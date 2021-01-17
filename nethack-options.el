@@ -116,17 +116,16 @@ Returns a list of the options set."
       ;; The string trim regexp is copied from ‘string-trim-left’.
       (let* ((option
               (split-string elem ":" t "[ \t\n\r]+"))
-             (op (intern (car option)))
+             (op (car option))
              (params (cadr option)))
         (cons
          op
          (cond
-          ((eq 'hilite_status op)
+          ((equal "hilite_status" op)
            (nethack-options-parse-hilite-status params))
           (t
-           (list (intern params))))))
-    (intern elem)))
-
+           (list params)))))
+    elem))
 
 (defun nethack-options-parse-hilite-status-attr (attributes)
   (list 'attributes
