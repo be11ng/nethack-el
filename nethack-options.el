@@ -58,11 +58,13 @@ This can be edited through ‘custom-set’."
   :type '(sexp)
   :group 'nethack)
 
+
+
 (defconst nethack-options-fields
   '("title" "dungeon-level" "experience-level" "strength" "gold" "experience"
   "dexterity" "hitpoints" "HD" "constitution" "hitpoints-max" "time"
   "intelligence" "power" "hunger" "wisdom" "power-max" "carrying-capacity"
-  "charisma" "armor-class" "condition" "alignment" "score"))
+  "charisma" "armor-class" "condition" "alignment" "score" "characteristics"))
 
 
 
