@@ -66,6 +66,11 @@ This can be edited through ‘custom-set’."
   "intelligence" "power" "hunger" "wisdom" "power-max" "carrying-capacity"
   "charisma" "armor-class" "condition" "alignment" "score" "characteristics"))
 
+(defconst nethack-options-behaviors
+  '(always up down changed)
+  ;; Need text-match, absolute value, and percentage
+  )
+
 (defun nethack-options-status-field-p (field)
   (member
    (if (symbolp field)
