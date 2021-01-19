@@ -103,6 +103,9 @@ Maybe I should have used eieio."
              ;; ((string-prefix-p "MENUCOLOR=" elem))
              ;; ((string-prefix-p "BOLDER=" elem))
              ;; ((string-prefix-p "MSGTYPE=" elem))
+             ;; ((string-prefix-p "BINDINGS=" elem))
+             ;; ((string-prefix-p "SOUND=" elem))
+             ;; I'm probably not going to process “CHOOSE” lines
              ))
           (widen)
           (forward-line 1)))
