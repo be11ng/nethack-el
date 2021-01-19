@@ -115,7 +115,7 @@ Returns a list of the options set."
   ;; (when (string-prefix-p "OPTIONS=" elem)
   ;;   (setq elem (string-trim-left elem "[a-zA-Z]+=")))
   (mapcar
-   'nethack-options-parse-option-1
+   #'nethack-options-parse-option-1
    (split-string (string-trim-left elem "[a-zA-Z]+=") "," t)))
 
 (defun nethack-options-parse-option-1 (elem)
