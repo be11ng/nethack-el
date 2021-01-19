@@ -151,26 +151,26 @@ Returns a list of the options set."
               ((equal "condition" (car ops))
                (list (cons 'condition
                            (pop ops))   ; (cadr ops)
-                     (nethack-options-parse-hilite-status-attr (pop ops))))
+                     (nethack-options-parse-attr (pop ops))))
               ((string-suffix-p "-max" field-name)
-               (list (nethack-options-parse-hilite-status-attr (pop ops))))
+               (list (nethack-options-parse-attr (pop ops))))
               ;; In most cases:
               ((and (nethack-options-status-field-p field-name)
                     (cdr ops))
-               (list (nethack-options-parse-hilite-status-behav (pop ops))
-                     (nethack-options-parse-hilite-status-attr (pop ops))))
+               (list (nethack-options-parse-status-behav (pop ops))
+                     (nethack-options-parse-attr (pop ops))))
               ;; For something like: hilite_status:hitpoints/<=30%/red/normal
               (t
                (list '(else)
-                     (nethack-options-parse-hilite-status-attr (pop ops)))))
+                     (nethack-options-parse-attr (pop ops)))))
              result)))
     (reverse result)))
 
-(defun nethack-options-parse-hilite-status-behav (behav)
+(defun nethack-options-parse-status-behav (behav)
   (list 'behavior
         behav))
 
-(defun nethack-options-parse-hilite-status-attr (attributes)
+(defun nethack-options-parse-attr (attributes)
   (list 'attributes
         (if (string-match-p "[&+]" attributes)
             (split-string attributes "[&+]" t "[ \t\n\r]+")
