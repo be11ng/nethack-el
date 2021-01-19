@@ -100,7 +100,10 @@ Maybe I should have used eieio."
               (setq result
                     (append result (nethack-options-parse-option elem))))
              ;; ((string-prefix-p "AUTOPICKUP_EXCEPTION=" elem))
-             ;; ((string-prefix-p "MENUCOLOR=" elem))
+             ((string-prefix-p "MENUCOLOR=" elem)
+              (setq result
+                    (append result (list
+                                    (nethack-options-parse-menucolor elem)))))
              ;; ((string-prefix-p "BOLDER=" elem))
              ;; ((string-prefix-p "MSGTYPE=" elem))
              ;; ((string-prefix-p "BINDINGS=" elem))
@@ -178,6 +181,22 @@ Returns a list of the options set."
         (if (string-match-p "[&+]" attributes)
             (split-string attributes "[&+]" t "[ \t\n\r]+")
           attributes)))
+
+(defun nethack-options-parse-menucolor (elem)
+  "Parse a nethackrc MENUCOLOR= line.
+
+Returns an alist entry of the options set."
+  (when (string-prefix-p "MENUCOLOR=" elem)
+    (setq elem (string-trim-left elem "[a-zA-Z]+=")))
+  ;; In case the regexp contains “=”
+  ;; TODO: Do this without using ‘reverse’
+  (setq elem (reverse (split-string elem "=" t)))
+  (setq attr (pop elem))
+  (if (stringp elem)
+      (setq elem (apply #'concat (reverse elem))))
+  (list 'menucolor
+        (car elem)                      ; There should only be 1 item
+        (nethack-options-parse-attr attr)))
 
 
 
