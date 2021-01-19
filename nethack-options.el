@@ -194,8 +194,11 @@ Returns an alist entry of the options set."
   (setq attr (pop elem))
   (if (stringp elem)
       (setq elem (apply #'concat (reverse elem))))
+  (setq elem (car elem))                ; There should only be 1 item
+  ;; Remove quotes from either side of ‘elem’
+  (setq elem (substring elem 1 -1))
   (list 'menucolor
-        (car elem)                      ; There should only be 1 item
+        elem
         (nethack-options-parse-attr attr)))
 
 
