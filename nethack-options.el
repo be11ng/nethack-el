@@ -213,8 +213,13 @@ It can check these options, though it doesn't make sense to."
   ;; something of that like but this works.
   (when (symbolp op)
     (setq op (symbol-name op)))
-  (or (member op nethack-options)
-      (assoc op nethack-options)))
+  (setq result
+        (or (member op nethack-options)
+            (assoc op nethack-options)))
+  (if (and result
+           (stringp (car result)))
+      (car result)
+    result))
 
 
 (provide 'nethack-options)
