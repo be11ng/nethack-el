@@ -212,13 +212,9 @@ attribute, the new value and the old value."
   "Nethack default face."
   :group 'nethack-faces)
 
-(defface nethack-atr-uline-face
-  `((t (:underline t)))
-  "Nethack underline face.")
-
-(defface nethack-atr-bold-face
-  `((t (:bold t)))
-  "Nethack bold face."
+(defface nethack-atr-dim-face
+  `((t (:weight 'light)))
+  "Nethack dim face."
   :group 'nethack-faces)
 
 (defface nethack-atr-blink-face
@@ -226,9 +222,19 @@ attribute, the new value and the old value."
   "Nethack blink face."
   :group 'nethack-faces)
 
+(defface nethack-atr-uline-face
+  `((t (:underline t)))
+  "Nethack underline face."
+  :group 'nethack-faces)
+
 (defface nethack-atr-inverse-face
   `((t (:inverse-video t)))
   "Nethack inverse face."
+  :group 'nethack-faces)
+
+(defface nethack-atr-bold-face
+  `((t (:bold t)))
+  "Nethack bold face."
   :group 'nethack-faces)
 
 (defface nethack-black-face
