@@ -70,6 +70,27 @@ parsing is also done on the Lisp-side of nethack-el."
 
 
 
+;; This might be called by the C half of nethack-el, hence the name is prefixed
+;; with “nh” rather than “nethack-options”
+(defun nh-attr-face (attr)
+  "Return the face corresponding with ATTR.
+
+ATTR can be either a string or a symbol.  It does not matter if it is prefixed
+  with “atr-” or not.  “normal” is aliased to “none” as is “underline” to
+  “uline”."
+  (when (symbolp attr)
+    (setq attr (symbol-name attr)))
+  (when (string-prefix-p "atr-" attr)
+    (setq attr (substring attr 4)))
+  (intern-soft (concat "nethack-atr-"
+                       ;; Aliases, since this function handles both the C codes
+                       ;; attributes as well as those set within .nethackrc
+                       (pcase attr
+                         ("normal" "none")
+                         ("underline" "uline")
+                         (_ attr))
+                       "-face")))
+
 
 (defun nethack-options-parse-status-behav (behav)
   (list 'behavior

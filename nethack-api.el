@@ -35,6 +35,7 @@
 (require 'nethack-compat)
 (require 'gamegrid)
 (require 'nethack-keys)
+(require 'nethack-options)
 
 ;;; Buffer handling
 (defvar nh-map-buffer nil)
@@ -304,10 +305,6 @@ FIXME: doesnt actually use ATTR!"
 
 This is used when the ATR_NOHISTORY bit in a message is set."
   (message "%s" str))
-
-(defun nh-attr-face (attr)
-  "Return the face corresponding with ATTR."
-  (intern-soft (concat "nethack-" (symbol-name attr) "-face")))
 
 (defconst nh-colors
   [nethack-black-face 		nethack-red-face
