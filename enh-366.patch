@@ -276,9 +276,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2020-07-06 09:18:02.067775393 -0400
-+++ nethack/win/lisp/ChangeLog	2020-07-06 16:33:00.564458163 -0400
-@@ -0,0 +1,381 @@
+--- /dev/null	2021-01-20 20:47:45.032244588 -0500
++++ nethack/win/lisp/ChangeLog	2021-01-22 08:15:15.052480733 -0500
+@@ -0,0 +1,386 @@
++2021-01-22  Benjamin Yang  <be11ng@protonmail.com>
++
++	* winlisp.c (attr_to_string): Handle ATR_DIM and fail quietly by
++	returning “atr-none” instead of exiting.
++
 +2020-07-06  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* ../../sys/unix/hints/linux-lisp: Format file.
@@ -660,9 +665,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2020-07-06 09:18:02.067775393 -0400
-+++ nethack/win/lisp/winlisp.c	2020-07-06 15:58:08.340855746 -0400
-@@ -0,0 +1,1976 @@
+--- /dev/null	2021-01-20 20:47:45.032244588 -0500
++++ nethack/win/lisp/winlisp.c	2021-01-22 08:07:52.829500245 -0500
+@@ -0,0 +1,1974 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +
@@ -1046,26 +1051,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +     attributes (caller should have already done this...) */
 +  attr &= ~(ATR_URGENT | ATR_NOHISTORY);
 +
-+  switch (attr)
-+    {
++  switch (attr) {
 +    case ATR_NONE:
 +      return "atr-none";
 +    case ATR_ULINE:
 +      return "atr-uline";
 +    case ATR_BOLD:
 +      return "atr-bold";
++    case ATR_DIM:
++      return "atr-dim";
 +    case ATR_BLINK:
 +      return "atr-blink";
 +    case ATR_INVERSE:
 +      return "atr-inverse";
 +    default:
-+      /* Should never happen. */
-+      /* Note that it has a chance of happening if, somehow, attr is ATR_DIM
-+         -BY 2020-06-08 */
-+      impossible ("Invalid attribute code.");
-+      exit (EXIT_FAILURE);
-+      break;
-+    }
++      return "atr-none";
++  }
 +}
 +
 +static const char*
