@@ -1,3 +1,7 @@
+2021-01-21  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack.el (nethack-el-version): Bump version to 0.10.0.
+
 2021-01-11  Benjamin Yang  <be11ng@protonmail.com>
 
 	Move automated build process from Makefile to Elisp.
