@@ -741,6 +741,8 @@ buffer."
                         str)))
       (put-text-property start (point) 'face (nh-attr-face attr))
       (insert-char ?\n 1 nil)
+      (if (nethack-options-set-p 'menucolors)
+          (nethack-options-highlight-menu))
       (run-hooks 'nethack-add-menu-hook))))
 
 ;; FIXME: xemacs propertize bug here

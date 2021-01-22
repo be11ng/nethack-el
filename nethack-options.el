@@ -93,6 +93,51 @@ ATTR can be either a string or a symbol.  It does not matter if it is prefixed
                          (_ attr))
                        "-face")))
 
+(defun nethack-options-color-face (color)
+  "Return the nethack face corresponding to COLOR.
+
+COLOR can be either a string or a symbol.  Translation is automatically done
+  between things like “lightgreen” and “bright-green”.  Also handles
+  “no-color” as “nethack-atr-none-face”."
+  (when (symbolp color)
+    (setq color (symbol-name color)))
+  (intern-soft (concat "nethack-"
+                       ;; Aliases, since this function handles both the C codes
+                       ;; coloributes as well as those set within .nethackrc
+                       (pcase color
+                         ((rx (seq "light" (not ?-)))
+                          (concat "bright-" (substring color 5)))
+                         ((rx "light-")
+                          (concat "bright-" (substring color 6)))
+                         ((rx (seq "bright" (not ?-)))
+                          (concat "bright-" (substring color 6)))
+                         ("no-color" "atr-none")
+                         (_ color))
+                       "-face")))
+
+(defvar nethack-options-menucolors nil
+  "The menucolors set.
+
+Set by ‘nethack-options-get-menucolors’, which trawls through ‘nethack-options’
+and looks for the prefix symbol “'menucolor”.  This means that the data
+structure itself is buried in ‘nethack-options-parse-menucolor’.")
+
+(defun nethack-options-get-menucolors ()
+  "Set ‘nethack-options-menucolors’.
+
+‘nethack-options-menucolors’ is set to a list of lists.  The “'menucolor” token
+is stripped away, so the first element of each element is a regexp (the second
+being the attributes).
+
+Matches if the ‘car’ of an element in ‘nethack-options’ is “'menucolor”."
+  (setq nethack-options-menucolors
+        (seq-map #'cdr
+                 (seq-filter
+                  (lambda (elt)
+                    (eq (car-safe elt) 'menucolor))
+                  nethack-options))))
+
+
 
 (defun nethack-options-parse-status-behav (behav)
   (list 'behavior
@@ -109,6 +154,22 @@ ATTR can be either a string or a symbol.  It does not matter if it is prefixed
          (if (string-match-p "[&+]" attributes)
              (split-string attributes "[&+]" t "[ \t\n\r]+")
            (list attributes)))))
+
+(defun nethack-options-attr-propertize (attributes)
+  "Return a list of NetHack faces.
+
+These faces correspond to the input of ATTRIBUTES.  ATTRIBUTES should be an
+  alist, indicating whether a property is a “attribute” or a “color”.  This
+  function calls on ‘nethack-options-color-face’ and ‘nh-attr-face’ to turn
+  strings into actual faces."
+  (when (equal (car attributes) 'attributes)
+    (pop attributes))
+  (mapcar
+   (lambda (attr)
+     (if (eq (car attr) 'attribute)
+         (nh-attr-face (cdr attr))
+       (nethack-options-color-face (cdr attr))))
+   attributes))
 
 (defun nethack-options-parse-hilite-status (params)
   (let* ((ops (split-string params "/" t "[ \t\n\r]+"))
@@ -242,6 +303,31 @@ It can check these options, though it doesn't make sense to."
            (stringp (car result)))
       (car result)
     result))
+
+
+
+(defun nethack-options-highlight-menu ()
+  "Highlight a NetHack menu buffer.
+
+Uses ‘nethack-options-menucolors’ as a source of regexps and attributes.  The
+regexps are searched through first to last, meaning that the last highlight will
+override all highlights before it.  A match will highlight an entire menu line
+at a time."
+  ;; Adapted from “nethack-example.el” by Shawn Betts <sabetts@vcn.bc.ca>.
+  (unless nethack-options-menucolors
+    (nethack-options-get-menucolors))
+  (save-excursion
+    (let (start
+          (end (point)))
+      (forward-line -1)
+      (forward-line 0)
+      ;; A mini-HACK so the option accelerator doesn't get highlighted
+      (setq start (+ (point) 4))
+      (mapc (lambda (x)
+              (if (re-search-forward (car x) nil t)
+                  (put-text-property start end 'face
+                                     (nethack-options-attr-propertize (cadr x)))))
+            nethack-options-menucolors))))
 
 
 
