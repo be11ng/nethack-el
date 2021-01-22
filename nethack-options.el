@@ -68,7 +68,9 @@ parsing is also done on the Lisp-side of nethack-el."
      field)
    nethack-options-fields))
 
-
+(defconst nethack-options-attributes
+  '("none" "bold" "dim" "underline" "blink" "inverse" "normal")
+  "List of allowed settable text attributes.")
 
 ;; This might be called by the C half of nethack-el, hence the name is prefixed
 ;; with “nh” rather than “nethack-options”
@@ -97,10 +99,16 @@ ATTR can be either a string or a symbol.  It does not matter if it is prefixed
         behav))
 
 (defun nethack-options-parse-attr (attributes)
-  (list 'attributes
-        (if (string-match-p "[&+]" attributes)
-            (split-string attributes "[&+]" t "[ \t\n\r]+")
-          attributes)))
+  (cons 'attributes
+        (mapcar
+         (lambda (attr)
+           (cons (if (member attr nethack-options-attributes)
+                     'attribute
+                   'color)
+                 attr))
+         (if (string-match-p "[&+]" attributes)
+             (split-string attributes "[&+]" t "[ \t\n\r]+")
+           (list attributes)))))
 
 (defun nethack-options-parse-hilite-status (params)
   (let* ((ops (split-string params "/" t "[ \t\n\r]+"))
