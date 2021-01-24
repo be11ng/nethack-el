@@ -200,9 +200,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2020-07-06 09:18:02.067775393 -0400
-+++ nethack/sys/unix/hints/linux-lisp	2020-07-06 15:28:02.110094075 -0400
-@@ -0,0 +1,61 @@
+--- /dev/null	2021-01-22 14:20:38.020529571 -0500
++++ nethack/sys/unix/hints/linux-lisp	2021-01-23 20:39:57.466974255 -0500
+@@ -0,0 +1,62 @@
 +#
 +# NetHack 3.6  linux $NHDT-Date: 1432512814 2015/05/25 00:13:34 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $
 +# Copyright (c) Kenneth Lorber, Kensington, Maryland, 2007.
@@ -233,7 +233,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +CFLAGS+=-DCURSES_GRAPHICS
 +#CFLAGS+=-DEXTRA_SANITY_CHECKS
 +#CFLAGS+=-DEDIT_GETLIN
-+#CFLAGS+=-DSCORE_ON_BOTL
++CFLAGS+=-DSCORE_ON_BOTL
++CFLAGS+=-DEXP_ON_BOTL
 +#CFLAGS+=-DMSGHANDLER
 +#CFLAGS+=-DTTY_TILES_ESCCODES
 +
@@ -276,9 +277,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2021-01-20 20:47:45.032244588 -0500
-+++ nethack/win/lisp/ChangeLog	2021-01-22 08:15:15.052480733 -0500
-@@ -0,0 +1,386 @@
+--- /dev/null	2021-01-22 14:20:38.020529571 -0500
++++ nethack/win/lisp/ChangeLog	2021-01-23 20:56:57.853465720 -0500
+@@ -0,0 +1,391 @@
++2021-01-23  Benjamin Yang  <be11ng@protonmail.com>
++
++	* ../../sys/unix/hints/linux-lisp: Use CFLAGS DSCORE_ON_BOTL and
++	DEXP_ON_BOTL.
++
 +2021-01-22  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* winlisp.c (attr_to_string): Handle ATR_DIM and fail quietly by
