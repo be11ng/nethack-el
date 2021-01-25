@@ -77,7 +77,7 @@
   ;; TODO: this code should depend on the hilite_status option
   (let* ((new-value (car attribute))
          (old-value (cadr attribute))
-         (age (car (cddr attribute)))
+         (age (caddr attribute))
          (string (format "%s" (or new-value "")))
          (face (if (<= age nethack-status-highlight-delay)
                    (cond
