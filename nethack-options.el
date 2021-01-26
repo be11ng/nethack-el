@@ -137,6 +137,31 @@ Matches if the ‘car’ of an element in ‘nethack-options’ is “'menucolor
                     (eq (car-safe elt) 'menucolor))
                   nethack-options))))
 
+(defvar nethack-options-hilites nil
+  "The status-hilites set.
+
+Set by ‘nethack-options-get-hilites’, which trawls through ‘nethack-options’ and
+looks for the prefix string “hilite_status”.  This means that the data structure
+itself is buried in ‘nethack-options-parse-hilite-status’.")
+
+(defun nethack-options-get-hilites ()
+  "Set ‘nethack-options-hilites’.
+
+‘nethack-options-hilites’ is set to a list of lists.  The “hilite_status” string
+is stripped away, so the first element of each element is a field.  The logic
+from field to field varies a little, so the second element is a list usually
+containing a behavior and attributes.  Sometimes there's a third list starting
+with “'else”, which contains the attributes for when the first “clause” doesn't
+match.
+
+Matches if the ‘car’ of an element in ‘nethack-options’ is “hilite_status”."
+  (setq nethack-options-hilites
+        (seq-map #'cdr
+                 (seq-filter
+                  (lambda (elt)
+                    (equal (car-safe elt) "hilite_status"))
+                  nethack-options))))
+
 
 
 (defun nethack-options-parse-status-behav (behav)
