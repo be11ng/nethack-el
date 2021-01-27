@@ -25,6 +25,9 @@ This is a fork of `nethack-el` where I attempt to update it to 3.6.6.
 Looked pretty dead when I first stumbled upon it, and also incompatible with
 anything newer than 3.4.3.  This is my go at making it work again.
 
+I'm also having a go at trying to make it parse `.nethackrc` for things like
+`MENUCOLORS` and `hilite_status`.
+
 Old website: <http://savannah.nongnu.org/projects/nethack-el>
 
 ## Build and run
@@ -58,11 +61,10 @@ These instructions are known to work on \*NIX systems (sorry Windows users).
 
 These instructions are known to work on \*NIX systems (sorry Windows users).
 
-* Download either `nethack-343.tgz` or `nethack-366.tgz` from
-  <https://nethack.org>.
+* Download either `nethack-366.tgz` from <https://nethack.org>.
 
-  * 331, 340, 341, 342, and SLASH'EM 007e0 and 007e3 are supported to varying
-  extents.
+  * 331, 340, 341, 342, 343, and SLASH'EM 007e0 and 007e3 are supported to
+    varying extents.
 
 * Untar the package and apply the respective patch
 
