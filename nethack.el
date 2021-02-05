@@ -213,7 +213,7 @@ attribute, the new value and the old value."
   :group 'nethack-faces)
 
 (defface nethack-atr-dim-face
-  `((t (:weight 'light)))
+  `((t (:weight light)))
   "Nethack dim face."
   :group 'nethack-faces)
 
