@@ -695,7 +695,8 @@ delete the contents, perhaps logging the text."
           (cond ((or (equal prompt "command")
                      (equal prompt "menu")
                      (equal prompt "dummy"))
-                 (nh-print-status)
+                 ;; I Don't think we need this...
+                 ;; (nhapi-print-status)
                  (sit-for 0)
                  (setq nh-at-prompt t)
                  (run-hook-with-args 'nh-at-prompt-hook prompt)))))))
