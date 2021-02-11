@@ -200,7 +200,9 @@
        (if fn (funcall fn) (char-to-string ch))))
    format nil))
 
-(defun nh-print-status ()
+;; This is called upon from the C half, so it should be prefixed
+;; “nhapi-” rather than “nh-”.
+(defun nhapi-print-status ()
   (cl-case nethack-status-style
     (:header-line
      (with-current-buffer nh-map-buffer
