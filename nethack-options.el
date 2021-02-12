@@ -50,11 +50,42 @@ parsing is also done on the Lisp-side of nethack-el."
 
 
 
+(defconst nethack-options-fields-percents
+  '("hitpoints" "power" "experience" "experience-level")
+  "List of fields highlightable by percentages.
+
+Note that “experience” and “experience-level” are compared from the start of the
+current level to the start of the next experience level.")
+
+(defconst nethack-options-fields-text-matches
+  '("alignment" "carrying-capacity" "hunger" "dungeon-level" "title")
+  "List of fields highlightable by text match.")
+
 (defconst nethack-options-fields
-  '("title" "dungeon-level" "experience-level" "strength" "gold" "experience"
-  "dexterity" "hitpoints" "HD" "constitution" "hitpoints-max" "time"
-  "intelligence" "power" "hunger" "wisdom" "power-max" "carrying-capacity"
-  "charisma" "armor-class" "condition" "alignment" "score" "characteristics"))
+  (append (list "strength" "gold" "dexterity" "HD" "constitution"
+                "hitpoints-max" "time" "intelligence" "wisdom" "power-max"
+                "charisma" "armor-class" "condition" "score" "characteristics")
+          nethack-options-fields-percents
+          nethack-options-fields-text-matches)
+  "List of fields highlightable by “hilite_status”.")
+
+(defconst nethack-options-cond-major-troubles
+  '("Stone" "Slim" "Strngl" "FoodPois" "TermIll")
+  "List of major_troubles condition flags.")
+
+(defconst nethack-options-cond-minor-troubles
+  '("Blind" "Deaf" "Stun" "Conf" "Hallu")
+  "List of minor_troubles condition flags.")
+
+(defconst nethack-options-cond-movement
+  '("Lev" "Fly" "Ride")
+  "List of movement-related condition flags.")
+
+(defconst nethack-options-cond-all
+  (append nethack-options-cond-major-troubles
+          nethack-options-cond-minor-troubles
+          nethack-options-cond-movement)
+  "List of all condition flags.")
 
 (defconst nethack-options-behaviors
   '(always up down changed)
