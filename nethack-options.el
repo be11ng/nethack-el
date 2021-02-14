@@ -249,7 +249,7 @@ These faces correspond to the input of ATTRIBUTES.  ATTRIBUTES should be an
                      (nethack-options-parse-attr (pop ops))))
               ;; For something like: hilite_status:hitpoints/<=30%/red/normal
               (t
-               (list '(else)
+               (list 'else
                      (nethack-options-parse-attr (pop ops)))))
              result)))
     (reverse result)))
