@@ -230,19 +230,24 @@ These faces correspond to the input of ATTRIBUTES.  ATTRIBUTES should be an
       (setq result
             (cons
              (cond
-              ;; These two need to be handled a little differently
-              ((equal "condition" (car ops))
-               (list (cons 'condition
-                           (pop ops))   ; (cadr ops)
-                     (nethack-options-parse-attr (pop ops))))
-              ((string-suffix-p "-max" field-name)
-               (list (nethack-options-parse-attr (pop ops))))
-              ;; In most cases:
+              ;; Condition needs to be handled a little differently
+              ((equal "condition" field-name)
+               (let ((behav (pop ops))) ; (cadr ops)
+                 (list (cons 'condition
+                             (mapcar
+                              #'downcase
+                              (mapcan
+                               #'nethack-options-substitute-conditions
+                               (if (string-match-p "+" behav)
+                                   (split-string behav "+")
+                                 (list behav)))))
+                       (nethack-options-parse-attr (pop ops)))))
               ((and (nethack-options-status-field-p field-name)
                     (cdr ops))
                (list (nethack-options-parse-status-behav (pop ops))
                      (nethack-options-parse-attr (pop ops))))
               ;; For something like: hilite_status:hitpoints/<=30%/red/normal
+              ;; This also applies for hilite_status:hitpoints-max/green&normal
               (t
                (list 'else
                      (nethack-options-parse-attr (pop ops)))))
