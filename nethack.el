@@ -156,52 +156,6 @@ attribute, the new value and the old value."
   "Customizations for faces used by Enethack."
   :group 'nethack)
 
-(defface nethack-status-good-face
-  `((((type tty)
-      (class color))
-     (:background "green" :foreground "black"))
-    (((class color)
-      (background light))
-     (:background "darkseagreen2"))
-    (((class color)
-      (background dark))
-     (:background "green4")))
-  "Face for highlighting good changes in the status buffer."
-  :group 'nethack-faces)
-
-(defface nethack-status-bad-face
-  `((((type tty)
-      (class color))
-     (:background "red"))
-    (((class color)
-      (background light))
-     (:background "pink"))
-    (((class color)
-      (background dark))
-     (:background "red"))
-    (t
-     (:inverse-video t)))
-  "Face for highlighting bad changes in the status buffer."
-  :group 'nethack-faces)
-
-(defface nethack-status-neutral-face
-  `((((type tty)
-      (class color))
-     (:foreground "white" :background "blue"))
-    (((type tty)
-      (class mono))
-     (:inverse-video t))
-    (((class color)
-      (background dark))
-     (:background "blue3"))
-    (((class color)
-      (background light))
-     (:background "lightgoldenrod2"))
-    (t
-     (:background "gray")))
-  "Face for highlighting neutral changes in the status buffer."
-  :group 'nethack-faces)
-
 (defface nethack-message-highlight-face
   '((t (:foreground "black" :background "green")))
   "The face used to highlight new text in the message window."
