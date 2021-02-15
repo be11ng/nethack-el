@@ -87,11 +87,6 @@ current level to the start of the next experience level.")
           nethack-options-cond-movement)
   "List of all condition flags.")
 
-(defconst nethack-options-behaviors
-  '(always up down changed)
-  ;; Need text-match, absolute value, and percentage
-  )
-
 (defun nethack-options-status-field-p (field)
   (member
    (if (symbolp field)
