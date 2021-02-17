@@ -47,9 +47,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	2020-07-06 09:18:02.067775393 -0400
-+++ nethack/include/winlisp.h	2020-05-25 16:23:26.474351571 -0400
-@@ -0,0 +1,70 @@
+--- /dev/null	2021-02-16 15:57:59.783631752 -0500
++++ nethack/include/winlisp.h	2021-02-04 21:00:49.882665104 -0500
+@@ -0,0 +1,71 @@
 +#ifndef WINLISP_H
 +#define WINLISP_H
 +
@@ -83,6 +83,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +E void FDECL(lisp_display_nhwindow, (winid, BOOLEAN_P));
 +E void FDECL(lisp_destroy_nhwindow, (winid));
 +E void FDECL(lisp_curs, (winid,int,int));
++E void FDECL(lisp_status_update, (int, genericptr_t, int, int, int, unsigned long *));
 +E void FDECL(lisp_putstr, (winid, int, const char *));
 +E void FDECL(lisp_display_file, (const char *, BOOLEAN_P));
 +E void FDECL(lisp_start_menu, (winid));
@@ -671,9 +672,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2021-01-20 20:47:45.032244588 -0500
-+++ nethack/win/lisp/winlisp.c	2021-01-22 08:07:52.829500245 -0500
-@@ -0,0 +1,1974 @@
+--- /dev/null	2021-02-16 15:57:59.783631752 -0500
++++ nethack/win/lisp/winlisp.c	2021-02-04 21:39:31.274027619 -0500
+@@ -0,0 +1,2004 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +
@@ -697,6 +698,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +#else
 +#include "patchlevel.h"
 +#endif
++
++/*
++ * The following data structures come from the genl_ routines in
++ * src/windows.c and as such are considered to be on the window-port
++ * "side" of things, rather than the NetHack-core "side" of things.
++ */
++
++extern const char *status_fieldnm[MAXBLSTATS];
++extern char *status_vals[MAXBLSTATS];
 +
 +#define CMD_KEY 0
 +#define CMD_EXT 1
@@ -984,7 +994,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +    genl_status_init,
 +    genl_status_finish,
 +    genl_status_enablefield,
-+    genl_status_update,
++    lisp_status_update,
 +    genl_can_suspend_yes,
 +};
 +
@@ -1631,197 +1641,218 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	    );
 +}
 +
++#if 0
 +static void
 +generate_status_line ()
 +{
-+  /* Ripped from botl.c */
-+  int hp, hpmax;
++    /* Ripped from botl.c */
++    int hp, hpmax;
 +
-+  hp = Upolyd ? u.mh : u.uhp;
-+  hpmax = Upolyd ? u.mhmax : u.uhpmax;
-+  if(hp < 0) hp = 0;
++    hp = Upolyd ? u.mh : u.uhp;
++    hpmax = Upolyd ? u.mhmax : u.uhpmax;
++    if (hp < 0)
++        hp = 0;
 +
-+  printf ("(nhapi-update-status ");
-+  lisp_quote;
-+  printf ("(");
-+  lisp_list (lisp_string ("name");
-+	     lisp_string (plname););
-+  if (Upolyd)
-+    {
-+      char mbot[BUFSZ];
-+      int k = 0;
++    printf("(nhapi-update-status ");
++    lisp_quote;
++    printf("(");
++    lisp_list(lisp_string("name"); lisp_string(plname););
++    if (Upolyd) {
++        char mbot[BUFSZ];
++        int k = 0;
 +
-+      lisp_list (lisp_string ("rank");
-+		 lisp_nil);
-+      lisp_list (lisp_string ("monster");
-+		 lisp_string (mons[u.umonnum].mname));
-+    }
-+  else
-+    {
-+      lisp_list (lisp_string ("rank");
-+		 lisp_string (rank_of(u.ulevel, Role_switch, flags.female)););;
-+      lisp_list (lisp_string ("monster");
-+		 lisp_nil);
++        lisp_list(lisp_string("rank"); lisp_nil);
++        lisp_list(lisp_string("monster"); lisp_string(mons[u.umonnum].mname));
++    } else {
++        lisp_list(lisp_string("rank");
++                  lisp_string(rank_of(u.ulevel, Role_switch, flags.female)););
++        ;
++        lisp_list(lisp_string("monster"); lisp_nil);
 +    }
 +
-+  lisp_list (lisp_string ("St");
-+	     lisp_int (ACURR(A_STR)););
-+  lisp_list (lisp_string ("Dx");
-+	     lisp_int (ACURR(A_DEX)););
-+  lisp_list (lisp_string ("Co");
-+	     lisp_int (ACURR(A_CON)););
-+  lisp_list (lisp_string ("In");
-+	     lisp_int (ACURR(A_INT)););
-+  lisp_list (lisp_string ("Wi");
-+	     lisp_int (ACURR(A_WIS)););
-+  lisp_list (lisp_string ("Ch");
-+	     lisp_int (ACURR(A_CHA)););
-+  lisp_list (lisp_string ("Align");
-+	     if (u.ualign.type == A_CHAOTIC)
-+	     lisp_string ("Chaotic");
-+	     else if (u.ualign.type == A_NEUTRAL)
-+	     lisp_string ("Neutral");
-+	     else
-+	     lisp_string ("Lawful"););
++    lisp_list(lisp_string("St"); lisp_int(ACURR(A_STR)););
++    lisp_list(lisp_string("Dx"); lisp_int(ACURR(A_DEX)););
++    lisp_list(lisp_string("Co"); lisp_int(ACURR(A_CON)););
++    lisp_list(lisp_string("In"); lisp_int(ACURR(A_INT)););
++    lisp_list(lisp_string("Wi"); lisp_int(ACURR(A_WIS)););
++    lisp_list(lisp_string("Ch"); lisp_int(ACURR(A_CHA)););
++    lisp_list(lisp_string("Align");
++              if (u.ualign.type == A_CHAOTIC) lisp_string("Chaotic");
++              else if (u.ualign.type == A_NEUTRAL) lisp_string("Neutral");
++              else lisp_string("Lawful"););
 +
 +#ifdef SCORE_ON_BOTL
-+  lisp_list (lisp_string ("Score");
-+	     lisp_int (botl_score()););
++    lisp_list(lisp_string("Score"); lisp_int(botl_score()););
 +#endif
 +
-+  if (In_endgame(&u.uz))
-+    {
-+      lisp_list (lisp_string ("Dungeon");
-+		 if (Is_astralevel(&u.uz))
-+		 lisp_string ("Astral Plane");
-+		 else
-+		 lisp_string ("End Game"););
-+    }
-+  else
-+    {
-+      lisp_list (lisp_string ("Dungeon");
-+		 lisp_string (dungeons[u.uz.dnum].dname););
++    if (In_endgame(&u.uz)) {
++        lisp_list(lisp_string("Dungeon");
++                  if (Is_astralevel(&u.uz)) lisp_string("Astral Plane");
++                  else lisp_string("End Game"););
++    } else {
++        lisp_list(lisp_string("Dungeon");
++                  lisp_string(dungeons[u.uz.dnum].dname););
 +    }
 +
-+      lisp_list (lisp_string ("Dlvl");
-+		 lisp_int (depth(&u.uz)););
++    lisp_list(lisp_string("Dlvl"); lisp_int(depth(&u.uz)););
 +
-+  lisp_list (lisp_string ("$");
-+  lisp_int (money_cnt(invent)););
-+  lisp_list (lisp_string ("HP");
-+	     lisp_int (hp););
-+  lisp_list (lisp_string ("HPmax");
-+	     lisp_int (hpmax););
-+  lisp_list (lisp_string ("PW");
-+	     lisp_int (u.uen););
-+  lisp_list (lisp_string ("PWmax");
-+	     lisp_int (u.uenmax););
-+  lisp_list (lisp_string ("AC");
-+	     lisp_int (u.uac););
++    lisp_list(lisp_string("$"); lisp_int(money_cnt(invent)););
++    lisp_list(lisp_string("HP"); lisp_int(hp););
++    lisp_list(lisp_string("HPmax"); lisp_int(hpmax););
++    lisp_list(lisp_string("PW"); lisp_int(u.uen););
++    lisp_list(lisp_string("PWmax"); lisp_int(u.uenmax););
++    lisp_list(lisp_string("AC"); lisp_int(u.uac););
 +
-+  if (Upolyd)
-+    {
-+      lisp_list (lisp_string ("HD");
-+		 lisp_int (mons[u.umonnum].mlevel););
-+    }
-+  else
-+    {
-+      lisp_list (lisp_string ("HD");
-+		 lisp_nil);
++    if (Upolyd) {
++        lisp_list(lisp_string("HD"); lisp_int(mons[u.umonnum].mlevel););
++    } else {
++        lisp_list(lisp_string("HD"); lisp_nil);
 +    }
 +
-+  lisp_list (lisp_string ("Level");
-+	     lisp_int (u.ulevel););
++    lisp_list(lisp_string("Level"); lisp_int(u.ulevel););
 +#ifdef EXP_ON_BOTL
-+  lisp_list (lisp_string ("XP");
-+	     lisp_int (u.uexp););
++    lisp_list(lisp_string("XP"); lisp_int(u.uexp););
 +#endif
-+  lisp_list (lisp_string ("T");
-+	     lisp_int (moves););
++    lisp_list(lisp_string("T"); lisp_int(moves););
 +
-+  if (Confusion)
-+    lisp_list (lisp_string ("confusion"); lisp_string ("Conf"));
-+  else
-+    lisp_list (lisp_string ("confusion"); lisp_nil);
++    if (Confusion)
++        lisp_list(lisp_string("confusion"); lisp_string("Conf"));
++    else
++        lisp_list(lisp_string("confusion"); lisp_nil);
 +
-+  if (u.uhs != 1)
-+    lisp_list (lisp_string ("hunger"); lisp_string (hunger_stat[u.uhs]));
-+  else
-+    lisp_list (lisp_string ("hunger"); lisp_nil);
++    if (u.uhs != 1)
++        lisp_list(lisp_string("hunger"); lisp_string(hunger_stat[u.uhs]));
++    else
++        lisp_list(lisp_string("hunger"); lisp_nil);
 +
-+  if (Sick)
-+    {
-+      if (u.usick_type & SICK_VOMITABLE)
-+	lisp_list (lisp_string ("sick"); lisp_string ("FoodPois"));
-+      if (u.usick_type & SICK_NONVOMITABLE)
-+	lisp_list (lisp_string ("sick"); lisp_string ("Ill"));
-+    }
-+  else
-+    lisp_list (lisp_string ("sick"); lisp_nil);
++    if (Sick) {
++        if (u.usick_type & SICK_VOMITABLE)
++            lisp_list(lisp_string("sick"); lisp_string("FoodPois"));
++        if (u.usick_type & SICK_NONVOMITABLE)
++            lisp_list(lisp_string("sick"); lisp_string("Ill"));
++    } else
++        lisp_list(lisp_string("sick"); lisp_nil);
 +
-+  if (Blind)
-+    lisp_list (lisp_string ("blind"); lisp_string ("Blind"));
-+  else
-+    lisp_list (lisp_string ("blind"); lisp_nil);
++    if (Blind)
++        lisp_list(lisp_string("blind"); lisp_string("Blind"));
++    else
++        lisp_list(lisp_string("blind"); lisp_nil);
 +
-+  if (Stunned)
-+    lisp_list (lisp_string ("stunned"); lisp_string ("Stun"));
-+  else
-+    lisp_list (lisp_string ("stunned"); lisp_nil);
++    if (Stunned)
++        lisp_list(lisp_string("stunned"); lisp_string("Stun"));
++    else
++        lisp_list(lisp_string("stunned"); lisp_nil);
 +
-+  if (Hallucination)
-+    lisp_list (lisp_string ("hallucination"); lisp_string ("Hallu"));
-+  else
-+    lisp_list (lisp_string ("hallucination"); lisp_nil);
++    if (Hallucination)
++        lisp_list(lisp_string("hallucination"); lisp_string("Hallu"));
++    else
++        lisp_list(lisp_string("hallucination"); lisp_nil);
 +
-+  if (Slimed)
-+    lisp_list (lisp_string ("slimed"); lisp_string ("Slime"));
-+  else
-+    lisp_list (lisp_string ("slimed"); lisp_nil);
++    if (Slimed)
++        lisp_list(lisp_string("slimed"); lisp_string("Slime"));
++    else
++        lisp_list(lisp_string("slimed"); lisp_nil);
 +
-+  if (near_capacity() > UNENCUMBERED)
-+    lisp_list (lisp_string ("encumbrance");
-+	       lisp_string (enc_stat[near_capacity()]));
-+  else
-+    lisp_list (lisp_string ("encumbrance"); lisp_nil);
++    if (near_capacity() > UNENCUMBERED)
++        lisp_list(lisp_string("encumbrance");
++                  lisp_string(enc_stat[near_capacity()]));
++    else
++        lisp_list(lisp_string("encumbrance"); lisp_nil);
 +
-+  printf (" ))\n");
++    printf(" ))\n");
 +}
++#endif
++
++/* call once for each field, then call with BL_FLUSH to output the result */
++
++/* Note that a bunch of the configuration for colors doesn't live here, but
++   instead resides in the Lisp half.  This allows us to some Lisp-based
++   overrides of faces, as well as putting configuration in a custom-set variable
++   instead of .nethacrc. */
 +
 +void
-+lisp_putstr(window, attr, str)
-+     winid window;
-+     int attr;
-+     const char *str;
++lisp_status_update(idx, ptr, chg, percent, color_and_attr, colormasks)
++int idx, chg UNUSED, percent, color_and_attr UNUSED;
++genericptr_t ptr;
++unsigned long *colormasks UNUSED;
 +{
-+  int mesgflags;
-+  mesgflags = attr & (ATR_URGENT | ATR_NOHISTORY);
-+  attr &= ~mesgflags;
-+
-+  static char statline1[BUFSZ] = "";
-+  if (window == WIN_STATUS)
-+    {
-+      if (statline1[0]=='\0')
-+        Strcpy (statline1, str);
-+      else
-+        {
-+          generate_status_line ();
-+          statline1[0]='\0';
++    long cond, *condptr = (long *) ptr;
++    char *nb, *text = (char *) ptr;
++    if (idx != BL_FLUSH) {
++        if (idx < 0 || idx >= MAXBLSTATS)
++            return; /* Should be a panic of some kind, but not sure */
++        if (idx == BL_CONDITION) {
++            cond = condptr ? *condptr : 0L;
++            nb = status_vals[idx];
++            *nb = '\0';
++            if (cond & BL_MASK_STONE)
++                Strcpy(nb = eos(nb), " Stone");
++            if (cond & BL_MASK_SLIME)
++                Strcpy(nb = eos(nb), " Slime");
++            if (cond & BL_MASK_STRNGL)
++                Strcpy(nb = eos(nb), " Strngl");
++            if (cond & BL_MASK_FOODPOIS)
++                Strcpy(nb = eos(nb), " FoodPois");
++            if (cond & BL_MASK_TERMILL)
++                Strcpy(nb = eos(nb), " TermIll");
++            if (cond & BL_MASK_BLIND)
++                Strcpy(nb = eos(nb), " Blind");
++            if (cond & BL_MASK_DEAF)
++                Strcpy(nb = eos(nb), " Deaf");
++            if (cond & BL_MASK_STUN)
++                Strcpy(nb = eos(nb), " Stun");
++            if (cond & BL_MASK_CONF)
++                Strcpy(nb = eos(nb), " Conf");
++            if (cond & BL_MASK_HALLU)
++                Strcpy(nb = eos(nb), " Hallu");
++            if (cond & BL_MASK_LEV)
++                Strcpy(nb = eos(nb), " Lev");
++            if (cond & BL_MASK_FLY)
++                Strcpy(nb = eos(nb), " Fly");
++            if (cond & BL_MASK_RIDE)
++                Strcpy(nb = eos(nb), " Ride");
++            /* We've broken the loop a little, so this should be updated
++             * independently */
++            lisp_cmd("status-condition-update",
++                     lisp_quote;
++                     lisp_list(status_vals[idx];););
++        } else {
++            if (idx == BL_GOLD) {
++                /* decode once instead of every time it's displayed */
++                status_vals[BL_GOLD][0] = ' ';
++                text = decode_mixed(&status_vals[BL_GOLD][1], text);
++                /* I'm too lazy to figure out how to cut out the “$:” prefix
++                   here, so its handled by the Lisp side when gold is updated.
++                   */
++            }
++            lisp_cmd("status-update", lisp_string(status_fieldnm[idx]);
++                     lisp_string(text); lisp_int(percent););
 +        }
++    } else { /* BL_FLUSH */
++        lisp_cmd("print-status", );
 +    }
-+  else if (window == WIN_MESSAGE && (mesgflags & ATR_NOHISTORY) != 0)
-+    lisp_cmd ("message-nohistory",
-+              lisp_literal (attr_to_string (attr));
-+              lisp_string (str));
-+  else if (window == WIN_MESSAGE)
-+    lisp_cmd ("message",
-+              lisp_literal (attr_to_string (attr));
-+              lisp_string (str));
-+  else
-+    lisp_cmd ("menu-putstr",
-+              lisp_int (window);
-+              lisp_literal (attr_to_string (attr));
-+              lisp_string (str));
++}
++
++void lisp_putstr(window, attr, str) winid window;
++int attr;
++const char *str;
++{
++    int mesgflags;
++    mesgflags = attr & (ATR_URGENT | ATR_NOHISTORY);
++    attr &= ~mesgflags;
++
++    if (window == WIN_STATUS) {
++        /* generate_status_line(); */
++        lisp_cmd("print-status",);
++    } else if (window == WIN_MESSAGE && (mesgflags & ATR_NOHISTORY) != 0)
++        lisp_cmd("message-nohistory", lisp_literal(attr_to_string(attr));
++                 lisp_string(str));
++    else if (window == WIN_MESSAGE)
++        lisp_cmd("message", lisp_literal(attr_to_string(attr));
++                 lisp_string(str));
++    else
++        lisp_cmd("menu-putstr", lisp_int(window);
++                 lisp_literal(attr_to_string(attr)); lisp_string(str));
 +}
 +
 +void
