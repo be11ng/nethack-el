@@ -63,8 +63,9 @@ These instructions are known to work on \*NIX systems (sorry Windows users).
 
 * Download either `nethack-366.tgz` from <https://nethack.org>.
 
-  * 331, 340, 341, 342, 343, and SLASH'EM 007e0 and 007e3 are supported to
-    varying extents.
+  * 331, 340, 341, 342, 343, and SLASH'EM 007e0 and 007e3 are not really
+    functional any more due to a major charge to the way statuses are passed
+    between the C and Lisp halves of `nethack-el`.
 
 * Untar the package and apply the respective patch
 
