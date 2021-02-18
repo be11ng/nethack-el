@@ -191,7 +191,7 @@ Matches if the ‘car’ of an element in ‘nethack-options’ is “hilite_sta
 
 
 (defun nethack-options-parse-status-behav (behav)
-  (list 'behavior
+  (cons 'behavior
         behav))
 
 (defun nethack-options-parse-attr (attributes)
@@ -265,7 +265,7 @@ For example, given a BEHAV of “movement”, returns a list of “lev”, “fl
               ;; For something like: hilite_status:hitpoints/<=30%/red/normal
               ;; This also applies for hilite_status:hitpoints-max/green&normal
               (t
-               (list 'else
+               (list (nethack-options-parse-status-behav 'else)
                      (nethack-options-parse-attr (pop ops)))))
              result)))
     (reverse result)))
