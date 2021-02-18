@@ -376,6 +376,139 @@ It can check these options, though it doesn't make sense to."
       (car result)
     result))
 
+(defun nethack-options-status-hilite (stat)
+  "Return a list of functions for a string STAT.
+
+Each function takes a new-value, old-value, and percent, and returns a list of
+faces using ‘nethack-options-attr-propertize’.
+
+If STAT is a condition, then the figuring out which status hilites to give it
+is done automatically, so “Stone” will match to “major”."
+  ;; TODO Cache results per STAT?
+  (seq-remove
+   #'null
+   (flatten-tree
+    (mapcar
+     (lambda (hilite)
+       (let* ((hilite-name (car hilite))
+              (hilite-case1 (cadr hilite))
+              (hilite-case2 (cddr hilite))
+              (hilite-behavior1 (cdar hilite-case1)))
+         (cond
+          ;; always
+          ((or (and (equal stat hilite-name)
+                    (equal 'else (car hilite-case1)))
+               (and (equal hilite-name "condition")
+                    (member stat nethack-options-cond-all)
+                    (equal 'else (car hilite-case1))))
+           (lambda (_new _old _percent)
+             (nethack-options-attr-propertize (cddr hilite-case1))))
+          ;; not condition, with second else clouse
+          ((and (equal stat hilite-name)
+                (equal 'else (car-safe hilite-case2)))
+           (cond
+            (hilite-case2
+             (nethack-options-status-function hilite-name
+                                              hilite-behavior1
+                                              (nethack-options-attr-propertize
+                                               (cddr hilite-case1))
+                                              (nethack-options-attr-propertize
+                                               (cddr hilite-case2))))))
+          ;; not condition, with second clause
+          ((and (equal stat hilite-name)
+                (cdr-safe hilite-case2))
+           (list
+            (nethack-options-status-function hilite-name
+                                             hilite-behavior1
+                                             (nethack-options-attr-propertize
+                                              (cddr hilite-case1)))
+            (nethack-options-status-function hilite-name
+                                             (cadar hilite-case2)
+                                             (nethack-options-attr-propertize
+                                              (cddr hilite-case2)))))
+          ;; not condition, with no second clause
+          ((equal stat hilite-name)
+           (nethack-options-status-function hilite-name
+                                            hilite-behavior1
+                                            (nethack-options-attr-propertize
+                                             (cddr hilite-case1))))
+          ;; condition, with second else clause
+          ((and (equal hilite-name "condition")
+                (member stat hilite-behavior1)
+                (equal 'else (car-safe hilite-case2)))
+           (nethack-options-status-function hilite-name
+                                            (car (member hilite-behavior1))
+                                            (nethack-options-attr-propertize
+                                             (cddr hilite-case1))
+                                            (nethack-options-attr-propertize
+                                             (cddr hilite-case2))))
+          ;; condition, with no second clause
+          ((and (equal hilite-name "condition")
+                (member stat hilite-behavior1))
+           (nethack-options-status-function hilite-name
+                                            (car (member hilite-behavior1))
+                                            (nethack-options-attr-propertize
+                                             (cddr hilite-case1))))
+          (t nil))))
+     nethack-options-hilites))))
+
+(defun nethack-options-status-function (name behav attr &optional else)
+  "Return a function checking for a BEHAV.
+
+Returns a function which takes a new, old, percent, and age, and computes, based
+on BEHAV, whether to return ATTR or not.
+
+NAME should be a string of the name of the attribute.  It is used to check
+  against things like ‘nethack-options-fields-percents’ if the BEHAV is parsable
+  as a percent.  If it isn't, it fails quietly and treats it like a textmatch.
+BEHAV should be a string representing the field to match.
+ATTR and ELSE should be lists of faces.  ATTR is returned from the function if
+  the condition matches.  As the name suggests, ELSE is returned from the
+  funciton if the condition does not match"
+  (setq percentp (and (string-suffix-p "%" behav)
+                      (member name nethack-options-fields-percents)))
+  (when percentp (setq behav (substring behav 0 -1)))
+  (if (not (string-equal name "condition"))
+      (lambda (new old percent age)
+        (setq val (or (and percentp percent) new))
+        (if (cond
+             ((string-prefix-p ">=" behav)
+              (>= (string-to-number val)
+                  (string-to-number (substring behav 2))))
+             ((string-prefix-p "<=" behav)
+              (<= (string-to-number val)
+                  (string-to-number (substring behav 2))))
+             ((string-prefix-p "<" behav)
+              (< (string-to-number val)
+                 (string-to-number (substring behav 1))))
+             ((string-prefix-p ">" behav)
+              (> (string-to-number val)
+                 (string-to-number (substring behav 1))))
+             ((string-equal "always" behav)
+              t)
+             ((and (string-equal "up" behav)
+                   (<= age nethack-status-highlight-delay))
+              (> (string-to-number new)
+                 (string-to-number old)))
+             ((and (string-equal "down" behav)
+                   (<= age nethack-status-highlight-delay))
+              (< (string-to-number new)
+                 (string-to-number old)))
+             ((and (string-equal "changed" behav)
+                   (<= age nethack-status-highlight-delay))
+              (not (= (string-to-number new)
+                      (string-to-number old))))
+             (t
+              ;; works for both text match and absolute value
+              (string-equal val behav)))
+            attr
+          else))
+    ;; Is a condition
+    (lambda (new old percent age)
+      (if (string-equal behav new)
+          attr
+        else))))
+
 
 
 (defun nethack-options-highlight-menu ()
