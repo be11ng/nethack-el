@@ -222,6 +222,22 @@ These faces correspond to the input of ATTRIBUTES.  ATTRIBUTES should be an
        (nethack-options-color-face (cdr attr))))
    attributes))
 
+(defun nethack-options-substitute-conditions (behav)
+  "Turn a condition string into a list of matches.
+
+For example, given a BEHAV of “movement”, returns a list of “lev”, “fly”, and
+“ride”."
+  (pcase behav
+    ((or "major_troubles"
+         "major")
+     nethack-options-cond-major-troubles)
+    ((or "minor_troubles"
+         "minor")
+     nethack-options-cond-minor-troubles)
+    ("movement" nethack-options-cond-movement)
+    ("all" nethack-options-cond-all)
+    (_ (list behav))))
+
 (defun nethack-options-parse-hilite-status (params)
   (let* ((ops (split-string params "/" t "[ \t\n\r]+"))
          (field-name (pop ops))
