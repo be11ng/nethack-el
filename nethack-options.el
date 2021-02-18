@@ -259,7 +259,7 @@ For example, given a BEHAV of “movement”, returns a list of “lev”, “fl
                                  (list behav)))))
                        (nethack-options-parse-attr (pop ops)))))
               ((and (nethack-options-status-field-p field-name)
-                    (cdr ops))
+                    (cdr ops))          ; (cddr ops)
                (list (nethack-options-parse-status-behav (pop ops))
                      (nethack-options-parse-attr (pop ops))))
               ;; For something like: hilite_status:hitpoints/<=30%/red/normal
