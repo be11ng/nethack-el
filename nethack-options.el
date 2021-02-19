@@ -387,70 +387,80 @@ is done automatically, so “Stone” will match to “major”."
   ;; TODO Cache results per STAT?
   (seq-remove
    #'null
-   (flatten-tree
-    (mapcar
-     (lambda (hilite)
-       (let* ((hilite-name (car hilite))
-              (hilite-case1 (cadr hilite))
-              (hilite-case2 (cddr hilite))
-              (hilite-behavior1 (cdar hilite-case1)))
-         (cond
-          ;; always
-          ((or (and (equal stat hilite-name)
-                    (equal 'else (car hilite-case1)))
-               (and (equal hilite-name "condition")
-                    (member stat nethack-options-cond-all)
-                    (equal 'else (car hilite-case1))))
-           (lambda (_new _old _percent)
-             (nethack-options-attr-propertize (cddr hilite-case1))))
-          ;; not condition, with second else clouse
-          ((and (equal stat hilite-name)
-                (equal 'else (car-safe hilite-case2)))
-           (cond
-            (hilite-case2
-             (nethack-options-status-function hilite-name
-                                              hilite-behavior1
-                                              (nethack-options-attr-propertize
-                                               (cddr hilite-case1))
-                                              (nethack-options-attr-propertize
-                                               (cddr hilite-case2))))))
-          ;; not condition, with second clause
-          ((and (equal stat hilite-name)
-                (cdr-safe hilite-case2))
-           (list
-            (nethack-options-status-function hilite-name
-                                             hilite-behavior1
-                                             (nethack-options-attr-propertize
-                                              (cddr hilite-case1)))
-            (nethack-options-status-function hilite-name
-                                             (cadar hilite-case2)
-                                             (nethack-options-attr-propertize
-                                              (cddr hilite-case2)))))
+   (mapcar
+    (lambda (hilite)
+      (let* ((hilite-name (car hilite))
+             (hilite-case1 (cadr hilite))
+             (hilite-case2 (cddr hilite))
+             (hilite-behavior1 (cdar hilite-case1)))
+        (cond
+         ;; always
+         ((or (and (equal stat hilite-name)
+                   (equal 'else (car hilite-case1)))
+              (and (equal hilite-name "condition")
+                   (member stat nethack-options-cond-all)
+                   (equal 'else (car hilite-case1))))
+          (lambda (_new _old _percent)
+            (nethack-options-attr-propertize (cddr hilite-case1))))
+         ;; not condition, with second else clouse
+         ((and (equal stat hilite-name)
+               (equal 'else (car-safe hilite-case2)))
+          (cond
+           (hilite-case2
+            (nethack-options-status-function
+             hilite-name
+             hilite-behavior1
+             (nethack-options-attr-propertize
+              (cddr hilite-case1))
+             (nethack-options-attr-propertize
+              (cddr hilite-case2))))))
+         ;; not condition, with second clause
+         ((and (equal stat hilite-name)
+               (cdr-safe hilite-case2))
+          (lambda (new old percent)
+            (append
+             (funcall
+              (nethack-options-status-function
+               hilite-name
+               hilite-behavior1
+               (nethack-options-attr-propertize
+                (cddr hilite-case1)))
+              new old percent))
+            (funcall
+             (nethack-options-status-function
+              hilite-name
+              (cadar hilite-case2)
+              (nethack-options-attr-propertize
+               (cddr hilite-case2)))
+             new old percent))
           ;; not condition, with no second clause
           ((equal stat hilite-name)
-           (nethack-options-status-function hilite-name
-                                            hilite-behavior1
-                                            (nethack-options-attr-propertize
-                                             (cddr hilite-case1))))
-          ;; condition, with second else clause
-          ((and (equal hilite-name "condition")
-                (member stat hilite-behavior1)
-                (equal 'else (car-safe hilite-case2)))
-           (nethack-options-status-function hilite-name
-                                            (car (member hilite-behavior1))
-                                            (nethack-options-attr-propertize
-                                             (cddr hilite-case1))
-                                            (nethack-options-attr-propertize
-                                             (cddr hilite-case2))))
-          ;; condition, with no second clause
-          ((and (equal hilite-name "condition")
-                (member stat hilite-behavior1))
-           (nethack-options-status-function hilite-name
-                                            (car (member hilite-behavior1))
-                                            (nethack-options-attr-propertize
-                                             (cddr hilite-case1))))
-          (t nil))))
-     nethack-options-hilites))))
+           (nethack-options-status-function
+            hilite-name
+            hilite-behavior1
+            (nethack-options-attr-propertize
+             (cddr hilite-case1)))))
+         ;; condition, with second else clause
+         ((and (equal hilite-name "condition")
+               (member stat hilite-behavior1)
+               (equal 'else (car-safe hilite-case2)))
+          (nethack-options-status-function
+           hilite-name
+           (car (member stat hilite-behavior1))
+           (nethack-options-attr-propertize
+            (cddr hilite-case1))
+           (nethack-options-attr-propertize
+            (cddr hilite-case2))))
+         ;; condition, with no second clause
+         ((and (equal hilite-name "condition")
+               (member stat hilite-behavior1))
+          (nethack-options-status-function
+           hilite-name
+           (car (member stat hilite-behavior1))
+           (nethack-options-attr-propertize
+            (cddr hilite-case1))))
+         (t nil))))
+    nethack-options-hilites)))
 
 (defun nethack-options-status-function (name behav attr &optional else)
   "Return a function checking for a BEHAV.
