@@ -400,45 +400,43 @@ is done automatically, so “Stone” will match to “major”."
               (and (equal hilite-name "condition")
                    (member stat nethack-options-cond-all)
                    (equal 'else (car hilite-case1))))
-          (lambda (_new _old _percent)
-            (nethack-options-attr-propertize (cddr hilite-case1))))
+          (lambda (_new _old _percent _age)
+            (nethack-options-attr-propertize (cdadr hilite-case1))))
          ;; not condition, with second else clouse
          ((and (equal stat hilite-name)
                (equal 'else (car-safe hilite-case2)))
-          (cond
-           (hilite-case2
-            (nethack-options-status-function
-             hilite-name
-             hilite-behavior1
-             (nethack-options-attr-propertize
-              (cddr hilite-case1))
-             (nethack-options-attr-propertize
-              (cddr hilite-case2))))))
+          (nethack-options-status-function
+           hilite-name
+           hilite-behavior1
+           (nethack-options-attr-propertize
+            (cdadr hilite-case1))
+           (nethack-options-attr-propertize
+            (cdadr hilite-case2))))
          ;; not condition, with second clause
          ((and (equal stat hilite-name)
                (cdr-safe hilite-case2))
-          (lambda (new old percent)
+          (lambda (new old percent age)
             (funcall
              (nethack-options-status-function
               hilite-name
               hilite-behavior1
               (nethack-options-attr-propertize
-               (cddr hilite-case1))
+               (cdadr hilite-case1))
               (funcall
                (nethack-options-status-function
                 hilite-name
                 (cadar hilite-case2)
                 (nethack-options-attr-propertize
-                 (cddr hilite-case2)))
-               new old percent))
-             new old percent))
+                 (cdadr hilite-case2)))
+               new old percent age))
+             new old percent age))
           ;; not condition, with no second clause
           ((equal stat hilite-name)
            (nethack-options-status-function
             hilite-name
             hilite-behavior1
             (nethack-options-attr-propertize
-             (cddr hilite-case1)))))
+             (cdadr hilite-case1)))))
          ;; condition, with second else clause
          ((and (equal hilite-name "condition")
                (member stat hilite-behavior1)
@@ -447,26 +445,28 @@ is done automatically, so “Stone” will match to “major”."
            hilite-name
            (car (member stat hilite-behavior1))
            (nethack-options-attr-propertize
-            (cddr hilite-case1))
+            (cdadr hilite-case1))
            (nethack-options-attr-propertize
-            (cddr hilite-case2))))
+            (cdadr hilite-case2))))
          ;; condition, with second clause
          ((and (equal hilite-name "condition")
                (member stat hilite-behavior1)
                (cdr-safe hilite-case2))
-          (lambda (new old percent)
+          (lambda (new old percent age)
             (funcall
              (nethack-options-status-function
               hilite-name
               (car (member stat hilite-behavior1))
               (nethack-options-attr-propertize
-               (cddr hilite-case1))
+               (cdadr hilite-case1))
               (funcall
                (nethack-options-status-function
                 hilite-name
                 (car (member stat (cadar hilite-case2)))
                 (nethack-options-attr-propertize
-                 (cddr hilite-case2))))))))
+                 (cdadr hilite-case2))
+                new old percent age))
+              new old percent age))))
          ;; condition, with no second clause
          ((and (equal hilite-name "condition")
                (member stat hilite-behavior1))
@@ -474,7 +474,7 @@ is done automatically, so “Stone” will match to “major”."
            hilite-name
            (car (member stat hilite-behavior1))
            (nethack-options-attr-propertize
-            (cddr hilite-case1))))
+            (cdadr hilite-case1))))
          (t nil))))
     nethack-options-hilites)))
 
@@ -530,7 +530,7 @@ ATTR and ELSE should be lists of faces.  ATTR is returned from the function if
             attr
           else))
     ;; Is a condition
-    (lambda (new old percent age)
+    (lambda (new _old _percent _age)
       (if (string-equal behav new)
           attr
         else))))
