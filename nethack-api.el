@@ -104,7 +104,10 @@
           (setq string "18/**"))
          (t
           (setq string (format "18/%02d" (- new-value 18))))))
-    (if face
+    (if (and face
+             ;; FIXME Store polymorphs?
+             (not (string-equal name "HD"))
+             (equal new-value "0"))
         (nh-propertize string 'face face)
       string)))
 
@@ -182,13 +185,69 @@ See ‘nh-status-attributes’ for details on the format.")
 (defun nh-status-string (format)
   (mapconcat
    (lambda (ch)
-     (let ((fn (intern-soft (concat "nh-status-" (char-to-string ch)))))
-       (if fn (funcall fn) (char-to-string ch))))
+     (let ((stat (nh-status-char-to-format ch)))
+       (cond
+        ((equal stat "condition")
+         (mapconcat
+          (lambda (x)
+            (let ((c (nh-propertize-attribute x "%s")))
+              (if (not (string-equal c ""))
+                  (concat c " "))))
+          nh-status-conditions
+          ""))
+        (stat
+         (nh-propertize-attribute
+          (assoc (car stat) nh-status-attributes)
+          (cdr stat)))                        ; String format
+        (t (char-to-string ch)))))
    format nil))
+
+;; TODO make this part of a unified defcustom array?
+(defun nh-status-char-to-format (ch)
+  "Take character CH and return the format.
+
+If CH is the character “f” for “conditions”, then the string “condition” is
+  returned instead."
+  (pcase ch
+    (?n '("title" . "%s"))
+    (?s '("strength" . "St:%s"))
+    (?d '("dexterity" . "Dx:%s"))
+    (?c '("constitution" . "Cn:%s"))
+    (?i '("intelligence" . "In:%s"))
+    (?W '("wisdom" . "Wi:%s"))
+    (?C '("charisma" . "Ch:%s"))
+    (?A '("alignment" . "%s"))
+    (?S '("score" . "S:%s"))
+    (?r '("carrying-capacity" . "%s"))
+    ;; TODO see note above on gold
+    (?g '("gold" . "%s"))
+    (?p '("power" . "Pw:%s"))
+    (?P '("power-max" . "(%s)"))
+    (?e '("experience-level" . "Xp:%s"))
+    (?a '("armor-class" . "AC:%s"))
+    (?D '("HD" . "HD:%s"))
+    (?t '("time" . "T:%s"))
+    (?G '("hunger" . "%s"))
+    (?h '("hitpoints" . "HP:%s"))
+    (?H '("hitpoints-max" . "(%s)"))
+    (?l '("dungeon-level" . "%s"))
+    (?E '("experience" . "/%s"))
+    (?f "condition")))
 
 ;; This is called upon from the C half, so it should be prefixed
 ;; “nhapi-” rather than “nh-”.
 (defun nhapi-print-status ()
+  ;; title value oldvalue percent age
+  (setq nh-status-attributes
+        (mapcar
+         (lambda (attr)
+           (append (butlast attr 1) (list (1+ (nth 4 attr)))))
+         nh-status-attributes))
+  (setq nh-status-conditions
+        (mapcar
+         (lambda (attr)
+           (append (butlast attr 1) (list (1+ (nth 4 attr)))))
+         nh-status-conditions))
   (cl-case nethack-status-style
     (:header-line
      (with-current-buffer nh-map-buffer
