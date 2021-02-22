@@ -368,13 +368,10 @@ It can check these options, though it doesn't make sense to."
   ;; something of that like but this works.
   (when (symbolp op)
     (setq op (symbol-name op)))
-  (setq result
-        (or (member op nethack-options)
-            (assoc op nethack-options)))
-  (if (and result
-           (stringp (car result)))
-      (car result)
-    result))
+  (cl-assert (stringp op))
+  (if-let ((val (member op nethack-options)))
+      (car val)
+    (assoc op nethack-options)))
 
 (defun nethack-options-status-hilite (stat)
   "Return a list of functions for a string STAT.

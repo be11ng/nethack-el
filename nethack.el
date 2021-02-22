@@ -58,7 +58,10 @@
   :type '(integer)
   :group 'nethack)
 
-(defcustom nethack-status-highlight-delay 5
+(defcustom nethack-status-highlight-delay
+  (if-let ((op (cdr-safe (nethack-options-set-p "statushilites"))))
+      (string-to-number op)
+    5)
   "The number of turns to keep a changed status field highlighted."
   :type '(integer)
   :group 'nethack)
