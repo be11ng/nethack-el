@@ -191,7 +191,7 @@ Matches if the ‘car’ of an element in ‘nethack-options’ is “hilite_sta
 
 
 (defun nethack-options-parse-status-behav (behav)
-  (cons 'behavior
+  (list 'behavior
         behav))
 
 (defun nethack-options-parse-attr (attributes)
