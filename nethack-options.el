@@ -407,7 +407,7 @@ is done automatically, so “Stone” will match to “major”."
                (equal 'else (car-safe hilite-case2)))
           (nethack-options-status-function
            hilite-name
-           hilite-behavior1
+           (car hilite-behavior1)
            (nethack-options-attr-propertize
             (cdadr hilite-case1))
            (nethack-options-attr-propertize
@@ -419,7 +419,7 @@ is done automatically, so “Stone” will match to “major”."
             (funcall
              (nethack-options-status-function
               hilite-name
-              hilite-behavior1
+              (car hilite-behavior1)
               (nethack-options-attr-propertize
                (cdadr hilite-case1))
               (funcall
@@ -429,14 +429,14 @@ is done automatically, so “Stone” will match to “major”."
                 (nethack-options-attr-propertize
                  (cdadr hilite-case2)))
                new old percent age))
-             new old percent age))
-          ;; not condition, with no second clause
-          ((equal stat hilite-name)
-           (nethack-options-status-function
-            hilite-name
-            hilite-behavior1
-            (nethack-options-attr-propertize
-             (cdadr hilite-case1)))))
+             new old percent age)))
+         ;; not condition, with no second clause
+         ((string-equal stat hilite-name)
+          (nethack-options-status-function
+           hilite-name
+           (car hilite-behavior1)
+           (nethack-options-attr-propertize
+            (cdadr hilite-case1))))
          ;; condition, with second else clause
          ((and (equal hilite-name "condition")
                (member stat hilite-behavior1)
