@@ -145,22 +145,22 @@ COLOR can be either a string or a symbol.  Translation is automatically done
   "The menucolors set.
 
 Set by ‘nethack-options-get-menucolors’, which trawls through ‘nethack-options’
-and looks for the prefix symbol “'menucolor”.  This means that the data
-structure itself is buried in ‘nethack-options-parse-menucolor’.")
+and looks for the prefix “\"menucolor\"”.  This means that the data structure
+itself is buried in ‘nethack-options-parse-menucolor’.")
 
 (defun nethack-options-get-menucolors ()
   "Set ‘nethack-options-menucolors’.
 
-‘nethack-options-menucolors’ is set to a list of lists.  The “'menucolor” token
-is stripped away, so the first element of each element is a regexp (the second
-being the attributes).
+‘nethack-options-menucolors’ is set to a list of lists.  The “\"menucolor\"”
+token is stripped away, so the first element of each element is a regexp (the
+second being the attributes).
 
-Matches if the ‘car’ of an element in ‘nethack-options’ is “'menucolor”."
+Matches if the ‘car’ of an element in ‘nethack-options’ is “\"menucolor\"”."
   (setq nethack-options-menucolors
         (seq-map #'cdr
                  (seq-filter
                   (lambda (elt)
-                    (eq (car-safe elt) 'menucolor))
+                    (string-equal (car-safe elt) "menucolor"))
                   nethack-options))))
 
 (defvar nethack-options-hilites nil
@@ -285,7 +285,7 @@ Returns an alist entry of the options set."
   (setq elem (car elem))                ; There should only be 1 item
   ;; Remove quotes from either side of ‘elem’
   (setq elem (substring elem 1 -1))
-  (list 'menucolor
+  (list "menucolor"
         elem
         (nethack-options-parse-attr attr)))
 
@@ -349,7 +349,7 @@ Maybe I should have used eieio."
              ;; ((string-prefix-p "BINDINGS=" elem))
              ;; ((string-prefix-p "SOUND=" elem))
              ;; I'm probably not going to process “CHOOSE” lines
-             ))
+             (t nil)))
           (widen)
           (forward-line 1)))
       result)))
@@ -557,7 +557,8 @@ at a time."
       (mapc (lambda (x)
               (if (re-search-forward (car x) nil t)
                   (put-text-property start end 'face
-                                     (nethack-options-attr-propertize (cadr x)))))
+                                     (nethack-options-attr-propertize
+                                      (cadr x)))))
             nethack-options-menucolors))))
 
 
