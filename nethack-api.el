@@ -106,9 +106,9 @@ ATTRIBUTE is a list going attribute name, value, oldvalue, percent, and age.  An
          (t
           (setq string (format "18/%02d" (- new-value 18))))))
     (if (and face
-             ;; FIXME Store polymorphs?
-             (not (string-equal name "HD"))
-             (equal new-value "0"))
+             ;; TODO Store polymorphs?
+             (not (and (string-equal name "HD")
+                       (equal new-value "0"))))
         (nh-propertize string 'face face)
       string)))
 
