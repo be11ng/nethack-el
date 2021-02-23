@@ -73,29 +73,30 @@
 
 
 ;;; Status/Attribute code:b
-(defun nh-propertize-attribute (attribute &optional how)
-  ;; TODO: this code should depend on the hilite_status option
-  (let* ((new-value (car attribute))
-         (old-value (cadr attribute))
-         (age (caddr attribute))
-         (string (format "%s" (or new-value "")))
-         (face (if (<= age nethack-status-highlight-delay)
-                   (cond
-                    ((numberp new-value)
-                     (cond
-                      ((eq how 'lower-is-better)
-                       (if (> new-value old-value)
-                           'nethack-status-bad-face
-                         'nethack-status-good-face))
-                      (t
-                       (if (> new-value old-value)
-                           'nethack-status-good-face
-                         'nethack-status-bad-face))))
-                    ((null new-value)
-                     nil)
-                    (t
-                     'nethack-status-neutral-face)))))
-    (if (and (eq how 'strength)
+(defun nh-propertize-attribute (attribute form)
+  "Give an ATTRIBUTE the correct faces.
+
+ATTRIBUTE is a list going attribute name, value, oldvalue, percent, and age.  An
+  attribute name is a string representing either  a stat or a condition."
+  (unless nethack-options-hilites
+    (nethack-options-get-hilites))
+  (let* ((name (nth 0 attribute))
+         (new-value (nth 1 attribute))
+         (old-value (nth 2 attribute))
+         (percent (nth 3 attribute))
+         (age (nth 4 attribute))
+         (string (format form (or new-value "")))
+         (face nil))
+    (when (nethack-options-set-p "statushilites")
+      (setq face
+            ;; TODO: Make this so that things like “up” takes precedence over
+            ;; “changed” work?
+            (mapcan
+             (lambda (func)
+               ;; feeds the function new old percent age
+               (apply func (cdr attribute)))
+             (nethack-options-status-hilite name))))
+    (if (and (equal name "strength")
              (> new-value 18))
         (cond
          ((> new-value 118)
