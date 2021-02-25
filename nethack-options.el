@@ -399,9 +399,9 @@ is done automatically, so “Stone” will match to “major”."
               ;; always
               ((or (and (equal hilite-name "condition")
                         (member stat nethack-options-cond-all)
-                        (equal 'else (car hilite-case1)))
+                        (equal 'else (car hilite-behavior1)))
                    (and (equal stat hilite-name)
-                        (equal 'else (car hilite-case1))))
+                        (equal 'else (car hilite-behavior1))))
                (lambda (_new _old _percent _age)
                  (nethack-options-attr-propertize (cdadr hilite-case1))))
               ;; not condition, with second else clouse
