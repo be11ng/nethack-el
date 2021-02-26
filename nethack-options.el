@@ -499,7 +499,7 @@ ATTR and ELSE should be lists of faces.  ATTR is returned from the function if
   (when percentp (setq behav (substring behav 0 -1)))
   (if (not (string-equal name "condition"))
       (lambda (new old percent age)
-        (setq val (or (and percentp percent) new))
+        (setq val (or (and percentp (number-to-string percent)) new))
         (if (cond
              ((string-prefix-p ">=" behav)
               (>= (string-to-number val)
