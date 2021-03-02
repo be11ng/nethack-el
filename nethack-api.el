@@ -105,12 +105,14 @@ ATTRIBUTE is a list going attribute name, value, oldvalue, percent, and age.  An
                ;; feeds the function new old percent age
                (apply func (cdr attribute)))
              (nethack-options-status-hilite name))))
-    (if (and face
-             ;; TODO Store polymorphs?
-             (not (and (string-equal name "HD")
-                       (equal new-value "0"))))
-        (nh-propertize string 'face face)
-      string)))
+    ;; TODO Store polymorphs?
+    ;; Do not display HD unless polymorphed (it has a value)
+    (if (and (string-equal name "HD")
+             (equal new-value "0"))
+        ""
+      (if face
+          (nh-propertize string 'face face)
+        string))))
 
 ;; value oldvalue percent age
 (defvar nh-status-attributes nil
