@@ -181,7 +181,7 @@ See ‘nh-status-attributes’ for details on the format.")
                   0))
       (when (not (string-equal field "T"))
         (run-hook-with-args 'nethack-status-attribute-change-functions
-                            field new-value old-value)))))
+                             field new-value old-value percent)))))
 
 (defun nh-status-string (format)
   (mapconcat

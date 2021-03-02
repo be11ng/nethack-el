@@ -140,7 +140,7 @@ map buffer. t means in the minibuffer."
   "List of functions to call after a status attribute change.
 
 Three arguments are passed to each function: the name of the
-attribute, the new value and the old value."
+attribute, the new value, the old value, and the percent."
   :type '(hook)
   :group 'nethack)
 
