@@ -174,7 +174,7 @@ See ‘nh-status-attributes’ for details on the format.")
          (age (cadddr variable)))
     (unless (equal new-value old-value)
       ;; TODO should this be in the let?
-      (setf (alist-get field nh-status-attributes)
+      (setf (alist-get field nh-status-attributes nil nil #'equal)
             (list new-value
                   old-value
                   percent
