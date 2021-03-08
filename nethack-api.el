@@ -830,7 +830,6 @@ the menu is dismissed."
 (defun nhapi-end ()
   (message "Goodbye.")
   ;; Prevent a memory leak
-  (clrhash nethack-options-status-hilite-results)
   (run-hooks 'nethack-end-hook))
 
 ;; Options
