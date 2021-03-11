@@ -87,6 +87,9 @@ current level to the start of the next experience level.")
           nethack-options-cond-movement)
   "List of all condition flags.")
 
+(defconst nethack-options-fields-characteristics
+  '("strength" "dexterity" "constitution" "intelligence" "wisdom" "charisma"))
+
 (defun nethack-options-status-field-p (field)
   (member
    (if (symbolp field)
@@ -373,6 +376,16 @@ It can check these options, though it doesn't make sense to."
       (car val)
     (assoc op nethack-options)))
 
+(defun nethack-options-equal (a b)
+  "Check if two hilite names are quivalent.
+
+Specifically, this checks for the field “characteristics”."
+  (or (and (equal a "characteristics")
+           (member b nethack-options-fields-characteristics))
+      (and (equal b "characteristics")
+           (member a nethack-options-fields-characteristics))
+      (equal a b)))
+
 (defun nethack-options-status-hilite (stat)
   "Return a list of functions for a string STAT.
 
@@ -392,15 +405,15 @@ is done automatically, so “Stone” will match to “major”."
              (hilite-behavior1 (cdar hilite-case1)))
         (cond
          ;; always
-         ((or (and (equal hilite-name "condition")
+         ((or (and (nethack-options-equal hilite-name "condition")
                    (member stat nethack-options-cond-all)
                    (equal 'else (car hilite-behavior1)))
-              (and (equal stat hilite-name)
+              (and (nethack-options-equal stat hilite-name)
                    (equal 'else (car hilite-behavior1))))
           (lambda (_new _old _percent _age)
             (nethack-options-attr-propertize (cdadr hilite-case1))))
          ;; not condition, with second else clouse
-         ((and (equal stat hilite-name)
+         ((and (nethack-options-equal stat hilite-name)
                (equal 'else (car-safe hilite-case2)))
           (nethack-options-status-function
            hilite-name
@@ -410,7 +423,7 @@ is done automatically, so “Stone” will match to “major”."
            (nethack-options-attr-propertize
             (cdadr hilite-case2))))
          ;; not condition, with second clause
-         ((and (equal stat hilite-name)
+         ((and (nethack-options-equal stat hilite-name)
                (cdr-safe hilite-case2))
           (lambda (new old percent age)
             (funcall
@@ -428,7 +441,7 @@ is done automatically, so “Stone” will match to “major”."
                new old percent age))
              new old percent age)))
          ;; not condition, with no second clause
-         ((string-equal stat hilite-name)
+         ((nethack-options-equal stat hilite-name)
           (nethack-options-status-function
            hilite-name
            (car hilite-behavior1)
