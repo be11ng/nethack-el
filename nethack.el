@@ -41,6 +41,7 @@
 (require 'nethack-api)
 (require 'nethack-cmd)
 (require 'nethack-keys)
+(require 'nethack-options)
 (require 'url)
 
 (defgroup nethack nil
@@ -57,13 +58,16 @@
   :type '(integer)
   :group 'nethack)
 
-(defcustom nethack-status-highlight-delay 5
+(defcustom nethack-status-highlight-delay
+  (if-let ((op (cdr-safe (nethack-options-set-p "statushilites"))))
+      (string-to-number op)
+    5)
   "The number of turns to keep a changed status field highlighted."
   :type '(integer)
   :group 'nethack)
 
 (defcustom nethack-status-buffer-format
-  "n w s d c i W C A\nL l g h p a e t f"
+  "n s d c i W C A S\nl g hH pP a eED t Grf"
   "Format string for the status in `nh-status-buffer'."
   :type '(string)
   :group 'nethack)
@@ -75,7 +79,7 @@
   :group 'nethack)
 
 (defcustom nethack-status-header-line-format
-  "n w <L,l> A   f"
+  "n <L,l> A   f"
   "Format string for the status on the header-line."
   :type '(string)
   :group 'nethack)
@@ -136,7 +140,7 @@ map buffer. t means in the minibuffer."
   "List of functions to call after a status attribute change.
 
 Three arguments are passed to each function: the name of the
-attribute, the new value and the old value."
+attribute, the new value, the old value, and the percent."
   :type '(hook)
   :group 'nethack)
 
@@ -155,52 +159,6 @@ attribute, the new value and the old value."
   "Customizations for faces used by Enethack."
   :group 'nethack)
 
-(defface nethack-status-good-face
-  `((((type tty)
-      (class color))
-     (:background "green" :foreground "black"))
-    (((class color)
-      (background light))
-     (:background "darkseagreen2"))
-    (((class color)
-      (background dark))
-     (:background "green4")))
-  "Face for highlighting good changes in the status buffer."
-  :group 'nethack-faces)
-
-(defface nethack-status-bad-face
-  `((((type tty)
-      (class color))
-     (:background "red"))
-    (((class color)
-      (background light))
-     (:background "pink"))
-    (((class color)
-      (background dark))
-     (:background "red"))
-    (t
-     (:inverse-video t)))
-  "Face for highlighting bad changes in the status buffer."
-  :group 'nethack-faces)
-
-(defface nethack-status-neutral-face
-  `((((type tty)
-      (class color))
-     (:foreground "white" :background "blue"))
-    (((type tty)
-      (class mono))
-     (:inverse-video t))
-    (((class color)
-      (background dark))
-     (:background "blue3"))
-    (((class color)
-      (background light))
-     (:background "lightgoldenrod2"))
-    (t
-     (:background "gray")))
-  "Face for highlighting neutral changes in the status buffer."
-  :group 'nethack-faces)
-
 (defface nethack-message-highlight-face
   '((t (:foreground "black" :background "green")))
   "The face used to highlight new text in the message window."
@@ -211,13 +169,9 @@ attribute, the new value and the old value."
   "Nethack default face."
   :group 'nethack-faces)
 
-(defface nethack-atr-uline-face
-  `((t (:underline t)))
-  "Nethack underline face.")
-
-(defface nethack-atr-bold-face
-  `((t (:bold t)))
-  "Nethack bold face."
+(defface nethack-atr-dim-face
+  `((t (:weight light)))
+  "Nethack dim face."
   :group 'nethack-faces)
 
 (defface nethack-atr-blink-face
@@ -225,9 +179,19 @@ attribute, the new value and the old value."
   "Nethack blink face."
   :group 'nethack-faces)
 
+(defface nethack-atr-uline-face
+  `((t (:underline t)))
+  "Nethack underline face."
+  :group 'nethack-faces)
+
 (defface nethack-atr-inverse-face
   `((t (:inverse-video t)))
   "Nethack inverse face."
+  :group 'nethack-faces)
+
+(defface nethack-atr-bold-face
+  `((t (:bold t)))
+  "Nethack bold face."
   :group 'nethack-faces)
 
 (defface nethack-black-face
@@ -738,7 +702,8 @@ delete the contents, perhaps logging the text."
           (cond ((or (equal prompt "command")
                      (equal prompt "menu")
                      (equal prompt "dummy"))
-                 (nh-print-status)
+                 ;; I Don't think we need this...
+                 ;; (nhapi-print-status)
                  (sit-for 0)
                  (setq nh-at-prompt t)
                  (run-hook-with-args 'nh-at-prompt-hook prompt)))))))

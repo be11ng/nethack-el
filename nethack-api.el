@@ -35,6 +35,7 @@
 (require 'nethack-compat)
 (require 'gamegrid)
 (require 'nethack-keys)
+(require 'nethack-options)
 
 ;;; Buffer handling
 (defvar nh-map-buffer nil)
@@ -72,133 +73,184 @@
 
 
 ;;; Status/Attribute code:b
-(defun nh-propertize-attribute (attribute &optional how)
-  (let* ((new-value (car attribute))
-         (old-value (cadr attribute))
-         (age (car (cddr attribute)))
-         (string (format "%s" (or new-value "")))
-         (face (if (<= age nethack-status-highlight-delay)
-                   (cond
-                    ((numberp new-value)
-                     (cond
-                      ((eq how 'lower-is-better)
-                       (if (> new-value old-value)
-                           'nethack-status-bad-face
-                         'nethack-status-good-face))
-                      (t
-                       (if (> new-value old-value)
-                           'nethack-status-good-face
-                         'nethack-status-bad-face))))
-                    ((null new-value)
-                     nil)
-                    (t
-                     'nethack-status-neutral-face)))))
-    (if (and (eq how 'strength)
-             (> new-value 18))
-        (cond
-         ((> new-value 118)
-          (setq string (prin1-to-string (- new-value 100))))
-         ((= new-value 118)
-          (setq string "18/**"))
-         (t
-          (setq string (format "18/%02d" (- new-value 18))))))
-    (if face
-        (nh-propertize string 'face face)
-      string)))
+(defun nh-propertize-attribute (attribute form)
+  "Give an ATTRIBUTE the correct faces.
 
-;; value oldvalue age
-(defvar nh-status-attribute-name (list nil nil 0))
-(defvar nh-status-attribute-monster (list nil nil 0))
-(defvar nh-status-attribute-rank (list nil nil 0))
-(defvar nh-status-attribute-St (list 0 0 0))
-(defvar nh-status-attribute-Dx (list 0 0 0))
-(defvar nh-status-attribute-Co (list 0 0 0))
-(defvar nh-status-attribute-In (list 0 0 0))
-(defvar nh-status-attribute-Wi (list 0 0 0))
-(defvar nh-status-attribute-Ch (list 0 0 0))
-(defvar nh-status-attribute-Align (list nil nil 0))
-(defvar nh-status-attribute-Dungeon (list nil nil 0))
-(defvar nh-status-attribute-Dlvl (list 0 0 0))
-(defvar nh-status-attribute-$ (list 0 0 0))
-(defvar nh-status-attribute-HP (list 0 0 0))
-(defvar nh-status-attribute-HPmax (list 0 0 0))
-(defvar nh-status-attribute-PW (list 0 0 0))
-(defvar nh-status-attribute-PWmax (list 0 0 0))
-(defvar nh-status-attribute-AC (list 0 0 0))
-(defvar nh-status-attribute-Level (list 0 0 0))
-(defvar nh-status-attribute-XP (list 0 0 0))
-(defvar nh-status-attribute-HD (list 0 0 0))
-(defvar nh-status-attribute-T (list 0 0 0))
-(defvar nh-status-attribute-Score (list 0 0 0))
-(defvar nh-status-attribute-confusion (list nil nil 0))
-(defvar nh-status-attribute-hunger (list nil nil 0))
-(defvar nh-status-attribute-sick (list nil nil 0))
-(defvar nh-status-attribute-blind (list nil nil 0))
-(defvar nh-status-attribute-stunned (list nil nil 0))
-(defvar nh-status-attribute-hallucination (list nil nil 0))
-(defvar nh-status-attribute-slimed (list nil nil 0))
-(defvar nh-status-attribute-encumbrance (list nil nil 0))
+ATTRIBUTE is a list going attribute name, value, oldvalue, percent, and age.  An
+  attribute name is a string representing either  a stat or a condition."
+  (unless nethack-options-hilites
+    (nethack-options-get-hilites))
+  (let* ((name (nth 0 attribute))
+         (new-value (nth 1 attribute))
+         (new-value
+          (or (and (equal name "strength")
+                   (> (string-to-number new-value) 18)
+                   (or (and (> (string-to-number new-value) 118)
+                            (prin1-to-string (- new-value 100)))
+                       (and (= (string-to-number new-value) 118)
+                            "18/**")
+                       (format "18/%02d" (- new-value 18))))
+              new-value))
+         (old-value (nth 2 attribute))
+         (percent (nth 3 attribute))
+         (age (nth 4 attribute))
+         (string (format form (or new-value "")))
+         (face nil))
+    (when (nethack-options-set-p "statushilites")
+      (setq face
+            ;; TODO: Make this so that things like “up” takes precedence over
+            ;; “changed” work?
+            (mapcan
+             (lambda (func)
+               ;; feeds the function new old percent age
+               (apply (copy-tree func) (cdr attribute)))
+             (nethack-options-status-hilite name))))
+    ;; TODO Store polymorphs?
+    ;; Do not display HD unless polymorphed (it has a value)
+    (if (and (string-equal name "HD")
+             (equal new-value "0"))
+        ""
+      (if face
+          (nh-propertize string 'face face)
+        string))))
+
+;; value oldvalue percent age
+(defvar nh-status-attributes nil
+  "Alist of the attributes used.
+
+Key is a symbol, the value is a list of current, old, percent, age.")
+
+(defvar nh-status-conditions nil
+  "Alist of the NetHack conditions.
+
+See ‘nh-status-attributes’ for details on the format.")
 
 (defun nh-reset-status-variables ()
-  (setq nh-status-attribute-name (list nil nil 0)
-        nh-status-attribute-monster (list nil nil 0)
-        nh-status-attribute-rank (list nil nil 0)
-        nh-status-attribute-St (list 0 0 0)
-        nh-status-attribute-Dx (list 0 0 0)
-        nh-status-attribute-Co (list 0 0 0)
-        nh-status-attribute-In (list 0 0 0)
-        nh-status-attribute-Wi (list 0 0 0)
-        nh-status-attribute-Ch (list 0 0 0)
-        nh-status-attribute-Align (list nil nil 0)
-        nh-status-attribute-Dungeon (list nil nil 0)
-        nh-status-attribute-Dlvl (list 0 0 0)
-        nh-status-attribute-$ (list 0 0 0)
-        nh-status-attribute-HP (list 0 0 0)
-        nh-status-attribute-HPmax (list 0 0 0)
-        nh-status-attribute-PW (list 0 0 0)
-        nh-status-attribute-PWmax (list 0 0 0)
-        nh-status-attribute-AC (list 0 0 0)
-        nh-status-attribute-Level (list 0 0 0)
-        nh-status-attribute-XP (list 0 0 0)
-        nh-status-attribute-HD (list 0 0 0)
-        nh-status-attribute-T (list 0 0 0)
-        nh-status-attribute-Score (list 0 0 0)
-        nh-status-attribute-confusion (list nil nil 0)
-        nh-status-attribute-hunger (list nil nil 0)
-        nh-status-attribute-sick (list nil nil 0)
-        nh-status-attribute-blind (list nil nil 0)
-        nh-status-attribute-stunned (list nil nil 0)
-        nh-status-attribute-hallucination (list nil nil 0)
-        nh-status-attribute-slimed (list nil nil 0)
-        nh-status-attribute-encumbrance (list nil nil 0)))
+  (setq nh-status-attributes '(("title" nil nil 0 0)
+                               ("strength" "0" "0" 0 0)
+                               ("dexterity" "0" "0" 0 0)
+                               ("constitution" "0" "0" 0 0)
+                               ("intelligence" "0" "0" 0 0)
+                               ("wisdom" "0" "0" 0 0)
+                               ("charisma" "0" "0" 0 0)
+                               ("alignment" nil nil 0 0)
+                               ("score" "0" "0" 0 0)
+                               ("carrying-capacity" nil nil 0 0)
+                               ("gold" "0" "0" 0 0)
+                               ("power" "0" "0" 0 0)
+                               ("power-max" "0" "0" 0 0)
+                               ("experience-level" "0" "0" 0 0)
+                               ("armor-class" "0" "0" 0 0)
+                               ("HD" "0" "0" 0 0)
+                               ("time" "0" "0" 0 0)
+                               ("hunger" nil nil 0 0)
+                               ("hitpoints" "0" "0" 0 0)
+                               ("hitpoints-max" "0" "0" 0 0)
+                               ("dungeon-level" nil nil 0 0)
+                               ("experience" "0" "0" 0 0))
+        nh-status-conditions (mapcar
+                              (lambda (x)
+                                (cons x
+                                      '(nil nil 0 0)))
+                              nethack-options-cond-all)))
 
-(defun nhapi-update-status (status)
-  ;; store the values
-  (dolist (i status)
-    (let* ((variable (intern (concat "nh-status-attribute-"
-                                     (car i))))
-           (old-value (car (symbol-value variable)))
-           (new-value (cadr i))
-           (age (car (cddr (symbol-value variable)))))
-      (if (equal new-value old-value)
-          (set variable (list new-value
-                              (cadr (symbol-value variable))
-                              (+ 1 age)))
-        (set variable (list new-value
-                            old-value
-                            0))
-        (when (not (string-equal (car i) "T"))
-          (run-hook-with-args 'nethack-status-attribute-change-functions
-                              (car i) new-value old-value))))))
+(defun nhapi-status-condition-update (fields)
+  (let (;(new-fields (split-string fields))
+        (update-field
+         (lambda (field)
+           (let* ((field-name (car field))
+                  (old-value (cadr field)) ; current
+                  (new-value (car-safe (member field-name fields))))
+             (unless (equal new-value old-value)
+               ;; Update oldvalue and value
+               (setf (caddr field) old-value)
+               (setf (cadr field) new-value)
+               (setcar (cddddr field) 0)))))) ; age
+    (mapc
+     update-field
+     nh-status-conditions)))
+
+(defun nhapi-status-update (field new-value percent)
+  (let* ((variable (assoc field nh-status-attributes))
+         (old-value (cadr variable))
+         (age (cadddr variable)))
+    (unless (equal new-value old-value)
+      ;; TODO should this be in the let?
+      (setf (alist-get field nh-status-attributes nil nil #'equal)
+            (list new-value
+                  old-value
+                  percent
+                  0))
+      (when (not (string-equal field "T"))
+        (run-hook-with-args 'nethack-status-attribute-change-functions
+                             field new-value old-value percent)))))
 
 (defun nh-status-string (format)
   (mapconcat
    (lambda (ch)
-     (let ((fn (intern-soft (concat "nh-status-" (char-to-string ch)))))
-       (if fn (funcall fn) (char-to-string ch))))
+     (let ((stat (nh-status-char-to-format ch)))
+       (cond
+        ((equal stat "condition")
+         (mapconcat
+          (lambda (x)
+            (let ((c (nh-propertize-attribute x "%s")))
+              (if (not (string-equal c ""))
+                  (concat c " "))))
+          nh-status-conditions
+          ""))
+        (stat
+         (nh-propertize-attribute
+          (assoc (car stat) nh-status-attributes)
+          (cdr stat)))                        ; String format
+        (t (char-to-string ch)))))
    format nil))
 
-(defun nh-print-status ()
+;; TODO make this part of a unified defcustom array?
+(defun nh-status-char-to-format (ch)
+  "Take character CH and return the format.
+
+If CH is the character “f” for “conditions”, then the string “condition” is
+  returned instead."
+  (pcase ch
+    (?n '("title" . "%s"))
+    (?s '("strength" . "St:%s"))
+    (?d '("dexterity" . "Dx:%s"))
+    (?c '("constitution" . "Cn:%s"))
+    (?i '("intelligence" . "In:%s"))
+    (?W '("wisdom" . "Wi:%s"))
+    (?C '("charisma" . "Ch:%s"))
+    (?A '("alignment" . "%s"))
+    (?S '("score" . "S:%s"))
+    (?r '("carrying-capacity" . "%s"))
+    ;; TODO see note above on gold
+    (?g '("gold" . "%s"))
+    (?p '("power" . "Pw:%s"))
+    (?P '("power-max" . "(%s)"))
+    (?e '("experience-level" . "Xp:%s"))
+    (?a '("armor-class" . "AC:%s"))
+    (?D '("HD" . "HD:%s"))
+    (?t '("time" . "T:%s"))
+    (?G '("hunger" . "%s"))
+    (?h '("hitpoints" . "HP:%s"))
+    (?H '("hitpoints-max" . "(%s)"))
+    (?l '("dungeon-level" . "%s"))
+    (?E '("experience" . "/%s"))
+    (?f "condition")))
+
+;; This is called upon from the C half, so it should be prefixed
+;; “nhapi-” rather than “nh-”.
+(defun nhapi-print-status ()
+  ;; title value oldvalue percent age
+  (setq nh-status-attributes
+        (mapcar
+         (lambda (attr)
+           (append (butlast attr 1) (list (1+ (nth 4 attr)))))
+         nh-status-attributes))
+  (setq nh-status-conditions
+        (mapcar
+         (lambda (attr)
+           (append (butlast attr 1) (list (1+ (nth 4 attr)))))
+         nh-status-conditions))
   (cl-case nethack-status-style
     (:header-line
      (with-current-buffer nh-map-buffer
@@ -222,64 +274,6 @@
          (erase-buffer)
          (insert (nh-status-string nethack-status-buffer-format)))))))
 
-(defun nh-status-n ()
-  (nh-propertize-attribute nh-status-attribute-name))
-(defun nh-status-w ()
-  (concat "the "
-          (nh-propertize-attribute
-           (if (car nh-status-attribute-monster)
-               nh-status-attribute-monster
-             nh-status-attribute-rank))))
-(defun nh-status-s ()
-  (concat "St:" (nh-propertize-attribute nh-status-attribute-St 'strength)))
-(defun nh-status-d ()
-  (concat "Dx:" (nh-propertize-attribute nh-status-attribute-Dx)))
-(defun nh-status-c ()
-  (concat "Co:" (nh-propertize-attribute nh-status-attribute-Co)))
-(defun nh-status-i ()
-  (concat "In:" (nh-propertize-attribute nh-status-attribute-In)))
-(defun nh-status-W ()
-  (concat "Wi:" (nh-propertize-attribute nh-status-attribute-Wi)))
-(defun nh-status-C ()
-  (concat "Ch:" (nh-propertize-attribute nh-status-attribute-Ch)))
-(defun nh-status-A ()
-  (nh-propertize-attribute nh-status-attribute-Align))
-(defun nh-status-L ()
-  (nh-propertize-attribute nh-status-attribute-Dungeon))
-(defun nh-status-l ()
-  (concat "Dlvl:" (nh-propertize-attribute nh-status-attribute-Dlvl)))
-(defun nh-status-g ()
-  (concat "$:" (nh-propertize-attribute nh-status-attribute-$)))
-(defun nh-status-h ()
-  (format "HP:%s(%s)"
-          (nh-propertize-attribute nh-status-attribute-HP)
-          (nh-propertize-attribute nh-status-attribute-HPmax)))
-(defun nh-status-p ()
-  (format "Pw:%s(%s)"
-          (nh-propertize-attribute nh-status-attribute-PW)
-          (nh-propertize-attribute nh-status-attribute-PWmax)))
-(defun nh-status-a ()
-  (concat "AC:"
-          (nh-propertize-attribute nh-status-attribute-AC 'lower-is-better)))
-(defun nh-status-e ()
-  (format "Xp:%s/%s"
-          (nh-propertize-attribute nh-status-attribute-Level)
-          (nh-propertize-attribute nh-status-attribute-XP)))
-(defun nh-status-t ()
-  (format "T:%d" (car nh-status-attribute-T)))
-(defun nh-status-f ()
-  (mapconcat
-   (lambda (x) (if (not (string-equal x "")) (concat x " ")))
-   (list
-    (nh-propertize-attribute nh-status-attribute-confusion)
-    (nh-propertize-attribute nh-status-attribute-hunger)
-    (nh-propertize-attribute nh-status-attribute-sick)
-    (nh-propertize-attribute nh-status-attribute-blind)
-    (nh-propertize-attribute nh-status-attribute-stunned)
-    (nh-propertize-attribute nh-status-attribute-hallucination)
-    (nh-propertize-attribute nh-status-attribute-slimed)
-    (nh-propertize-attribute nh-status-attribute-encumbrance))
-   ""))
 
 
 ;;; Menu code:
@@ -303,10 +297,6 @@ FIXME: doesnt actually use ATTR!"
 
 This is used when the ATR_NOHISTORY bit in a message is set."
   (message "%s" str))
-
-(defun nh-attr-face (attr)
-  "Return the face corresponding with ATTR."
-  (intern-soft (concat "nethack-" (symbol-name attr) "-face")))
 
 (defconst nh-colors
   [nethack-black-face 		nethack-red-face
@@ -743,6 +733,8 @@ buffer."
                         str)))
       (put-text-property start (point) 'face (nh-attr-face attr))
       (insert-char ?\n 1 nil)
+      (if (nethack-options-set-p 'menucolors)
+          (nethack-options-highlight-menu))
       (run-hooks 'nethack-add-menu-hook))))
 
 ;; FIXME: xemacs propertize bug here
@@ -837,6 +829,8 @@ the menu is dismissed."
 
 (defun nhapi-end ()
   (message "Goodbye.")
+  ;; Prevent a memory leak
+  (clrhash nethack-options-status-hilite-results)
   (run-hooks 'nethack-end-hook))
 
 ;; Options

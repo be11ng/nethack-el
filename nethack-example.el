@@ -48,11 +48,11 @@ Add the following to your ~/.emacs
 ;;;;;;;;;;;;;;
 ;; Add the following to your ~/.emacs
 ;; (add-hook 'nethack-status-attribute-change-functions 'nethack-x-warn-low-hp)
-(defun nethack-x-warn-low-hp (attr new old)
+(defun nethack-x-warn-low-hp (attr new old percent)
   "Print a message in `nh-message-buffer' when hitpoints get low."
   (if (and (string-equal attr "HP")
            (< new old)
-           (< (/ new (float (car nh-status-attribute-HPmax))) 0.20))
+           (< percent 20))
       (nhapi-message 'atr-blink "Hitpoints below 20%")))
 
 ;;;;;;;;;;;;;;
