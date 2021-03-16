@@ -103,7 +103,7 @@ ATTRIBUTE is a list going attribute name, value, oldvalue, percent, and age.  An
             (mapcan
              (lambda (func)
                ;; feeds the function new old percent age
-               (apply func (cdr attribute)))
+               (apply (copy-tree func) (cdr attribute)))
              (nethack-options-status-hilite name))))
     ;; TODO Store polymorphs?
     ;; Do not display HD unless polymorphed (it has a value)
