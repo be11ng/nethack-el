@@ -278,9 +278,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2021-01-22 14:20:38.020529571 -0500
-+++ nethack/win/lisp/ChangeLog	2021-01-23 20:56:57.853465720 -0500
-@@ -0,0 +1,391 @@
+--- /dev/null	2021-03-09 18:36:42.096511901 -0500
++++ nethack/win/lisp/ChangeLog	2021-03-16 08:52:03.969223997 -0400
+@@ -0,0 +1,408 @@
++2021-02-17  Benjamin Yang  <be11ng@protonmail.com>
++
++	Use own lisp_status_update rather than genl_status_update.
++	The Lisp half has been accordingly updated to use these functions,
++	as well as to start updating the alist `nh-status-attributes'.
++
++	* ../../include/winlisp.h (lisp_status_update): New FDECL.
++	* winlisp.c: Write new lisp_status_update
++	(status_fieldnm, status_vals): New extern variables.
++	(generate_status_line): Remove function.
++	(lisp_procs): Replace `genl_status_update' with
++	`lisp_status_update'.
++	(lisp_status_update): New function, which call the lisp commands
++	`status-condition-update', `print-status', and  `status-update'.
++	(lisp_putstr): Move status and condition functionality to
++	`lisp_status_update'.
++
 +2021-01-23  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* ../../sys/unix/hints/linux-lisp: Use CFLAGS DSCORE_ON_BOTL and

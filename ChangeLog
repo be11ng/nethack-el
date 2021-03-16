@@ -1,5 +1,101 @@
 2020-07-06  Benjamin Yang  <be11ng@protonmail.com>
 
+	Add .nethackrc parsing.  Add support for menucolors and
+	rudimentary hilite-status options.
+
+	* nethack-options.el: New file.
+	(nethack-options-file, nethack-options-fields-percents)
+	(nethack-options-fields-text-matches, nethack-options-fields)
+	(nethack-options-cond-major-troubles)
+	(nethack-options-cond-minor-troubles)
+	(nethack-options-cond-movement, nethack-options-cond-all)
+	(nethack-options-fields-characteristics)
+	(nethack-options-status-field-p, nethack-options-attributes)
+	(nh-attr-face, nethack-options-color-face)
+	(nethack-options-menucolors, nethack-options-get-menucolors)
+	(nethack-options-hilites, nethack-options-get-hilites)
+	(nethack-options-parse-status-behav, nethack-options-parse-attr)
+	(nethack-options-attr-propertize)
+	(nethack-options-substitute-conditions)
+	(nethack-options-parse-hilite-status)
+	(nethack-options-parse-menucolor, nethack-options-parse-option-1)
+	(nethack-options-parse-option, nethack-options-parse)
+	(nethack-options-set-p, nethack-options-equal)
+	(nethack-options-status-hilite-results)
+	(nethack-options-status-hilite, nethack-options-status-function)
+	(nethack-options-highlight-menu, nethack-options): New functions.
+
+	* enh-366.patch: Use `lisp_status_update'.
+	(include/winlisp.h): New FDECL for `lisp_status_update'.
+	(win/lisp/winlisp.c): New function `lisp_status_update'.  Some
+	functionality has been accordingly moved from `lisp_putstr' to
+	`lisp_status_update'.  This primarily relies on the new
+	`nhapi-status-condition-update', `nhapi-print-status', and
+	`nhapi-status-update` to function.
+
+	* nethack-api.el: Use new options functions.  Requires
+	nethack-options.el now.
+	(nh-propertize-attribute): Use `nethack-options-status-hilite' to
+	generate string attributes.
+
+	(nh-status-attribute-name, nh-status-attribute-monster)
+	(nh-status-attribtue-rank, nh-status-attribute-St)
+	(nh-status-attribute-Dx, nh-status-attribute-Co)
+	(nh-status-attribute-In, nh-status-attribute-Wi)
+	(nh-status-attribute-Ch, nh-status-attribute-Align)
+	(nh-status-attribute-Dungeon, nh-status-attribute-Dlvl)
+	(nh-status-attribute-$, nh-status-attribute-HP)
+	(nh-status-attribute-HPmax, nh-status-attribute-PW)
+	(nh-status-attribute-PWmax, nh-status-attribute-AC)
+	(nh-status-attribute-Level, nh-status-attribute-XP)
+	(nh-status-attribute-HD, nh-status-attribute-T)
+	(nh-status-attribute-Score, nh-status-attribute-confusion)
+	(nh-status-attribute-hunger, nh-status-attribute-sick)
+	(nh-status-attribute-blind, nh-status-attribute-stunned)
+	(nh-status-attribute-hallucination, nh-status-attribute-slimed)
+	(nh-status-attribute-encumbrance): Remove variables.
+	(nh-status-attributes, nh-status-conditions): New variables.
+	(nh-reset-status-variables): Update accordingly.
+	(nhapi-update-status): Remove function.
+	(nhapi-status-update, nhapi-status-condition-update): New
+	functions.
+
+	(nh-status-char-to-format): New function.
+	(nh-status-n, nh-status-w, nh-status-s, nh-status-d, nh-status-c)
+	(nh-status-i, nh-status-W, nh-status-C, nh-status-A, nh-status-L)
+	(nh-status-l, nh-status-g, nh-status-h, nh-status-p, nh-status-a)
+	(nh-status-e, nh-status-t, nh-status-f): Remove variables.
+	(nh-status-string): Use `nh-status-char-to-format'.
+	(nh-print-status): Rename to `nhapi-print-status'.  Use new
+	variables for `nh-status-attributes' and `nh-status-conditions'.
+	Age of status is updated here.
+
+	(nh-attr-face): Remove function.
+
+	(nhapi-end): Clear hash `nethack-options-status-hilite-results` on
+	end.
+
+	(nhapi-add-menu): Highlight menu if a menucolors option is set.
+
+	* nethack.el: Use new options.  Requires nethack-options.el now.
+	(nethack-status-highlight-delay): Read from .nethackrc.
+	(nethack-status-buffer-format, nethack-status-header-line-format):
+	Use new options short form.
+	(nethack-status-good-face, nethack-status-bad-face)
+	(nethack-status-neutral-face): Remove faces.
+	(nethack-atr-dim-face): New face.
+	(nh-filter): Do not print status on reload.
+
+	* nethack-example.el (nethack-x-warn-low-hp): Use new `percent'
+	capability.
+
+2020-07-06  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack-api.el (nh-propertize-attribute): Do not display HD
+	unless polymorphed.
+
+2020-07-06  Benjamin Yang  <be11ng@protonmail.com>
+
 	* enh-366.patch: Restore `lisp_get_ext_cmd'.
 
 	* nethack-cmd.el (nethack-command-read-extended): New
