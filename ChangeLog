@@ -1,3 +1,8 @@
+2021-03-18  Benjamin Yang  <be11ng@protonmail.com>
+
+	* enh-366.patch: Hints file passes `LISP_VERSION` which can be
+	read from the `--version` command line flag.
+
 2021-03-16  Benjamin Yang  <be11ng@protonmail.com>
 
 	Add .nethackrc parsing.  Add support for menucolors and

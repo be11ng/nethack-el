@@ -201,8 +201,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2021-01-22 14:20:38.020529571 -0500
-+++ nethack/sys/unix/hints/linux-lisp	2021-01-23 20:39:57.466974255 -0500
+--- /dev/null	2021-03-09 18:36:42.096511901 -0500
++++ nethack/sys/unix/hints/linux-lisp	2021-03-18 08:54:03.638550834 -0400
 @@ -0,0 +1,62 @@
 +#
 +# NetHack 3.6  linux $NHDT-Date: 1432512814 2015/05/25 00:13:34 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $
@@ -231,7 +231,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +CFLAGS+=-DHACKDIR=\"$(HACKDIR)\"
 +CFLAGS+=-DDUMPLOG
 +CFLAGS+=-DCONFIG_ERROR_SECURE=FALSE
-+CFLAGS+=-DNOTTYGRAPHICS -DLISP_GRAPHICS
++CFLAGS+=-DNOTTYGRAPHICS -DLISP_GRAPHICS -DLISP_VERSION=\"0.10.0\"
 +#CFLAGS+=-DEXTRA_SANITY_CHECKS
 +#CFLAGS+=-DEDIT_GETLIN
 +CFLAGS+=-DSCORE_ON_BOTL
@@ -267,8 +267,25 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +EXEPERM  = 0755
 +DIRPERM  = 0755
 --- NetHack-NetHack-3.6.6_Released/util/makedefs.c	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/util/makedefs.c	2020-05-25 17:07:06.303645065 -0400
-@@ -1762,6 +1762,9 @@
++++ nethack/util/makedefs.c	2021-03-18 09:10:46.409633597 -0400
+@@ -1233,8 +1233,16 @@
+ #endif
+ #endif
+ #else
++#ifdef LISP_GRAPHICS
++    Strcpy(statusbuf, " lisp-patch");
++#ifdef LISP_VERSION
++    Strcat(statusbuf, " ");
++    Strcat(statusbuf, LISP_VERSION);
++#endif
++#else
+     statusbuf[0] = '\0';
+ #endif
++#endif
+ 
+     subbuf[0] = '\0';
+ #ifdef PORT_SUB_ID
+@@ -1762,6 +1770,9 @@
  #ifdef MAC /* defunct OS 9 interface */
      { "mac", "Mac" },
  #endif
@@ -279,8 +296,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      { "amii", "Amiga Intuition" },
  #endif
 --- /dev/null	2021-03-09 18:36:42.096511901 -0500
-+++ nethack/win/lisp/ChangeLog	2021-03-16 08:52:03.969223997 -0400
-@@ -0,0 +1,408 @@
++++ nethack/win/lisp/ChangeLog	2021-03-18 09:14:51.972311810 -0400
+@@ -0,0 +1,417 @@
++2021-03-18  Benjamin Yang  <be11ng@protonmail.com>
++
++	Make the C half tell which version of lisp it was compiled with.
++
++	* ../../util/makedefs.c: Make lisp-patch and `LISP_VERSION` part
++	of the version string.
++	* ../../sys/unix/hints/linux-lisp: Pass `LISP_VERSION` as a
++	compilation flag.  Note that ccache doesn't handle this well.
++
 +2021-02-17  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	Use own lisp_status_update rather than genl_status_update.
