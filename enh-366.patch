@@ -47,7 +47,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifndef DEFAULT_WINDOW_SYS
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
---- /dev/null	2021-02-16 15:57:59.783631752 -0500
+--- NetHack-NetHack-3.6.6_Released/include/patchlevel.h	2020-03-08 13:29:31.000000000 -0400
++++ nethack/include/patchlevel.h	2021-03-19 08:26:17.951502938 -0400
+@@ -16,6 +16,8 @@
+  */
+ #define EDITLEVEL 0
+ 
++#define LISP_VERSION "0.11.0"
++
+ #define COPYRIGHT_BANNER_A "NetHack, Copyright 1985-2020"
+ #define COPYRIGHT_BANNER_B \
+     "         By Stichting Mathematisch Centrum and M. Stephenson."
+--- /dev/null	2021-03-18 12:31:38.998739484 -0400
 +++ nethack/include/winlisp.h	2021-02-04 21:00:49.882665104 -0500
 @@ -0,0 +1,71 @@
 +#ifndef WINLISP_H
@@ -201,8 +212,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2021-03-09 18:36:42.096511901 -0500
-+++ nethack/sys/unix/hints/linux-lisp	2021-03-18 08:54:03.638550834 -0400
+--- /dev/null	2021-03-18 12:31:38.998739484 -0400
++++ nethack/sys/unix/hints/linux-lisp	2021-03-19 08:27:03.302606234 -0400
 @@ -0,0 +1,62 @@
 +#
 +# NetHack 3.6  linux $NHDT-Date: 1432512814 2015/05/25 00:13:34 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $
@@ -231,7 +242,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +CFLAGS+=-DHACKDIR=\"$(HACKDIR)\"
 +CFLAGS+=-DDUMPLOG
 +CFLAGS+=-DCONFIG_ERROR_SECURE=FALSE
-+CFLAGS+=-DNOTTYGRAPHICS -DLISP_GRAPHICS -DLISP_VERSION=\"0.10.0\"
++CFLAGS+=-DNOTTYGRAPHICS -DLISP_GRAPHICS
 +#CFLAGS+=-DEXTRA_SANITY_CHECKS
 +#CFLAGS+=-DEDIT_GETLIN
 +CFLAGS+=-DSCORE_ON_BOTL
@@ -295,16 +306,24 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2021-03-09 18:36:42.096511901 -0500
-+++ nethack/win/lisp/ChangeLog	2021-03-18 09:14:51.972311810 -0400
-@@ -0,0 +1,417 @@
+--- /dev/null	2021-03-18 12:31:38.998739484 -0400
++++ nethack/win/lisp/ChangeLog	2021-03-19 08:33:03.404590011 -0400
+@@ -0,0 +1,425 @@
++2021-03-19  Benjamin Yang  <be11ng@protonmail.com>
++
++	* ../../sys/unix/hints/linux-lisp: Remove `LISP_VERSION'
++	compilation flag.
++	* ../../include/patchlevel.h: Define `LISP_VERSION'.  (Currently
++	0.11.0.  I'm not sure about the current versioning system.  Will
++	we have to recompile every time the lisp code updates?)
++
 +2021-03-18  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	Make the C half tell which version of lisp it was compiled with.
 +
-+	* ../../util/makedefs.c: Make lisp-patch and `LISP_VERSION` part
++	* ../../util/makedefs.c: Make lisp-patch and `LISP_VERSION' part
 +	of the version string.
-+	* ../../sys/unix/hints/linux-lisp: Pass `LISP_VERSION` as a
++	* ../../sys/unix/hints/linux-lisp: Pass `LISP_VERSION' as a
 +	compilation flag.  Note that ccache doesn't handle this well.
 +
 +2021-02-17  Benjamin Yang  <be11ng@protonmail.com>

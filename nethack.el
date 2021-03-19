@@ -431,10 +431,15 @@ Currently, the two supported versions are 3.6.6 and 3.4.3."
   "Determine if a patched NetHack is installed.
 
 Checks whether a NetHack executable exists, and if running it
-results in an output with prefix ``(nhapi-raw-print''."
+results in an output with prefix ``(nhapi-raw-print'' with the correct NetHack
+version and the correct version for the lisp-patch."
   (and nethack-program
-       (string-prefix-p
-        "(nhapi-raw-print"
+       (string-match-p
+        (concat "(nhapi-raw-print \".*"
+                 "NetHack Version "
+                 nethack-version
+                 " lisp-patch "
+                 nethack-el-version)
         (shell-command-to-string (concat nethack-program " --version")))))
 
 (defun nethack-build (&optional
@@ -781,7 +786,7 @@ buffer."
 
 
 ;;; VERSION:
-(defconst nethack-el-version "0.10.6")
+(defconst nethack-el-version "0.11.0")
 (defun nethack-el-version ()
   (interactive)
   (message (format "nethack-el %s" nethack-el-version)))
