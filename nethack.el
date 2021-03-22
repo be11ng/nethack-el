@@ -436,10 +436,12 @@ version and the correct version for the lisp-patch."
   (and nethack-program
        (string-match-p
         (concat "(nhapi-raw-print \".*"
-                 "NetHack Version "
-                 nethack-version
-                 " lisp-patch "
-                 nethack-el-version)
+                "NetHack Version "
+                nethack-version
+                " lisp-patch "
+                ;; This is OK up to a two digit major version
+                (substring nethack-el-version 0
+                           (string-match-p  "\\." nethack-el-version 3)))
         (shell-command-to-string (concat nethack-program " --version")))))
 
 (defun nethack-build (&optional

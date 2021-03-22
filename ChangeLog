@@ -1,3 +1,8 @@
+2021-03-22  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack.el (nethack-installed-p): Only check the major and minor
+	versions to match the nethack-el version and lisp-patch.
+
 2021-03-19  Benjamin Yang  <be11ng@protonmail.com>
 
 	* enh-366.patch: Move definition of `LISP_VERSION' from hints file
