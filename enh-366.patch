@@ -58,7 +58,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #define COPYRIGHT_BANNER_A "NetHack, Copyright 1985-2020"
  #define COPYRIGHT_BANNER_B \
      "         By Stichting Mathematisch Centrum and M. Stephenson."
---- /dev/null	2021-03-18 12:31:38.998739484 -0400
+--- /dev/null	2021-04-06 19:01:01.864143329 -0400
 +++ nethack/include/winlisp.h	2021-02-04 21:00:49.882665104 -0500
 @@ -0,0 +1,71 @@
 +#ifndef WINLISP_H
@@ -212,7 +212,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2021-03-18 12:31:38.998739484 -0400
+--- /dev/null	2021-04-06 19:01:01.864143329 -0400
 +++ nethack/sys/unix/hints/linux-lisp	2021-03-19 08:27:03.302606234 -0400
 @@ -0,0 +1,62 @@
 +#
@@ -306,9 +306,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2021-03-18 12:31:38.998739484 -0400
-+++ nethack/win/lisp/ChangeLog	2021-03-19 08:33:03.404590011 -0400
-@@ -0,0 +1,425 @@
+--- /dev/null	2021-04-06 19:01:01.864143329 -0400
++++ nethack/win/lisp/ChangeLog	2021-04-07 09:13:50.154593129 -0400
+@@ -0,0 +1,434 @@
++2021-04-07  Benjamin Yang  <be11ng@protonmail.com>
++
++	Fix extended commands.
++
++	* winlisp.c (extended_cmd_id): Give initial value `0'.
++	(lisp_get_ext_cmd): Prompt for extended command only when
++	`extended_cmd_id' is not equal to `0'.  Reset `extended_cmd_id' to
++	`0' if it is equal.
++
 +2021-03-19  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* ../../sys/unix/hints/linux-lisp: Remove `LISP_VERSION'
@@ -734,8 +743,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2021-03-09 18:36:42.096511901 -0500
-+++ nethack/win/lisp/winlisp.c	2021-03-16 09:32:44.447436418 -0400
+--- /dev/null	2021-04-06 19:01:01.864143329 -0400
++++ nethack/win/lisp/winlisp.c	2021-04-07 09:12:11.256077879 -0400
 @@ -0,0 +1,1882 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
@@ -808,7 +817,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  char *name;
 +  int type;
 +  int cmd;			/* The command (a keystroke) */
-+}cmd_index_t;
++} cmd_index_t;
 +
 +#ifndef C
 +#define C(c)		(0x1f & (c))
@@ -982,7 +991,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  };
 +
 +/* This variable is set when the user has selected an extended command. */
-+static int extended_cmd_id;
++static int extended_cmd_id = 0;
 +
 +/* Interface definition, for windows.c */
 +struct window_procs lisp_procs = {
@@ -1964,7 +1973,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +  for (i=0; cmd_index[i].name != (char *)0; i++)
 +    {
 +      if (!strcmp (str, cmd_index[i].name))
-+	return i;
++        return i;
 +    }
 +
 +  return -1;
@@ -2041,60 +2050,57 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +      int nh_cmd = 0;
 +
 +      while (!nh_cmd)
-+	{
-+	  read_command ("command", cmdstr, count_buf);
++        {
++          read_command ("command", cmdstr, count_buf);
 +
-+	  count_pos = count_buf;
-+	  cmd = lisp_get_cmd (cmdstr);
-+	  if (cmd == -1)
-+	    {
-+	      printf ("(nhapi-message 'atr-none \"undefined-command %s\")\n", cmdstr);
-+	    }
-+	  else if (cmd_index[cmd].type == CMD_LISP)
-+	    {
-+	      /* We have to handle Lisp commands in this inner loop, because
-+		 they don't interact with the nethack layer. */
-+	      /* FIXME: Maybe this should go in an array? */
-+	      if (!strcmp(cmd_index[cmd].name, "options"))
-+		{
-+		  get_options();
-+		}
-+	    } else {
-+	      /* We have a nh command. */
-+	      nh_cmd = 1;
-+	    }
-+	}
++          count_pos = count_buf;
++          cmd = lisp_get_cmd (cmdstr);
++          if (cmd == -1)
++            {
++              printf ("(nhapi-message 'atr-none \"undefined-command %s\")\n", cmdstr);
++            }
++          else if (cmd_index[cmd].type == CMD_LISP)
++            {
++              /* We have to handle Lisp commands in this inner loop, because
++                 they don't interact with the nethack layer. */
++              /* FIXME: Maybe this should go in an array? */
++              if (!strcmp(cmd_index[cmd].name, "options"))
++                {
++                  get_options();
++                }
++            }
++          else
++            {
++              /* We have a nh command. */
++              nh_cmd = 1;
++            }
++        }
 +
 +      if (atoi (count_pos) > 1)
-+	{
-+	  char* tmp = count_pos;
-+	  count_pos++;
-+	  count_cmd = cmd;
-+	  return *tmp;
-+	}
++        {
++          char* tmp = count_pos;
++          count_pos++;
++          count_cmd = cmd;
++          return *tmp;
++        }
 +      else
-+	{
-+	  /* Since the count is 1, zero out the string. */
-+	  *count_pos = 0;
-+	}
++        {
++          /* Since the count is 1, zero out the string. */
++          *count_pos = 0;
++        }
 +    }
 +
-+  if (cmd_index[cmd].type == CMD_KEY)
-+    {
-+      return cmd_index[cmd].cmd;
-+    }
-+  else if (cmd_index[cmd].type == CMD_EXT)
-+    {
-+      if ((extended_cmd_id = lisp_get_ext_cmd_id (cmd_index[cmd].name)) == -1)
-+	{
-+	  /* Can never happen. */
-+	  printf ("%s:%d: Bad extended command name\n", __FILE__,  __LINE__);
-+	}
-+      return '#';
-+    }
-+  else
-+    {
-+      impossible ("Impossible command type: %d", cmd_index[cmd].type);
++    if (cmd_index[cmd].type == CMD_KEY) {
++        return cmd_index[cmd].cmd;
++    } else if (cmd_index[cmd].type == CMD_EXT) {
++        if ((extended_cmd_id = lisp_get_ext_cmd_id(cmd_index[cmd].name))
++            == -1) {
++            /* Can never happen. */
++            printf("%s:%d: Bad extended command name\n", __FILE__, __LINE__);
++        }
++        return '#';
++    } else {
++        impossible("Impossible command type: %d", cmd_index[cmd].type);
 +    }
 +}
 +
@@ -2423,16 +2429,21 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +lisp_get_ext_cmd()
 +{
 +  int cmd;
-+  int i;
++  if (extended_cmd_id != 0) {
++      cmd = extended_cmd_id;
++      extended_cmd_id = 0;
++  } else {
++      int i;
 +
-+  printf ("(nhapi-get-ext-cmd '(");
++      printf("(nhapi-get-ext-cmd '(");
 +
-+  for (i=0; extcmdlist[i].ef_txt != (char *)0; i++) {
-+    printf ("(\"%s\" . %d)", extcmdlist[i].ef_txt, i);
++      for (i = 0; extcmdlist[i].ef_txt != (char *) 0; i++) {
++          printf("(\"%s\" . %d)", extcmdlist[i].ef_txt, i);
++      }
++      printf("))\n");
++
++      read_int("number", &cmd);
 +  }
-+  printf ("))\n");
-+
-+  read_int ("number", &cmd);
 +
 +  return cmd;
 +}

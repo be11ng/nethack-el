@@ -1,3 +1,9 @@
+2021-04-07  Benjamin Yang  <be11ng@protonmail.com>
+
+	* enh-366.patch: Fix extended commands.  Adds back in use of
+	`extended_cmd_id' which I removed earlier since I didn't know what
+	I was doing.
+
 2021-03-22  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack.el (nethack-installed-p): Only check the major and minor
