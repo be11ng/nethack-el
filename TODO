@@ -8,10 +8,6 @@ I like what we have now, I think we can call this done.
 * high priority
 ** TODO parse .nethackrc
 
-** TODO finish up the cooked status window stuff
-
-** TODO Makefile shouldn't require GNU make
-
 * low priority
 ** TODO tiles under xemacs
 
@@ -37,9 +33,6 @@ I like what we have now, I think we can call this done.
 
 ** TODO print a message in the echo area describing how to dismiss a popup
 
-** TODO nethack options should be respected where possible
-   in particular the color boolean
-
 ** TODO there should be some indication of whether or not a menu
    is pick-one or pick-any or pick-none. This is not shown in any other
    port however.
@@ -53,6 +46,13 @@ I like what we have now, I think we can call this done.
 ** TODO fix byte-compile warnings
 
 * finished, sorta?
+
+** DONE nethack options should be respected where possible
+   in particular the color boolean
+
+** DONE finish up the cooked status window stuff
+
+** DONE Makefile shouldn't require GNU make
 
 ** DONE make all the variables customizable through M-x customize
    most of these are done.  do the rest of them.
