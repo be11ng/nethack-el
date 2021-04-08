@@ -753,8 +753,10 @@ delete the contents, perhaps logging the text."
   (setq mode-name "NETHACK MAP")
   (setq major-mode 'nh-map-mode)
   ;; make scroll-other-window work on the message buffer
-  (make-variable-buffer-local 'other-window-scroll-buffer)
-  (setq other-window-scroll-buffer nh-message-buffer)
+  (setq-local other-window-scroll-buffer nh-message-buffer)
+  (setq-local scroll-conservatively 0)  ; recenter
+  (setq-local scroll-margin 3)
+  ;; TODO still need to figure out how to automatically scroll horizontally
   (run-hooks 'nethack-map-mode-hook))
 
 (define-derived-mode nh-message-mode text-mode "Nethack Messages"

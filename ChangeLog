@@ -1,3 +1,8 @@
+2021-04-08  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack.el (nh-map-mode): Automatically recenter window within 3
+	lines of the top/bottom edge of the map.
+
 2021-04-09  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack.el (nethack-el-version): Bump version to 0.12.0.
