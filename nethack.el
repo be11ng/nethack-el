@@ -788,7 +788,7 @@ buffer."
 
 
 ;;; VERSION:
-(defconst nethack-el-version "0.11.0")
+(defconst nethack-el-version "0.12.0")
 (defun nethack-el-version ()
   (interactive)
   (message (format "nethack-el %s" nethack-el-version)))

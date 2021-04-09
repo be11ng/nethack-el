@@ -1,3 +1,8 @@
+2021-04-09  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack.el (nethack-el-version): Bump version to 0.12.0.
+	* enh-366.patch: Likewise.
+
 2021-04-07  Benjamin Yang  <be11ng@protonmail.com>
 
 	* enh-366.patch: Fix extended commands.  Adds back in use of
