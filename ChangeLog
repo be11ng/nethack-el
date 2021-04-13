@@ -1,3 +1,13 @@
+2021-04-13  Benjamin Yang  <be11ng@protonmail.com>
+
+	Make IBM graphics work (still working on DEC).
+
+	* nethack-compat.el (nh-gamegrid-set-cell): New function.
+	* nethack-api.el (nhapi-print-glyph): When running with IBM
+	graphics, first decode using cp437 (cp1090 not included in Emacs,
+	so still working on getting DEC graphics working).  Also change
+	the call from `gamegrid-set-cell' to `nh-gamegrid-set-cell'.
+
 2021-04-08  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack.el (nh-map-mode): Automatically recenter window within 3

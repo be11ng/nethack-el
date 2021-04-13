@@ -30,6 +30,7 @@
 ;;; Code:
 
 (require 'cl-lib)
+(require 'gamegrid)
 
 ;; overlay is "deprecated" in XEmacs, but still exists
 (if (featurep 'xemacs)
@@ -237,6 +238,14 @@ Return the modified alist."
            (progn
              ,@body)
          (goto-char ,old-pnt)))))
+
+(defun nh-gamegrid-set-cell (x y c)
+  ;; Like `gamegrid-set-cell', but without the `gamegrid-set-face'.
+  (save-excursion
+    (let ((buffer-read-only nil))
+      (goto-char (gamegrid-cell-offset x y))
+      (delete-char 1)
+      (insert-char c 1))))
 
 
 (provide 'nethack-compat)

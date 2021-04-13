@@ -320,7 +320,10 @@ This is used when the ATR_NOHISTORY bit in a message is set."
             (goto-char (gamegrid-cell-offset x y))
             (delete-char 1)
             (insert-image (elt nh-tile-vector tile))))
-      (gamegrid-set-cell x y ch)
+      (cond
+       ((nethack-options-set-p 'IBMgraphics)
+        (nh-gamegrid-set-cell x y (decode-char 'cp437 ch)))
+       (t (gamegrid-set-cell x y ch)))
       ;; If the glyph is a pet then color it with the
       ;; nethack-pet-face.
       (let ((color (if (eq special 'pet)
