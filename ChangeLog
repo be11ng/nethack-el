@@ -1,3 +1,11 @@
+2021-04-23  Benjamin Yang  <be11ng@protonmail.com>
+
+	Make DEC graphics work.
+	* nethack-api.el (nethack-dec-graphics-char): New alist of
+	translations between DEC graphics and Unicode.
+	(nhapi-print-glyph): Handle DEC graphics by checking if the high
+	bit is set and render if high bit clear if it is.
+
 2021-04-13  Benjamin Yang  <be11ng@protonmail.com>
 
 	Make IBM graphics work (still working on DEC).

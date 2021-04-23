@@ -309,6 +309,45 @@ This is used when the ATR_NOHISTORY bit in a message is set."
                           nethack-bright-cyan-face 	nethack-white-face]
   "Vector indexed by Nethack's color number.")
 
+(defconst nethack-dec-graphics-char
+  '((#x5f . #x00A0)
+    (#x60 . #x25C6)
+    (#x61 . #x2592)
+    (#x62 . #x2409)
+    (#x63 . #x240C)
+    (#x64 . #x240D)
+    (#x65 . #x240A)
+    (#x66 . #x00B0)
+    (#x67 . #x00B1)
+    (#x68 . #x2424)
+    (#x69 . #x240B)
+    (#x6a . #x2518)
+    (#x6b . #x2510)
+    (#x6c . #x250C)
+    (#x6d . #x2514)
+    (#x6e . #x253C)
+    (#x6f . #x23BA)
+    (#x70 . #x23BB)
+    (#x71 . #x2500)
+    (#x72 . #x23BC)
+    (#x73 . #x23BD)
+    (#x74 . #x251C)
+    (#x75 . #x2524)
+    (#x76 . #x2534)
+    (#x77 . #x252C)
+    (#x78 . #x2502)
+    (#x79 . #x2264)
+    (#x7a . #x2265)
+    (#x7b . #x03C0)
+    (#x7c . #x2260)
+    (#x7d . #x00A3)
+    (#x7e . #x00B7))
+  "Alist of DEC to unicode as if DEC graphics mode was on.
+
+Values taken from
+http://fileformats.archiveteam.org/wiki/DEC_Special_Graphics_Character_Set,
+accessed 2021-04-23.")
+
 (defun nhapi-print-glyph (x y color glyph tile ch &optional special)
   "Insert glyph into `nh-map-buffer'."
   (set-buffer nh-map-buffer)
@@ -321,6 +360,18 @@ This is used when the ATR_NOHISTORY bit in a message is set."
             (delete-char 1)
             (insert-image (elt nh-tile-vector tile))))
       (cond
+       ((nethack-options-set-p 'DECgraphics)
+        (nh-gamegrid-set-cell
+         x y
+         ;; For DECgraphics, lower-case letters with high bit set mean switch
+         ;; character set and render with high bit clear; user might want 8-bits
+         ;; for other characters
+         (if (or (< (logand ch #x7f) #x60)
+                 (not (logand ch #x80)))
+             ch
+           (or (cdr (assq (logxor ch #x80)
+                          nethack-dec-graphics-char))
+               ch))))
        ((nethack-options-set-p 'IBMgraphics)
         (nh-gamegrid-set-cell x y (decode-char 'cp437 ch)))
        (t (gamegrid-set-cell x y ch)))

@@ -11,9 +11,6 @@ I like what we have now, I think we can call this done.
 * low priority
 ** TODO tiles under xemacs
 
-** TODO turning on DEC graphics (for example) breaks things (invalid characters)
-   We need to hardcode/override some of the preferences.
-
 ** TODO indicate/track the menu state
    we should somehow track when a menu is active, so if the window configuration
    gets mixed up while a menu is active, the user knows this and can easily
@@ -43,6 +40,9 @@ I like what we have now, I think we can call this done.
 ** TODO fix byte-compile warnings
 
 * finished, sorta?
+
+** DONE turning on DEC graphics (for example) breaks things (invalid characters)
+   We need to hardcode/override some of the preferences.
 
 ** DONE scrolling the map should happen *before* you step across the edge
    C-l now works, so you can manually recenter
