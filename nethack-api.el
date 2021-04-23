@@ -371,10 +371,11 @@ accessed 2021-04-23.")
              ch
            (or (cdr (assq (logxor ch #x80)
                           nethack-dec-graphics-char))
-               ch))))
+               ch))
+         ch))
        ((nethack-options-set-p 'IBMgraphics)
-        (nh-gamegrid-set-cell x y (decode-char 'cp437 ch)))
-       (t (gamegrid-set-cell x y ch)))
+        (nh-gamegrid-set-cell x y (decode-char 'cp437 ch) ch))
+       (t (nh-gamegrid-set-cell x y ch)))
       ;; If the glyph is a pet then color it with the
       ;; nethack-pet-face.
       (let ((color (if (eq special 'pet)

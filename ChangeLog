@@ -1,5 +1,13 @@
 2021-04-23  Benjamin Yang  <be11ng@protonmail.com>
 
+	* nethack-compat.el (nh-gamegrid-set-cell): Take new `oldch'
+	parameter for use with IBM and DEC graphic modes so that
+	`gamegrid-set-face' doesn't complain about overload.
+	* nethack-api.el (nhapi-print-glyph): Pass original char value to
+	`nh-gamegrid-set-cell`.
+
+2021-04-23  Benjamin Yang  <be11ng@protonmail.com>
+
 	Make DEC graphics work.
 	* nethack-api.el (nethack-dec-graphics-char): New alist of
 	translations between DEC graphics and Unicode.
