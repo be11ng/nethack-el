@@ -634,8 +634,8 @@ The variable `nethack-program' is the name of the executable to run."
         (nhapi-restore-window-configuration))
     (progn
       ;; Start the process.
-      (if (get-buffer nh-proc-buffer-name)
-          (kill-buffer nh-proc-buffer-name))
+      (when (get-buffer nh-proc-buffer-name)
+        (kill-buffer nh-proc-buffer-name))
       (nethack-start (apply 'start-process "nh" nh-proc-buffer-name
                             nethack-program nethack-program-args)))))
 
@@ -669,24 +669,24 @@ PROC is the process object and MSG is the exit message."
     (nh-log (buffer-substring (point-min) (point)))
     (eval-region (point-min) (point-max))
     (insert "Nethack " msg)
-    ;; (if (not (string-equal msg "Nethack finished"))
-    ;;     (pop-to-buffer (current-buffer)))
+    ;; (when (not (string-equal msg "Nethack finished"))
+    ;;    (pop-to-buffer (current-buffer)))
     )
   (delete-process proc)
-  (if nh-proc-kill-buffer-on-quit
-      (kill-buffer (get-buffer nh-proc-buffer-name)))
-  (if nethack-purge-buffers
-      (nethack-kill-buffers))
+  (when nh-proc-kill-buffer-on-quit
+    (kill-buffer (get-buffer nh-proc-buffer-name)))
+  (when nethack-purge-buffers
+    (nethack-kill-buffers))
   (let ((raw-print-buffer (get-buffer nh-raw-print-buffer-name)))
     (when raw-print-buffer
       (pop-to-buffer raw-print-buffer))))
 
 (defvar nh-log-process-text t)
 (defun nh-log (string)
-  (if nh-log-process-text
-      (with-current-buffer (get-buffer-create nh-log-buffer)
-        (goto-char (point-max))
-        (insert string))))
+  (when nh-log-process-text
+    (with-current-buffer (get-buffer-create nh-log-buffer)
+      (goto-char (point-max))
+      (insert string))))
 
 (defvar nh-at-prompt nil)
 (defvar nh-at-prompt-hook nil
@@ -700,20 +700,20 @@ delete the contents, perhaps logging the text."
     (goto-char (point-max))
     (insert string)
     (forward-line 0)
-    (if (looking-at nh-prompt-regexp)
-        (let ((prompt (match-string 1)))
-          (nh-log (buffer-substring (point-min) (point)))
-          (save-restriction
-            (narrow-to-region (point-min) (point))
-            (eval-buffer))
-          (cond ((or (equal prompt "command")
-                     (equal prompt "menu")
-                     (equal prompt "dummy"))
-                 ;; I Don't think we need this...
-                 ;; (nhapi-print-status)
-                 (sit-for 0)
-                 (setq nh-at-prompt t)
-                 (run-hook-with-args 'nh-at-prompt-hook prompt)))))))
+    (when (looking-at nh-prompt-regexp)
+      (let ((prompt (match-string 1)))
+        (nh-log (buffer-substring (point-min) (point)))
+        (save-restriction
+          (narrow-to-region (point-min) (point))
+          (eval-buffer))
+        (cond ((or (equal prompt "command")
+                   (equal prompt "menu")
+                   (equal prompt "dummy"))
+               ;; I Don't think we need this...
+               ;; (nhapi-print-status)
+               (sit-for 0)
+               (setq nh-at-prompt t)
+               (run-hook-with-args 'nh-at-prompt-hook prompt)))))))
 
 (defun nh-send (form)
   (let ((command (cond

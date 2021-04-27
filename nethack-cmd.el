@@ -36,12 +36,12 @@
      ,docstr
      (interactive "p")
      (unwind-protect
-         (if ,cmdstr
-             (nh-send-and-wait
-              (concat ,cmdstr " "
-                      (if count
-                          (number-to-string count)
-                        "1"))))
+         (when ,cmdstr
+           (nh-send-and-wait
+            (concat ,cmdstr " "
+                    (if count
+                        (number-to-string count)
+                      "1"))))
        ,@body)))
 
 (defun-nethack-command north		;k

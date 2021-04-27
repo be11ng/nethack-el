@@ -50,10 +50,10 @@ Add the following to your ~/.emacs
 ;; (add-hook 'nethack-status-attribute-change-functions 'nethack-x-warn-low-hp)
 (defun nethack-x-warn-low-hp (attr new old percent)
   "Print a message in `nh-message-buffer' when hitpoints get low."
-  (if (and (string-equal attr "HP")
-           (< new old)
-           (< percent 20))
-      (nhapi-message 'atr-blink "Hitpoints below 20%")))
+  (when (and (string-equal attr "HP")
+             (< new old)
+             (< percent 20))
+    (nhapi-message 'atr-blink "Hitpoints below 20%")))
 
 ;;;;;;;;;;;;;;
 ;; add the following to your ~/.emacs
@@ -76,8 +76,8 @@ Add the following to your ~/.emacs
       ;; A mini-hack so the option accelerator doesn't get highlighted
       (setq start (+ (point) 4))
       (mapc (lambda (x)
-              (if (re-search-forward (car x) nil t)
-                  (put-text-property start end 'face (cdr x))))
+              (when (re-search-forward (car x) nil t)
+                (put-text-property start end 'face (cdr x))))
             nethack-x-highlights))))
 
 (provide 'nethack-example)

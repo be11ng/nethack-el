@@ -108,8 +108,8 @@
 
 (defun bot-pick-character (ques choices default)
   (prog1
-      (if (string= ques "Shall I pick a character for you? [ynq] ")
-          ?n)
+      (when (string= ques "Shall I pick a character for you? [ynq] ")
+        ?n)
     (setq bot-nhapi-select-menu 'bot-select-role)))
 
 (defun bot-select-role (menuid how)

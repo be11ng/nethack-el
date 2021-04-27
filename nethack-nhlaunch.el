@@ -70,8 +70,8 @@ prompts for the game."
   (interactive "P")
   (if (nethack-is-running)
       (message "Nethack process already running...")
-    (if (get-buffer nh-proc-buffer-name)
-        (kill-buffer nh-proc-buffer-name))
+    (when (get-buffer nh-proc-buffer-name)
+      (kill-buffer nh-proc-buffer-name))
     (setq nh-network-password (or nethack-network-password
                                   (read-from-minibuffer "Password: ")))
     (setq nh-network-game (if prefix

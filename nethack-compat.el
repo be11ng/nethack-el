@@ -49,8 +49,8 @@ Return the modified alist."
   ;; this is defined in emacs21 as `assq-delete-all'.
   (let ((tail alist))
     (while tail
-      (if (eq (car (car tail)) key)
-          (setq alist (delq (car tail) alist)))
+      (when (eq (car (car tail)) key)
+        (setq alist (delq (car tail) alist)))
       (setq tail (cdr tail)))
     alist))
 

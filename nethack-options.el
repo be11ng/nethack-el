@@ -283,8 +283,8 @@ Returns an alist entry of the options set."
   ;; TODO: Do this without using ‘reverse’
   (setq elem (reverse (split-string elem "=" t)))
   (setq attr (pop elem))
-  (if (stringp elem)
-      (setq elem (apply #'concat (reverse elem))))
+  (when (stringp elem)
+    (setq elem (apply #'concat (reverse elem))))
   (setq elem (car elem))                ; There should only be 1 item
   ;; Remove quotes from either side of ‘elem’
   (setq elem (substring elem 1 -1))
@@ -573,10 +573,10 @@ at a time."
       ;; A mini-HACK so the option accelerator doesn't get highlighted
       (setq start (+ (point) 4))
       (mapc (lambda (x)
-              (if (re-search-forward (car x) nil t)
-                  (put-text-property start end 'face
-                                     (nethack-options-attr-propertize
-                                      (cadr x)))))
+              (when (re-search-forward (car x) nil t)
+                (put-text-property start end 'face
+                                   (nethack-options-attr-propertize
+                                    (cadr x)))))
             nethack-options-menucolors))))
 
 

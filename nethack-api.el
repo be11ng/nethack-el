@@ -194,8 +194,8 @@ See ‘nh-status-attributes’ for details on the format.")
          (mapconcat
           (lambda (x)
             (let ((c (nh-propertize-attribute x "%s")))
-              (if (not (string-equal c ""))
-                  (concat c " "))))
+              (when (not (string-equal c ""))
+                (concat c " "))))
           nh-status-conditions
           ""))
         (stat
@@ -395,18 +395,18 @@ accessed 2021-04-23.")
     (setq choices (mapcar 'nh-char-to-int
                           (string-to-list choices)))
 
-    (if (/= default 0)
-        (setq choices (cons default choices)))
+    (when (/= default 0)
+      (setq choices (cons default choices)))
 
     ;; Add some special keys of our own to the choices
     (setq choices (cons 13 choices))
 
     (setq key (nh-read-char (concat ques " ")))
-    (if (> (length choices) 1)
-        (while (not (member key choices))
-          (setq key (nh-read-char (concat
-                                   (format "(bad %d) " key)
-                                   ques " ")))))
+    (when (> (length choices) 1)
+      (while (not (member key choices))
+        (setq key (nh-read-char (concat
+                                 (format "(bad %d) " key)
+                                 ques " ")))))
     ;; 13, 27, and 7 are abort keys
     (nh-send (if (or (= 13 key)
                      (= 27 key)
@@ -470,7 +470,7 @@ Do not edit the value of this variable.  Instead, change the value of
   (let ((file (concat nh-directory str)))
     (if (file-exists-p file)
         (view-file file)
-      (if complain (message "Cannot find file %s" file)))))
+      (when complain (message "Cannot find file %s" file)))))
 
 (defvar nh-inventory-need-update nil
   "If non-nil, at the next command prompt, update the menu.")
@@ -493,8 +493,8 @@ Do not edit the value of this variable.  Instead, change the value of
          (walk-windows (lambda (w)
                          (select-window w)
                          (set-buffer (window-buffer))
-                         (if (eq (current-buffer) nh-message-buffer)
-                             (scroll-down)))))))))
+                         (when (eq (current-buffer) nh-message-buffer)
+                           (scroll-down)))))))))
 
 (defun nhapi-update-positionbar (features)
   ""
@@ -507,8 +507,8 @@ all of the appropriate setup."
   ;; clean up old buffers
   (mapc (lambda (b) (kill-buffer (cdr b))) nh-menu-buffer-table)
   (setq nh-menu-buffer-table nil)
-  (if (get-buffer nh-raw-print-buffer-name)
-      (kill-buffer nh-raw-print-buffer-name)))
+  (when (get-buffer nh-raw-print-buffer-name)
+    (kill-buffer nh-raw-print-buffer-name)))
 
 (defun nhapi-exit-nhwindows (str)
   "Print the message in STR to the raw print buffer."
@@ -544,16 +544,16 @@ all of the appropriate setup."
 
 (defun nhapi-create-map-window ()
   "Created the map buffer."
-  (if (not (buffer-live-p nh-map-buffer))
-      (with-current-buffer (get-buffer-create "*nethack map*")
-        (nh-map-mode)
-        (setq nh-map-buffer (current-buffer)))))
+  (when (not (buffer-live-p nh-map-buffer))
+    (with-current-buffer (get-buffer-create "*nethack map*")
+      (nh-map-mode)
+      (setq nh-map-buffer (current-buffer)))))
 
 (defun nhapi-create-inventory-window (menuid)
   "Create the inventory window."
-  (if (not (buffer-live-p (assq menuid nh-menu-buffer-table)))
-      ;; Only do if that menuid doesn't exist
-      (nhapi-create-menu-window menuid)))
+  (when (not (buffer-live-p (assq menuid nh-menu-buffer-table)))
+    ;; Only do if that menuid doesn't exist
+    (nhapi-create-menu-window menuid)))
 
 (defun nhapi-create-menu-window (menuid)
   "Create a menu window."
@@ -658,44 +658,44 @@ Does nothing if this is a pick-none menu.
 Automatically submits menu if this is a pick-one menu and an option
 was actually toggled."
   (interactive "P")
-  (if (not (eq nh-menu-how 'pick-none))
-      (let ((case-fold-search nil)
-            (old-point (point)))
-        (goto-char (point-min))
-        (if (re-search-forward (format "^[%c] \\([-+]\\|[0-9]+\\) .+$"
-                                       last-command-event)
-                               nil t)
-            (let ((value (match-string 1))
-                  (start (match-beginning 1))
-                  (end (match-end 1))
-                  (inhibit-read-only t))
-              (delete-region start end)
-              (goto-char start)
-              (if (and count)
-                  (insert (number-to-string (if (consp count)
-                                                (car count)
-                                              count)))
-                (if (string-equal value "-")
-                    (insert "+")
-                  (insert "-")))
-              (beginning-of-line)
-              (if (eq nh-menu-how 'pick-one)
-                  (nh-menu-submit)))
-          (message "No such menu option: %c" last-command-event)
-          (goto-char old-point)))))
+  (unless (eq nh-menu-how 'pick-none)
+    (let ((case-fold-search nil)
+          (old-point (point)))
+      (goto-char (point-min))
+      (if (re-search-forward (format "^[%c] \\([-+]\\|[0-9]+\\) .+$"
+                                     last-command-event)
+                             nil t)
+          (let ((value (match-string 1))
+                (start (match-beginning 1))
+                (end (match-end 1))
+                (inhibit-read-only t))
+            (delete-region start end)
+            (goto-char start)
+            (if (and count)
+                (insert (number-to-string (if (consp count)
+                                              (car count)
+                                            count)))
+              (if (string-equal value "-")
+                  (insert "+")
+                (insert "-")))
+            (beginning-of-line)
+            (when (eq nh-menu-how 'pick-one)
+              (nh-menu-submit)))
+        (message "No such menu option: %c" last-command-event)
+        (goto-char old-point)))))
 
 (defun nh-menu-toggle-all-items ()
   "Toggle all menu items, only for pick-any menus."
   (interactive)
-  (if (eq nh-menu-how 'pick-any)
-      (save-excursion
-        (let ((inhibit-read-only t))
-          (goto-char (point-min))
-          (while (re-search-forward nh-menu-item-regexp nil t)
-            (let ((value (match-string 2)))
-              (if (string-equal value "-")
-                  (replace-match "+" nil nil nil 2)
-                (replace-match "-" nil nil nil 2))))))))
+  (when (eq nh-menu-how 'pick-any)
+    (save-excursion
+      (let ((inhibit-read-only t))
+        (goto-char (point-min))
+        (while (re-search-forward nh-menu-item-regexp nil t)
+          (let ((value (match-string 2)))
+            (if (string-equal value "-")
+                (replace-match "+" nil nil nil 2)
+              (replace-match "-" nil nil nil 2))))))))
 
 (defun nh-menu-goto-next ()
   "Move to the next selectable menu item."
@@ -732,8 +732,10 @@ displayed."
               ((string-equal value "-")
                (setq value 0))
               (t (setq value (string-to-number value))))
-        (if (/= value 0)
-            (setq menu-data (cons (list (nh-char-to-int accelerator) value) menu-data)))))
+        (when (/= value 0)
+          (setq menu-data (cons (list (nh-char-to-int accelerator)
+                                      value)
+                                menu-data)))))
     (nh-send menu-data)
     (and (window-configuration-p nh-window-configuration)
          (set-window-configuration nh-window-configuration))
@@ -788,8 +790,8 @@ buffer."
                         str)))
       (put-text-property start (point) 'face (nh-attr-face attr))
       (insert-char ?\n 1 nil)
-      (if (nethack-options-set-p 'menucolors)
-          (nethack-options-highlight-menu))
+      (when (nethack-options-set-p 'menucolors)
+        (nethack-options-highlight-menu))
       (run-hooks 'nethack-add-menu-hook))))
 
 ;; FIXME: xemacs propertize bug here
@@ -822,8 +824,8 @@ the menu is dismissed."
           ;; make window larger, if necessary
           (let ((bh (nh-window-buffer-height (selected-window)))
                 (wh (- (window-height) 1)))
-            (if (> bh wh)
-                (enlarge-window (- bh wh))))
+            (when (> bh wh)
+              (enlarge-window (- bh wh))))
           (nh-menu-mode how)
           (goto-char (point-min))
           (message "Displaying menu")
