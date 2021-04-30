@@ -43,16 +43,16 @@
 ;; from src/options.c:
 ;;  * Standard letters (for now) are:
 ;;  *
-;;  *		<  back 1 page
-;;  *		>  forward 1 page
-;;  *		^  first page
-;;  *		|  last page
-;;  *		:  search
+;;  *    <  back 1 page
+;;  *    >  forward 1 page
+;;  *    ^  first page
+;;  *    |  last page
+;;  *    :  search
 ;;  *
-;;  *		page		all
-;;  *		 ,    select	 .
-;;  *		 \    deselect	 -
-;;  *		 ~    invert	 @
+;;  *    page    all
+;;  *     ,    select     .
+;;  *     \    deselect   -
+;;  *     ~    invert     @
 (defvar nh-menu-mode-map
   (let ((map (make-sparse-keymap)))
     (suppress-keymap map)
@@ -77,8 +77,8 @@
 (defvar nh-map-mode-map
   (let ((map (make-sparse-keymap)))
     (suppress-keymap map)
-    (define-key map "_" 'nethack-command-travel)	;_
-    (define-key map "^" 'nethack-command-identify-trap)	;^
+    (define-key map "_" 'nethack-command-travel)        ;_
+    (define-key map "^" 'nethack-command-identify-trap) ;^
 
     ;;^[ Cancel command
     ;; I don't think we need a cancel command (rcy)

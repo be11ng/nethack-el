@@ -299,14 +299,13 @@ This is used when the ATR_NOHISTORY bit in a message is set."
   (message "%s" str))
 
 (defconst nh-colors
-  [nethack-black-face 		nethack-red-face
-                          nethack-green-face 		nethack-brown-face
-                          nethack-blue-face 		nethack-magenta-face
-                          nethack-cyan-face 		nethack-gray-face
-                          nethack-dark-gray-face 	nethack-orange-face
-                          nethack-bright-green-face 	nethack-yellow-face
-                          nethack-bright-blue-face 	nethack-bright-magenta-face
-                          nethack-bright-cyan-face 	nethack-white-face]
+  [nethack-black-face nethack-red-face nethack-green-face nethack-brown-face
+                      nethack-blue-face nethack-magenta-face nethack-cyan-face
+                      nethack-gray-face nethack-dark-gray-face
+                      nethack-orange-face nethack-bright-green-face
+                      nethack-yellow-face nethack-bright-blue-face
+                      nethack-bright-magenta-face nethack-bright-cyan-face
+                      nethack-white-face]
   "Vector indexed by Nethack's color number.")
 
 (defconst nethack-dec-graphics-char
@@ -351,7 +350,7 @@ accessed 2021-04-23.")
 (defun nhapi-print-glyph (x y color glyph tile ch &optional special)
   "Insert glyph into `nh-map-buffer'."
   (set-buffer nh-map-buffer)
-  (setq x (- x 1))			; FIXME: put this hack in C
+  (setq x (- x 1))                      ; FIXME: put this hack in C
   (let ((inhibit-read-only t))
     (if nethack-use-tiles
         (save-excursion
@@ -487,7 +486,7 @@ Do not edit the value of this variable.  Instead, change the value of
      (nh-message 'atr-none nh-last-message))
     (t
      (save-selected-window
-       (save-current-buffer		; is this redundant since we
+       (save-current-buffer             ; is this redundant since we
                                         ; already save the selected
                                         ; window? -rcy
          (walk-windows (lambda (w)
@@ -496,9 +495,7 @@ Do not edit the value of this variable.  Instead, change the value of
                          (when (eq (current-buffer) nh-message-buffer)
                            (scroll-down)))))))))
 
-(defun nhapi-update-positionbar (features)
-  ""
-  )
+(defun nhapi-update-positionbar (features) "")
 
 (defun nhapi-init-nhwindows (executable &rest args)
   "This is the first function sent by the nethack process.  Does
@@ -597,12 +594,13 @@ The TYPE argument is legacy and serves no real purpose."
               (dotimes (j nh-map-width)
                 (insert-image nh-empty-tile))
               (insert (propertize "\n" 'face 'nethack-map-tile-face))))
-        (setq gamegrid-use-glyphs nil)	; dont try to use gamegrid glyphs
-        (let (cursor-type)		; protect from gamegrid-init clobbering
+        (setq gamegrid-use-glyphs nil)  ; dont try to use gamegrid glyphs
+        (let (cursor-type)              ; protect from gamegrid-init clobbering
           (gamegrid-init (make-vector 256 nil)))
         (gamegrid-init-buffer nh-map-width
                               nh-map-height
-                              ? )))))
+                              ?\ )))))
+
 (defun nhapi-block ()
   (cl-case nethack-prompt-style
     (:map
@@ -867,8 +865,7 @@ the menu is dismissed."
   (ding))
 
 (defun nhapi-wait-synch ()
-  "Does nothing."
-  )
+  "Does nothing.")
 
 (defun nhapi-delay-output ()
   "Sleep for 50ms."

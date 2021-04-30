@@ -555,8 +555,8 @@ library for your system."
           (format "PREFIX=%s make all install"
                   nethack-build-directory))
          (compilation-buffer
-          (compilation-start compilation-cmd t) ; Use compilation-shell-minor-mode
-          ))
+          (compilation-start compilation-cmd t))) ; Use compilation-shell-minor-mode
+
     (if (get-buffer-window compilation-buffer)
         (select-window (get-buffer-window compilation-buffer))
       (pop-to-buffer compilation buffer))
@@ -668,10 +668,10 @@ PROC is the process object and MSG is the exit message."
   (with-current-buffer (process-buffer proc)
     (nh-log (buffer-substring (point-min) (point)))
     (eval-region (point-min) (point-max))
-    (insert "Nethack " msg)
+    (insert "Nethack " msg))
     ;; (when (not (string-equal msg "Nethack finished"))
     ;;    (pop-to-buffer (current-buffer)))
-    )
+
   (delete-process proc)
   (when nh-proc-kill-buffer-on-quit
     (kill-buffer (get-buffer nh-proc-buffer-name)))
@@ -739,8 +739,10 @@ delete the contents, perhaps logging the text."
     (modify-syntax-entry ?\) "w   " table)
     (modify-syntax-entry ?\[ "w   " table)
     (modify-syntax-entry ?\] "w   " table)
-    (modify-syntax-entry ?{ "w   " table)
-    (modify-syntax-entry ?} "w   " table)
+    ;; Although the backslash isn't strictly necessary, it's needed so that
+    ;; parinfer-rust-mode won't error here
+    (modify-syntax-entry ?\{ "w   " table)
+    (modify-syntax-entry ?\} "w   " table)
     table)
   "Syntax table used in the Nethack map.")
 

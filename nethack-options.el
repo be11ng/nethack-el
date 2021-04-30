@@ -387,7 +387,7 @@ Specifically, this checks for the field “characteristics”."
       (equal a b)))
 
 (defvar nethack-options-status-hilite-results
-    (make-hash-table :test #'equal))
+  (make-hash-table :test #'equal))
 
 (defun nethack-options-status-hilite (stat)
   "Return a list of functions for a string STAT.

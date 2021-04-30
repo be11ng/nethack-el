@@ -75,8 +75,8 @@ prompts for the game."
     (setq nh-network-password (or nethack-network-password
                                   (read-from-minibuffer "Password: ")))
     (setq nh-network-game (if prefix
-                              (read-from-minibuffer "Game: ")
-                            nethack-network-game))
+                              (read-from-minibuffer "Game: "))
+          nethack-network-game)
     (message nh-network-game)
     (let ((proc (open-network-stream "nh" nh-proc-buffer-name
                                      nethack-network-server

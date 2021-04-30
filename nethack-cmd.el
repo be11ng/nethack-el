@@ -44,7 +44,7 @@
                       "1"))))
        ,@body)))
 
-(defun-nethack-command north		;k
+(defun-nethack-command north            ;k
   "Go north 1 space (or if number_pad is on, kick something)"
   "gonorth")
 
@@ -75,16 +75,16 @@
 (defun-nethack-command travel "Move via a shortest-path algorithm to a point on the map." "travel") ;_
 
 (defun-nethack-command identify-trap "Show the type of a trap" "idtrap") ;^
-(defun-nethack-command apply "Apply (use) a tool" "apply") ;a
-(defun-nethack-command remove-all-armor "Remove all armor" "remarm") ;A
-(defun-nethack-command close-door "Close a door" "close") ;c
-(defun-nethack-command drop "Drop an item" "drop") ;d
+(defun-nethack-command apply "Apply (use) a tool" "apply")               ;a
+(defun-nethack-command remove-all-armor "Remove all armor" "remarm")     ;A
+(defun-nethack-command close-door "Close a door" "close")                ;c
+(defun-nethack-command drop "Drop an item" "drop")                       ;d
 
 (defun-nethack-command drop-specific-item "Drop specific item types" "ddrop") ;D
-(defun-nethack-command eat "Eat something" "eat") ;e
-(defun-nethack-command engrave "Engrave writing on the floor" "engrave") ;E
-(defun-nethack-command fire "Fire ammunition from quiver" "fire") ;f
-(defun-nethack-command inventory "Show your inventory" "inv") ;i
+(defun-nethack-command eat "Eat something" "eat")                             ;e
+(defun-nethack-command engrave "Engrave writing on the floor" "engrave")      ;E
+(defun-nethack-command fire "Fire ammunition from quiver" "fire")             ;f
+(defun-nethack-command inventory "Show your inventory" "inv")                 ;i
 
 (defun-nethack-command type-inventory "Inventory specific item types" "typeinv") ;I
 (defun-nethack-command open "Open a door" "open") ;o
@@ -99,29 +99,29 @@
 (defun-nethack-command search "Search for traps and secret doors" "search") ;s
 
 (defun-nethack-command save-game "Save the game" "save") ;S
-(defun-nethack-command throw "Throw something" "throw") ;t
+(defun-nethack-command throw "Throw something" "throw")  ;t
 (defun-nethack-command remove-single-armor "Take off one piece of armor" "takeoff") ;T
-(defun-nethack-command version ;v
+(defun-nethack-command version          ;v
   "Show version"
   "simpleversion"
   (nhapi-message nil (nethack-el-version)))
 (defun-nethack-command version-and-history "Show long version and game history" "history") ;V
 
 (defun-nethack-command wield "Wield (put in use) a weapon" "wield") ;w
-(defun-nethack-command wear-armor "Wear a piece of armor" "wear") ;W
+(defun-nethack-command wear-armor "Wear a piece of armor" "wear")   ;W
 (defun-nethack-command swap-weapons "Swap wielded and secondary weapons" "swapweapon") ;x
 (defun-nethack-command explore-mode "Enter explore (discovery) mode (only if defined)" "enter_explore_mode") ;X
 (defun-nethack-command zap-wand "Zap a wand" "zap") ;z
 
 (defun-nethack-command cast-spell "Zap (cast) a spell" "cast") ;Z
-(defun-nethack-command up "Go up a staircase" "up") ;<
-(defun-nethack-command down "Go down a staircase" "down") ;>
+(defun-nethack-command up "Go up a staircase" "up")            ;<
+(defun-nethack-command down "Go down a staircase" "down")      ;>
 (defun-nethack-command what-is-symbol "Show what type of thing a symbol corresponds to" "whatis") ;/
 (defun-nethack-command help "Give a help message" "help") ;?
 
 (defun-nethack-command command-help "Tell what a command does" "whatdoes") ;& ; can be done by emacs
 
-(defun-nethack-command shell		; !
+(defun-nethack-command shell            ; !
   "Do a shell escape (only if defined)"
   nil ;; "sh"
   (shell))
@@ -136,43 +136,43 @@
 (defun-nethack-command show-all-equipment-in-use "Show all equipment in use (combination of the ),[,=,\",( commands)" "prinuse") ;*
 (defun-nethack-command count-gold "Count your gold" "countgold") ;$
 
-(defun-nethack-command kick "Kick" "kick") ;^D
+(defun-nethack-command kick "Kick" "kick")                                 ;^D
 (defun-nethack-command list-known-spells "List known spells" "listspells") ;+
 
-(defun-nethack-command show-attributes ;^X
+(defun-nethack-command show-attributes  ;^X
   "Show your attributes (intrinsic ones included in debug or explore mode)"
   "attributes")
 
 ;;; wizard (debug) mode only commands:
-(defun-nethack-command wizard-detect	;^E
+(defun-nethack-command wizard-detect    ;^E
   "Search a room (available in debug mode only)"
   "wiz_detect")
-(defun-nethack-command wizard-map	;^F
+(defun-nethack-command wizard-map       ;^F
   "Map the level (available in debug mode only)"
   "wiz_map")
-(defun-nethack-command wizard-genesis	;^G
+(defun-nethack-command wizard-genesis   ;^G
   "Create a monster (available in debug mode only)"
   "wiz_genesis")
-(defun-nethack-command wizard-identify	;^I
+(defun-nethack-command wizard-identify  ;^I
   "Identify all items (available in debug mode only)"
   "wiz_identify")
-(defun-nethack-command wizard-where	;^O
+(defun-nethack-command wizard-where     ;^O
   "Show location of special levels (available in debug mode only)"
   "wiz_where")
 (defun-nethack-command wizard-level-teleport ;^V
   "Teleport between levels (available in debug mode only)"
   "wiz_level_tele")
-(defun-nethack-command wizard-wish	;^W
+(defun-nethack-command wizard-wish      ;^W
   "Wish (available in debug mode only)"
   "wiz_wish")
 ;; wizard extended commands
-;; 	{"light sources", "show mobile light sources", wiz_light_sources, TRUE},
-;; 	{"seenv", "show seen vectors", wiz_show_seenv, TRUE},
-;; 	{"stats", "show memory statistics", wiz_show_stats, TRUE},
-;; 	{"timeout", "look at timeout queue", wiz_timeout_queue, TRUE},
-;; 	{"vision", "show vision array", wiz_show_vision, TRUE},
-;; 	{"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE},
-;;	{"wmode", "show wall modes", wiz_show_wmodes, TRUE},
+;;   {"light sources", "show mobile light sources", wiz_light_sources, TRUE},
+;;   {"seenv", "show seen vectors", wiz_show_seenv, TRUE},
+;;   {"stats", "show memory statistics", wiz_show_stats, TRUE},
+;;   {"timeout", "look at timeout queue", wiz_timeout_queue, TRUE},
+;;   {"vision", "show vision array", wiz_show_vision, TRUE},
+;;   {"wizdebug", "wizard debug command", wiz_debug_cmd, TRUE},
+;;  {"wmode", "show wall modes", wiz_show_wmodes, TRUE},
 
 ;; Extended commands
 (defun-nethack-command read-extended "perform an extended command." "#")
@@ -208,12 +208,12 @@
 (defun-nethack-command technique "Perform a technique." "technique")
 
 
-(defun-nethack-command previous-message	; ^P
+(defun-nethack-command previous-message  ; ^P
   "Scroll through previously displayed game messages"
   nil ;;"doprev" FIXME: is not implemented in C
   (nhapi-doprev-message))
 
-(defun-nethack-command redraw-screen	; ^R
+(defun-nethack-command redraw-screen  ; ^R
   "Restores the default window configuration.
 
 With a prefix arg, also redraws the map glyphs."
@@ -227,7 +227,7 @@ With a prefix arg, also redraws the map glyphs."
   "teleport")
 
 ;;; FIXME: defun these:
-(defun-nethack-command redo-previous  ;^A
+(defun-nethack-command redo-previous    ;^A
   "Redo the previous command"
   "again")
 
@@ -239,11 +239,11 @@ With a prefix arg, also redraws the map glyphs."
 ;;"Cancel command"
 ;;"")
 
-(defun-nethack-command call-monster ;C
+(defun-nethack-command call-monster     ;C
   "Call (name) a particular monster"
   "callmon")
 
-(defun-nethack-command force-fight  ;F
+(defun-nethack-command force-fight      ;F
   "Followed by direction, fight a monster (even if you don't sense it)"
   "fight")
 
@@ -251,7 +251,7 @@ With a prefix arg, also redraws the map glyphs."
   "Followed by direction, move until you are near something"
   "movenear")
 
-(defun-nethack-command move  ;G
+(defun-nethack-command move             ;G
   "Followed by direction, same as control-direction"
   "move")
 
@@ -263,7 +263,7 @@ With a prefix arg, also redraws the map glyphs."
   "Followed by direction, move a distance without picking anything up"
   "movenopickup")
 
-(defun-nethack-command show-wielded-weapon  ;)
+(defun-nethack-command show-wielded-weapon ;)
   "Show the weapon currently wielded"
   "showweapon")
 
@@ -275,17 +275,17 @@ With a prefix arg, also redraws the map glyphs."
   "Show the ring(s) currently worn"
   "showrings")
 
-(defun-nethack-command show-worn-amulet  ;"
+(defun-nethack-command show-worn-amulet ;"
   "Show the amulet currently worn"
   "showamulet")
 
-(defun-nethack-command show-tool-in-use  ;(
+(defun-nethack-command show-tool-in-use ;(
   "Show the tools currently in use"
   "showtool")
 
 
 ;;; Lisp specific commands
-(defun-nethack-command options  ;(
+(defun-nethack-command options          ;(
   "get all the nethack options."
   "options")
 
