@@ -469,7 +469,7 @@ is done automatically, so “Stone” will match to “major”."
               ((and (equal hilite-name "condition")
                     (member stat hilite-behavior1)
                     (cdr-safe hilite-case2))
-               '(lambda (new old percent age)
+               `(lambda (new old percent age)
                   (funcall
                    (nethack-options-status-function
                     ,hilite-name
