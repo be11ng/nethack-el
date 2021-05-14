@@ -433,16 +433,19 @@ Currently, the two supported versions are 3.6.6 and 3.4.3."
 Checks whether a NetHack executable exists, and if running it
 results in an output with prefix ``(nhapi-raw-print'' with the correct NetHack
 version and the correct version for the lisp-patch."
-  (and nethack-program
-       (string-match-p
-        (concat "(nhapi-raw-print \".*"
-                "NetHack Version "
-                nethack-version
-                " lisp-patch "
-                ;; This is OK up to a two digit major version
-                (substring nethack-el-version 0
-                           (string-match-p  "\\." nethack-el-version 3)))
-        (shell-command-to-string (concat nethack-program " --version")))))
+  (let ((version-string
+         (shell-command-to-string
+          (concat nethack-program " --version"))))
+    (and nethack-program
+         (version<=
+          nethack-el-earliest-compatible-version
+          (and (string-match
+                (concat "NetHack Version "
+                        nethack-version
+                        " lisp-patch "
+                        "\\([0-9]+\\.[0-9]+\\.[0-9]+\\)")
+                version-string)
+               (match-string-no-properties 1 version-string))))))
 
 (defun nethack-build (&optional
                       callback
@@ -793,6 +796,7 @@ buffer."
 
 ;;; VERSION:
 (defconst nethack-el-version "0.12.0")
+(defconst nethack-el-earliest-compatible-version "0.12.0")
 (defun nethack-el-version ()
   (interactive)
   (message (format "nethack-el %s" nethack-el-version)))
