@@ -433,10 +433,11 @@ Currently, the two supported versions are 3.6.6 and 3.4.3."
 Checks whether a NetHack executable exists, and if running it
 results in an output with prefix ``(nhapi-raw-print'' with the correct NetHack
 version and the correct version for the lisp-patch."
-  (let ((version-string
-         (shell-command-to-string
-          (concat nethack-program " --version"))))
-    (and nethack-program
+  (and nethack-program
+       (file-executable-p nethack-program)
+       (let ((version-string
+              (shell-command-to-string
+               (concat nethack-program " --version"))))
          (version<=
           nethack-el-earliest-compatible-version
           (and (string-match
@@ -578,7 +579,8 @@ library for your system."
 ;;;###autoload
 (defun nethack-install (&optional no-query-p
                                   no-download-p
-                                  no-error-p)
+                                  no-error-p
+                                  launch-nethack-p)
   "Download, install, and patch nethack.
 
 If the `nethack-program' is not running or does not appear to be
@@ -592,7 +594,10 @@ NO-QUERY-P is non-nil.
 Do not download (but do untar) if NO-DOWNLOAD-P is non-nil.
 
 Do not signal an error in case the build failed, if NO-ERROR-P is
-non-nil."
+non-nil.
+
+Call `nethack' upon a successful compilation if LAUNCH-NETHACK-P
+is non-nil."
   (interactive)
   (if (not (nethack-installed-p))
       (let ((target-directory
@@ -613,7 +618,8 @@ non-nil."
                                  "succeeded" "failed"))))
                    (if (not (file-exists-p nethack-program))
                        (funcall (if no-error-p #'message #'error) "%s" msg)
-                     (message "%s" msg))))
+                     (message "%s" msg)
+                     (when launch-nethack-p (nethack)))))
                no-download-p))
           (message "NetHack not activated")))))
 
@@ -631,16 +637,17 @@ non-nil."
 
 The variable `nethack-program' is the name of the executable to run."
   (interactive)
-  (if (nethack-is-running)
-      (progn
-        (message "Nethack process already running...")
-        (nhapi-restore-window-configuration))
-    (progn
-      ;; Start the process.
-      (when (get-buffer nh-proc-buffer-name)
-        (kill-buffer nh-proc-buffer-name))
-      (nethack-start (apply 'start-process "nh" nh-proc-buffer-name
-                            nethack-program nethack-program-args)))))
+  (if (nethack-installed-p)
+      (if (nethack-is-running)
+          (progn
+            (message "Nethack process already running...")
+            (nhapi-restore-window-configuration))
+        ;; Start the process.
+        (when (get-buffer nh-proc-buffer-name)
+          (kill-buffer nh-proc-buffer-name))
+        (nethack-start (apply 'start-process "nh" nh-proc-buffer-name
+                              nethack-program nethack-program-args)))
+    (nethack-install)))
 
 (defun nethack-is-running ()
   "return T if nethack is already running."
