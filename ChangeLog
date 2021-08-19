@@ -1,3 +1,43 @@
+2021-08-19  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack.el (nethack-build-setup): Use ‘version<=’ as opposed to
+	‘nethack-version-nodots’.
+	(nethack-build-untar): Use `nethack-el-directory` for location of
+	patch file.
+	(nethack-el-directory): Include call to ‘file-name-as-directory’.
+
+2021-08-19  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack.el (nethack-build): Remove option target-directory.
+	(nethack-install): Update accordingly.
+
+2021-08-17  Benjamin Yang  <be11ng@protonmail.com>
+
+	* enh-366.patch: Fix file permissions, stolen from the current
+	Arch Linux PKGBUILD without setgid bit.
+
+2021-08-17  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack.el (nethack-installed-p): Check if NetHack is not only
+	installed, but also an executable, in the right order.
+	(nethack-install): Take a new argument ‘launch-nethack-p’ for
+	whether to launch NetHack after installation.
+	(nethack): Check if NetHack is installed before running, and call
+	‘nethack-install’ if it isn't.
+
+2021-05-14  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack-options.el (nethack-options-status-hilite): Fix
+	quasiquote.
+
+2021-05-14  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack.el (nethack-el-earliest-compatible-version): New
+	variable, set to "0.12.0".
+	(nethack-installed-p): Use
+	‘nethack-el-earliest-compatible-version’ when checking if
+	nethack-el has a working NetHack executable.
+
 2021-04-23  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-compat.el (nh-gamegrid-set-cell): Take new `oldch'
@@ -9,6 +49,7 @@
 2021-04-23  Benjamin Yang  <be11ng@protonmail.com>
 
 	Make DEC graphics work.
+
 	* nethack-api.el (nethack-dec-graphics-char): New alist of
 	translations between DEC graphics and Unicode.
 	(nhapi-print-glyph): Handle DEC graphics by checking if the high
