@@ -451,7 +451,6 @@ version and the correct version for the lisp-patch."
 (defun nethack-build (&optional
                       callback
                       no-download-p
-                      target-directory
                       build-directory)
   "Build the NetHack program in the background.
 
@@ -462,19 +461,15 @@ the build failed.
 If NO-DOWNLOAD-P is non-nil, then no NetHack tarball will be downloaded and one
 will already be assumed to be in ‘nethack-build-directory/nethack.tgz’.
 
-Install into TARGET-DIRECTORY, which should be a directory.
-
 Expect sources to be in BUILD-DIRECTORY.  If nil, expect it to be
 in `nethack-build-directory'.
 
 Returns the buffer of the compilation process."
   (unless callback (setq callback #'ignore))
-  (when target-directory
-    (setq target-directory (file-name-as-directory
-                            (expand-file-name target-directory)))
-    (setq-default nethack-build-directory target-directory))
   (when build-directory
-    (setq-default nethack-build-directory build-directory))
+    (setq-default nethack-build-directory build-directory)
+    (setq-default nethack-program
+                  (expand-file-name "nethack" nethack-build-directory)))
   (unless (file-exists-p nethack-build-directory)
     (mkdir nethack-build-directory))
   ;; needs to make patch, hints(-3.6), and build
@@ -599,29 +594,24 @@ non-nil.
 Call `nethack' upon a successful compilation if LAUNCH-NETHACK-P
 is non-nil."
   (interactive)
-  (if (not (nethack-installed-p))
-      (let ((target-directory
-             (or (and (stringp nethack-program)
-                      (file-name-directory nethack-program))
-                 nethack-el-directory)))
-        (if (or no-query-p
-                (y-or-n-p "Need to (re)build the NetHack program, do it now?"))
-            (progn
-              (setq-default nethack-version
-                            (or (and no-query-p "3.6.6")
-                                (nethack-query-for-version)))
-              (nethack-build
-               (lambda ()
-                 (let ((msg (format
-                             "Building the NetHack program %s"
-                             (if (file-exists-p nethack-program)
-                                 "succeeded" "failed"))))
-                   (if (not (file-exists-p nethack-program))
-                       (funcall (if no-error-p #'message #'error) "%s" msg)
-                     (message "%s" msg)
-                     (when launch-nethack-p (nethack)))))
-               no-download-p))
-          (message "NetHack not activated")))))
+  (unless (nethack-installed-p)
+    (if (or no-query-p
+            (y-or-n-p "Need to (re)build the NetHack program, do it now?"))
+        (progn
+          (setq-default nethack-version
+                        (or (and no-query-p "3.6.6")
+                            (nethack-query-for-version)))
+          (nethack-build
+           (lambda ()
+             (let ((msg (format "Building the NetHack program %s"
+                                (if (file-exists-p nethack-program)
+                                    "succeeded" "failed"))))
+               (if (not (file-exists-p nethack-program))
+                   (funcall (if no-error-p #'message #'error) "%s" msg)
+                 (message "%s" msg)
+                 (when launch-nethack-p (nethack)))))
+           no-download-p))
+      (message "NetHack not activated"))))
 
 
 ;;; Process
