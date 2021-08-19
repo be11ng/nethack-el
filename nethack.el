@@ -138,7 +138,6 @@ map buffer. t means in the minibuffer."
 
 (defcustom nethack-status-attribute-change-functions nil
   "List of functions to call after a status attribute change.
-
 Three arguments are passed to each function: the name of the
 attribute, the new value, the old value, and the percent."
   :type '(hook)
@@ -389,15 +388,21 @@ attribute, the new value, the old value, and the percent."
 (defcustom nethack-build-directory
   (expand-file-name "build" nethack-el-directory)
   "The directory in which to build nethack.
-
 You can influence the location of the build directory by setting
-this variable (eventually, not yet implemented)."
+this variable.  If `nethack-program' is set to a working
+compatible version of NetHack complied with the lisp patch, then
+`nethack-build-directory' is never used."
   :type '(string)
   :group 'nethack)
 
 (defcustom nethack-program
   (expand-file-name "nethack" nethack-build-directory)
-  "Program to run to start a game of Nethack."
+  "Program to run to start a game of Nethack.
+If this variable is custom-set outside of the default
+`nethack-build-dierctory', and it does indeed point to a working
+compatible version of NetHack with the lisp patch, then
+`nethack-build-directory' is never consulted during
+installation."
   :type '(string)
   :group 'nethack)
 
@@ -420,7 +425,6 @@ this variable (eventually, not yet implemented)."
 
 (defun nethack-query-for-version ()
   "Queries the user for the NetHack version.
-
 Currently, the two supported versions are 3.6.6 and 3.4.3."
   (interactive)
   (read-answer "NetHack version "
@@ -429,7 +433,6 @@ Currently, the two supported versions are 3.6.6 and 3.4.3."
 
 (defun nethack-installed-p ()
   "Determine if a patched NetHack is installed.
-
 Checks whether a NetHack executable exists, and if running it
 results in an output with prefix ``(nhapi-raw-print'' with the correct NetHack
 version and the correct version for the lisp-patch."
@@ -453,16 +456,17 @@ version and the correct version for the lisp-patch."
                       no-download-p
                       build-directory)
   "Build the NetHack program in the background.
-
 If CALLBACK is non-nil, it should be a function.  It is called
 with the compiled executable as the single argument or nil, if
 the build failed.
 
-If NO-DOWNLOAD-P is non-nil, then no NetHack tarball will be downloaded and one
-will already be assumed to be in ‘nethack-build-directory/nethack.tgz’.
+If NO-DOWNLOAD-P is non-nil, then no NetHack tarball will be
+downloaded and one will already be assumed to be in
+‘nethack-build-directory’/nethack.tgz.
 
-Expect sources to be in BUILD-DIRECTORY.  If nil, expect it to be
-in `nethack-build-directory'.
+If BUILD-DIRECTORY is non-nil, then `nethack-build-directory'
+will be set to BUILD-DIRECTORY.  The NetHack executable will be
+located within the BUILD-DIRECTORY.
 
 Returns the buffer of the compilation process."
   (unless callback (setq callback #'ignore))
@@ -488,7 +492,9 @@ Returns the buffer of the compilation process."
     (nethack-build-compile callback)))
 
 (defun nethack-build-download ()
-  "Download the nethack source from nethack.org."
+  "Download the nethack source from nethack.org.
+The source is saved as nethack.tgz within the
+`default-directory'."
   (let* ((nethack-tar (concat "/nethack-" (nethack-version-nodots) "-src.tgz"))
          (nethack-url
           (concat "https://nethack.org/download/" nethack-version nethack-tar)))
@@ -498,7 +504,6 @@ Returns the buffer of the compilation process."
 
 (defun nethack-build-untar ()
   "Untar the nethack source out of nethack-tar.
-
 Untars the file nethack.tgz located in ‘default-directory’ into
 ‘default-directory’/nethack-src.
 
@@ -511,7 +516,7 @@ it relies on using the flag --strip-components."
            "--strip-components=1 --ignore-command-error")))
 
 (defun nethack-build-patch ()
-  "Patch the NetHack with lisp patches."
+  "Patch the NetHack source with lisp patches."
   ;; cd nethack-src && patch -Nr- -p1 < ../../enh-$(NH_VER_NODOTS).patch || true
   (let ((default-directory source-directory))
     (process-file-shell-command
@@ -520,7 +525,6 @@ it relies on using the flag --strip-components."
 
 (defun nethack-build-setup ()
   "Setup the NetHack with ./setup.sh.
-
 Uses the hints file for >3.6."
   ;; cd nethack-src/sys/unix && $(SHELL) ./setup.sh
   ;; or
@@ -533,23 +537,22 @@ Uses the hints file for >3.6."
 
 (defun nethack-build-compile (callback)
   "Compile NetHack with make.
-
-CALLBACK is called when the compilation finishes (with no arguments).
+CALLBACK is called when the compilation finishes (with no
+arguments).
 
 Returns the buffer of the compilation process.
 
-Requires ‘make’, ‘gcc’, ‘bison’ or ‘yacc’, ‘flex’ or ‘lex’, and the ncurses-dev
-library for your system."
+Requires ‘make’, ‘gcc’, ‘bison’ or ‘yacc’, ‘flex’ or ‘lex’, and
+the ncurses-dev library for your system."
   ;; make all && make install
   (let* ((default-directory source-directory)
          (compilation-cmd
           ;; Right now, since there are two make arguments passed here, the
           ;; comint mode sees this as two different compiles and gives messages
           ;; in the order:  "Comint finished, Building the NetHack program
-          ;; succeeded, Comint finished".  This is maybe a little bad, as it not
-          ;; only obscures the message that the build is done, but also may make
-          ;; the ‘nethack-installed-p’ check fail sometimes.  Still, it works
-          ;; for now, so I'll just need to remember that it's currently a little
+          ;; succeeded, Comint finished".  This is maybe a little bad as it
+          ;; obscures the message that the build is done.  Still, it works for
+          ;; now, so I'll just need to remember that it's currently a little
           ;; HACK-y.
           (format "PREFIX=%s make all install"
                   nethack-build-directory))
@@ -577,14 +580,14 @@ library for your system."
                                   no-error-p
                                   launch-nethack-p)
   "Download, install, and patch nethack.
-
 If the `nethack-program' is not running or does not appear to be
 working, attempt to rebuild it.  If this build succeeded,
 continue with the activation of the package.  Otherwise fail
-silently, i.e. no error is is signaled.
+silently, that is, no error is is signaled.
 
 Build the program (if necessary) without asking first, if
-NO-QUERY-P is non-nil.
+NO-QUERY-P is non-nil.  Also, if NO-QUERY-P is non-nil, then
+3.6.6 will be assumed to be the version to download and install.
 
 Do not download (but do untar) if NO-DOWNLOAD-P is non-nil.
 
@@ -624,7 +627,6 @@ is non-nil."
 ;;;###autoload
 (defun nethack ()
   "Start a game of Nethack.
-
 The variable `nethack-program' is the name of the executable to run."
   (interactive)
   (if (nethack-installed-p)
@@ -640,7 +642,7 @@ The variable `nethack-program' is the name of the executable to run."
     (nethack-install)))
 
 (defun nethack-is-running ()
-  "return T if nethack is already running."
+  "Return T if nethack is already running."
   (and (processp nh-proc)
        (member (process-status nh-proc) '(open run))))
 
@@ -786,6 +788,7 @@ buffer."
 
 
 
+
 (run-hooks 'nethack-load-hook)
 
 (provide 'nethack)
