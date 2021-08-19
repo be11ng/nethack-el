@@ -528,8 +528,8 @@ Uses the hints file for >3.6."
   (let ((default-directory (expand-file-name "sys/unix" source-directory)))
     (process-file-shell-command
      (concat "./setup.sh"
-             (if (>= (string-to-number (nethack-version-nodots)) 360)
-                 " hints/linux-lisp")))))
+             (when (version<= "3.6.0" nethack-version)
+               " hints/linux-lisp")))))
 
 (defun nethack-build-compile (callback)
   "Compile NetHack with make.
