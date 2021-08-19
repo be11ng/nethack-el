@@ -381,9 +381,9 @@ attribute, the new value, the old value, and the percent."
 ;;; Installation
 
 (defconst nethack-el-directory
-  (or (and load-file-name
-           (file-name-directory load-file-name))
-      default-directory)
+  (file-name-as-directory (or (and load-file-name
+                                   (file-name-directory load-file-name))
+                              default-directory))
   "The directory from where this library was first loaded.")
 
 (defcustom nethack-build-directory
@@ -516,7 +516,7 @@ it relies on using the flag --strip-components."
   (let ((default-directory source-directory))
     (process-file-shell-command
      "patch -Nr- -p1"
-     (concat "../../enh-" (nethack-version-nodots) ".patch"))))
+     (concat nethack-el-directory "enh-" (nethack-version-nodots) ".patch"))))
 
 (defun nethack-build-setup ()
   "Setup the NetHack with ./setup.sh.
