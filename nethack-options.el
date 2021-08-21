@@ -61,13 +61,18 @@ current level to the start of the next experience level.")
   '("alignment" "carrying-capacity" "hunger" "dungeon-level" "title")
   "List of fields highlightable by text match.")
 
+(defconst nethack-options-fields-characteristics
+  '("strength" "dexterity" "constitution" "intelligence" "wisdom" "charisma")
+  "List of status flags that match “characteristics”.
+This is used by the function ‘nethack-options-equal’.")
+
 (defconst nethack-options-fields
-  (append (list "strength" "gold" "dexterity" "HD" "constitution"
-                "hitpoints-max" "time" "intelligence" "wisdom" "power-max"
-                "charisma" "armor-class" "condition" "score" "characteristics")
+  (append (list "gold" "HD" "hitpoints-max" "time" "power-max" "armor-class"
+                "condition" "score" "characteristics")
           nethack-options-fields-percents
-          nethack-options-fields-text-matches)
-  "List of fields highlightable by “hilite_status”.")
+          nethack-options-fields-text-matches
+          nethack-options-fields-characteristics)
+  "List of fields “hilite_status” can act on.")
 
 (defconst nethack-options-cond-major-troubles
   '("Stone" "Slim" "Strngl" "FoodPois" "TermIll")
@@ -86,9 +91,6 @@ current level to the start of the next experience level.")
           nethack-options-cond-minor-troubles
           nethack-options-cond-movement)
   "List of all condition flags.")
-
-(defconst nethack-options-fields-characteristics
-  '("strength" "dexterity" "constitution" "intelligence" "wisdom" "charisma"))
 
 (defun nethack-options-status-field-p (field)
   (member

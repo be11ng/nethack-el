@@ -1,3 +1,9 @@
+2021-08-20  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack-options.el (nethack-options-fields): Use
+	‘nethack-options-fields-characteristics’ as source of fields which
+	are ‘nethack-options-equal’ to “characteristics”.
+
 2021-08-19  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack.el (nethack-build-setup): Use ‘version<=’ as opposed to
