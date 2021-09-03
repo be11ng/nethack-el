@@ -48,12 +48,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
 --- NetHack-NetHack-3.6.6_Released/include/patchlevel.h	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/include/patchlevel.h	2021-04-09 08:27:26.132941698 -0400
++++ nethack/include/patchlevel.h	2021-09-03 19:26:42.217795205 -0400
 @@ -16,6 +16,8 @@
   */
  #define EDITLEVEL 0
  
-+#define LISP_VERSION "0.12.0"
++#define LISP_VERSION "0.13.0"
 +
  #define COPYRIGHT_BANNER_A "NetHack, Copyright 1985-2020"
  #define COPYRIGHT_BANNER_B \
@@ -212,8 +212,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2021-04-07 18:47:18.932549344 -0400
-+++ nethack/sys/unix/hints/linux-lisp	2021-03-19 08:27:03.302606234 -0400
+--- /dev/null	2021-09-03 18:30:18.452832269 -0400
++++ nethack/sys/unix/hints/linux-lisp	2021-09-03 18:47:12.134319026 -0400
 @@ -0,0 +1,62 @@
 +#
 +# NetHack 3.6  linux $NHDT-Date: 1432512814 2015/05/25 00:13:34 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $
@@ -272,8 +272,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +VARDIRPERM = 0775
 +VARFILEPERM = 0664
-+GAMEPERM = 0755
-+#GAMEPERM = 04755
++#GAMEPERM = 0755
++GAMEPERM = 04755
 +FILEPERM = 0664
 +EXEPERM  = 0775
 +DIRPERM  = 0775
@@ -306,9 +306,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2021-04-07 18:47:18.932549344 -0400
-+++ nethack/win/lisp/ChangeLog	2021-04-09 08:29:38.382546366 -0400
-@@ -0,0 +1,439 @@
+--- /dev/null	2021-09-03 18:30:18.452832269 -0400
++++ nethack/win/lisp/ChangeLog	2021-09-03 19:38:56.300739653 -0400
+@@ -0,0 +1,446 @@
++2021-09-03  Benjamin Yang  <be11ng@protonmail.com>
++
++	* winlisp.c (attr_to_string): Call `nh-attr-face' with full face
++	name.
++	* ../../include/patchlevel.h (LISP_VERSION): Bump to 0.13.0 since
++	the last change was incompatible.
++
 +2021-04-09  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* ../../include/patchlevel.h (LISP_VERSION): Bump to 0.12.0 since
@@ -748,8 +755,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2021-04-07 18:47:18.932549344 -0400
-+++ nethack/win/lisp/winlisp.c	2021-04-07 09:12:11.256077879 -0400
+--- /dev/null	2021-09-03 18:30:18.452832269 -0400
++++ nethack/win/lisp/winlisp.c	2021-08-29 13:28:54.981199725 -0400
 @@ -0,0 +1,1882 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
@@ -1145,19 +1152,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +  switch (attr) {
 +    case ATR_NONE:
-+      return "atr-none";
++      return "nethack-atr-none-face";
 +    case ATR_ULINE:
-+      return "atr-uline";
++      return "nethack-atr-uline-face";
 +    case ATR_BOLD:
-+      return "atr-bold";
++      return "nethack-atr-bold-face";
 +    case ATR_DIM:
-+      return "atr-dim";
++      return "nethack-atr-dim-face";
 +    case ATR_BLINK:
-+      return "atr-blink";
++      return "nethack-atr-blink-face";
 +    case ATR_INVERSE:
-+      return "atr-inverse";
++      return "nethack-atr-inverse-face";
 +    default:
-+      return "atr-none";
++      return "nethack-atr-none-face";
 +  }
 +}
 +

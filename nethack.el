@@ -795,7 +795,7 @@ buffer."
 
 
 ;;; VERSION:
-(defconst nethack-el-version "0.12.0")
+(defconst nethack-el-version "0.13.0")
 (defconst nethack-el-earliest-compatible-version "0.12.0")
 (defun nethack-el-version ()
   (interactive)

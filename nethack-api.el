@@ -64,7 +64,7 @@
 
 (defun nhapi-raw-print-bold (str)
   (nhapi-raw-print
-   (nh-propertize str 'face (nh-attr-face 'atr-bold))))
+   (nh-propertize str 'face nethack-atr-bold-face)))
 
 (defun nhapi-curs (x y)
   "Set the cursor in `nh-map-buffer' to X, Y."
