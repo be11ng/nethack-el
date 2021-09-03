@@ -1,3 +1,14 @@
+2021-09-03  Benjamin Yang  <be11ng@protonmail.com>
+
+	* nethack-options.el (nh-attr-face): Take symbols for faces and
+	get their value if applicable.
+	* enh-366.patch (attr_to_string): Call `nh-attr-face' with full
+	face name.
+	(LISP_VERSION): Bump to 0.13.0 due to incompatible change.
+	* nethack.el (nethack-el-version): Bump to 0.13.0.
+	* nethack-api.el (nhapi-raw-print-bold): Directly call bold face
+	without passing through `nh-attr-face'.
+
 2021-08-20  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-options.el (nethack-options-fields): Use

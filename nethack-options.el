@@ -107,22 +107,26 @@ This is used by the function ‘nethack-options-equal’.")
 ;; with “nh” rather than “nethack-options”
 (defun nh-attr-face (attr)
   "Return the face corresponding with ATTR.
-
 ATTR can be either a string or a symbol.  It does not matter if it is prefixed
   with “atr-” or not.  “normal” is aliased to “none” as is “underline” to
-  “uline”."
-  (when (symbolp attr)
-    (setq attr (symbol-name attr)))
-  (when (string-prefix-p "atr-" attr)
-    (setq attr (substring attr 4)))
-  (intern-soft (concat "nethack-atr-"
-                       ;; Aliases, since this function handles both the C codes
-                       ;; attributes as well as those set within .nethackrc
-                       (pcase attr
-                         ("normal" "none")
-                         ("underline" "uline")
-                         (_ attr))
-                       "-face")))
+  “uline”.
+However, ATTR should be a symbol.  As of 0.13.0, the C half should give a symbol
+  which correctly resolves to an attribute, but this function is left for
+  compatibility."
+  (if (and (symbolp attr) (facep attr))
+      (symbol-value attr)
+    (when (symbolp attr)
+      (setq attr (symbol-name attr)))
+    (when (string-prefix-p "atr-" attr)
+      (setq attr (substring attr 4)))
+    (intern-soft (concat "nethack-atr-"
+                         ;; Aliases, since this function handles both the C codes
+                         ;; attributes as well as those set within .nethackrc
+                         (pcase attr
+                           ("normal" "none")
+                           ("underline" "uline")
+                           (_ attr))
+                         "-face"))))
 
 (defun nethack-options-color-face (color)
   "Return the nethack face corresponding to COLOR.
