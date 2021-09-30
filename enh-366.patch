@@ -48,17 +48,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
 --- NetHack-NetHack-3.6.6_Released/include/patchlevel.h	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/include/patchlevel.h	2021-09-03 19:26:42.217795205 -0400
++++ nethack/include/patchlevel.h	2021-09-30 09:02:32.394567409 -0400
 @@ -16,6 +16,8 @@
   */
  #define EDITLEVEL 0
  
-+#define LISP_VERSION "0.13.0"
++#define LISP_VERSION "0.13.1"
 +
  #define COPYRIGHT_BANNER_A "NetHack, Copyright 1985-2020"
  #define COPYRIGHT_BANNER_B \
      "         By Stichting Mathematisch Centrum and M. Stephenson."
---- /dev/null	2021-04-07 18:47:18.932549344 -0400
+--- /dev/null	2021-09-07 15:23:52.853204673 -0400
 +++ nethack/include/winlisp.h	2021-02-04 21:00:49.882665104 -0500
 @@ -0,0 +1,71 @@
 +#ifndef WINLISP_H
@@ -212,8 +212,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2021-09-03 18:30:18.452832269 -0400
-+++ nethack/sys/unix/hints/linux-lisp	2021-09-03 18:47:12.134319026 -0400
+--- /dev/null	2021-09-07 15:23:52.853204673 -0400
++++ nethack/sys/unix/hints/linux-lisp	2021-09-30 09:01:24.052853547 -0400
 @@ -0,0 +1,62 @@
 +#
 +# NetHack 3.6  linux $NHDT-Date: 1432512814 2015/05/25 00:13:34 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $
@@ -306,9 +306,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2021-09-03 18:30:18.452832269 -0400
-+++ nethack/win/lisp/ChangeLog	2021-09-03 19:38:56.300739653 -0400
-@@ -0,0 +1,446 @@
+--- /dev/null	2021-09-07 15:23:52.853204673 -0400
++++ nethack/win/lisp/ChangeLog	2021-09-30 09:04:25.820870527 -0400
+@@ -0,0 +1,452 @@
++2021-09-30  Benjamin Yang  <be11ng@protonmail.com>
++
++	* winlisp.c (lisp_print_glyph): Remove redundant code.
++	* ../../include/patchlevel.h (LISP_VERSION): Bump to 0.13.1 since
++	the last change was compatible.
++
 +2021-09-03  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* winlisp.c (attr_to_string): Call `nh-attr-face' with full face
@@ -755,9 +761,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2021-09-03 18:30:18.452832269 -0400
-+++ nethack/win/lisp/winlisp.c	2021-08-29 13:28:54.981199725 -0400
-@@ -0,0 +1,1882 @@
+--- /dev/null	2021-09-07 15:23:52.853204673 -0400
++++ nethack/win/lisp/winlisp.c	2021-09-30 08:57:55.014281296 -0400
+@@ -0,0 +1,1869 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
 +
@@ -2569,40 +2575,27 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +       user hasn't turned on hilite_pet. */
 +    if (!iflags.hilite_pet)
 +      {
-+	special &= ~MG_PET;
++        special &= ~MG_PET;
 +      }
 +
 +    if (window == WIN_MAP)
 +      {
-+	/* The last parameter, special, is optional. It is only
-+	   present when the tile is special in some way. FIXME: This
-+	   duplicate code is a bit gross. */
-+	if (special)
-+	  {
-+	    lisp_cmd ("print-glyph",
-+		      lisp_int (x);
-+		      lisp_int (y);
-+		      lisp_int (color);
-+		      lisp_int (glyph);
-+		      lisp_int (glyph2tile[glyph]);
-+		      lisp_int (ch);
-+		      lisp_literal (special_glyph_to_string (special)););
-+	  }
-+	else
-+	  {
-+	    lisp_cmd ("print-glyph",
-+		      lisp_int (x);
-+		      lisp_int (y);
-+		      lisp_int (color);
-+		      lisp_int (glyph);
-+		      lisp_int (glyph2tile[glyph]);
-+		      lisp_int (ch););
-+	  }
++        /* The last parameter, special, is optional. It is only
++           present when the tile is special in some way. */
++        lisp_cmd("print-glyph",
++                 lisp_int(x);
++                 lisp_int(y);
++                 lisp_int(color);
++                 lisp_int(glyph);
++                 lisp_int(glyph2tile[glyph]);
++                 lisp_int(ch);
++                 if (special)
++                     lisp_literal(special_glyph_to_string(special)););
 +      }
 +    else
 +      lisp_cmd ("error",
-+		lisp_string ("lisp_print_glyph bad window");
-+		lisp_int (window));
++                lisp_string ("lisp_print_glyph bad window");
++                lisp_int (window));
 +}
 +
 +#ifdef CLIPPING
