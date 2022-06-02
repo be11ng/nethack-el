@@ -46,6 +46,7 @@ EOF
 for n in `cat <<EOF
 include/config.h
 include/patchlevel.h
+include/tradstdc.h
 include/winlisp.h
 src/windows.c
 sys/unix/Makefile.src

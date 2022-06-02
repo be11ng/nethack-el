@@ -18,7 +18,7 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --- NetHack-NetHack-3.6.6_Released/include/config.h	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/include/config.h	2021-03-09 08:25:00.723573438 -0500
++++ nethack/include/config.h	2022-06-01 21:50:46.633348904 -0400
 @@ -50,12 +50,13 @@
  /* #define QT_GRAPHICS */    /* Qt interface */
  /* #define GNOME_GRAPHICS */ /* Gnome interface */
@@ -48,18 +48,35 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #define DEFAULT_WINDOW_SYS "tty"
  #endif
 --- NetHack-NetHack-3.6.6_Released/include/patchlevel.h	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/include/patchlevel.h	2021-09-30 09:02:32.394567409 -0400
++++ nethack/include/patchlevel.h	2022-06-01 22:19:52.405909412 -0400
 @@ -16,6 +16,8 @@
   */
  #define EDITLEVEL 0
  
-+#define LISP_VERSION "0.13.1"
++#define LISP_VERSION "0.13.2"
 +
  #define COPYRIGHT_BANNER_A "NetHack, Copyright 1985-2020"
  #define COPYRIGHT_BANNER_B \
      "         By Stichting Mathematisch Centrum and M. Stephenson."
---- /dev/null	2021-09-07 15:23:52.853204673 -0400
-+++ nethack/include/winlisp.h	2021-02-04 21:00:49.882665104 -0500
+--- NetHack-NetHack-3.6.6_Released/include/tradstdc.h	2020-03-08 13:29:31.000000000 -0400
++++ nethack/include/tradstdc.h	2022-06-01 21:52:04.523463145 -0400
+@@ -429,12 +429,14 @@
+ #if __GNUC__ >= 3
+ #define UNUSED __attribute__((unused))
+ #define NORETURN __attribute__((noreturn))
++#if !defined(__linux__) || defined(GCC_URWARN)
+ /* disable gcc's __attribute__((__warn_unused_result__)) since explicitly
+    discarding the result by casting to (void) is not accepted as a 'use' */
+ #define __warn_unused_result__ /*empty*/
+ #define warn_unused_result /*empty*/
+ #endif
+ #endif
++#endif
+ 
+ #ifndef PRINTF_F
+ #define PRINTF_F(f, v)
+--- /dev/null	2022-06-01 20:00:19.963629631 -0400
++++ nethack/include/winlisp.h	2022-06-01 21:50:46.633348904 -0400
 @@ -0,0 +1,71 @@
 +#ifndef WINLISP_H
 +#define WINLISP_H
@@ -133,7 +150,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +
 +#endif /* WINLISP_H */
 --- NetHack-NetHack-3.6.6_Released/src/windows.c	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/src/windows.c	2020-05-24 15:21:05.336401669 -0400
++++ nethack/src/windows.c	2022-06-01 21:50:46.633348904 -0400
 @@ -44,6 +44,10 @@
  #ifdef MSWIN_GRAPHICS
  extern struct window_procs mswin_procs;
@@ -156,7 +173,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
      { &chainin_procs, chainin_procs_init, chainin_procs_chain },
      { (struct window_procs *) &chainout_procs, chainout_procs_init,
 --- NetHack-NetHack-3.6.6_Released/sys/unix/Makefile.src	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/sys/unix/Makefile.src	2021-03-09 08:51:51.908363936 -0500
++++ nethack/sys/unix/Makefile.src	2022-06-01 21:50:46.633348904 -0400
 @@ -266,9 +266,12 @@
  #	../win/BeOS/NHMenuWindow.cpp ../win/BeOS/NHMapWindow.cpp tile.c
  #WINBEOBJ = winbe.o NHWindow.o NHMenuWindow.o NHMapWindow.o tile.o
@@ -212,8 +229,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  wizard.o: wizard.c $(HACK_H) ../include/qtext.h
  worm.o: worm.c $(HACK_H) ../include/lev.h
  worn.o: worn.c $(HACK_H)
---- /dev/null	2021-09-07 15:23:52.853204673 -0400
-+++ nethack/sys/unix/hints/linux-lisp	2021-09-30 09:01:24.052853547 -0400
+--- /dev/null	2022-06-01 20:00:19.963629631 -0400
++++ nethack/sys/unix/hints/linux-lisp	2022-06-01 21:50:46.633348904 -0400
 @@ -0,0 +1,62 @@
 +#
 +# NetHack 3.6  linux $NHDT-Date: 1432512814 2015/05/25 00:13:34 $  $NHDT-Branch: master $:$NHDT-Revision: 1.12 $
@@ -278,7 +295,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +EXEPERM  = 0775
 +DIRPERM  = 0775
 --- NetHack-NetHack-3.6.6_Released/util/makedefs.c	2020-03-08 13:29:31.000000000 -0400
-+++ nethack/util/makedefs.c	2021-03-18 09:10:46.409633597 -0400
++++ nethack/util/makedefs.c	2022-06-01 21:50:46.633348904 -0400
 @@ -1233,8 +1233,16 @@
  #endif
  #endif
@@ -306,9 +323,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  #ifdef AMIGA_INTUITION /* unmaintained/defunct */
      { "amii", "Amiga Intuition" },
  #endif
---- /dev/null	2021-09-07 15:23:52.853204673 -0400
-+++ nethack/win/lisp/ChangeLog	2021-09-30 09:04:25.820870527 -0400
-@@ -0,0 +1,452 @@
+--- /dev/null	2022-06-01 20:00:19.963629631 -0400
++++ nethack/win/lisp/ChangeLog	2022-06-01 22:19:39.935891122 -0400
+@@ -0,0 +1,460 @@
++2022-06-01  Benjamin Yang  <be11ng@protonmail.com>
++
++	* ../../include/tradstdc.h: Fix compilation issue with glibc 2.34.
++	Note that this is a fix that I really should have found out back
++	in 2022-01-23.  See S366-2 at nethack.org/v366/bugs.html.
++	* ../../include/patchlevel.h (LISP_VERSION): Bump to 0.13.2 since
++	the last change was compatible.
++
 +2021-09-30  Benjamin Yang  <be11ng@protonmail.com>
 +
 +	* winlisp.c (lisp_print_glyph): Remove redundant code.
@@ -761,8 +786,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 +	s/nethack-api-updated-inventory/nethack-api-update-inventory/
 +	(WINLISP_VOID_RETVAL): added macro, called for every void
 +	function.
---- /dev/null	2021-09-07 15:23:52.853204673 -0400
-+++ nethack/win/lisp/winlisp.c	2021-09-30 08:57:55.014281296 -0400
+--- /dev/null	2022-06-01 20:00:19.963629631 -0400
++++ nethack/win/lisp/winlisp.c	2022-06-01 21:50:46.643348919 -0400
 @@ -0,0 +1,1869 @@
 +/* Copyright (c) Shawn Betts, Ryan Yeske, 2001                    */
 +/* NetHack may be freely redistributed.  See license for details. */
