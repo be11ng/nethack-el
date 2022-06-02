@@ -399,7 +399,7 @@ compatible version of NetHack complied with the lisp patch, then
   (expand-file-name "nethack" nethack-build-directory)
   "Program to run to start a game of Nethack.
 If this variable is custom-set outside of the default
-`nethack-build-dierctory', and it does indeed point to a working
+`nethack-build-directory', and it does indeed point to a working
 compatible version of NetHack with the lisp patch, then
 `nethack-build-directory' is never consulted during
 installation."
