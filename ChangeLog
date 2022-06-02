@@ -1,3 +1,9 @@
+2021-09-30  Benjamin Yang  <be11ng@protonmail.com>
+
+	* enh-366.patch (lisp_print_glyph): Remove redundant code.
+	(LISP_VERSION): Bump to 0.13.1 due to compatible change.
+	* nethack.el (nethack-el-version): Bump to 0.13.1.
+
 2021-09-03  Benjamin Yang  <be11ng@protonmail.com>
 
 	* nethack-options.el (nh-attr-face): Take symbols for faces and
