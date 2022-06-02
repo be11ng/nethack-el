@@ -1,5 +1,12 @@
 2022-06-01  Benjamin Yang  <be11ng@protonmail.com>
 
+	* nethack-api.el (nhapi-raw-print-bold): Pass a symbol to
+	`nh-propertize' rather than a variable.
+	* nethack-options.el (nh-attr-face): Return a symbol rather than a
+	variable (!?) for use as a property.
+
+2022-06-01  Benjamin Yang  <be11ng@protonmail.com>
+
 	* enh-366.patch: Fix compilation issue with glibc 2.34.
 	Note that this is a fix that I really should have found out back
 	in 2022-01-23.  See S366-2 at nethack.org/v366/bugs.html.

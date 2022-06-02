@@ -114,7 +114,7 @@ However, ATTR should be a symbol.  As of 0.13.0, the C half should give a symbol
   which correctly resolves to an attribute, but this function is left for
   compatibility."
   (if (and (symbolp attr) (facep attr))
-      (symbol-value attr)
+      attr
     (when (symbolp attr)
       (setq attr (symbol-name attr)))
     (when (string-prefix-p "atr-" attr)
